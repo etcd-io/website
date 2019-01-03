@@ -1,4 +1,5 @@
 {{ $project  := .Site.Params.project | markdownify }}
+{{ $overview := .Site.Params.overview | markdownify }}
 <section class="section">
   <div class="container">
     <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold">
@@ -7,8 +8,26 @@
 
     <hr class="has-background-primary" />
 
-    <div class="content is-medium">
-      {{ $project }}
+    <div class="columns is-variable is-8">
+      <div class="column">
+        <p class="title has-text-weight-light">
+          Project
+        </p>
+
+        <div class="content is-medium">
+          {{ $project }}
+        </div>
+      </div>
+
+      <div class="column">
+        <p class="title has-text-weight-light">
+          Technical overview
+        </p>
+
+        <div class="content is-medium">
+          {{ $overview }}
+        </div>
+      </div>
     </div>
   </div>
 </section>

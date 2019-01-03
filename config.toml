@@ -8,13 +8,23 @@ fontAwesomeVersion = "5.6.1"
 sansSerifFont      = "Source Sans Pro"
 monospaceFont      = "Fira Mono"
 favicon            = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
+
 project            = """
-**etcd** is a distributed key-value store that provides a reliable way to store data across a cluster of machines. It’s open source and available [on GitHub](https://github.com/etcd-io/etcd). etcd gracefully handles leader elections during network partitions and will tolerate machine failure, including the leader.
+**etcd** is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node.
 
-Your applications can read and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.
+Applications of any complexity, from a simple web app to [Kubernetes](https://kubernetes.io), can read data from and write data into etcd.
 
-etcd is written in [Go](https://golang.org), which has excellent cross-platform support, small binaries and a great community behind it. Communication between etcd machines is handled via the Raft consensus algorithm.
+Your applications can read from and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.
+
+etcd is open source, available [on GitHub](https://github.com/etcd-io/etcd), and backed by the [Cloud Native Computing Foundation](https://cncf.io).
 """
+
+overview           = """
+etcd is written in [Go](https://golang.org), which has excellent cross-platform support, small binaries and a great community behind it. Communication between etcd machines is handled via the Raft consensus algorithm.
+
+Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.
+"""
+
 
 [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/horizontal/white/etcd-horizontal-white.png"
@@ -24,15 +34,15 @@ panel  = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/
 
 [[params.features]]
 title = "Simple interface"
-description = "Read and write values with curl and other HTTP libraries"
+description = "Read and write values using standard HTTP tools, such as curl"
 
 [[params.features]]
 title = "Key-value storage"
-description = "Store data in directories, similar to a filesystem"
+description = "Store data in hierarchically organized directories, as in a standard filesystem"
 
 [[params.features]]
 title = "Watch for changes"
-description = "Watch a key or directory for changes and react to the new values"
+description = "Watch specific keys or directories for changes and react to changes in values"
 
 [[params.fonts]]
 name = "Source Sans Pro"
