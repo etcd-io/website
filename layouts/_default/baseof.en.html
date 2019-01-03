@@ -1,0 +1,15 @@
+{{- $langCode := .Site.LanguageCode }}
+<!DOCTYPE html>
+<html lang="{{ $langCode }}">
+  <head>
+    <title>
+      {{ block "title" . }}{{ .Site.Title }}{{ end }}
+    </title>
+    {{ partial "favicon.html" . }}
+    {{ partial "css.html" . }}
+  </head>
+  <body class="page">
+    {{ block "main" . }}
+    {{ end }}
+  </body>
+</html>

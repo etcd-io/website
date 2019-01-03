@@ -1,0 +1,68 @@
+{{- $fonts    := .Site.Params.fonts }}
+{{- $fontSlice := (slice) }}
+{{- range $fonts }}
+{{- $fontSlice = $fontSlice | append (printf "%s:%s" (replace .name " " "+") (delimit .sizes ",")) }}
+{{- end }}
+{{- $fontsUrl := printf "https://fonts.googleapis.com/css?family=%s" (delimit $fontSlice "|") }}
+{{- $sansSerifFont := .Site.Params.sansSerifFont }}
+{{- $monospaceFont := .Site.Params.monospaceFont }}
+//{{- $fontAwesomeVersion := .Site.Params.fontAwesomeVersion }}
+//{{- $fontAwesomeUrl     := printf "https://use.fontawesome.com/releases/v%s/css/all.css" $fontAwesomeVersion }}
+
+@charset "utf-8"
+@import url({{ $fontsUrl }})
+//@import url({{ $fontAwesomeUrl }})
+
+// Project-specific colors and variables
+$etcd-blue: #419eda
+$etcd-light-blue: lighten($etcd-blue, 10%)
+$etcd-dark-blue: darken($etcd-blue, 10%)
+
+@import "bulma/sass/utilities/initial-variables"
+@import "bulma/sass/utilities/functions"
+
+// Bulma variable overrides
+$primary: $etcd-blue
+$link: $primary
+$family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+$family-code: "{{ $monospaceFont }}", monospace
+$toc-item-font-size: 1.5rem
+$dashboard-panel-padding: 2rem 2rem 5rem 2rem
+$dashboard-panel-header-bottom-margin: 3rem
+$dashboard-panel-footer-top-margin: 3rem
+
+@import "bulma/sass/utilities/derived-variables"
+@import "bulma/bulma"
+@import "bulma-dashboard/src/bulma-dashboard"
+@import "bulma-squeezebox/bulma-squeezebox"
+
+=logo($touch, $desktop)
+  +touch
+    width: $touch
+
+  +desktop
+    width: $desktop
+
+.is-hero-logo
+  +logo(60%, 30%)
+  margin-bottom: 1.75rem
+
+.is-cncf-logo
+  +logo(70%, 40%)
+  margin-top: 1.5rem
+
+.is-footer-logo
+  +logo(10%, 5%)
+  margin-bottom: 1rem
+
+.is-panel-logo
+  width: 40%
+
+// Ensure sticky footer
+.page
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+  .main
+    flex: 1
