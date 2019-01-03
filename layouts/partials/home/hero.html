@@ -1,13 +1,29 @@
-{{ $logo        := .Site.Params.logos.hero }}
-{{ $description := .Site.Params.description | markdownify }}
+{{ $params      := .Site.Params }}
+{{ $logo        := $params.logos.hero }}
+{{ $description := $params.description | markdownify }}
+{{ $social      := $params.social }}
+{{ $github      := $social.github }}
 <section class="hero is-medium is-primary">
   <div class="container has-text-centered">
     <div class="hero-body">
       <img class="is-hero-logo" src="{{ $logo }}" alt="etcd main hero logo">
 
-      <p class="subtitle is-size-2 is-size-3-mobile has-text-white-bis has-text-weight-light">
+      <p class="subtitle is-size-2 is-size-4-mobile has-text-white-bis has-text-weight-light">
         {{ $description }}
       </p>
+
+      <br />
+
+      <div class="buttons is-centered">
+        <a class="button is-black is-medium" href="{{ $github }}">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          <span class="has-text-weight-bold">
+            GitHub
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

@@ -1,33 +1,31 @@
 {{ $project  := .Site.Params.project | markdownify }}
-{{ $features := .Site.Params.features }}
+{{ $overview := .Site.Params.overview | markdownify }}
 <section class="section">
   <div class="container">
+    <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold">
+      What is etcd?
+    </p>
+
+    <hr class="has-background-primary" />
+
     <div class="columns is-variable is-8">
       <div class="column">
-        <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-medium">
-          What is etcd?
+        <p class="title has-text-weight-light">
+          Project
         </p>
 
-        <div class="content">
+        <div class="content is-medium">
           {{ $project }}
         </div>
       </div>
+
       <div class="column">
-        <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-medium">
-          Features
+        <p class="title has-text-weight-light">
+          Technical overview
         </p>
 
-        <div class="content">
-          {{ range $features }}
-          <div class="card">
-            <div class="card-content content">
-              <h4 class="has-text-primary">
-                {{ .title }}
-              </h4>
-              {{ .description }}
-            </div>
-          </div>
-          {{ end }}
+        <div class="content is-medium">
+          {{ $overview }}
         </div>
       </div>
     </div>

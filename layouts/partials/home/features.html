@@ -1,0 +1,24 @@
+{{ $features := .Site.Params.features }}
+<section class="section">
+  <div class="container">
+    <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold">
+      Features
+    </p>
+
+    <hr class="has-background-primary" />
+
+    <div class="columns is-variable is-8">
+      {{ range $features }}
+      <div class="column">
+        <p class="title is-size-3 is-size-4-mobile is-spaced has-text-weight-light">
+          {{ .title }}
+        </p>
+
+        <p class="subtitle">
+          {{ .description | markdownify }}
+        </p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
