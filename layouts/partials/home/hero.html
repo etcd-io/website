@@ -1,0 +1,13 @@
+{{ $logo        := .Site.Params.logos.hero }}
+{{ $description := .Site.Params.description | markdownify }}
+<section class="hero is-medium is-primary">
+  <div class="container has-text-centered">
+    <div class="hero-body">
+      <img class="is-hero-logo" src="{{ $logo }}" alt="etcd main hero logo">
+
+      <p class="subtitle is-size-2 is-size-3-mobile has-text-white-bis has-text-weight-light">
+        {{ $description }}
+      </p>
+    </div>
+  </div>
+</section>
