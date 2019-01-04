@@ -30,6 +30,11 @@ $toc-item-font-size: 1.5rem
 $dashboard-panel-padding: 2rem 2rem 5rem 2rem
 $dashboard-panel-header-bottom-margin: 3rem
 $dashboard-panel-footer-top-margin: 3rem
+$squeezebox-tab-top-margin: 1rem
+$squeezebox-tab-list-item-font-size: 1.25rem
+$squeezebox-plus-marker: '+'
+$squeezebox-plus-font-size: 1.5rem
+$squeezebox-tab-list-item-hover-color: $primary
 
 @import "bulma/sass/utilities/derived-variables"
 @import "bulma/bulma"
@@ -57,6 +62,14 @@ $dashboard-panel-footer-top-margin: 3rem
 
 .is-panel-logo
   width: 40%
+
+.toc
+  li a
+    font-size: 1.2rem
+    color: $white-bis
+
+    &:hover
+      color: $primary
 
 // Ensure sticky footer
 .page

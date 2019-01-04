@@ -1,0 +1,53 @@
+{{ $logo     := site.Params.logos.panel }}
+{{ $sections := where site.Sections "Section" "docs" }}
+{{ $editUrl  := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
+<div class="dashboard-panel has-background-white-bis">
+  <div class="dashboard-panel-header has-text-centered">
+    <a href="/docs">
+      <img class="is-panel-logo" src="{{ $logo }}">
+    </a>
+  </div>
+
+  <div class="dashboard-panel-main">
+    <div class="squeezebox">
+      {{ range $sections }}
+      {{ range .Sections }}
+      {{ $id := .Name | urlize }}
+      <div class="tab">
+        <input id="{{ $id }}" type="checkbox">
+        <label class="plus" for="{{ $id }}">
+          {{ .Name }}
+        </label>
+
+        <div class="tab-hidden">
+          <div class="tab-hidden-content">
+            <ul>
+              {{ range .Pages }}
+              <li>
+                <a href="{{ .URL }}">
+                  {{ .Title }}
+                </a>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="dashboard-panel-footer">
+    <div class="buttons is-centered">
+      <a class="button is-medium is-black" href="{{ $editUrl }}" target="_blank">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span class="has-text-weight-bold">
+          Edit this page
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

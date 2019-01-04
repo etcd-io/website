@@ -30,6 +30,7 @@ hero   = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/horizontal/
 cncf   = "https://raw.githubusercontent.com/cncf/artwork/master/cncf/horizontal/color/cncf-color.png"
 footer = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
 panel  = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
+navbar = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
 
 [params.social]
 github = "https://github.com/etcd-io/etcd"
