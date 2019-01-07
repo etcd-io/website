@@ -1,4 +1,6 @@
-{{ $features := .Site.Params.features }}
+{{ $features  := .Site.Params.features }}
+{{ $primary   := $features.primary }}
+{{ $secondary := $features.secondary }}
 <section class="section">
   <div class="container">
     <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold">
@@ -8,7 +10,8 @@
     <hr class="has-background-primary" />
 
     <div class="columns is-variable is-8">
-      {{ range $features }}
+      {{ range $primary }}
+      {{ $svg := printf "static/img/%s.svg" .svg }}
       <div class="column">
         <p class="title is-size-3 is-size-4-mobile is-spaced has-text-weight-light">
           {{ .title }}
@@ -16,6 +19,28 @@
 
         <p class="subtitle">
           {{ .description | markdownify }}
+        </p>
+
+        <div class="is-home-svg">
+          {{ $svg | readFile | safeHTML }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <hr />
+
+    <div class="columns is-multiline">
+      {{ range $secondary }}
+      <div class="column">
+        <span class="icon has-text-danger">
+          <i class="fas fa-lg fa-{{ .icon }}"></i>
+        </span>
+
+        <br /><br />
+
+        <p class="is-size-5 is-size-6-mobile">
+          {{ .text }}
         </p>
       </div>
       {{ end }}

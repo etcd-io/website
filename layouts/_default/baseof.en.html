@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="{{ $langCode }}">
   <head>
+    {{ partial "meta.html" . }}
     <title>
       {{ block "title" . }}{{ .Site.Title }}{{ end }}
     </title>

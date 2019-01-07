@@ -1,5 +1,6 @@
 {{ $project  := .Site.Params.project | markdownify }}
 {{ $overview := .Site.Params.overview | markdownify }}
+{{ $adopters := .Site.Params.adopters }}
 <section class="section">
   <div class="container">
     <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold">
@@ -14,6 +15,8 @@
           Project
         </p>
 
+        <hr />
+
         <div class="content is-medium">
           {{ $project }}
         </div>
@@ -24,8 +27,36 @@
           Technical overview
         </p>
 
+        <hr />
+
         <div class="content is-medium">
           {{ $overview }}
+        </div>
+      </div>
+
+      <div class="column">
+        <p class="title has-text-weight-light">
+          Adopters
+        </p>
+
+        <hr />
+
+        {{ range $adopters }}
+        <div class="is-adopter-block">
+          <a href="{{ .link }}">
+            <img class="is-project-logo" src="{{ .logo }}">
+          </a>
+
+          <div class="content is-medium">
+            {{ .description | markdownify }}
+          </div>
+        </div>
+        {{ end }}
+
+        <div class="is-adopter-block"> 
+          <div class="content is-medium">
+            In addition, <a href="https://github.com/search?utf8=%E2%9C%93&q=etcd/">500+ projects on GitHub</a> are affiliated with etcd, including projects built on etcd, client bindings, and more.
+          </div>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ $etcd-dark-blue: darken($etcd-blue, 10%)
 
 // Bulma variable overrides
 $primary: $etcd-blue
-$link: darken($primary, 5%)
+$link: $etcd-dark-blue
 $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $family-code: "{{ $monospaceFont }}", monospace
 $toc-item-font-size: 1.5rem
@@ -40,6 +40,8 @@ $squeezebox-tab-list-item-hover-color: $primary
 @import "bulma/bulma"
 @import "bulma-dashboard/src/bulma-dashboard"
 @import "bulma-squeezebox/bulma-squeezebox"
+
+@import "helpers"
 
 =logo($touch, $desktop)
   +touch
@@ -63,6 +65,10 @@ $squeezebox-tab-list-item-hover-color: $primary
 .is-panel-logo
   width: 40%
 
+.is-project-logo
+  margin-bottom: 1rem
+  +logo(60%, 70%)
+
 .toc
   li a
     font-size: 1.2rem
@@ -70,6 +76,9 @@ $squeezebox-tab-list-item-hover-color: $primary
 
     &:hover
       color: $primary
+.is-adopter-block
+  & + &
+    margin-top: 4rem
 
 // Ensure sticky footer
 .page
@@ -79,3 +88,12 @@ $squeezebox-tab-list-item-hover-color: $primary
 
   .main
     flex: 1
+
+.is-shadowless
+  box-shadow: none
+
+.is-home-svg
+  +x-center
+
+  svg
+    height: 7.5rem
