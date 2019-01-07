@@ -36,14 +36,17 @@ github = "https://github.com/etcd-io/etcd"
 
 [[params.features]]
 title = "Simple interface"
+svg = "interface"
 description = "Read and write values using standard HTTP tools, such as curl"
 
 [[params.features]]
 title = "Key-value storage"
+svg = "kv"
 description = "Store data in hierarchically organized directories, as in a standard filesystem"
 
 [[params.features]]
 title = "Watch for changes"
+svg = "watch"
 description = "Watch specific keys or directories for changes and react to changes in values"
 
 [[params.fonts]]

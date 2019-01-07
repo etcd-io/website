@@ -9,6 +9,7 @@
 
     <div class="columns is-variable is-8">
       {{ range $features }}
+      {{ $svg := printf "static/img/%s.svg" .svg }}
       <div class="column">
         <p class="title is-size-3 is-size-4-mobile is-spaced has-text-weight-light">
           {{ .title }}
@@ -17,6 +18,10 @@
         <p class="subtitle">
           {{ .description | markdownify }}
         </p>
+
+        <div class="is-home-svg">
+          {{ $svg | readFile | safeHTML }}
+        </div>
       </div>
       {{ end }}
     </div>
