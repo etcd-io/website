@@ -60,6 +60,14 @@ $dashboard-panel-footer-top-margin: 3rem
 .is-panel-logo
   width: 40%
 
+.is-adopter-block
+  & + &
+    margin-top: 2rem
+
+.is-project-logo
+  margin-bottom: 1rem
+  +logo(50%, 70%)
+
 // Ensure sticky footer
 .page
   display: flex
@@ -68,6 +76,9 @@ $dashboard-panel-footer-top-margin: 3rem
 
   .main
     flex: 1
+
+.is-shadowless
+  box-shadow: none
 
 .is-home-svg
   +x-center
