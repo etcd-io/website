@@ -1,38 +1,34 @@
-{{ $logo     := site.Params.logos.panel }}
-{{ $sections := where site.Sections "Section" "docs" }}
-{{ $editUrl  := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
-<div class="dashboard-panel has-background-white-bis">
+{{ $logo       := site.Params.logos.panel }}
+{{ $currentUrl := .URL }}
+{{ $sections   := where site.Sections "Section" "docs" }}
+{{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
+<div class="dashboard-panel is-medium is-scrollable">
   <div class="dashboard-panel-header has-text-centered">
-    <a href="/docs">
+    <a href="{{ .Site.BaseURL }}">
       <img class="is-panel-logo" src="{{ $logo }}">
     </a>
   </div>
 
   <div class="dashboard-panel-main">
-    <div class="squeezebox">
+    <div class="docs-panel">
       {{ range $sections }}
-      {{ range .Sections }}
-      {{ $id := .Name | urlize }}
-      <div class="tab">
-        <input id="{{ $id }}" type="checkbox">
-        <label class="plus" for="{{ $id }}">
-          {{ .Name }}
-        </label>
+      {{ $isCurrentSection := eq .URL $currentUrl }}
+      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
+          {{ .Title }}
+        </a>
 
-        <div class="tab-hidden">
-          <div class="tab-hidden-content">
-            <ul>
-              {{ range .Pages }}
-              <li>
-                <a href="{{ .URL }}">
-                  {{ .Title }}
-                </a>
-              </li>
-              {{ end }}
-            </ul>
-          </div>
-        </div>
-      </div>
+      {{ range .Sections }}
+      {{ $isCurrentSection := eq .URL $currentUrl }}
+      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
+        {{ .Title }}
+      </a>
+
+      {{ range .Pages }}
+      {{ $isCurrentPage := eq .URL $currentUrl }}
+      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .URL }}">
+        {{ .Title }}
+      </a>
+      {{ end }}
       {{ end }}
       {{ end }}
     </div>
@@ -40,7 +36,7 @@
 
   <div class="dashboard-panel-footer">
     <div class="buttons is-centered">
-      <a class="button is-medium is-black" href="{{ $editUrl }}" target="_blank">
+      <a class="button is-black" href="{{ $editUrl }}" target="_blank">
         <span class="icon">
           <i class="fab fa-github"></i>
         </span>

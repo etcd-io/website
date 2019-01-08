@@ -27,19 +27,13 @@ $link: $etcd-dark-blue
 $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $family-code: "{{ $monospaceFont }}", monospace
 $toc-item-font-size: 1.5rem
-$dashboard-panel-padding: 2rem 2rem 5rem 2rem
+$dashboard-panel-padding: 2rem 1.25rem 5rem 1.25rem
 $dashboard-panel-header-bottom-margin: 3rem
 $dashboard-panel-footer-top-margin: 3rem
-$squeezebox-tab-top-margin: 1rem
-$squeezebox-tab-list-item-font-size: 1.25rem
-$squeezebox-plus-marker: '+'
-$squeezebox-plus-font-size: 1.5rem
-$squeezebox-tab-list-item-hover-color: $primary
 
 @import "bulma/sass/utilities/derived-variables"
 @import "bulma/bulma"
 @import "bulma-dashboard/src/bulma-dashboard"
-@import "bulma-squeezebox/bulma-squeezebox"
 
 @import "helpers"
 
@@ -97,3 +91,36 @@ $squeezebox-tab-list-item-hover-color: $primary
 
   svg
     height: 7.5rem
+
+=x
+  border: 1px solid red
+
+.dashboard-panel
+  border-right: 1px solid $grey-lighter
+
+.docs-panel
+  line-height: 120%
+
+  &-section
+    font-size: 1.25rem
+    display: block
+    color: $black
+    padding: .5rem
+    
+    &:hover
+      background-color: $white-bis
+
+    &.is-active
+      color: $danger
+
+  &-page
+    display: block
+    font-size: 1rem
+    color: $black
+    padding: .5rem .5rem .5rem 1rem
+
+    &:hover
+      background-color: $white-bis
+
+    &.is-active
+      color: $danger

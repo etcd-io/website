@@ -1,7 +1,9 @@
-### etcd concurrency API Reference
+---
+title: etcd concurrency API Reference
+---
 
 
-This is a generated documentation. Please read the proto files for more.
+This is a generated document. Please read the proto files for more.
 
 
 ##### service `Lock` (etcdserver/api/v3lock/v3lockpb/v3lock.proto)
