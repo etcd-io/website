@@ -1,6 +1,8 @@
 title = "etcd"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 languageCode = "en-us"
+pygmentsCodeFences = true
+pygmentsStyle = "fruity"
 
 [params]
 description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
@@ -29,7 +31,8 @@ Latency from the etcd leader is the most important metric to track and the built
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/horizontal/white/etcd-horizontal-white.png"
 cncf   = "https://raw.githubusercontent.com/cncf/artwork/master/cncf/horizontal/color/cncf-color.png"
 footer = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
-panel  = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
+panel  = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/stacked/color/etcd-stacked-color.png"
+navbar = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
 
 [params.social]
 github = "https://github.com/etcd-io/etcd"

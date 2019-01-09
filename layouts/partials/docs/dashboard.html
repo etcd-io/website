@@ -1,57 +1,12 @@
-{{ $logo     := .Site.Params.logos.panel }}
-{{ $sections := where .Site.Sections "Name" "docs" }}
+
 <div class="dashboard">
-  <div class="dashboard-panel has-thick-padding has-background-black is-medium">
-    <div class="dashboard-panel-header is-centered">
-      <img class="is-panel-logo" src="{{ $logo }}" alt="etcd dashboard panel nav logo"> 
-    </div>
+  {{ partial "docs/nav-panel.html" . }}
 
-    <div class="dashboard-panel-main">
-      <div class="squeezebox">
-        {{ range $sections }}
-        <span class="has-text-white">
-          {{ .Name }}
-        </span>
-        {{ end }}
-      </div>
-    </div>
-
-    <div class="dashboard-panel-footer">
-      <div class="buttons is-centered">
-        <a class="button is-small is-white">
-          GitHub
-        </a>
-        <a class="button is-small is-info">
-          Twitter
-        </a>
-        <a class="button is-small is-success">
-          Slack
-        </a>
-      </div>
-    </div>
+  <div class="dashboard-main">
+    <!-- {{ partial "docs/navbar.html" . }} -->
+    {{ partial "docs/hero.html" . }}
+    {{ partial "docs/article.html" . }}
   </div>
 
-  <div class="dashboard-main is-scrollable">
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <p class="title is-size-1 has-text-weight-light">
-          {{ .Title }}
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="content">
-        {{ .Content }}
-      </div>
-    </section>
-  </div>
-
-  <div class="dashboard-panel is-small is-scrollable has-background-white-bis">
-    <p class="title is-size-4">
-      {{ .Title }}
-    </p>
-
-    {{ .TableOfContents }}
-  </div>
+  {{ partial "docs/toc.html" . }}
 </div>

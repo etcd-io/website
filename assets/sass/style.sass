@@ -27,16 +27,20 @@ $link: $etcd-dark-blue
 $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $family-code: "{{ $monospaceFont }}", monospace
 $toc-item-font-size: 1.5rem
-$dashboard-panel-padding: 2rem 2rem 5rem 2rem
-$dashboard-panel-header-bottom-margin: 3rem
+$dashboard-panel-padding: 2rem 1.25rem 5rem 1.25rem
+$dashboard-panel-header-bottom-margin: 1.5rem
 $dashboard-panel-footer-top-margin: 3rem
 
 @import "bulma/sass/utilities/derived-variables"
 @import "bulma/bulma"
 @import "bulma-dashboard/src/bulma-dashboard"
-@import "bulma-squeezebox/bulma-squeezebox"
 
 @import "helpers"
+
+.content
+  .highlight, pre
+    background-color: rgb(39, 40, 34)
+    color: $white
 
 =logo($touch, $desktop)
   +touch
@@ -60,13 +64,20 @@ $dashboard-panel-footer-top-margin: 3rem
 .is-panel-logo
   width: 40%
 
-.is-adopter-block
-  & + &
-    margin-top: 4rem
-
 .is-project-logo
   margin-bottom: 1rem
   +logo(60%, 70%)
+
+.toc
+  li a
+    font-size: 1.2rem
+    color: $white-bis
+
+    &:hover
+      color: $primary
+.is-adopter-block
+  & + &
+    margin-top: 4rem
 
 // Ensure sticky footer
 .page
@@ -85,3 +96,36 @@ $dashboard-panel-footer-top-margin: 3rem
 
   svg
     height: 7.5rem
+
+=x
+  border: 1px solid red
+
+.dashboard-panel
+  border-right: 1px solid $grey-lighter
+
+.docs-panel
+  line-height: 120%
+
+  &-section
+    font-size: 1.25rem
+    display: block
+    color: $black
+    padding: .5rem
+    
+    &:hover
+      background-color: $white-bis
+
+    &.is-active
+      color: $danger
+
+  &-page
+    display: block
+    font-size: 1rem
+    color: $black
+    padding: .25rem .5rem .25rem 1.25rem
+
+    &:hover
+      background-color: $white-bis
+
+    &.is-active
+      color: $danger
