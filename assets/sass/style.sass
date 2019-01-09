@@ -30,6 +30,7 @@ $toc-item-font-size: 1.5rem
 $dashboard-panel-padding: 2rem 1.25rem 5rem 1.25rem
 $dashboard-panel-header-bottom-margin: 1.5rem
 $dashboard-panel-footer-top-margin: 3rem
+$section-padding: 2rem
 
 @import "bulma/sass/utilities/derived-variables"
 @import "bulma/bulma"
@@ -96,12 +97,18 @@ $dashboard-panel-footer-top-margin: 3rem
 
   svg
     height: 7.5rem
+  
+#TableOfContents
+  li
+    a
+      line-height: 100%
 
-=x
-  border: 1px solid red
-
-.dashboard-panel
-  border-right: 1px solid $grey-lighter
+      &:hover
+        code
+          color: $grey-lighter
+      code
+        padding: .25rem
+        background-color: $black
 
 .docs-panel
   line-height: 120%

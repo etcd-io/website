@@ -1,0 +1,9 @@
+{{ $logo := .Site.Params.logos.footer }}
+{{ $year := now.Year }}
+<footer class="footer has-background-dark has-text-centered">
+    <img class="is-footer-logo" src="{{ $logo }}" alt="etcd footer logo">
+
+  <p class="is-size-5 is-size-6-mobile has-text-white-bis has-text-weight-light">
+    &copy; {{ $year }} The etcd authors
+  </p>
+</footer>

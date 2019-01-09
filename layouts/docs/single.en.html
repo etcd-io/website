@@ -3,5 +3,21 @@ etcd docs | {{ .Title }}
 {{ end }}
 
 {{ define "main" }}
-{{ partial "docs/dashboard.html" . }}
+<div class="dashboard">
+  {{ partial "docs/nav-panel.html" . }}
+
+  <div class="dashboard-main is-scrollable">
+    {{ partial "docs/hero.html" . }}
+  
+    <section class="section">
+      <div class="content">
+        {{ .Content }}
+      </div>
+    </section>
+
+    {{ partial "footer.html" . }}
+  </div>
+
+  {{ partial "docs/toc.html" . }}
+</div>
 {{ end }}
