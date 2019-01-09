@@ -1,0 +1,40 @@
+{{ $docsSections := where .Site.Sections "Section" "docs" }}
+<section class="section has-background-white-bis">
+  <div class="columns is-multiline">
+    {{ range $docsSections }}
+    <div class="column is-one-third">
+      <p class="is-size-4">
+        {{ .Title }}
+      </p>
+
+      <ul>
+        {{ range .Pages }}
+        <li>
+          <a>
+            {{ .Title }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    {{ range .Sections }}
+    <div class="column">
+      <p class="is-size-4">
+        {{ .Title }}
+      </p>
+
+      <ul>
+        {{ range .Pages }}
+        <li>
+          <a>
+            {{ .Title }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</section>

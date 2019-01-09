@@ -10,15 +10,6 @@ This documentation is a work in progress. Please check back soon for more update
 
 These docs cover everything from setting up and running an etcd cluster to using etcd in your applications. Improvements to these docs are encouraged through PRs to the etcd project on GitHub. For more in-depth support, jump into #coreos on IRC, email the dev list, or file a bug.
 
-```go
-package main
-
-func main() {
-        println("Welcome to the etcd docs! This code sample is just a placeholder")
-        // And here's a comment
-}
-```
-
 ## Getting started
 
 New etcd users and developers can get started by [downloading and building etcd](download-build),
