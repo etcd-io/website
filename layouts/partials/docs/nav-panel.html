@@ -4,7 +4,7 @@
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
-<div class="dashboard-panel is-medium is-scrollable has-background-white-bis">
+<div class="dashboard-panel is-medium is-scrollable has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
       <img class="is-panel-logo" src="{{ $logo }}">
