@@ -28,7 +28,7 @@ $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "
 $family-code: "{{ $monospaceFont }}", monospace
 $toc-item-font-size: 1.5rem
 $dashboard-panel-padding: 2rem 1.25rem 5rem 1.25rem
-$dashboard-panel-header-bottom-margin: 3rem
+$dashboard-panel-header-bottom-margin: 1.5rem
 $dashboard-panel-footer-top-margin: 3rem
 
 @import "bulma/sass/utilities/derived-variables"
@@ -36,6 +36,11 @@ $dashboard-panel-footer-top-margin: 3rem
 @import "bulma-dashboard/src/bulma-dashboard"
 
 @import "helpers"
+
+.content
+  .highlight, pre
+    background-color: rgb(39, 40, 34)
+    color: $white
 
 =logo($touch, $desktop)
   +touch
@@ -117,7 +122,7 @@ $dashboard-panel-footer-top-margin: 3rem
     display: block
     font-size: 1rem
     color: $black
-    padding: .5rem .5rem .5rem 1rem
+    padding: .25rem .5rem .25rem 1.25rem
 
     &:hover
       background-color: $white-bis

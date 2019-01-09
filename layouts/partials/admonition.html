@@ -6,7 +6,15 @@
       </span>
     </div>
     <div class="media-content">
-      {{ .content | markdownify }}
+      <div class="content">
+        {{ if ne .title nil }}
+        <h5>
+          {{ .title | markdownify }}
+        </h5>
+        {{ end }}
+
+        {{ .content | markdownify }}
+      </div>
     </div>
   </article>
 </div>

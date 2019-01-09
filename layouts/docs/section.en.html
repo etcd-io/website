@@ -6,7 +6,7 @@ etcd | {{ .Title }}
 <div class="dashboard">
   {{ partial "docs/nav-panel.html" . }}
 
-  <div class="dashboard-main">
+  <div class="dashboard-main is-scrollable">
     {{ partial "docs/hero.html" . }}
   
     <section class="section">
@@ -15,7 +15,7 @@ etcd | {{ .Title }}
 
         {{ with .Pages }}
         <h3>
-          Pages in the {{ $.Title }} section
+          Pages in this section
         </h3>
         
         <ul>

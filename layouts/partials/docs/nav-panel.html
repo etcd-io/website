@@ -2,7 +2,7 @@
 {{ $currentUrl := .URL }}
 {{ $sections   := where site.Sections "Section" "docs" }}
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
-<div class="dashboard-panel is-medium is-scrollable">
+<div class="dashboard-panel is-medium is-scrollable has-background-white-bis">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
       <img class="is-panel-logo" src="{{ $logo }}">
@@ -14,8 +14,15 @@
       {{ range $sections }}
       {{ $isCurrentSection := eq .URL $currentUrl }}
       <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
-          {{ .Title }}
-        </a>
+        {{ .Title }}
+      </a>
+
+      {{ range .Pages }}
+      {{ $isCurrentPage := eq .URL $currentUrl }}
+      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .URL }}">
+        {{ .Title }}
+      </a>
+      {{ end }}
 
       {{ range .Sections }}
       {{ $isCurrentSection := eq .URL $currentUrl }}

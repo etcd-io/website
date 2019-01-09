@@ -1,6 +1,8 @@
 title = "etcd"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 languageCode = "en-us"
+pygmentsCodeFences = true
+pygmentsStyle = "fruity"
 
 [params]
 description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
