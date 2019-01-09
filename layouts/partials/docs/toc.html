@@ -1,6 +1,10 @@
 {{ $toc := .TableOfContents }}
 {{ with $toc }}
 <div class="toc dashboard-panel is-small has-background-black">
+  <p class="toc-title">
+    {{ $.Title }}
+  </p>
+
   {{ . }}
 </div>
 {{ end }}
