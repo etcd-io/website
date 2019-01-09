@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "anchorjs": "^0.2.4",
     "bulma": "^0.7.2",
     "bulma-dashboard": "^0.1.34"
   }

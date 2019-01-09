@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
+anchorjs@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/anchorjs/-/anchorjs-0.2.4.tgz#0ab0e4c70139c3ca596e2493982f0665ab067505"
+  integrity sha1-CrDkxwE5w8pZbiSTmC8GZasGdQU=
+
 bulma-dashboard@^0.1.34:
   version "0.1.35"
   resolved "https://registry.yarnpkg.com/bulma-dashboard/-/bulma-dashboard-0.1.35.tgz#36d0ada81ad0a7bc01d85907f41c053b3a2914f7"
   integrity sha512-X+suGy0faRKtp7nK78/1A6Vq6obnGOMaWT+QMHuS+MRiqVTt5iarsNdOyUYI720JeZeBxeJ3P6/PghJ9gAFd+w==
-
-bulma-squeezebox@^0.1.17:
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/bulma-squeezebox/-/bulma-squeezebox-0.1.20.tgz#cf0f0562ddc67a960934a8bc2134ad1b562aac92"
-  integrity sha512-FJ/eA1fVP4Q1qI1GEL/lsvU7ZCuy4iJ33N3UXgWADahSNMmym5Hb5NkpjKVB9fJqkNG3c19a/XiphYNwV1Y56w==
 
 bulma@^0.7.2:
   version "0.7.2"

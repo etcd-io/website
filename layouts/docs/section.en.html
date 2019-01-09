@@ -9,51 +9,11 @@ etcd | {{ .Title }}
   <div class="dashboard-main is-scrollable">
     {{ partial "docs/hero.html" . }}
   
-    <section class="section">
-      <div class="content">
-        {{ .Content }}
+    {{ partial "docs/article.html" . }}
 
-        {{ with .Pages }}
-        <h3>
-          Pages in this section
-        </h3>
-        
-        <ul>
-          {{ range . }}
-          <li>
-            <a href="{{ .URL }}">
-              {{ .Title }}
-            </a>
-          </li>
-          {{ end }}
-        </ul>
-        {{ end }}
-      </div>
+    {{ partial "docs/listing.html" . }}
 
-      <div class="columns is-multiline">
-        {{ with .Sections }}
-        {{ range . }}
-        <div class="column is-3">
-          <a class="is-size-3 is-size-4-mobile has-text-weight-light" href="{{ .URL }}">
-            {{ .Title }}
-          </a>
-
-          <br />
-
-          <ul>
-            {{ range .Pages }}
-            <li>
-              <a href="{{ .URL }}">
-                {{ .Title }}
-              </a>
-            </li>
-            {{ end }}
-          </ul>
-        </div>
-        {{ end }}
-        {{ end }}
-      </div>
-    </section>
+    {{ partial "footer.html" . }}
   </div>
 
   {{ partial "docs/toc.html" . }}
