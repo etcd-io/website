@@ -1,11 +1,17 @@
 {{ $docsSections := where .Site.Sections "Section" "docs" }}
 <section class="section has-background-white-bis">
+  <p class="is-size-3 is-size-4-mobile has-text-weight-bold">
+    The etcd docs
+  </p>
+
+  <br />
+
   <div class="columns is-multiline">
     {{ range $docsSections }}
     <div class="column is-one-third">
-      <p class="is-size-4">
+      <a class="is-size-4" href="{{ .URL }}">
         {{ .Title }}
-      </p>
+      </a>
 
       <ul>
         {{ range .Pages }}
@@ -20,9 +26,9 @@
 
     {{ range .Sections }}
     <div class="column">
-      <p class="is-size-4">
+      <a class="is-size-4" href="{{ .URL }}">
         {{ .Title }}
-      </p>
+      </a>
 
       <ul>
         {{ range .Pages }}
