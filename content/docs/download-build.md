@@ -23,9 +23,11 @@ Any relatively modern machine with low latency storage and a few gigabytes of me
 
 ## Installing from a pre-built binary {#binary}
 
-The easiest way to install etcd is by fetching one of the binaries available for [Linux](#linux), [macOS](#macos), and [Docker](#docker).
+The easiest way to install etcd is by fetching one of the binaries available for [Linux](#linux), [macOS](#macos), and [Docker](#docker). All binaries are available via both Google Cloud Storage and [GitHub Releases](https://github.com/etcd-io/etcd/releases/download).
 
 ### Linux
+
+The following will install two executables, `etcd` and `etcdctl`, in a temporary directory at `/tmp/etcd-download-test`:
 
 ```bash
 ETCD_VER=v{{< latest >}}
@@ -43,16 +45,19 @@ curl -L ${DOWNLOAD_URL} -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
 rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 
-/tmp/etcd-download-test/etcd --version
+# Add the temporary dir to your path
+PATH=/tmp/etcd-download-test:${PATH}
+
+etcd --version
 # should return "etcd Version: {{< latest >}}"
 
-ETCDCTL_API=3 /tmp/etcd-download-test/etcdctl version
+ETCDCTL_API=3 etcdctl version
 # should return "etcd Version: {{< latest >}}"
 ```
 
 ### macOS
 
-The following will install two executables, `etcd` and `etcdctl`, in the `/tmp/etcd-download-test` directory:
+The following will install two executables, `etcd` and `etcdctl`, in a temporary directory at `/tmp/etcd-download-test`:
 
 ```bash
 ETCD_VER=v{{< latest >}}
@@ -70,10 +75,13 @@ curl -L ${DOWNLOAD_URL} -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
 unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp && rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
 mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test && rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
 
-/tmp/etcd-download-test/etcd --version
+# Add the temporary dir to your path
+PATH=/tmp/etcd-download-test:${PATH}
+
+etcd --version
 # should return "etcd Version: {{< latest >}}"
 
-ETCDCTL_API=3 /tmp/etcd-download-test/etcdctl version
+ETCDCTL_API=3 etcdctl version
 # should return "etcd Version: {{< latest >}}"
 ```
 
@@ -98,6 +106,12 @@ docker exec etcd /bin/sh -c "ETCDCTL_API=3 /usr/local/bin/etcdctl version"
 docker exec etcd /bin/sh -c "ETCDCTL_API=3 /usr/local/bin/etcdctl endpoint health"
 docker exec etcd /bin/sh -c "ETCDCTL_API=3 /usr/local/bin/etcdctl put foo bar"
 docker exec etcd /bin/sh -c "ETCDCTL_API=3 /usr/local/bin/etcdctl get foo"
+```
+
+To kill the running container:
+
+```bash
+docker kill etcd
 ```
 
 ## Building etcd from source {#source}
