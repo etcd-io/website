@@ -9,11 +9,7 @@ etcd docs | {{ .Title }}
   <div class="dashboard-main is-scrollable">
     {{ partial "docs/hero.html" . }}
   
-    <section class="section">
-      <div class="content">
-        {{ .Content }}
-      </div>
-    </section>
+    {{ partial "docs/article.html" . }}
 
     {{ partial "footer.html" . }}
   </div>
