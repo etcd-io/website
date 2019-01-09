@@ -21,7 +21,7 @@ func main() {
 
 ## Getting started
 
-New etcd users and developers can get started by [downloading and building etcd](getting-started)
+New etcd users and developers can get started by [downloading and building etcd](download-build),
 
 ## Support
 
