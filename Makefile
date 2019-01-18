@@ -2,7 +2,8 @@ serve:
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
-		--disableFastRender
+		--disableFastRender \
+		--ignoreCache
 
 production-build:
 	hugo --minify

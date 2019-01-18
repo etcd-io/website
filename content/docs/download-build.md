@@ -1,6 +1,7 @@
 ---
 title: Download and build etcd
 description: Run etcd locally on [Linux](#linux), [macOS](#macos), and [Docker](#docker) using [static binaries](#binary). Or build [from source](#source).
+weight: 1
 ---
 
 There are two main ways to install etcd and etcdctl:

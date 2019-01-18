@@ -1,0 +1,7 @@
+{{ $width := .Get "width" | default 70 }}
+<figure>
+  <img src="{{ .Get "src" | relURL }}" width="{{ $width }}%">
+  <figcaption>
+    {{ with .Get "figure" }}Figure {{ . }}. {{ end }}{{ with .Get "caption" }}{{ . | markdownify }}{{ end }}
+  </figcaption>
+</figure>
