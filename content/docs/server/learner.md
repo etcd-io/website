@@ -72,13 +72,13 @@ In addition, etcd limits the total number of learners that a cluster can have, a
 
 ## Features in v3.5
 
-*Make learner state only and default*: Defaulting a new member state to learner will greatly improve membership reconfiguration safety, because learner does not change the size of quorum. Misconfiguration will always be reversible without losing the quorum.
+**Make learner state only and default** --- Defaulting a new member state to learner will greatly improve membership reconfiguration safety, because learner does not change the size of quorum. Misconfiguration will always be reversible without losing the quorum.
 
-*Make voting-member promotion fully automatic*: Once a learner catches up to leader’s logs, a cluster can automatically promote the learner. etcd requires certain thresholds to be defined by the user, and once the requirements are satisfied, learner promotes itself to a voting member. From a user’s perspective, “member add” command would work the same way as today but with greater safety provided by learner feature.
+**Make voting-member promotion fully automatic** --- Once a learner catches up to leader’s logs, a cluster can automatically promote the learner. etcd requires certain thresholds to be defined by the user, and once the requirements are satisfied, learner promotes itself to a voting member. From a user’s perspective, “member add” command would work the same way as today but with greater safety provided by learner feature.
 
-*Make learner standby failover node*: A learner joins as a standby node, and gets automatically promoted when the cluster availability is affected.
+**Make learner standby failover node** --- A learner joins as a standby node, and gets automatically promoted when the cluster availability is affected.
 
-*Make learner read-only*: A learner can serve as a read-only node that never gets promoted. In a weak consistency mode, learner only receives data from leader and never process writes. Serving reads locally without consensus overhead would greatly decrease the workloads to leader but may serve stale data. In a strong consistency mode, learner requests read index from leader to serve latest data, but still rejects writes.
+**Make learner read-only** --- A learner can serve as a read-only node that never gets promoted. In a weak consistency mode, learner only receives data from leader and never process writes. Serving reads locally without consensus overhead would greatly decrease the workloads to leader but may serve stale data. In a strong consistency mode, learner requests read index from leader to serve latest data, but still rejects writes.
 
 ## Learner vs. mirror maker
 
