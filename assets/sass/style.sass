@@ -24,6 +24,8 @@ $etcd-dark-blue: darken($etcd-blue, 10%)
 // Bulma variable overrides
 $primary: $etcd-blue
 $link: $etcd-dark-blue
+$code: $etcd-dark-blue
+$code-background: $white-bis
 $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $family-code: "{{ $monospaceFont }}", monospace
 $toc-item-font-size: 1.5rem
@@ -56,6 +58,11 @@ $section-padding: 2rem
   line-height: 100%
   margin-bottom: 1rem
   color: $primary
+
+.content
+  figure
+    margin: 0 auto
+    figcaption
 
 
 .is-hero-logo
