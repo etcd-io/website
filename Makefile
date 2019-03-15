@@ -1,3 +1,6 @@
+load-docs:
+	scripts/load-docs.sh
+
 serve:
 	hugo server \
 		--buildDrafts \
