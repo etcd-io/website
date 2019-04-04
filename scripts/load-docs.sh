@@ -17,7 +17,6 @@ for release in ${RELEASES}; do
     git checkout v${release}
     cp -rf Documentation ${release_target_dir}
     cp Documentation/docs.md ${release_target_dir}/_index.md
-    rm ${release_target_dir}/docs.md
 done
 
 cd ${ROOT}
