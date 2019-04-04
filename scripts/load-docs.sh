@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 git submodule update --recursive
 
 ROOT=$(git rev-parse --show-toplevel)
