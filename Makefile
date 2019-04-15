@@ -1,9 +1,3 @@
-submodule-update:
-	git submodule update --remote
-
-load-docs:
-	scripts/load-docs.sh
-
 serve:
 	hugo server \
 		--buildDrafts \
