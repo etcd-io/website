@@ -4,6 +4,3 @@ node_modules/
 # Hugo-generated assets
 public/
 resources/
-
-# Docs loaded from etcd repo
-content/docs/v*
