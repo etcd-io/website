@@ -20,13 +20,7 @@
 
   <div class="dashboard-panel-main">
     <div class="docs-panel">
-      {{ $isDocsHome := eq .RelPermalink "/docs/" }}
-      <a class="docs-panel-section{{ if $isDocsHome }} is-active{{ end }}" href="/docs">
-        Docs home
-      </a>
-
       {{ range $allDocs }}
-
       {{ range .Sections }}
       {{ range .Sections }}
       {{ $version := index (split .Path "/") 1 | replaceRE "v" "" }}
