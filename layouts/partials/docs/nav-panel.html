@@ -1,9 +1,11 @@
 {{ $logo       := site.Params.logos.panel }}
 {{ $currentUrl := .URL }}
-{{ $sections   := where site.Sections "Section" "docs" }}
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
+{{ $version    := index (split .Path "/") 2 }}
+{{ $allDocs    := where site.Sections "Section" "docs" }}
+{{ $currentUrl := .RelPermalink }}
 <div class="dashboard-panel is-medium is-scrollable has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
@@ -12,37 +14,36 @@
   </div>
 
   <div class="buttons is-centered">
-    <a class="button is-danger is-radiusless" target="_blank" href="{{ $ghUrl }}">
+    <a class="button is-danger is-radiusless" href="/docs/v{{ $latest }}">
       v{{ $latest }}
     </a>
   </div>
 
   <div class="dashboard-panel-main">
     <div class="docs-panel">
-      {{ range $sections }}
-      {{ $isCurrentSection := eq .URL $currentUrl }}
-      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
-        {{ .Title }}
-      </a>
-
+      {{ range $allDocs }}
+      {{ range .Sections }}
       {{ range .Pages }}
-      {{ $isCurrentPage := eq .URL $currentUrl }}
-      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .URL }}">
+      {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
+      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
       {{ end }}
 
+
       {{ range .Sections }}
-      {{ $isCurrentSection := eq .URL $currentUrl }}
-      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
+      {{ $version := index (split .Path "/") 1 | replaceRE "v" "" }}
+      {{ $isCurrentSection := eq .RelPermalink $currentUrl }}
+      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
 
       {{ range .Pages }}
-      {{ $isCurrentPage := eq .URL $currentUrl }}
-      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .URL }}">
+      {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
+      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
+      {{ end }}
       {{ end }}
       {{ end }}
       {{ end }}

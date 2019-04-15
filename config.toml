@@ -29,7 +29,8 @@ Latency from the etcd leader is the most important metric to track and the built
 """
 
 [params.versions]
-latest = "3.3.10"
+latest = "3.3.12"
+all    = ["3.3.12"]
 
 [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/horizontal/white/etcd-horizontal-white.png"
@@ -89,3 +90,13 @@ description = "etcd is the backend for service discovery and stores cluster stat
 logo = "https://www.cloudfoundry.org/wp-content/uploads/2015/11/CloudFoundaryCorp_rgb.png"
 link = "https://www.cloudfoundry.org/"
 description = "etcd stores cluster state and configuration and provides a global lock service "
+
+[mediaTypes."text/netlify"]
+delimiter = ""
+
+[outputFormats.REDIRECTS]
+mediaType = "text/netlify"
+baseName = "_redirects"
+
+[outputs]
+home = ["HTML", "REDIRECTS"]

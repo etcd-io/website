@@ -1,3 +1,4 @@
+{{ $pathLength        := len (split .Path "/") }}
 <section class="hero is-primary">
   <div class="hero-body">
     <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if .Params.description }} is-spaced{{ end }}">
