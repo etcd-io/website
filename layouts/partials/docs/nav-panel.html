@@ -5,6 +5,7 @@
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
 {{ $version    := index (split .Path "/") 2 }}
 {{ $allDocs    := where site.Sections "Section" "docs" }}
+{{ $currentUrl := .RelPermalink }}
 <div class="dashboard-panel is-medium is-scrollable has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
@@ -22,14 +23,24 @@
     <div class="docs-panel">
       {{ range $allDocs }}
       {{ range .Sections }}
+      {{ range .Pages }}
+      {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
+      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+      {{ end }}
+
+
       {{ range .Sections }}
       {{ $version := index (split .Path "/") 1 | replaceRE "v" "" }}
-      <a class="docs-panel-section" href="{{ .RelPermalink }}">
+      {{ $isCurrentSection := eq .RelPermalink $currentUrl }}
+      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
 
       {{ range .Pages }}
-      <a class="docs-panel-page" href="{{ .RelPermalink }}">
+      {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
+      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
       {{ end }}
