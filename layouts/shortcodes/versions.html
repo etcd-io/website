@@ -1,0 +1,10 @@
+{{ $versions := site.Params.versions.all }}
+<ul>
+  {{ range $versions }}
+  <li>
+    <a href="/docs/v{{ . }}">
+      v{{ . }}
+    </a>
+  </li>
+  {{ end }}
+</ul>

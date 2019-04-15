@@ -3,19 +3,54 @@ etcd | {{ .Title }}
 {{ end }}
 
 {{ define "main" }}
+{{ $version := index (split .Path "/") 1 }}
+{{ $isVersionMainPage := hasPrefix .CurrentSection.Title "V" }}
 <div class="dashboard">
   {{ partial "docs/nav-panel.html" . }}
 
   <div class="dashboard-main is-scrollable">
     {{ partial "docs/hero.html" . }}
   
-    {{ partial "docs/article.html" . }}
+    <section class="section">
+      <div class="content docs-content">
+        {{ .Content }}
 
-    {{ partial "docs/listing.html" . }}
+        {{ if and (ne .RelPermalink "/docs/") (ne .RelPermalink "/docs/v3.3.12/") }}
+        <p>
+          Docs in this section:
+        </p>
+
+        <ul>
+          {{ range .Pages }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+
+        {{ if eq .RelPermalink "/docs/v3.3.12/" }}
+        <p>
+          The documentation for etcd version <strong>{{ $version }}</strong> is split up into the following sections:
+        </p>
+
+        <ul>
+          {{ range .Sections }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </section>
+      
 
     {{ partial "footer.html" . }}
   </div>
-
-  {{ partial "docs/toc.html" . }}
 </div>
 {{ end }}

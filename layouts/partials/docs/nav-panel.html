@@ -1,10 +1,10 @@
 {{ $logo       := site.Params.logos.panel }}
 {{ $currentUrl := .URL }}
-{{ $sections   := where site.Sections "Section" "docs" }}
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
-{{ $currentVersion    := index (split .File.Path "/") 1 }}
+{{ $version    := index (split .Path "/") 2 }}
+{{ $allDocs    := where site.Sections "Section" "docs" }}
 <div class="dashboard-panel is-medium is-scrollable has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
@@ -13,30 +13,32 @@
   </div>
 
   <div class="buttons is-centered">
-    <a class="button is-danger is-radiusless" target="_blank" href="/docs/v{{ $latest }}">
+    <a class="button is-danger is-radiusless" href="/docs/v{{ $latest }}">
       v{{ $latest }}
     </a>
   </div>
 
   <div class="dashboard-panel-main">
     <div class="docs-panel">
-      {{ range $sections }}
-      {{ $isCurrentSection := eq .URL $currentUrl }}
-      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
-        {{ .Title }}
+      {{ $isDocsHome := eq .RelPermalink "/docs/" }}
+      <a class="docs-panel-section{{ if $isDocsHome }} is-active{{ end }}" href="/docs">
+        Docs home
       </a>
 
+      {{ range $allDocs }}
+
       {{ range .Sections }}
-      {{ $isCurrentSection := eq .URL $currentUrl }}
-      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .URL }}">
+      {{ range .Sections }}
+      {{ $version := index (split .Path "/") 1 | replaceRE "v" "" }}
+      <a class="docs-panel-section" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
 
       {{ range .Pages }}
-      {{ $isCurrentPage := eq .URL $currentUrl }}
-      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .URL }}">
+      <a class="docs-panel-page" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
+      {{ end }}
       {{ end }}
       {{ end }}
       {{ end }}
