@@ -1,4 +1,6 @@
-# Documentation
+---
+title: The etcd documentation
+---
 
 etcd is a distributed key-value store designed to reliably and quickly preserve and provide access to critical data. It enables reliable distributed coordination through distributed locking, leader elections, and write barriers. An etcd cluster is intended for high availability and permanent data storage and retrieval.
 
@@ -82,12 +84,12 @@ To learn more about the concepts and internals behind etcd, read the following p
 [data_model]: learning/data_model.md
 [demo]: demo.md
 [download_build]: dl_build.md
-[embed_etcd]: https://godoc.org/github.com/coreos/etcd/embed
+[embed_etcd]: https://godoc.org/github.com/etcd-io/etcd/embed
 [grpc_naming]: dev-guide/grpc_naming.md
 [failures]: op-guide/failures.md
 [gateway]: op-guide/gateway.md
 [glossary]: learning/glossary.md
-[namespace_client]: https://godoc.org/github.com/coreos/etcd/clientv3/namespace
+[namespace_client]: https://godoc.org/github.com/etcd-io/etcd/clientv3/namespace
 [namespace_proxy]: op-guide/grpc_proxy.md#namespacing
 [grpc_proxy]: op-guide/grpc_proxy.md
 [hardware]: op-guide/hardware.md

@@ -1,9 +1,10 @@
+---
+title: Configuration Flags
+---
+
 **This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
 
 [v3-docs]: ../docs.md#documentation
-
-
-# Configuration Flags
 
 etcd is configurable through command-line flags and environment variables. Options set on the command line take precedence over those from the environment.
 
@@ -126,6 +127,11 @@ To start etcd automatically using custom settings at startup in Linux, using a [
 + DNS srv domain used to bootstrap the cluster.
 + default: none
 + env variable: ETCD_DISCOVERY_SRV
+
+### --discovery-srv-name
++ Suffix to the DNS srv name queried when bootstrapping using DNS.
++ default: none
++ env variable: ETCD_DISCOVERY_SRV_NAME
 
 ### --discovery-fallback
 + Expected behavior ("exit" or "proxy") when discovery services fails.

@@ -4,17 +4,17 @@ submodule-update:
 load-docs:
 	scripts/load-docs.sh
 
-serve: load-docs
+serve:
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
 		--disableFastRender \
 		--ignoreCache
 
-production-build: load-docs
+production-build:
 	hugo --minify
 
-preview-build: load-docs
+preview-build:
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--buildDrafts \
