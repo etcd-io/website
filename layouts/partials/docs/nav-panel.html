@@ -6,7 +6,7 @@
 {{ $version    := index (split .Path "/") 2 }}
 {{ $allDocs    := where site.Sections "Section" "docs" }}
 {{ $currentUrl := .RelPermalink }}
-<div class="dashboard-panel is-medium is-scrollable has-background-white-bis is-hidden-mobile">
+<div class="dashboard-panel is-medium has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
       <img class="is-panel-logo" src="{{ $logo }}">
@@ -19,7 +19,7 @@
     </a>
   </div>
 
-  <div class="dashboard-panel-main">
+  <div class="dashboard-panel-main is-scrollable">
     <div class="docs-panel">
       {{ range $allDocs }}
       {{ range .Sections }}
