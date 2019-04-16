@@ -5,7 +5,7 @@ setup:
 	yarn
 
 serve:
-	hugo $(SERVE)
+	hugo $(SERVER)
 
 docker-serve:
 	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) $(SERVER)
