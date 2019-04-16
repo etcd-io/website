@@ -1,3 +1,0 @@
-[submodule "etcd"]
-	path = etcd
-	url = https://github.com/etcd-io/etcd
