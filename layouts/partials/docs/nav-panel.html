@@ -3,6 +3,7 @@
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
+{{ $versions   := site.Params.versions.all }}
 {{ $version    := index (split .Path "/") 2 }}
 {{ $allDocs    := where site.Sections "Section" "docs" }}
 {{ $currentUrl := .RelPermalink }}
@@ -13,13 +14,42 @@
     </a>
   </div>
 
-  <div class="buttons is-centered">
-    <a class="button is-danger is-radiusless" href="/docs/v{{ $latest }}">
-      v{{ $latest }}
-    </a>
-  </div>
-
   <div class="dashboard-panel-main is-scrollable">
+    <div class="has-text-centered">
+      <div class="dropdown">
+        <div class="dropdown-trigger">
+          <button class="button is-danger is-radiusless">
+            <span>
+              <strong>
+                v{{ $latest }}
+              </strong>
+            </span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+
+        <div class="dropdown-menu">
+          <div class="dropdown-content">
+            {{ range $versions }}
+            {{ $version  := printf "v%s" . }}
+            {{ $latest   := printf "v%s" $latest }}
+            {{ $isLatest := eq $version $latest }}
+            <a class="navbar-item" href="/docs/v{{ . }}">
+              {{ $version }}
+              {{ if $isLatest }}
+              (<strong>latest</strong>)
+              {{ end }}
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
     <div class="docs-panel">
       {{ range $allDocs }}
       {{ range .Sections }}
