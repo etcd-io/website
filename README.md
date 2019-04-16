@@ -46,3 +46,20 @@ changes are pushed to the `master` branch, the site is rebuilt and redeployed.
 
 Any time you submit a pull request to this repository, Netlify will publish a [preview build](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) of the changes in that pull request. You can find a link to the preview build in the checks section of the pull request, under **
 netlify/etcd/deploy-preview**.
+
+## Releasing a new version of the etcd documentation
+
+In order to add documentation for a version of etcd, you need to:
+
+* Navigate to the `etcd-io/etcd` repo and checkout the tag for the version, for example `git checkout v3.3.12`.
+* Copy the `Documentation` directory from the main `etcd` repo into the `content/docs` directory of this repository, renaming the directory to match the version. Here's an example for (non-existing) version 4.3.2:
+
+    ```bash
+    cp -rf /path/to/etcd-io/etcd/Documentation /path/to/etcd-io/website/content/docs/v4.3.2
+    ```
+* Add the version to the `params.versions.all` array in the [`config.toml`](./config.toml) configuration file.
+* If the version is meant to be the latest version of etcd, change the `params.versions.latest` parameter to the desired new version.
+
+## Troubleshooting
+
+If you have an issue with updating the documentation, file an issue against this repo and cc [lucperkins](https://github.com/lucperkins).
