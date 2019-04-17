@@ -4,7 +4,7 @@
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
 {{ $versions   := site.Params.versions.all }}
-{{ $version    := index (split .Path "/") 2 }}
+{{ $version    := index (split .Path "/") 1 }}
 {{ $allDocs    := where site.Sections "Section" "docs" }}
 {{ $currentUrl := .RelPermalink }}
 <div class="dashboard-panel is-medium has-background-white-bis is-hidden-mobile">
@@ -12,57 +12,59 @@
     <a href="{{ .Site.BaseURL }}">
       <img class="is-panel-logo" src="{{ $logo }}">
     </a>
-  </div>
 
-  <div class="dashboard-panel-main is-scrollable">
-    <div class="has-text-centered">
-      <div class="dropdown">
-        <div class="dropdown-trigger">
-          <button class="button is-danger is-radiusless">
-            <span>
-              <strong>
-                v{{ $latest }}
-              </strong>
-            </span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
+    <br /><br />
 
-        <div class="dropdown-menu">
-          <div class="dropdown-content">
-            {{ range $versions }}
-            {{ $version  := printf "v%s" . }}
-            {{ $latest   := printf "v%s" $latest }}
-            {{ $isLatest := eq $version $latest }}
-            <a class="navbar-item" href="/docs/v{{ . }}">
+    <div class="dropdown">
+      <div class="dropdown-trigger">
+        <button class="button is-danger is-radiusless">
+          <span>
+            <strong>
               {{ $version }}
-              {{ if $isLatest }}
-              (<strong>latest</strong>)
-              {{ end }}
-            </a>
+            </strong>
+          </span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+
+      <div class="dropdown-menu">
+        <div class="dropdown-content">
+          {{ range $versions }}
+          {{ $v           := printf "v%s" . }}
+          {{ $latest      := printf "v%s" $latest }}
+          {{ $isLatest    := eq $v $latest }}
+          <a class="navbar-item" href="/docs/v{{ . }}">
+            {{ . }}
+            {{ if $isLatest }}
+            (<strong>latest</strong>)
             {{ end }}
-          </div>
+          </a>
+          {{ end }}
         </div>
       </div>
     </div>
+  </div>
 
-    <br />
-
+  <div class="dashboard-panel-main is-scrollable">
     <div class="docs-panel">
       {{ range $allDocs }}
       {{ range .Sections }}
       {{ range .Pages }}
+      {{ $docVersion := index (split .File.Path "/") 1 }}
+      {{ if eq $docVersion $version }}
       {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
       <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
       {{ end }}
+      {{ end }}
 
 
       {{ range .Sections }}
-      {{ $version := index (split .Path "/") 1 | replaceRE "v" "" }}
+      {{ $docVersion := index (split .File.Path "/") 1 }}
+      {{ if eq $docVersion $version }}
       {{ $isCurrentSection := eq .RelPermalink $currentUrl }}
       <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
@@ -73,6 +75,7 @@
       <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
+      {{ end }}
       {{ end }}
       {{ end }}
       {{ end }}
