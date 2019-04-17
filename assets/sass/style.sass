@@ -28,7 +28,6 @@ $code: $etcd-dark-blue
 $code-background: $white-bis
 $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $family-code: "{{ $monospaceFont }}", monospace
-$toc-item-font-size: 1.5rem
 $dashboard-panel-padding: 2rem 1.25rem 5rem 1.25rem
 $dashboard-panel-header-bottom-margin: 1.5rem
 $dashboard-panel-footer-top-margin: 3rem
@@ -39,6 +38,7 @@ $section-padding: 2rem
 @import "bulma-dashboard/src/bulma-dashboard"
 
 @import "helpers"
+@import "toc"
 
 .content
   .highlight, pre
@@ -51,13 +51,6 @@ $section-padding: 2rem
 
   +desktop
     width: $desktop
-
-.toc-title
-  font-size: 1.5rem
-  font-weight: 400
-  line-height: 100%
-  margin-bottom: 1rem
-  color: $primary
 
 .content
   figure
@@ -83,14 +76,6 @@ $section-padding: 2rem
 .is-project-logo
   margin-bottom: 1rem
   +logo(60%, 70%)
-
-.toc
-  li a
-    font-size: 1.2rem
-    color: $white-bis
-
-    &:hover
-      color: $primary
 
 .is-adopter-block
   & + &

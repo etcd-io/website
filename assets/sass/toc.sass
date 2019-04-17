@@ -1,0 +1,49 @@
+$toc-root-font-size: 1.3rem
+$toc-root-spacing: .25rem
+
+.toc
+  .toc-title
+    font-size: 1.5rem
+    font-weight: 400
+    line-height: 100%
+    margin-bottom: 1rem
+    color: $primary
+
+  .toc-content
+    padding-bottom: 2rem
+    overflow-x: none
+
+    li
+      margin-top: .2rem
+      line-height: 120%
+
+    a
+      color: $white
+
+      &:hover
+        color: $primary
+
+        code
+          color: $danger !important
+
+    ul
+      li
+        font-size: $toc-root-font-size
+        font-weight: 600
+
+        & + li
+          margin-top: $toc-root-spacing
+
+      ul
+        li
+          font-size: $toc-root-font-size * 0.8
+          margin-left: .5rem
+
+        ul
+          li
+            font-weight: 500
+            font-size: $toc-root-font-size * 0.7
+
+          ul
+            li
+              font-size: $toc-root-font-size * 0.6

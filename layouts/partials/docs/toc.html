@@ -1,10 +1,12 @@
 {{ $toc := .TableOfContents }}
 {{ with $toc }}
-<div class="dashboard-panel toc is-small has-background-black is-hidden-mobile is-scrollable">
+<div class="toc dashboard-panel is-small has-background-black is-hidden-touch is-scrollable">
   <p class="toc-title">
     {{ $.Title }}
   </p>
 
-  {{ . }}
+  <div class="toc-content">
+    {{ . }}
+  </div>
 </div>
 {{ end }}
