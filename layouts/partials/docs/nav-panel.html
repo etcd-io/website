@@ -1,5 +1,5 @@
 {{ $logo       := site.Params.logos.panel }}
-{{ $currentUrl := .URL }}
+{{ $currentUrl := .RelPermalink }}
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}

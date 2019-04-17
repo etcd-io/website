@@ -9,7 +9,7 @@
   <div class="columns is-multiline">
     {{ range $docsSections }}
     <div class="column is-one-third">
-      <a class="is-size-4" href="{{ .URL }}">
+      <a class="is-size-4" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
 
@@ -26,7 +26,7 @@
 
     {{ range .Sections }}
     <div class="column">
-      <a class="is-size-4" href="{{ .URL }}">
+      <a class="is-size-4" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
 
