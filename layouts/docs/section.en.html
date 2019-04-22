@@ -3,6 +3,7 @@ etcd | {{ .Title }}
 {{ end }}
 
 {{ define "main" }}
+{{ partial "docs/navbar.html" . }}
 {{ $version := index (split .Path "/") 1 }}
 {{ $isVersionMainPage := hasPrefix .CurrentSection.Title "V" }}
 <div class="dashboard">
