@@ -1,5 +1,7 @@
-{{ $home := site.BaseURL }}
-{{ $logo := site.Params.logos.navbar }}
+{{ $home     := site.BaseURL }}
+{{ $logo     := site.Params.logos.navbar }}
+{{ $allDocs  := where site.Sections ".Section" "docs" }}
+{{ $latest   := site.Params.versions.latest }}
 <nav class="navbar is-hidden-tablet">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ $home }}">
@@ -18,6 +20,24 @@
       <a class="navbar-item" href="{{ $home }}">
         Home
       </a>
+
+      <a class="navbar-item" href="/docs/v{{ $latest }}">
+        Docs home
+      </a>
+
+      <p class="navbar-item">
+        Docs sections
+      </p>
+
+      {{ range $allDocs }}
+      {{ range .Sections }}
+      {{ range .Sections }}
+      <a class="navbar-item is-indented is-small" href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+      {{ end }}
+      {{ end }}
+      {{ end }}
     </div>
   </div>
 </nav>
