@@ -1,0 +1,23 @@
+{{ $home := site.BaseURL }}
+{{ $logo := site.Params.logos.navbar }}
+<nav class="navbar is-hidden-tablet">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ $home }}">
+      <img src="{{ $logo }}">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mobile-menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+  </a>
+  </div>
+
+  <div class="navbar-menu" id="mobile-menu">
+    <div class="navbar-end">
+      <a class="navbar-item">
+        Home
+      </a>
+    </div>
+  </div>
+</nav>
