@@ -14,7 +14,11 @@ etcd | {{ .Title }}
   
     <section class="section">
       <div class="content docs-content">
-        {{ .Content }}
+        {{ with .Content }}
+        {{ . }}
+
+        <hr />
+        {{ end }}
 
         {{ if and (ne .RelPermalink "/docs/") (ne .RelPermalink "/docs/v3.3.12/") (.Pages) }}
         <p>
