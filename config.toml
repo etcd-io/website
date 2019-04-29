@@ -4,7 +4,7 @@ languageCode = "en-us"
 pygmentsCodeFences = true
 pygmentsStyle = "fruity"
 baseURL = "https://etcd.netlify.com"
-ignoreFiles = ["content/docs/v*/README.md"]
+ignoreFiles = ["content/docs/v*/README.md", "content/docs/v*/*/README.md"]
 
 [params]
 description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
