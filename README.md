@@ -57,7 +57,7 @@ In order to add documentation for a version of etcd, you need to:
     ```bash
     cp -rf /path/to/etcd-io/etcd/Documentation /path/to/etcd-io/website/content/docs/v4.3.2
     ```
-* Remove the `README.md` file from the new directory.
+
 * In the `_index.md` file at the root of the new directory, update the `title` metadata to reflect the new version. The title should read `etcd version <new-version>`.
 * Add the version to the `params.versions.all` array in the [`config.toml`](./config.toml) configuration file.
 * If the version is meant to be the latest version of etcd, change the `params.versions.latest` parameter to the desired new version.
