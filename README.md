@@ -44,8 +44,7 @@ changes are pushed to the `master` branch, the site is rebuilt and redeployed.
 
 ### Preview builds
 
-Any time you submit a pull request to this repository, Netlify will publish a [preview build](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) of the changes in that pull request. You can find a link to the preview build in the checks section of the pull request, under **
-netlify/etcd/deploy-preview**.
+Any time you submit a pull request to this repository, Netlify will publish a [preview build](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) of the changes in that pull request. You can find a link to the preview build in the checks section of the pull request, under **netlify/etcd/deploy-preview**.
 
 ## Releasing a new version of the etcd documentation
 
