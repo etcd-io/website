@@ -86,12 +86,36 @@ sizes = [300,400,600,700]
 [[params.adopters]]
 logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
 link = "https://kubernetes.io"
-description = "etcd is the backend for service discovery and stores cluster state and configuration "
+description = "etcd is the backend for service discovery and stores cluster state and configuration"
 
 [[params.adopters]]
-logo = "https://www.cloudfoundry.org/wp-content/uploads/2015/11/CloudFoundaryCorp_rgb.png"
-link = "https://www.cloudfoundry.org/"
-description = "etcd stores cluster state and configuration and provides a global lock service "
+logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/rook/horizontal/color/rook-horizontal-color.png"
+link = "https://rook.io"
+description = "etcd serves as the orchestration engine for Rook"
+
+[[params.adopters]]
+name = "Patroni"
+link = "https://github.com/zalando/patroni"
+description = "A template for PostgreSQL HA with ZooKeeper, etcd, or Consul"
+
+[[params.adopters]]
+name = "Trillian"
+link = "https://github.com/google/trillian/"
+description = "A transparent, highly scalable and cryptographically verifiable data store, created by Google"
+
+[[params.adopters]]
+logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/coredns/horizontal/color/coredns-horizontal-color.png"
+link = "https://coredns.io"
+description = "CoreDNS uses etcd as an optional backend"
+
+[[params.adopters]]
+link = "https://eng.uber.com/m3/"
+description = "A large-scale metrics platform for Prometheus, created by Uber"
+
+[[params.adopters]]
+link = "https://openstack.org"
+logo = "/img/openstack-logo.svg"
+description = "OpenStack supports etcd as an optional provider of configuration storage, distributed key locking, and more"
 
 [mediaTypes."text/netlify"]
 delimiter = ""

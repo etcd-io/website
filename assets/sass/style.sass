@@ -74,12 +74,23 @@ $section-padding: 2rem
   width: 40%
 
 .is-project-logo
-  margin-bottom: 1rem
-  +logo(60%, 70%)
+  margin-bottom: .75rem
+  //+logo(60%, 70%)
+  height: 3rem
+  width: auto
 
 .is-adopter-block
   & + &
-    margin-top: 4rem
+    margin-top: 2rem
+
+.adopter-list
+  li
+    p
+      font-size: 1.1rem
+      margin-top: .5rem
+
+  li + li
+    margin-top: .75rem
 
 // Ensure sticky footer
 .page
