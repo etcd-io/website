@@ -35,11 +35,11 @@ latest = "3.3.12"
 all    = ["3.3.12"]
 
 [params.logos]
-hero   = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/horizontal/white/etcd-horizontal-white.png"
-cncf   = "https://raw.githubusercontent.com/cncf/artwork/master/cncf/horizontal/color/cncf-color.png"
-footer = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
-panel  = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/stacked/color/etcd-stacked-color.png"
-navbar = "https://raw.githubusercontent.com/cncf/artwork/master/etcd/icon/color/etcd-icon-color.png"
+hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"
+cncf   = "https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png"
+footer = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/icon/color/etcd-icon-color.png"
+panel  = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/stacked/color/etcd-stacked-color.png"
+navbar = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/icon/color/etcd-icon-color.png"
 
 [params.social]
 github = "https://github.com/etcd-io/etcd"
@@ -84,7 +84,7 @@ name = "Fira Mono"
 sizes = [300,400,600,700]
 
 [[params.adopters]]
-logo = "https://raw.githubusercontent.com/cncf/artwork/master/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
+logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
 link = "https://kubernetes.io"
 description = "etcd is the backend for service discovery and stores cluster state and configuration "
 
