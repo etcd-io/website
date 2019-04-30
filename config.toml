@@ -109,6 +109,7 @@ link = "https://coredns.io"
 description = "CoreDNS uses etcd as an optional backend"
 
 [[params.adopters]]
+name = "M3"
 link = "https://eng.uber.com/m3/"
 description = "A large-scale metrics platform for Prometheus, created by Uber"
 
