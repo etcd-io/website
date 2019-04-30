@@ -27,11 +27,13 @@ etcd | {{ .Title }}
 
         <ul>
           {{ range .Pages }}
+          {{ if .Title }}
           <li>
             <a href="{{ .RelPermalink }}">
               {{ .Title }}
             </a>
           </li>
+          {{ end }}
           {{ end }}
         </ul>
         {{ end }}
