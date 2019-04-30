@@ -4,7 +4,7 @@ languageCode = "en-us"
 pygmentsCodeFences = true
 pygmentsStyle = "fruity"
 baseURL = "https://etcd.netlify.com"
-ignoreFiles = ["content/docs/v*/README.md", "content/docs/v*/*/README.md"]
+ignoreFiles = ["content/docs/v*/README.md", "content/docs/v*/*/README.md", "content/docs/v*/docs.md"]
 
 [params]
 description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
@@ -32,7 +32,7 @@ Latency from the etcd leader is the most important metric to track and the built
 
 [params.versions]
 latest = "3.3.12"
-all    = ["3.3.12"]
+all    = ["3.3.12", "3.2.17"]
 
 [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"
