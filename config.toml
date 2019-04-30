@@ -36,7 +36,7 @@ Latency from the etcd leader is the most important metric to track and the built
 
 [params.versions]
 latest = "3.3.12"
-all    = ["3.3.12", "3.2.17"]
+all    = ["3.3.12", "3.2.17", "3.1.12"]
 
 [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"
