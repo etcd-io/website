@@ -20,7 +20,7 @@ etcd | {{ .Title }}
         <hr />
         {{ end }}
 
-        {{ if and (ne .RelPermalink "/docs/") (ne .RelPermalink "/docs/v3.3.12/") (.Pages) }}
+        {{ if and (ne .RelPermalink "/docs/") (.Pages) }}
         <p>
           Docs in this section:
         </p>
@@ -34,22 +34,6 @@ etcd | {{ .Title }}
             </a>
           </li>
           {{ end }}
-          {{ end }}
-        </ul>
-        {{ end }}
-
-        {{ if eq .RelPermalink "/docs/v3.3.12/" }}
-        <p>
-          The documentation for etcd version <strong>{{ $version }}</strong> is split up into the following sections:
-        </p>
-
-        <ul>
-          {{ range .Sections }}
-          <li>
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a>
-          </li>
           {{ end }}
         </ul>
         {{ end }}

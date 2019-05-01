@@ -49,15 +49,21 @@
 
   <div class="dashboard-panel-main is-scrollable">
     <div class="docs-panel">
+      <a class="docs-panel-section" href="/docs/{{ $version }}">
+        Version {{ $version | replaceRE "v" "" }} home
+      </a>
+
       {{ range $allDocs }}
       {{ range .Sections }}
       {{ range .Pages }}
+      {{ if .Title }}
       {{ $docVersion := index (split .File.Path "/") 1 }}
       {{ if eq $docVersion $version }}
       {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
       <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
+      {{ end }}
       {{ end }}
       {{ end }}
 
@@ -71,10 +77,12 @@
       </a>
 
       {{ range .Pages }}
+      {{ if .Title }}
       {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
       <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
+      {{ end }}
       {{ end }}
       {{ end }}
       {{ end }}
