@@ -41,17 +41,39 @@
 
         <hr class="has-background-danger" />
 
-        {{ range $adopters }}
+        {{ range where $adopters "logo" "!=" nil }}
         <div class="is-adopter-block">
-          <a href="{{ .link }}">
+          <a href="{{ .link }}" target="_blank">
             <img class="is-project-logo" src="{{ .logo }}">
           </a>
 
+          {{ with .description }}
           <div class="content is-medium">
-            {{ .description | markdownify }}
+            {{ . | markdownify }}
           </div>
+          {{ end }}
         </div>
         {{ end }}
+
+        <br />
+
+        <ul class="adopter-list">
+          {{ range where $adopters "logo" "eq" nil }}
+          <li>
+            <a class="is-size-4" href="{{ .link }}">
+              {{ .name }}
+            </a>
+
+            {{ with .description }}
+            <p>
+              {{ . }}
+            </p>
+            {{ end }}
+          </li>
+          {{ end }}
+        </ul>
+
+        <hr class="has-background-danger" />
 
         <div class="is-adopter-block"> 
           <div class="content is-medium">
