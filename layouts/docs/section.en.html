@@ -5,7 +5,7 @@ etcd | {{ .Title }}
 {{ define "main" }}
 {{ partial "docs/navbar.html" . }}
 {{ $version := index (split .Path "/") 1 }}
-{{ $isVersionMainPage := hasPrefix .CurrentSection.Title "V" }}
+{{ $isVersionMainPage := eq .RelPermalink (printf "/docs/%s/" $version) }}
 <div class="dashboard">
   {{ partial "docs/nav-panel.html" . }}
 
@@ -20,10 +20,24 @@ etcd | {{ .Title }}
         <hr />
         {{ end }}
 
-        {{ if and (ne .RelPermalink "/docs/") (.Pages) }}
-        <p>
-          Docs in this section:
-        </p>
+        {{ if $isVersionMainPage }}
+        <h4>
+          Documentation sections
+        </h4>
+
+        <ul>
+          {{ range .Sections }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        {{ else }}
+        <h4>
+          Docs in this section
+        </h4>
 
         <ul>
           {{ range .Pages }}
