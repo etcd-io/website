@@ -16,13 +16,13 @@
 
     <div class="field has-addons">
       <p class="control">
-        <span class="button is-dark is-radiusless">
+        <span class="button is-small is-dark is-radiusless">
           <strong>{{ $version }}</strong>
         </span>
       </p>
       {{ if $isLatest }}
       <p class="control">
-        <span class="button is-success is-radiusless">
+        <span class="button is-small is-success is-radiusless">
           <strong>
             latest
           </strong>
@@ -30,7 +30,7 @@
       </p>
       {{ else if $latestExists }}
       <p class="control">
-        <a class="button is-warning is-radiusless" href="{{ $latestUrl }}">
+        <a class="button is-small is-warning is-radiusless" href="{{ $latestUrl }}">
           Click here for the latest version
         </a>
       </p>
