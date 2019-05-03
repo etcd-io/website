@@ -1,4 +1,8 @@
-{{ $pathLength        := len (split .Path "/") }}
+{{ $version      := index (split .File.Path "/") 1 }}
+{{ $latest       := printf "v%s" site.Params.versions.latest }}
+{{ $isLatest     := eq $version $latest }}
+{{ $latestUrl    := replace .RelPermalink $version $latest }}
+{{ $latestExists := gt (len (where site.Pages ".RelPermalink" "eq" $latestUrl)) 0 }}
 <section class="hero is-primary">
   <div class="hero-body">
     <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if .Params.description }} is-spaced{{ end }}">
@@ -9,5 +13,28 @@
       {{ . | markdownify }}
     </p>
     {{ end }}
+
+    <div class="field has-addons">
+      <p class="control">
+        <span class="button is-small is-dark is-radiusless">
+          <strong>{{ $version }}</strong>
+        </span>
+      </p>
+      {{ if $isLatest }}
+      <p class="control">
+        <span class="button is-small is-success is-radiusless">
+          <strong>
+            latest
+          </strong>
+        </span>
+      </p>
+      {{ else if $latestExists }}
+      <p class="control">
+        <a class="button is-small is-warning is-radiusless" href="{{ $latestUrl }}">
+          Click here for the latest version
+        </a>
+      </p>
+      {{ end }}
+    </div>
   </div>
 </section>
