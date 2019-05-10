@@ -3,7 +3,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 languageCode = "en-us"
 pygmentsCodeFences = true
 pygmentsStyle = "fruity"
-baseURL = "https://etcd.netlify.com"
+baseURL = "https://etcd.io"
 ignoreFiles = [
   "content/docs/v*/README.md",
   "content/docs/v*/*/README.md",
