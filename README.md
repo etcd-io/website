@@ -1,6 +1,6 @@
 # etcd.io
 
-This repository houses all of the assets used to build the future website and documentation at https://etcd.netlify.com. The site will eventually be available at https://etcd.io.
+This repository houses all of the assets used to build the etcd docs and website available at https://etcd.io.
 
 ## Run the site locally
 
