@@ -6,6 +6,7 @@ weight: 2
 **Tools**
 
 - [etcdctl](https://github.com/etcd-io/etcd/tree/master/etcdctl) - A command line client for etcd
+- [etcd-manager](https://github.com/gtamas/etcdmanager) - A modern, efficient, multi-platform and free ETCD 3.x GUI & client tool.
 - [etcd-backup](https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
 - [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd.
 - [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
