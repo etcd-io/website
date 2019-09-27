@@ -23,7 +23,7 @@ coreos­etcdctl­0.2.0           Simple commandline client for et
 r@fbsd­10:/ #
 ```
 
-5. etcd and etcdctl are ready to use! For more information about using pkgng, please see: http://www.freebsd.org/doc/handbook/pkgng­intro.html
+5. etcd and etcdctl are ready to use! For more information about using pkgng, please see: https://www.freebsd.org/doc/handbook/pkgng-intro.html
  
 ### Using ports system
 
@@ -43,8 +43,8 @@ coreos­etcdctl­0.2.0           Simple commandline client for et
 r@fbsd­10:/ #
 ```
 
-5. etcd and etcdctl are ready to use! For more information about using ports system, please see: https://www.freebsd.org/doc/handbook/ports­using.html
+5. etcd and etcdctl are ready to use! For more information about using ports system, please see: https://www.freebsd.org/doc/handbook/ports-using.html
 
 ## Issues
 
-If there are any issues with the build/install procedure or there's a problem that is local to FreeBSD only (for example, by not being able to reproduce it on any other platform, like OSX or Linux), please send a problem report using this page for more information: http://www.freebsd.org/send­pr.html
+If there are any issues with the build/install procedure or there's a problem that is local to FreeBSD only (for example, by not being able to reproduce it on any other platform, like OSX or Linux), please send a problem report using this page for more information: https://www.freebsd.org/send-pr.html

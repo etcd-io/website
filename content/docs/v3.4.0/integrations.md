@@ -74,7 +74,7 @@ title: Libraries and tools
 
 **C libraries**
 
-- [apache/celix/etcdlib](https://github.com/apache/celix/tree/develop/etcdlib) - Supports v2
+- [apache/celix/etcdlib](https://github.com/apache/celix/tree/develop/libs/etcdlib) - Supports v2
 - [jdarcy/etcd-api](https://github.com/jdarcy/etcd-api) - Supports v2
 - [shafreeck/cetcd](https://github.com/shafreeck/cetcd) - Supports v2
 

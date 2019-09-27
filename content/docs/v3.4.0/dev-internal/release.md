@@ -59,7 +59,7 @@ All releases version numbers follow the format of [semantic versioning 2.0.0](ht
 - Manually check new features work well.
 - Add a signed tag through `git tag -s ${VERSION}`.
 - Sanity check tag correctness through `git show tags/$VERSION`.
-- Push the tag to GitHub through `git push origin tags/$VERSION`. This assumes `origin` corresponds to "https://github.com/etcd-io/etcd".
+- Push the tag to GitHub through `git push origin tags/$VERSION`. This assumes `origin` corresponds to https://github.com/etcd-io/etcd.
 
 ## Build release binaries and images
 
@@ -157,5 +157,5 @@ git log ...${PREV_VERSION} --pretty=format:"%an" | sort | uniq | tr '\n' ',' | s
 
 ## Post release
 
-- Create new stable branch through `git push origin ${VERSION_MAJOR}.${VERSION_MINOR}` if this is a major stable release. This assumes `origin` corresponds to "https://github.com/etcd-io/etcd".
+- Create new stable branch through `git push origin ${VERSION_MAJOR}.${VERSION_MINOR}` if this is a major stable release. This assumes `origin` corresponds to https://github.com/etcd-io/etcd.
 - Bump [hardcoded Version in the repository](https://github.com/etcd-io/etcd/blob/master/version/version.go#L30) to the version `${VERSION}+git`.
