@@ -363,7 +363,7 @@ Requests to `/v3beta` endpoints will redirect to `/v3`, and `/v3beta` will be re
 
 #### Upgrade requirements
 
-To upgrade an existing etcd deployment to 3.4, the running cluster must be 3.3 or greater. If it's before 3.3, please [upgrade to 3.3](upgrade_3_3.md) before upgrading to 3.4.
+To upgrade an existing etcd deployment to 3.4, the running cluster must be 3.3 or greater. If it's before 3.3, please [upgrade to 3.3](../upgrade_3_3) before upgrading to 3.4.
 
 Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. Check the health of the cluster by using the `etcdctl endpoint health` command before proceeding.
 

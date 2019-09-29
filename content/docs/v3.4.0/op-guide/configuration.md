@@ -451,17 +451,17 @@ Follow the instructions when using these flags.
 + default: 1000
 + env variable: ETCD_EXPERIMENTAL_COMPACTION_BATCH_LIMIT
 
-[build-cluster]: clustering.md#static
-[reconfig]: runtime-configuration.md
-[discovery]: clustering.md#discovery
+[build-cluster]: ../clustering/#static
+[reconfig]: ../runtime-configuration
+[discovery]: ../clustering/#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
 [proxy]: ../v2/proxy.md
 [restore]: ../v2/admin_guide.md#restoring-a-backup
-[security]: security.md
+[security]: ../security
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../tuning.md#time-parameters
+[tuning]: ../../tuning/#time-parameters
 [sample-config-file]: ../../etcd.conf.yml.sample
-[recovery]: recovery.md#disaster-recovery
+[recovery]: ../recovery/#disaster-recovery
 
 ### --experimental-peer-skip-client-san-verification
 + Skip verification of SAN field in client certificate for peer connections. This can be helpful e.g. if
