@@ -75,10 +75,10 @@ See the [demo][demo].
 
 Sample dashboard:
 
-![](./etcd-sample-grafana.png)
+![](../etcd-sample-grafana.png)
 
 
 [prometheus]: https://prometheus.io/
 [grafana]: http://grafana.org/
-[template]: ./grafana.json
+[template]: ../grafana.json
 [demo]: http://dash.etcd.io/dashboard/db/test-etcd
