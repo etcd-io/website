@@ -145,19 +145,19 @@ If none of the above suggestions clear the warnings, please [open an issue][new_
 etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
 
 
-[hardware-setup]: ./op-guide/hardware.md
-[supported-platform]: ./op-guide/supported-platform.md
-[wal_fsync_duration_seconds]: ./metrics.md#disk
-[tuning]: ./tuning.md
+[hardware-setup]: ../op-guide/hardware
+[supported-platform]: ../op-guide/supported-platform
+[wal_fsync_duration_seconds]: ../metrics/#disk
+[tuning]: ../tuning
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
-[backend_commit_metrics]: ./metrics.md#disk
+[backend_commit_metrics]: ../metrics/#disk
 [raft]: https://raft.github.io/raft.pdf
 [backup]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
 [runtime reconfiguration]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/runtime-configuration.md
 [benchmark]: https://github.com/coreos/etcd/tree/master/tools/benchmark
 [benchmark-result]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/performance.md
-[api-mvcc]: learning/api.md#revisions
-[maintenance-compact]:  op-guide/maintenance.md#history-compaction
-[maintenance-defragment]: op-guide/maintenance.md#defragmentation
+[api-mvcc]: ../learning/api/#revisions
+[maintenance-compact]:  ../op-guide/maintenance/#history-compaction
+[maintenance-defragment]: ../op-guide/maintenance/#defragmentation
 [maintenance-disarm]: ../etcdctl/README.md#alarm-disarm
