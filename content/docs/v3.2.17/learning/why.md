@@ -77,7 +77,7 @@ In theory, it’s possible to build these primitives atop any storage systems pr
 
 For distributed coordination, choosing etcd can help prevent operational headaches and save engineering effort.
 
-[production-users]: ../production-users.md
+[production-users]: ../../production-users
 [grpc]: http://www.grpc.io
 [consul-bulletproof]: https://www.consul.io/docs/internals/sessions.html
 [curator]: http://curator.apache.org/
@@ -88,30 +88,30 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [etcd-v3election]: https://godoc.org/github.com/coreos/etcd/etcdserver/api/v3election/v3electionpb
 [etcd-etcdctl-lock]: ../../etcdctl/README.md#lock-lockname-command-arg1-arg2-
 [etcd-etcdctl-elect]: ../../etcdctl/README.md#elect-options-election-name-proposal
-[etcd-mvcc]: data_model.md
+[etcd-mvcc]: ../data_model
 [etcd-recipe]: https://godoc.org/github.com/coreos/etcd/contrib/recipes
 [consul-lock]: https://www.consul.io/docs/commands/lock.html
 [newsql-leader]: http://dl.acm.org/citation.cfm?id=2960999
-[etcd-reconfig]: ../op-guide/runtime-configuration.md
-[zk-reconfig]: https://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html
+[etcd-reconfig]: ../../op-guide/runtime-configuration
+[zk-reconfig]: https://zookeeper.apache.org/doc/current/zookeeperReconfig.html
 [consul-reconfig]: https://www.consul.io/docs/guides/servers.html
-[etcd-linread]: api_guarantees.md#linearizability
+[etcd-linread]: ../api_guarantees/#linearizability
 [consul-linread]: https://www.consul.io/docs/agent/http.html#consistency
-[etcd-json]: ../dev-guide/api_grpc_gateway.md
+[etcd-json]: ../../dev-guide/api_grpc_gateway
 [consul-json]: https://www.consul.io/docs/agent/http.html#formatted-json-output
-[etcd-txn]: api.md#transaction
-[zk-txn]: https://zookeeper.apache.org/doc/r3.4.3/api/org/apache/zookeeper/ZooKeeper.html#multi(java.lang.Iterable)
+[etcd-txn]: ../api/#transaction
+[zk-txn]: https://zookeeper.apache.org/doc/current/api/org/apache/zookeeper/ZooKeeper.html#multi-java.lang.Iterable-
 [consul-txn]: https://www.consul.io/docs/agent/http/kv.html#txn
-[etcd-watch]: api.md#watch-streams
-[zk-watch]: https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#ch_zkWatches
+[etcd-watch]: ../api/#watch-streams
+[zk-watch]: https://zookeeper.apache.org/doc/current/zookeeperProgrammers.html#ch_zkWatches
 [consul-watch]: https://www.consul.io/docs/agent/watches.html
 [etcd-commonname]: ../op-guide/authentication.md#using-tls-common-name
-[etcd-rbac]: ../op-guide/authentication.md#working-with-roles
-[zk-acl]: https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ZooKeeperAccessControl
+[etcd-rbac]: ../../op-guide/authentication/#working-with-roles
+[zk-acl]: https://zookeeper.apache.org/doc/current/zookeeperProgrammers.html#sc_ZooKeeperAccessControl
 [consul-acl]: https://www.consul.io/docs/internals/acl.html
 [cockroach-grant]: https://www.cockroachlabs.com/docs/grant.html
 [spanner-roles]: https://cloud.google.com/spanner/docs/iam#roles
-[zk-bindings]: https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#ch_bindings
+[zk-bindings]: https://zookeeper.apache.org/doc/current/zookeeperProgrammers.html#ch_bindings
 [container-linux]: https://coreos.com/why
 [locksmith]: https://github.com/coreos/locksmith
 [kubernetes]: http://kubernetes.io/docs/whatisk8s

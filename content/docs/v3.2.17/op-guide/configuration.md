@@ -304,12 +304,12 @@ Follow the instructions when using these flags.
 + Example option of JWT: '--auth-token jwt,pub-key=app.rsa.pub,priv-key=app.rsa,sign-method=RS512'
 + default: "simple"
 
-[build-cluster]: clustering.md#static
-[reconfig]: runtime-configuration.md
-[discovery]: clustering.md#discovery
+[build-cluster]: ../clustering/#static
+[reconfig]: ../runtime-configuration
+[discovery]: ../clustering/#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
 [proxy]: ../v2/proxy.md
 [restore]: ../v2/admin_guide.md#restoring-a-backup
-[security]: security.md
+[security]: ../security
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../tuning.md#time-parameters
+[tuning]: ../../tuning/#time-parameters

@@ -163,13 +163,13 @@ It is enabled by default.
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: configuration.md#-initial-advertise-peer-urls
-[conf-name]: configuration.md#-name
-[disaster recovery]: recovery.md
+[conf-adv-peer]: ../configuration/#initial-advertise-peer-urls
+[conf-name]: ../configuration/#name
+[disaster recovery]: ../recovery
 [fault tolerance table]: ../v2/admin_guide.md#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
 [member-api]: ../v2/members_api.md
-[member-api-grpc]: ../dev-guide/api_reference_v3.md#service-cluster-etcdserveretcdserverpbrpcproto
+[member-api-grpc]: ../../dev-guide/api_reference_v3#service-cluster-etcdserver-etcdserverpb-rpc-proto
 [member migration]: ../v2/admin_guide.md#member-migration
 [remove member]: #remove-a-member
-[runtime-reconf]: runtime-reconf-design.md
+[runtime-reconf]: ../runtime-reconf-design

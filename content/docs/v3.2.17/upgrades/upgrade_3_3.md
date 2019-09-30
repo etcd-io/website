@@ -356,7 +356,7 @@ docker pull gcr.io/etcd-development/etcd:v3.3.0
 
 #### Upgrade requirements
 
-To upgrade an existing etcd deployment to 3.3, the running cluster must be 3.2 or greater. If it's before 3.2, please [upgrade to 3.2](upgrade_3_2.md) before upgrading to 3.3.
+To upgrade an existing etcd deployment to 3.3, the running cluster must be 3.2 or greater. If it's before 3.2, please [upgrade to 3.2](../upgrade_3_2) before upgrading to 3.3.
 
 Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. Check the health of the cluster by using the `etcdctl endpoint health` command before proceeding.
 
