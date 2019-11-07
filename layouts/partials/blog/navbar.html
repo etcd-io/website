@@ -1,0 +1,15 @@
+{{ $home := site.BaseURL }}
+{{ $logo := site.Params.logos.navbar }}
+<nav class="navbar is-black">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ $home }}">
+        <img src="{{ $logo }}">
+      </a>
+
+      <div class="navbar-item is-size-4 has-text-weight-bold">
+        The etcd blog
+      </div>
+    </div>
+  </div>
+</nav>
