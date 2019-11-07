@@ -6,6 +6,32 @@ etcd blog | {{ .Title }}
 <main class="main">
   {{ partial "blog/navbar.html" . }}
   {{ partial "blog/hero.html" . }}
+  <section class="section">
+    <div class="container">
+      <article class="blog-article">
+        <header class="blog-header">
+          <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
+            <a href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </p>
+  
+          {{ with .Date }}
+          {{ $date := dateFormat "January 2, 2006" . }}
+          <p class="subtitle is-size-5 is-size-6-mobile">
+            {{ $date }}
+          </p>
+          {{ end }}
+        </header>
+  
+        <hr class="thick-hr" />
+  
+        <main class="blog-main">
+          {{ .Content }}
+        </main>
+      </article>
+    </div>
+  </section>
 </main>
 
 {{ partial "footer.html" . }}

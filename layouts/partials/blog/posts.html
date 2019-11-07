@@ -1,16 +1,20 @@
 {{ $posts := where site.RegularPages "Section" "blog" }}
+{{ $num   := len $posts }}
 <section class="section">
   <div class="container">
-    {{ range $posts }}
-    <article>
-      <header>
-        <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
-          {{ .Title }}
+    {{ range $idx, $post := $posts }}
+    {{ $isLast := eq (add 1 $idx) $num }}
+    <article class="blog-article">
+      <header class="blog-header">
+        <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
+          <a href="{{ .RelPermalink }}">
+            {{ $post.Title }}
+          </a>
         </p>
 
-        {{ with .Date }}
+        {{ with $post.Date }}
         {{ $date := dateFormat "January 2, 2006" . }}
-        <p class="subtitle is-size-4 is-size-5-mobile">
+        <p class="subtitle is-size-5 is-size-6-mobile">
           {{ $date }}
         </p>
         {{ end }}
@@ -18,10 +22,14 @@
 
       <hr class="thick-hr" />
 
-      <main>
+      <main class="blog-main">
         {{ .Content }}
       </main>
     </article>
+
+    {{ if not $isLast }}
+    <hr />
+    {{ end }}
     {{ end }}
   </div>
 </section>
