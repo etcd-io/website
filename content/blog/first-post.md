@@ -4,6 +4,7 @@ draft: true
 date: 2019-12-01
 authors:
 - name: Luc Perkins
+  twitter: lucperkins
 ---
 
 Here is some blog post text that goes in the summary.

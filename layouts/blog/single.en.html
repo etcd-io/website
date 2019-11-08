@@ -16,16 +16,8 @@ etcd blog | {{ .Title }}
               {{ .Title }}
             </a>
           </p>
-  
-          {{ with $authors }}
-          {{ $numAuthors := len . }}
-          <p class="subtitle is-size-4 is-size-5-mobile">
-            {{ range $idx, $author := . }}
-            {{ $isLast := eq (add 1 $idx) $numAuthors }}
-            {{ $author.name }}{{ if not $isLast }}, {{ end }}
-            {{ end }}
-          </p>
-          {{ end }}
+
+          {{ partial "blog/authors.html" $authors }}
 
           {{ with .Date }}
           {{ $date := dateFormat "January 2, 2006" . }}
