@@ -9,30 +9,36 @@ etcd blog | {{ .Title }}
   {{ partial "blog/hero.html" . }}
   <section class="section">
     <div class="container">
-      <article class="blog-article">
-        <header class="blog-header">
-          <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a>
-          </p>
+      <div class="columns">
+        <div class="column">
+          <article class="blog-article">
+            <header class="blog-header">
+              <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
+                <a href="{{ .RelPermalink }}">
+                  {{ .Title }}
+                </a>
+              </p>
+    
+              {{ partial "blog/authors.html" $authors }}
+    
+              {{ with .Date }}
+              {{ $date := dateFormat "January 2, 2006" . }}
+              <p class="subtitle is-size-5 is-size-6-mobile">
+                {{ $date }}
+              </p>
+              {{ end }}
+            </header>
+      
+            <hr class="thick-hr" />
+      
+            <main class="blog-main content">
+              {{ .Content }}
+            </main>
+          </article>
+        </div>
 
-          {{ partial "blog/authors.html" $authors }}
-
-          {{ with .Date }}
-          {{ $date := dateFormat "January 2, 2006" . }}
-          <p class="subtitle is-size-5 is-size-6-mobile">
-            {{ $date }}
-          </p>
-          {{ end }}
-        </header>
-  
-        <hr class="thick-hr" />
-  
-        <main class="blog-main content">
-          {{ .Content }}
-        </main>
-      </article>
+        {{ partial "blog/post-list.html" . }}
+      </div>
     </div>
   </section>
 </main>
