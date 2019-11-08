@@ -1,0 +1,19 @@
+{{ if or .NextInSection .PrevInSection }}
+<section class="section">
+  <div class="container">
+    <nav class="pagination is-centered is-rounded" role="pagination">
+      {{ with .PrevInSection }}
+      <a class="pagination-previous" href="{{ .RelPermalink }}">
+        Previous:&nbsp;&nbsp;<strong>{{ .Title }}</strong>
+      </a>
+      {{ end }}
+    
+      {{ with .NextInSection }}
+      <a class="pagination-next" href="{{ .RelPermalink }}">
+        Next:&nbsp;&nbsp;<strong>{{ .Title }}</strong>
+      </a>
+      {{ end }}
+    </nav>
+  </div>
+</section>
+{{ end }}
