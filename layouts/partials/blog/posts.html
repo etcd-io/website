@@ -5,18 +5,29 @@
     <div class="columns">
       <div class="column">
         {{ range $idx, $post := $posts }}
-        {{ $isLast := eq (add 1 $idx) $num }}
+        {{ $isLast  := eq (add 1 $idx) $num }}
+        {{ $authors := .Params.authors }}
         <article class="blog-article">
           <header class="blog-header">
-            <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
+            <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if $authors }} is-spaced{{ end }}">
               <a href="{{ .RelPermalink }}">
                 {{ $post.Title }}
               </a>
             </p>
 
+            {{ with $authors }}
+            {{ $numAuthors := len . }}
+            <p class="subtitle is-size-4 is-size-5-mobile">
+              {{ range $idx, $author := . }}
+              {{ $isLast := eq (add 1 $idx) $numAuthors }}
+              {{ $author.name }}{{ if not $isLast }}, {{ end }}
+              {{ end }}
+            </p>
+            {{ end }}
+
             {{ with $post.Date }}
             {{ $date := dateFormat "January 2, 2006" . }}
-            <p class="subtitle is-size-5 is-size-6-mobile">
+            <p class="is-size-5 is-size-6-mobile">
               {{ $date }}
             </p>
             {{ end }}
@@ -35,7 +46,7 @@
         {{ end }}
       </div>
 
-      <div class="column is-one-third is-hidden-touch">
+      <div class="column is-one-quarter is-hidden-touch">
         <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
           Posts
         </p>

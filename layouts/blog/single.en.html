@@ -3,6 +3,7 @@ etcd blog | {{ .Title }}
 {{ end }}
 
 {{ define "main" }}
+{{ $authors := .Params.authors }}
 <main class="main">
   {{ partial "blog/navbar.html" . }}
   {{ partial "blog/hero.html" . }}
@@ -16,6 +17,16 @@ etcd blog | {{ .Title }}
             </a>
           </p>
   
+          {{ with $authors }}
+          {{ $numAuthors := len . }}
+          <p class="subtitle is-size-4 is-size-5-mobile">
+            {{ range $idx, $author := . }}
+            {{ $isLast := eq (add 1 $idx) $numAuthors }}
+            {{ $author.name }}{{ if not $isLast }}, {{ end }}
+            {{ end }}
+          </p>
+          {{ end }}
+
           {{ with .Date }}
           {{ $date := dateFormat "January 2, 2006" . }}
           <p class="subtitle is-size-5 is-size-6-mobile">
