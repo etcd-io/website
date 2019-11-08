@@ -12,3 +12,19 @@ Here is some blog post text that goes in the summary.
 <!--more-->
 
 This text will not go in the summary.
+
+## Client architecture
+
+Below is a diagram:
+
+{{< figure src="/img/client-architecture-balancer-figure-01.png" >}}
+
+Here is a code sample:
+
+```python
+class EtcdClient(object):
+    def __init__(self, url):
+        self.url = url
+
+client = EtcdClient("localhost:1234")
+```
