@@ -2,34 +2,54 @@
 {{ $num   := len $posts }}
 <section class="section">
   <div class="container">
-    {{ range $idx, $post := $posts }}
-    {{ $isLast := eq (add 1 $idx) $num }}
-    <article class="blog-article">
-      <header class="blog-header">
-        <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
-          <a href="{{ .RelPermalink }}">
-            {{ $post.Title }}
-          </a>
-        </p>
+    <div class="columns">
+      <div class="column">
+        {{ range $idx, $post := $posts }}
+        {{ $isLast := eq (add 1 $idx) $num }}
+        <article class="blog-article">
+          <header class="blog-header">
+            <p class="title is-size-2 is-size-3-mobile has-text-weight-light{{ if .Date }} is-spaced{{ end }}">
+              <a href="{{ .RelPermalink }}">
+                {{ $post.Title }}
+              </a>
+            </p>
 
-        {{ with $post.Date }}
-        {{ $date := dateFormat "January 2, 2006" . }}
-        <p class="subtitle is-size-5 is-size-6-mobile">
-          {{ $date }}
-        </p>
+            {{ with $post.Date }}
+            {{ $date := dateFormat "January 2, 2006" . }}
+            <p class="subtitle is-size-5 is-size-6-mobile">
+              {{ $date }}
+            </p>
+            {{ end }}
+          </header>
+
+          <hr class="thick-hr" />
+
+          <main class="blog-main">
+            {{ .Summary }}
+          </main>
+        </article>
+
+        {{ if not $isLast }}
+        <hr />
         {{ end }}
-      </header>
+        {{ end }}
+      </div>
 
-      <hr class="thick-hr" />
+      <div class="column is-one-third is-hidden-touch">
+        <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+          Posts
+        </p>
 
-      <main class="blog-main">
-        {{ .Content }}
-      </main>
-    </article>
-
-    {{ if not $isLast }}
-    <hr />
-    {{ end }}
-    {{ end }}
+        <ul>
+          {{ range $posts }}
+          <li class="is-size-5 is-size-6-mobile">
+            <a href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
