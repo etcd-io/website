@@ -37,9 +37,27 @@ etcd blog | {{ .Title }}
   
         <hr class="thick-hr" />
   
-        <main class="blog-main">
+        <main class="blog-main content">
           {{ .Content }}
         </main>
+
+        {{ if or .NextInSection .PrevInSection }}
+        <hr />
+
+        <nav class="pagination is-centered">
+          {{ with .PrevInSection }}
+          <a class="pagination-previous" href="{{ .RelPermalink }}">
+            Previous:&nbsp;&nbsp;<strong>{{ .Title }}</strong>
+          </a>
+          {{ end }}
+
+          {{ with .NextInSection }}
+          <a class="pagination-next" href="{{ .RelPermalink }}">
+            Next:&nbsp;&nbsp;<strong>{{ .Title }}</strong>
+          </a>
+          {{ end }}
+        </nav>
+        {{ end }}
       </article>
     </div>
   </section>

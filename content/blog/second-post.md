@@ -1,5 +1,6 @@
 ---
 title: Second post
+draft: true
 date: 2019-12-05
 ---
 
