@@ -1,0 +1,17 @@
+{{ $posts := where site.RegularPages "Section" "blog" }}
+{{ $num   := len $posts }}
+<div class="column is-one-quarter is-hidden-touch">
+  <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+    Posts
+  </p>
+
+  <ul>
+    {{ range $posts }}
+    <li class="is-size-5 is-size-6-mobile">
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</div>

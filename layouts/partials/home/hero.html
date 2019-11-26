@@ -4,6 +4,7 @@
 {{ $social      := $params.social }}
 {{ $github      := $social.github }}
 {{ $latest      := site.Params.versions.latest }}
+{{ $hasPosts    := gt (len (where site.RegularPages "Section" "blog")) 0 }}
 <section class="hero is-medium is-primary">
   <div class="container has-text-centered">
     <div class="hero-body">
@@ -24,6 +25,17 @@
             Docs
           </span>
         </a>
+
+        {{ if $hasPosts }}
+        <a class="button is-danger is-inverted is-medium is-radiusless" href="/blog">
+          <span class="icon">
+            <i class="fas fa-rss"></i>
+          </span>
+          <span class="has-text-weight-bold">
+            Blog
+          </span>
+        </a>
+        {{ end }}
 
         <a class="button is-black is-medium is-radiusless" href="{{ $github }}" target="_blank">
           <span class="icon">

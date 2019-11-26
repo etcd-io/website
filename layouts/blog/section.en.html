@@ -1,0 +1,13 @@
+{{ define "title" }}
+etcd blog
+{{ end }}
+
+{{ define "main" }}
+<main class="main">
+  {{ partial "blog/navbar.html" . }}
+  {{ partial "blog/hero.html" . }}
+  {{ partial "blog/posts.html" . }}
+</main>
+
+{{ partial "footer.html" . }}
+{{ end }}
