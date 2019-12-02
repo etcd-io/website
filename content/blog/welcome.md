@@ -55,4 +55,4 @@ To submit a post to the etcd blog:
 
 ## Stay tuned
 
-
+You can keep track of updates to the etcd blog using the [RSS feed](/blog/index.xml).
