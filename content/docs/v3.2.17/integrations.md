@@ -95,6 +95,10 @@ title: Libraries and tools
 - [linkorb/etcd-php](https://github.com/linkorb/etcd-php)
 - [activecollab/etcd](https://github.com/activecollab/etcd)
 
+**Lua Libraries**
+
+- [iresty/lua-resty-etcd](https://github.com/iresty/lua-resty-etcd)
+
 **Haskell libraries**
 
 - [wereHamster/etcd-hs](https://github.com/wereHamster/etcd-hs)
