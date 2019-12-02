@@ -52,3 +52,7 @@ To submit a post to the etcd blog:
 1. When you've submitted a pull request, you'll see a link for a [Netlify](https://netlify.com) deploy preview (under **netlify/etcd/deploy-preview**). Click on this link to see a live version of the site that includes your changes. Make sure that everything looks the way you want it to; if not, make and submit changes.
 
 1. Once the post is approved, your pull request will be merged and the post will go live within just a few minutes!
+
+## Stay tuned
+
+
