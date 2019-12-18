@@ -1,4 +1,4 @@
-DOCKER_IMG = klakegg/hugo:0.53-ext
+DOCKER_IMG = klakegg/hugo:0.60.1-ext
 SERVER     = server --buildDrafts --buildFuture --disableFastRender --ignoreCache
 
 setup:
