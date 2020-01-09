@@ -2,10 +2,6 @@
 title: Configuration Flags
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 etcd is configurable through command-line flags and environment variables. Options set on the command line take precedence over those from the environment.
 
 The format of environment variable for flag `--my-flag` is `ETCD_MY_FLAG`. It applies to all  flags.
@@ -45,7 +41,7 @@ To start etcd automatically using custom settings at startup in Linux, using a [
 + env variable: ETCD_HEARTBEAT_INTERVAL
 
 ### --election-timeout
-+ Time (in milliseconds) for an election to timeout. See [tuning.md](tuning.md#time-parameters) for details.
++ Time (in milliseconds) for an election to timeout. See [tuning.md](../tuning#time-parameters) for details.
 + default: "1000"
 + env variable: ETCD_ELECTION_TIMEOUT
 
@@ -104,7 +100,7 @@ To start etcd automatically using custom settings at startup in Linux, using a [
 + default: "new"
 + env variable: ETCD_INITIAL_CLUSTER_STATE
 
-[static bootstrap]: clustering.md#static
+[static bootstrap]: ../clustering#static
 
 ### --initial-cluster-token
 + Initial cluster token for the etcd cluster during bootstrap.
@@ -270,7 +266,8 @@ Follow the instructions when using these flags.
 ## Experimental Flags
 
 ### --experimental-v3demo
-+ Enable experimental [v3 demo API][rfc-v3].
+
++ Enable experimental v3 demo API
 + default: false
 + env variable: ETCD_EXPERIMENTAL_V3DEMO
 
@@ -286,14 +283,13 @@ Follow the instructions when using these flags.
 + Enable runtime profiling data via HTTP server. Address is at client URL + "/debug/pprof/"
 + default: false
 
-[build-cluster]: clustering.md#static
-[reconfig]: runtime-configuration.md
-[discovery]: clustering.md#discovery
+[build-cluster]: ../clustering#static
+[reconfig]: ../runtime-configuration
+[discovery]: ../clustering#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
-[proxy]: proxy.md
-[reconfig]: runtime-configuration.md
-[restore]: admin_guide.md#restoring-a-backup
-[rfc-v3]: rfc/v3api.md
-[security]: security.md
+[proxy]: ../proxy
+[reconfig]: ../runtime-configuration
+[restore]: ../admin_guide#restoring-a-backup
+[security]: ../security
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: tuning.md#time-parameters
+[tuning]: ../tuning#time-parameters

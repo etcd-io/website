@@ -2,10 +2,6 @@
 title: Design of Runtime Reconfiguration
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 Runtime reconfiguration is one of the hardest and most error prone features in a distributed system, especially in a consensus based system like etcd.
 
 Read on to learn about the design of etcd's runtime reconfiguration commands and how we tackled these problems.
@@ -52,5 +48,5 @@ It seems that using public discovery service is a convenient way to do runtime r
 
 If you want to have a discovery service that supports runtime reconfiguration, the best choice is to build your private one.
 
-[add-member]: runtime-configuration.md#add-a-new-member
-[disaster-recovery]: admin_guide.md#disaster-recovery
+[add-member]: ../runtime-configuration#add-a-new-member
+[disaster-recovery]: ../admin_guide#disaster-recovery

@@ -1,9 +1,6 @@
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../../docs.md#documentation
-
-
-# FreeBSD
+---
+title: FreeBS
+---
 
 Starting with version 0.1.2 both etcd and etcdctl have been ported to FreeBSD and can
 be installed either via packages or ports system. Their versions have been recently

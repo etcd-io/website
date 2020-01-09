@@ -2,10 +2,6 @@
 title: Runtime Reconfiguration
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 etcd comes with support for incremental runtime reconfiguration, which allows users to update the membership of the cluster at run time.
 
 Reconfiguration requests can only be processed when the majority of the cluster members are functioning. It is **highly recommended** to always have a cluster size greater than two in production. It is unsafe to remove a member from a two member cluster. The majority of a two member cluster is also two. If there is a failure during the removal process, the cluster might not able to make progress and need to [restart from majority failure][majority failure].
@@ -179,12 +175,12 @@ It is recommended to enable this option. However, it is disabled by default beca
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: configuration.md#-initial-advertise-peer-urls
-[conf-name]: configuration.md#-name
-[disaster recovery]: admin_guide.md#disaster-recovery
-[fault tolerance table]: admin_guide.md#fault-tolerance-table
+[conf-adv-peer]: ../configuration#-initial-advertise-peer-urls
+[conf-name]: ../configuration#-name
+[disaster recovery]: ../admin_guide#disaster-recovery
+[fault tolerance table]: ../admin_guide#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
-[member-api]: members_api.md
-[member migration]: admin_guide.md#member-migration
+[member-api]: ../members_api
+[member migration]: ../admin_guide#member-migration
 [remove member]: #remove-a-member
-[runtime-reconf]: runtime-reconf-design.md
+[runtime-reconf]: ../runtime-reconf-design

@@ -2,10 +2,6 @@
 title: Backward Compatibility
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 The main goal of etcd 2.0 release is to improve cluster safety around bootstrapping and dynamic reconfiguration. To do this, we deprecated the old error-prone APIs and provide a new set of APIs.
 
 The other main focus of this release was a more reliable Raft implementation, but as this change is internal it should not have any notable effects to users.
@@ -51,27 +47,22 @@ We added an option for a consistent read in the old version of etcd since etcd 0
 
 ## Standby
 
-etcd 0.4’s standby mode has been deprecated. [Proxy mode][proxymode] is introduced to solve a subset of problems standby was solving.
+etcd 0.4’s standby mode has been deprecated. [Proxy mode](../proxy) is introduced to solve a subset of problems standby was solving.
 
 Standby mode was intended for large clusters that had a subset of the members acting in the consensus process. Overall this process was too magical and allowed for operators to back themselves into a corner.
 
 Proxy mode in 2.0 will provide similar functionality, and with improved control over which machines act as proxies due to the operator specifically configuring them. Proxies also support read only or read/write modes for increased security and durability.
 
-[proxymode]: proxy.md
-
 ## Discovery Service
 
-A size key needs to be provided inside a [discovery token][discoverytoken].
-
-[discoverytoken]: clustering.md#custom-etcd-discovery-service
+A size key needs to be provided inside a [discovery token](../clustering#custom-etcd-discovery-service).
 
 ## HTTP Admin API
 
-`v2/admin` on peer url and `v2/keys/_etcd` are unified under the new [v2/members API][members-api] to better explain which machines are part of an etcd cluster, and to simplify the keyspace for all your use cases.
-
-[members-api]: members_api.md
+`v2/admin` on peer url and `v2/keys/_etcd` are unified under the new [v2/members API](../members-api) to better explain which machines are part of an etcd cluster, and to simplify the keyspace for all your use cases.
 
 ## HTTP Key Value API
+
 - The follower can now transparently proxy write requests to the leader. Clients will no longer see 307 redirections to the leader from etcd.
 
 - Expiration time is in UTC instead of local time.

@@ -1,14 +1,6 @@
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
-
-# Members API
-
-* [List members](#list-members)
-* [Add a member](#add-a-member)
-* [Delete a member](#delete-a-member)
-* [Change the peer urls of a member](#change-the-peer-urls-of-a-member)
+---
+title: Members API
+---
 
 ## List members
 
@@ -28,28 +20,28 @@ curl http://10.0.0.10:2379/v2/members
 
 ```json
 {
-    "members": [
-        {
-            "id": "272e204152",
-            "name": "infra1",
-            "peerURLs": [
-                "http://10.0.0.10:2380"
-            ],
-            "clientURLs": [
-                "http://10.0.0.10:2379"
-            ]
-        },
-        {
-            "id": "2225373f43",
-            "name": "infra2",
-            "peerURLs": [
-                "http://10.0.0.11:2380"
-            ],
-            "clientURLs": [
-                "http://10.0.0.11:2379"
-            ]
-        },
-    ]
+  "members": [
+    {
+      "id": "272e204152",
+      "name": "infra1",
+      "peerURLs": [
+        "http://10.0.0.10:2380"
+      ],
+      "clientURLs": [
+        "http://10.0.0.10:2379"
+      ]
+    },
+    {
+      "id": "2225373f43",
+      "name": "infra2",
+      "peerURLs": [
+        "http://10.0.0.11:2380"
+      ],
+      "clientURLs": [
+        "http://10.0.0.11:2379"
+      ]
+    },
+  ]
 }
 ```
 
@@ -76,10 +68,10 @@ curl http://10.0.0.10:2379/v2/members -XPOST \
 
 ```json
 {
-    "id": "3777296169",
-    "peerURLs": [
-        "http://10.0.0.10:2380"
-    ]
+  "id": "3777296169",
+  "peerURLs": [
+    "http://10.0.0.10:2380"
+  ]
 }
 ```
 
@@ -122,4 +114,3 @@ PUT /v2/members/<id> HTTP/1.1
 curl http://10.0.0.10:2379/v2/members/272e204152 -XPUT \
 -H "Content-Type: application/json" -d '{"peerURLs":["http://10.0.0.10:2380"]}'
 ```
-

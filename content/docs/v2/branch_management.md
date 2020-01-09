@@ -2,10 +2,6 @@
 title: Branch Management
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 ## Guide
 
 * New development occurs on the [master branch][master].
@@ -27,6 +23,6 @@ Before the release of the next stable version, feature PRs will be frozen. We wi
 
 All branches with prefix `release-` are considered _stable_ branches.
 
-After every minor release (http://semver.org/), we will have a new stable branch for that release. We will keep fixing the backwards-compatible bugs for the latest stable release, but not previous releases. The _patch_ release, incorporating any bug fixes, will be once every two weeks, given any patches.
+After every minor release (https://semver.org/), we will have a new stable branch for that release. We will keep fixing the backwards-compatible bugs for the latest stable release, but not previous releases. The _patch_ release, incorporating any bug fixes, will be once every two weeks, given any patches.
 
 [master]: https://github.com/coreos/etcd/tree/master

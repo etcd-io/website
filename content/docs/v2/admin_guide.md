@@ -2,8 +2,6 @@
 title: Administration
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
 ## Data Directory
 
 ### Lifecycle
@@ -305,15 +303,15 @@ By default, etcd uses the default configuration of the Go 1.4 runtime, which mea
 
 When using etcd in heavy-load scenarios on machines with multiple cores it will usually be desirable to increase the number of threads that etcd can utilize. To do this, simply set the environment variable GOMAXPROCS to the desired number when starting etcd. For more information on this variable, see the [Go runtime documentation][golang-runtime].
 
-[add-a-member]: runtime-configuration.md#add-a-new-member
+[add-a-member]: ../runtime-configuration#add-a-new-member
 [golang1.5-runtime]: https://golang.org/doc/go1.5#runtime
 [golang-memstats]: https://golang.org/pkg/runtime/#MemStats
 [golang-runtime]: https://golang.org/pkg/runtime
-[metrics]: metrics.md
+[metrics]: ../metrics
 [prometheus]: http://prometheus.io/
-[remove-a-member]: runtime-configuration.md#remove-a-member
-[runtime-reconfig]: runtime-configuration.md#cluster-reconfiguration-operations
+[remove-a-member]: ../runtime-configuration#remove-a-member
+[runtime-reconfig]: ../runtime-configuration#cluster-reconfiguration-operations
 [snap-pkg]: http://godoc.org/github.com/coreos/etcd/snap
-[update-a-member]: runtime-configuration.md#update-a-member
+[update-a-member]: ../runtime-configuration#update-a-member
 [v3-docs]: /docs/latest
 [wal-pkg]: http://godoc.org/github.com/coreos/etcd/wal

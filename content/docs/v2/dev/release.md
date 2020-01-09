@@ -1,9 +1,6 @@
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../../docs.md#documentation
-
-
-# etcd release guide
+---
+title: etcd release guide
+---
 
 The guide talks about how to release a new version of etcd.
 

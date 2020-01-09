@@ -2,12 +2,7 @@
 title: Running etcd under Docker
 ---
 
-
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
-The following guide will show you how to run etcd under Docker using the [static bootstrap process](clustering.md#static).
+The following guide will show you how to run etcd under Docker using the [static bootstrap process](../clustering#static).
 
 ## Running etcd in standalone mode
 

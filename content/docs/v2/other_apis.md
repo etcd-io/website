@@ -1,12 +1,6 @@
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
-
-# Miscellaneous APIs
-
-* [Getting the etcd version](#getting-the-etcd-version)
-* [Checking health of an etcd member node](#checking-health-of-an-etcd-member-node)
+---
+title: Miscellaneous APIs
+---
 
 ## Getting the etcd version
 

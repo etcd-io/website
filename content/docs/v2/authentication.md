@@ -2,10 +2,6 @@
 title: Authentication Guide
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 ## Overview
 
 Authentication -- having users and roles in etcd -- was added in etcd 2.1. This guide will help you set up basic authentication in etcd.
@@ -183,4 +179,4 @@ $ etcdctl -u user get foo
 
 Otherwise, all `etcdctl` commands remain the same. Users and roles can still be created and modified, but require authentication by a user with the root role.
 
-[auth-api]: auth_api.md
+[auth-api]: ../auth_api

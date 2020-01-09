@@ -1,9 +1,6 @@
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
-
-# Versioning
+---
+title: Versioning
+---
 
 Goal: We want to be able to upgrade an individual peer in an etcd cluster to a newer version of etcd.
 The process will take the form of individual followers upgrading to the latest version until the entire cluster is on the new version.

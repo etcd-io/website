@@ -2,10 +2,6 @@
 title: Error Code
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 This document describes the error code used in key space '/v2/keys'. Feel free to import 'github.com/coreos/etcd/error' to use.
 
 It's categorized into four groups:

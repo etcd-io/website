@@ -2,10 +2,6 @@
 title: etcd API
 ---
 
-**This is the documentation for etcd2 releases. Read [etcd3 doc][v3-docs] for etcd3 releases.**
-
-[v3-docs]: ../docs.md#documentation
-
 ## Running a Single Machine Cluster
 
 These examples will use a single member cluster to show you the basics of the etcd REST API.
