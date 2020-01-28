@@ -20,7 +20,7 @@ etcd | {{ .Title }}
         <hr />
         {{ end }}
 
-        {{ if $isVersionMainPage }}
+        {{ if and $isVersionMainPage .Sections }}
         <h4>
           Documentation sections
         </h4>

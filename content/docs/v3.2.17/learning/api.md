@@ -9,11 +9,13 @@ This document is meant to give an overview of the etcd3 API's central design. It
 Every API request sent to an etcd server is a gRPC remote procedure call. RPCs in etcd3 are categorized based on functionality into services.
 
 Services important for dealing with etcd's key space include:
+
 * KV - Creates, updates, fetches, and deletes key-value pairs.
 * Watch - Monitors changes to keys.
 * Lease - Primitives for consuming client keep-alive messages.
 
 Services which manage the cluster itself include:
+
 * Auth - Role based authentication mechanism for authenticating users.
 * Cluster - Provides membership information and configuration facilities.
 * Maintenance - Takes recovery snapshots, defragments the store, and returns per-member status information.
