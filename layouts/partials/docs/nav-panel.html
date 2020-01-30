@@ -55,7 +55,7 @@
 
       {{ range $allDocs }}
       {{ range .Sections }}
-      {{ range .Pages }}
+      {{ range .RegularPages }}
       {{ if .Title }}
       {{ $docVersion := index (split .File.Path "/") 1 }}
       {{ if eq $docVersion $version }}

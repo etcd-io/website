@@ -89,6 +89,11 @@ To start etcd automatically using custom settings at startup in Linux, using a [
 + default: 0
 + env variable: ETCD_BACKEND_BATCH_LIMIT
 
+### --backend-bbolt-freelist-type
++ The freelist type that etcd backend(bboltdb) uses (array and map are supported types).
++ default: map
++ env variable: ETCD_BACKEND_BBOLT_FREELIST_TYPE
+
 ### --backend-batch-interval
 + BackendBatchInterval is the maximum time before commit the backend transaction.
 + default: 0
@@ -411,7 +416,7 @@ Follow the instructions when using these flags.
 + env variable: ETCD_ENABLE_PPROF
 
 ### --metrics
-+ Set level of detail for exported metrics, specify 'extensive' to include histogram metrics.
++ Set level of detail for exported metrics, specify 'extensive' to include server side grpc histogram metrics.
 + default: basic
 + env variable: ETCD_METRICS
 
@@ -436,11 +441,6 @@ Follow the instructions when using these flags.
 
 ## Experimental flags
 
-### --experimental-backend-bbolt-freelist-type
-+ The freelist type that etcd backend(bboltdb) uses (array and map are supported types).
-+ default: array
-+ env variable: ETCD_EXPERIMENTAL_BACKEND_BBOLT_FREELIST_TYPE
-
 ### --experimental-corrupt-check-time
 + Duration of time between cluster corruption check passes
 + default: 0s
@@ -455,13 +455,13 @@ Follow the instructions when using these flags.
 [reconfig]: runtime-configuration.md
 [discovery]: clustering.md#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
-[proxy]: ../v2/proxy.md
-[restore]: ../v2/admin_guide.md#restoring-a-backup
-[security]: security.md
+[proxy]: /docs/v2/proxy
+[restore]: /docs/v2/admin_guide#restoring-a-backup
+[security]: ../security
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
 [tuning]: ../tuning.md#time-parameters
 [sample-config-file]: ../../etcd.conf.yml.sample
-[recovery]: recovery.md#disaster-recovery
+[recovery]: ../recovery#disaster-recovery
 
 ### --experimental-peer-skip-client-san-verification
 + Skip verification of SAN field in client certificate for peer connections. This can be helpful e.g. if
