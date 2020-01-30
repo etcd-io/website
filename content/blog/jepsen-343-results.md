@@ -81,3 +81,5 @@ Jepsen analysis is not a one time effort. During the analysis, the Jepsen team s
 We would love to see someone in the etcd community integrate the etcd Jepsen tests directly into the existing etcd release pipeline. We hope to ensure that all future releases of etcd are Jepsen tests approved.
 
 Besides Jepsen analysis, etcd community always welcome contributions related to correctness and reliability. We are excited about the results of this testing, and will remain vigilant while building a well engineered and correct product.
+
+To learn more read the full [Jepsen report for etcd 3.4.3](https://jepsen.io/analyses/etcd-3.4.3).
