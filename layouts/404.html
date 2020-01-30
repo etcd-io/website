@@ -1,4 +1,5 @@
-{{ $img := "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/stacked/color/etcd-stacked-color.png" }}
+{{ $img    := "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/stacked/color/etcd-stacked-color.png" }}
+{{ $latest := site.Params.versions.latest }}
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,9 +7,9 @@
     {{ partial "css.html" . }}
   </head>
   <body>
-    <section class="hero is-fullheight">
-      <div class="hero-body has-text-centered">
-        <div class="container">
+    <section class="hero is-large">
+      <div class="container has-text-centered">
+        <div class="hero-body">
           <img src="{{ $img }}" width="150px">
 
           <hr />
