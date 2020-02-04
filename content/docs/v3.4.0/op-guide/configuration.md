@@ -460,7 +460,7 @@ Follow the instructions when using these flags.
 [security]: ../security
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
 [tuning]: ../tuning.md#time-parameters
-[sample-config-file]: ../../etcd.conf.yml.sample
+[sample-config-file]: https://github.com/etcd-io/etcd/blob/release-3.4/etcd.conf.yml.sample
 [recovery]: ../recovery#disaster-recovery
 
 ### --experimental-peer-skip-client-san-verification
