@@ -21,3 +21,11 @@ preview-build:
 		--buildDrafts \
 		--buildFuture \
 		--minify
+
+link-checker-setup:
+	curl https://htmltest.wjdp.uk | bash
+
+run-link-checker:
+	bin/htmltest
+
+check-links: link-checker-setup run-link-checker
