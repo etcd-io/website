@@ -69,7 +69,7 @@ clientv3-grpc1.0: Balancer Overview
 
 `clientv3-grpc1.0` maintains multiple TCP connections when configured with multiple etcd endpoints. Then pick one address and use it to send all client requests. The pinned address is maintained until the client object is closed (see *Figure 1*). When the client receives an error, it randomly picks another and retries.
 
-![client-balancer-figure-01.png](img/client-balancer-figure-01.png)
+![client-balancer-figure-01.png](../img/client-balancer-figure-01.png)
 
 
 clientv3-grpc1.0: Balancer Limitation
@@ -83,19 +83,19 @@ clientv3-grpc1.7: Balancer Overview
 
 `clientv3-grpc1.7` maintains only one TCP connection to a chosen etcd server. When given multiple cluster endpoints, a client first tries to connect to them all. As soon as one connection is up, balancer pins the address, closing others (see *Figure 2*). The pinned address is to be maintained until the client object is closed. An error, from server or client network fault, is sent to client error handler (see *Figure 3*).
 
-![client-balancer-figure-02.png](img/client-balancer-figure-02.png)
+![client-balancer-figure-02.png](../img/client-balancer-figure-02.png)
 
-![client-balancer-figure-03.png](img/client-balancer-figure-03.png)
+![client-balancer-figure-03.png](../img/client-balancer-figure-03.png)
 
 The client error handler takes an error from gRPC server, and decides whether to retry on the same endpoint, or to switch to other addresses, based on the error code and message (see *Figure 4* and *Figure 5*).
 
-![client-balancer-figure-04.png](img/client-balancer-figure-04.png)
+![client-balancer-figure-04.png](../img/client-balancer-figure-04.png)
 
-![client-balancer-figure-05.png](img/client-balancer-figure-05.png)
+![client-balancer-figure-05.png](../img/client-balancer-figure-05.png)
 
 Stream RPCs, such as Watch and KeepAlive, are often requested with no timeouts. Instead, client can send periodic HTTP/2 pings to check the status of a pinned endpoint; if the server does not respond to the ping, balancer switches to other endpoints (see *Figure 6*).
 
-![client-balancer-figure-06.png](img/client-balancer-figure-06.png)
+![client-balancer-figure-06.png](../img/client-balancer-figure-06.png)
 
 
 clientv3-grpc1.7: Balancer Limitation
@@ -103,13 +103,13 @@ clientv3-grpc1.7: Balancer Limitation
 
 `clientv3-grpc1.7` balancer sends HTTP/2 keepalives to detect disconnects from streaming requests. It is a simple gRPC server ping mechanism and does not reason about cluster membership, thus unable to detect network partitions. Since partitioned gRPC server can still respond to client pings, balancer may get stuck with a partitioned node. Ideally, keepalive ping detects partition and triggers endpoint switch, before request time-out (see [etcd#8673](https://github.com/etcd-io/etcd/issues/8673) and *Figure 7*).
 
-![client-balancer-figure-07.png](img/client-balancer-figure-07.png)
+![client-balancer-figure-07.png](../img/client-balancer-figure-07.png)
 
 `clientv3-grpc1.7` balancer maintains a list of unhealthy endpoints. Disconnected addresses are added to “unhealthy” list, and considered unavailable until after wait duration, which is hard coded as dial timeout with default value 5-second. Balancer can have false positives on which endpoints are unhealthy. For instance, endpoint A may come back right after being blacklisted, but still unusable for next 5 seconds (see *Figure 8*).
 
 `clientv3-grpc1.0` suffered the same problems above.
 
-![client-balancer-figure-08.png](img/client-balancer-figure-08.png)
+![client-balancer-figure-08.png](../img/client-balancer-figure-08.png)
 
 Upstream gRPC Go had already migrated to new balancer interface. For example, `clientv3-grpc1.7` underlying balancer implementation uses new gRPC balancer and tries to be consistent with old balancer behaviors. While its compatibility has been maintained reasonably well, etcd client still [suffered from subtle breaking changes](https://github.com/grpc/grpc-go/issues/1649). Furthermore, gRPC maintainer recommends to [not rely on the old balancer interface](https://github.com/grpc/grpc-go/issues/1942#issuecomment-375368665). In general, to get better support from upstream, it is best to be in sync with latest gRPC releases. And new features, such as retry policy, may not be backported to gRPC 1.7 branch. Thus, both etcd server and client must migrate to latest gRPC versions.
 
@@ -123,7 +123,7 @@ The primary goal of `clientv3-grpc1.23` is to simplify balancer failover logic; 
 
 Internally, when given multiple endpoints, `clientv3-grpc1.23` creates multiple sub-connections (one sub-connection per each endpoint), while `clientv3-grpc1.7` creates only one connection to a pinned endpoint (see *Figure 9*). For instance, in 5-node cluster, `clientv3-grpc1.23` balancer would require 5 TCP connections, while `clientv3-grpc1.7` only requires one. By preserving the pool of TCP connections, `clientv3-grpc1.23` may consume more resources but provide more flexible load balancer with better failover performance. The default balancing policy is round robin but can be easily extended to support other types of balancers (e.g. power of two, pick leader, etc.). `clientv3-grpc1.23` uses gRPC resolver group and implements balancer picker policy, in order to delegate complex balancing work to upstream gRPC. On the other hand, `clientv3-grpc1.7` manually handles each gRPC connection and balancer failover, which complicates the implementation. `clientv3-grpc1.23` implements retry in the gRPC interceptor chain that automatically handles gRPC internal errors and enables more advanced retry policies like backoff, while `clientv3-grpc1.7` manually interprets gRPC errors for retries.
 
-![client-balancer-figure-09.png](img/client-balancer-figure-09.png)
+![client-balancer-figure-09.png](../img/client-balancer-figure-09.png)
 
 
 clientv3-grpc1.23: Balancer Limitation
@@ -133,6 +133,6 @@ Improvements can be made by caching the status of each endpoint. For instance, b
 
 Client-side keepalive ping still does not reason about network partitions. Streaming request may get stuck with a partitioned node. Advanced health checking service need to be implemented to understand the cluster membership (see [etcd#8673](https://github.com/etcd-io/etcd/issues/8673) for more detail).
 
-![client-balancer-figure-07.png](img/client-balancer-figure-07.png)
+![client-balancer-figure-07.png](../img/client-balancer-figure-07.png)
 
 Currently, retry logic is handled manually as an interceptor. This may be simplified via [official gRPC retries](https://github.com/grpc/proposal/blob/master/A6-client-retries.md).
