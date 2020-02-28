@@ -232,8 +232,8 @@ It is enabled by default.
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: ../configuration.md#-initial-advertise-peer-urls
-[conf-name]: ../configuration.md#-name
+[conf-adv-peer]: configuration.md#--initial-advertise-peer-urls
+[conf-name]: configuration.md#--name
 [disaster recovery]: recovery.md
 [fault tolerance table]: /docs/v2/admin_guide.md#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
