@@ -21,3 +21,14 @@ preview-build:
 		--buildDrafts \
 		--buildFuture \
 		--minify
+
+clean:
+	rm -rf public
+
+link-checker-setup:
+	curl https://htmltest.wjdp.uk | bash
+
+run-link-checker:
+	bin/htmltest
+
+check-links: clean production-build link-checker-setup run-link-checker

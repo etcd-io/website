@@ -8,7 +8,8 @@ enableRobotsTxt = true
 ignoreFiles = [
   "content/docs/v*/README.md",
   "content/docs/v*/*/README.md",
-  "content/docs/v*/docs.md"
+  "content/docs/v*/docs.md",
+  "content/docs/v3.4.0/etcd-mixin",
 ]
 
 [params]
@@ -34,6 +35,9 @@ etcd is written in [Go](https://golang.org), which has excellent cross-platform 
 
 Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.
 """
+
+[markup.goldmark.renderer]
+unsafe = true
 
 [params.versions]
 latest = "3.4.0"

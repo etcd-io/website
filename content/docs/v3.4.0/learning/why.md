@@ -77,7 +77,7 @@ In theory, it’s possible to build these primitives atop any storage systems pr
 
 For distributed coordination, choosing etcd can help prevent operational headaches and save engineering effort.
 
-[production-users]: ../../ADOPTERS.md
+[production-users]: https://github.com/etcd-io/etcd/tree/master/ADOPTERS.md
 [grpc]: https://www.grpc.io
 [consul-bulletproof]: https://www.consul.io/docs/internals/sessions.html
 [curator]: http://curator.apache.org/
@@ -86,8 +86,8 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [tidb]: https://github.com/pingcap/tidb
 [etcd-v3lock]: https://godoc.org/github.com/etcd-io/etcd/etcdserver/api/v3lock/v3lockpb
 [etcd-v3election]: https://godoc.org/github.com/coreos/etcd-io/etcdserver/api/v3election/v3electionpb
-[etcd-etcdctl-lock]: ../../etcdctl/README.md#lock-lockname-command-arg1-arg2-
-[etcd-etcdctl-elect]: ../../etcdctl/README.md#elect-options-election-name-proposal
+[etcd-etcdctl-lock]: https://github.com/etcd-io/etcd/tree/master/etcdctl/README.md#lock-lockname-command-arg1-arg2-
+[etcd-etcdctl-elect]: https://github.com/etcd-io/etcd/tree/master/etcdctl/README.md#elect-options-election-name-proposal
 [etcd-mvcc]: data_model.md
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/contrib/recipes
 [consul-lock]: https://www.consul.io/docs/commands/lock.html
@@ -95,7 +95,7 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [etcd-reconfig]: ../op-guide/runtime-configuration.md
 [zk-reconfig]: https://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html
 [consul-reconfig]: https://www.consul.io/docs/guides/servers.html
-[etcd-linread]: api_guarantees.md#linearizability
+[etcd-linread]: api_guarantees.md#isolation-level-and-consistency-of-replicas
 [consul-linread]: https://www.consul.io/docs/agent/http.html#consistency
 [etcd-json]: ../dev-guide/api_grpc_gateway.md
 [consul-json]: https://www.consul.io/docs/agent/http.html#formatted-json-output
