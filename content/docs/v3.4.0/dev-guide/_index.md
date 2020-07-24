@@ -1,3 +1,3 @@
 ---
-title: Developer guide
+title: Developer guide (is best etcd!)
 ---
