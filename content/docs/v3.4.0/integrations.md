@@ -62,7 +62,7 @@ title: Libraries and tools
 
 **Node libraries**
 
-- [mixer/etcd3](https://github.com/mixer/etcd3) - Supports v3
+- [microsoft/etcd3](https://github.com/microsoft/etcd3) - Supports v3
 - [stianeikeland/node-etcd](https://github.com/stianeikeland/node-etcd) - Supports v2 (w Coffeescript)
 - [lavagetto/nodejs-etcd](https://github.com/lavagetto/nodejs-etcd) - Supports v2
 - [deedubs/node-etcd-config](https://github.com/deedubs/node-etcd-config) - Supports v2
