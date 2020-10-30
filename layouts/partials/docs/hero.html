@@ -1,9 +1,18 @@
 {{ $version      := index (split .File.Path "/") 1 }}
 {{ $latest       := printf "v%s" site.Params.versions.latest }}
-{{ $isLatest     := eq $version $latest }}
-{{ $latestUrl    := replace .RelPermalink $version $latest }}
-{{ $latestExists := gt (len (where site.Pages ".RelPermalink" "eq" $latestUrl)) 0 }}
-<section class="hero is-primary">
+{{ $allVersions  := site.Params.versions.all }}
+{{ $versions     := (slice) }}
+{{ $here         := .RelPermalink }}
+{{ $path         := .File.Path }}
+{{ range $allVersions }}
+{{ $v := printf "v%s" . }}
+{{ $fileToCheck := replace $path $version $v }}
+{{ if fileExists $fileToCheck }}
+{{ $versions = $versions | append . }}
+{{ end }}
+{{ end }}
+
+<section class="hero">
   <div class="hero-body">
     <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if .Params.description }} is-spaced{{ end }}">
       {{ .Title }}
@@ -14,33 +23,35 @@
     </p>
     {{ end }}
 
-    <div class="field has-addons">
-      <p class="control">
-        <span class="button is-small is-dark is-radiusless">
-          <strong>{{ $version }}</strong>
-        </span>
-      </p>
-      {{ if $isLatest }}
-      <p class="control">
-        <span class="button is-small is-success is-radiusless">
-          <strong>
-            latest
-          </strong>
-        </span>
-      </p>
-      {{ else if $latestExists }}
-      <p class="control">
-        <a class="button is-small is-warning is-radiusless" href="{{ $latestUrl }}">
-          Click here for the latest version
-        </a>
-      </p>
-      {{ else }}
-      <p class="contrl">
-        <a class="button is-small is-warning is-radiusless" href="/docs/latest">
-          Click here for the latest version of the etcd docs
-        </a>
-      </p>
-      {{ end }}
-    </div>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <p class="is-size-4 is-size-5-mobile">
+            Versions of this doc:
+          </p>
+        </div>
+
+        <div class="level-item">
+          <div class="buttons">
+            {{ range $versions }}
+            {{ $v := printf "v%s" . }}
+            {{ $isLatest := eq $latest $v }}
+            {{ $href := replace $here $version $v }}
+            <a class="button is-primary is-outlined has-text-weight-bold" href="{{ $href }}">
+              <span>
+                {{ . }}
+              </span>
+              {{ if $isLatest }}
+              &nbsp;&nbsp;
+              <span class="tag is-small is-success">
+                latest
+              </span>
+              {{ end }}
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </section>
