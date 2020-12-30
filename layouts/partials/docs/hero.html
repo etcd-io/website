@@ -1,5 +1,5 @@
 {{ $version      := index (split .File.Path "/") 1 }}
-{{ $latest       := printf "v%s" site.Params.versions.latest }}
+{{ $latest       := printf "%s" site.Params.versions.latest }}
 {{ $allVersions  := site.Params.versions.all }}
 {{ $versions     := (slice) }}
 {{ $here         := .RelPermalink }}
@@ -33,8 +33,8 @@
 
         <div class="level-item">
           <div class="buttons">
-            {{ range $versions }}
-            {{ $v := printf "v%s" . }}
+            {{ range .Site.Params.versions.all }}
+            {{ $v := printf "%s" . }}
             {{ $isLatest := eq $latest $v }}
             {{ $href := replace $here $version $v }}
             <a class="button is-primary is-outlined has-text-weight-bold" href="{{ $href }}">

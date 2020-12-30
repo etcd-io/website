@@ -3,7 +3,6 @@
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
 {{ $latest     := site.Params.versions.latest }}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
-{{ $versions   := site.Params.versions.all }}
 {{ $version    := index (split .Path "/") 1 }}
 {{ $allDocs    := where site.Sections "Section" "docs" }}
 {{ $currentUrl := .RelPermalink }}
@@ -31,19 +30,22 @@
 
       <div class="dropdown-menu">
         <div class="dropdown-content">
-          {{ range $versions }}
-          {{ $v           := printf "v%s" . }}
-          {{ $latest      := printf "v%s" $latest }}
-          {{ $isLatest    := eq $v $latest }}
-          <a class="navbar-item" href="/docs/v{{ . }}">
-            {{ . }}
-            {{ if $isLatest }}
-            (<strong>latest</strong>)
-            {{ end }}
-          </a>
+          {{/* 
+            Version dropdown modified based on the work https://github.com/tbatard did on the velero site:
+            https://github.com/vmware-tanzu/velero/blob/main/site/layouts/docs/versions.html
+          */}}
+          {{ $original_version := printf "/%s/" .CurrentSection.Params.version }}
+          {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL }}
+          {{ $currentUrl := .Permalink }}
+
+          {{ range .Site.Params.versions.all }}
+            {{ $new_version := printf "/%s/" . }}
+            <a class="navbar-item" 
+               href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
           {{ end }}
         </div>
       </div>
+
     </div>
   </div>
 
