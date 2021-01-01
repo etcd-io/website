@@ -40,8 +40,8 @@ Latency from the etcd leader is the most important metric to track and the built
 unsafe = true
 
 [params.versions]
-latest = "v3.4.0"
-all    = ["v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2"]
+latest = "vcurrent"
+all    = ["vcurrent", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2"]
 
 [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"
