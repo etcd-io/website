@@ -66,6 +66,22 @@ $colors: mergeColorMaps(("orange": ($orange, $white)), $colors)
     margin: 0 auto
     figcaption
 
+// Deprecation warning
+.deprecation-warning
+  padding: 20px
+  margin: 20px 0
+  background-color: #faf5b6
+  color: #000
+
+body.td-home .deprecation-warning, body.td-blog .deprecation-warning, body.td-documentation .deprecation-warning
+  border-radius: 3px
+
+body.td-home #deprecation-warning
+  max-width: 1000px
+  margin-top: 2.5rem
+  margin-left: auto
+  margin-right: auto
+
 // Safari-specific attribute
 .hero
   display: -webkit-box

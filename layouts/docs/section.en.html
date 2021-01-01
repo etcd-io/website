@@ -12,6 +12,8 @@ etcd | {{ .Title }}
   <div class="dashboard-main is-scrollable">
     {{ partial "docs/hero.html" . }}
   
+    {{ partial "deprecation-warning.html" . }}
+
     <section class="section">
       <div class="content docs-content">
         {{ with .Content }}
@@ -19,6 +21,7 @@ etcd | {{ .Title }}
 
         <hr />
         {{ end }}
+
 
         {{ if and $isVersionMainPage .Sections }}
         <h4>
