@@ -111,7 +111,7 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [consul-acl]: https://www.consul.io/docs/internals/acl.html
 [cockroach-grant]: https://www.cockroachlabs.com/docs/stable/grant.html
 [spanner-roles]: https://cloud.google.com/spanner/docs/iam#roles
-[zk-bindings]: https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#ch_bindings
+[zk-bindings]: https://zookeeper.apache.org/doc/r3.6.2/zookeeperProgrammers.html#ch_bindings
 [container-linux]: https://coreos.com/why
 [locksmith]: https://github.com/coreos/locksmith
 [kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
