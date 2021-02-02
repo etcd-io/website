@@ -1,6 +1,6 @@
 <!-- based on https://github.com/kubernetes/website/blob/master/layouts/partials/deprecation-warning.html -->
 
-{{ if ne site.Params.versions.latest .CurrentSection.Params.version }}
+{{ if and (ne site.Params.versions.latest .CurrentSection.Params.version) (ne "current" .CurrentSection.Params.version) }}
 
 {{ $original_version := printf "/%s/" .CurrentSection.Params.version }}
 {{ $currentUrl := .Permalink }}
@@ -12,9 +12,11 @@
       You are viewing documentation for etcd version: {{ .Param "version" }}
     </h3>
     <p> etcd {{ .Param "version" }} documentation is no longer actively maintained. The version you are currently viewing is a static snapshot. For up-to-date documentation, see the latest release,
-    <a href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ site.Params.versions.latest }}</a>.
+    <a href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ site.Params.versions.latest }}</a>, or the
+    <a href="{{ replace $currentUrl $original_version "/current/" | relURL }}">current documentation</a>.
     </p>
   </div>
 </section>
+
 {{ end }}
 
