@@ -238,14 +238,14 @@ It is enabled by default.
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: configuration.md#-initial-advertise-peer-urls
-[conf-name]: configuration.md#-name
+[conf-adv-peer]: configuration.md#clustering-flags
+[conf-name]: configuration.md#member-flags
 [disaster recovery]: recovery.md
-[fault tolerance table]: ../v2/admin_guide.md#fault-tolerance-table
+[fault tolerance table]: ../../v2/admin_guide.md#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
-[member-api]: ../v2/members_api.md
-[member-api-grpc]: ../dev-guide/api_reference_v3.md#service-cluster-etcdserveretcdserverpbrpcproto
-[member migration]: ../v2/admin_guide.md#member-migration
+[member-api]: ../../v2/members_api.md
+[member-api-grpc]: ../dev-guide/api_reference_v3.md
+[member migration]: ../../v2/admin_guide.md#member-migration
 [remove member]: #remove-a-member
 [runtime-reconf]: runtime-reconf-design.md
 [error cases when promoting a member]: #error-cases-when-promoting-a-learner-member

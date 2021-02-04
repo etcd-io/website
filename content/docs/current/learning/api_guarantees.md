@@ -60,10 +60,10 @@ etcd ensures linearizability for all other operations by default. Linearizabilit
 
 etcd provides [a lease mechanism][lease]. The primary use case of a lease is implementing distributed coordination mechanisms like distributed locks. The lease mechanism itself is simple: a lease can be created with the grant API, attached to a key with the put API, revoked with the revoke API, and will be expired by the wall clock time to live (TTL). However, users need to be aware about [the important properties of the APIs and usage][why] for implementing correct distributed coordination mechanisms.
 
-[txn]: api.md#transactions
+[txn]: api.md#transaction
 [linearizability]: https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf
 [strict_serializability]: http://jepsen.io/consistency/models/strict-serializable
 [serializable_isolation]: https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable
 [Linearizability]: #Linearizability
 [lease]: https://web.stanford.edu/class/cs240/readings/89-leases.pdf
-[why]: why.md#Notes
+[why]: why.md#notes-on-the-usage-of-lock-and-lease

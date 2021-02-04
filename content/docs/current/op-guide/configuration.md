@@ -467,8 +467,8 @@ Follow the instructions when using these flags.
 [security]: ../security
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
 [tuning]: ../tuning.md#time-parameters
-[sample-config-file]: ../../etcd.conf.yml.sample
-[recovery]: ../recovery#disaster-recovery
+[sample-config-file]: https://github.com/etcd-io/etcd/blob/master/etcd.conf.yml.sample
+[recovery]: ../recovery
 
 ### --experimental-peer-skip-client-san-verification
 + Skip verification of SAN field in client certificate for peer connections. This can be helpful e.g. if

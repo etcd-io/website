@@ -136,4 +136,4 @@ Generated [Swagger][swagger] API definitions can be found at [rpc.swagger.json][
 [grpc-gateway]: https://github.com/grpc-ecosystem/grpc-gateway
 [json-mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
 [swagger]: http://swagger.io/
-[swagger-doc]: apispec/swagger/rpc.swagger.json
+[swagger-doc]: ../apispec/swagger/rpc.swagger.json

@@ -45,4 +45,4 @@ A cluster bootstrap is only successful if all required members successfully star
 Of course, it is possible to recover a failed bootstrapped cluster like recovering a running cluster. However, it almost always takes more time and resources to recover that cluster than bootstrapping a new one, since there is no data to recover.
 
 [backup]: maintenance.md#snapshot-backup
-[unrecoverable]: recovery.md#disaster-recovery
+[unrecoverable]: recovery.md

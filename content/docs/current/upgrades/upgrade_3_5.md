@@ -163,7 +163,7 @@ Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. C
 
 Before upgrading etcd, always test the services relying on etcd in a staging environment before deploying the upgrade to the production environment.
 
-Before beginning, [download the snapshot backup](../op-guide/maintenance.md#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](../v2/admin_guide.md#backing-up-the-datastore).
+Before beginning, [download the snapshot backup](../op-guide/maintenance.md#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](../../v2/admin_guide.md#backing-up-the-datastore).
 
 #### Mixed versions
 

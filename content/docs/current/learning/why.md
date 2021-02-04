@@ -97,9 +97,7 @@ Why do etcd and other systems provide lease if they provide mutual exclusion bas
 
 Note that in the case of etcd keys, it can be locked efficiently because of the mechanisms of lease and version number validation. If users need to protect resources which aren't related to etcd, the resources must provide the version number validation mechanism and consistency of replicas like keys of etcd. The lock feature of etcd itself cannot be used for protecting external resources.
 
-The [lock directory][executable-example] contains an executable example which follows [the scenario described in the article by Martin Kleppmann][fencing]. The example shows how stop the world GC of go runtime can cause false revoking of etcd lock and how version number validation can prevent access to the shared resource from a client which acquires a stale lock.
-
-[production-users]: ../../ADOPTERS.md
+[production-users]: https://github.com/etcd-io/etcd/blob/master/ADOPTERS.md
 [grpc]: https://www.grpc.io
 [consul-bulletproof]: https://www.consul.io/docs/internals/sessions.html
 [curator]: http://curator.apache.org/
@@ -108,8 +106,8 @@ The [lock directory][executable-example] contains an executable example which fo
 [tidb]: https://github.com/pingcap/tidb
 [etcd-v3lock]: https://godoc.org/github.com/etcd-io/etcd/server/etcdserver/api/v3lock/v3lockpb
 [etcd-v3election]: https://godoc.org/github.com/etcd-io/etcd/server/etcdserver/api/v3election/v3electionpb
-[etcd-etcdctl-lock]: ../../etcdctl/README.md#lock-options-lockname-command-arg1-arg2-
-[etcd-etcdctl-elect]: ../../etcdctl/README.md#elect-options-election-name-proposal
+[etcd-etcdctl-lock]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#lock-options-lockname-command-arg1-arg2-
+[etcd-etcdctl-elect]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#elect-options-election-name-proposal
 [etcd-mvcc]: data_model.md
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/client/v3/experimental/recipes
 [consul-lock]: https://www.consul.io/commands/lock
@@ -117,7 +115,7 @@ The [lock directory][executable-example] contains an executable example which fo
 [etcd-reconfig]: ../op-guide/runtime-configuration.md
 [zk-reconfig]: https://zookeeper.apache.org/doc/current/zookeeperReconfig.html
 [consul-reconfig]: https://www.consul.io/docs/guides/servers.html
-[etcd-linread]: api_guarantees.md#linearizability
+[etcd-linread]: api_guarantees.md#isolation-level-and-consistency-of-replicas
 [consul-linread]: https://www.consul.io/docs/agent/http.html#consistency
 [etcd-json]: ../dev-guide/api_grpc_gateway.md
 [consul-json]: https://www.consul.io/docs/agent/http.html#formatted-json-output
@@ -144,4 +142,3 @@ The [lock directory][executable-example] contains an executable example which fo
 [fencing]: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
 [physicalclock]: http://www.dainf.cefetpr.br/~tacla/SDII/PracticalUseOfClocks.pdf
 [fencing-zk]: https://fpj.me/2016/02/10/note-on-fencing-and-distributed-locks/
-[executable-example]: lock/README.md
