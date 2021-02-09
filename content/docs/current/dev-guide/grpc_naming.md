@@ -20,7 +20,7 @@ import (
 
 cli, cerr := clientv3.NewFromURL("http://localhost:2379")
 etcdResolver, err := resolver.NewBuilder(clus.RandClient());
-conn, gerr := grpc.Dial("etcd://foo/bar/my-service", grpc.WithResolvers(etcdResolver))
+conn, gerr := grpc.Dial("etcd:///foo/bar/my-service", grpc.WithResolvers(etcdResolver))
 ```
 
 ## Managing service endpoints
@@ -87,3 +87,4 @@ err := em.Update(context.TODO(), []*endpoints.UpdateWithOpts{
     endpoints.NewDeleteUpdateOpts("foo/bar/my-service/e1", endpoints.Endpoint{Addr: "1.2.3.4"}),
 	endpoints.NewAddUpdateOpts("foo/bar/my-service/e1", endpoints.Endpoint{Addr: "1.2.3.14"})})
 ```
+
