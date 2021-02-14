@@ -127,9 +127,9 @@ Then import the default [etcd dashboard template][template] and customize. For i
 
 Sample dashboard:
 
-![](./etcd-sample-grafana.png)
+![](../etcd-sample-grafana.png)
 
 
 [prometheus]: https://prometheus.io/
 [grafana]: http://grafana.org/
-[template]: ./grafana.json
+[template]: ../grafana.json
