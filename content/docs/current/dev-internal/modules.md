@@ -7,7 +7,7 @@ description: Organization of the etcd project's golang modules
 The etcd project (since version 3.5) is organized into multiple 
 [golang modules](https://golang.org/ref/mod) hosted  in a [single repository](https://golang.org/ref/mod#vcs-dir).
 
-![modules graph](img/modules.svg)
+![modules graph](../img/modules.svg)
 
 There are following modules: 
   
@@ -84,7 +84,7 @@ There are following modules:
 
 As a North Star, we would like to evaluate etcd modules towards following model:
 
-![modules graph](img/modules-future.svg)
+![modules graph](../img/modules-future.svg)
 
 This assumes:
   - Splitting etcdmigrate/etcdadm out of etcdctl binary. 

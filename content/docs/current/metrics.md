@@ -16,7 +16,7 @@ The naming of metrics follows the suggested [Prometheus best practices][promethe
 
 The metrics under the `etcd` prefix are for monitoring and alerting. They are stable high level metrics. If there is any change of these metrics, it will be included in release notes.
 
-Metrics that are etcd2 related are documented [v2 metrics guide][v2-http-metrics].
+Metrics that are etcd2 related are documented in the [v2 metrics guide][v2-http-metrics].
 
 ### Server
 
@@ -111,6 +111,10 @@ The Prometheus client library provides a number of metrics under the `go` and `p
 | process_max_fds                   | Maximum number of open file descriptors.   | Gauge        |
 
 Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file descriptor limit, `process_max_fds`) indicates a potential file descriptor exhaustion issue. If the file descriptors are exhausted, etcd may panic because it cannot create new WAL files.
+
+# Generated list of metrics
+
+{{< metrics-list dir="../content/docs/current/metrics" regexp="." >}}
 
 [prometheus]: https://prometheus.io/
 [prometheus-getting-started]: https://prometheus.io/docs/introduction/getting_started/

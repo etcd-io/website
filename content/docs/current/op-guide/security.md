@@ -438,7 +438,7 @@ No. etcd doesn't encrypt key/value data stored on disk drives. If a user need to
 When etcd create certain new directories it sets file permission to 700 to prevent unprivileged access as possible. However, if user has already created a directory with own preference, etcd uses the existing directory and logs a warning message if the permission is different than 700.
 
 [cfssl]: https://github.com/cloudflare/cfssl
-[tls-setup]: ../../hack/tls-setup
+[tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
 [tls-guide]: https://github.com/coreos/docs/blob/master/os/generate-self-signed-certificates.md
 [alt-name]: http://wiki.cacert.org/FAQ/subjectAltName
 [auth]: authentication.md

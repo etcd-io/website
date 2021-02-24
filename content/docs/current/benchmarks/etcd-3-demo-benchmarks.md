@@ -45,4 +45,4 @@ The performance is nearly the same as the one with empty server handler.
 The performance with empty server handler is not affected by one put. So the
 performance downgrade should be caused by storage package.
 
-[etcd-v3-benchmark]: ../../tools/benchmark/
+[etcd-v3-benchmark]: https://github.com/etcd-io/etcd/tree/master/tools/benchmark

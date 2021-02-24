@@ -6,6 +6,14 @@ description: Frequently asked questions
 
 ## etcd, general
 
+### What is etcd?
+
+etcd is a consistent distributed key-value store. Mainly used as a separate coordination service, in distributed systems. And designed to hold small amounts of data that can fit entirely in memory.
+
+### How do you pronounce etcd?
+
+etcd is pronounced **/ˈɛtsiːdiː/**, and means "distributed `etc` directory."
+
 ### Do clients have to send requests to the etcd leader?
 
 [Raft][raft] is leader-based; the leader handles all client requests which need cluster consensus. However, the client does not need to know which node is the leader. Any request that requires consensus sent to a follower is automatically forwarded to the leader. Requests that do not require consensus (e.g., serialized reads) can be processed by any cluster member.
@@ -147,21 +155,21 @@ If none of the above suggestions clear the warnings, please [open an issue][new_
 etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
 
 
-[hardware-setup]: ./op-guide/hardware.md
-[supported-platform]: ./op-guide/supported-platform.md
-[wal_fsync_duration_seconds]: ./metrics.md#disk
-[tuning]: ./tuning.md
+[hardware-setup]: op-guide/hardware.md
+[supported-platform]: op-guide/supported-platform.md
+[wal_fsync_duration_seconds]: metrics#disk
+[tuning]: tuning.md
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
-[backend_commit_metrics]: ./metrics.md#disk
+[backend_commit_metrics]: metrics.md#disk
 [raft]: https://raft.github.io/raft.pdf
-[backup]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
+[backup]: op-guide/recovery.md#snapshotting-the-keyspace
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
-[runtime reconfiguration]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/runtime-configuration.md
+[runtime reconfiguration]: op-guide/runtime-configuration
 [benchmark]: https://github.com/coreos/etcd/tree/master/tools/benchmark
-[benchmark-result]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/performance.md
+[benchmark-result]: op-guide/performance
 [api-mvcc]: learning/api.md#revisions
-[maintenance-compact]:  op-guide/maintenance.md#history-compaction
+[maintenance-compact]:  op-guide/maintenance.md#history-compaction-v3-api-key-value-database
 [maintenance-defragment]: op-guide/maintenance.md#defragmentation
-[maintenance-disarm]: ../etcdctl/README.md#alarm-disarm
+[maintenance-disarm]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#alarm-disarm
 [fio]: https://github.com/axboe/fio
 [fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd

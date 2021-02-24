@@ -108,7 +108,7 @@ Now Prometheus will scrape etcd metrics every 10 seconds.
 
 ### Alerting
 
-There is a set of [default alerts](../etcd-mixin) for etcd v3 clusters for Prometheus.
+There is a set of [default alerts](https://github.com/etcd-io/etcd/tree/master/contrib/mixin) for etcd v3 clusters for Prometheus.
 
 > Note: `job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.
 
@@ -127,9 +127,9 @@ Then import the default [etcd dashboard template][template] and customize. For i
 
 Sample dashboard:
 
-![](./etcd-sample-grafana.png)
+![](../etcd-sample-grafana.png)
 
 
 [prometheus]: https://prometheus.io/
 [grafana]: http://grafana.org/
-[template]: ./grafana.json
+[template]: ../grafana.json
