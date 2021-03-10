@@ -1,0 +1,144 @@
++++
+title = "etcd"
+linkTitle = "etcd"
+
++++
+
+{{< blocks/cover image_anchor="top" height="min" color="blue" >}}
+
+<img src="etcd-horizontal-white.png" style="max-width: 65%; max-height: 8rem" />
+<h1><br />A distributed, reliable key-value store for the most critical data of a distributed system</h1> 
+<br />
+<div class="mx-auto">
+	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs/current/" >}}">
+		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+	</a>
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/etcd-io/etcd">
+		GitHub <i class="fab fa-github ml-2 "></i>
+	</a>
+	<p class="lead mt-5"></p>
+	{{< blocks/link-down color="info" >}}
+</div>
+
+{{< /blocks/cover >}}
+
+{{% blocks/lead color="primary" %}}
+  <h1>Features</h1>
+  Features intro copy to go here
+{{% /blocks/lead %}}
+
+{{< blocks/section color="dark" >}}
+
+{{% blocks/feature icon="none" title="Simple interface" %}}
+  Read and write values using standard HTTP tools, such as curl<br />
+<img src="img/interface.svg"></img>
+{{% /blocks/feature %}}
+
+{{% blocks/feature icon="none" title="Key-value storage" %}}
+  Store data in hierarchically organized directories, as in a standard filesystem<br />
+<img src="img/kv.svg"></img>
+{{% /blocks/feature %}}
+
+{{% blocks/feature icon="none" title="Watch for changes" %}}
+  Watch specific keys or directories for changes and react to changes in values<br />
+<img src="img/watch.svg"></img>
+{{% /blocks/feature %}}
+
+{{< /blocks/section >}}
+
+
+{{< blocks/section >}}
+<div class="col">
+  <!-- <h1 class="text-center">This is the second Section</h1> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <span class="icon has-text-danger">
+          <i class="fas fa-lg fa-lock"></i>
+        </span>
+        <br /><br />
+        Optional SSL client certificate authentication
+        <p class="is-size-5 is-size-6-mobile">
+        </p>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <span class="icon has-text-danger">
+          <i class="fas fa-lg fa-chart-bar"></i>
+        </span>
+        <br /><br />
+        Benchmarked at 1000s of writes/s per instance
+        <p class="is-size-5 is-size-6-mobile">
+        </p>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <span class="icon has-text-danger">
+          <i class="fas fa-lg fa-clock"></i>
+        </span>
+        <br /><br />
+        Optional TTLs for keys expiration
+        <p class="is-size-5 is-size-6-mobile">
+        </p>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <span class="icon has-text-danger">
+          <i class="fas fa-lg fa-arrows-alt"></i>
+        </span>
+        <br /><br />
+        Properly distributed via Raft protocol
+        <p class="is-size-5 is-size-6-mobile">
+        </p>
+      </div>
+
+    </div>
+  </div>
+{{< /blocks/section >}}
+
+
+{{% blocks/lead color="secondary" %}}
+  <h1>What is etcd?</h1>
+{{% /blocks/lead %}}
+
+{{< blocks/section color="primary" >}}
+{{% blocks/feature icon="none" title="Project" %}}
+<hr />
+<div style="text-align: left">
+<b>etcd</b> is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node.
+
+Applications of any complexity, from a simple web app to [Kubernetes](https://kubernetes.io), can read data from and write data into etcd.
+
+Your applications can read from and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.
+
+etcd is open source, available [on GitHub](https://github.com/etcd-io/etcd), and backed by the [Cloud Native Computing Foundation](https://cncf.io).
+</div>
+{{% /blocks/feature %}}
+
+{{% blocks/feature icon="none" title="Technical overview" %}}
+<hr />
+<div style="text-align: left">
+etcd is written in [Go](https://golang.org), which has excellent cross-platform support, small binaries and a great community behind it. Communication between etcd machines is handled via the Raft consensus algorithm.
+
+Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.
+</div>
+{{% /blocks/feature %}}
+
+{{% blocks/feature icon="none" title="Adopters" %}}
+<hr />
+<div style="text-align: left">
+  <!-- TODO: Port adopters code over -->
+</div>
+{{% /blocks/feature %}}
+{{< /blocks/section >}}
+
+
+{{< blocks/section color="grey">}}
+
+<div class="col-12">
+  <!-- <h1 class="text-center">This is another Section</h1> -->
+  <img src="https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png" width="300"></img><br /><br />
+  etcd is a <a href="https://cncf.io">Cloud Native Computing Foundation</a> incubating project.
+</div>
+
+{{< /blocks/section >}}

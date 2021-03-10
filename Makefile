@@ -31,4 +31,3 @@ run-link-checker:
 	bin/htmltest
 
 check-links: clean production-build link-checker-setup run-link-checker
-
