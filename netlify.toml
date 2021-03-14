@@ -1,15 +1,15 @@
 [build]
 publish = "public"
-command = "make production-build"
+command = "git submodule update --init --recursive --depth 1 && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.81.0"
 
 [context.deploy-preview]
-command = "make preview-build"
+command = "git submodule update --init --recursive --depth 1 && make preview-build"
 
 [context.branch-deploy]
-command = "make preview-build"
+command = "git submodule update --init --recursive --depth 1 && make preview-build"
 
 # Set headers for docsy conversion development to prevent search engines from
 # indexing the WIP site.
@@ -33,3 +33,8 @@ to = "/docs/v3.4.0/reporting_bugs"
 status = 301
 force = false
 
+[[redirects]]
+from = "/blog/jepsen-343-results"
+to = "/blog/2020/01/30/latest-jepsen-results-against-etcd-3.4.3/"
+status = 301
+force = false
