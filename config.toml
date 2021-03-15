@@ -121,26 +121,26 @@ description        = "A distributed, reliable key-value store for the most criti
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
-version_menu = "Releases"
+version_menu = "Versions"
 
 # Flag used in the "version-banner" partial to decide whether to display a 
 # banner on every page indicating that this is an archived version of the docs.
 # Set this flag to "true" if you want to display the banner.
-archived_version = false
+# archived_version = false
 
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the 
 # current doc set.
-version = "v3.4.0"
+# version = "v3.4.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://example.com"
+# url_latest_version = "https://example.com"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/google/docsy-example"
+github_repo = "https://github.com/etcd-io/website"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://github.com/google/docsy"
+github_project_repo = "https://github.com/etcd-io/etcd"
 
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
@@ -177,6 +177,12 @@ prism_syntax_highlighting = false
 
 # Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.
 # """
+
+# Versions
+
+[params.versions]
+latest = "v3.4.0"
+all    = ["current", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2"]
 
 # User interface configuration
 [params.ui]
