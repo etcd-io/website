@@ -2,7 +2,7 @@
 node_modules/
 
 # Hugo-generated assets
-public/
+/public
 resources/
 
 # Link checker artifacts
