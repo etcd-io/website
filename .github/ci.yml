@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2.2.0
+        with:
+          repository: Demogorgon314/website
+          path: website
+      # Runs a single command using the runners shell
+      - name: install yarn
+        uses: actions/setup-node@v2.1.5
+      - name: install hugo
+        run: |
+          sudo npm install --global yarn
+          wget https://github.com/gohugoio/hugo/releases/download/v0.65.0/hugo_extended_0.65.0_Linux-64bit.deb
+          sudo dpkg -i hugo_extended_0.65.0_Linux-64bit.deb
+      - name: make
+        run: |
+          cd website
+          yarn
+      - name: hugo --minify
+        run: |
+          cd website
+          hugo --minify
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "website/public/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+
