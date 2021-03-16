@@ -4,5 +4,4 @@ weight: 1000
 cascade:
   version: current
 ---
-
-These docs cover everything from setting up and running an etcd cluster to using etcd in applications. Improvements to these docs are encouraged through [pull requests](https://help.github.com/en/articles/about-pull-requests) to the [etcd-io/website project](https://github.com/etcd-io/website) on GitHub.
+这些文档涵盖了从设置和运行etcd集群到在应用程序中使用etcd的所有内容，欢迎通过 [pull requests](https://help.github.com/en/articles/about-pull-requests) 对 [etcd-cn/website 中文站](https://github.com/Demogorgon314/website) 进行贡献.
