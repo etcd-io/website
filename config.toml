@@ -3,7 +3,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 languageCode = "en-us"
 pygmentsCodeFences = true
 pygmentsStyle = "fruity"
-baseURL = "https://etcd.io"
+baseURL = "http://etcd.cn"
 enableRobotsTxt = true
 ignoreFiles = [
   "content/docs/v*/README.md",
