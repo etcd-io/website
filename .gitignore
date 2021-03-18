@@ -8,3 +8,7 @@ resources/
 # Link checker artifacts
 bin/
 tmp/
+
+# Local Netlify folder
+.netlify
+
