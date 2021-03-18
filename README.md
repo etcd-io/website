@@ -82,3 +82,9 @@ repo.
 [hugo-install]: https://gohugo.io/getting-started/installing
 [LTS release]: https://nodejs.org/en/about/releases/
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+
+# License
+
+etcd.io is licensed under an [Apache 2.0 license](./LICENSE).
+
+The etcd documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](./LICENSE-docs). 
