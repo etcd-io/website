@@ -17,7 +17,7 @@ etcd has a relatively small memory footprint but its performance still depends o
 
 ## Disks
 
-Fast disks are the most critical factor for etcd deployment performance and stability. 
+Fast disks are the most critical factor for etcd deployment performance and stability.
 
 A slow disk will increase etcd request latency and potentially hurt cluster stability. Since etcd’s consensus protocol depends on persistently storing metadata to a log, a majority of etcd cluster members must write every request down to disk. Additionally, etcd will also incrementally checkpoint its state to disk so it can truncate this log. If these writes take too long, heartbeats may time out and trigger an election, undermining the stability of the cluster. In general, to tell whether a disk is fast enough for etcd, a benchmarking tool such as [fio][fio] can be used. Read [here][fio-blog-post] for an example.
 
@@ -91,6 +91,6 @@ Example application workload: A 3,000 node Kubernetes cluster
 
 [diskbench]: https://github.com/ongardie/diskbenchmark
 [fio]: https://github.com/axboe/fio
-[fio-blog-post]: https://www.ibm.com/blogs/bluemix/2019/04/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd/
+[fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
 [tuning]: ../tuning.md
 
