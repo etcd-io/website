@@ -20,20 +20,20 @@ monospaceFont      = "Fira Mono"
 favicon            = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
 googleAnalyticsId  = "UA-82811140-29"
 
-project            = """
-**etcd** is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node.
+项目            = """
+**etcd** 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。它可以优雅地处理网络分区期间的领导者选举，即使在领导者节点中也可以容忍机器故障。
 
-Applications of any complexity, from a simple web app to [Kubernetes](https://kubernetes.io), can read data from and write data into etcd.
+ 从简单应用程序到[Kubernetes](https://kubernetes.io)到任何复杂性的应用程序都可以从etcd中读写数据。
 
-Your applications can read from and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.
+您的应用程序可以读取和写入etcd中的数据。一个简单的用例是将数据库连接详细信息或功能标志存储在etcd中作为键值对。可以观察这些值，使您的应用在更改时可以重新配置自己。高级用途利用etcd的一致性保证来实施数据库领导者选举或跨一组工作人员执行分布式锁定。
 
-etcd is open source, available [on GitHub](https://github.com/etcd-io/etcd), and backed by the [Cloud Native Computing Foundation](https://cncf.io).
+etcd是开源的，可在[on GitHub](https://github.com/etcd-io/etcd)上获得，并得到 [Cloud Native Computing Foundation](https://cncf.io)的支持。
 """
 
-overview           = """
-etcd is written in [Go](https://golang.org), which has excellent cross-platform support, small binaries and a great community behind it. Communication between etcd machines is handled via the Raft consensus algorithm.
+技术概述           = """
+etcd 是试用[Go](https://golang.org)语言编写的，它具有出色的跨平台支持，小的二进制文件和强大的社区。etcd机器之间的通信通过Raft共识算法处理。
 
-Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.
+etcd领导者的延迟是要跟踪的最重要的指标，并且内置仪表板具有专用于此的视图。在我们的测试中，严重的延迟会在群集内引入不稳定因素，因为Raft的速度仅与大多数机器中最慢的机器一样快。您可以通过适当地调整群集来缓解此问题。etcd已在具有高度可变网络的云提供商上进行了预调。
 """
 
 [markup.goldmark.renderer]
@@ -54,34 +54,34 @@ navbar = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.pn
 github = "https://github.com/etcd-io/etcd"
 
 [[params.features.primary]]
-title = "Simple interface"
+title = "接口简单"
 svg = "interface"
-description = "Read and write values using standard HTTP tools, such as curl"
+description = "使用标准的HTTP工具（例如curl）读取和写入值"
 
 [[params.features.primary]]
-title = "Key-value storage"
+title = "键值存储"
 svg = "kv"
-description = "Store data in hierarchically organized directories, as in a standard filesystem"
+description = "将数据存储在分层组织的目录中，例如在标准文件系统中"
 
 [[params.features.primary]]
-title = "Watch for changes"
+title = "监听变化"
 svg = "watch"
-description = "Watch specific keys or directories for changes and react to changes in values"
+description = "监视特定的键或目录以进行更改，并对值的更改做出反应"
 
 [[params.features.secondary]]
-text = "Optional SSL client certificate authentication"
+text = "可选的SSL客户端证书认证"
 icon = "lock"
 
 [[params.features.secondary]]
-text = "Benchmarked at 1000s of writes/s per instance"
+text = "基准为每个实例1000次写入/秒"
 icon = "chart-bar"
 
 [[params.features.secondary]]
-text = "Optional TTLs for keys expiration"
+text = "可选的TTL用于密钥过期"
 icon = "clock"
 
 [[params.features.secondary]]
-text = "Properly distributed via Raft protocol"
+text = "通过Raft协议正确分发"
 icon = "arrows-alt"
 
 [[params.fonts]]
@@ -95,37 +95,37 @@ sizes = [300,400,600,700]
 [[params.adopters]]
 logo = "http://img.etcd.cn/artwork/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
 link = "https://kubernetes.io"
-description = "etcd is the backend for service discovery and stores cluster state and configuration"
+description = "etcd是服务发现的后端，并存储集群状态和配置"
 
 [[params.adopters]]
 logo = "http://img.etcd.cn/artwork/projects/rook/horizontal/color/rook-horizontal-color.png"
 link = "https://rook.io"
-description = "etcd serves as the orchestration engine for Rook"
+description = "etcd充当Rook的编排引擎"
 
 [[params.adopters]]
 name = "Patroni"
 link = "https://github.com/zalando/patroni"
-description = "A template for PostgreSQL HA with ZooKeeper, etcd, or Consul"
+description = "带有ZooKeeper，etcd或Consul的PostgreSQL HA的模板"
 
 [[params.adopters]]
 name = "Trillian"
 link = "https://github.com/google/trillian/"
-description = "A transparent, highly scalable and cryptographically verifiable data store, created by Google"
+description = "由Google创建的透明，高度可扩展且可加密验证的数据存储"
 
 [[params.adopters]]
 logo = "http://img.etcd.cn/artwork/projects/coredns/horizontal/color/coredns-horizontal-color.png"
 link = "https://coredns.io"
-description = "CoreDNS uses etcd as an optional backend"
+description = "CoreDNS使用etcd作为可选后端"
 
 [[params.adopters]]
 logo = "/img/m3-logo.png"
 link = "https://eng.uber.com/m3/"
-description = "M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions"
+description = "由Uber创建的Prometheus大型指标平台M3使用etcd进行规则存储和其他功能"
 
 [[params.adopters]]
 link = "https://openstack.org"
 logo = "/img/openstack-logo.svg"
-description = "OpenStack supports etcd as an optional provider of configuration storage, distributed key locking, and more"
+description = "OpenStack支持etcd作为可选的配置存储，分布式键锁定，等等"
 
 [mediaTypes."text/netlify"]
 delimiter = ""
