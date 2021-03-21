@@ -17,7 +17,7 @@ description        = "分布式，可靠的键值存储，用于分布式系统�
 fontAwesomeVersion = "5.6.1"
 sansSerifFont      = "Source Sans Pro"
 monospaceFont      = "Fira Mono"
-favicon            = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/icon/color/etcd-icon-color.png"
+favicon            = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
 googleAnalyticsId  = "UA-82811140-29"
 
 project            = """
@@ -44,11 +44,11 @@ latest = "v3.4.0"
 all    = ["current", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2"]
 
 [params.logos]
-hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"
-cncf   = "https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png"
-footer = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/icon/color/etcd-icon-color.png"
-panel  = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/stacked/color/etcd-stacked-color.png"
-navbar = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/icon/color/etcd-icon-color.png"
+hero   = "http://img.etcd.cn/artwork/projects/etcd/horizontal/white/etcd-horizontal-white.png"
+cncf   = "http://img.etcd.cn/artwork/other/cncf/horizontal/color/cncf-color.png"
+footer = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
+panel  = "http://img.etcd.cn/artwork/projects/etcd/stacked/color/etcd-stacked-color.png"
+navbar = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
 
 [params.social]
 github = "https://github.com/etcd-io/etcd"
@@ -93,12 +93,12 @@ name = "Fira Mono"
 sizes = [300,400,600,700]
 
 [[params.adopters]]
-logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
+logo = "http://img.etcd.cn/artwork/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
 link = "https://kubernetes.io"
 description = "etcd is the backend for service discovery and stores cluster state and configuration"
 
 [[params.adopters]]
-logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/rook/horizontal/color/rook-horizontal-color.png"
+logo = "http://img.etcd.cn/artwork/projects/rook/horizontal/color/rook-horizontal-color.png"
 link = "https://rook.io"
 description = "etcd serves as the orchestration engine for Rook"
 
@@ -113,7 +113,7 @@ link = "https://github.com/google/trillian/"
 description = "A transparent, highly scalable and cryptographically verifiable data store, created by Google"
 
 [[params.adopters]]
-logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/coredns/horizontal/color/coredns-horizontal-color.png"
+logo = "http://img.etcd.cn/artwork/projects/coredns/horizontal/color/coredns-horizontal-color.png"
 link = "https://coredns.io"
 description = "CoreDNS uses etcd as an optional backend"
 
