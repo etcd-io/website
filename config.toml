@@ -13,7 +13,7 @@ ignoreFiles = [
 ]
 
 [params]
-description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
+description        = "分布式，可靠的键值存储，用于分布式系统中最关键的数据"
 fontAwesomeVersion = "5.6.1"
 sansSerifFont      = "Source Sans Pro"
 monospaceFont      = "Fira Mono"
