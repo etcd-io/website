@@ -1,4 +1,4 @@
 ---
-title: The etcd blog
-description: News, updates, release announcements, and more
+title: etcd博客
+description: 新增, 更新, 发布公告, 等等
 ---
