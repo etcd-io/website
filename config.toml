@@ -3,7 +3,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 languageCode = "en-us"
 pygmentsCodeFences = true
 pygmentsStyle = "fruity"
-baseURL = "http://etcd.cn"
+baseURL = "https://etcd.cn"
 enableRobotsTxt = true
 ignoreFiles = [
   "content/docs/v*/README.md",
@@ -17,7 +17,7 @@ description        = "分布式，可靠的键值存储，用于分布式系统�
 fontAwesomeVersion = "5.6.1"
 sansSerifFont      = "Source Sans Pro"
 monospaceFont      = "Fira Mono"
-favicon            = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
+favicon            = "https://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
 googleAnalyticsId  = "UA-82811140-29"
 
 项目            = """
@@ -44,11 +44,11 @@ latest = "v3.4.0"
 all    = ["current", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2"]
 
 [params.logos]
-hero   = "http://img.etcd.cn/artwork/projects/etcd/horizontal/white/etcd-horizontal-white.png"
-cncf   = "http://img.etcd.cn/artwork/other/cncf/horizontal/color/cncf-color.png"
-footer = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
-panel  = "http://img.etcd.cn/artwork/projects/etcd/stacked/color/etcd-stacked-color.png"
-navbar = "http://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
+hero   = "https://img.etcd.cn/artwork/projects/etcd/horizontal/white/etcd-horizontal-white.png"
+cncf   = "https://img.etcd.cn/artwork/other/cncf/horizontal/color/cncf-color.png"
+footer = "https://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
+panel  = "https://img.etcd.cn/artwork/projects/etcd/stacked/color/etcd-stacked-color.png"
+navbar = "https://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
 
 [params.social]
 github = "https://github.com/etcd-io/etcd"
@@ -93,12 +93,12 @@ name = "Fira Mono"
 sizes = [300,400,600,700]
 
 [[params.adopters]]
-logo = "http://img.etcd.cn/artwork/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
+logo = "https://img.etcd.cn/artwork/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
 link = "https://kubernetes.io"
 description = "etcd是服务发现的后端，并存储集群状态和配置"
 
 [[params.adopters]]
-logo = "http://img.etcd.cn/artwork/projects/rook/horizontal/color/rook-horizontal-color.png"
+logo = "https://img.etcd.cn/artwork/projects/rook/horizontal/color/rook-horizontal-color.png"
 link = "https://rook.io"
 description = "etcd充当Rook的编排引擎"
 
@@ -113,7 +113,7 @@ link = "https://github.com/google/trillian/"
 description = "由Google创建的透明，高度可扩展且可加密验证的数据存储"
 
 [[params.adopters]]
-logo = "http://img.etcd.cn/artwork/projects/coredns/horizontal/color/coredns-horizontal-color.png"
+logo = "https://img.etcd.cn/artwork/projects/coredns/horizontal/color/coredns-horizontal-color.png"
 link = "https://coredns.io"
 description = "CoreDNS使用etcd作为可选后端"
 
