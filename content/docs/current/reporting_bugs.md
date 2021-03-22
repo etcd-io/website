@@ -1,5 +1,5 @@
 ---
-title: Reporting bugs
+title: 报告错误
 weight: 1400
 description: How to file issue reports for the etcd project
 ---

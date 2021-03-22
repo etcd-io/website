@@ -1,7 +1,6 @@
 ---
-title: The etcd documentation
+title: etcd 文档
 ---
 
-Welcome to the docs for etcd! The following versions are available:
-
+欢迎来到 etcd 的文档！以下版本可用:
 {{< versions >}}

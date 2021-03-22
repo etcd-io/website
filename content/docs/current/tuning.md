@@ -1,7 +1,7 @@
 ---
-title: Tuning
+title: 心跳间隔和选举超时时间设置
 weight: 1450
-description: When to update the heartbeat interval and election timeout settings
+description: 何时更新心跳间隔和选举超时设置
 ---
 
 The default settings in etcd should work well for installations on a local network where the average network latency is low. However, when using etcd across multiple data centers or over networks with high latency, the heartbeat interval and election timeout settings may need tuning.

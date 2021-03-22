@@ -1,7 +1,7 @@
 ---
-title: Branch management
+title: 分支管理
 weight: 1250
-description: etcd branch management
+description: etcd 分支管理
 ---
 
 ## Guide

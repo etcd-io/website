@@ -18,7 +18,7 @@ fontAwesomeVersion = "5.6.1"
 sansSerifFont      = "Source Sans Pro"
 monospaceFont      = "Fira Mono"
 favicon            = "https://img.etcd.cn/artwork/projects/etcd/icon/color/etcd-icon-color.png"
-googleAnalyticsId  = "UA-82811140-29"
+googleAnalyticsId  = ""
 
 project            = """
 **etcd** 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。它可以优雅地处理网络分区期间的领导者选举，即使在领导者节点中也可以容忍机器故障。
@@ -31,7 +31,7 @@ etcd是开源的，可在[on GitHub](https://github.com/etcd-io/etcd)上获得�
 """
 
 overview           = """
-etcd 是试用[Go](https://golang.org)语言编写的，它具有出色的跨平台支持，小的二进制文件和强大的社区。etcd机器之间的通信通过Raft共识算法处理。
+etcd 是用[Go](https://golang.org)语言编写的，它具有出色的跨平台支持，小的二进制文件和强大的社区。etcd机器之间的通信通过Raft共识算法处理。
 
 etcd领导者的延迟是要跟踪的最重要的指标，并且内置仪表板具有专用于此的视图。在我们的测试中，严重的延迟会在群集内引入不稳定因素，因为Raft的速度仅与大多数机器中最慢的机器一样快。您可以通过适当地调整群集来缓解此问题。etcd已在具有高度可变网络的云提供商上进行了预调。
 """

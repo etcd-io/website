@@ -1,5 +1,5 @@
 ---
-title: Download and build
+title: 下载并构建
 weight: 1150
 description: Instructions for downloading and building different versions of etcd
 ---

@@ -1,5 +1,5 @@
 ---
-title: Metrics
+title: 指标
 weight: 1350
 description: Metrics for real-time monitoring and debugging
 ---
