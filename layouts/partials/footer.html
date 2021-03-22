@@ -2,12 +2,18 @@
 {{ $year := now.Year }}
 <footer class="footer has-background-dark has-text-centered">
     <img class="is-footer-logo" src="{{ $logo }}" alt="etcd footer logo">
-
-  <p class="is-size-4 is-size-5-mobile has-text-white-bis has-text-weight-light">
-    &copy; etcd 作者 {{ $year }} | 基于CC-BY-4.0分发的文档| <a class="has-text-weight-light has-text-white-bis" href="https://beian.miit.gov.cn/">粤ICP备19055518号</a>
-  </p>
-
-  <p class="is-size-5 is-size-6-mobile has-text-white-bis has-text-weight-light">
+  
+    <p class="is-size-5 is-size-6-mobile has-text-white-bis has-text-weight-light">
     &copy; {{ $year }} Linux基金会。版权所有。 Linux基金会已注册商标并使用商标。<br />有关Linux基金会的商标列表，请参见我们的商标使用页面。
   </p>
+
+  <p class="is-size-4 is-size-5-mobile has-text-white-bis has-text-weight-light">
+    &copy; etcd 作者 {{ $year }} 基于CC-BY-4.0分发的文档<br/>
+    版权声明：本文为etcd.io网站的原创文章，遵循CC-BY-4.0版权协议，转载请附上原文出处链接及本声明。<br/>
+    原文链接：<a class="has-text-weight-light has-text-white-bis" href="https://etcd.io" target="_blank">https://etcd.io</a>
+  </p>
+   <p class="is-size-4 is-size-5-mobile has-text-white-bis has-text-weight-light">
+   <a class="has-text-weight-light has-text-white-bis" href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19055518号</a>
+  </p>
+
 </footer>
