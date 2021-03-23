@@ -119,24 +119,6 @@ description        = "A distributed, reliable key-value store for the most criti
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
-# Menu title if your navbar has a versions selector to access old versions of your site.
-# This menu appears only if you have at least one [params.versions] set.
-version_menu = "Versions"
-
-# Flag used in the "version-banner" partial to decide whether to display a 
-# banner on every page indicating that this is an archived version of the docs.
-# Set this flag to "true" if you want to display the banner.
-# archived_version = false
-
-# The version number for the version of the docs represented in this doc set.
-# Used in the "version-banner" partial to display a version number for the 
-# current doc set.
-# version = "v3.4.0"
-
-# A link to latest version of the docs. Used in the "version-banner" partial to
-# point people to the main doc site.
-# url_latest_version = "https://example.com"
-
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://github.com/etcd-io/website"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
@@ -161,24 +143,11 @@ offlineSearch = false
 # Enable syntax highlighting and copy buttons on code blocks with Prism
 prism_syntax_highlighting = false
 
-
-# project            = """
-# **etcd** is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node.
-
-# Applications of any complexity, from a simple web app to [Kubernetes](https://kubernetes.io), can read data from and write data into etcd.
-
-# Your applications can read from and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.
-
-# etcd is open source, available [on GitHub](https://github.com/etcd-io/etcd), and backed by the [Cloud Native Computing Foundation](https://cncf.io).
-# """
-
-# overview           = """
-# etcd is written in [Go](https://golang.org), which has excellent cross-platform support, small binaries and a great community behind it. Communication between etcd machines is handled via the Raft consensus algorithm.
-
-# Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.
-# """
-
 # Versions
+
+# Menu title if your navbar has a versions selector to access old versions of your site.
+# This menu appears only if you have at least one [params.versions] set.
+version_menu = "Versions"
 
 [params.versions]
 latest = "v3.4.0"
@@ -250,10 +219,6 @@ enable = false
 # [markup.goldmark.renderer]
 # unsafe = true
 
-# [params.versions]
-# latest = "v3.4.0"
-# all    = ["current", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2"]
-
 # [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"
 # cncf   = "https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png"
@@ -264,80 +229,6 @@ hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/ho
 # [params.social]
 # github = "https://github.com/etcd-io/etcd"
 
-# [[params.features.primary]]
-# title = "Simple interface"
-# svg = "interface"
-# description = "Read and write values using standard HTTP tools, such as curl"
-
-# [[params.features.primary]]
-# title = "Key-value storage"
-# svg = "kv"
-# description = "Store data in hierarchically organized directories, as in a standard filesystem"
-
-# [[params.features.primary]]
-# title = "Watch for changes"
-# svg = "watch"
-# description = "Watch specific keys or directories for changes and react to changes in values"
-
-# [[params.features.secondary]]
-# text = "Optional SSL client certificate authentication"
-# icon = "lock"
-
-# [[params.features.secondary]]
-# text = "Benchmarked at 1000s of writes/s per instance"
-# icon = "chart-bar"
-
-# [[params.features.secondary]]
-# text = "Optional TTLs for keys expiration"
-# icon = "clock"
-
-# [[params.features.secondary]]
-# text = "Properly distributed via Raft protocol"
-# icon = "arrows-alt"
-
-# [[params.fonts]]
-# name = "Source Sans Pro"
-# sizes = [300,400,600,700]
-
-# [[params.fonts]]
-# name = "Fira Mono"
-# sizes = [300,400,600,700]
-
-# [[params.adopters]]
-# logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png"
-# link = "https://kubernetes.io"
-# description = "etcd is the backend for service discovery and stores cluster state and configuration"
-
-# [[params.adopters]]
-# logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/rook/horizontal/color/rook-horizontal-color.png"
-# link = "https://rook.io"
-# description = "etcd serves as the orchestration engine for Rook"
-
-# [[params.adopters]]
-# name = "Patroni"
-# link = "https://github.com/zalando/patroni"
-# description = "A template for PostgreSQL HA with ZooKeeper, etcd, or Consul"
-
-# [[params.adopters]]
-# name = "Trillian"
-# link = "https://github.com/google/trillian/"
-# description = "A transparent, highly scalable and cryptographically verifiable data store, created by Google"
-
-# [[params.adopters]]
-# logo = "https://raw.githubusercontent.com/cncf/artwork/master/projects/coredns/horizontal/color/coredns-horizontal-color.png"
-# link = "https://coredns.io"
-# description = "CoreDNS uses etcd as an optional backend"
-
-# [[params.adopters]]
-# logo = "/img/m3-logo.png"
-# link = "https://eng.uber.com/m3/"
-# description = "M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions"
-
-# [[params.adopters]]
-# link = "https://openstack.org"
-# logo = "/img/openstack-logo.svg"
-# description = "OpenStack supports etcd as an optional provider of configuration storage, distributed key locking, and more"
-
 # [mediaTypes."text/netlify"]
 # delimiter = ""
 
@@ -347,3 +238,4 @@ hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/ho
 
 # [outputs]
 # home = ["HTML", "REDIRECTS"]
+

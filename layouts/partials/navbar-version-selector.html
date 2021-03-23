@@ -1,4 +1,4 @@
-{{ if eq "docs" (index (split .Page.RelPermalink "/") 1) }}
+{{ if ((eq "docs" (index (split .Page.RelPermalink "/") 1)) | or (eq "docs" (index (split .Page.RelPermalink "/") 2))) }}
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   {{ .Site.Params.version_menu }}
 </a>
