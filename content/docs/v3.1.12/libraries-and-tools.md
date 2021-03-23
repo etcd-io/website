@@ -125,6 +125,7 @@ title: Libraries and tools
 
 **Projects using etcd**
 
+- [apache/apisix](https://github.com/apache/apisix) - A dynamic, real-time, high-performance API gateway
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [blox/blox](https://github.com/blox/blox) - a collection of open source projects for container management and orchestration with AWS ECS
 - [calavera/active-proxy](https://github.com/calavera/active-proxy) - HTTP Proxy configured with etcd

@@ -107,6 +107,7 @@ title: Libraries and Tools
 
 **Projects using etcd**
 
+- [apache/apisix](https://github.com/apache/apisix) - A dynamic, real-time, high-performance API gateway
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [calavera/active-proxy](https://github.com/calavera/active-proxy) - HTTP Proxy configured with etcd
 - [derekchiang/etcdplus](https://github.com/derekchiang/etcdplus) - A set of distributed synchronization primitives built upon etcd
