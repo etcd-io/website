@@ -4,7 +4,6 @@ command = "git submodule update --init --recursive --depth 1 && make production-
 
 [build.environment]
 HUGO_VERSION = "0.81.0"
-NODE_VERSION = "10.19.0"
 
 [context.deploy-preview]
 command = "git submodule update --init --recursive --depth 1 && make preview-build"
