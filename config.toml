@@ -229,13 +229,12 @@ hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/ho
 # [params.social]
 # github = "https://github.com/etcd-io/etcd"
 
-# [mediaTypes."text/netlify"]
-# delimiter = ""
+[mediaTypes."text/netlify"]
+delimiter = ""
 
-# [outputFormats.REDIRECTS]
-# mediaType = "text/netlify"
-# baseName = "_redirects"
+[outputFormats.REDIRECTS]
+mediaType = "text/netlify"
+baseName = "_redirects"
 
-# [outputs]
-# home = ["HTML", "REDIRECTS"]
-
+[outputs]
+home = ["HTML", "REDIRECTS"]
