@@ -33,8 +33,3 @@ to = "/docs/v3.4.0/reporting_bugs"
 status = 301
 force = false
 
-[[redirects]]
-from = "/docs/v2/*"
-to = "/docs/v2.3/:splat"
-status = 301
-force = true
