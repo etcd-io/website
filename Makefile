@@ -1,27 +1,42 @@
+# Args based on grcp/grpc.io's Makefile
+# https://github.com/grpc/grpc.io/blob/main/Makefile
+
+DRAFT_ARGS = --buildDrafts --buildFuture
+BUILD_ARGS = --minify
 DOCKER_IMG = klakegg/hugo:0.81.0-ext-asciidoctor
-SERVER     = server --buildDrafts --buildFuture --disableFastRender --ignoreCache
+ifeq (draft, $(or $(findstring draft,$(HEAD)),$(findstring draft,$(BRANCH))))
+BUILD_ARGS += $(DRAFT_ARGS)
+endif
+
+clean:
+	rm -rf public/* resources
 
 setup:
 	npm install
 
 serve:
-	hugo $(SERVER)
+	@./check_hugo.sh
+	hugo serve
 
-docker-serve:
-	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) $(SERVER)
+serve-drafts:
+	@./check_hugo.sh
+	hugo serve $(DRAFT_ARGS)
 
-production-build:
+serve-production: clean
+	@./check_hugo.sh
+	hugo serve -e production --minify
+
+production-build: clean
+	@./check_hugo.sh
 	hugo --minify
 
-preview-build:
-	hugo \
-		--baseURL $(DEPLOY_PRIME_URL) \
-		--buildDrafts \
-		--buildFuture \
-		--minify
+preview-build: clean
+	@./check_hugo.sh
+	hugo --baseURL $(DEPLOY_PRIME_URL) \
+		-e development $(BUILD_ARGS)
 
-clean:
-	rm -rf public
+docker-serve:
+	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) server $(DRAFT_ARGS)
 
 link-checker-setup:
 	# https://wjdp.uk/work/htmltest/
@@ -31,4 +46,10 @@ run-link-checker:
 	bin/htmltest
 
 check-links: clean production-build link-checker-setup run-link-checker
+
+# Adding additional link checks based on https://github.com/grpc/grpc.io/blob/main/Makefile
+check-internal-links: production-build link-checker-setup run-link-checker
+
+check-all-links: production-build link-checker-setup
+	bin/htmltest --conf .htmltest.external.yml
 
