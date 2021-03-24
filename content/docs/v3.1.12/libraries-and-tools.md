@@ -20,7 +20,7 @@ title: Libraries and tools
 
 **Go libraries**
 
-- [etcd/clientv3](https://github.com/coreos/etcd/blob/master/clientv3) - the officially maintained Go client for v3
+- [etcd/clientv3](https://github.com/etcd-io/etcd/blob/master/client/v3) - the officially maintained Go client for v3
 - [etcd/client](https://github.com/coreos/etcd/blob/master/client) - the officially maintained Go client for v2
 - [go-etcd](https://github.com/coreos/go-etcd) - the deprecated official client. May be useful for older (<2.0.0) versions of etcd.
 
@@ -88,7 +88,7 @@ title: Libraries and tools
 **PHP Libraries**
 
 - [linkorb/etcd-php](https://github.com/linkorb/etcd-php)
-- [activecollab/etcd](https://github.com/activecollab/etcd) 
+- [activecollab/etcd](https://github.com/activecollab/etcd)
 
 **Haskell libraries**
 
@@ -128,7 +128,7 @@ title: Libraries and tools
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [blox/blox](https://github.com/blox/blox) - a collection of open source projects for container management and orchestration with AWS ECS
 - [calavera/active-proxy](https://github.com/calavera/active-proxy) - HTTP Proxy configured with etcd
-- [chain/chain](https://github.com/chain/chain) - software designed to operate and connect to highly scalable permissioned blockchain networks 
+- [chain/chain](https://github.com/chain/chain) - software designed to operate and connect to highly scalable permissioned blockchain networks
 - [derekchiang/etcdplus](https://github.com/derekchiang/etcdplus) - A set of distributed synchronization primitives built upon etcd
 - [go-discover](https://github.com/flynn/go-discover) - service discovery in Go
 - [gleicon/goreman](https://github.com/gleicon/goreman/tree/etcd) - Branch of the Go Foreman clone with etcd support

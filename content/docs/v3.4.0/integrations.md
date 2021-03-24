@@ -18,7 +18,7 @@ title: Libraries and tools
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
 - [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free ETCD 3.x GUI & client tool. Available for Windows, Linux and Mac.
-- [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) -  Utility to periodic and incrementally backup and restore the etcd. 
+- [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) -  Utility to periodic and incrementally backup and restore the etcd.
 
 **Go libraries**
 
