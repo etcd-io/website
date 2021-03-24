@@ -1,13 +1,46 @@
-{{ $logo := .Site.Params.logos.footer }}
-{{ $year := now.Year }}
-<footer class="footer has-background-dark has-text-centered">
-    <img class="is-footer-logo" src="{{ $logo }}" alt="etcd footer logo">
-
-  <p class="is-size-4 is-size-5-mobile has-text-white-bis has-text-weight-light">
-    &copy; etcd Authors {{ $year }} | Documentation Distributed under CC-BY-4.0
-  </p>
-
-  <p class="is-size-5 is-size-6-mobile has-text-white-bis has-text-weight-light">
-    &copy; {{ $year }} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks.<br />For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
-  </p>
+{{ $links := .Site.Params.links }}
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        {{ with $links }}
+        {{ with index . "user"}}
+        {{ template "footer-links-block"  . }}
+        {{ end }}
+        {{ end }}
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        {{ with $links }}
+        {{ with index . "developer"}}
+        {{ template "footer-links-block"  . }}
+        {{ end }}
+        {{ end }}
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        {{ with .Site.Params.copyright }}<small class="text-white">&copy; {{ now.Year}} {{ . }} {{ T "footer_all_rights_reserved" }}</small>{{ end }}
+        {{ with .Site.Params.privacy_policy }}<small class="ml-1"><a href="{{ . }}" target="_blank">{{ T "footer_privacy_policy" }}</a></small>{{ end }}
+        {{ if not .Site.Params.ui.footer_about_disable }}
+        {{ with .Site.GetPage "about" }}<p class="mt-2"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <!-- TODO: Create a LICENSE for the website repo -->
+      {{ with .Site.Params.copyright_etcd }}<small class="text-white">&copy; {{ now.Year }} The etcd Authors | Documentation Distributed under <a href="#" class="light-text">CC BY 4.0</a></small><br />{{ end }}
+      {{ with .Site.Params.copyright_linux }}<small class="text-white">Copyright &copy; {{ now.Year }} The Linux Foundation &reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>.</small>{{ end }}
+    </div>
+  </div>
 </footer>
+{{ define "footer-links-block" }}
+<ul class="list-inline mb-0">
+  {{ range . }}
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="{{ .name }}" aria-label="{{ .name }}">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="{{ .url }}">
+      <i class="{{ .icon }}"></i>
+    </a>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
