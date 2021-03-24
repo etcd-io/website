@@ -1,4 +1,5 @@
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
+IgnoreInternalEmptyHash: true
 CheckExternal: false
