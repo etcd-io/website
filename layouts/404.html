@@ -1,46 +1,11 @@
-{{ $img    := "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/stacked/color/etcd-stacked-color.png" }}
-{{ $latest := site.Params.versions.latest }}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>etcd | 404 not found</title>
-    {{ partial "css.html" . }}
-  </head>
-  <body>
-    <section class="hero is-large">
-      <div class="container has-text-centered">
-        <div class="hero-body">
-          <img src="{{ $img }}" width="150px">
+{{ define "main"}}
+    <main id="main">
+      <div>
+       <h1 id="title">Not found</h1>
+       <p>Oops! This page doesn't exist. Try going back to our <a href="{{ "/" | relURL }}">home page</a>.</p>
 
-          <hr />
-
-          <p class="title is-size-1 is-size-2-mobile has-text-weight-bold is-spaced">
-            404 not found
-          </p>
-
-          <p class="subtitle">
-            We're sorry, but this page could not be found. Perhaps you were looking for:
-          </p>
-
-          <ul>
-            <li>
-              <a class="is-size-5" href="/">
-                The etcd main page
-              </a>
-            </li>
-            <li>
-              <a class="is-size-5" href="/docs/latest" data-proofer-ignore>
-                The etcd documentation
-              </a>
-            </li>
-            <li>
-              <a class="is-size-5" href="https://github.com/etcd-io/etcd">
-                The etcd GitHub repo
-              </a>
-            </li>
-          </ul>
-        </div>
+       <p>You can learn how to make a 404 page like this in <a href="https://gohugo.io/templates/404/">Custom 404 Pages</a>.</p>      
       </div>
-    </section>
-  </body>
-</html>
+    </main>
+{{ end }}
+
