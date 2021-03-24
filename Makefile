@@ -25,11 +25,11 @@ serve-production: clean
 
 production-build: clean
 	@./check_hugo.sh
-	npm ci
+	npm install
 	hugo --minify
 
 preview-build: clean
-	npm ci
+	npm install
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--buildDrafts \
