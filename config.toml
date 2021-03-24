@@ -41,7 +41,7 @@ unsafe = true
 
 [params.versions]
 latest = "v3.4.0"
-all    = ["current", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1.12", "v2.3"]
+all    = ["current", "v3.4.0", "v3.3.13", "v3.3.12", "v3.2.17", "v3.1", "v2.3"]
 
 [params.logos]
 hero   = "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png"

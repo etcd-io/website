@@ -73,7 +73,7 @@
               </span>
               {{ end }}
             </a>
-            {{ else if ne "/v2.3/" $new_version }}
+            {{ else if ((ne "/v2.3/" $new_version) | and (ne "/v3.1/" $new_version)) }}
             <a class="button is-primary is-outlined has-text-weight-bold"
                href="{{ index (findRE `^(.*?)\/v\d+.\d+.\d+\/` (replace $here $original_version $new_version | relURL)) 0 }}">
               <span>
