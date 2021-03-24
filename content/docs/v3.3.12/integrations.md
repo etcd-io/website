@@ -147,7 +147,7 @@ weight: 2
 
 **Projects using etcd**
 
-- [etcd Raft users](../raft/README.md#notable-users) - projects using etcd's raft library implementation.
+- [etcd Raft users](https://github.com/etcd-io/etcd/blob/v3.3.12/raft/README.md#notable-users) - projects using etcd's raft library implementation.
 - [apache/celix](https://github.com/apache/celix) - an implementation of the OSGi specification adapted to C and C++
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [blox/blox](https://github.com/blox/blox) - a collection of open source projects for container management and orchestration with AWS ECS
