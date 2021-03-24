@@ -8,10 +8,14 @@ This repository houses all of the assets used to build the etcd docs and website
 
 In order to run the site locally, you need to have the following installed:
 
-* The [Yarn](https://yarnpkg.com/en/) package manager
-* The [Hugo](https://gohugo.io) static site generator. Check the [`netlify.toml`](./netlify.toml) configuration file to see which version of Hugo you need to install.
-
-    > **Note**: You need to install the "extended" version of Hugo with support for [Sass](https://sass-lang.com/).
+- **[Hugo, extended edition][hugo-install]**; match the version specified in
+  [netlify.toml](netlify.toml)
+- **Node**, the latest [LTS release][]. Like Netlify, we use **[nvm][]**, the
+  Node Version Manager, to install and manage Node versions:
+  ```console
+  $ nvm install --lts
+  $ nvm use --lts
+  ```
 
 ### Setup
 
@@ -39,7 +43,7 @@ make docker-serve
 
 ## Publishing the site
 
-The site is published automatically by [Netlify](https://netlify.com). Any time 
+The site is published automatically by [Netlify](https://netlify.com). Any time
 changes are pushed to the `master` branch, the site is rebuilt and redeployed.
 
 ### Preview builds
@@ -65,3 +69,7 @@ In order to add documentation for a version of etcd, you need to:
 ## Troubleshooting
 
 If you have an issue with updating the documentation, file an issue against this repo and cc [lucperkins](https://github.com/lucperkins).
+
+[hugo-install]: https://gohugo.io/getting-started/installing
+[LTS release]: https://nodejs.org/en/about/releases/
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating

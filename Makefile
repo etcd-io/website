@@ -2,7 +2,7 @@ DOCKER_IMG = klakegg/hugo:0.81.0-ext-asciidoctor
 SERVER     = server --buildDrafts --buildFuture --disableFastRender --ignoreCache
 
 setup:
-	yarn
+	npm install
 
 serve:
 	hugo $(SERVER)
