@@ -1,7 +1,7 @@
 # Args based on grcp/grpc.io's Makefile
 # https://github.com/grpc/grpc.io/blob/main/Makefile
 
-DRAFT_ARGS = --buildDrafts --buildFuture --disableFastRender --ignoreCache
+DRAFT_ARGS = --buildDrafts --buildFuture
 BUILD_ARGS = --minify
 DOCKER_IMG = klakegg/hugo:0.81.0-ext-asciidoctor
 ifeq (draft, $(or $(findstring draft,$(HEAD)),$(findstring draft,$(BRANCH))))
@@ -31,11 +31,9 @@ production-build: clean
 	hugo --minify
 
 preview-build: clean
-	hugo \
-		--baseURL $(DEPLOY_PRIME_URL) \
-		--buildDrafts \
-		--buildFuture \
-		--minify
+	@./check_hugo.sh
+	hugo --baseURL $(DEPLOY_PRIME_URL) \
+		-e development $(BUILD_ARGS)
 
 docker-serve:
 	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) server $(DRAFT_ARGS)
