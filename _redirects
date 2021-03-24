@@ -1,7 +1,0 @@
-###############################################
-# set server-side redirects in this file      #
-# see https://www.netlify.com/docs/redirects/ #
-# test at https://play.netlify.com/redirects  #
-###############################################
-
-/docs/v2/*     /docs/v2.3/:splat 301!
