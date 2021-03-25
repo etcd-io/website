@@ -49,7 +49,8 @@
           {{ if eq "/current/" $new_version }}
           <a class="navbar-item" 
              href="{{ index (findRE `^(.*?)\/current\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-          {{ else if ((ne "/v2.3/" $new_version) | and (ne "/v3.1/" $new_version)) }}
+          {{/* check if we have a old-style long version number */}}
+          {{ else if gt (strings.RuneCount $new_version) 6 }}
           <a class="navbar-item" 
              href="{{ index (findRE `^(.*?)\/v\d+.\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
           {{ else }}
