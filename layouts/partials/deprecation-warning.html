@@ -1,6 +1,6 @@
 <!-- based on https://github.com/kubernetes/website/blob/master/layouts/partials/deprecation-warning.html -->
 
-{{ if and (ne site.Params.versions.latest .CurrentSection.Params.version) (ne "current" .CurrentSection.Params.version) }}
+{{ if and (ne site.Params.versions.latest .CurrentSection.Params.version) (ne "next" .CurrentSection.Params.version) }}
 
 {{ $current_file := .File }}
 
@@ -19,11 +19,11 @@
     {{/* check if the file we are linking to in the other version exists */}}
     {{ if (fileExists $target_file) -}}
     <a href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ site.Params.versions.latest }}</a>, or the
-    <a href="{{ replace $currentUrl $original_version "/current/" | relURL }}">current documentation</a>.
+    <a href="{{ replace $currentUrl $original_version "/next/" | relURL }}">current documentation</a>.
     {{ else }}
     {{/* if not, then link to the top level of that version instead */}}
-    <a href="{{ index (findRE `^(.*?)\/v\d+.\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ site.Params.versions.latest }}</a>, or the
-    <a href="{{ index (findRE `^(.*?)current\/` (replace $currentUrl $original_version "/current/" | relURL)) 0 }}">current documentation</a>.
+    <a href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ site.Params.versions.latest }}</a>, or the
+    <a href="{{ index (findRE `^(.*?)current\/` (replace $currentUrl $original_version "/next/" | relURL)) 0 }}">current documentation</a>.
     {{- end }}
     </p>
   </div>

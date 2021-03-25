@@ -62,7 +62,7 @@
             {{/* if not, then link to the top level of that version instead */}}
             {{ if eq "/next/" $new_version }}
             <a class="button is-primary is-outlined has-text-weight-bold"
-               href="{{ index (findRE `^(.*?)\/current\/` (replace $here $original_version $new_version | relURL)) 0 }}">
+               href="{{ index (findRE `^(.*?)\/next\/` (replace $here $original_version $new_version | relURL)) 0 }}">
               <span>
                 {{ . }}
               </span>

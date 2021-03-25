@@ -48,7 +48,7 @@
           {{/* if not, then link to the top level of that version instead */}}
           {{ if eq "/next/" $new_version }}
           <a class="navbar-item" 
-             href="{{ index (findRE `^(.*?)\/current\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
+             href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
           {{ else }}
           <a class="navbar-item" 
              href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
