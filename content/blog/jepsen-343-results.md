@@ -1,6 +1,5 @@
 ---
 title: Latest Jepsen Results against etcd 3.4.3
-draft: false
 date: 2020-01-30
 authors:
 - name: Xiang Li
