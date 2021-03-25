@@ -114,5 +114,5 @@ Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file 
 [prometheus]: http://prometheus.io/
 [prometheus-getting-started]: http://prometheus.io/docs/introduction/getting_started/
 [prometheus-naming]: http://prometheus.io/docs/practices/naming/
-[v2-http-metrics]: v2/metrics.md#http-requests
+[v2-http-metrics]: /docs/v2.3/metrics/#http-requests
 [go-grpc-prometheus]: https://github.com/grpc-ecosystem/go-grpc-prometheus
