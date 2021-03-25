@@ -42,7 +42,9 @@ The intended cluster workload should dictate the cluster design. A configuration
 
 Instance availability on AWS is ultimately determined by the Amazon EC2 Region Service Level Agreement ([SLA](https://aws.amazon.com/ec2/sla/)) which is the policy by which Amazon describes their precise definition of a regional outage.
 
-In the context of an etcd cluster this means a cluster must contain a minimum of three members where EC2 instances are spread across at least two AZs in order for an etcd cluster to be considered highly available at a Regional level.
+An AWS region contains multiple availability zones (AZs). For example, the region US-west-2 includes the availability zones US-west-2a, US-west-2b, and similar. 
+
+An etcd cluster must contain **at minimum** three EC2 instances are spread across at least two AZs for the cluster to be highly available within an AWS region. The AWS [EC2 Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones) provides more information on availability zones and associated EC2 instances.
 
 For most use cases the additional latency associated with a cluster spanning across Availability Zones will introduce a negligible performance impact.
 
