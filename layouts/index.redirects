@@ -5,3 +5,5 @@
 /docs/v2/*    /docs/v2.3/:splat
 /docs/v3.1.12    /docs/v3.1/
 /docs/v3.1.12/*    /docs/v3.1/:splat
+/docs/v3.2.17    /docs/v3.2/
+/docs/v3.2.17/*    /docs/v3.2/:splat
