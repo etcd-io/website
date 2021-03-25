@@ -1,6 +1,9 @@
 {{ $latest := site.Params.versions.latest }}
 /docs/latest     /docs/{{ $latest }}/
 /docs/latest/*     /docs/{{ $latest }}/:splat
+/docs/current     /docs/next/
+/docs/current/*     /docs/next/:splat
+/docs/v2    /docs/v2.3/
 /docs/v2    /docs/v2.3/
 /docs/v2/*    /docs/v2.3/:splat
 /docs/v3.1.12    /docs/v3.1/
@@ -11,3 +14,5 @@
 /docs/v3.3.12/*    /docs/v3.3/:splat
 /docs/v3.3.13    /docs/v3.3/
 /docs/v3.3.13/*    /docs/v3.3/:splat
+/docs/v3.4.0    /docs/v3.4/
+/docs/v3.4.0/*    /docs/v3.4/:splat

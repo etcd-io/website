@@ -114,7 +114,7 @@ Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file 
 
 # Generated list of metrics
 
-{{< metrics-list dir="../content/docs/current/metrics" regexp="." >}}
+{{< metrics-list dir="../content/docs/next/metrics" regexp="." >}}
 
 [prometheus]: https://prometheus.io/
 [prometheus-getting-started]: https://prometheus.io/docs/introduction/getting_started/
