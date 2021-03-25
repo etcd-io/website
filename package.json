@@ -1,8 +1,22 @@
 {
-  "private": true,
+  "scripts": {
+    "build": "hugo --cleanDestinationDir -DFE -e dev",
+    "get-submodules": "git submodule update --init --recursive --depth 1",
+    "prebuild": "./check_hugo.sh",
+    "prepreview-build": "npm run get-submodules && ./check_hugo.sh",
+    "preproduction-build": "npm run get-submodules && ./check_hugo.sh",
+    "preserve": "./check_hugo.sh",
+    "preview-build": "make preview-build",
+    "production-build": "hugo --cleanDestinationDir --minify",
+    "serve": "hugo serve"
+  },
   "devDependencies": {
     "anchorjs": "^0.2.4",
+    "autoprefixer": "^10.2.5",
     "bulma": "^0.7.2",
-    "bulma-dashboard": "^0.1.34"
+    "bulma-dashboard": "^0.1.34",
+    "netlify-cli": "^3.13.7",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1"
   }
 }
