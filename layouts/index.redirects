@@ -4,7 +4,6 @@
 /docs/current     /docs/next/
 /docs/current/*     /docs/next/:splat
 /docs/v2    /docs/v2.3/
-/docs/v2    /docs/v2.3/
 /docs/v2/*    /docs/v2.3/:splat
 /docs/v3.1.12    /docs/v3.1/
 /docs/v3.1.12/*    /docs/v3.1/:splat
