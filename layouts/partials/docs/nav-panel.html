@@ -46,13 +46,9 @@
              href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
           {{ else }}
           {{/* if not, then link to the top level of that version instead */}}
-          {{ if eq "/current/" $new_version }}
+          {{ if eq "/next/" $new_version }}
           <a class="navbar-item" 
-             href="{{ index (findRE `^(.*?)\/current\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-          {{/* check if we have a old-style long version number */}}
-          {{ else if gt (strings.RuneCount $new_version) 6 }}
-          <a class="navbar-item" 
-             href="{{ index (findRE `^(.*?)\/v\d+.\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
+             href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
           {{ else }}
           <a class="navbar-item" 
              href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>

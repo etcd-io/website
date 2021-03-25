@@ -60,23 +60,9 @@
             </a>
             {{ else }}
             {{/* if not, then link to the top level of that version instead */}}
-            {{ if eq "/current/" $new_version }}
+            {{ if eq "/next/" $new_version }}
             <a class="button is-primary is-outlined has-text-weight-bold"
-               href="{{ index (findRE `^(.*?)\/current\/` (replace $here $original_version $new_version | relURL)) 0 }}">
-              <span>
-                {{ . }}
-              </span>
-              {{ if $isLatest }}
-              &nbsp;&nbsp;
-              <span class="tag is-small is-success">
-                latest
-              </span>
-              {{ end }}
-            </a>
-            {{/* check if we have a old-style long version number */}}
-            {{ else if gt (strings.RuneCount $new_version) 6 }}
-            <a class="button is-primary is-outlined has-text-weight-bold"
-               href="{{ index (findRE `^(.*?)\/v\d+.\d+.\d+\/` (replace $here $original_version $new_version | relURL)) 0 }}">
+               href="{{ index (findRE `^(.*?)\/next\/` (replace $here $original_version $new_version | relURL)) 0 }}">
               <span>
                 {{ . }}
               </span>
