@@ -4,19 +4,23 @@ title: Libraries and tools
 
 **Tools**
 
-- [etcdctl](https://github.com/coreos/etcd/tree/master/etcdctl) - A command line client for etcd
-- [etcd-backup](https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
-- [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd.
-- [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
-- [etcddir](https://github.com/rekby/etcddir) - Realtime sync etcd and local directory. Work with windows and linux.
-- [etcd-browser](https://github.com/henszey/etcd-browser) - A web-based key/value editor for etcd using AngularJS
-- [etcd-lock](https://github.com/datawisesystems/etcd-lock) - Master election & distributed r/w lock implementation using etcd - Supports v2
-- [etcd-console](https://github.com/matishsiao/etcd-console) - A web-base key/value editor for etcd using PHP
-- [etcd-viewer](https://github.com/nikfoundas/etcd-viewer) - An etcd key-value store editor/viewer written in Java
-- [etcdtool](https://github.com/mickep76/etcdtool) - Export/Import/Edit etcd directory as JSON/YAML/TOML and Validate directory using JSON schema
-- [etcd-rest](https://github.com/mickep76/etcd-rest) - Create generic REST API in Go using etcd as a backend with validation using JSON schema
-- [etcdsh](https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
-- [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
+- All versions
+
+  - [etcdctl](https://github.com/coreos/etcd/tree/master/etcdctl) - A command line client for etcd
+
+- V3+
+
+  - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
+
+- V2 only
+   - [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd. Requires to be installed on the etcd instance.
+   - [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
+   - [etcddir](https://github.com/rekby/etcddir) - Realtime sync etcd and local directory. Work with windows and linux.
+   - [etcd-browser](https://github.com/henszey/etcd-browser) - A web-based key/value editor for etcd using AngularJS.
+   - [etcd-lock](https://github.com/datawisesystems/etcd-lock) - Master election & distributed r/w lock implementation using etcd
+   - [etcd-console](https://github.com/matishsiao/etcd-console) - A web-base key/value editor for etcd using PHP
+   - [etcd-viewer](https://github.com/nikfoundas/etcd-viewer) - An etcd key-value store editor/viewer written in Java. No auth support.
+   - [etcdtool](https://github.com/mickep76/etcdtool) - Export/Import/Edit etcd directory as JSON/YAML/TOML and Validate directory using JSON schema
 
 **Go libraries**
 
