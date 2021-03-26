@@ -19,7 +19,8 @@ title: Libraries and Tools
 
 **Go libraries**
 
-- [etcd/client](https://github.com/etcd-io/etcd/blob/master/client) - the officially maintained Go client
+- [etcd/client/v3](https://github.com/etcd-io/etcd/blob/master/client/v3) - the officially maintained Go client for v3
+- [etcd/client/v2](https://github.com/etcd-io/etcd/blob/master/client/v2) - the officially maintained Go client for v2
 - [go-etcd](https://github.com/coreos/go-etcd) - the deprecated official client. May be useful for older (<2.0.0) versions of etcd.
 
 **Java libraries**
