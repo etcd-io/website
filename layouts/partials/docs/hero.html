@@ -15,11 +15,11 @@
 <section class="hero">
   <div class="hero-body">
     <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if .Params.description }} is-spaced{{ end }}">
-      {{ .Title }}
+    {{ .Title }}
     </p>
     {{ with .Params.description }}
     <p class="subtitle is-size-4 is-size-5-mobile">
-      {{ . | markdownify }}
+    {{ . | markdownify }}
     </p>
     {{ end }}
 
@@ -27,17 +27,27 @@
       <div class="level-left">
         <div class="level-item">
           <p class="is-size-4 is-size-5-mobile">
-            Versions of this doc:
+          Versions of this doc:
           </p>
         </div>
+
+        {{ $current_file := .File }}
+
+        {{ $original_version := printf "/%s/" .CurrentSection.Params.version }}
+        {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL }}
 
         <div class="level-item">
           <div class="buttons">
             {{ range .Site.Params.versions.all }}
-            {{ $v := printf "%s" . }}
-            {{ $isLatest := eq $latest $v }}
-            {{ $href := replace $here $version $v }}
-            <a class="button is-primary is-outlined has-text-weight-bold" href="{{ $href }}">
+
+            {{ $new_version := printf "/%s/" . }}
+            {{ $target_file := replace $current_file $original_version $new_version }}
+            {{ $isLatest := eq $latest . }}
+
+            {{/* check if the file we are linking to in the other version exists */}}
+            {{ if (fileExists $target_file) -}}
+            <a class="button is-primary is-outlined has-text-weight-bold"
+               href="{{ replace $here $original_version $new_version | relURL }}">
               <span>
                 {{ . }}
               </span>
@@ -48,6 +58,37 @@
               </span>
               {{ end }}
             </a>
+            {{ else }}
+            {{/* if not, then link to the top level of that version instead */}}
+            {{ if eq "/next/" $new_version }}
+            <a class="button is-primary is-outlined has-text-weight-bold"
+               href="{{ index (findRE `^(.*?)\/next\/` (replace $here $original_version $new_version | relURL)) 0 }}">
+              <span>
+                {{ . }}
+              </span>
+              {{ if $isLatest }}
+              &nbsp;&nbsp;
+              <span class="tag is-small is-success">
+                latest
+              </span>
+              {{ end }}
+            </a>
+            {{ else }}
+            <a class="button is-primary is-outlined has-text-weight-bold"
+               href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $here $original_version $new_version | relURL)) 0 }}">
+              <span>
+                {{ . }}
+              </span>
+              {{ if $isLatest }}
+              &nbsp;&nbsp;
+              <span class="tag is-small is-success">
+                latest
+              </span>
+              {{ end }}
+            </a>
+            {{ end }}
+            {{- end }}
+
             {{ end }}
           </div>
         </div>

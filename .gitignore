@@ -1,10 +1,14 @@
 # npm assets
 node_modules/
+package-lock.json
 
 # Hugo-generated assets
-public/
+/public
 resources/
 
 # Link checker artifacts
 bin/
 tmp/
+
+# Local Netlify folder
+.netlify

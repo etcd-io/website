@@ -5,7 +5,7 @@
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
 {{ $version    := index (split .Path "/") 1 }}
 {{ $allDocs    := where site.Sections "Section" "docs" }}
-{{ $currentUrl := .RelPermalink }}
+
 <div class="dashboard-panel is-medium has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
@@ -30,19 +30,32 @@
 
       <div class="dropdown-menu">
         <div class="dropdown-content">
-          {{/* 
-            Version dropdown modified based on the work https://github.com/tbatard did on the velero site:
-            https://github.com/vmware-tanzu/velero/blob/main/site/layouts/docs/versions.html
-          */}}
+
+          {{ $current_file := .File }}
+
           {{ $original_version := printf "/%s/" .CurrentSection.Params.version }}
           {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL }}
-          {{ $currentUrl := .Permalink }}
 
           {{ range .Site.Params.versions.all }}
-            {{ $new_version := printf "/%s/" . }}
-            <a class="navbar-item" 
-               href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
+          {{ $new_version := printf "/%s/" . }}
+          {{ $target_file := replace $current_file $original_version $new_version }}
+
+          {{/* check if the file we are linking to in the other version exists */}}
+          {{ if (fileExists $target_file) -}}
+          <a class="dropdown-item" 
+             href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
+          {{ else }}
+          {{/* if not, then link to the top level of that version instead */}}
+          {{ if eq "/next/" $new_version }}
+          <a class="navbar-item" 
+             href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
+          {{ else }}
+          <a class="navbar-item" 
+             href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
           {{ end }}
+          {{- end }}
+          {{ end }}
+
         </div>
       </div>
 
