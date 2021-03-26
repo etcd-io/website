@@ -58,16 +58,23 @@ the checks section of the pull request, under **netlify/etcd/deploy-preview**.
 
 Follow these steps to add documentation for a newly released version of etcd, vX.Y:
 
-* Recursively copy [content/docs/current](content/docs/current) into
+* Recursively copy [content/docs/next](content/docs/next) into
   `content/docs/vX.Y`, where `vX.Y` is the newly released version of etcd. For example:
 
     ```bash
-    cp -r content/docs/current content/docs/v3.5
+    cp -r content/docs/next content/docs/v3.5
     ```
 
-* In the `_index.md` file at the root of the new directory, update the `title`
-  metadata to reflect the new version. The title should read `etcd version
-  <new-version>`.
+* In the `_index.md` file at the root of the new directory, update the frontmatter
+  to reflect the new version:
+  ```
+  ---
+  title: etcd version X.Y
+  weight: 1000
+  cascade:
+    version: vX.Y
+  ---
+  ```
 * Add the version to the `params.versions.all` array in the
   [config.toml](config.toml) configuration file.
 * If the version is meant to be the latest version of etcd, change the
