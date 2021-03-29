@@ -1,5 +1,7 @@
 ---
 title: Download and build
+weight: 1150
+description: Instructions for downloading and building different versions of etcd
 ---
 
 ## System requirements
@@ -22,7 +24,7 @@ $ cd etcd
 $ ./build
 ```
 
-To build a vendored `etcd` from the `master` branch via `go get`:
+To build a modularized `etcd` from the `master` branch via `go get`:
 
 ```sh
 # GOPATH should be set
