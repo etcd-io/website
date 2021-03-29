@@ -1,5 +1,5 @@
 ---
-title: etcd guide for developers
+title: Developer guide
 weight: 3000
-description: Guides for developers using ectd
+description: etcd guide for developers
 ---
