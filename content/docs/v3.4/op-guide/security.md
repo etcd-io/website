@@ -1,5 +1,7 @@
 ---
 title: Transport security model
+weight: 4125
+description: Securing data in transit
 ---
 
 etcd supports automatic TLS as well as authentication through client certificates for both clients to server as well as peer (server to server / cluster) communication.
