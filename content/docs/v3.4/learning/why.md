@@ -73,14 +73,33 @@ If an application reasons primarily about metadata or metadata ordering, such as
 
 ## Using etcd for distributed coordination
 
-etcd has distributed coordination primitives such as event watches, leases, elections, and distributed shared locks out of the box. These primitives are both maintained and supported by the etcd developers; leaving these primitives to external libraries shirks the responsibility of developing foundational distributed software, essentially leaving the system incomplete. NewSQL databases usually expect these distributed coordination primitives to be authored by third parties. Likewise, ZooKeeper famously has a separate and independent [library][curator] of coordination recipes. Consul, which provides a native locking API, goes so far as to apologize that it’s “[not a bulletproof method][consul-bulletproof]”.
+etcd has distributed coordination primitives such as event watches, leases, elections, and distributed shared locks out of the box (Note that in the case of the distributed shared lock, users need to be aware about its non obvious properties. The details are described below). These primitives are both maintained and supported by the etcd developers; leaving these primitives to external libraries shirks the responsibility of developing foundational distributed software, essentially leaving the system incomplete. NewSQL databases usually expect these distributed coordination primitives to be authored by third parties. Likewise, ZooKeeper famously has a separate and independent [library][curator] of coordination recipes. Consul, which provides a native locking API, goes so far as to apologize that it’s “[not a bulletproof method][consul-bulletproof]”.
 
 In theory, it’s possible to build these primitives atop any storage systems providing strong consistency. However, the algorithms tend to be subtle; it is easy to develop a locking algorithm that appears to work, only to suddenly break due to  thundering herd and timing skew. Furthermore, other primitives supported by etcd, such as transactional memory depend on etcd’s MVCC data model; simple strong consistency is not enough.
 
 For distributed coordination, choosing etcd can help prevent operational headaches and save engineering effort.
 
-[cockroach-grant]: https://www.cockroachlabs.com/docs/stable/grant.html
+### Notes on the usage of lock and lease
+etcd provides [lock APIs][etcd-v3lock] which are based on [the lease mechanism][lease] and [its implementation in etcd][etcdlease]. The basic idea of the lease mechanism is: a server grants a token, which is called a lease, to a requesting client. When the server grants a lease, it associates a TTL with the lease. When the server detects the passage of time longer than the TTL, it revokes the lease. While the client holds a non revoked lease it can claim that it owns access to a resource associated with the lease. In the case of etcd, the resource is a key in the etcd keyspace. etcd provides lock APIs with this scheme. However, the lock APIs cannot be used as mutual exclusion mechanism by themselves. The APIs are called lock because [for historical reasons][chubby]. The lock APIs can, however, be used as an optimization mechanism of mutual exclusion as described below.
+
+The most important aspect of the lease mechanism is that TTL is defined as a physical time interval. Both of the server and client measures passing of time with their own clocks. It allows a situation that the server revokes the lease but the client still claims it owns the lease.
+
+Then how does the lease mechanism guarantees mutual exclusion of the locking mechanism? Actually, the lease mechanism itself doesn't guarantee mutual exclusion. Owning a lease cannot guarantee the owner holds a lock of the resource.
+
+In the case of controlling mutual accesses to keys of etcd itself with etcd lock, mutual exclusion is implemented based on the mechanism of version number validation (it is sometimes called compare and swap in other systems like Consul). In etcd's RPCs like `Put` or `Txn`, we can specify required conditions about revision number and lease ID for the operations. If the conditions are not satisfied, the operation can fail. With this mechanism, etcd provides distributed locking for clients. It means that a client knows that it is acquiring a lock of a key when its requests are completed by etcd cluster successfully.
+
+In distributed locking literature similar designs are described:
+* In [the paper of Chubby][chubby], the concept of *sequencer* is introduced. We interpret that sequencer is an almost same to the combination of revision number and lease ID of etcd.
+* In [How to do distributed locking][fencing], Martin Kleppmann introduced the idea of *fencing token*. The authors interpret that fencing token is revision number in the case of etcd. In [Note on fencing and distributed locks][fencing-zk] Flavio Junqueira discussed how the idea of fencing token should be implemented in the case of zookeeper.
+* In [Practical Uses of Synchronized Clocks in Distributed Systems][physicalclock], we can find a description that Thor implements a distributed locking mechanism based on version number validation and lease.
+
+Why do etcd and other systems provide lease if they provide mutual exclusion based on version number validation? Well, leases provide an optimization mechanism for reducing a number of aborted requests.
+
+Note that in the case of etcd keys, it can be locked efficiently because of the mechanisms of lease and version number validation. If users need to protect resources which aren't related to etcd, the resources must provide the version number validation mechanism and consistency of replicas like keys of etcd. The lock feature of etcd itself cannot be used for protecting external resources.
+
+[chubby]: https://research.google/pubs/pub27897/
 [cockroach]: https://github.com/cockroachdb/cockroach
+[cockroach-grant]: https://www.cockroachlabs.com/docs/stable/grant.html
 [consul-acl]: https://www.consul.io/docs/internals/acl.html
 [consul-bulletproof]: https://www.consul.io/docs/internals/sessions.html
 [consul-json]: https://www.consul.io/docs/agent/http.html#formatted-json-output
@@ -92,6 +111,7 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [container-linux]: https://coreos.com/why
 [curator]: http://curator.apache.org/
 [dbtester-comparison-results]: https://github.com/coreos/dbtester/tree/master/test-results/2018Q1-02-etcd-zookeeper-consul
+[etcdlease]: https://godoc.org/github.com/etcd-io/etcd/client/v3/leasing
 [etcd-commonname]: ../op-guide/authentication#using-tls-common-name
 [etcd-etcdctl-elect]: https://github.com/etcd-io/etcd/tree/master/etcdctl/README.md#elect-options-election-name-proposal
 [etcd-etcdctl-lock]: https://github.com/etcd-io/etcd/tree/master/etcdctl/README.md#lock-lockname-command-arg1-arg2-
@@ -105,10 +125,14 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [etcd-v3election]: https://godoc.org/github.com/coreos/etcd-io/etcdserver/api/v3election/v3electionpb
 [etcd-v3lock]: https://godoc.org/github.com/etcd-io/etcd/etcdserver/api/v3lock/v3lockpb
 [etcd-watch]: api#watch-streams
+[fencing]: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
+[fencing-zk]: https://fpj.me/2016/02/10/note-on-fencing-and-distributed-locks/
 [grpc]: https://www.grpc.io
 [kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
+[lease]: https://web.stanford.edu/class/cs240/readings/89-leases.pdf
 [locksmith]: https://github.com/coreos/locksmith
 [newsql-leader]: http://dl.acm.org/citation.cfm?id=2960999
+[physicalclock]: http://www.dainf.cefetpr.br/~tacla/SDII/PracticalUseOfClocks.pdf
 [production-users]: https://github.com/etcd-io/etcd/tree/master/ADOPTERS.md
 [spanner-roles]: https://cloud.google.com/spanner/docs/iam#roles
 [spanner]: https://cloud.google.com/spanner/

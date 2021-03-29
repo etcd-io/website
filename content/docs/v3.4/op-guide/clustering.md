@@ -268,7 +268,7 @@ This will cause each member to register itself with the custom etcd discovery se
 
 #### Public etcd discovery service
 
-If no existing cluster is available, use the public discovery service hosted at `discovery.etcd.io`.  To create a private discovery URL using the "new" endpoint, use the command:
+If no exiting cluster is available, use the public discovery service hosted at `discovery.etcd.io`.  To create a private discovery URL using the "new" endpoint, use the command:
 
 ```
 $ curl https://discovery.etcd.io/new?size=3

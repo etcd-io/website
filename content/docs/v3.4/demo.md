@@ -58,7 +58,7 @@ etcd --data-dir=data.etcd --name ${THIS_NAME} \
 Or use our public discovery service:
 
 ```shell
-curl 'https://discovery.etcd.io/new?size=3'
+curl https://discovery.etcd.io/new?size=3
 https://discovery.etcd.io/a81b5818e67a6ea83e9d4daea5ecbc92
 
 # grab this token

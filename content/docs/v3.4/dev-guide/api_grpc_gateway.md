@@ -120,7 +120,7 @@ Set the `Authorization` header to the authentication token to fetch a key using 
 
 ```bash
 curl -L http://localhost:2379/v3/kv/put \
-  -H 'Authorization : sssvIpwfnLAcWAQH.9' \
+  -H 'Authorization: sssvIpwfnLAcWAQH.9' \
   -X POST -d '{"key": "Zm9v", "value": "YmFy"}'
 # {"header":{"cluster_id":"14841639068965178418","member_id":"10276657743932975437","revision":"2","raft_term":"2"}}
 ```
@@ -136,4 +136,4 @@ Generated [Swagger][swagger] API definitions can be found at [rpc.swagger.json][
 [grpc-gateway]: https://github.com/grpc-ecosystem/grpc-gateway
 [json-mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
 [swagger]: http://swagger.io/
-[swagger-doc]: https://github.com/etcd-io/etcd/blob/master/Documentation/dev-guide/apispec/swagger/rpc.swagger.json
+[swagger-doc]: ../apispec/swagger/rpc.swagger.json

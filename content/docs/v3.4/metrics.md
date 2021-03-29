@@ -16,7 +16,7 @@ The naming of metrics follows the suggested [Prometheus best practices][promethe
 
 The metrics under the `etcd` prefix are for monitoring and alerting. They are stable high level metrics. If there is any change of these metrics, it will be included in release notes.
 
-Metrics that are etcd2 related are documented [v2 metrics guide][v2-http-metrics].
+Metrics that are etcd2 related are documented in the [v2 metrics guide][v2-http-metrics].
 
 ### Server
 

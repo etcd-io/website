@@ -20,7 +20,7 @@ Since v3.2, the default value of `--snapshot-count` has [changed from from 10,00
 
 In performance-wise, `--snapshot-count` greater than 100,000 may impact the write throughput. Higher number of in-memory objects can slow down [Go GC mark phase `runtime.scanobject`](https://golang.org/src/runtime/mgc.go), and infrequent memory reclamation makes allocation slow. Performance varies depending on the workloads and system environments. However, in general, too frequent compaction affects cluster availabilities and write throughputs. Too infrequent compaction is also harmful placing too much pressure on Go garbage collector. See https://www.slideshare.net/mitakeh/understanding-performance-aspects-of-etcd-and-raft for more research results.
 
-## History compaction: v3 API Key-Value Database {#history-compaction}
+## History compaction: v3 API Key-Value Database
 
 Since etcd keeps an exact history of its keyspace, this history should be periodically compacted to avoid performance degradation and eventual storage space exhaustion. Compacting the keyspace history drops all information about keys superseded prior to a given keyspace revision. The space used by these keys then becomes available for additional writes to the keyspace.
 
