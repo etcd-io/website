@@ -21,15 +21,3 @@ command = "npm run preview-build"
   [context.banch-deploy.headers.values]
     X-Robots-Tag = "noindex"
 
-[[redirects]]
-from = "/docs/v3.4.0/branch-management"
-to = "/docs/v3.4.0/branch_management"
-status = 301
-force = false
-
-[[redirects]]
-from = "/docs/v3.4.0/reporting-bugs"
-to = "/docs/v3.4.0/reporting_bugs"
-status = 301
-force = false
-

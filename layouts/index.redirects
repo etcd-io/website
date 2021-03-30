@@ -1,6 +1,8 @@
 {{ $latest := site.Params.versions.latest }}
 /docs/latest     /docs/{{ $latest }}/
 /docs/latest/*     /docs/{{ $latest }}/:splat
+/docs/v3.4.0/branch-management    /docs/v3.4.0/branch_management/
+docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/current     /docs/next/
 /docs/current/*     /docs/next/:splat
 /docs/v2    /docs/v2.3/
