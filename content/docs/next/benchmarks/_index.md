@@ -18,7 +18,7 @@ It records expected memory usage in different scenarios.
 
 - [etcd v2.2.0-rc][2.2-mem]
 
-[2.1]: etcd-2-1-0-alpha-benchmarks.md
-[2.2]: etcd-2-2-0-rc-benchmarks.md
-[2.2-mem]: etcd-2-2-0-rc-memory-benchmarks.md
-[3.0]: etcd-3-demo-benchmarks.md
+[2.1]: etcd-2-1-0-alpha-benchmarks
+[2.2]: etcd-2-2-0-rc-benchmarks
+[2.2-mem]: etcd-2-2-0-rc-memory-benchmarks
+[3.0]: etcd-3-demo-benchmarks

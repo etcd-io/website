@@ -72,5 +72,5 @@ Bootstrap another machine and use the [hey HTTP benchmark tool][hey] to send req
 
 [hey]: https://github.com/rakyll/hey
 [c7146bd5]: https://github.com/coreos/etcd/commits/c7146bd5f2c73716091262edc638401bb8229144
-[etcd-2.1-benchmark]: etcd-2-1-0-alpha-benchmarks.md
-[hack-benchmark]: ../../hack/benchmark/
+[etcd-2.1-benchmark]: etcd-2-1-0-alpha-benchmarks
+[hack-benchmark]: https://github.com/etcd-io/etcd/tree/v2.3.8/hack/benchmark

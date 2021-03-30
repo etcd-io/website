@@ -114,7 +114,7 @@ Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file 
 
 {{< metrics-list dir="../content/docs/v3.1/metrics" regexp="." >}}
 
-[glossary-proposal]: learning/glossary.md#proposal
+[glossary-proposal]: learning/glossary#proposal
 [prometheus]: http://prometheus.io/
 [prometheus-getting-started]: http://prometheus.io/docs/introduction/getting_started/
 [prometheus-naming]: http://prometheus.io/docs/practices/naming/

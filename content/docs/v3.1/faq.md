@@ -116,12 +116,12 @@ Every new etcd cluster generates a new cluster ID based on the initial cluster c
 
 Usually this warning happens after tearing down an old cluster, then reusing some of the peer addresses for the new cluster. If any etcd process from the old cluster is still running it will try to contact the new cluster. The new cluster will recognize a cluster ID mismatch, then ignore the request and emit this warning. This warning is often cleared by ensuring peer addresses among distinct clusters are disjoint.
 
-[hardware-setup]: ./op-guide/hardware.md
-[supported-platform]: ./op-guide/supported-platform.md
-[wal_fsync_duration_seconds]: ./metrics.md#disk
-[tuning]: ./tuning.md
+[hardware-setup]: ./op-guide/hardware
+[supported-platform]: ./op-guide/supported-platform
+[wal_fsync_duration_seconds]: ./metrics#disk
+[tuning]: ./tuning
 [new_issue]: https://github.com/coreos/etcd/issues/new
-[backend_commit_metrics]: ./metrics.md#disk
+[backend_commit_metrics]: ./metrics#disk
 [raft]: https://raft.github.io/raft.pdf
 [backup]: https://github.com/coreos/etcd/blob/master/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf

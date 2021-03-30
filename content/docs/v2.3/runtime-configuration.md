@@ -175,8 +175,8 @@ It is recommended to enable this option. However, it is disabled by default beca
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: ../configuration#-initial-advertise-peer-urls
-[conf-name]: ../configuration#-name
+[conf-adv-peer]: ../configuration#--initial-advertise-peer-urls
+[conf-name]: ../configuration#--name
 [disaster recovery]: ../admin_guide#disaster-recovery
 [fault tolerance table]: ../admin_guide#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure

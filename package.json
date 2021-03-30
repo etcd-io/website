@@ -11,6 +11,7 @@
     "preproduction-build": "npm run get-submodules && ./check-hugo.sh",
     "preserve": "./check-hugo.sh",
     "preview-build": "hugo --baseURL $DEPLOY_PRIME_URL -e development --minify",
+    "postpreview-build": "make ci-check-links",
     "production-build": "hugo --cleanDestinationDir --minify",
     "serve": "netlify dev -c \"hugo serve --minify -DFE -w\"",
     "test": "echo Nothing to test yet",

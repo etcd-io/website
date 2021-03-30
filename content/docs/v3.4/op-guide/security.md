@@ -432,4 +432,4 @@ The certificate needs to be signed for the member's FQDN in its Subject Name, us
 [tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
 [tls-guide]: https://github.com/coreos/docs/blob/master/os/generate-self-signed-certificates.md
 [alt-name]: http://wiki.cacert.org/FAQ/subjectAltName
-[auth]: authentication.md
+[auth]: authentication

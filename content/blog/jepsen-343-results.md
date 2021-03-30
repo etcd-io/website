@@ -11,7 +11,7 @@ Jepsen tested and analyzed etcd 3.4.3, and had both good results and useful feed
 
 A key part of etcd's design is strong consistency guarantees across the distributed key-value store. Kubernetes, Rook, OpenStack, and countless other critical software projects rely on etcd, in part, because of the etcd project's focus on reliability and correctness.
 
-Over the years, the etcd team has put tremendous effort on building [testing](https://coreos.com/blog/testing-distributed-systems-in-go.html) and [chaos engineering frameworks](https://coreos.com/blog/new-functional-testing-in-etcd.html).  We feel that we've improved our consistency, and have asked Jepsen for validation.
+Over the years, the etcd team has put tremendous effort on building [testing](https://web.archive.org/web/20200811103145/https://coreos.com/blog/testing-distributed-systems-in-go.html) and [chaos engineering frameworks](https://web.archive.org/web/20200420035739/https://coreos.com/blog/new-functional-testing-in-etcd.html).  We feel that we've improved our consistency, and have asked Jepsen for validation.
 
 [Jepsen](https://jepsen.io/) is the leading company testing open source distributed systems to check if they fulfill their consistency guarantees. They first tested etcd in version 0.4.1, and we have been using these findings ever since to improve our consistency. In this blog post, we share the overall positive results of the Jepsen analysis of etcd v3.4.3 as well as our plans to resolve the issues found in the analysis.
 
@@ -53,7 +53,7 @@ The Jepsen analysis not only covers software correctness but also verifies the d
 
 Our documentation describes the consistency model based on [the Wikipedia definition](https://en.wikipedia.org/wiki/Consistency_model), which is also the classification some etcd engineers [learned in University](http://www.cs.cmu.edu/~srini/15-446/S09/lectures/10-consistency.pdf). It also separates the isolation level from consistency level, as there is no general agreement on [how the two should be defined together](https://fauna.com/blog/demystifying-database-systems-part-4-isolation-levels-vs-consistency-levels).
 
-The Jepsen author suggests etcd documentation adopt the term "strict serializability" originally defined in the [Linearizability paper published by Herlihy and Wing](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf). After reading the documentation on other open source projects, as well as listening to feedback from our users, the etcd team agrees with the Jepsen author that the [suggested model and term](https://jepsen.io/consistency) are clearer and easier to understand.
+The Jepsen author suggests etcd documentation adopt the term "strict serializability" originally defined in the [Linearizability paper published by Herlihy and Wing](https://web.archive.org/web/20201203054309/https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf). After reading the documentation on other open source projects, as well as listening to feedback from our users, the etcd team agrees with the Jepsen author that the [suggested model and term](https://jepsen.io/consistency) are clearer and easier to understand.
 
 Next, the lock API use case example is misleading and might cause runtime issues.
 

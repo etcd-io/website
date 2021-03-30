@@ -20,9 +20,9 @@ This section contains documents specific to upgrading etcd clusters and applicat
 * [Upgrade a v2.3 cluster to v3.0][upgrade-cluster]
 
 
-[migrate-apps]: ../op-guide/v2-migration.md
-[upgrade-cluster]: upgrade_3_0.md
-[upgrade-3-1]: upgrade_3_1.md
-[upgrade-3-2]: upgrade_3_2.md
-[upgrade-3-3]: upgrade_3_3.md
-[upgrade-3-4]: upgrade_3_4.md
+[migrate-apps]: ../op-guide/v2-migration
+[upgrade-cluster]: upgrade_3_0
+[upgrade-3-1]: upgrade_3_1
+[upgrade-3-2]: upgrade_3_2
+[upgrade-3-3]: upgrade_3_3
+[upgrade-3-4]: upgrade_3_4
