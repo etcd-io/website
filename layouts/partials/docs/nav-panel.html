@@ -1,15 +1,14 @@
-{{ $logo       := site.Params.logos.panel }}
-{{ $currentUrl := .RelPermalink }}
-{{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path }}
-{{ $latest     := site.Params.versions.latest }}
-{{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest }}
-{{ $version    := index (split .RelPermalink "/") 2 }}
-{{ $allDocs    := where site.Sections "Section" "docs" }}
+{{ $currentUrl := .RelPermalink -}}
+{{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path -}}
+{{ $latest     := site.Params.versions.latest -}}
+{{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest -}}
+{{ $version    := index (split $currentUrl "/") 2 -}}
+{{ $allDocs    := where site.Sections "Section" "docs" -}}
 
 <div class="dashboard-panel is-medium has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
     <a href="{{ .Site.BaseURL }}">
-      <img class="is-panel-logo" src="{{ $logo }}">
+      <img class="is-panel-logo" src="{{ site.Params.logos.panel }}">
     </a>
 
     <br /><br />
@@ -18,9 +17,7 @@
       <div class="dropdown-trigger">
         <button class="button is-danger is-radiusless">
           <span>
-            <strong>
-              {{ $version | default "Version" }}
-            </strong>
+            <strong>{{ $version | default "Version" }}</strong>
           </span>
           <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -31,31 +28,30 @@
       <div class="dropdown-menu">
         <div class="dropdown-content">
 
-          {{ $current_file := .File }}
+          {{ $current_file := .File -}}
 
-          {{ $original_version := printf "/%s/" .CurrentSection.Params.version }}
-          {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL }}
+          {{ $original_version := printf "/%s/" .CurrentSection.Params.version -}}
+          {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL -}}
 
-          {{ range .Site.Params.versions.all }}
-          {{ $new_version := printf "/%s/" . }}
-          {{ $target_file := replace $current_file $original_version $new_version }}
+          {{ range .Site.Params.versions.all -}}
+            {{ $new_version := printf "/%s/" . -}}
+            {{ $target_file := replace $current_file $original_version $new_version -}}
 
-          {{/* check if the file we are linking to in the other version exists */}}
-          {{ if (fileExists $target_file) -}}
-          <a class="dropdown-item"
-             href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
-          {{ else }}
-          {{/* if not, then link to the top level of that version instead */}}
-          {{ if eq "/next/" $new_version }}
-          <a class="navbar-item"
-             href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-          {{ else }}
-          <a class="navbar-item"
-             href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-          {{ end }}
-          {{- end }}
-          {{ end }}
-
+            {{/* check if the file we are linking to in the other version exists */ -}}
+            {{ if (fileExists $target_file) -}}
+            <a class="dropdown-item"
+              href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
+            {{ else -}}
+            {{/* if not, then link to the top level of that version instead */ -}}
+            {{ if eq "/next/" $new_version -}}
+            <a class="navbar-item"
+              href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
+            {{ else -}}
+            <a class="navbar-item"
+              href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
+            {{ end -}}
+            {{ end -}}
+          {{ end -}}
         </div>
       </div>
 
@@ -70,41 +66,42 @@
       </a>
       {{ end -}}
 
-      {{ range $allDocs }}
-      {{ range .Sections }}
-      {{ range .RegularPages }}
-      {{ if .Title }}
-      {{ $docVersion := index (split .File.Path "/") 1 }}
-      {{ if eq $docVersion $version }}
-      {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
-      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
-        {{ .Title }}
-      </a>
-      {{ end }}
-      {{ end }}
-      {{ end }}
+      {{ range $allDocs -}}
+        {{ range .Sections -}}
+
+          {{ range .RegularPages -}}
+            {{ if .Title -}}
+              {{ $docVersion := index (split .File.Path "/") 1 -}}
+              {{ if eq $docVersion $version -}}
+                {{ $isCurrentPage := eq .RelPermalink $currentUrl -}}
+                <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
+                  {{ .Title -}}
+                </a>
+              {{ end -}}
+            {{ end -}}
+          {{ end -}}
 
 
-      {{ range .Sections }}
-      {{ $docVersion := index (split .File.Path "/") 1 }}
-      {{ if eq $docVersion $version }}
-      {{ $isCurrentSection := eq .RelPermalink $currentUrl }}
-      <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .RelPermalink }}">
-        {{ .Title }}
-      </a>
+          {{ range .Sections -}}
+            {{ $docVersion := index (split .File.Path "/") 1 -}}
+            {{ if eq $docVersion $version -}}
+              {{ $isCurrentSection := eq .RelPermalink $currentUrl -}}
+              <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .RelPermalink }}">
+                {{ .Title -}}
+              </a>
 
-      {{ range .Pages }}
-      {{ if .Title }}
-      {{ $isCurrentPage := eq .RelPermalink $currentUrl }}
-      <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
-        {{ .Title }}
-      </a>
-      {{ end }}
-      {{ end }}
-      {{ end }}
-      {{ end }}
-      {{ end }}
-      {{ end }}
+              {{ range .Pages -}}
+                {{ if .Title -}}
+                  {{ $isCurrentPage := eq .RelPermalink $currentUrl -}}
+                  <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
+                    {{ .Title -}}
+                  </a>
+                {{ end -}}
+              {{ end -}}
+            {{ end -}}
+          {{ end -}}
+        {{ end -}}
+      {{ end -}}
     </div>
   </div>
 

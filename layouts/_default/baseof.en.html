@@ -1,20 +1,20 @@
-{{ $langCode := .Site.LanguageCode }}
-{{ $isBlog   := eq .Section "blog" }}
+{{ $langCode := .Site.LanguageCode -}}
+{{ $isBlog   := eq .Section "blog" -}}
 <!DOCTYPE html>
 <html lang="{{ $langCode }}">
   <head>
-    {{ partial "google-analytics.html" . }}
-    {{ partial "meta.html" . }}
+    {{ partial "google-analytics.html" . -}}
+    {{ partial "meta.html" . -}}
     <title>
-      {{ block "title" . }}{{ .Site.Title }}{{ end }}
+      {{- block "title" . }}{{ .Site.Title }}{{ end -}}
     </title>
-    {{ partial "favicon.html" . }}
-    {{ partial "css.html" . }}
+    {{ partial "favicon.html" . -}}
+    {{ partial "css.html" . -}}
   </head>
   <body class="page{{ if $isBlog }} has-navbar-fixed-top{{ end }}">
-    {{ block "main" . }}
-    {{ end }}
+    {{ block "main" . -}}
+    {{ end -}}
 
-    {{ partial "javascript.html" . }}
+    {{ partial "javascript.html" . -}}
   </body>
 </html>
