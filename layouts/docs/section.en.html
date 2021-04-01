@@ -4,15 +4,17 @@ etcd | {{ .Title }}
 
 {{ define "main" }}
 {{ partial "docs/navbar.html" . }}
-{{ $version := index (split .Path "/") 1 }}
+{{ $version := index (split .RelPermalink "/") 2 }}
 {{ $isVersionMainPage := eq .RelPermalink (printf "/docs/%s/" $version) }}
 <div class="dashboard">
   {{ partial "docs/nav-panel.html" . }}
 
   <div class="dashboard-main is-scrollable">
-    {{ partial "docs/hero.html" . }}
+    {{ partial "docs/hero.html" . -}}
 
+    {{ if $version -}}
     {{ partial "deprecation-warning.html" . }}
+    {{ end -}}
 
     <section class="section">
       <div class="content docs-content">
@@ -38,7 +40,7 @@ etcd | {{ .Title }}
           </li>
           {{ end }}
         </ul>
-        {{ else }}
+        {{ else if $version }}
         <h4>
           Docs in this section
         </h4>
@@ -58,7 +60,7 @@ etcd | {{ .Title }}
         {{ end }}
       </div>
     </section>
-      
+
 
     {{ partial "footer.html" . }}
   </div>
