@@ -1,58 +1,58 @@
 ---
 title: 常见问题解答
 weight: 1200
-description: Frequently asked questions
+description: 常见问题解答
 ---
 
-## etcd, general
+## etcd, 通用
 
-### What is etcd?
+### 什么是etcd?
 
-etcd is a consistent distributed key-value store. Mainly used as a separate coordination service, in distributed systems. And designed to hold small amounts of data that can fit entirely in memory.
+etcd是一致的分布式键值存储。在分布式系统中主要用作单独的协调服务。并设计为容纳可完全容纳在内存中的少量数据。
 
-### How do you pronounce etcd?
+### etcd的读音?
 
-etcd is pronounced **/ˈɛtsiːdiː/**, and means "distributed `etc` directory."
+etcd的发音是 **/ˈɛtsiːdiː/**，意思是“分布式etc目录”。
 
-### Do clients have to send requests to the etcd leader?
+### etcd的客户端是如何进行选举的？
 
-[Raft][raft] is leader-based; the leader handles all client requests which need cluster consensus. However, the client does not need to know which node is the leader. Any request that requires consensus sent to a follower is automatically forwarded to the leader. Requests that do not require consensus (e.g., serialized reads) can be processed by any cluster member.
+领导者选举是基于[Raft][raft]，领导者处理所有需要集群共识的客户请求。但是，客户端不需要知道哪个节点是领导者。发送给关注者的任何需要共识的请求都将自动转发给领导者。不需要共识（例如，序列化读取）的请求可以由任何集群成员处理。
 
-## Configuration
+## 配置
 
-### What is the difference between listen-<client,peer>-urls, advertise-client-urls or initial-advertise-peer-urls?
+### listen- <client，peer> -urls，advertise-client-urls或initial-advertise-peer-urls有什么区别？
 
-`listen-client-urls` and `listen-peer-urls` specify the local addresses etcd server binds to for accepting incoming connections. To listen on a port for all interfaces, specify `0.0.0.0` as the listen IP address.
+`listen-client-urls` 和 `listen-peer-urls` 指定etcd服务器绑定到的本地地址以接受传入的连接。要在端口上侦听所有接口，请指定 `0.0.0.0` 为侦听IP地址。
 
-`advertise-client-urls` and `initial-advertise-peer-urls` specify the addresses etcd clients or other etcd members should use to contact the etcd server. The advertise addresses must be reachable from the remote machines. Do not advertise addresses like `localhost` or `0.0.0.0` for a production setup since these addresses are unreachable from remote machines.
+`advertise-client-urls` 和 `initial-advertise-peer-urls`指定etcd客户或其他etcd成员用于联系etcd服务器的地址。通告地址必须可以从远程计算机访问。请勿像发布产品一样宣传地址 `localhost` 或将其 `0.0.0.0` 用于生产设置，因为从远程计算机无法访问这些地址。
 
-### Why doesn't changing `--listen-peer-urls` or `--initial-advertise-peer-urls` update the advertised peer URLs in `etcdctl member list`?
+### 为什么不更改 `--listen-peer-urls` 或 `--initial-advertise-peer-urls`更新中的广告对等URL `etcdctl member list`?
 
-A member's advertised peer URLs come from `--initial-advertise-peer-urls` on initial cluster boot. Changing the listen peer URLs or the initial advertise peers after booting the member won't affect the exported advertise peer URLs since changes must go through quorum to avoid membership configuration split brain. Use `etcdctl member update` to update a member's peer URLs.
+成员发布的对等URL来自 `--initial-advertise-peer-urls` 初始群集启动。在启动成员后更改侦听对等URL或初始播发对等体不会影响导出的播发对等体URL，因为更改必须经过仲裁以避免成员资格配置混乱。使用 `etcdctl member update` 更新的成员的同行的URL。
 
-## Deployment
+## 部署方式
 
-### System requirements
+### 系统要求
 
-Since etcd writes data to disk, its performance strongly depends on disk performance. For this reason, SSD is highly recommended. To assess whether a disk is fast enough for etcd, one possibility is using a disk benchmarking tool such as [fio][fio]. For an example on how to do that, read [here][fio-blog-post]. To prevent performance degradation or unintentionally overloading the key-value store, etcd enforces a configurable storage size quota set to 2GB by default. To avoid swapping or running out of memory, the machine should have at least as much RAM to cover the quota. 8GB is a suggested maximum size for normal environments and etcd warns at startup if the configured value exceeds it. At CoreOS, an etcd cluster is usually deployed on dedicated CoreOS Container Linux machines with dual-core processors, 2GB of RAM, and 80GB of SSD *at the very least*. **Note that performance is intrinsically workload dependent; please test before production deployment**. See [hardware][hardware-setup] for more recommendations.
+由于etcd将数据写入磁盘，因此其性能在很大程度上取决于磁盘性能。因此，强烈建议使用SSD。为了评估磁盘对于etcd的速度是否足够快，一种可能性是使用磁盘基准测试工具，例如 [fio][fio]。。有关如何执行此操作的示例，请阅读 [此处][fio-blog-post]。为了防止性能下降或意外导致键值存储超载，etcd强制将可配置的存储大小配额默认设置为2GB。为避免交换或内存不足，计算机应至少具有尽可能多的RAM来覆盖配额。建议在正常环境下使用8GB的最大大小，如果配置的值超过该值，etcd会在启动时发出警告。在CoreOS上，通常在具有双核处理器，*至少*2GB RAM和80GB SSD的专用CoreOS Container Linux机器上部署etcd集群。  **请注意，性能本质上取决于工作负载；请在生产部署之前进行测试。** 有关更多建议，请参见 [硬件][hardware-setup] 。
 
-Most stable production environment is Linux operating system with amd64 architecture; see [supported platform][supported-platform] for more.
+最稳定的生产环境是具有amd64架构的Linux操作系统。有关更多信息，请参见 [支持的平台][supported-platform]。
 
-### Why an odd number of cluster members?
+### 为什么集群成员的数量为奇数？
 
-An etcd cluster needs a majority of nodes, a quorum, to agree on updates to the cluster state. For a cluster with n members, quorum is (n/2)+1. For any odd-sized cluster, adding one node will always increase the number of nodes necessary for quorum. Although adding a node to an odd-sized cluster appears better since there are more machines, the fault tolerance is worse since exactly the same number of nodes may fail without losing quorum but there are more nodes that can fail. If the cluster is in a state where it can't tolerate any more failures, adding a node before removing nodes is dangerous because if the new node fails to register with the cluster (e.g., the address is misconfigured), quorum will be permanently lost.
+一个etcd集群需要大多数节点（仲裁）来同意对集群状态的更新。对于具有n个成员的群集，仲裁数为（n / 2）+1。对于任何奇数大小的群集，添加一个节点将始终增加仲裁所需的节点数。尽管由于有更多的计算机而将节点添加到奇数大小的群集中看起来更好，但是容错能力更差，因为完全相同数量的节点可能会失败而不会丢失仲裁，但是有更多的节点可能会失败。如果群集处于无法容忍更多故障的状态，则在删除节点之前添加节点是危险的，因为如果新节点无法在群集中注册（例如，地址配置错误），仲裁将永久丢失。
 
-### What is maximum cluster size?
+### 最大群集大小是多少？
 
-Theoretically, there is no hard limit. However, an etcd cluster probably should have no more than seven nodes. [Google Chubby lock service][chubby], similar to etcd and widely deployed within Google for many years, suggests running five nodes. A 5-member etcd cluster can tolerate two member failures, which is enough in most cases. Although larger clusters provide better fault tolerance, the write performance suffers because data must be replicated across more machines.
+从理论上讲，没有硬性限制。但是，一个etcd集群可能最多只能有七个节点。 类似于etcd的[Google Chubby lock service][chubby]服务已经在Google中广泛部署了很多年，建议运行五个节点。一个5成员的etcd集群可以容忍两个成员的故障，这在大多数情况下就足够了。尽管较大的群集可提供更好的容错能力，但由于必须在更多计算机上复制数据，因此写入性能会受到影响。
 
-### What is failure tolerance?
+### 容错能力怎么样？
 
-An etcd cluster operates so long as a member quorum can be established. If quorum is lost through transient network failures (e.g., partitions), etcd automatically and safely resumes once the network recovers and restores quorum; Raft enforces cluster consistency. For power loss, etcd persists the Raft log to disk; etcd replays the log to the point of failure and resumes cluster participation. For permanent hardware failure, the node may be removed from the cluster through [runtime reconfiguration][runtime reconfiguration].
+只要可以建立成员仲裁，etcd群集就会运行。如果由于暂时性的网络故障（例如分区）而丢失了仲裁，那么一旦网络恢复并恢复了仲裁，etcd就会自动安全地恢复。筏强制执行群集一致性。对于断电，etcd会将Raft日志保存到磁盘；etcd将日志重播到故障点并恢复集群参与。对于永久性硬件故障，可以通过[运行时重新配置][runtime reconfiguration]将节点从群集中删除 。
 
-It is recommended to have an odd number of members in a cluster. An odd-size cluster tolerates the same number of failures as an even-size cluster but with fewer nodes. The difference can be seen by comparing even and odd sized clusters:
+建议集群中的成员数为奇数。奇数大小的群集可以容忍的故障数量与偶数大小的群集相同，但节点数较少。通过比较偶数和奇数大小的群集可以看出差异：
 
-| Cluster Size | Majority | Failure Tolerance |
+| 簇的大小 | 多数 | 容错能力 |
 |:-:|:-:|:-:|
 | 1 | 1 | 0 |
 | 2 | 2 | 0 |
@@ -64,96 +64,95 @@ It is recommended to have an odd number of members in a cluster. An odd-size clu
 | 8 | 5 | 3 |
 | 9 | 5 | 4 |
 
-Adding a member to bring the size of cluster up to an even number doesn't buy additional fault tolerance. Likewise, during a network partition, an odd number of members guarantees that there will always be a majority partition that can continue to operate and be the source of truth when the partition ends.
+添加成员以使群集的大小达到偶数不会增加额外的容错能力。同样，在网络分区期间，奇数个成员保证将始终存在多数分区，该分区可以继续运行，并且在分区结束时成为真相的来源。
 
-### Does etcd work in cross-region or cross data center deployments?
+### etcd是否可以在跨区域或跨数据中心的部署中工作？
 
-Deploying etcd across regions improves etcd's fault tolerance since members are in separate failure domains. The cost is higher consensus request latency from crossing data center boundaries. Since etcd relies on a member quorum for consensus, the latency from crossing data centers will be somewhat pronounced because at least a majority of cluster members must respond to consensus requests. Additionally, cluster data must be replicated across all peers, so there will be bandwidth cost as well.
+由于成员位于单独的故障域中，因此跨区域部署etcd可以提高etcd的容错能力。代价是跨越数据中心边界会产生更高的共识请求等待时间。由于etcd依赖于成员仲裁来达成共识，因此跨数据中心的延迟将在某种程度上显着，因为至少大多数集群成员必须响应共识请求。此外，必须在所有对等方之间复制群集数据，因此也会产生带宽成本。
 
-With longer latencies, the default etcd configuration may cause frequent elections or heartbeat timeouts. See [tuning] for adjusting timeouts for high latency deployments.
+延迟较长时，默认的etcd配置可能会导致频繁的选举或心跳超时。请参阅 [调整]以调整高延迟部署的超时。
 
-## Operation
+## 操作
 
-### How to backup a etcd cluster?
+### 如何备份etcd集群？
 
-etcdctl provides a `snapshot` command to create backups. See [backup][backup] for more details.
+etcdctl提供了`snapshot`创建备份的命令。有关更多详细信息，请参见[备份][backup]。
 
-### Should I add a member before removing an unhealthy member?
+### 在删除不健康的成员之前，我应该添加成员吗？
 
-When replacing an etcd node, it's important  to remove the member first and then add its replacement.
+替换etcd节点时，重要的是先删除该成员，然后添加其替换。
 
-etcd employs distributed consensus based on a quorum model; (n/2)+1 members, a majority, must agree on a proposal before it can be committed to the cluster. These proposals include key-value updates and membership changes. This model totally avoids any possibility of split brain inconsistency. The downside is permanent quorum loss is catastrophic.
+etcd使用基于仲裁模型的分布式共识；（n / 2）+1个成员（多数）必须先同意一个提议，然后才能将该提议提交集群。这些建议包括键值更新和成员资格更改。该模型完全避免了脑裂的任何可能性。不利的一面是永久的仲裁丢失是灾难性的。
 
-How this applies to membership: If a 3-member cluster has 1 downed member, it can still make forward progress because the quorum is 2 and 2 members are still live. However, adding a new member to a 3-member cluster will increase the quorum to 3 because 3 votes are required for a majority of 4 members. Since the quorum increased, this extra member buys nothing in terms of fault tolerance; the cluster is still one node failure away from being unrecoverable.
+这对成员资格的适用方式：如果3成员群集中有1个关闭的成员，则由于仲裁人数为2，并且2个成员仍处于活动状态，因此它仍可以向前发展。但是，将新成员添加到3个成员的群集将使法定人数增加到3，因为4个成员中的大多数需要3票。由于法定人数增加，因此这个额外的成员在容错方面一无所获；群集仍然是一个不可恢复的节点故障。
 
-Additionally, that new member is risky because it may turn out to be misconfigured or incapable of joining the cluster. In that case, there's no way to recover quorum because the cluster has two members down and two members up, but needs three votes to change membership to undo the botched membership addition. etcd will by default reject member add attempts that could take down the cluster in this manner.
+此外，该新成员存在风险，因为它可能配置错误或无法加入集群。在这种情况下，无法恢复仲裁，因为群集的成员减少了两个，成员增加了两个，但是需要三票才能更改成员身份才能撤消增加的成员资格。默认情况下，etcd将拒绝成员添加尝试，这种尝试可能会以这种方式关闭集群。
 
-On the other hand, if the downed member is removed from cluster membership first, the number of members becomes 2 and the quorum remains at 2. Following that removal by adding a new member will also keep the quorum steady at 2. So, even if the new node can't be brought up, it's still possible to remove the new member through quorum on the remaining live members.
+另一方面，如果首先从集群成员资格中删除被降级的成员，则成员数变为2，并且法定人数保持为2。此后，通过添加新成员进行删除也将使法定人数稳定在2。因此，即使无法启动新节点，仍然可以通过仲裁删除其余活动成员上的新成员。
 
-### Why won't etcd accept my membership changes?
+### 为什么etcd不接受我的成员更改？
 
-etcd sets `strict-reconfig-check` in order to reject reconfiguration requests that would cause quorum loss. Abandoning quorum is really risky (especially when the cluster is already unhealthy). Although it may be tempting to disable quorum checking if there's quorum loss to add a new member, this could lead to full fledged cluster inconsistency. For many applications, this will make the problem even worse ("disk geometry corruption" being a candidate for most terrifying).
+`strict-reconfig-check`为了拒绝可能导致仲裁丢失的重新配置请求，etcd进行了设置。放弃仲裁确实有风险（尤其是当群集已经不健康时）。尽管在增加新成员的仲裁丢失的情况下，可能很想禁用仲裁检查，但这可能会导致完全成熟的群集不一致。对于许多应用程序，这将使问题更加严重（“磁盘几何损坏”是最令人恐惧的选择）。
 
-### Why does etcd lose its leader from disk latency spikes?
+### 为什么etcd会因为磁盘延迟高峰而失去领导者？
 
-This is intentional; disk latency is part of leader liveness. Suppose the cluster leader takes a minute to fsync a raft log update to disk, but the etcd cluster has a one second election timeout. Even though the leader can process network messages within the election interval (e.g., send heartbeats), it's effectively unavailable because it can't commit any new proposals; it's waiting on the slow disk. If the cluster frequently loses its leader due to disk latencies, try [tuning][tuning] the disk settings or etcd time parameters.
+这是故意的；磁盘延迟是领导者活力的一部分。假设集群领导者需要花一分钟的时间将筏日志更新同步到磁盘，但是etcd集群的选举超时时间为一秒钟。即使领导者可以在选举间隔内处理网络消息（例如，发送心跳信号），但由于无法提交任何新提议，因此实际上是不可用的。它正在慢速磁盘上等待。如果群集由于磁盘延迟而经常失去其领导者，请尝试[调整][tuning]磁盘设置或etcd时间参数。
 
-### What does the etcd warning "request ignored (cluster ID mismatch)" mean?
+### etcd警告“请求被忽略（集群ID不匹配）”是什么意思？
 
-Every new etcd cluster generates a new cluster ID based on the initial cluster configuration and a user-provided unique `initial-cluster-token` value. By having unique cluster ID's, etcd is protected from cross-cluster interaction which could corrupt the cluster.
+每个新的etcd群集都会根据初始群集配置和用户提供的唯一`initial-cluster-token`值生成一个新的群集ID 。通过具有唯一的集群ID，可以保护etcd免受可能破坏集群的跨集群交互的影响。
 
-Usually this warning happens after tearing down an old cluster, then reusing some of the peer addresses for the new cluster. If any etcd process from the old cluster is still running it will try to contact the new cluster. The new cluster will recognize a cluster ID mismatch, then ignore the request and emit this warning. This warning is often cleared by ensuring peer addresses among distinct clusters are disjoint.
+通常，此警告是在拆除旧群集，然后为新群集重新使用某些对等地址之后发生的。如果旧集群中的任何etcd进程仍在运行，它将尝试与新集群联系。新集群将识别出集群ID不匹配，然后忽略该请求并发出此警告。通常通过确保不同群集之间的对等地址不相交来清除此警告。
 
-### What does "mvcc: database space exceeded" mean and how do I fix it?
+### “ mvcc：数据库空间已超出”是什么意思，我该如何解决？
 
-The [multi-version concurrency control][api-mvcc] data model in etcd keeps an exact history of the keyspace. Without periodically compacting this history (e.g., by setting `--auto-compaction`), etcd will eventually exhaust its storage space. If etcd runs low on storage space, it raises a space quota alarm to protect the cluster from further writes. So long as the alarm is raised, etcd responds to write requests with the error `mvcc: database space exceeded`.
+etcd中的 多版本并发控制数据模型保留了密钥空间的确切历史记录。如果不定期压缩此历史记录（例如，通过设置`--auto-compaction`），etcd最终将耗尽其存储空间。如果etcd的存储空间不足，则会发出空间配额警报，以保护群集免于进一步写入。只要发出警报，etcd就会以error响应写请求`mvcc: database space exceeded`。
 
-To recover from the low space quota alarm:
+要从空间不足配额警报中恢复，请执行以下操作：
 
-1. [Compact][maintenance-compact] etcd's history.
-2. [Defragment][maintenance-defragment] every etcd endpoint.
-3. [Disarm][maintenance-disarm] the alarm.
+1. [Compact][maintenance-compact] etcd的历史。
+2. [Defragment][maintenance-defragment] 对每个etcd端点进行碎片整理。
+3. [Disarm][maintenance-disarm] 解除警报。
 
-### What does the etcd warning "etcdserver/api/v3rpc: transport: http2Server.HandleStreams failed to read frame: read tcp 127.0.0.1:2379->127.0.0.1:43020: read: connection reset by peer" mean?
+### etcd警告“ etcdserver / api / v3rpc：传输：http2Server.HandleStreams无法读取帧：读取tcp 127.0.0.1:2379->127.0.0.1:43020：读取：由对等方重置连接”是什么意思？
 
-This is gRPC-side warning when a server receives a TCP RST flag with client-side streams being prematurely closed. For example, a client closes its connection, while gRPC server has not yet processed all HTTP/2 frames in the TCP queue. Some data may have been lost in server side, but it is ok so long as client connection has already been closed.
+当服务器在客户端流过早关闭的情况下接收到TCP RST标志时，这是gRPC端警告。例如，客户端关闭其连接，而gRPC服务器尚未处理TCP队列中的所有HTTP / 2帧。一些数据可能已在服务器端丢失，但是只要客户端连接已经关闭就可以。
 
-Only [old versions of gRPC](https://github.com/grpc/grpc-go/issues/1362) log this. etcd [>=v3.2.13 by default log this with DEBUG level](https://github.com/etcd-io/etcd/pull/9080), thus only visible with `--debug` flag enabled.
+仅 [gRPC的旧版本](https://github.com/grpc/grpc-go/issues/1362)会记录此信息。etcd[ > = v3.2.13默认情况下以DEBUG级别记录此日志](https://github.com/etcd-io/etcd/pull/9080)，因此仅在`--debug`启用标记的情况下可见。
 
-## Performance
+## 性能
 
-### How should I benchmark etcd?
+### 如何进行etcd的基准测试？
 
-Try the [benchmark] tool. Current [benchmark results][benchmark-result] are available for comparison.
+尝试使用[基准测试]工具。当前的 [基准测试结果][benchmark-result]可用于比较。
 
-### What does the etcd warning "apply entries took too long" mean?
+### etcd警告“应用条目时间过长”是什么意思？
 
-After a majority of etcd members agree to commit a request, each etcd server applies the request to its data store and persists the result to disk. Even with a slow mechanical disk or a virtualized network disk, such as Amazon’s EBS or Google’s PD, applying a request should normally take fewer than 50 milliseconds. If the average apply duration exceeds 100 milliseconds, etcd will warn that entries are taking too long to apply.
+在大多数etcd成员同意提交请求之后，每个etcd服务器将请求应用于其数据存储，并将结果保存到磁盘。即使使用慢速机械磁盘或虚拟化网络磁盘（例如Amazon的EBS或Google的PD），应用请求通常也应少于50毫秒。如果平均申请时间超过100毫秒，etcd将警告条目申请时间太长。
 
-Usually this issue is caused by a slow disk. The disk could be experiencing contention among etcd and other applications, or the disk is too simply slow (e.g., a shared virtualized disk). To rule out a slow disk from causing this warning, monitor  [backend_commit_duration_seconds][backend_commit_metrics] (p99 duration should be less than 25ms) to confirm the disk is reasonably fast. If the disk is too slow, assigning a dedicated disk to etcd or using faster disk will typically solve the problem.
+通常，此问题是由磁盘速度慢引起的。磁盘可能正在etcd和其他应用程序之间争用，或者磁盘太慢（例如，共享的虚拟磁盘）。要排除导致速度缓慢的磁盘导致此警告的情况，请监视  [backend_commit_duration_seconds][backend_commit_metrics]（p99持续时间应小于25ms）以确认磁盘速度相当快。如果磁盘速度太慢，则将专用磁盘分配给etcd或使用速度更快的磁盘通常可以解决该问题。
 
-The second most common cause is CPU starvation. If monitoring of the machine’s CPU usage shows heavy utilization, there may not be enough compute capacity for etcd. Moving etcd to dedicated machine, increasing process resource isolation  cgroups, or renicing the etcd server process into a higher priority can usually solve the problem.
+第二个最常见的原因是CPU饥饿。如果监视计算机的CPU使用率显示利用率很高，则可能没有足够的计算能力来存储etcd。将etcd移至专用计算机，增加进程资源隔离cgroup或将etcd服务器进程重新设置为更高的优先级通常可以解决该问题。
 
-Expensive user requests which access too many keys (e.g., fetching the entire keyspace) can also cause long apply latencies. Accessing fewer than a several hundred keys per request, however, should always be performant.
+访问过多密钥（例如，获取整个密钥空间）的昂贵用户请求也可能导致较长的应用等待时间。但是，每个请求访问少于几百个密钥应该总是有效的。
 
-If none of the above suggestions clear the warnings, please [open an issue][new_issue] with detailed logging, monitoring, metrics and optionally workload information.
+如果以上建议均不能清除警告，请打开一个[issue][new_issue]，其中包含详细的日志记录，监视，指标和可选的工作负载信息。
 
-### What does the etcd warning "failed to send out heartbeat on time" mean?
+### etcd警告“未能及时发送心跳”是什么意思？
 
-etcd uses a leader-based consensus protocol for consistent data replication and log execution. Cluster members elect a single leader, all other members become followers. The elected leader must periodically send heartbeats to its followers to maintain its leadership. Followers infer leader failure if no heartbeats are received within an election interval and trigger an election. If a leader doesn’t send its heartbeats in time but is still running, the election is spurious and likely caused by insufficient resources. To catch these soft failures, if the leader skips two heartbeat intervals, etcd will warn it failed to send a heartbeat on time.
+etcd使用基于领导者的共识协议来实现一致的数据复制和日志执行。集群成员选出一个领导者，其他所有成员都成为跟随者。当选领导人必须定期发送心跳到它的追随者保持其领先地位。如果在选举间隔内未收到任何心跳，则跟随者会推断领导者失败并触发选举。如果领导者没有及时发送心跳信号但仍在运行，则选举是虚假的，很可能是由于资源不足造成的。为了捕获这些软故障，如果领导者跳过两个心跳间隔，则etcd将警告它无法按时发送心跳。
 
-Usually this issue is caused by a slow disk. Before the leader sends heartbeats attached with metadata, it may need to persist the metadata to disk. The disk could be experiencing contention among etcd and other applications, or the disk is too simply slow (e.g., a shared virtualized disk). To rule out a slow disk from causing this warning, monitor  [wal_fsync_duration_seconds][wal_fsync_duration_seconds] (p99 duration should be less than 10ms) to confirm the disk is reasonably fast. If the disk is too slow, assigning a dedicated disk to etcd or using faster disk will typically solve the problem. To tell whether a disk is fast enough for etcd, a benchmarking tool such as [fio][fio] can be used. Read [here][fio-blog-post] for an example.
+通常，此问题是由磁盘速度慢引起的。领导者发送附有元数据的心跳之前，可能需要将元数据持久保存到磁盘。磁盘可能正在etcd和其他应用程序之间争用，或者磁盘太慢（例如，共享的虚拟磁盘）。要排除慢速磁盘引起此警告的危险，请监控  [wal_fsync_duration_seconds][wal_fsync_duration_seconds]（p99持续时间应小于10ms）以确认该磁盘是否足够快。如果磁盘速度太慢，则将专用磁盘分配给etcd或使用速度更快的磁盘通常可以解决该问题。为了判断磁盘是否足够快于etcd，可以使用诸如[fio][fio]之类的基准测试工具 。请阅读[此处][fio-blog-post]的示例。
 
-The second most common cause is CPU starvation. If monitoring of the machine’s CPU usage shows heavy utilization, there may not be enough compute capacity for etcd. Moving etcd to dedicated machine, increasing process resource isolation  with cgroups, or renicing the etcd server process into a higher priority can usually solve the problem.
+第二个最常见的原因是CPU饥饿。如果监视计算机的CPU使用率显示利用率很高，则可能没有足够的计算能力来存储etcd。将etcd移至专用计算机，使用cgroup增强进程资源隔离或将etcd服务器进程重新设置为更高的优先级通常可以解决该问题。
 
-A slow network can also cause this issue. If network metrics among the etcd machines shows long latencies or high drop rate, there may not be enough network capacity for etcd. Moving etcd members to a less congested network will typically solve the problem. However, if the etcd cluster is deployed across data centers, long latency between members is expected. For such deployments, tune the `heartbeat-interval` configuration to roughly match the round trip time between the machines, and the `election-timeout` configuration to be at least 5 * `heartbeat-interval`. See [tuning documentation][tuning] for detailed information.
+网络速度慢也会导致此问题。如果etcd机器之间的网络指标显示出较长的延迟或高丢弃率，则可能没有足够的网络容量用于etcd。将etcd成员移动到不太拥挤的网络通常可以解决该问题。但是，如果etcd集群跨数据中心部署，则成员之间的等待时间会很长。对于此类部署，请调整`heartbeat-interval`配置以使其与计算机之间的往返时间大致匹配，`election-timeout`配置至少应为5 * `heartbeat-interval`。有关详细信息，请参见 [调整文档][tuning] 。
 
-If none of the above suggestions clear the warnings, please [open an issue][new_issue] with detailed logging, monitoring, metrics and optionally workload information.
+如果以上建议均不能清除警告，请[打开一个][new_issue]，其中包含详细的日志记录，监视，指标和可选的工作负载信息。
 
-### What does the etcd warning "snapshotting is taking more than x seconds to finish ..." mean?
+### etcd警告“快照超过x秒才能完成……”是什么意思？
 
-etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
-
+etcd发送其完整键值存储的快照，以刷新慢速追随者并进行[备份][backup]。缓慢的快照传输时间会增加MTTR；如果群集正在以高吞吐量接收数据，则慢速追随者可能需要在完成接收快照之前需要新快照来进行活锁。为了捕获较慢的快照性能，etcd在发送快照时会发出警告，警告会花费超过30秒的时间，并且超出了1Gbps连接的预期传输时间。
 
 [hardware-setup]: op-guide/hardware.md
 [supported-platform]: op-guide/supported-platform.md
