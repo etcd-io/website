@@ -111,7 +111,7 @@ The status for this discovery token, including the machines that have been regis
 
 The repository is located at https://github.com/coreos/discovery.etcd.io. It could be used to build a custom discovery service.
 
-[api]: /docs/v2/api#waiting-for-a-change
-[cluster-size]: /docs/v2/admin_guide#optimal-cluster-size
+[api]: /docs/v2.3/api#waiting-for-a-change
+[cluster-size]: /docs/v2.3/admin_guide#optimal-cluster-size
 [expected-cluster-size]: #specifying-the-expected-cluster-size
 [new-discovery-token]: #creating-a-new-discovery-token

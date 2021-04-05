@@ -163,7 +163,7 @@ Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. C
 
 Before upgrading etcd, always test the services relying on etcd in a staging environment before deploying the upgrade to the production environment.
 
-Before beginning, [download the snapshot backup](../op-guide/maintenance.md#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](../../v2/admin_guide.md#backing-up-the-datastore).
+Before beginning, [download the snapshot backup](../op-guide/maintenance#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](/docs/v2.3/admin_guide#backing-up-the-datastore).
 
 #### Mixed versions
 
@@ -181,7 +181,7 @@ For a much larger total data size, 100MB or more , this one-time process might t
 
 If all members have been upgraded to v3.5, the cluster will be upgraded to v3.5, and downgrade from this completed state is **not possible**. If any single member is still v3.4, however, the cluster and its operations remains "v3.4", and it is possible from this mixed cluster state to return to using a v3.4 etcd binary on all members.
 
-Please [download the snapshot backup](../op-guide/maintenance.md#snapshot-backup) to make downgrading the cluster possible even after it has been completely upgraded.
+Please [download the snapshot backup](../op-guide/maintenance#snapshot-backup) to make downgrading the cluster possible even after it has been completely upgraded.
 
 ### Upgrade procedure
 
@@ -217,7 +217,7 @@ COMMENT
 
 #### Step 2: download snapshot backup from leader
 
-[Download the snapshot backup](../op-guide/maintenance.md#snapshot-backup) to provide a downgrade path should any problems occur.
+[Download the snapshot backup](../op-guide/maintenance#snapshot-backup) to provide a downgrade path should any problems occur.
 
 etcd leader is guaranteed to have the latest application data, thus fetch snapshot from leader:
 

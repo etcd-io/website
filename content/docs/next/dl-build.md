@@ -66,4 +66,4 @@ If OK is printed, then etcd is working!
 
 [github-release]: https://github.com/etcd-io/etcd/releases/
 [go]: https://golang.org/doc/install
-[example-hardware-configurations]: op-guide/hardware.md#example-hardware-configurations
+[example-hardware-configurations]: op-guide/hardware#example-hardware-configurations

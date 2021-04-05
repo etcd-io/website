@@ -59,7 +59,7 @@ A size key needs to be provided inside a [discovery token](../clustering#custom-
 
 ## HTTP Admin API
 
-`v2/admin` on peer url and `v2/keys/_etcd` are unified under the new [v2/members API](../members-api) to better explain which machines are part of an etcd cluster, and to simplify the keyspace for all your use cases.
+`v2/admin` on peer url and `v2/keys/_etcd` are unified under the new [v2/members API](../members_api) to better explain which machines are part of an etcd cluster, and to simplify the keyspace for all your use cases.
 
 ## HTTP Key Value API
 

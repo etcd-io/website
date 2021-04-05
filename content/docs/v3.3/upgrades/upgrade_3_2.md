@@ -228,7 +228,7 @@ Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. C
 
 Before upgrading etcd, always test the services relying on etcd in a staging environment before deploying the upgrade to the production environment.
 
-Before beginning, [backup the etcd data](../op-guide/maintenance.md#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](../v2/admin_guide.md#backing-up-the-datastore).
+Before beginning, [backup the etcd data](../op-guide/maintenance#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](/docs/v2.3/admin_guide#backing-up-the-datastore).
 
 #### Mixed versions
 
@@ -246,7 +246,7 @@ For a much larger total data size, 100MB or more , this one-time process might t
 
 If all members have been upgraded to v3.2, the cluster will be upgraded to v3.2, and downgrade from this completed state is **not possible**. If any single member is still v3.1, however, the cluster and its operations remains "v3.1", and it is possible from this mixed cluster state to return to using a v3.1 etcd binary on all members.
 
-Please [backup the data directory](../op-guide/maintenance.md#snapshot-backup) of all etcd members to make downgrading the cluster possible even after it has been completely upgraded.
+Please [backup the data directory](../op-guide/maintenance#snapshot-backup) of all etcd members to make downgrading the cluster possible even after it has been completely upgraded.
 
 ### Upgrade procedure
 
@@ -288,7 +288,7 @@ When each etcd process is stopped, expected errors will be logged by other clust
 2017-04-27 14:13:31.936678 W | rafthttp: lost the TCP streaming connection with peer 6d4f535bae3ab960 (stream Message writer)
 ```
 
-It's a good idea at this point to [backup the etcd data](../op-guide/maintenance.md#snapshot-backup) to provide a downgrade path should any problems occur:
+It's a good idea at this point to [backup the etcd data](../op-guide/maintenance#snapshot-backup) to provide a downgrade path should any problems occur:
 
 ```
 $ etcdctl snapshot save backup.db

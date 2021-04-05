@@ -441,5 +441,5 @@ When etcd create certain new directories it sets file permission to 700 to preve
 [tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
 [tls-guide]: https://github.com/coreos/docs/blob/master/os/generate-self-signed-certificates.md
 [alt-name]: http://wiki.cacert.org/FAQ/subjectAltName
-[auth]: authentication.md
+[auth]: authentication
 [dm-crypt]: https://en.wikipedia.org/wiki/Dm-crypt

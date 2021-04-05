@@ -26,7 +26,7 @@ Applications of any complexity, from a simple web app to [Kubernetes](https://ku
 
 Your applications can read from and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.
 
-etcd is open source, available [on GitHub](https://github.com/etcd-io/etcd), and backed by the [Cloud Native Computing Foundation](https://cncf.io).
+etcd is open source, available [on GitHub](https://github.com/etcd-io/etcd), and backed by the [Cloud Native Computing Foundation](https://www.cncf.io).
 """
 
 overview           = """
@@ -122,7 +122,7 @@ link = "https://eng.uber.com/m3/"
 description = "M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions"
 
 [[params.adopters]]
-link = "https://openstack.org"
+link = "https://www.openstack.org/"
 logo = "/img/openstack-logo.svg"
 description = "OpenStack supports etcd as an optional provider of configuration storage, distributed key locking, and more"
 

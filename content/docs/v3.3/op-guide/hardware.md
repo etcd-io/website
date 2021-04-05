@@ -91,5 +91,4 @@ Example application workload: A 3,000 node Kubernetes cluster
 
 [diskbench]: https://github.com/ongardie/diskbenchmark
 [fio]: https://github.com/axboe/fio
-[tuning]: ../tuning.md
-
+[tuning]: ../tuning
