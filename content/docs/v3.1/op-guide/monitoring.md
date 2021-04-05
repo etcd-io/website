@@ -78,7 +78,7 @@ Sample dashboard:
 ![](../etcd-sample-grafana.png)
 
 
-[prometheus]: https://prometheus.io/
-[grafana]: http://grafana.org/
-[template]: ../grafana.json
 [demo]: http://dash.etcd.io/dashboard/db/test-etcd
+[grafana]: http://grafana.org/
+[prometheus]: https://prometheus.io/
+[template]: ../grafana.json

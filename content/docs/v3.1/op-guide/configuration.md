@@ -284,12 +284,12 @@ Follow the instructions when using these flags.
 + default: basic
 
 [build-cluster]: clustering#static
-[reconfig]: runtime-configuration
 [discovery]: clustering#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
 [proxy]: /docs/v2.3/proxy
+[reconfig]: runtime-configuration
 [restore]: /docs/v2.3/admin_guide#restoring-a-backup
 [security]: security
+[static bootstrap]: clustering#static
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
 [tuning]: ../tuning#time-parameters
-[static bootstrap]: clustering#static

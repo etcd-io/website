@@ -121,6 +121,6 @@ Sample dashboard:
 ![](../etcd-sample-grafana.png)
 
 
-[prometheus]: https://prometheus.io/
 [grafana]: http://grafana.org/
+[prometheus]: https://prometheus.io/
 [template]: ../grafana.json

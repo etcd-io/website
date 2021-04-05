@@ -55,7 +55,7 @@ failed to write to storage: error: given version (4703569812595502721) differ fr
 ### Notes on the parameters related to stop the world GC pause
 `client` program includes two constant values: `nrGarbageObjects` and `sessionTTL`. These parameters are configured for causing lease expiration with stop the world GC pause of go runtime. They heavily rely on resources of a machine for executing the example. If lease expiration doesn't happen on your machine, update these parameters and try again.
 
-[why.md]: ../why#notes-on-the-usage-of-lock-and-lease
 [fencing]: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
-[unsafe-lock]: https://martin.kleppmann.com/2016/02/unsafe-lock.png
 [fencing-tokens]: https://martin.kleppmann.com/2016/02/fencing-tokens.png
+[unsafe-lock]: https://martin.kleppmann.com/2016/02/unsafe-lock.png
+[why.md]: ../why#notes-on-the-usage-of-lock-and-lease

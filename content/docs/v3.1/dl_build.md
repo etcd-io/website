@@ -71,8 +71,7 @@ OK
 
 If OK is printed, then etcd is working!
 
-[github-release]: https://github.com/coreos/etcd/releases/
-[go]: https://golang.org/doc/install
 [build-script]: ../build
 [cmd-directory]: ../cmd
-
+[github-release]: https://github.com/coreos/etcd/releases/
+[go]: https://golang.org/doc/install

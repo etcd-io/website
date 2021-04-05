@@ -155,21 +155,21 @@ If none of the above suggestions clear the warnings, please [open an issue][new_
 etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
 
 
-[hardware-setup]: op-guide/hardware
-[supported-platform]: op-guide/supported-platform
-[wal_fsync_duration_seconds]: metrics#disk
-[tuning]: tuning
-[new_issue]: https://github.com/etcd-io/etcd/issues/new
+[api-mvcc]: learning/api#revisions
 [backend_commit_metrics]: metrics#disk
-[raft]: https://raft.github.io/raft.pdf
 [backup]: op-guide/recovery#snapshotting-the-keyspace
-[chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
-[runtime reconfiguration]: op-guide/runtime-configuration
 [benchmark]: https://github.com/coreos/etcd/tree/master/tools/benchmark
 [benchmark-result]: op-guide/performance
-[api-mvcc]: learning/api#revisions
+[chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
+[fio]: https://github.com/axboe/fio
+[fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
+[hardware-setup]: op-guide/hardware
 [maintenance-compact]:  op-guide/maintenance#history-compaction-v3-api-key-value-database
 [maintenance-defragment]: op-guide/maintenance#defragmentation
 [maintenance-disarm]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#alarm-disarm
-[fio]: https://github.com/axboe/fio
-[fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
+[new_issue]: https://github.com/etcd-io/etcd/issues/new
+[raft]: https://raft.github.io/raft.pdf
+[runtime reconfiguration]: op-guide/runtime-configuration
+[supported-platform]: op-guide/supported-platform
+[tuning]: tuning
+[wal_fsync_duration_seconds]: metrics#disk

@@ -240,13 +240,13 @@ It is enabled by default.
 [cluster-reconf]: #cluster-reconfiguration-operations
 [conf-adv-peer]: configuration#clustering-flags
 [conf-name]: configuration#member-flags
+[design-learner]: ../learning/design-learner
 [disaster recovery]: recovery
+[error cases when promoting a member]: #error-cases-when-promoting-a-learner-member
+[fault tolerance table]: /docs/v2.3/admin_guide#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
+[member migration]: /docs/v2.3/admin_guide#member-migration
+[member-api]: /docs/v2.3/members_api
 [member-api-grpc]: ../dev-guide/api_reference_v3
 [remove member]: #remove-a-member
 [runtime-reconf]: runtime-reconf-design
-[error cases when promoting a member]: #error-cases-when-promoting-a-learner-member
-[design-learner]: ../learning/design-learner
-[member-api]: /docs/v2.3/members_api
-[member migration]: /docs/v2.3/admin_guide#member-migration
-[fault tolerance table]: /docs/v2.3/admin_guide#fault-tolerance-table

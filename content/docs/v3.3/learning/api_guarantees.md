@@ -59,8 +59,8 @@ etcd does not ensure linearizability for watch operations. Users are expected to
 
 etcd ensures linearizability for all other operations by default. Linearizability comes with a cost, however, because linearized requests must go through the Raft consensus process. To obtain lower latencies and higher throughput for read requests, clients can configure a request’s consistency mode to `serializable`, which may access stale data with respect to quorum, but removes the performance penalty of linearized accesses' reliance on live consensus.
 
-[seq_consistency]: https://en.wikipedia.org/wiki/Consistency_model#Sequential_consistency
-[strict_consistency]: https://en.wikipedia.org/wiki/Consistency_model#Strict_consistency
-[serializable_isolation]: https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable
 [Linearizability]: #linearizability
+[seq_consistency]: https://en.wikipedia.org/wiki/Consistency_model#Sequential_consistency
+[serializable_isolation]: https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable
+[strict_consistency]: https://en.wikipedia.org/wiki/Consistency_model#Strict_consistency
 [txn]: api#transaction
