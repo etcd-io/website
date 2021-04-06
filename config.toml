@@ -5,11 +5,6 @@ pygmentsCodeFences = true
 pygmentsStyle = "fruity"
 baseURL = "https://etcd.io"
 enableRobotsTxt = true
-ignoreFiles = [
-  "content/docs/v*/*/README.md",
-  "content/docs/v*/docs.md",
-  "content/docs/v3.4.0/etcd-mixin",
-]
 
 [params]
 description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
