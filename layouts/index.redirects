@@ -17,3 +17,6 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/v3.3.13/*    /docs/v3.3/:splat
 /docs/v3.4.0    /docs/v3.4/
 /docs/v3.4.0/*    /docs/v3.4/:splat
+
+/docs/v3.1/docs  /docs/v3.1/
+/docs/v3.2/docs  /docs/v3.2/
