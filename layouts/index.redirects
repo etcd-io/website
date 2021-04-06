@@ -22,5 +22,7 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 
 /docs/v3.1/docs  /docs/v3.1/
 /docs/v3.2/docs  /docs/v3.2/
-/docs/v3.4/etcd-mixin  /docs/v3.4/op-guide/monitoring/#alerting
+/docs/v3.4/etcd-mixin    /docs/v3.4/op-guide/monitoring/#alerting
 /docs/v3.4/etcd-mixin/*  /docs/v3.4/op-guide/monitoring/#alerting
+
+/docs/next/learning/lock/*  /docs/next/learning/why/#notes-on-the-usage-of-lock-and-lease
