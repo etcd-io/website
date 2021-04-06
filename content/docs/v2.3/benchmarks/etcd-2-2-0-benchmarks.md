@@ -71,4 +71,4 @@ The performance is calculated through results of 100 benchmark rounds.
 - Write QPS to all members seems to be increased by a significant margin, because followers now receive the latest commit index sooner, and commit proposals more quickly.
 
 [boom]: https://github.com/rakyll/boom
-[hack]: ../../../hack/benchmark/
+[hack]: https://github.com/etcd-io/etcd/tree/v2.3.8/hack/benchmark

@@ -57,12 +57,12 @@ curl -L http://localhost:2379/v3alpha/kv/txn \
 
 Generated [Swagger][swagger] API definitions can be found at [rpc.swagger.json][swagger-doc].
 
-[api-ref]: ./api_reference_v3.md
+[api-ref]: ./api_reference_v3
 [go-client]: https://github.com/etcd-io/etcd/tree/master/client/v3
 [etcdctl]: https://github.com/coreos/etcd/tree/master/etcdctl
 [grpc]: http://www.grpc.io/
 [grpc-gateway]: https://github.com/grpc-ecosystem/grpc-gateway
 [json-mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
 [swagger]: http://swagger.io/
-[swagger-doc]: apispec/swagger/rpc.swagger.json
+[swagger-doc]: https://github.com/etcd-io/etcd/blob/master/Documentation/dev-guide/apispec/swagger/rpc.swagger.json
 

@@ -1,7 +1,7 @@
-{{ $home     := site.BaseURL }}
-{{ $logo     := site.Params.logos.navbar }}
-{{ $allDocs  := where site.Sections ".Section" "docs" }}
-{{ $latest   := site.Params.versions.latest }}
+{{ $home     := site.BaseURL -}}
+{{ $logo     := site.Params.logos.navbar -}}
+{{ $allDocs  := where site.Sections ".Section" "docs" -}}
+{{ $latest   := site.Params.versions.latest -}}
 <nav class="navbar is-hidden-tablet">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ $home }}">
@@ -30,13 +30,13 @@
       </p>
 
       {{ range $allDocs }}
-      {{ range .Sections }}
-      {{ range .Sections }}
-      <a class="navbar-item is-indented is-small" href="{{ .RelPermalink }}">
-        {{ .Title }}
-      </a>
-      {{ end }}
-      {{ end }}
+        {{ range .Sections }}
+          {{ range .Sections }}
+            <a class="navbar-item is-indented is-small" href="{{ .RelPermalink }}">
+              {{- .Title -}}
+            </a>
+          {{ end }}
+        {{ end }}
       {{ end }}
     </div>
   </div>

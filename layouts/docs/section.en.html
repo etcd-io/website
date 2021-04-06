@@ -1,66 +1,60 @@
-{{ define "title" }}
-etcd | {{ .Title }}
+{{ define "title" -}}
+etcd | {{ .Title -}}
 {{ end }}
 
-{{ define "main" }}
-{{ partial "docs/navbar.html" . }}
-{{ $version := index (split .Path "/") 1 }}
-{{ $isVersionMainPage := eq .RelPermalink (printf "/docs/%s/" $version) }}
+{{ define "main" -}}
+{{ partial "docs/navbar.html" . -}}
+{{ $version := index (split .RelPermalink "/") 2 -}}
+{{ $isVersionMainPage := eq .RelPermalink (printf "/docs/%s/" $version) -}}
 <div class="dashboard">
   {{ partial "docs/nav-panel.html" . }}
 
   <div class="dashboard-main is-scrollable">
-    {{ partial "docs/hero.html" . }}
+    {{ partial "docs/hero.html" . -}}
 
+    {{ if $version -}}
     {{ partial "deprecation-warning.html" . }}
+    {{ end -}}
 
     <section class="section">
       <div class="content docs-content">
-        {{ with .Content }}
-        {{ . }}
-
-        <hr />
-        {{ end }}
+        {{ with .Content -}}
+          {{ . -}}
+          <hr />
+        {{ end -}}
 
 
         {{ if and $isVersionMainPage .Sections }}
-        <h4>
-          Documentation sections
-        </h4>
+          <h4>Documentation sections</h4>
 
-        <ul>
-          {{ range .Sections }}
-          <li>
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a><br />
-            {{ .Description }}
-          </li>
-          {{ end }}
-        </ul>
-        {{ else }}
-        <h4>
-          Docs in this section
-        </h4>
-
-        <ul>
-          {{ range .Pages }}
-          {{ if .Title }}
-          <li>
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a><br />
-            {{ .Description }}
-          </li>
-          {{ end }}
-          {{ end }}
-        </ul>
-        {{ end }}
+          <ul>
+            {{ range .Sections }}
+              <li>
+                <a href="{{ .RelPermalink }}">
+                  {{- .Title -}}
+                </a><br />
+                {{- .Description -}}
+              </li>
+            {{ end -}}
+          </ul>
+        {{ else if $version -}}
+          <h4>Docs in this section</h4>
+          <ul>
+            {{ range .Pages }}
+              {{ if .Title -}}
+              <li>
+                <a href="{{ .RelPermalink }}">
+                  {{- .Title -}}
+                </a><br />
+                {{- .Description -}}
+              </li>
+              {{ end -}}
+            {{ end -}}
+          </ul>
+        {{ end -}}
       </div>
     </section>
-      
-
-    {{ partial "footer.html" . }}
+    {{ partial "footer.html" . -}}
   </div>
 </div>
-{{ end }}
+{{ end -}}

@@ -67,4 +67,4 @@ If OK is printed, then etcd is working!
 [go]: https://golang.org/doc/install
 [build-script]: ../build
 [cmd-directory]: ../cmd
-[example-hardware-configurations]: op-guide/hardware.md#example-hardware-configurations
+[example-hardware-configurations]: op-guide/hardware#example-hardware-configurations

@@ -62,5 +62,5 @@ etcd ensures linearizability for all other operations by default. Linearizabilit
 [seq_consistency]: https://en.wikipedia.org/wiki/Consistency_model#Sequential_consistency
 [strict_consistency]: https://en.wikipedia.org/wiki/Consistency_model#Strict_consistency
 [serializable_isolation]: https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable
-[Linearizability]: #Linearizability
-[txn]: api.md#transactions
+[Linearizability]: #linearizability
+[txn]: api#transaction

@@ -38,7 +38,7 @@ If the majority of the cluster is lost or all of the nodes have changed IP addre
 
 ### Recover cluster from minority failure
 
-If a specific member is lost, then it is equivalent to replacing a failed machine. The steps are mentioned in [Replace a failed machine](runtime-configuration.md#replace-a-failed-machine).
+If a specific member is lost, then it is equivalent to replacing a failed machine. The steps are mentioned in [Replace a failed machine](runtime-configuration#replace-a-failed-machine).
 
 ## Cluster reconfiguration operations
 
@@ -238,15 +238,15 @@ It is enabled by default.
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: configuration.md#clustering-flags
-[conf-name]: configuration.md#member-flags
-[disaster recovery]: recovery.md
-[fault tolerance table]: ../../v2/admin_guide.md#fault-tolerance-table
+[conf-adv-peer]: configuration#clustering-flags
+[conf-name]: configuration#member-flags
+[disaster recovery]: recovery
 [majority failure]: #restart-cluster-from-majority-failure
-[member-api]: ../../v2/members_api.md
-[member-api-grpc]: ../dev-guide/api_reference_v3.md
-[member migration]: ../../v2/admin_guide.md#member-migration
+[member-api-grpc]: ../dev-guide/api_reference_v3
 [remove member]: #remove-a-member
-[runtime-reconf]: runtime-reconf-design.md
+[runtime-reconf]: runtime-reconf-design
 [error cases when promoting a member]: #error-cases-when-promoting-a-learner-member
-[design-learner]: ../learning/design-learner.md
+[design-learner]: ../learning/design-learner
+[member-api]: /docs/v2.3/members_api
+[member migration]: /docs/v2.3/admin_guide#member-migration
+[fault tolerance table]: /docs/v2.3/admin_guide#fault-tolerance-table

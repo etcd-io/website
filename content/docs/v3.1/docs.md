@@ -58,35 +58,35 @@ To learn more about the concepts and internals behind etcd, read the following p
 
 Answers to [common questions] about etcd.
 
-[api_ref]: dev-guide/api_reference_v3.md
-[api_grpc_gateway]: dev-guide/api_grpc_gateway.md
-[clustering]: op-guide/clustering.md
-[conf]: op-guide/configuration.md
-[system-limit]: dev-guide/limit.md
-[common questions]: faq.md
-[why]: learning/why.md
-[data_model]: learning/data_model.md
-[demo]: demo.md
-[download_build]: dl_build.md
+[api_ref]: dev-guide/api_reference_v3
+[api_grpc_gateway]: dev-guide/api_grpc_gateway
+[clustering]: op-guide/clustering
+[conf]: op-guide/configuration
+[system-limit]: dev-guide/limit
+[common questions]: faq
+[why]: learning/why
+[data_model]: learning/data_model
+[demo]: demo
+[download_build]: dl_build
 [embed_etcd]: https://godoc.org/github.com/coreos/etcd/embed
-[grpc_naming]: dev-guide/grpc_naming.md
-[failures]: op-guide/failures.md
-[gateway]: op-guide/gateway.md
-[glossary]: learning/glossary.md
-[grpc_proxy]: op-guide/grpc_proxy.md
-[hardware]: op-guide/hardware.md
-[interacting]: dev-guide/interacting_v3.md
-[local_cluster]: dev-guide/local_cluster.md
-[performance]: op-guide/performance.md
-[recovery]: op-guide/recovery.md
-[maintenance]: op-guide/maintenance.md
-[security]: op-guide/security.md
-[monitoring]: op-guide/monitoring.md
-[v2_migration]: op-guide/v2-migration.md
-[container]: op-guide/container.md
-[understand_apis]: learning/api.md
-[versioning]: op-guide/versioning.md
-[supported_platform]: op-guide/supported-platform.md
-[experimental]: dev-guide/experimental_apis.md
-[v3_upgrade]: upgrades/upgrade_3_0.md
-[v31_upgrade]: upgrades/upgrade_3_1.md
+[grpc_naming]: dev-guide/grpc_naming
+[failures]: op-guide/failures
+[gateway]: op-guide/gateway
+[glossary]: learning/glossary
+[grpc_proxy]: op-guide/grpc_proxy
+[hardware]: op-guide/hardware
+[interacting]: dev-guide/interacting_v3
+[local_cluster]: dev-guide/local_cluster
+[performance]: op-guide/performance
+[recovery]: op-guide/recovery
+[maintenance]: op-guide/maintenance
+[security]: op-guide/security
+[monitoring]: op-guide/monitoring
+[v2_migration]: op-guide/v2-migration
+[container]: op-guide/container
+[understand_apis]: learning/api
+[versioning]: op-guide/versioning
+[supported_platform]: op-guide/supported-platform
+[experimental]: dev-guide/experimental_apis
+[v3_upgrade]: upgrades/upgrade_3_0
+[v31_upgrade]: upgrades/upgrade_3_1
