@@ -1,8 +1,10 @@
 {{ $latest := site.Params.versions.latest }}
 /docs/latest     /docs/{{ $latest }}/
 /docs/latest/*     /docs/{{ $latest }}/:splat
+
 /docs/v3.4.0/branch-management    /docs/v3.4.0/branch_management/
 docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
+
 /docs/current     /docs/next/
 /docs/current/*     /docs/next/:splat
 /docs/v2    /docs/v2.3/
@@ -20,3 +22,5 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 
 /docs/v3.1/docs  /docs/v3.1/
 /docs/v3.2/docs  /docs/v3.2/
+/docs/v3.4/etcd-mixin  /docs/v3.4/op-guide/monitoring/#alerting
+/docs/v3.4/etcd-mixin/*  /docs/v3.4/op-guide/monitoring/#alerting
