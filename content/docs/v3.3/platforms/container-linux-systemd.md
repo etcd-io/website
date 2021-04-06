@@ -197,9 +197,9 @@ To stop and disable:
 systemctl disable --now etcd2.service
 ```
 
-[systemd-docs]: https://github.com/systemd/systemd
+[container-linux-ct]: https://github.com/coreos/container-linux-config-transpiler
 [container-linux-docs]: https://coreos.com/os/docs/latest
 [container-linux-faq]: https://github.com/coreos/docs/blob/master/etcd/os-faq.md
-[container-linux-provision]: https://github.com/coreos/docs/blob/master/os/provisioning.md
 [container-linux-ignition]: https://github.com/coreos/docs/blob/master/ignition/what-is-ignition.md
-[container-linux-ct]: https://github.com/coreos/container-linux-config-transpiler
+[container-linux-provision]: https://github.com/coreos/docs/blob/master/os/provisioning.md
+[systemd-docs]: https://github.com/systemd/systemd

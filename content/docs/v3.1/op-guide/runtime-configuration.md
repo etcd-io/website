@@ -178,10 +178,10 @@ It is enabled by default.
 [conf-adv-peer]: configuration#--initial-advertise-peer-urls
 [conf-name]: configuration#--name
 [disaster recovery]: recovery
+[fault tolerance table]: /docs/v2.3/admin_guide#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
+[member migration]: /docs/v2.3/admin_guide#member-migration
+[member-api]: /docs/v2.3/members_api
 [member-api-grpc]: ../dev-guide/api_reference_v3#service-cluster-etcdserveretcdserverpbrpcproto
 [remove member]: #remove-a-member
 [runtime-reconf]: runtime-reconf-design
-[member-api]: /docs/v2.3/members_api
-[member migration]: /docs/v2.3/admin_guide#member-migration
-[fault tolerance table]: /docs/v2.3/admin_guide#fault-tolerance-table

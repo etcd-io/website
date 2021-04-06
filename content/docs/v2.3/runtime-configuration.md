@@ -180,7 +180,7 @@ It is recommended to enable this option. However, it is disabled by default beca
 [disaster recovery]: ../admin_guide#disaster-recovery
 [fault tolerance table]: ../admin_guide#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
-[member-api]: ../members_api
 [member migration]: ../admin_guide#member-migration
+[member-api]: ../members_api
 [remove member]: #remove-a-member
 [runtime-reconf]: ../runtime-reconf-design

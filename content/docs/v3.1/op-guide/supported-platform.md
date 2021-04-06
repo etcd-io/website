@@ -37,5 +37,5 @@ To avoid inadvertently running a possibly unstable etcd server, `etcd` on unstab
 
 Currently only the amd64 architecture is officially supported by `etcd`.
 
-[go-issue]: https://github.com/golang/go/issues/599
 [go-atomic]: https://golang.org/pkg/sync/atomic/#pkg-note-BUG
+[go-issue]: https://github.com/golang/go/issues/599

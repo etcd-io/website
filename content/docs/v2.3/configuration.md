@@ -284,7 +284,6 @@ Follow the instructions when using these flags.
 + default: false
 
 [build-cluster]: ../clustering#static
-[reconfig]: ../runtime-configuration
 [discovery]: ../clustering#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
 [proxy]: ../proxy

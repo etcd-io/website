@@ -304,9 +304,9 @@ By default, etcd uses the default configuration of the Go 1.4 runtime, which mea
 When using etcd in heavy-load scenarios on machines with multiple cores it will usually be desirable to increase the number of threads that etcd can utilize. To do this, simply set the environment variable GOMAXPROCS to the desired number when starting etcd. For more information on this variable, see the [Go runtime documentation][golang-runtime].
 
 [add-a-member]: ../runtime-configuration#add-a-new-member
-[golang1.5-runtime]: https://golang.org/doc/go1.5#runtime
 [golang-memstats]: https://golang.org/pkg/runtime/#MemStats
 [golang-runtime]: https://golang.org/pkg/runtime
+[golang1.5-runtime]: https://golang.org/doc/go1.5#runtime
 [metrics]: ../metrics
 [prometheus]: http://prometheus.io/
 [remove-a-member]: ../runtime-configuration#remove-a-member

@@ -24,6 +24,6 @@ The key of key-value pair is a 3-tuple (major, sub, type). Major is the store re
 
 etcd also keeps a secondary in-memory [btree][btree] index to speed up range queries over keys. The keys in the btree index are the keys of the store exposed to user. The value is a pointer to the modification of the persistent b+tree. Compaction removes dead pointers.
 
-[persistent-ds]: https://en.wikipedia.org/wiki/Persistent_data_structure
-[btree]: https://en.wikipedia.org/wiki/B-tree
 [b+tree]: https://en.wikipedia.org/wiki/B%2B_tree
+[btree]: https://en.wikipedia.org/wiki/B-tree
+[persistent-ds]: https://en.wikipedia.org/wiki/Persistent_data_structure

@@ -486,15 +486,15 @@ When the `--proxy` flag is set, etcd runs in [proxy mode][proxy]. This proxy mod
 
 To setup an etcd cluster with proxies of v2 API, please read the the [clustering doc in etcd 2.3 release][clustering_etcd2].
 
+[clustering_etcd2]: https://github.com/coreos/etcd/blob/release-2.3/Documentation/clustering.md
 [conf-adv-client]: configuration#--advertise-client-urls
 [conf-listen-client]: configuration#--listen-client-urls
 [discovery-proto]: ../dev-internal/discovery_protocol
+[gateway]: gateway
+[proxy]: https://github.com/coreos/etcd/blob/release-2.3/Documentation/proxy.md
 [rfc-srv]: http://www.ietf.org/rfc/rfc2052.txt
 [runtime-conf]: runtime-configuration
 [runtime-reconf-design]: runtime-reconf-design
-[proxy]: https://github.com/coreos/etcd/blob/release-2.3/Documentation/proxy.md
-[clustering_etcd2]: https://github.com/coreos/etcd/blob/release-2.3/Documentation/clustering.md
-[security-guide]: security
 [security-guide-dns-srv]: security#notes-for-dns-srv
+[security-guide]: security
 [tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
-[gateway]: gateway

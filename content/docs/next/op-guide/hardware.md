@@ -95,4 +95,3 @@ Example application workload: A 3,000 node Kubernetes cluster
 [fio]: https://github.com/axboe/fio
 [fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
 [tuning]: ../tuning.md
-

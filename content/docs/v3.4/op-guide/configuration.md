@@ -150,8 +150,6 @@ To start etcd automatically using custom settings at startup in Linux, using a [
 + default: "new"
 + env variable: ETCD_INITIAL_CLUSTER_STATE
 
-[static bootstrap]: clustering#static
-
 ### --initial-cluster-token
 + Initial cluster token for the etcd cluster during bootstrap.
 + default: "etcd-cluster"
@@ -453,18 +451,6 @@ Follow the instructions when using these flags.
 + default: 1000
 + env variable: ETCD_EXPERIMENTAL_COMPACTION_BATCH_LIMIT
 
-[build-cluster]: clustering#static
-[reconfig]: runtime-configuration
-[discovery]: clustering#discovery
-[iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
-[proxy]: /docs/v2.3/proxy
-[restore]: /docs/v2.3/admin_guide#restoring-a-backup
-[security]: ../security
-[systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../tuning#time-parameters
-[sample-config-file]: https://github.com/etcd-io/etcd/blob/release-3.4/etcd.conf.yml.sample
-[recovery]: ../recovery
-
 ### --experimental-peer-skip-client-san-verification
 + Skip verification of SAN field in client certificate for peer connections. This can be helpful e.g. if
 cluster members run in different networks behind a NAT.
@@ -473,3 +459,16 @@ cluster members run in different networks behind a NAT.
 a private certificate authority using `--peer-cert-file`, `--peer-key-file`, `--peer-trusted-ca-file`
 + default: false
 + env variable: ETCD_EXPERIMENTAL_PEER_SKIP_CLIENT_SAN_VERIFICATION
+
+[build-cluster]: clustering#static
+[discovery]: clustering#discovery
+[iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
+[proxy]: /docs/v2.3/proxy
+[reconfig]: runtime-configuration
+[recovery]: ../recovery
+[restore]: /docs/v2.3/admin_guide#restoring-a-backup
+[sample-config-file]: https://github.com/etcd-io/etcd/blob/release-3.4/etcd.conf.yml.sample
+[security]: ../security
+[static bootstrap]: clustering#static
+[systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
+[tuning]: ../tuning#time-parameters
