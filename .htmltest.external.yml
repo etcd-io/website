@@ -1,6 +1,4 @@
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
-IgnoreEmptyHref: true
-IgnoreURLs:
-- example.com
+IgnoreURLs: [example.com]
