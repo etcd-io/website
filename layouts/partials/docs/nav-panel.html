@@ -1,8 +1,9 @@
-{{ $currentUrl := .RelPermalink -}}
+{{ $thisFile  := .File -}}
+{{ $thisURL   := .RelPermalink -}}
+{{ $thisVers  := .CurrentSection.Params.version -}}
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path -}}
 {{ $latest     := site.Params.versions.latest -}}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest -}}
-{{ $version    := index (split $currentUrl "/") 2 -}}
 {{ $allDocs    := where site.Sections "Section" "docs" -}}
 
 <div class="dashboard-panel is-medium has-background-white-bis is-hidden-mobile">
@@ -17,7 +18,7 @@
       <div class="dropdown-trigger">
         <button class="button is-danger is-radiusless">
           <span>
-            <strong>{{ $version | default "Version" }}</strong>
+            <strong>{{ $thisVers | default "Version" }}</strong>
           </span>
           <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -28,28 +29,21 @@
       <div class="dropdown-menu">
         <div class="dropdown-content">
 
-          {{ $current_file := .File -}}
+          {{ $thisVersURI := printf "/%s/" $thisVers -}}
 
-          {{ $original_version := printf "/%s/" .CurrentSection.Params.version -}}
-          {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL -}}
+          {{ range $vers := .Site.Params.versions.all -}}
+            {{ $versURI := printf "/%s/" $vers -}}
+            {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
+            {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
 
-          {{ range .Site.Params.versions.all -}}
-            {{ $new_version := printf "/%s/" . -}}
-            {{ $target_file := replace $current_file $original_version $new_version -}}
-
-            {{/* check if the file we are linking to in the other version exists */ -}}
-            {{ if (fileExists $target_file) -}}
+            {{/* Link to corresponding page under the docs $versURI, if it exists; otherwise link to the new version landing page */ -}}
+            {{ if and $thisVers (fileExists $targetFile) -}}
             <a class="dropdown-item"
-              href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
+              href="{{ $targetURL }}">{{ $vers }}</a>
             {{ else -}}
-            {{/* if not, then link to the top level of that version instead */ -}}
-            {{ if eq "/next/" $new_version -}}
-            <a class="navbar-item"
-              href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-            {{ else -}}
-            <a class="navbar-item"
-              href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-            {{ end -}}
+              {{/* FIXME: class below should be dropdown-item */ -}}
+              <a class="navbar-item"
+              href="/docs/{{ $vers }}/">{{ $vers }}</a>
             {{ end -}}
           {{ end -}}
         </div>
@@ -60,8 +54,8 @@
 
   <div class="dashboard-panel-main is-scrollable">
     <div class="docs-panel">
-      {{ with $version -}}
-      <a class="docs-panel-section" href="/docs/{{ $version }}">
+      {{ with $thisVers -}}
+      <a class="docs-panel-section" href="/docs/{{ $thisVers }}">
         Version {{ replace . "v" "" }} home
       </a>
       {{ end -}}
@@ -72,8 +66,8 @@
           {{ range .RegularPages -}}
             {{ if .Title -}}
               {{ $docVersion := index (split .File.Path "/") 1 -}}
-              {{ if eq $docVersion $version -}}
-                {{ $isCurrentPage := eq .RelPermalink $currentUrl -}}
+              {{ if eq $docVersion $thisVers -}}
+                {{ $isCurrentPage := eq .RelPermalink $thisURL -}}
                 <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
                   {{ .Title -}}
                 </a>
@@ -84,15 +78,15 @@
 
           {{ range .Sections -}}
             {{ $docVersion := index (split .File.Path "/") 1 -}}
-            {{ if eq $docVersion $version -}}
-              {{ $isCurrentSection := eq .RelPermalink $currentUrl -}}
+            {{ if eq $docVersion $thisVers -}}
+              {{ $isCurrentSection := eq .RelPermalink $thisURL -}}
               <a class="docs-panel-section{{ if $isCurrentSection }} is-active{{ end }}" href="{{ .RelPermalink }}">
                 {{ .Title -}}
               </a>
 
               {{ range .Pages -}}
                 {{ if .Title -}}
-                  {{ $isCurrentPage := eq .RelPermalink $currentUrl -}}
+                  {{ $isCurrentPage := eq .RelPermalink $thisURL -}}
                   <a class="docs-panel-page{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .RelPermalink }}">
                     {{ .Title -}}
                   </a>

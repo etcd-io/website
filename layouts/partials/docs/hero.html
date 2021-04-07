@@ -1,13 +1,14 @@
-{{ $version      := index (split .File.Path "/") 1 -}}
-{{ $latest       := printf "%s" site.Params.versions.latest -}}
-{{ $allVersions  := site.Params.versions.all -}}
-{{ $versions     := (slice) -}}
-{{ $here         := .RelPermalink -}}
-{{ $path         := .File.Path -}}
+{{ $thisFile    := .File -}}
+{{ $thisURL     := .RelPermalink -}}
+{{ $thisVers    := .CurrentSection.Params.version -}}
+{{ $latest      := .Site.Params.versions.latest -}}
+{{ $allVersions := site.Params.versions.all -}}
+{{ $versions    := (slice) -}}
+{{ $path        := .File.Path -}}
 
 {{ range $allVersions -}}
   {{ $v := printf "v%s" . -}}
-  {{ $fileToCheck := replace $path $version $v -}}
+  {{ $fileToCheck := replace $path $thisVers $v -}}
   {{ if fileExists $fileToCheck -}}
     {{ $versions = $versions | append . -}}
   {{ end -}}
@@ -20,7 +21,7 @@
     </p>
     {{ with .Params.description -}}
       <p class="subtitle is-size-4 is-size-5-mobile">
-      {{- . | markdownify -}}
+        {{- . | markdownify -}}
       </p>
     {{ end }}
 
@@ -30,46 +31,33 @@
           <p class="is-size-4 is-size-5-mobile">Versions of this doc:</p>
         </div>
 
-        {{ $current_file := .File -}}
-
-        {{ $original_version := printf "/%s/" .CurrentSection.Params.version -}}
-        {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL -}}
-
         <div class="level-item">
           <div class="buttons">
-            {{ range .Site.Params.versions.all }}
+            {{ $thisVersURI := printf "/%s/" $thisVers -}}
 
-              {{ $new_version := printf "/%s/" . -}}
-              {{ $target_file := replace $current_file $original_version $new_version -}}
-              {{ $isLatest := eq $latest . -}}
+            {{ range $vers := .Site.Params.versions.all }}
 
-              {{/* check if the file we are linking to in the other version exists */ -}}
-              {{ if (fileExists $target_file) -}}
+              {{ $versURI := printf "/%s/" $vers -}}
+              {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
+              {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
+              {{ $isLatest := eq $latest $vers -}}
+
+              {{/* FIXME: factor out most of the if-then and -else bodies */ -}}
+
+              {{/* Link to corresponding page under the docs $vers_uri, if it exists; otherwise link to the new version landing page */ -}}
+              {{ if and $thisVers (fileExists $targetFile) -}}
               <a class="button is-primary is-outlined has-text-weight-bold"
-                href="{{ replace $here $original_version $new_version | relURL }}">
-                <span>{{ . }}</span>
+                href="{{ $targetURL }}">
+                <span>{{ $vers }}</span>
                 {{ if $isLatest -}}
                   &nbsp;&nbsp;
                   <span class="tag is-small is-success">latest</span>
                 {{ end -}}
               </a>
               {{- else -}}
-              {{/* if not, then link to the top level of that version instead */ -}}
-              {{ if eq "/next/" $new_version -}}
               <a class="button is-primary is-outlined has-text-weight-bold"
-                href="{{ index (findRE `^(.*?)\/next\/` (replace $here $original_version $new_version | relURL)) 0 }}">
-                <span>{{ . }}</span>
-                {{ if $isLatest -}}
-                  &nbsp;&nbsp;
-                  <span class="tag is-small is-success">
-                    latest
-                  </span>
-                {{ end -}}
-              </a>
-              {{- else -}}
-              <a class="button is-primary is-outlined has-text-weight-bold"
-                href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $here $original_version $new_version | relURL)) 0 }}">
-                <span>{{ . }}</span>
+                href="/docs/{{ $vers }}/">
+                <span>{{ $vers }}</span>
                 {{ if $isLatest -}}
                   &nbsp;&nbsp;
                   <span class="tag is-small is-success">
@@ -78,8 +66,6 @@
                 {{ end -}}
               </a>
               {{- end -}}
-              {{ end -}}
-
             {{ end -}}
           </div>
         </div>
