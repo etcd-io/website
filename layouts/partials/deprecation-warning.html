@@ -23,7 +23,7 @@
     {{ else }}
     {{/* if not, then link to the top level of that version instead */}}
     <a href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ site.Params.versions.latest }}</a>, or the
-    <a href="{{ index (findRE `^(.*?)current\/` (replace $currentUrl $original_version "/next/" | relURL)) 0 }}">current documentation</a>.
+    <a href="{{ index (findRE `^(.*?)next\/` (replace $currentUrl $original_version "/next/" | relURL)) 0 }}">current documentation</a>.
     {{- end }}
     </p>
   </div>
