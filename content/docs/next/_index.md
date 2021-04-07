@@ -1,5 +1,5 @@
 ---
-title: etcd next version
+title: next
 weight: 1000
 cascade:
   version: next

@@ -1,5 +1,5 @@
 ---
-title: etcd version 3.2
+title: v3.2
 cascade:
   version: v3.2
 ---
