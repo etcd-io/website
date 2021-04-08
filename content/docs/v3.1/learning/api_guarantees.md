@@ -49,7 +49,7 @@ Any completed operations are durable. All accessible data is also durable data. 
 
 #### Linearizability
 
-Linearizability (also known as Atomic Consistency or External Consistency) is a consistency level between strict consistency and sequential consistency. 
+Linearizability (also known as Atomic Consistency or External Consistency) is a consistency level between strict consistency and sequential consistency.
 
 For linearizability, suppose each operation receives a timestamp from a loosely synchronized global clock. Operations are linearized if and only if they always complete as though they were executed in a sequential order and each operation appears to complete in the order specified by the program. Likewise, if an operation’s timestamp precedes another, that operation must also precede the other operation in the sequence.
 

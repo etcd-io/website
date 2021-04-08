@@ -22,7 +22,7 @@ In summary, to automatically propagate cluster endpoint changes, the etcd gatewa
 
 - Improving performance
 
-The gateway is not designed for improving etcd cluster performance. It does not provide caching, watch coalescing or batching. The etcd team is developing a caching proxy designed for improving cluster scalability. 
+The gateway is not designed for improving etcd cluster performance. It does not provide caching, watch coalescing or batching. The etcd team is developing a caching proxy designed for improving cluster scalability.
 
 - Running on a cluster management system
 

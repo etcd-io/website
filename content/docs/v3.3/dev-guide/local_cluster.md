@@ -91,7 +91,7 @@ Use `etcdctl` to interact with the running cluster:
 
     If OK is printed, storing key-value pair is successful.
 
-### Testing fault tolerance  
+### Testing fault tolerance
 
 To exercise etcd's fault tolerance, kill a member and attempt to retrieve the key.
 

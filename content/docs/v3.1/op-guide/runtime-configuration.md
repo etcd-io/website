@@ -63,9 +63,9 @@ A wrongly updated client URL will not affect the health of the etcd cluster.
 
 #### Update advertise peer URLs
 
-To update the advertise peer URLs of a member, first update 
+To update the advertise peer URLs of a member, first update
 it explicitly via member command and then restart the member. The additional action is required
-since updating peer URLs changes the cluster wide configuration and can affect the health of the etcd cluster. 
+since updating peer URLs changes the cluster wide configuration and can affect the health of the etcd cluster.
 
 To update the peer URLs, first, we need to find the target member's ID. To list all members with `etcdctl`:
 

@@ -8,7 +8,7 @@ The following table lists etcd support status for common architectures and opera
 
 | Architecture | Operating System | Status       | Maintainers                 |
 | ------------ | ---------------- | ------------ | --------------------------- |
-| amd64        | Darwin           | Experimental | etcd maintainers            | 
+| amd64        | Darwin           | Experimental | etcd maintainers            |
 | amd64        | Linux            | Stable       | etcd maintainers            |
 | amd64        | Windows          | Experimental |                             |
 | arm64        | Linux            | Experimental | @glevand                    |
