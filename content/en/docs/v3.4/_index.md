@@ -1,5 +1,5 @@
 ---
-title: etcd version 3.4
+title: v3.4
 linkTitle: Docs
 cascade:
   version: v3.4
