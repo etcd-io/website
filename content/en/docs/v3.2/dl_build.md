@@ -64,5 +64,5 @@ If OK is printed, then etcd is working!
 
 [build-script]: ../build
 [cmd-directory]: ../cmd
-[github-release]: https://github.com/coreos/etcd/releases/
+[github-release]: https://github.com/etcd-io/etcd/releases/
 [go]: https://golang.org/doc/install

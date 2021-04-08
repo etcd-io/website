@@ -53,7 +53,7 @@ The graph shows the detailed structure of the in-memory index B-tree.
 ## Testing Environment
 
 etcd version
-- git head https://github.com/coreos/etcd/commit/776e9fb7be7eee5e6b58ab977c8887b4fe4d48db
+- git head https://github.com/etcd-io/etcd/commit/776e9fb7be7eee5e6b58ab977c8887b4fe4d48db
 
 GCE n1-standard-2 machine type
 

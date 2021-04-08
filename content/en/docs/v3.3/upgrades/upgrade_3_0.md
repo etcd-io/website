@@ -14,7 +14,7 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 #### Upgrade requirements
 
-To upgrade an existing etcd deployment to 3.0, the running cluster must be 2.3 or greater. If it's before 2.3, please upgrade to [2.3](https://github.com/coreos/etcd/releases/tag/v2.3.8) before upgrading to 3.0.
+To upgrade an existing etcd deployment to 3.0, the running cluster must be 2.3 or greater. If it's before 2.3, please upgrade to [2.3](https://github.com/etcd-io/etcd/releases/tag/v2.3.8) before upgrading to 3.0.
 
 Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. Check the health of the cluster by using the `etcdctl cluster-health` command before proceeding.
 
@@ -122,7 +122,7 @@ $ ETCDCTL_API=3 etcdctl endpoint health
 
 ## Further considerations
 
-- etcdctl environment variables have been updated. If `ETCDCTL_API=2 etcdctl cluster-health` works properly but `ETCDCTL_API=3 etcdctl endpoints health` responds with `Error:  grpc: timed out when dialing`, be sure to use the [new variable names](https://github.com/coreos/etcd/tree/master/etcdctl#etcdctl).
+- etcdctl environment variables have been updated. If `ETCDCTL_API=2 etcdctl cluster-health` works properly but `ETCDCTL_API=3 etcdctl endpoints health` responds with `Error:  grpc: timed out when dialing`, be sure to use the [new variable names](https://github.com/etcd-io/etcd/tree/v3.3.25/etcdctl#etcdctl).
 
 ## Known Issues
 

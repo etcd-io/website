@@ -26,7 +26,7 @@ go version go1.7.3 darwin/amd64
 To build `etcd` from the `master` branch without a `GOPATH` using the official `build` script:
 
 ```sh
-$ git clone https://github.com/coreos/etcd.git
+$ git clone https://github.com/etcd-io/etcd.git
 $ cd etcd
 $ ./build
 $ ./bin/etcd
@@ -38,7 +38,7 @@ To build a vendored `etcd` from the `master` branch via `go get`:
 # GOPATH should be set
 $ echo $GOPATH
 /Users/example/go
-$ go get github.com/coreos/etcd/cmd/etcd
+$ go get github.com/etcd-io/etcd/cmd/etcd
 $ $GOPATH/bin/etcd
 ```
 
@@ -48,7 +48,7 @@ To build `etcd` from the `master` branch without vendoring (may not build due to
 # GOPATH should be set
 $ echo $GOPATH
 /Users/example/go
-$ go get github.com/coreos/etcd
+$ go get github.com/etcd-io/etcd
 $ $GOPATH/bin/etcd
 ```
 
@@ -73,5 +73,5 @@ If OK is printed, then etcd is working!
 
 [build-script]: ../build
 [cmd-directory]: ../cmd
-[github-release]: https://github.com/coreos/etcd/releases/
+[github-release]: https://github.com/etcd-io/etcd/releases/
 [go]: https://golang.org/doc/install

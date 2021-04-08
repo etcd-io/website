@@ -117,14 +117,14 @@ Every new etcd cluster generates a new cluster ID based on the initial cluster c
 Usually this warning happens after tearing down an old cluster, then reusing some of the peer addresses for the new cluster. If any etcd process from the old cluster is still running it will try to contact the new cluster. The new cluster will recognize a cluster ID mismatch, then ignore the request and emit this warning. This warning is often cleared by ensuring peer addresses among distinct clusters are disjoint.
 
 [backend_commit_metrics]: ./metrics#disk
-[backup]: https://github.com/coreos/etcd/blob/master/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
-[benchmark]: https://github.com/coreos/etcd/tree/master/tools/benchmark
-[benchmark-result]: https://github.com/coreos/etcd/blob/master/Documentation/op-guide/performance.md
+[backup]: https://github.com/etcd-io/etcd/blob/v3.1.20/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
+[benchmark]: https://github.com/etcd-io/etcd/tree/v3.1.20/tools/benchmark
+[benchmark-result]: https://github.com/etcd-io/etcd/blob/v3.1.20/Documentation/op-guide/performance.md
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
 [hardware-setup]: ./op-guide/hardware
-[new_issue]: https://github.com/coreos/etcd/issues/new
+[new_issue]: https://github.com/etcd-io/etcd/issues/new
 [raft]: https://raft.github.io/raft.pdf
-[runtime reconfiguration]: https://github.com/coreos/etcd/blob/master/Documentation/op-guide/runtime-configuration.md
+[runtime reconfiguration]: https://github.com/etcd-io/etcd/blob/v3.1.20/Documentation/op-guide/runtime-configuration.md
 [supported-platform]: ./op-guide/supported-platform
 [tuning]: ./tuning
 [wal_fsync_duration_seconds]: ./metrics#disk

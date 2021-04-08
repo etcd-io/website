@@ -108,7 +108,7 @@ You can check the status for this discovery token, including the machines that h
 
 ### Open-source repository
 
-The repository is located at https://github.com/coreos/discovery.etcd.io. You could use it to build your own public discovery service.
+The repository is located at https://github.com/etcd-io/discovery.etcd.io. You could use it to build your own public discovery service.
 
 [api]: ../api#waiting-for-a-change
 [cluster-size]: ../admin_guide#optimal-cluster-size

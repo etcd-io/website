@@ -147,7 +147,7 @@ _, err = cli.Get(ctx, "foo", clientv3.WithPrefix())
 err.Error() == "rpc error: code = ResourceExhausted desc = grpc: received message larger than max (5240509 vs. 3145728)"
 ```
 
-**If not specified, client-side send limit defaults to 2 MiB (1.5 MiB + gRPC overhead bytes) and receive limit to `math.MaxInt32`**. Please see [clientv3 godoc](https://godoc.org/github.com/coreos/etcd/clientv3#Config) for more detail.
+**If not specified, client-side send limit defaults to 2 MiB (1.5 MiB + gRPC overhead bytes) and receive limit to `math.MaxInt32`**. Please see [clientv3 godoc](https://pkg.go.dev/github.com/etcd-io/etcd/clientv3#Config) for more detail.
 
 #### Changed raw gRPC client wrappers
 

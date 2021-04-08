@@ -10,7 +10,7 @@ Migrating an application from the API v2 to the API v3 involves two steps: 1) mi
 
 ## Migrate client library
 
-API v3 is different from API v2, thus application developers need to use a new client library to send requests to etcd API v3. The documentation of the client v3 is available at https://godoc.org/github.com/coreos/etcd/clientv3.
+API v3 is different from API v2, thus application developers need to use a new client library to send requests to etcd API v3. The documentation of the client v3 is available at https://pkg.go.dev/github.com/etcd-io/etcd/clientv3.
 
 There are some notable differences between API v2 and API v3:
 

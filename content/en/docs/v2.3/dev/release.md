@@ -20,9 +20,9 @@ All releases version numbers follow the format of [semantic versioning 2.0.0](ht
 ### Major, Minor Version Release, or its Pre-release
 
 - Ensure the relevant milestone on GitHub is complete. All referenced issues should be closed, or moved elsewhere.
-- Remove this release from [roadmap](https://github.com/etcd-io/etcd/blob/master/ROADMAP.md), if necessary.
+- Remove this release from [roadmap](https://github.com/etcd-io/etcd/blob/v2.3.8/ROADMAP.md), if necessary.
 - Ensure the latest upgrade documentation is available.
-- Bump [hardcoded MinClusterVerion in the repository](https://github.com/etcd-io/etcd/blob/master/version/version.go#L29), if necessary.
+- Bump [hardcoded MinClusterVerion in the repository](https://github.com/etcd-io/etcd/blob/v2.3.8/version/version.go#L29), if necessary.
 - Add feature capability maps for the new version, if necessary.
 
 ### Patch Version Release
@@ -39,14 +39,14 @@ All releases version numbers follow the format of [semantic versioning 2.0.0](ht
 
 ## Tag Version
 
-- Bump [hardcoded Version in the repository](https://github.com/etcd-io/etcd/blob/master/version/version.go#L30) to the latest version `${VERSION}`.
+- Bump [hardcoded Version in the repository](https://github.com/etcd-io/etcd/blob/v2.3.8/version/version.go#L30) to the latest version `${VERSION}`.
 - Ensure all tests on CI system are passed.
 - Manually check etcd is buildable in Linux, Darwin and Windows.
 - Manually check upgrade etcd cluster of previous minor version works well.
 - Manually check new features work well.
 - Add a signed tag through `git tag -s ${VERSION}`.
 - Sanity check tag correctness through `git show tags/$VERSION`.
-- Push the tag to GitHub through `git push origin tags/$VERSION`. This assumes `origin` corresponds to "https://github.com/coreos/etcd".
+- Push the tag to GitHub through `git push origin tags/$VERSION`. This assumes `origin` corresponds to "https://github.com/etcd-io/etcd\".
 
 ## Build Release Binaries and Images
 
@@ -105,5 +105,5 @@ git log ...${PREV_VERSION} --pretty=format:"%an" | sort | uniq | tr '\n' ',' | s
 
 ## Post Release
 
-- Create new stable branch through `git push origin ${VERSION_MAJOR}.${VERSION_MINOR}` if this is a major stable release. This assumes `origin` corresponds to "https://github.com/coreos/etcd".
-- Bump [hardcoded Version in the repository](https://github.com/etcd-io/etcd/blob/master/version/version.go#L30) to the version `${VERSION}+git`.
+- Create new stable branch through `git push origin ${VERSION_MAJOR}.${VERSION_MINOR}` if this is a major stable release. This assumes `origin` corresponds to "https://github.com/etcd-io/etcd\".
+- Bump [hardcoded Version in the repository](https://github.com/etcd-io/etcd/blob/v2.3.8/version/version.go#L30) to the version `${VERSION}+git`.

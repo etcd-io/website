@@ -311,7 +311,7 @@ When using etcd in heavy-load scenarios on machines with multiple cores it will 
 [prometheus]: http://prometheus.io/
 [remove-a-member]: ../runtime-configuration#remove-a-member
 [runtime-reconfig]: ../runtime-configuration#cluster-reconfiguration-operations
-[snap-pkg]: http://godoc.org/github.com/coreos/etcd/snap
+[snap-pkg]: https://pkg.go.dev/github.com/etcd-io/etcd/snap
 [update-a-member]: ../runtime-configuration#update-a-member
 [v3-docs]: /docs/latest
-[wal-pkg]: http://godoc.org/github.com/coreos/etcd/wal
+[wal-pkg]: https://pkg.go.dev/go.etcd.io/etcd/wal

@@ -115,4 +115,4 @@ $ curl http://127.0.0.1:4001/version
 
 [auth]: ../auth_api
 [backup-datastore]: ../admin_guide#backing-up-the-datastore
-[v2.0]: https://github.com/coreos/etcd/releases/tag/v2.0.13
+[v2.0]: https://github.com/etcd-io/etcd/releases/tag/v2.0.13
