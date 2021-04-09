@@ -30,7 +30,7 @@ What if the leader becomes isolated from the rest of the cluster? Leader monitor
 
 ![server-learner-figure-03](../img/server-learner-figure-03.png)
 
-When a new node is added to 3 node cluster, the cluster size becomes 4 and the quorum size becomes 3. What if a new node had joined the cluster, and then network partition happens? It depends on which partition the new member gets located after partition. 
+When a new node is added to 3 node cluster, the cluster size becomes 4 and the quorum size becomes 3. What if a new node had joined the cluster, and then network partition happens? It depends on which partition the new member gets located after partition.
 
 #### 2.2 Cluster Split 3+1
 If the new node happens to be located in the same partition as leader’s, the leader still maintains the active quorum of 3. No leadership election happens, and no cluster availability gets affected (see *Figure 4*).

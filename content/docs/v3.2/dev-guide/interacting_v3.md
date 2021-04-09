@@ -217,7 +217,7 @@ $ etcdctl del foo foo9
 Here is the command to delete key `zoo` with the deleted key value pair returned:
 
 ```bash
-$ etcdctl del --prev-kv zoo 
+$ etcdctl del --prev-kv zoo
 1   # one key is deleted
 zoo # deleted key
 val # the value of the deleted key
@@ -226,7 +226,7 @@ val # the value of the deleted key
 Here is the command to delete keys having prefix as `zoo`:
 
 ```bash
-$ etcdctl del --prefix zoo 
+$ etcdctl del --prefix zoo
 2 # two keys are deleted
 ```
 
@@ -292,7 +292,7 @@ barz1
 Here is the command to watch on multiple keys `foo` and `zoo`:
 
 ```bash
-$ etcdctl watch -i 
+$ etcdctl watch -i
 $ watch foo
 $ watch zoo
 # in another terminal: etcdctl put foo bar

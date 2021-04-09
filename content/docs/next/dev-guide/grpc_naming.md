@@ -25,8 +25,8 @@ conn, gerr := grpc.Dial("etcd:///foo/bar/my-service", grpc.WithResolvers(etcdRes
 
 ## Managing service endpoints
 
-The etcd resolver treats all keys under the prefix of the resolution target following a "/" (e.g., "foo/bar/my-service/") 
-with JSON-encoded (historically go-grpc `naming.Update`) values as potential service endpoints. 
+The etcd resolver treats all keys under the prefix of the resolution target following a "/" (e.g., "foo/bar/my-service/")
+with JSON-encoded (historically go-grpc `naming.Update`) values as potential service endpoints.
 Endpoints are added to the service by creating new keys and removed from the service by deleting keys.
 
 ### Adding an endpoint
@@ -69,7 +69,7 @@ lease=`ETCDCTL_API=3 etcdctl lease grant 5 | cut -f2 -d' '`
 ETCDCTL_API=3 etcdctl put --lease=$lease my-service/1.2.3.4 '{"Addr":"1.2.3.4","Metadata":"..."}'
 ETCDCTL_API=3 etcdctl lease keep-alive $lease
 ```
-In the golang: 
+In the golang:
 
 ```go
 em := endpoints.NewManager(client, "foo/bar/my-service")

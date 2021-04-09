@@ -4,7 +4,7 @@ title: etcd release guide
 
 The guide talks about how to release a new version of etcd.
 
-The procedure includes some manual steps for sanity checking but it can probably be further scripted. Please keep this document up-to-date if making changes to the release process. 
+The procedure includes some manual steps for sanity checking but it can probably be further scripted. Please keep this document up-to-date if making changes to the release process.
 
 ## Prepare release
 

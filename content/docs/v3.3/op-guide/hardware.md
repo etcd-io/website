@@ -17,7 +17,7 @@ etcd has a relatively small memory footprint but its performance still depends o
 
 ## Disks
 
-Fast disks are the most critical factor for etcd deployment performance and stability. 
+Fast disks are the most critical factor for etcd deployment performance and stability.
 
 A slow disk will increase etcd request latency and potentially hurt cluster stability. Since etcd’s consensus protocol depends on persistently storing metadata to a log, a majority of etcd cluster members must write every request down to disk. Additionally, etcd will also incrementally checkpoint its state to disk so it can truncate this log. If these writes take too long, heartbeats may time out and trigger an election, undermining the stability of the cluster.
 

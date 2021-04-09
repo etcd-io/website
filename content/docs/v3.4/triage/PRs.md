@@ -4,8 +4,8 @@
 
 Speed up PR management.
 
-The `etcd` PRs are listed at https://github.com/etcd-io/etcd/pulls 
-A PR can have various labels, milestone, reviewer etc. The detailed list of labels can be found at 
+The `etcd` PRs are listed at https://github.com/etcd-io/etcd/pulls
+A PR can have various labels, milestone, reviewer etc. The detailed list of labels can be found at
 https://github.com/kubernetes/kubernetes/labels
 
 Following are few example searches on PR for convenience:

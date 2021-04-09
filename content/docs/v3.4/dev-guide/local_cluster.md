@@ -1,7 +1,7 @@
 ---
 title: Set up a local cluster
 weight: 3125
-description: Configuring local clusters for testing and development 
+description: Configuring local clusters for testing and development
 ---
 
 For testing and development deployments, the quickest and easiest way is to configure a local cluster. For a production deployment, refer to the [clustering][clustering] section.
@@ -93,7 +93,7 @@ Use `etcdctl` to interact with the running cluster:
 
     If OK is printed, storing key-value pair is successful.
 
-### Testing fault tolerance  
+### Testing fault tolerance
 
 To exercise etcd's fault tolerance, kill a member and attempt to retrieve the key.
 

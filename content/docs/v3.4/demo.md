@@ -166,10 +166,10 @@ etcdctl --endpoints=$ENDPOINTS put user1 bad
 etcdctl --endpoints=$ENDPOINTS txn --interactive
 
 compares:
-value("user1") = "bad"      
+value("user1") = "bad"
 
 success requests (get, put, delete):
-del user1  
+del user1
 
 failure requests (get, put, delete):
 put user1 good

@@ -12,7 +12,7 @@ The gateway supports multiple etcd server endpoints. When the gateway starts, it
 
 Every application that accesses etcd must first have the address of an etcd cluster client endpoint. If multiple applications on the same server access the same etcd cluster, every application still needs to know the advertised client endpoints of the etcd cluster. If the etcd cluster is reconfigured to have different endpoints, every application may also need to update its endpoint list. This wide-scale reconfiguration is both tedious and error prone.
 
-etcd gateway solves this problem by serving as a stable local endpoint. A typical etcd gateway configuration has 
+etcd gateway solves this problem by serving as a stable local endpoint. A typical etcd gateway configuration has
 each machine running a gateway listening on a local address and every etcd application connecting to its local gateway. The upshot is only the gateway needs to update its endpoints instead of updating each and every application.
 
 In summary, to automatically propagate cluster endpoint changes, the etcd gateway runs on every machine serving multiple applications accessing same etcd cluster.
@@ -21,7 +21,7 @@ In summary, to automatically propagate cluster endpoint changes, the etcd gatewa
 
 - Improving performance
 
-The gateway is not designed for improving etcd cluster performance. It does not provide caching, watch coalescing or batching. The etcd team is developing a caching proxy designed for improving cluster scalability. 
+The gateway is not designed for improving etcd cluster performance. It does not provide caching, watch coalescing or batching. The etcd team is developing a caching proxy designed for improving cluster scalability.
 
 - Running on a cluster management system
 

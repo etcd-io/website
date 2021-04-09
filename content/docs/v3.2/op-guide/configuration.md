@@ -185,7 +185,7 @@ To start etcd automatically using custom settings at startup in Linux, using a [
 
 The security flags help to [build a secure etcd cluster][security].
 
-### --ca-file 
+### --ca-file
 
 **DEPRECATED**
 
@@ -218,7 +218,7 @@ The security flags help to [build a secure etcd cluster][security].
 + default: false
 + env variable: ETCD_AUTO_TLS
 
-### --peer-ca-file 
+### --peer-ca-file
 
 **DEPRECATED**
 

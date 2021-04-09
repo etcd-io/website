@@ -7,10 +7,10 @@ title: Watch Memory Usage Benchmark
 A primary goal of etcd is supporting a very large number of watchers doing a massively large amount of watching. etcd aims to support O(10k) clients, O(100K) watch streams (O(10) streams per client) and O(10M) total watchings (O(100) watching per stream). The memory consumed by each individual watching accounts for the largest portion of etcd's overall usage, and is therefore the focus of current and future optimizations.
 
 
-Three related components of etcd watch consume physical memory: each `grpc.Conn`, each watch stream, and each instance of the watching activity. `grpc.Conn` maintains the actual TCP connection and other gRPC connection state. Each `grpc.Conn` consumes O(10kb) of memory, and might have multiple watch streams attached. 
+Three related components of etcd watch consume physical memory: each `grpc.Conn`, each watch stream, and each instance of the watching activity. `grpc.Conn` maintains the actual TCP connection and other gRPC connection state. Each `grpc.Conn` consumes O(10kb) of memory, and might have multiple watch streams attached.
 
-Each watch stream is an independent HTTP2 connection which consumes another O(10kb) of memory. 
-Multiple watchings might share one watch stream. 
+Each watch stream is an independent HTTP2 connection which consumes another O(10kb) of memory.
+Multiple watchings might share one watch stream.
 
 Watching is the actual struct that tracks the changes on the key-value store. Each watching should only consume < O(1kb).
 

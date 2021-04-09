@@ -44,7 +44,7 @@ benchmark --endpoints={IP_1},{IP_2},{IP_3} --conns=100 --clients=1000 \
     put --key-size=8 --sequential-keys --total=100000 --val-size=256
 ```
 
-Linearizable read requests go through a quorum of cluster members for consensus to fetch the most recent data. Serializable read requests are cheaper than linearizable reads since they are served by any single etcd member, instead of a quorum of members, in exchange for possibly serving stale data. etcd can read: 
+Linearizable read requests go through a quorum of cluster members for consensus to fetch the most recent data. Serializable read requests are cheaper than linearizable reads since they are served by any single etcd member, instead of a quorum of members, in exchange for possibly serving stale data. etcd can read:
 
 | Number of requests | Key size in bytes | Value size in bytes | Number of connections | Number of clients | Consistency | Average latency per request | Average read QPS |
 |--------------------|-------------------|---------------------|-----------------------|-------------------|-------------|-----------------------------|------------------|

@@ -76,7 +76,7 @@ $ ETCDCTL_API=3 etcdctl --write-out=table endpoint status
 +----------------+------------------+-----------+---------+-----------+-----------+------------+
 # confirm alarm is raised
 $ ETCDCTL_API=3 etcdctl alarm list
-memberID:13803658152347727308 alarm:NOSPACE 
+memberID:13803658152347727308 alarm:NOSPACE
 ```
 
 Removing excessive keyspace data and defragmenting the backend database will put the cluster back within the quota limits:
@@ -92,7 +92,7 @@ $ ETCDCTL_API=3 etcdctl defrag
 Finished defragmenting etcd member[127.0.0.1:2379]
 # disarm alarm
 $ ETCDCTL_API=3 etcdctl alarm disarm
-memberID:13803658152347727308 alarm:NOSPACE 
+memberID:13803658152347727308 alarm:NOSPACE
 # test puts are allowed again
 $ ETCDCTL_API=3 etcdctl put newkey 123
 OK

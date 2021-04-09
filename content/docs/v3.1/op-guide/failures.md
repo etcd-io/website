@@ -2,7 +2,7 @@
 title: Understand failures
 ---
 
-Failures are common in a large deployment of machines. A machine fails when its hardware or software malfunctions. Multiple machines fail together when there are power failures or network issues. Multiple kinds of failures can also happen at once; it is almost impossible to enumerate all possible failure cases. 
+Failures are common in a large deployment of machines. A machine fails when its hardware or software malfunctions. Multiple machines fail together when there are power failures or network issues. Multiple kinds of failures can also happen at once; it is almost impossible to enumerate all possible failure cases.
 
 In this section, we catalog kinds of failures and discuss how etcd is designed to tolerate these failures. Most users, if not all, can map a particular failure into one kind of failure. To prepare for rare or [unrecoverable failures][unrecoverable], always [back up][backup] the etcd cluster.
 
@@ -12,13 +12,13 @@ When fewer than half of the followers fail, the etcd cluster can still accept re
 
 ## Leader failure
 
-When a leader fails, the etcd cluster automatically elects a new leader. The election does not happen instantly once the leader fails. It takes about an election timeout to elect a new leader since the failure detection model is timeout based. 
+When a leader fails, the etcd cluster automatically elects a new leader. The election does not happen instantly once the leader fails. It takes about an election timeout to elect a new leader since the failure detection model is timeout based.
 
 During the leader election the cluster cannot process any writes. Write requests sent during the election are queued for processing until a new leader is elected.
 
 Writes already sent to the old leader but not yet committed may be lost. The new leader has the power to rewrite any uncommitted entries from the previous leader. From the user perspective, some write requests might time out after a new leader election. However, no committed writes are ever lost.
 
-The new leader extends timeouts automatically for all leases. This mechanism ensures a lease will not expire before the granted TTL even if it was granted by the old leader. 
+The new leader extends timeouts automatically for all leases. This mechanism ensures a lease will not expire before the granted TTL even if it was granted by the old leader.
 
 ## Majority failure
 
@@ -30,11 +30,11 @@ Once a majority of members works, the etcd cluster elects a new leader automatic
 
 ## Network partition
 
-A network partition is similar to a minor followers failure or a leader failure. A network partition divides the etcd cluster into two parts; one with a member majority and the other with a member minority. The majority side becomes the available cluster and the minority side is unavailable; there is no “split-brain” in etcd. 
+A network partition is similar to a minor followers failure or a leader failure. A network partition divides the etcd cluster into two parts; one with a member majority and the other with a member minority. The majority side becomes the available cluster and the minority side is unavailable; there is no “split-brain” in etcd.
 
 If the leader is on the majority side, then from the majority point of view the failure is a minority follower failure. If the leader is on the minority side, then it is a leader failure. The leader on the minority side steps down and the majority side elects a new leader.
 
-Once the network partition clears, the minority side automatically recognizes the leader from the majority side and recovers its state. 
+Once the network partition clears, the minority side automatically recognizes the leader from the majority side and recovers its state.
 
 ## Failure during bootstrapping
 
