@@ -1,5 +1,4 @@
 baseURL = "https://etcd.io"
-title = "etcd"
 
 enableRobotsTxt = true
 
@@ -60,8 +59,7 @@ title = "etcd"
 description = "A distributed, reliable key-value store for the most critical data of a distributed system"
 languageName ="English"
 contentDir = "content/en"
-# Weight used for sorting.
-weight = 1
+weight = 1 # The default language should have the smallest weight among all languages.
 
 # [languages.no]
 # title = "Goldydocs"
@@ -96,11 +94,9 @@ weight = 1
 # section = ["HTML", "print"]
 
 [params]
-copyright_etcd = "The etcd Authors"
-copyright_linux = "Copyright © 2020 The Linux Foundation ®."
-# privacy_policy = "https://policies.google.com/privacy"
+copyright = "etcd Authors"
 
-description        = "A distributed, reliable key-value store for the most critical data of a distributed system"
+description = "A distributed, reliable key-value store for the most critical data of a distributed system"
 
 # fontAwesomeVersion = "5.6.1"
 # sansSerifFont      = "Source Sans Pro"
@@ -114,6 +110,7 @@ description        = "A distributed, reliable key-value store for the most criti
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://github.com/etcd-io/website"
+github_branch = "docsy" # FIXME: change back to master (or main) once we merge the docsy PR
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/etcd-io/etcd"
 
@@ -157,7 +154,7 @@ sidebar_search_disable = false
 #  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
 navbar_logo = true
 # Set to true to disable the About link in the site footer
-footer_about_disable = false
+footer_about_disable = true
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
 # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.

@@ -1,38 +1,25 @@
-{{ if ((eq "docs" (index (split .Page.RelPermalink "/") 1)) | or (eq "docs" (index (split .Page.RelPermalink "/") 2))) }}
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  {{ .Site.Params.version_menu }}
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  {{/* 
-  Version dropdown modified from the work https://github.com/tbatard did on the velero site:
-  https://github.com/vmware-tanzu/velero/blob/main/site/layouts/docs/versions.html
-  */}}
+{{/* etcd-docsy file override */ -}}
 
-  {{ $current_file := .File }}
+{{ if eq .Section "docs" -}}
+  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{- .Site.Params.version_menu -}}
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    {{ $thisFile  := .File -}}
+    {{ $thisURL   := .RelPermalink -}}
+    {{ $thisVers  := .CurrentSection.Params.version -}}
+    {{ $thisVersURI := printf "/%s/" $thisVers -}}
 
-  {{ $original_version := printf "/%s/" .CurrentSection.Params.version }}
-  {{ $latest_url := replace .Params.url .CurrentSection.Params.version .Site.Params.latest | relURL }}
-  {{ $currentUrl := .Permalink }}
+    {{ range $vers := .Site.Params.versions.all -}}
+      {{ $versURI := printf "/%s/" $vers -}}
+      {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
 
-  {{ range .Site.Params.versions.all }}
-  {{ $new_version := printf "/%s/" . }}
-  {{ $target_file := replace $current_file $original_version $new_version }}
-
-
-  {{/* check if the file we are linking to in the other version exists */}}
-  {{ if (fileExists $target_file) -}}
-  <a class="dropdown-item" 
-     href="{{ replace $currentUrl $original_version $new_version | relURL }}">{{ . }}</a>
-  {{ else }}
-  {{/* if not, then link to the top level of that version instead */}}
-  {{ if eq "/next/" $new_version }}
-  <a class="dropdown-item" 
-     href="{{ index (findRE `^(.*?)\/next\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-  {{ else }}
-  <a class="dropdown-item" 
-     href="{{ index (findRE `^(.*?)\/v\d+.\d+\/` (replace $currentUrl $original_version $new_version | relURL)) 0 }}">{{ . }}</a>
-  {{ end }}
-  {{- end }}
-  {{ end }}
-  {{ end }}
-</div>
+      {{/* Link to corresponding page under the docs $versURI, if it exists; otherwise link to the new version landing page */ -}}
+      {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
+      {{ if not (and $thisVers (fileExists $targetFile)) -}}
+        {{ $targetURL = printf "/docs/%s/" $vers -}}
+      {{ end -}}
+      <a class="dropdown-item" href="{{ $targetURL }}">{{ $vers }}</a>
+    {{ end -}}
+  </div>
+{{ end -}}

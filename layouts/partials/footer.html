@@ -1,3 +1,4 @@
+{{/* etcd-docsy file override */ -}}
 {{ $links := .Site.Params.links }}
 <footer class="bg-dark py-5 row d-print-none">
   <div class="container-fluid mx-sm-5">
@@ -17,19 +18,28 @@
         {{ end }}
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        {{ with .Site.Params.copyright }}<small class="text-white">&copy; {{ now.Year}} {{ . }} {{ T "footer_all_rights_reserved" }}</small>{{ end }}
+        {{ with .Site.Params.copyright }}<small class="text-white">&copy; {{ now.Year}} {{ . }}
+          <!-- {{ T "footer_all_rights_reserved" }} -->
+        </small>{{ end }}
         {{ with .Site.Params.privacy_policy }}<small class="ml-1"><a href="{{ . }}" target="_blank">{{ T "footer_privacy_policy" }}</a></small>{{ end }}
         {{ if not .Site.Params.ui.footer_about_disable }}
-        {{ with .Site.GetPage "about" }}<p class="mt-2"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
+          {{ with .Site.GetPage "about" -}}
+            <p class="mt-2 text-white"><a href="{{ .RelPermalink }}">{{ .Title }}</a> |
+              <a href="#">Trademarks</a> |
+              <a href="#">Terms</a>
+            </p>
+          {{- end }}
         {{ end }}
       </div>
     </div>
-  </div>
-  <div class="container-fluid mx-sm-5">
-    <div class="row">
-      <!-- TODO: Create a LICENSE for the website repo -->
-      {{ with .Site.Params.copyright_etcd }}<small class="text-white">&copy; {{ now.Year }} The etcd Authors | Documentation Distributed under <a href="#" class="light-text">CC BY 4.0</a></small><br />{{ end }}
-      {{ with .Site.Params.copyright_linux }}<small class="text-white">Copyright &copy; {{ now.Year }} The Linux Foundation &reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>.</small>{{ end }}
+    <div class="row text-center text-white small">
+      <div class="col-12 text-center py-2 order-sm-2">
+        <a href="https://www.linuxfoundation.org/terms" target="_blank" rel="noopener">Terms</a> |
+        <a href="https://www.linuxfoundation.org/privacy" target="_blank" rel="noopener">Privacy</a> |
+        <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener">Trademarks</a> |
+        {{/* FIXME: the following external link isn't valid yet. We're waiting on https://github.com/etcd-io/website/pull/122 */ -}}
+        <a href="{{ .Site.Params.github_repo }}/blob/{{ .Site.Params.github_branch }}/LICENSE" target="_blank" rel="noopener">License</a>
+      </div>
     </div>
   </div>
 </footer>
