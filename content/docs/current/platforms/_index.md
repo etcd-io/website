@@ -1,5 +1,5 @@
 ---
-title: Platforms
+title: 平台类
 weight: 7000
-description: etcd deployments on various platform services
+description: 在各种平台服务上的etcd部署
 ---
