@@ -1,7 +1,7 @@
 ---
 title: 库和工具
 weight: 1300
-description: A listing of etcd tools and client libraries
+description: etcd工具和客户端库列表
 ---
 
 ## Tools
