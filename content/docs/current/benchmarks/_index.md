@@ -1,20 +1,20 @@
 ---
-title: Benchmarks
+title: 基准
 weight: 5000
-description: Performance measures for etcd
+description: etcd性能测试
 ---
 
-# Benchmarks
+# 基准
 
-etcd benchmarks will be published regularly and tracked for each release below:
+etcd基准测试将定期发布，并针对以下每个版本进行跟踪：
 
 - [etcd v2.1.0-alpha][2.1]
 - [etcd v2.2.0-rc][2.2]
 - [etcd v3 demo][3.0]
 
-# Memory Usage Benchmarks
+# 内存使用基准
 
-It records expected memory usage in different scenarios.
+它记录了不同情况下的预期内存使用情况。
 
 - [etcd v2.2.0-rc][2.2-mem]
 
