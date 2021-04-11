@@ -1,7 +1,7 @@
 ---
 title: 下载并构建
 weight: 1150
-description: 下载和构建etcd的不同版本的说明
+description: 下载和构建etcd不同版本的说明
 ---
 
 ## 系统要求
