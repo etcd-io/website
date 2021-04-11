@@ -1,16 +1,16 @@
 ---
-title: Demo
-weight: 1100
-description: Procedures for working with an etcd cluster
+标题: 示例
+权重: 1100
+描述: 使用etcd集群的过程
 ---
 
-This series of examples shows the basic procedures for working with an etcd cluster.
+这一系列示例展示了使用etcd集群的基本过程。
 
-## Set up a cluster
+## 设置集群
 
 ![01_etcd_clustering_2016050601](https://storage.googleapis.com/etcd/demo/01_etcd_clustering_2016051001.gif)
 
-On each etcd node, specify the cluster members:
+在每个etcd节点上，指定集群成员：
 
 ```shell
 TOKEN=token-01
@@ -24,7 +24,7 @@ HOST_3=10.240.0.19
 CLUSTER=${NAME_1}=http://${HOST_1}:2380,${NAME_2}=http://${HOST_2}:2380,${NAME_3}=http://${HOST_3}:2380
 ```
 
-Run this on each machine:
+在每台机器上运行此命令：
 
 ```shell
 # For machine 1
@@ -55,7 +55,7 @@ etcd --data-dir=data.etcd --name ${THIS_NAME} \
 	--initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
 ```
 
-Or use our public discovery service:
+或使用我们的公共发现服务：
 
 ```shell
 curl https://discovery.etcd.io/new?size=3
@@ -97,7 +97,7 @@ etcd --data-dir=data.etcd --name ${THIS_NAME} \
 	--initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
 ```
 
-Now etcd is ready! To connect to etcd with etcdctl:
+现在etcd准备好了！要使用etcdctl连接到etcd：
 
 ```shell
 export ETCDCTL_API=3
@@ -110,17 +110,17 @@ etcdctl --endpoints=$ENDPOINTS member list
 ```
 
 
-## Access etcd
+## 访问etcd
 
 ![02_etcdctl_access_etcd_2016051001](https://storage.googleapis.com/etcd/demo/02_etcdctl_access_etcd_2016051001.gif)
 
-`put` command to write:
+`put` 写入数据到etcd:
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS put foo "Hello World!"
 ```
 
-`get` to read from etcd:
+`get` 从etcd读取数据:
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS get foo
@@ -128,7 +128,7 @@ etcdctl --endpoints=$ENDPOINTS --write-out="json" get foo
 ```
 
 
-## Get by prefix
+## 通过前缀获取
 
 ![03_etcdctl_get_by_prefix_2016050501](https://storage.googleapis.com/etcd/demo/03_etcdctl_get_by_prefix_2016050501.gif)
 
@@ -141,7 +141,7 @@ etcdctl --endpoints=$ENDPOINTS get web --prefix
 ```
 
 
-## Delete
+## 删除
 
 ![04_etcdctl_delete_2016050601](https://storage.googleapis.com/etcd/demo/04_etcdctl_delete_2016050601.gif)
 
@@ -155,9 +155,9 @@ etcdctl --endpoints=$ENDPOINTS del k --prefix
 ```
 
 
-## Transactional write
+## 事务写
 
-`txn` to wrap multiple requests into one transaction:
+`txn` 将多个请求包装到一个事务中：
 
 ![05_etcdctl_transaction_2016050501](https://storage.googleapis.com/etcd/demo/05_etcdctl_transaction_2016050501.gif)
 
@@ -176,9 +176,9 @@ put user1 good
 ```
 
 
-## Watch
+## 监听
 
-`watch` to get notified of future changes:
+`watch` 获取变更通知:
 
 ![06_etcdctl_watch_2016050501](https://storage.googleapis.com/etcd/demo/06_etcdctl_watch_2016050501.gif)
 
@@ -192,9 +192,9 @@ etcdctl --endpoints=$ENDPOINTS put stock2 20
 ```
 
 
-## Lease
+## 租期
 
-`lease` to write with TTL:
+`lease` 添加使用TTL:
 
 
 ![07_etcdctl_lease_2016050501](https://storage.googleapis.com/etcd/demo/07_etcdctl_lease_2016050501.gif)
@@ -213,9 +213,9 @@ etcdctl --endpoints=$ENDPOINTS get sample
 ```
 
 
-## Distributed locks
+## 分布式锁
 
-`lock` for distributed lock:
+`lock` 对于分布式锁：
 
 ![08_etcdctl_lock_2016050501](https://storage.googleapis.com/etcd/demo/08_etcdctl_lock_2016050501.gif)
 
@@ -227,9 +227,9 @@ etcdctl --endpoints=$ENDPOINTS lock mutex1
 ```
 
 
-## Elections
+## 选举
 
-`elect` for leader election:
+`elect` 领导者选举:
 
 ![09_etcdctl_elect_2016050501](https://storage.googleapis.com/etcd/demo/09_etcdctl_elect_2016050501.gif)
 
@@ -241,9 +241,9 @@ etcdctl --endpoints=$ENDPOINTS elect one p2
 ```
 
 
-## Cluster status
+## 集群状态
 
-Specify the initial cluster configuration for each machine:
+为每台计算机指定初始群集配置：
 
 ![10_etcdctl_endpoint_2016050501](https://storage.googleapis.com/etcd/demo/10_etcdctl_endpoint_2016050501.gif)
 
@@ -268,9 +268,9 @@ etcdctl --endpoints=$ENDPOINTS endpoint health
 ```
 
 
-## Snapshot
+## 快照
 
-`snapshot` to save point-in-time snapshot of etcd database:
+`snapshot`  保存etcd数据库的时间点快照：
 
 ![11_etcdctl_snapshot_2016051001](https://storage.googleapis.com/etcd/demo/11_etcdctl_snapshot_2016051001.gif)
 
@@ -294,9 +294,9 @@ etcdctl --write-out=table --endpoints=$ENDPOINTS snapshot status my.db
 ```
 
 
-## Migrate
+## 迁移
 
-`migrate` to transform etcd v2 to v3 data:
+`migrate` 将etcd v2转换为v3数据：
 
 ![12_etcdctl_migrate_2016061602](https://storage.googleapis.com/etcd/demo/12_etcdctl_migrate_2016061602.gif)
 
@@ -322,9 +322,9 @@ etcdctl --endpoints=$ENDPOINTS get /foo
 ```
 
 
-## Member
+## 成员
 
-`member` to add,remove,update membership:
+`member` 添加，删除，更新成员资格：
 
 ![13_etcdctl_member_2016062301](https://storage.googleapis.com/etcd/demo/13_etcdctl_member_2016062301.gif)
 
@@ -377,7 +377,7 @@ etcd --data-dir=data.etcd --name ${THIS_NAME} \
 	--initial-cluster-token ${TOKEN}
 ```
 
-Then replace a member with `member remove` and `member add` commands:
+成员替换使用 `member remove` 和 `member add` 命令：
 
 ```shell
 # get member ID
@@ -405,7 +405,7 @@ etcdctl --endpoints=${HOST_1}:2379,${HOST_2}:2379 \
 	--peer-urls=http://${HOST_4}:2380
 ```
 
-Next, start the new member with `--initial-cluster-state existing` flag:
+接下来，使用 `--initial-cluster-state existing` 标志启动新成员：
 
 ```shell
 # [WARNING] If the new member starts from the same disk space,
@@ -435,9 +435,9 @@ etcd --data-dir=data.etcd --name ${THIS_NAME} \
 ```
 
 
-## Auth
+## 权限
 
-`auth`,`user`,`role` for authentication:
+`auth`,`user`,`role` 来进行权限设置
 
 ![14_etcdctl_auth_2016062301](https://storage.googleapis.com/etcd/demo/14_etcdctl_auth_2016062301.gif)
 
