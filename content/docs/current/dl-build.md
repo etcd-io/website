@@ -1,22 +1,22 @@
 ---
 title: 下载并构建
 weight: 1150
-description: Instructions for downloading and building different versions of etcd
+description: 下载和构建etcd的不同版本的说明
 ---
 
-## System requirements
+## 系统要求
 
-The etcd performance benchmarks run etcd on 8 vCPU, 16GB RAM, 50GB SSD GCE instances, but any relatively modern machine with low latency storage and a few gigabytes of memory should suffice for most use cases. Applications with large v2 data stores will require more memory than a large v3 data store since data is kept in anonymous memory instead of memory mapped from a file. For running etcd on a cloud provider, see the [Example hardware configuration][example-hardware-configurations] documentation.
+etcd性能基准测试在8个vCPU，16GB RAM，50GB SSD GCE实例上运行etcd，但是对于大多数用例而言，任何具有低延迟存储和几GB内存的相对较新的计算机都足够。具有大型v2数据存储的应用程序将比大型v3数据存储需要更多的内存，因为数据保留在匿名内存中，而不是从文件映射的内存中。要在云提供程序上运行etcd，请参阅 [硬件示例配置][example-hardware-configurations]文档。
 
-## Download the pre-built binary
+## 下载预构建的二进制文件
 
-The easiest way to get etcd is to use one of the pre-built release binaries which are available for OSX, Linux, Windows, appc, and Docker. Instructions for using these binaries are on the [GitHub releases page][github-release].
+获得etcd的最简单方法是使用可用于OSX，Linux，Windows，appc和Docker的预构建发行版二进制文件之一。有关使用这些二进制文件的说明，请参见 [GitHub发布页面][github-release]。
 
-## Build the latest version
+## 构建最新版本
 
-For those wanting to try the very latest version, build etcd from the `master` branch. [Go](https://golang.org/) version 1.13+ is required to build the latest version of etcd. To ensure etcd is built against well-tested libraries, etcd vendors its dependencies for official release binaries. However, etcd's vendoring is also optional to avoid potential import conflicts when embedding the etcd server or using the etcd client.
+对于那些想尝试最新版本的人，请从master分支构建etcd。 需要Go版本1.13+来构建最新版本的etcd。为了确保etcd是根据经过良好测试的库构建的，etcd提供其对正式发行二进制文件的依赖关系。但是，etcd的供应商也是可选的，以避免在嵌入etcd服务器或使用etcd客户端时潜在的导入冲突。
 
-To build `etcd` from the `master` branch without a `GOPATH` using the official `build` script:
+在没有`GOPATH`的情况下，使用官方的`build`脚本从`master`分支构建`etcd`：
 
 ```sh
 $ git clone https://github.com/etcd-io/etcd.git
@@ -24,7 +24,7 @@ $ cd etcd
 $ ./build
 ```
 
-To build a modularized `etcd` from the `master` branch via `go get`:
+通过以下方式`go get`,从`master`分支来构建一个模块化的`etcd`：
 
 ```sh
 # GOPATH should be set
@@ -34,35 +34,36 @@ $ go get -v go.etcd.io/etcd/v3
 $ go get -v go.etcd.io/etcd/v3/etcdctl
 ```
 
-## Test the installation
+## 测试安装
 
-Check the etcd binary is built correctly by starting etcd and setting a key.
+通过启动etcd并设置密钥来检查etcd二进制文件是否正确构建。
 
-### Starting etcd
+### 启动etcd
 
-If etcd is built without using `go get`, run the following:
+如果etcd是没有使用`go get`构建的，请运行以下命令：
 
 ```sh
 $ ./bin/etcd
 ```
-If etcd is built using `go get`, run the following:
+
+如果etcd是使用`go get`构建的，请运行以下命令：
 
 ```sh
 $ $GOPATH/bin/etcd
 ```
 
-### Setting a key
+### 设置key值
 
-Run the following:
+使用如下命令：
 
 ```sh
 $ ./bin/etcdctl put foo bar
 OK
 ```
 
-(or `$GOPATH/bin/etcdctl put foo bar` if etcdctl was installed with `go get`)
+（或`$GOPATH/bin/etcdctl put foo bar`如果etcdctl是使用`go get`安装的）
 
-If OK is printed, then etcd is working!
+如果打印出OK，则etcd正常工作！
 
 [github-release]: https://github.com/etcd-io/etcd/releases/
 [go]: https://golang.org/doc/install
