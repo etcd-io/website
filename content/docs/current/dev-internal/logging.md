@@ -1,7 +1,7 @@
 ---
-title: 记录约定
+title: 日志记录
 weight: 1600
-description: 记录级别类别
+description: 日志等级类别
 ---
 
 etcd uses the [capnslog][capnslog] library for logging application output categorized into *levels*. A log message's level is determined according to these conventions:
