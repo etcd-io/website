@@ -1,15 +1,13 @@
 ---
-title: Golang modules
+title: Golang模块
 weight: 1650
-description: Organization of the etcd project's golang modules
+description: etcd项目的golang模块的组织
 ---
 
-The etcd project (since version 3.5) is organized into multiple 
-[golang modules](https://golang.org/ref/mod) hosted  in a [single repository](https://golang.org/ref/mod#vcs-dir).
-
+etcd项目（从3.5版开始）被组织到[单个存储库](https://golang.org/ref/mod#vcs-dir)中托管的[多个golang模块](https://golang.org/ref/mod)中。
 ![modules graph](../img/modules.svg)
 
-There are following modules: 
+有以下模块： 
   
   - **go.etcd.io/etcd/api/v3** - contains API definitions
   (like protos & proto-generated libraries) that defines communication protocol
