@@ -8,7 +8,7 @@ description: 使用etcd集群的过程
 
 ## 设置集群
 
-![01_etcd_clustering_2016050601](https://storage.googleapis.com/etcd/demo/01_etcd_clustering_2016051001.gif)
+![01_etcd_clustering_2016050601](https://img.etcd.cn/images/demo/01_etcd_clustering_2016051001.gif)
 
 在每个etcd节点上，指定集群成员：
 
@@ -112,7 +112,7 @@ etcdctl --endpoints=$ENDPOINTS member list
 
 ## 访问etcd
 
-![02_etcdctl_access_etcd_2016051001](https://storage.googleapis.com/etcd/demo/02_etcdctl_access_etcd_2016051001.gif)
+![02_etcdctl_access_etcd_2016051001](https://img.etcd.cn/images/demo/02_etcdctl_access_etcd_2016051001.gif)
 
 `put` 写入数据到etcd:
 
@@ -130,7 +130,7 @@ etcdctl --endpoints=$ENDPOINTS --write-out="json" get foo
 
 ## 通过前缀获取
 
-![03_etcdctl_get_by_prefix_2016050501](https://storage.googleapis.com/etcd/demo/03_etcdctl_get_by_prefix_2016050501.gif)
+![03_etcdctl_get_by_prefix_2016050501](https://img.etcd.cn/images/demo/03_etcdctl_get_by_prefix_2016050501.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS put web1 value1
@@ -143,7 +143,7 @@ etcdctl --endpoints=$ENDPOINTS get web --prefix
 
 ## 删除
 
-![04_etcdctl_delete_2016050601](https://storage.googleapis.com/etcd/demo/04_etcdctl_delete_2016050601.gif)
+![04_etcdctl_delete_2016050601](https://img.etcd.cn/images/demo/04_etcdctl_delete_2016050601.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS put key myvalue
@@ -159,7 +159,7 @@ etcdctl --endpoints=$ENDPOINTS del k --prefix
 
 `txn` 将多个请求包装到一个事务中：
 
-![05_etcdctl_transaction_2016050501](https://storage.googleapis.com/etcd/demo/05_etcdctl_transaction_2016050501.gif)
+![05_etcdctl_transaction_2016050501](https://img.etcd.cn/images/demo/05_etcdctl_transaction_2016050501.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS put user1 bad
@@ -180,7 +180,7 @@ put user1 good
 
 `watch` 获取变更通知:
 
-![06_etcdctl_watch_2016050501](https://storage.googleapis.com/etcd/demo/06_etcdctl_watch_2016050501.gif)
+![06_etcdctl_watch_2016050501](https://img.etcd.cn/images/demo/06_etcdctl_watch_2016050501.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS watch stock1
@@ -197,7 +197,7 @@ etcdctl --endpoints=$ENDPOINTS put stock2 20
 `lease` 添加使用TTL:
 
 
-![07_etcdctl_lease_2016050501](https://storage.googleapis.com/etcd/demo/07_etcdctl_lease_2016050501.gif)
+![07_etcdctl_lease_2016050501](https://img.etcd.cn/images/demo/07_etcdctl_lease_2016050501.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS lease grant 300
@@ -217,7 +217,7 @@ etcdctl --endpoints=$ENDPOINTS get sample
 
 `lock` 对于分布式锁：
 
-![08_etcdctl_lock_2016050501](https://storage.googleapis.com/etcd/demo/08_etcdctl_lock_2016050501.gif)
+![08_etcdctl_lock_2016050501](https://img.etcd.cn/images/demo/08_etcdctl_lock_2016050501.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS lock mutex1
@@ -231,7 +231,7 @@ etcdctl --endpoints=$ENDPOINTS lock mutex1
 
 `elect` 领导者选举:
 
-![09_etcdctl_elect_2016050501](https://storage.googleapis.com/etcd/demo/09_etcdctl_elect_2016050501.gif)
+![09_etcdctl_elect_2016050501](https://img.etcd.cn/images/demo/09_etcdctl_elect_2016050501.gif)
 
 ```shell
 etcdctl --endpoints=$ENDPOINTS elect one p1
@@ -245,7 +245,7 @@ etcdctl --endpoints=$ENDPOINTS elect one p2
 
 为每台计算机指定初始群集配置：
 
-![10_etcdctl_endpoint_2016050501](https://storage.googleapis.com/etcd/demo/10_etcdctl_endpoint_2016050501.gif)
+![10_etcdctl_endpoint_2016050501](https://img.etcd.cn/images/demo/10_etcdctl_endpoint_2016050501.gif)
 
 ```shell
 etcdctl --write-out=table --endpoints=$ENDPOINTS endpoint status
@@ -272,7 +272,7 @@ etcdctl --endpoints=$ENDPOINTS endpoint health
 
 `snapshot`  保存etcd数据库的时间点快照：
 
-![11_etcdctl_snapshot_2016051001](https://storage.googleapis.com/etcd/demo/11_etcdctl_snapshot_2016051001.gif)
+![11_etcdctl_snapshot_2016051001](https://img.etcd.cn/images/demo/11_etcdctl_snapshot_2016051001.gif)
 
 Snapshot can only be requested from one etcd node, so `--endpoints` flag should contain only one endpoint.
 
@@ -298,7 +298,7 @@ etcdctl --write-out=table --endpoints=$ENDPOINTS snapshot status my.db
 
 `migrate` 将etcd v2转换为v3数据：
 
-![12_etcdctl_migrate_2016061602](https://storage.googleapis.com/etcd/demo/12_etcdctl_migrate_2016061602.gif)
+![12_etcdctl_migrate_2016061602](https://img.etcd.cn/images/demo/12_etcdctl_migrate_2016061602.gif)
 
 
 ```shell
@@ -326,7 +326,7 @@ etcdctl --endpoints=$ENDPOINTS get /foo
 
 `member` 添加，删除，更新成员资格：
 
-![13_etcdctl_member_2016062301](https://storage.googleapis.com/etcd/demo/13_etcdctl_member_2016062301.gif)
+![13_etcdctl_member_2016062301](https://img.etcd.cn/images/demo/13_etcdctl_member_2016062301.gif)
 
 ```shell
 # For each machine
@@ -439,7 +439,7 @@ etcd --data-dir=data.etcd --name ${THIS_NAME} \
 
 `auth`,`user`,`role` 来进行权限设置
 
-![14_etcdctl_auth_2016062301](https://storage.googleapis.com/etcd/demo/14_etcdctl_auth_2016062301.gif)
+![14_etcdctl_auth_2016062301](https://img.etcd.cn/images/demo/14_etcdctl_auth_2016062301.gif)
 
 ```shell
 export ETCDCTL_API=3
