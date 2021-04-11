@@ -1,5 +1,5 @@
 ---
-title: Developer guide
+title: 开发者指南
 weight: 3000
-description: Guides for developers using ectd
+description: 使用ectd的开发人员指南
 ---
