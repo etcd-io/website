@@ -1,5 +1,5 @@
 ---
-title: Operations guide
+title: 操作指南
 weight: 4000
-description: etcd installation, maintenance, and troubleshooting guides
+description: etcd安装，维护和故障排除指南
 ---
