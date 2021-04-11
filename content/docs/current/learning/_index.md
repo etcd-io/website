@@ -1,5 +1,5 @@
 ---
-title: Learning
+title: 学习
 weight: 2000
-description: Learning resources
+description: 学习资源
 ---
