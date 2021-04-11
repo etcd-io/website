@@ -1,5 +1,5 @@
 ---
-title: Upgrading
+title: 升级
 weight: 6000
-description: Upgrading etcd clusters and applications
+description: 升级etcd集群和应用程序
 ---
