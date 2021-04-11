@@ -1,5 +1,5 @@
 ---
-title: Triage
+title: 分流
 weight: 8000
-description: Managing changes in etcd
+description: 管理etcd中的变更
 ---
