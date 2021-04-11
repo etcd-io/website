@@ -1,7 +1,7 @@
 ---
 title: 报告错误
 weight: 1400
-description: How to file issue reports for the etcd project
+description: 如何为etcd项目提交问题报告
 ---
 
 If any part of the etcd project has bugs or documentation mistakes, please let us know by [opening an issue][etcd-issue]. We treat bugs and mistakes very seriously and believe no issue is too small. Before creating a bug report, please check that an issue reporting the same problem does not already exist.
