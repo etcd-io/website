@@ -1,7 +1,7 @@
 ---
-title: Discovery service protocol
+title: 服务协议发现
 weight: 1500
-description: Discover other etcd members in a cluster bootstrap phase
+description: 在集群引导阶段发现其他etcd成员
 ---
 
 Discovery service protocol helps new etcd member to discover all other members in cluster bootstrap phase using a shared discovery URL.
