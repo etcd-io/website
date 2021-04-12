@@ -1,5 +1,8 @@
 ---
-title: etcd version 3.3
+title: v3.3 docs
 cascade:
-  version: v3.3
+  version: &vers v3.3
+linkTitle: *vers
+simple_list: true
+weight: -330
 ---
