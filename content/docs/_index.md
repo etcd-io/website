@@ -1,7 +1,10 @@
 ---
-title: The etcd documentation
+title: Documentation versions
+linkTitle: Versions
+simple_list: true
+# TODO(chalin): disable breadcrumbs for this page
 ---
 
-Welcome to the docs for etcd! The following versions are available:
+Welcome to the docs for etcd! The following doc versions are available:
 
 {{< versions >}}
