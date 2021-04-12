@@ -1,15 +1,14 @@
-+++
-title = "etcd"
-linkTitle = "etcd"
-
-+++
+---
+# TODO(chalin): drop the `title` field once Hugo is fixed to use the site title
+title: etcd
+---
 
 {{< blocks/cover image_anchor="top" height="min" color="blue" >}}
-
 <img src="etcd-horizontal-white.png" style="max-width: 65%; max-height: 8rem" />
-<h1><br />A distributed, reliable key-value store for the most critical data of a distributed system</h1> 
-<br />
-<div class="mx-auto">
+<h1 class="mt-4">
+  A distributed, reliable key-value store for the most critical data of a distributed system
+</h1>
+<div class="mt-5 mx-auto">
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/docs/latest/" data-proofer-ignore>
 		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
@@ -19,7 +18,6 @@ linkTitle = "etcd"
 	<p class="lead mt-5"></p>
 	{{< blocks/link-down color="info" >}}
 </div>
-
 {{< /blocks/cover >}}
 
 {{% blocks/lead color="primary" %}}
@@ -31,17 +29,17 @@ linkTitle = "etcd"
 
 {{% blocks/feature icon="none" title="Simple interface" %}}
   <p>Read and write values using standard HTTP tools, such as curl</p>
-<img src="img/interface.svg"></img>
+  <img src="img/interface.svg"></img>
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="none" title="Key-value storage" %}}
   <p>Store data in hierarchically organized directories, as in a standard filesystem</p>
-<img src="img/kv.svg"></img>
+  <img src="img/kv.svg"></img>
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="none" title="Watch for changes" %}}
   <p>Watch specific keys or directories for changes and react to changes in values</p>
-<img src="img/watch.svg"></img>
+  <img src="img/watch.svg"></img>
 {{% /blocks/feature %}}
 
 {{< /blocks/section >}}
