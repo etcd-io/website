@@ -1,4 +1,4 @@
-DOCKER_IMG = klakegg/hugo:0.81.0-ext-asciidoctor
+DOCKER_IMG = klakegg/hugo:ext-alpine
 DRAFT_ARGS = --buildDrafts --buildFuture  --buildExpired
 
 production-build:
