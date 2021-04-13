@@ -79,12 +79,12 @@ Follow these steps to add documentation for a newly released version of etcd, vX
 If you have an issue with updating the documentation, file an issue against this
 repo.
 
-[hugo-install]: https://gohugo.io/getting-started/installing
-[LTS release]: https://nodejs.org/en/about/releases/
-[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
-
 # License
 
 etcd.io is licensed under an [Apache 2.0 license](./LICENSE).
 
 The etcd documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](https://creativecommons.org/licenses/by/4.0/). 
+
+[hugo-install]: https://gohugo.io/getting-started/installing
+[LTS release]: https://nodejs.org/en/about/releases/
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
