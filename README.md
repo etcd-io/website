@@ -87,4 +87,4 @@ repo.
 
 etcd.io is licensed under an [Apache 2.0 license](./LICENSE).
 
-The etcd documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](./LICENSE-docs). 
+The etcd documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](https://creativecommons.org/licenses/by/4.0/). 
