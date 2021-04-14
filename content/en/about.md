@@ -14,7 +14,7 @@ title: About
 <div class="row">
 <div class="col-12 col-lg-8">
 
-# What is etcd?
+## What is etcd?
 
 **Etcd** is a strongly consistent, distributed key-value store that provides a
 reliable way to store data that needs to be accessed by a distributed system or
@@ -35,7 +35,7 @@ etcd is open source, available <a href="https://github.com/etcd-io/etcd">on
 GitHub</a>, and backed by the <a href="https://cncf.io">Cloud Native Computing
 Foundation</a>.
 
-# Technical overview
+## Technical overview
 
 <p>etcd is written in <a href="https://golang.org">Go</a>. Communication between etcd machines is handled via the Raft consensus algorithm.</p>
 <p>Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.</p>
