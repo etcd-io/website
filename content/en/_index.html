@@ -1,185 +1,47 @@
 ---
 # TODO(chalin): drop the `title` field once Hugo is fixed to use the site title
 title: etcd
+features:
+  - title: Simple interface
+    description: Read and write values using standard HTTP tools, such as curl
+    icon: interface.svg
+  - title: Key-value storage
+    description: Store data in hierarchically organized directories, as in a standard filesystem
+    icon: kv.svg
+  - title: Watch for changes
+    description: Watch specific keys or directories for changes and react to changes in values
+    icon: watch.svg
 ---
 
-{{< blocks/cover image_anchor="top" height="min" color="blue" >}}
-<img src="etcd-horizontal-white.png" style="max-width: 65%; max-height: 8rem" />
-<h1 class="mt-4">
+{{< blocks/cover image_anchor="top" height="min" color="primary" >}}
+<img src="etcd-horizontal-white.png" class="site-logo" />
+<h2 class="mt-4">
   A distributed, reliable key-value store for the most critical data of a distributed system
-</h1>
+</h2>
 <div class="mt-5 mx-auto">
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/docs/latest/" data-proofer-ignore>
-		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+		Docs<i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
 	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/etcd-io/etcd">
 		GitHub <i class="fab fa-github ml-2 "></i>
 	</a>
-	<p class="lead mt-5"></p>
-	{{< blocks/link-down color="info" >}}
 </div>
 {{< /blocks/cover >}}
 
-{{% blocks/lead color="primary" %}}
-  <h1>Features</h1>
-  Features intro copy to go here
-{{% /blocks/lead %}}
-
-{{< blocks/section color="dark" >}}
-
-{{% blocks/feature icon="none" title="Simple interface" %}}
-  <p>Read and write values using standard HTTP tools, such as curl</p>
-  <img src="img/interface.svg"></img>
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="none" title="Key-value storage" %}}
-  <p>Store data in hierarchically organized directories, as in a standard filesystem</p>
-  <img src="img/kv.svg"></img>
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="none" title="Watch for changes" %}}
-  <p>Watch specific keys or directories for changes and react to changes in values</p>
-  <img src="img/watch.svg"></img>
-{{% /blocks/feature %}}
-
-{{< /blocks/section >}}
-
-
-{{< blocks/section >}}
-<div class="col">
-  <!-- <h1 class="text-center">This is the second Section</h1> -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <span class="icon has-text-danger">
-          <i class="fas fa-lg fa-lock"></i>
-        </span>
-        <p>Optional SSL client certificate authentication</p>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <span class="icon has-text-danger">
-          <i class="fas fa-lg fa-chart-bar"></i>
-        </span>
-        <p>Benchmarked at 1000s of writes/s per instance</p>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <span class="icon has-text-danger">
-          <i class="fas fa-lg fa-clock"></i>
-        </span>
-        <p>Optional TTLs for keys expiration</p>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <span class="icon has-text-danger">
-          <i class="fas fa-lg fa-arrows-alt"></i>
-        </span>
-        <p>Properly distributed via Raft protocol</p>
-      </div>
-
-    </div>
-  </div>
-{{< /blocks/section >}}
-
-
-{{% blocks/lead color="secondary" %}}
+{{% blocks/lead color="white" %}}
   <h1>What is etcd?</h1>
+  <p>
+    <b>etcd</b> is a strongly consistent, distributed key-value store that
+    provides a reliable way to store data that needs to be accessed by a
+    distributed system or cluster of machines. It gracefully handles leader
+    elections during network partitions and can tolerate machine failure, even
+    in the leader node.
+  </p>
+  <a href="/about/">Learn more<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
 {{% /blocks/lead %}}
 
-{{< blocks/section color="primary" >}}
-{{% blocks/feature icon="none" title="Project" %}}
-<hr />
-<div style="text-align: left">
-  <p><b>etcd</b> is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node.</p>
-  <p>Applications of any complexity, from a simple web app to <a href="https://kubernetes.io">Kubernetes</a>, can read data from and write data into etcd.</p>
-  <p>Your applications can read from and write data into etcd. A simple use case is storing database connection details or feature flags in etcd as key-value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of etcd's consistency guarantees to implement database leader elections or perform distributed locking across a cluster of workers.</p>
-  <p>etcd is open source, available <a href="https://github.com/etcd-io/etcd">on GitHub</a>, and backed by the <a href="https://cncf.io">Cloud Native Computing Foundation</a>.</p>
+<div class="container">
+  {{< home/features >}}
+  {{< home/used-by >}}
+  {{< home/cncf >}}
 </div>
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="none" title="Technical overview" %}}
-<hr />
-<div style="text-align: left">
-  <p>etcd is written in <a href="https://golang.org">Go</a>. Communication between etcd machines is handled via the Raft consensus algorithm.</p>
-  <p>Latency from the etcd leader is the most important metric to track and the built-in dashboard has a view dedicated to this. In our testing, severe latency will introduce instability within the cluster because Raft is only as fast as the slowest machine in the majority. You can mitigate this issue by properly tuning the cluster. etcd has been pre-tuned on cloud providers with highly variable networks.</p>
-</div>
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="none" title="Adopters" %}}
-<hr />
-<div style="text-align: left">
-  <!-- TODO: Port adopters code over -->
-  <div>
-    <div class="text-center">
-      <a href="https://kubernetes.io"><img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png" width="200"></a>
-    </div>
-    <br />
-    <p>etcd is the backend for service discovery and stores cluster state and configuration</p>
-  </div>
-  <div>
-    <br />
-    <div class="text-center">
-      <a href="https://rook.io"><img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/rook/horizontal/color/rook-horizontal-color.png" width="200"></a>
-    </div>
-    <br />
-    <p>etcd serves as the orchestration engine for Rook</p>
-  </div>
-  <div>
-    <br />
-    <div class="text-center">
-      <a href="https://coredns.io"><img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/coredns/horizontal/color/coredns-horizontal-color.png" width="200"></a>
-    </div>
-    <br />
-    <p>CoreDNS uses etcd as an optional backend</p>
-  </div>
-  <div>
-    <br />
-    <div class="text-center">
-      <a href="https://eng.uber.com/m3/"><img src="/img/m3-logo.png" width="200"></a>
-    </div>
-    <br />
-    <p>M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions</p>
-  </div>
-  <div>
-    <br />
-    <div class="text-center">
-      <a href="https://openstack.org"><img src="/img/openstack-logo.svg" width="200"></a>
-    </div>
-    <br />
-    <p>OpenStack supports etcd as an optional provider of configuration storage, distributed key locking, and more</p>
-  </div>
-  <div>
-    <br />
-    <div class="text-center">
-      <h2><a href="https://github.com/zalando/patroni">Patroni</a></h2>
-    </div>
-    <br />
-    <p>A template for PostgreSQL HA with ZooKeeper, etcd, or Consul</p>
-  </div>
-  <div>
-    <br />
-    <div class="text-center">
-      <h2><a href="https://github.com/google/trillian/">Trillian</a></h2>
-    </div>
-    <br />
-    <p>A transparent, highly scalable and cryptographically verifiable data store, created by Google</p>
-  </div>
-  <hr />
-  <div>
-    <p>In addition, <a href="https://github.com/search?utf8=%E2%9C%93&q=etcd/">thousands of projects on GitHub</a> are affiliated with etcd, including projects built on etcd, client bindings, and more.</p>
-  </div>
-</div>
-{{% /blocks/feature %}}
-{{< /blocks/section >}}
-
-
-{{< blocks/section color="grey">}}
-
-<div class="col-12 text-center">
-  <!-- <h1 class="text-center">This is another Section</h1> -->
-  <img src="https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png" width="300"></img><br /><br />
-  <p>etcd is a <a href="https://cncf.io">Cloud Native Computing Foundation</a> incubating project.</p>
-</div>
-
-{{< /blocks/section >}}

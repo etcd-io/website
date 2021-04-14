@@ -1,0 +1,41 @@
+{{ $features := $.Page.Params.features -}}
+<section class="bg-gray-100">
+  <h1>Features</h1>
+
+  <div class="c-features">
+    {{ range $features -}}
+      {{ $icon  := printf "img/%s" .icon | relURL -}}
+      {{ $desc := .description | markdownify -}}
+
+      <div class="col-md-4 o-features__feature">
+        <div>
+          <h3>{{ .title }}</h3>
+          <p class="lead">{{ $desc }}</p>
+        </div>
+        <img class="o-feature__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
+      </div>
+    {{ end }}
+  </div>
+  <hr>
+  <div class="c-features mt-5">
+    <div class="col-md-3">
+      <h3><i class="fas fa-lock"></i></h3>
+      <p>Optional SSL client certificate authentication</p>
+    </div>
+
+    <div class="col-md-3">
+      <h3><i class="fas fa-chart-bar"></i></h3>
+      <p>Benchmarked at 1000s of writes/s per instance</p>
+    </div>
+
+    <div class="col-md-3">
+      <h3><i class="fas fa-clock"></i></h3>
+      <p>Optional TTLs for keys expiration</p>
+    </div>
+
+    <div class="col-md-3">
+      <h3><i class="fas fa-arrows-alt"></i></h3>
+      <p>Properly distributed via Raft protocol</p>
+    </div>
+  </div>
+</section>
