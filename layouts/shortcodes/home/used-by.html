@@ -1,0 +1,42 @@
+{{ $usedBy := site.Data.used_by -}}
+
+<section class="home--top-section">
+<h1>Used by</h1>
+
+<div class="c-used-by__users">
+  {{ range $usedBy -}}
+  {{ $img := printf "img/users/%s" .image | relURL -}}
+    <div class="c-used-by__user">
+      <a href="{{ .link }}" target="_blank" rel="noopener">
+        <img class="used-by-logo" src="{{ .image }}" alt="{{ .name }} logo">
+      </a>
+    </div>
+  {{- end }}
+</div>
+</section>
+
+{{- /*
+<div>
+  ...
+  <div>
+    <br />
+    <div class="text-center">
+      <h2><a href="https://github.com/zalando/patroni">Patroni</a></h2>
+    </div>
+    <br />
+    <p>A template for PostgreSQL HA with ZooKeeper, etcd, or Consul</p>
+  </div>
+  <div>
+    <br />
+    <div class="text-center">
+      <h2><a href="https://github.com/google/trillian/">Trillian</a></h2>
+    </div>
+    <br />
+    <p>A transparent, highly scalable and cryptographically verifiable data store, created by Google</p>
+  </div>
+  <hr />
+  <div>
+    <p>In addition, <a href="https://github.com/search?utf8=%E2%9C%93&q=etcd/">thousands of projects on GitHub</a> are affiliated with etcd, including projects built on etcd, client bindings, and more.</p>
+  </div>
+</div>
+*/ -}}
