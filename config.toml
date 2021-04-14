@@ -231,6 +231,10 @@ home = ["HTML", "REDIRECTS"]
 
 [menu]
   [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = -20
+  [[menu.main]]
     name = "Docs"
     url = "/docs/latest/"
     weight = -10

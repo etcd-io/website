@@ -1,0 +1,31 @@
+# cSpell:ignore Kubernetes
+- name: Kubernetes
+  # date: 20yy-mm-dd
+  link: https://kubernetes.io
+  image: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png
+  quote: >
+    etcd is the backend for service discovery and stores cluster state and configuration
+- name: Rook
+  # date: 20yy-mm-dd
+  link: https://rook.io
+  image: https://raw.githubusercontent.com/cncf/artwork/master/projects/rook/horizontal/color/rook-horizontal-color.png
+  quote: >
+    etcd serves as the orchestration engine for Rook
+- name: CoreDNS
+  # date: 20yy-mm-dd
+  link: https://coredns.io
+  image: https://raw.githubusercontent.com/cncf/artwork/master/projects/coredns/horizontal/color/coredns-horizontal-color.png
+  quote: >
+    CoreDNS uses etcd as an optional backend
+- name: M3
+  # date: 20yy-mm-dd
+  link: https://eng.uber.com/m3/
+  image: /img/m3-logo.png
+  quote: >
+    M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions
+# - name: OpenStack
+#   # date: 20yy-mm-dd
+#   link: https://openstack.org
+#   image: /img/openstack-logo.svg
+#   quote: >
+#     OpenStack supports etcd as an optional provider of configuration storage, distributed key locking, and more
