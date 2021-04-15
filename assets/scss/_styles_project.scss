@@ -118,6 +118,12 @@
   }
 }
 
+// Bootstrap and Docsy overrides
+
+.alert > p:last-child {
+  margin-bottom: 0;
+}
+
 // Utilities
 
 .bg-gray-100 {

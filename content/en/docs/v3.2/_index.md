@@ -2,6 +2,7 @@
 title: v3.2 docs
 cascade:
   version: &vers v3.2
+  is_deprecated: true
 linkTitle: *vers
 simple_list: true
 weight: -320
