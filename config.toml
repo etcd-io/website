@@ -102,9 +102,6 @@ description = "A distributed, reliable key-value store for the most critical dat
 # sansSerifFont      = "Source Sans Pro"
 # monospaceFont      = "Fira Mono"
 
-# TODO: change favicon
-# favicon            = "https://etcd.io/favicon.png"
-
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
