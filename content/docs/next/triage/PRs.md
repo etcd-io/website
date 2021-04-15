@@ -1,4 +1,6 @@
-# PR Management
+---
+title: PR management
+---
 
 ## Purpose
 
