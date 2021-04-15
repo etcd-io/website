@@ -13,9 +13,12 @@ $enable-rounded: false;
 // // TODO: add value checks later in the import chain
 
 // $_font-weight-light: 300;
+$_yellow:  #ffc107;
 
 // // Display styles: prefer Bootstrap defaults to Docsy's overrides
 // $display1-weight: $_font-weight-light;
 // $display2-weight: $_font-weight-light;
 // $display3-weight: $_font-weight-light;
 // $display4-weight: $_font-weight-light;
+
+$warning: $_yellow; // Use Bootstrap default

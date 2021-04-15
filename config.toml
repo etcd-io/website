@@ -139,6 +139,8 @@ version_menu = "Versions"
 [params.versions]
 latest = "v3.4"
 all    = ["next", "v3.4", "v3.3", "v3.2", "v3.1", "v2.3"]
+deprecation_warning = """the documentation is no longer actively maintained.
+  The page that you are viewing is the last archived version."""
 
 # User interface configuration
 [params.ui]

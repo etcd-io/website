@@ -3,6 +3,7 @@ title: v3.5-DRAFT docs
 cascade:
   version: next
   versName: &name v3.5-DRAFT
+  page_warning: the documentation is in **DRAFT** status.
 linkTitle: *name
 simple_list: true
 weight: -350 # Weight for doc version vX.Y should be -XY0
