@@ -230,13 +230,13 @@ baseName = "_redirects"
 home = ["HTML", "REDIRECTS"]
 
 [menu]
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = -20
+  # [[menu.main]]
+  #   name = "About"
+  #   url = "/about/"
+  #   weight = -20
   [[menu.main]]
     name = "Docs"
-    url = "/docs/latest/"
+    url = "/docs/v3.4/" # FIXME(chalin): workaround to make link checker happy. Change back to latest
     weight = -10
   [[menu.main]]
     name = "Blog"
