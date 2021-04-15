@@ -38,6 +38,8 @@
             {{ range $vers := .Site.Params.versions.all }}
 
               {{ $versURI := printf "/%s/" $vers -}}
+              {{ $versPath := printf "/docs/%s/" $vers -}}
+              {{ $versName := ($.GetPage $versPath).Params.versName | default $vers -}}
               {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
               {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
               {{ $isLatest := eq $latest $vers -}}
@@ -48,7 +50,7 @@
               {{ if and $thisVers (fileExists $targetFile) -}}
               <a class="button is-primary is-outlined has-text-weight-bold"
                 href="{{ $targetURL }}">
-                <span>{{ $vers }}</span>
+                <span>{{ $versName }}</span>
                 {{ if $isLatest -}}
                   &nbsp;&nbsp;
                   <span class="tag is-small is-success">latest</span>
@@ -57,7 +59,7 @@
               {{- else -}}
               <a class="button is-primary is-outlined has-text-weight-bold"
                 href="/docs/{{ $vers }}/">
-                <span>{{ $vers }}</span>
+                <span>{{ $versName }}</span>
                 {{ if $isLatest -}}
                   &nbsp;&nbsp;
                   <span class="tag is-small is-success">
