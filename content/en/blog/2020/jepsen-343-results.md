@@ -7,8 +7,6 @@ authors:
 
 Jepsen tested and analyzed etcd 3.4.3, and had both good results and useful feedback to share with us.
 
-<!--more-->
-
 A key part of etcd's design is strong consistency guarantees across the distributed key-value store. Kubernetes, Rook, OpenStack, and countless other critical software projects rely on etcd, in part, because of the etcd project's focus on reliability and correctness.
 
 Over the years, the etcd team has put tremendous effort on building [testing](https://web.archive.org/web/20200811103145/https://coreos.com/blog/testing-distributed-systems-in-go.html) and [chaos engineering frameworks](https://web.archive.org/web/20200420035739/https://coreos.com/blog/new-functional-testing-in-etcd.html).  We feel that we've improved our consistency, and have asked Jepsen for validation.
