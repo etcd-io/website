@@ -3,6 +3,7 @@ title: Next docs
 cascade:
   version: next
 linkTitle: next
+simple_list: true
 # Weight for doc version vX.Y should be -XY0. For example, v3.4 has weight -340.
 weight: -1000
 ---
