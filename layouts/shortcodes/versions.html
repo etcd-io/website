@@ -1,10 +1,12 @@
 {{ $versions := site.Params.versions.all -}}
 <ul>
-  {{ range $versions }}
-  <li>
-    <a href="/docs/{{ . }}">
-      {{- . -}}
-    </a>
-  </li>
+  {{ range $vers := $versions }}
+    {{ $versPath := printf "/docs/%s/" $vers -}}
+    {{ $versName := ($.Site.GetPage $versPath).Params.versName | default $vers -}}
+    <li>
+      <a href="{{ $versPath }}">
+        {{- $versName -}}
+      </a>
+    </li>
   {{ end -}}
 </ul>

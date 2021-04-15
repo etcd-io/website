@@ -1,6 +1,7 @@
 {{ $thisFile  := .File -}}
 {{ $thisURL   := .RelPermalink -}}
-{{ $thisVers  := .CurrentSection.Params.version -}}
+{{ $thisVers  := .Params.version -}}
+{{ $thisVersName := .Params.versName | default $thisVers -}}
 {{ $editUrl    := printf "https://github.com/etcd-io/website/edit/master/content/%s" .File.Path -}}
 {{ $latest     := site.Params.versions.latest -}}
 {{ $ghUrl      := printf "https://github.com/etcd-io/etcd/releases/tag/v%s" $latest -}}
@@ -18,7 +19,7 @@
       <div class="dropdown-trigger">
         <button class="button is-danger is-radiusless">
           <span>
-            <strong>{{ $thisVers | default "Version" }}</strong>
+            <strong>{{ $thisVersName | default "Version" }}</strong>
           </span>
           <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -32,6 +33,8 @@
           {{ $thisVersURI := printf "/%s/" $thisVers -}}
 
           {{ range $vers := .Site.Params.versions.all -}}
+            {{ $versPath := printf "/docs/%s/" $vers -}}
+            {{ $versName := ($.GetPage $versPath).Params.versName | default $vers -}}
             {{ $versURI := printf "/%s/" $vers -}}
             {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
             {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
@@ -39,10 +42,10 @@
             {{/* Link to corresponding page under the docs $versURI, if it exists; otherwise link to the new version landing page */ -}}
             {{ if and $thisVers (fileExists $targetFile) -}}
             <a class="dropdown-item"
-              href="{{ $targetURL }}">{{ $vers }}</a>
+              href="{{ $targetURL }}">{{ $versName }}</a>
             {{ else -}}
               <a class="dropdown-item"
-              href="/docs/{{ $vers }}/">{{ $vers }}</a>
+              href="{{ $versPath }}">{{ $versName }}</a>
             {{ end -}}
           {{ end -}}
         </div>

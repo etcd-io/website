@@ -1,10 +1,10 @@
 ---
-title: Next docs
+title: v3.5-DRAFT docs
 cascade:
   version: next
-linkTitle: next
-# Weight for doc version vX.Y should be -XY0. For example, v3.4 has weight -340.
-weight: -1000
+  versName: &name v3.5-DRAFT
+linkTitle: *name
+weight: -350 # Weight for doc version vX.Y should be -XY0
 ---
 
 These docs cover everything from setting up and running an etcd cluster to using etcd in applications for the _upcoming_ [etcd version](https://github.com/etcd-io/etcd/).
