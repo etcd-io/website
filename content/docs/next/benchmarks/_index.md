@@ -4,7 +4,7 @@ weight: 5000
 description: Performance measures for etcd
 ---
 
-# Benchmarks
+## Benchmarks
 
 etcd benchmarks will be published regularly and tracked for each release below:
 
@@ -12,7 +12,7 @@ etcd benchmarks will be published regularly and tracked for each release below:
 - [etcd v2.2.0-rc][2.2]
 - [etcd v3 demo][3.0]
 
-# Memory Usage Benchmarks
+## Memory Usage Benchmarks
 
 It records expected memory usage in different scenarios.
 

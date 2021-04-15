@@ -51,13 +51,13 @@ To solve the immediate need and to plan for the future lets do the following:
 - Add Version field to JoinCommand
 - Have a joining follower read the Version field of the leader and if its own version doesn't match the leader then sleep for some random interval and retry later to see if the leader has upgraded.
 
-# Research
+## Research
 
-## Zookeeper versioning
+### Zookeeper versioning
 
 Zookeeper very recently added versioning into the protocol and it doesn't seem to have seen any use yet.
 https://issues.apache.org/jira/browse/ZOOKEEPER-1633
 
-## doozerd
+### doozerd
 
 doozerd stores the version number of the peers in the datastore for other clients to check, no decisions are made off of this number currently.
