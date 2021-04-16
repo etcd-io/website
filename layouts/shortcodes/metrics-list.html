@@ -1,0 +1,18 @@
+{{ $dir := printf "/content/%s/%s%s" .Page.File.Lang .Page.Dir "metrics" -}}
+{{ $regexp := .Get "regexp" | default "." -}}
+
+{{ $counter := 0 -}}
+<table>
+  {{ range readDir $dir -}}
+    {{ if eq 0 (mod $counter 6) -}}
+    <tr>
+    {{ end -}}
+      {{ if (findRE $regexp .Name) -}}
+      <td><a href="{{ .Name }}">{{ .Name }}</a></td>
+      {{ end -}}
+    {{ if eq 5 (mod $counter 6) -}}
+    </tr>
+    {{ end -}}
+    {{ $counter = add $counter 1 -}}
+  {{ end -}}
+</table>
