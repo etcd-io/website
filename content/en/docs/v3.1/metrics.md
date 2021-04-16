@@ -110,10 +110,9 @@ The Prometheus client library provides a number of metrics under the `go` and `p
 
 Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file descriptor limit, `process_max_fds`) indicates a potential file descriptor exhaustion issue. If the file descriptors are exhausted, etcd may panic because it cannot create new WAL files.
 
-{{/* TODO: reinstate this section */}}
-{{/* ## Generated list of metrics */}}
+## Generated list of metrics
 
-{{/* < metrics-list dir="../content/docs/v3.1/metrics" regexp="." > */}}
+{{< metrics-list >}}
 
 [glossary-proposal]: learning/glossary#proposal
 [go-grpc-prometheus]: https://github.com/grpc-ecosystem/go-grpc-prometheus
