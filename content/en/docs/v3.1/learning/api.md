@@ -54,6 +54,6 @@ message KeyValue {
 * Mod_Revision - revision of the last modification on the key.
 * Lease - the ID of the lease attached to the key. If lease is 0, then no lease is attached to the key.
 
-[kv-proto]: https://github.com/etcd-io/etcd/blob/v3.1.20/mvcc/mvccpb/kv.proto
-[kv-service]: https://github.com/etcd-io/etcd/blob/v3.1.20/etcdserver/etcdserverpb/rpc.proto
-[response_header]: https://github.com/etcd-io/etcd/blob/v3.1.20/etcdserver/etcdserverpb/rpc.proto
+[kv-proto]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/mvcc/mvccpb/kv.proto
+[kv-service]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/etcdserver/etcdserverpb/rpc.proto
+[response_header]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/etcdserver/etcdserverpb/rpc.proto

@@ -479,7 +479,7 @@ message LeaseKeepAliveResponse {
 [elections]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/election.go
 [grpc-api]: ../dev-guide/api_reference_v3
 [grpc-service]: https://github.com/etcd-io/etcd/blob/master/api/etcdserverpb/rpc.proto
-[kv-proto]: https://github.com/etcd-io/etcd/blob/v3.4.15/mvcc/mvccpb/kv.proto
+[kv-proto]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/mvcc/mvccpb/kv.proto
 [locks]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/mutex.go
 [mvcc]: https://en.wikipedia.org/wiki/Multiversion_concurrency_control
 [stm]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/stm.go

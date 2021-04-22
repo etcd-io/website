@@ -147,7 +147,7 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 
 [api-mvcc]: learning/api#revisions
 [backend_commit_metrics]: ./metrics#disk
-[backup]: https://github.com/etcd-io/etcd/blob/v3.3.25/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
+[backup]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
 [benchmark]: https://github.com/etcd-io/etcd/tree/master/tools/benchmark
 [benchmark-result]: /docs/v3.3/op-guide/performance/
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf

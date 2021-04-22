@@ -122,7 +122,7 @@ $ ETCDCTL_API=3 etcdctl endpoint health
 
 ## Further considerations
 
-- etcdctl environment variables have been updated. If `ETCDCTL_API=2 etcdctl cluster-health` works properly but `ETCDCTL_API=3 etcdctl endpoints health` responds with `Error:  grpc: timed out when dialing`, be sure to use the [new variable names](https://github.com/etcd-io/etcd/tree/v3.3.25/etcdctl#etcdctl).
+- etcdctl environment variables have been updated. If `ETCDCTL_API=2 etcdctl cluster-health` works properly but `ETCDCTL_API=3 etcdctl endpoints health` responds with `Error:  grpc: timed out when dialing`, be sure to use the [new variable names](https://github.com/etcd-io/etcd/tree/{{< param git_version_tag >}}/etcdctl#etcdctl).
 
 ## Known Issues
 

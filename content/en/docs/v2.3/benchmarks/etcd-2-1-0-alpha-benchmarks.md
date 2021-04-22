@@ -53,4 +53,4 @@ Bootstrap another machine and use the [boom HTTP benchmark tool][boom] to send r
 | 256               | 256               | all servers        | 3061      | 119.3 |
 
 [boom]: https://github.com/rakyll/boom
-[hack-benchmark]: https://github.com/etcd-io/etcd/tree/v2.3.8/hack/benchmark
+[hack-benchmark]: https://github.com/etcd-io/etcd/tree/{{< param git_version_tag >}}/hack/benchmark
