@@ -96,7 +96,7 @@ description = "A distributed, reliable key-value store for the most critical dat
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://github.com/etcd-io/website"
-github_branch = "docsy" # FIXME: change back to master (or main) once we merge the docsy PR
+github_branch = "master"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/etcd-io/etcd"
 
