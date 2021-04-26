@@ -1,46 +1,45 @@
-{{ $img    := "https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/stacked/color/etcd-stacked-color.png" }}
-{{ $latest := site.Params.versions.latest }}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>etcd | 404 not found</title>
-    {{ partial "css.html" . }}
-  </head>
-  <body>
-    <section class="hero is-large">
-      <div class="container has-text-centered">
-        <div class="hero-body">
-          <img src="{{ $img }}" width="150px">
+{{/* etcd-docsy full file override: we're not tracking changes to the docsy base file. */}}
 
-          <hr />
+{{ define "title" -}}
+404 Page not found &ndash; {{ site.Title -}}
+{{ end }}
 
-          <p class="title is-size-1 is-size-2-mobile has-text-weight-bold is-spaced">
-            404 not found
-          </p>
+{{ define "main" -}}
+{{ $newIssuePath := "issues/new?title=Unexpected%20page-not-found%20error&body=URL%3A%20%0AExpected%20page%3A%20" -}}
+{{ $newIssueUrl := printf "%s/%s" site.Params.github_repo $newIssuePath -}}
 
-          <p class="subtitle">
-            We're sorry, but this page could not be found. Perhaps you were looking for:
-          </p>
+<section class="row td-cover-block td-cover-block--height-sm js-td-cover td-overlay td-overlay--dark -bg-primary">
+  <div class="container td-overlay__inner">
+    <div class="text-center">
+      <h1 class="display-1 text-white pb-4">
+        Page not found
+      </h1>
+      <h2 class="text-white font-weight-medium">
+        404
+      </h2>
+    </div>
+  </div>
+</section>
 
-          <ul>
-            <li>
-              <a class="is-size-5" href="/">
-                The etcd main page
-              </a>
-            </li>
-            <li>
-              <a class="is-size-5" href="/docs/latest" data-proofer-ignore>
-                The etcd documentation
-              </a>
-            </li>
-            <li>
-              <a class="is-size-5" href="https://github.com/etcd-io/etcd">
-                The etcd GitHub repo
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
+<section class="section">
+  <div class="container text-center">
+    <div>
+      <p>
+        The page that you requested doesn't exist.
+      </p>
+      <p>
+        Check the URL's spelling.
+      </p>
+      <p>
+        If you think that the page should exist,
+        <a href="{{ $newIssueUrl }}" target="_blank" rel="noopener">create an issue.</a>
+      </p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="/">
+          Homepage
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,131 @@
+/* etcd-docsy full file override: we're not tracking changes to the docsy file of the same name. */
+
+.td-home {
+  h1 {
+    // @extend .display-1;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  h2 {
+    // @extend .display-2;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  h3 {
+    //@extend .display-3;
+  }
+
+  h4 {
+    // @extend .display-4;
+    margin-bottom: 1rem;
+  }
+
+  .home--top-section {
+    text-align: center;
+  }
+
+  .cncf-logo {
+    width: 20rem;
+    max-width: 80%;
+  }
+
+  .site-logo {
+    max-height: 8rem;
+    max-width: 65%;
+  }
+}
+
+// Components and objects
+
+.c-features {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  h3 {
+    color: $etcd-dark-blue;
+  }
+}
+
+.o-features__feature {
+  display: inline-flex;
+  flex-direction: column;
+
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  h3 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.o-feature__icon {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  max-width: 15rem;
+}
+
+.o-icon {
+  margin-right: 0.25rem;
+}
+
+.used-by-logo {
+  max-height: 4rem;
+  max-width: 100%;
+}
+
+.c-used-by__users {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: -3rem;
+}
+
+.c-used-by__user {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+@include media-breakpoint-up(sm) {
+  .c-features {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .c-features {
+    flex-direction: row;
+  }
+
+  .c-used-by__users {
+    flex-direction: row;
+    justify-content: between;
+  }
+
+  .c-used-by__user {
+    padding-bottom: 1.5rem;
+  }
+}
+
+// Bootstrap and Docsy overrides
+
+.alert > p:last-child {
+  margin-bottom: 0;
+}
+
+// Utilities
+
+.bg-gray-100 {
+  background-color: $gray-100;
+}

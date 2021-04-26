@@ -1,0 +1,24 @@
+/* etcd-docsy full file override: we're not tracking changes to the docsy base file. */
+
+$etcd-blue: #419eda;
+$etcd-light-blue: lighten($etcd-blue, 10%);
+$etcd-dark-blue: darken($etcd-blue, 20%);
+
+$primary: $etcd-dark-blue;
+$secondary: $etcd-light-blue;
+
+$enable-rounded: false;
+
+// // Forward definitions of Bootstrap and Docsy variables
+// // TODO: add value checks later in the import chain
+
+// $_font-weight-light: 300;
+$_yellow:  #ffc107;
+
+// // Display styles: prefer Bootstrap defaults to Docsy's overrides
+// $display1-weight: $_font-weight-light;
+// $display2-weight: $_font-weight-light;
+// $display3-weight: $_font-weight-light;
+// $display4-weight: $_font-weight-light;
+
+$warning: $_yellow; // Use Bootstrap default
