@@ -79,14 +79,14 @@ For distributed coordination, choosing etcd can help prevent operational headach
 
 [cockroach-grant]: https://www.cockroachlabs.com/docs/stable/grant.html
 [cockroach]: https://github.com/cockroachdb/cockroach
-[consul-acl]: https://www.consul.io/docs/internals/acl.html
-[consul-bulletproof]: https://www.consul.io/docs/internals/sessions.html
-[consul-json]: https://www.consul.io/docs/agent/http.html#formatted-json-output
-[consul-linread]: https://www.consul.io/docs/agent/http.html#consistency
-[consul-lock]: https://www.consul.io/docs/commands/lock.html
-[consul-reconfig]: https://www.consul.io/docs/guides/servers.html
-[consul-txn]: https://www.consul.io/docs/agent/http/kv.html#txn
-[consul-watch]: https://www.consul.io/docs/agent/watches.html
+[consul-acl]: https://www.consul.io/docs/security/acl
+[consul-bulletproof]: https://www.consul.io/docs/dynamic-app-config/sessions
+[consul-json]: https://www.consul.io/api-docs#formatted-json-output
+[consul-linread]: https://www.consul.io/api-docs#consistency
+[consul-lock]: https://www.consul.io/commands/lock
+[consul-reconfig]: https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations
+[consul-txn]: https://www.consul.io/api/kv#txn
+[consul-watch]: https://www.consul.io/docs/dynamic-app-config/watches
 [container-linux]: https://coreos.com/why
 [curator]: http://curator.apache.org/
 [dbtester-comparison-results]: https://github.com/coreos/dbtester/tree/master/test-results/2018Q1-02-etcd-zookeeper-consul
@@ -113,6 +113,6 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [tidb]: https://github.com/pingcap/tidb
 [zk-acl]: https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ZooKeeperAccessControl
 [zk-bindings]: https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#ch_bindings
-[zk-reconfig]: https://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html
+[zk-reconfig]: https://zookeeper.apache.org/doc/current/zookeeperReconfig.html
 [zk-txn]: https://zookeeper.apache.org/doc/r3.4.3/api/org/apache/zookeeper/ZooKeeper.html#multi(java.lang.Iterable)
-[zk-watch]: https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#ch_zkWatches
+[zk-watch]: https://zookeeper.apache.org/doc/current/zookeeperProgrammers.html#ch_zkWatches

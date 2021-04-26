@@ -17,6 +17,6 @@ etcd stores metadata in a consistent and fault-tolerant way. Distributed systems
 TODO
 
 [container-linux]: https://coreos.com/why
-[etcd-concurrency]: https://godoc.org/github.com/coreos/etcd/clientv3/concurrency
+[etcd-concurrency]: https://pkg.go.dev/github.com/etcd-io/etcd/clientv3/concurrency
 [kubernetes]: http://kubernetes.io/docs/whatisk8s
 [locksmith]: https://github.com/coreos/locksmith

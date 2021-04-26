@@ -149,9 +149,9 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 
 [api-mvcc]: learning/api#revisions
 [backend_commit_metrics]: ./metrics#disk
-[backup]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
-[benchmark]: https://github.com/coreos/etcd/tree/master/tools/benchmark
-[benchmark-result]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/performance.md
+[backup]: /docs/v3.4/op-guide/recovery#snapshotting-the-keyspace
+[benchmark]: https://github.com/etcd-io/etcd/tree/master/tools/benchmark
+[benchmark-result]: /docs/v3.4/op-guide/performance/
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
 [fio-blog-post]: https://www.ibm.com/blogs/bluemix/2019/04/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd/
 [fio]: https://github.com/axboe/fio
@@ -161,7 +161,7 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 [maintenance-disarm]: https://github.com/etcd-io/etcd/tree/master/etcdctl#alarm-disarm
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
 [raft]: https://raft.github.io/raft.pdf
-[runtime reconfiguration]: https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/runtime-configuration.md
+[runtime reconfiguration]: /docs/v3.4/op-guide/runtime-configuration/
 [supported-platform]: ./op-guide/supported-platform
 [tuning]: ./tuning
 [wal_fsync_duration_seconds]: ./metrics#disk

@@ -91,7 +91,7 @@ _, err := kvc.Get(ctx, "a")
 
 #### Require `grpc.WithBlock` for client dial
 
-[The new client balancer](https://github.com/etcd-io/etcd/blob/master/Documentation/learning/design-client.md) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, v3.4 client requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
+[The new client balancer](/docs/v3.4/learning/design-client/) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, v3.4 client requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
 
 ```diff
 import (

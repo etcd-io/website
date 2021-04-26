@@ -45,7 +45,7 @@ The theoretical memory consumption of watch can be approximated with the formula
 ## Testing Environment
 
 etcd version
-- git head https://github.com/coreos/etcd/commit/185097ffaa627b909007e772c175e8fefac17af3
+- git head https://github.com/etcd-io/etcd/commit/185097ffaa627b909007e772c175e8fefac17af3
 
 GCE n1-standard-2 machine type
 - 7.5 GB memory

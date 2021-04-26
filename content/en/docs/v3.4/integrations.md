@@ -7,7 +7,6 @@ description: A listing of etcd tools and client libraries
 **Tools**
 
 - [etcdctl](https://github.com/etcd-io/etcd/tree/master/etcdctl) - A command line client for etcd
-- [etcd-backup](https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
 - [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd.
 - [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
 - [etcddir](https://github.com/rekby/etcddir) - Realtime sync etcd and local directory. Work with windows and linux.
@@ -16,7 +15,6 @@ description: A listing of etcd tools and client libraries
 - [etcd-console](https://github.com/matishsiao/etcd-console) - A web-base key/value editor for etcd using PHP
 - [etcd-viewer](https://github.com/nikfoundas/etcd-viewer) - An etcd key-value store editor/viewer written in Java
 - [etcdtool](https://github.com/mickep76/etcdtool) - Export/Import/Edit etcd directory as JSON/YAML/TOML and Validate directory using JSON schema
-- [etcd-rest](https://github.com/mickep76/etcd-rest) - Create generic REST API in Go using etcd as a backend with validation using JSON schema
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
 - [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free ETCD 3.x GUI & client tool. Available for Windows, Linux and Mac.
@@ -77,7 +75,7 @@ description: A listing of etcd tools and client libraries
 
 **C libraries**
 
-- [apache/celix/etcdlib](https://github.com/apache/celix/tree/develop/etcdlib) - Supports v2
+- [apache/celix/etcdlib](https://github.com/apache/celix/tree/master/libs/etcdlib) - Supports v2
 - [jdarcy/etcd-api](https://github.com/jdarcy/etcd-api) - Supports v2
 - [shafreeck/cetcd](https://github.com/shafreeck/cetcd) - Supports v2
 

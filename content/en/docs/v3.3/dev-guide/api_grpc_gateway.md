@@ -128,7 +128,7 @@ curl -L http://localhost:2379/v3/kv/put \
 Generated [Swagger][swagger] API definitions can be found at [rpc.swagger.json][swagger-doc].
 
 [api-ref]: ./api_reference_v3
-[etcdctl]: https://github.com/coreos/etcd/tree/master/etcdctl
+[etcdctl]: https://github.com/etcd-io/etcd/tree/master/etcdctl
 [go-client]: https://github.com/etcd-io/etcd/tree/master/client/v3
 [grpc]: https://www.grpc.io/
 [grpc-gateway]: https://github.com/grpc-ecosystem/grpc-gateway

@@ -14,7 +14,7 @@ There are other sub-systems which impact the overall performance of etcd. Each s
 
 ## Benchmarks
 
-Benchmarking etcd performance can be done with the [benchmark](https://github.com/coreos/etcd/tree/master/tools/benchmark) CLI tool included with etcd.
+Benchmarking etcd performance can be done with the [benchmark](https://github.com/etcd-io/etcd/tree/{{< param git_version_tag >}}/tools/benchmark) CLI tool included with etcd.
 
 For some baseline performance numbers, we consider a three member etcd cluster with the following hardware configuration:
 

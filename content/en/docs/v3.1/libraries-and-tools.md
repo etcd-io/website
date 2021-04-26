@@ -4,8 +4,8 @@ title: Libraries and tools
 
 **Tools**
 
-- [etcdctl](https://github.com/coreos/etcd/tree/master/etcdctl) - A command line client for etcd
-- [etcd-backup](https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
+- [etcdctl](https://github.com/etcd-io/etcd/tree/{{< param git_version_tag >}}/etcdctl) - A command line client for etcd
+- [etcd-backup](https://web.archive.org/web/20190113041300/https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
 - [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd.
 - [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
 - [etcddir](https://github.com/rekby/etcddir) - Realtime sync etcd and local directory. Work with windows and linux.
@@ -14,8 +14,8 @@ title: Libraries and tools
 - [etcd-console](https://github.com/matishsiao/etcd-console) - A web-base key/value editor for etcd using PHP
 - [etcd-viewer](https://github.com/nikfoundas/etcd-viewer) - An etcd key-value store editor/viewer written in Java
 - [etcdtool](https://github.com/mickep76/etcdtool) - Export/Import/Edit etcd directory as JSON/YAML/TOML and Validate directory using JSON schema
-- [etcd-rest](https://github.com/mickep76/etcd-rest) - Create generic REST API in Go using etcd as a backend with validation using JSON schema
-- [etcdsh](https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
+- [etcd-rest](https://web.archive.org/web/20190113041300/https://github.com/mickep76/etcdrest) - Create generic REST API in Go using etcd as a backend with validation using JSON schema
+- [etcdsh](https://web.archive.org/web/20190113041250/https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 
 **Go libraries**
@@ -26,7 +26,7 @@ title: Libraries and tools
 
 **Java libraries**
 
-- [coreos/jetcd](https://github.com/coreos/jetcd) - Supports v3
+- [coreos/jetcd](https://github.com/etcd-io/jetcd) - Supports v3
 - [boonproject/etcd](https://github.com/boonproject/boon/blob/master/etcd/README.md) - Supports v2, Async/Sync and waits
 - [justinsb/jetcd](https://github.com/justinsb/jetcd)
 - [diwakergupta/jetcd](https://github.com/diwakergupta/jetcd) - Supports v2

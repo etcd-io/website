@@ -156,7 +156,7 @@ In Tencent games, we use Docker and Kubernetes to deploy and run our application
 In [hyper.sh][hyper.sh], the container service is backed by [hypernetes][hypernetes], a multi-tenant kubernetes distro. Moreover, we use etcd to coordinate the multiple manage services and store global meta data.
 
 [hypernetes]:https://github.com/hyperhq/hypernetes
-[Hyper.sh]:https://www.hyper.sh
+[Hyper.sh]:https://github.com/hyperhq
 
 ## Meitu
 - *Application*: system configuration for services, service discovery, kubernetes in test environment

@@ -6,7 +6,7 @@ This document tracks people and use cases for etcd in production. By creating a 
 
 ## discovery.etcd.io
 
-- *Application*: https://github.com/coreos/discovery.etcd.io
+- *Application*: https://github.com/etcd-io/discovery.etcd.io
 - *Launched*: Feb. 2014
 - *Cluster Size*: 5 members, 5 discovery proxies
 - *Order of Data Size*: 100s of Megabytes

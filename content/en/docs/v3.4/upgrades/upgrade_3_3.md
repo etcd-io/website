@@ -39,7 +39,7 @@ Before and after (e.g. [k8s.io/kubernetes/test/e2e_node/services/etcd.go](https:
 import "github.com/coreos/etcd/etcdserver"
 
 type EtcdServer struct {
-	*etcdserver.EtcdServer
+  *etcdserver.EtcdServer
 -	config *etcdserver.ServerConfig
 +	config etcdserver.ServerConfig
 }
@@ -47,21 +47,21 @@ type EtcdServer struct {
 func NewEtcd(dataDir string) *EtcdServer {
 -	config := &etcdserver.ServerConfig{
 +	config := etcdserver.ServerConfig{
-		DataDir: dataDir,
+    DataDir: dataDir,
         ...
-	}
-	return &EtcdServer{config: config}
+  }
+  return &EtcdServer{config: config}
 }
 
 func (e *EtcdServer) Start() error {
-	var err error
-	e.EtcdServer, err = etcdserver.NewServer(e.config)
+  var err error
+  e.EtcdServer, err = etcdserver.NewServer(e.config)
     ...
 ```
 
 #### Added `embed.Config.LogOutput` struct
 
-**Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](https://github.com/etcd-io/etcd/blob/master/Documentation/upgrades/upgrade_3_4.md) for more details.**
+**Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](/docs/v3.4/upgrades/upgrade_3_4/) for more details.**
 
 Field `LogOutput` is added to `embed.Config`:
 
@@ -69,10 +69,10 @@ Field `LogOutput` is added to `embed.Config`:
 package embed
 
 type Config struct {
- 	Debug bool `json:"debug"`
- 	LogPkgLevels string `json:"log-package-levels"`
+   Debug bool `json:"debug"`
+   LogPkgLevels string `json:"log-package-levels"`
 +	LogOutput string `json:"log-output"`
- 	...
+   ...
 ```
 
 Before gRPC server warnings were logged in etcdserver.
@@ -84,7 +84,7 @@ WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create clie
 
 From v3.3, gRPC server logs are disabled by default.
 
-**Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](https://github.com/etcd-io/etcd/blob/master/Documentation/upgrades/upgrade_3_4.md) for more details.**
+**Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/v3.4/upgrades/upgrade_3_4/) for more details.**
 
 ```go
 import "github.com/coreos/etcd/embed"
@@ -97,7 +97,7 @@ Set `embed.Config.Debug` field to `true` to enable gRPC server logs.
 
 #### Changed `/health` endpoint response
 
-Previously, `[endpoint]:[client-port]/health` returned manually marshaled JSON value. 3.3 now defines [`etcdhttp.Health`](https://godoc.org/github.com/coreos/etcd/etcdserver/api/etcdhttp#Health) struct.
+Previously, `[endpoint]:[client-port]/health` returned manually marshaled JSON value. 3.3 now defines [`etcdhttp.Health`](https://pkg.go.dev/github.com/etcd-io/etcd/etcdserver/api/etcdhttp#Health) struct.
 
 Note that in v3.3.0-rc.0, v3.3.0-rc.1, and v3.3.0-rc.2, `etcdhttp.Health` has boolean type `"health"` and `"errors"` fields. For backward compatibilities, we reverted `"health"` field to `string` type and removed `"errors"` field. Further health information will be provided in separate APIs.
 
@@ -195,7 +195,7 @@ _, err = cli.Get(ctx, "foo", clientv3.WithPrefix())
 err.Error() == "rpc error: code = ResourceExhausted desc = grpc: received message larger than max (5240509 vs. 3145728)"
 ```
 
-**If not specified, client-side send limit defaults to 2 MiB (1.5 MiB + gRPC overhead bytes) and receive limit to `math.MaxInt32`**. Please see [clientv3 godoc](https://godoc.org/github.com/coreos/etcd/clientv3#Config) for more detail.
+**If not specified, client-side send limit defaults to 2 MiB (1.5 MiB + gRPC overhead bytes) and receive limit to `math.MaxInt32`**. Please see [clientv3 godoc](https://pkg.go.dev/github.com/etcd-io/etcd/clientv3#Config) for more detail.
 
 #### Changed raw gRPC client wrapper function signatures
 
@@ -339,7 +339,7 @@ _, err := clientv3.New(clientv3.Config{
     DialTimeout: 2 * time.Second
 })
 if err == grpc.ErrClientConnTimeout {
-	// handle errors
+  // handle errors
 }
 ```
 
@@ -351,7 +351,7 @@ _, err := clientv3.New(clientv3.Config{
     DialTimeout: 2 * time.Second
 })
 if err == context.DeadlineExceeded {
-	// handle errors
+  // handle errors
 }
 ```
 
@@ -381,7 +381,7 @@ docker pull gcr.io/etcd-development/etcd:v3.3.0
 import (
 +	"go.etcd.io/etcd/clientv3"
 
-	"google.golang.org/grpc"
+  "google.golang.org/grpc"
 +	"google.golang.org/grpc/codes"
 +	"google.golang.org/grpc/status"
 )
@@ -396,7 +396,7 @@ _, err := kvc.Get(ctx, "a")
 +  if s.Code() == codes.Canceled
 ```
 
-[The new client balancer](https://github.com/etcd-io/etcd/blob/master/Documentation/learning/design-client.md) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, [v3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14) or later requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
+[The new client balancer](/docs/v3.4/learning/design-client/) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, [v3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14) or later requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
 
 ```diff
 import (

@@ -3,6 +3,7 @@ title: v3.5-DRAFT docs
 cascade:
   version: next
   versName: &name v3.5-DRAFT
+  git_version_tag: v3.5.0-alpha.0
   page_warning: the documentation is in **DRAFT** status.
 linkTitle: *name
 simple_list: true

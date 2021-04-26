@@ -6,7 +6,7 @@ This document tracks people and use cases for etcd in production. By creating a 
 
 ## discovery.etcd.io
 
-- *Application*: https://github.com/coreos/discovery.etcd.io
+- *Application*: https://github.com/etcd-io/discovery.etcd.io
 - *Launched*: Feb. 2014
 - *Cluster Size*: 5 members, 5 discovery proxies
 - *Order of Data Size*: 100s of Megabytes
@@ -125,7 +125,7 @@ In Tencent games, we use Docker and Kubernetes to deploy and run our application
 In [hyper.sh][hyper.sh], the container service is backed by [hypernetes][hypernetes], a multi-tenant kubernetes distro. Moreover, we use etcd to coordinate the multiple manage services and store global meta data.
 
 [hypernetes]:https://github.com/hyperhq/hypernetes
-[Hyper.sh]:https://www.hyper.sh
+[Hyper.sh]:https://github.com/hyperhq
 
 ## Meitu
 - *Application*: system configuration for services, service discovery, kubernetes in test environment

@@ -433,7 +433,7 @@ To make understanding this feature easier, we changed the naming of some flags, 
 |-peers-file    |none      |Deprecated. The --initial-cluster flag provides a similar concept with different semantics. Please read this guide on cluster startup.|
 
 [client]: https://github.com/etcd-io/etcd/tree/master/client/v2
-[client-discoverer]: https://godoc.org/github.com/coreos/etcd/client#Discoverer
+[client-discoverer]: https://pkg.go.dev/github.com/etcd-io/etcd/client#Discoverer
 [conf-adv-client]: configuration#--advertise-client-urls
 [conf-listen-client]: configuration#--listen-client-urls
 [discovery-proto]: discovery_protocol
