@@ -1,8 +1,7 @@
 ---
 title: Latest Jepsen Results against etcd 3.4.3
 date: 2020-01-30
-authors:
-- name: Xiang Li
+author: Xiang Li
 ---
 
 Jepsen tested and analyzed etcd 3.4.3, and had both good results and useful feedback to share with us.
