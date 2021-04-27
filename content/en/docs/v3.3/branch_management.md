@@ -23,6 +23,6 @@ Before the release of the next stable version, feature PRs will be frozen. A [re
 
 All branches with prefix `release-` are considered _stable_ branches.
 
-After every minor release (http://semver.org/\), we will have a new stable branch for that release, managed by a [patch release manager](./dev-internal/release#release-management). We will keep fixing the backwards-compatible bugs for the latest two stable releases. A _patch_ release to each supported release branch, incorporating any bug fixes, will be once every two weeks, given any patches.
+After every minor release ([semver.org](https://semver.org/)), we will have a new stable branch for that release, managed by a [patch release manager](./dev-internal/release#release-management). We will keep fixing the backwards-compatible bugs for the latest two stable releases. A _patch_ release to each supported release branch, incorporating any bug fixes, will be once every two weeks, given any patches.
 
 [master]: https://github.com/etcd-io/etcd/tree/master
