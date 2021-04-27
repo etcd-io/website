@@ -1,9 +1,7 @@
-baseURL: 'https://etcd.io'
+baseURL: https://etcd.io
 enableRobotsTxt: true
 
-# Hugo allows theme composition (and inheritance). The precedence is from left to right.
-theme:
-  - docsy
+theme: [docsy]
 
 # Will give values to .Lastmod etc.
 enableGitInfo: true
@@ -17,9 +15,8 @@ googleAnalytics: UA-82811140-29
 
 # Useful when translating.
 enableMissingTranslationPlaceholders: true
-disableKinds:
-  - taxonomy
-  - taxonomyTerm
+
+disableKinds: [taxonomy, term]
 
 # Highlighting config
 pygmentsCodeFences: true
@@ -35,7 +32,6 @@ imaging:
   quality: 75
   anchor: smart
 
-# Language configuration
 languages:
   en:
     title: etcd
