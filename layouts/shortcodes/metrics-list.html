@@ -8,7 +8,8 @@
     <tr>
     {{ end -}}
       {{ if (findRE $regexp .Name) -}}
-      <td><a href="{{ .Name }}">{{ .Name }}</a></td>
+        {{ $displayName := .Name | replaceRE "^etcd-metrics-" "" | replaceRE ".txt$" "" -}}
+        <td><a href="{{ .Name }}">{{ $displayName }}</a></td>
       {{ end -}}
     {{ if eq 5 (mod $counter 6) -}}
     </tr>
