@@ -21,7 +21,7 @@ To build `etcd` from the `master` branch without a `GOPATH` using the official `
 ```sh
 $ git clone https://github.com/etcd-io/etcd.git
 $ cd etcd
-$ ./build
+$ ./build.sh
 ```
 
 To build a modularized `etcd` from the `master` branch via `go get`:
