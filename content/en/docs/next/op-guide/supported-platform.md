@@ -8,29 +8,29 @@ description: etcd support status for common architectures & operating systems
 
 The following table lists etcd support status for common architectures and operating systems:
 
-| Architecture | Operating System | Status       | Maintainers                 |
+| Architecture | Operating System | Support Tier | Maintainers                 |
 | ------------ | ---------------- | ------------ | --------------------------- |
-| amd64        | Darwin           | Experimental | etcd maintainers            |
-| amd64        | Linux            | Stable       | etcd maintainers            |
-| amd64        | Windows          | Experimental |                             |
-| arm64        | Linux            | Experimental | @glevand                    |
-| arm          | Linux            | Unstable     |                             |
-| 386          | Linux            | Unstable     |                             |
-| ppc64le      | Linux            | Stable       | etcd maintainers, @mkumatag |
+| amd64        | Linux            | Tier-1       | etcd maintainers            |
+| arm64        | Linux            | Tier-2       | @gyuho, @glevand            |
+| amd64        | Darwin           | Tier-3       |                             |
+| amd64        | Windows          | Tier-3       |                             |
+| arm          | Linux            | Tier-3       |                             |
+| 386          | Linux            | Tier-3       |                             |
+| ppc64le      | Linux            | Tier-3       | @mkumatag                   |
 
-* etcd-maintainers are listed in https://github.com/etcd-io/etcd/blob/master/MAINTAINERS.
+*etcd-maintainers are listed in [MAINTAINERS](https://github.com/etcd-io/etcd/blob/master/MAINTAINERS).*
 
-Experimental platforms appear to work in practice and have some platform specific code in etcd, but do not fully conform to the stable support policy. Unstable platforms have been lightly tested, but less than experimental. Unlisted architecture and operating system pairs are currently unsupported; caveat emptor.
+Tier-1 platforms are fully supported by etcd maintainers and required to pass all tests including functional tests. Tier-2 platforms appear to work in practice but may have some platform specific code in etcd and not fully conform to the stable support policy. To qualify for Tier-2, the platform must pass integration and end-to-end tests in CI (see [github PR](https://github.com/etcd-io/etcd/pull/12928) for adding arm64). Tier-3 platforms or unlisted architectures are either lightly tested or have no testing in place, thus unstable and currently unsupported; caveat emptor.
 
 ## Supporting a new system platform
 
 For etcd to officially support a new platform as stable, a few requirements are necessary to ensure acceptable quality:
 
 1. An "official" maintainer for the platform with clear motivation; someone must be responsible for taking care of the platform.
-2. Set up CI for build; etcd must compile.
+2. Set up CI for build; etcd must compile. **Requirements for Tier-3**.
 3. Set up CI for running unit tests; etcd must pass simple tests.
-4. Set up CI (TravisCI, SemaphoreCI or Jenkins) for running integration tests; etcd must pass intensive tests.
-5. (Optional) Set up a functional testing cluster; an etcd cluster should survive stress testing.
+4. Set up CI for running integration and end-to-end tests. **Requirements for Tier-2**.
+5. Set up CI for functional tests, and an etcd cluster should survive stress testing. **Requirements for Tier-1**.
 
 ## 32-bit and other unsupported systems
 
