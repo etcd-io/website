@@ -1,44 +1,71 @@
 ---
-title: Supported systems
+title: Supported platforms
 weight: 4800
-description: etcd support status for common architectures & operating systems
+description: etcd support for common architectures & operating systems
 ---
+
+## Support tiers
+
+Etcd runs on different platforms, but the guarantees it provides depends on a
+platform's support tier:
+
+- **Tier-1** platforms are _fully supported_ by [etcd maintainers][], and etcd
+  is guaranteed to pass all tests including functional and stress tests.
+- On **tier-2** platforms, etcd is guaranteed to pass integration and end-to-end
+  tests but not necessarily functional or stress tests.
+- While etcd may build and run on **tier-3** platforms and unlisted
+  architectures, it may or may not pass any tests, and so it is considered
+  _unstable_ &mdash; caveat emptor.
 
 ## Current support
 
-The following table lists etcd support status for common architectures and operating systems:
 
-| Architecture | Operating System | Support Tier | Maintainers                 |
-| ------------ | ---------------- | ------------ | --------------------------- |
-| amd64        | Linux            | Tier-1       | etcd maintainers            |
-| arm64        | Linux            | Tier-2       | @gyuho, @glevand            |
-| amd64        | Darwin           | Tier-3       |                             |
-| amd64        | Windows          | Tier-3       |                             |
-| arm          | Linux            | Tier-3       |                             |
-| 386          | Linux            | Tier-3       |                             |
-| ppc64le      | Linux            | Tier-3       | @mkumatag                   |
+The following table lists currently supported platforms and their corresponding
+etcd support tier:
 
-*etcd-maintainers are listed in [MAINTAINERS](https://github.com/etcd-io/etcd/blob/master/MAINTAINERS).*
+| Architecture | Operating system | Support tier | Maintainers                 |
+|:------------:|:----------------:|:------------:|:---------------------------:|
+| AMD64        | Linux            | 1            | [etcd maintainers][]        |
+| ARM64        | Linux            | 2            | [@gyuho][], [@glevand][]    |
+| AMD64        | Darwin           | 3            |                             |
+| AMD64        | Windows          | 3            |                             |
+| ARM          | Linux            | 3            |                             |
+| 386          | Linux            | 3            |                             |
+| ppc64le      | Linux            | 3            | [@mkumatag][]               |
 
-Tier-1 platforms are fully supported by etcd maintainers and required to pass all tests including functional tests. Tier-2 platforms appear to work in practice but may have some platform specific code in etcd and not fully conform to the stable support policy. To qualify for Tier-2, the platform must pass integration and end-to-end tests in CI (see [github PR](https://github.com/etcd-io/etcd/pull/12928) for adding arm64). Tier-3 platforms or unlisted architectures are either lightly tested or have no testing in place, thus unstable and currently unsupported; caveat emptor.
+## Supporting a new platform
 
-## Supporting a new system platform
+Want to contribute to etcd as the "official" maintainer of a new platform? In
+addition to committing to support the platform, you must setup etcd continuous
+integration (CI) satisfying the following requirements, depending on the support
+tier:
 
-For etcd to officially support a new platform as stable, a few requirements are necessary to ensure acceptable quality:
+| etcd continuous integration           | Tier 1 | Tier 2 | Tier 3 |
+| ------------------------------------- |:------:|:------:|:------:|
+| Build passes                          | &check;| &check;| &check;|
+| Unit tests pass                       | &check;| &check;|        |
+| Integration and end-to-end tests pass | &check;| &check;|        |
+| Functional and stress tests pass      | &check;|        |        |
 
-1. An "official" maintainer for the platform with clear motivation; someone must be responsible for taking care of the platform.
-2. Set up CI for build; etcd must compile. **Requirements for Tier-3**.
-3. Set up CI for running unit tests; etcd must pass simple tests.
-4. Set up CI for running integration and end-to-end tests. **Requirements for Tier-2**.
-5. Set up CI for functional tests, and an etcd cluster should survive stress testing. **Requirements for Tier-1**.
+For an example of setting up tier-2 CI for ARM64, see [etcd PR #12928][].
 
-## 32-bit and other unsupported systems
+## Unsupported platforms
 
-etcd has known issues on 32-bit systems due to a bug in the Go runtime. See the [Go issue][go-issue] and [atomic package][go-atomic] for more information.
+To avoid inadvertently running an etcd server on an unsupported platform, etcd
+prints a warning message and exits immediately unless the environment variable
+`ETCD_UNSUPPORTED_ARCH` is set to the target architecture.
 
-To avoid inadvertently running a possibly unstable etcd server, `etcd` on unstable or unsupported architectures will print a warning message and immediately exit if the environment variable `ETCD_UNSUPPORTED_ARCH` is not set to the target architecture.
+{{% alert title="32-bit systems" color="warning" %}}
+  etcd has **known issues** on 32-bit systems due to a bug in the Go runtime.
+  For more information see the [Go issue #599][go-issue] and the [atomic package
+  bug note][go-atomic].
 
-Currently amd64 and ppc64le architectures are officially supported by `etcd`.
+  [go-atomic]: https://golang.org/pkg/sync/atomic/#pkg-note-BUG
+  [go-issue]: https://github.com/golang/go/issues/599
+{{% /alert %}}
 
-[go-atomic]: https://golang.org/pkg/sync/atomic/#pkg-note-BUG
-[go-issue]: https://github.com/golang/go/issues/599
+[@glevand]: https://github.com/glevand
+[@gyuho]: https://github.com/gyuho
+[@mkumatag]: https://github.com/mkumatag
+[etcd maintainers]: https://github.com/etcd-io/etcd/blob/master/MAINTAINERS
+[etcd PR #12928]: https://github.com/etcd-io/etcd/pull/12928
