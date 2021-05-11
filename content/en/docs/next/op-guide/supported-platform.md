@@ -6,16 +6,15 @@ description: etcd support for common architectures & operating systems
 
 ## Support tiers
 
-Etcd runs on different platforms, but the guarantees it provides depends on a
+etcd runs on different platforms, but the guarantees it provides depends on a
 platform's support tier:
 
-- **Tier-1** platforms are _fully supported_ by [etcd maintainers][], and etcd
-  is guaranteed to pass all tests including functional and stress tests.
-- On **tier-2** platforms, etcd is guaranteed to pass integration and end-to-end
-  tests but not necessarily functional or stress tests.
-- While etcd may build and run on **tier-3** platforms and unlisted
-  architectures, it may or may not pass any tests, and so it is considered
-  _unstable_ &mdash; caveat emptor.
+- **Tier 1**: fully supported by [etcd maintainers][]; etcd is guaranteed to
+  pass all tests including functional and stress tests.
+- **Tier 2**: etcd is guaranteed to pass integration and end-to-end tests but
+  not necessarily functional or stress tests.
+- **Tier 3**: etcd is guaranteed to build, may be lightly tested (or not), and
+  so it should be considered _unstable_.
 
 ## Current support
 
