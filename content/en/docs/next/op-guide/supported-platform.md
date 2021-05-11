@@ -32,6 +32,8 @@ etcd support tier:
 | 386          | Linux            | 3            |                             |
 | ppc64le      | Linux            | 3            | [@mkumatag][]               |
 
+Unlisted platforms are unsupported.
+
 ## Supporting a new platform
 
 Want to contribute to etcd as the "official" maintainer of a new platform? In
