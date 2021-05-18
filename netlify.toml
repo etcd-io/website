@@ -1,15 +1,15 @@
 [build]
 publish = "public"
-command = "npm run production-build"
+command = "npm run build:production"
 
 [build.environment]
 HUGO_VERSION = "0.83.1"
 
 [context.deploy-preview]
-command = "npm run preview-build"
+command = "npm run build:preview"
 
 [context.branch-deploy]
-command = "npm run preview-build"
+command = "npm run build:preview"
 
 # Set headers for docsy conversion development to prevent search engines from
 # indexing the WIP site.
