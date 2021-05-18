@@ -29,7 +29,7 @@ dependencies for official release binaries. However, etcd's vendoring is also
 optional to avoid potential import conflicts when embedding the etcd server or
 using the etcd client.
 
-To build `etcd` from the `master` branch without a `GOPATH` using the official
+To build `etcd` from the `main` branch without a `GOPATH` using the official
 `build` script:
 
 ```sh
@@ -38,19 +38,17 @@ $ cd etcd
 $ ./build.sh
 ```
 
-To build a modularized `etcd` from the `master` branch via `go get`:
+To build a modularized `etcd` from the `main` branch via `go get`:
+
+{{% alert title="Note" color="info" %}}
+<!-- TODO: find out how to set the GOPATH -->
+GOPATH should be set. If it isn't, [learn how here](https://github.com/golang/go/wiki/SettingGOPATH).
+{{% /alert %}}
 
 ```sh
-# GOPATH should be set
-$ echo $GOPATH
-/Users/example/go
 $ go get -v go.etcd.io/etcd/v3
 $ go get -v go.etcd.io/etcd/v3/etcdctl
 ```
-
-## Test the installation
-
-Check the etcd binary is built correctly by starting etcd and setting a key.
 
 ### Starting etcd
 
@@ -59,6 +57,7 @@ If etcd is built without using `go get`, run the following:
 ```sh
 $ ./bin/etcd
 ```
+
 If etcd is built using `go get`, run the following:
 
 ```sh
