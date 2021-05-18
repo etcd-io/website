@@ -2,7 +2,7 @@ DOCKER_IMG = klakegg/hugo:ext-alpine
 DRAFT_ARGS = --buildDrafts --buildFuture  --buildExpired
 
 production-build:
-	npm run production-build
+	npm run build:production
 
 docker-serve:
 	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) server $(DRAFT_ARGS)
