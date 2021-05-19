@@ -58,7 +58,7 @@ To work with the latest version, learn how to [build from the main branch](/docs
 ## Launch etcd
 
 ```
-$ cd $ETCD_BIN/etcd
+$ $ETCD_BIN/etcd
 {"level":"warn","ts":"2021-05-12T11:03:01.247-0700","caller":"etcdmain/etcd.go:119","msg":"'data-dir' was empty; using default","data-dir":"default.etcd"}
 ⋮
 ```
