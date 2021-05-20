@@ -1,83 +1,77 @@
 ---
-title: Download and build
+title: Install etcd
+linkTitle: Install
 weight: 1150
-description: Instructions for downloading and building different versions of etcd
+description: Instructions for installing etcd from pre-built binaries or from source.
 ---
 
-## System requirements
+## Requirements
 
-The etcd performance benchmarks run etcd on 8 vCPU, 16GB RAM, 50GB SSD GCE
-instances, but any relatively modern machine with low latency storage and a few
-gigabytes of memory should suffice for most use cases. Applications with large
-v2 data stores will require more memory than a large v3 data store since data is
-kept in anonymous memory instead of memory mapped from a file. For running etcd
-on a cloud provider, see the [Example hardware
-configuration][example-hardware-configurations] documentation.
+Before installing etcd, see the following pages:
 
-## Download the pre-built binary
+- [Supported platforms][]
+- [Hardware recommendations][]
 
-The easiest way to get etcd is to use one of the pre-built release binaries
-which are available for OSX, Linux, Windows, appc, and Docker. Instructions for
-using these binaries are on the [GitHub releases page][github-release].
+## Install pre-built binaries
 
-## Build the latest version
+The easiest way to install etcd is to use pre-built binaries:
 
-For those wanting to try the very latest version, build etcd from the `master`
-branch. [Go][go-install] version 1.13+ is required to build the latest version
-of etcd. To ensure etcd is built against well-tested libraries, etcd vendors its
-dependencies for official release binaries. However, etcd's vendoring is also
-optional to avoid potential import conflicts when embedding the etcd server or
-using the etcd client.
+ 1. Download the compressed archive file for your platform from [Releases][],
+    choosing release `{{<param git_version_tag>}}` or later.
+ 2. Unpack the archive file. This will result in a directory containing the binaries.
+ 3. Rename and/or move the binaries to a directory in your path, or add the
+    directory created from the previous step to your path.
+ 4. Test that `etcd` is in your path:
 
-To build `etcd` from the `master` branch without a `GOPATH` using the official
-`build` script:
+    ```sh
+    $ etcd --version
+    ```
+## Build from source
 
-```sh
-$ git clone https://github.com/etcd-io/etcd.git
-$ cd etcd
-$ ./build.sh
-```
+If you have [Go version 1.16+][go], you can build etcd from source by following
+these steps:
 
-To build a modularized `etcd` from the `master` branch via `go get`:
+ 1. [Download the etcd repo as a zip file][download] and unzip it, or clone the
+    repo using the following command.
 
-```sh
-# GOPATH should be set
-$ echo $GOPATH
-/Users/example/go
-$ go get -v go.etcd.io/etcd/v3
-$ go get -v go.etcd.io/etcd/v3/etcdctl
-```
+    ```sh
+    $ git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
+    ```
+    To build from `HEAD`, omit the `-b  {{< param git_version_tag >}}` flag.
 
-## Test the installation
+ 2. Change directory:
 
-Check the etcd binary is built correctly by starting etcd and setting a key.
+    ```sh
+    $ cd etcd
+    ```
+ 3. Run the build script:
 
-### Starting etcd
+    ```sh
+    $ ./build.sh
+    ```
 
-If etcd is built without using `go get`, run the following:
+    The binaries are under the `bin` directory.
 
-```sh
-$ ./bin/etcd
-```
-If etcd is built using `go get`, run the following:
+ 4. Add the full path to the `bin` directory to your path, for example:
 
-```sh
-$ $GOPATH/bin/etcd
-```
+    ```sh
+    $ export PATH="$PATH:`pwd`/bin"
+    ```
 
-### Setting a key
+ 5. Test that `etcd` is in your path:
 
-Run the following:
+    ```sh
+    $ etcd --version
+    ```
+## Installation check
 
-```sh
-$ ./bin/etcdctl put foo bar
-OK
-```
+For a slightly more involved sanity check of your installation, see
+[Quickstart][].
 
-(or `$GOPATH/bin/etcdctl put foo bar` if etcdctl was installed with `go get`)
+[download]: https://github.com/etcd-io/etcd/archive/{{< param git_version_tag >}}.zip
+[go]: https://golang.org/doc/install
+[Hardware recommendations]: {{< relref "op-guide/hardware" >}}
+[Quickstart]: {{< relref "quickstart" >}}
+[releases]: https://github.com/etcd-io/etcd/releases/
+[Supported platforms]: {{< relref "op-guide/hardware" >}}
 
-If OK is printed, then etcd is working!
-
-[example-hardware-configurations]: op-guide/hardware#example-hardware-configurations
-[github-release]: https://github.com/etcd-io/etcd/releases/
-[go-install]: https://golang.org/doc/install
