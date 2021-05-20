@@ -17,10 +17,7 @@
     "serve": "netlify dev -c \"hugo serve --minify -DFE -w\""
   },
   "devDependencies": {
-    "anchorjs": "^0.2.4",
     "autoprefixer": "^10.2.5",
-    "bulma": "^0.7.2",
-    "bulma-dashboard": "^0.1.34",
     "netlify-cli": "^3.29.17",
     "postcss": "^8.2.15",
     "postcss-cli": "^8.3.1"
