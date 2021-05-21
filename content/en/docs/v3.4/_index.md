@@ -2,7 +2,7 @@
 title: v3.4 docs
 cascade:
   version: &vers v3.4
-  git_version_tag: v3.4.15
+  git_version_tag: v3.4.16
 linkTitle: *vers
 simple_list: true
 weight: -340
