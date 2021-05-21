@@ -35,7 +35,7 @@ It's categorized into four groups:
 | EcodeRaftInternal | 300  | "Raft Internal Error"    |
 | EcodeLeaderElect  | 301  | "During Leader Election" |
 
-- Etcd Related Error
+- etcd Related Error
 
 | name                    | code | strerror                                               |
 |-------------------------|------|--------------------------------------------------------|
