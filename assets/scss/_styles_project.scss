@@ -129,3 +129,10 @@
 .bg-gray-100 {
   background-color: $gray-100;
 }
+
+// Fixes https://github.com/etcd-io/website/issues/266: the docsy partial
+// shouldn't be hard coding styles by using classes like "text-uppercase". This
+// overrides the docsy styling.
+.navbar-brand > .text-uppercase {
+  text-transform: initial !important;
+}
