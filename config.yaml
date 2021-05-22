@@ -176,7 +176,7 @@ outputs:
 menu:
   main:
     - name: Docs
-      url: /docs/v3.4/
+      url: /docs/v3.4/ # FIXME(chalin): workaround to make link checker happy. Change back to latest. For details, see https://github.com/etcd-io/website/issues/307
       weight: -10
     - name: Blog
       url: /blog/
