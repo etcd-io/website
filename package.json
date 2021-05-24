@@ -10,7 +10,7 @@
     "check-env": "node -e 'console.log(process.env)' | grep npm",
     "get-submodules": "git submodule update --init --recursive --depth 1",
     "linkcheck": "linkcheck-linux",
-    "postbuild:preview": "linkcheck -- DEPLOY_PRIME_URL",
+    "postbuild:preview": "linkcheck -- ${DEPLOY_PRIME_URL}",
     "prebuild:preview": "npm run get-submodules && ./check-hugo.sh",
     "prebuild:production": "npm run get-submodules && ./check-hugo.sh",
     "prebuild": "./check-hugo.sh",
