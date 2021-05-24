@@ -9,7 +9,8 @@
     "build": "hugo $npm_package_config_DEV_ARGS",
     "check-env": "node -e 'console.log(process.env)' | grep npm",
     "get-submodules": "git submodule update --init --recursive --depth 1",
-    "postbuild:preview": "make ci-check-links",
+    "linkcheck": "linkcheck-linux",
+    "postbuild:preview": "linkcheck -- DEPLOY_PRIME_URL",
     "prebuild:preview": "npm run get-submodules && ./check-hugo.sh",
     "prebuild:production": "npm run get-submodules && ./check-hugo.sh",
     "prebuild": "./check-hugo.sh",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "dart-linkcheck": "^2.0.15",
     "netlify-cli": "^3.29.17",
     "postcss": "^8.2.15",
     "postcss-cli": "^8.3.1"
