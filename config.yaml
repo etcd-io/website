@@ -172,7 +172,7 @@ outputs:
     - HTML
     - REDIRECTS
 
-# Site Menu
+# Site menu (partial -- also see pages with 'menu' in front matter)
 menu:
   main:
     - name: Docs
