@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  linkinator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Wait for Netlify Deployment
+        uses: probablyup/wait-for-netlify-action@3.2.0
+        id: waitForDeployment
+        with:
+          site_id: '4e013eac-b885-4ee5-a808-0b238097d476'
+        env:
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+      - name: Run linkinator
+        uses: JustinBeckwith/linkinator-action@v1
+        with:
+          paths: ${{ steps.waitForDeployment.outputs.url }}
+          linksToSkip: '^(?!${{ steps.waitForDeployment.outputs.url }})'
+          recurse: true
+          verbosity: "error"
+          retry: true
+          concurrency: 100
+          timeout: 0
+          markdown: false
+          directoryListing: false
