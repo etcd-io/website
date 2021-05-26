@@ -1,11 +1,11 @@
 ---
 title: Announcing etcd 3.5
+spelling: cSpell:ignore Gyuho
+author:  "[Gyuho Lee](https://github.com/gyuho), Amazon Web Services"
 date: 2021-06-15
 draft: true
 original_link: https://docs.google.com/document/d/1F2p2LVPo4gj3n8XFMd4QrlarbCdJrbd-pNrT3XLYXmM/edit
 ---
-
-**Authors:** Gyuho Lee (Amazon Web Services, [github.com/gyuho](https://github.com/gyuho))
 
 When we launched [etcd 3.4](https://github.com/etcd-io/etcd/releases/tag/v3.4.0) back in August 2019 (see ["Announcing etcd 3.4"](https://kubernetes.io/blog/2019/08/30/announcing-etcd-3-4/)), it focused on storage backend improvements, non-voting member and pre-vote features. Today, etcd is more widely used for various mission critical clustering and database applications and as a result, its feature set grew more broad and complex. Thus, improving its stability and reliability has been top priority for recent development.
 
@@ -21,7 +21,7 @@ To adhere to the highest levels of security best practices, etcd now has a [secu
 
 ## Features
 
-The **migration to structured logging is complete**. etcd now defaults to [zap](https://github.com/uber-go/zap) logger that has a reflection-free, zero-allocation JSON encoder, and deprecated [capnslog](https://github.com/coreos/pkg/issues/57) that logged with reflection-based serialization. 
+The **migration to structured logging is complete**. etcd now defaults to [zap](https://github.com/uber-go/zap) logger that has a reflection-free, zero-allocation JSON encoder, and deprecated [capnslog](https://github.com/coreos/pkg/issues/57) that logged with reflection-based serialization.
 
 **etcd now supports built-in log rotation** that configures rotate thresholds, compression algorithms, etc. -- see [hexfusion@'s code change (from Red Hat)](https://github.com/etcd-io/etcd/pull/12774).
 
@@ -57,31 +57,31 @@ And etcd warns
 
 Our deep-dive into etcd heap profile uncovered major inefficiency in server warning logger that had a redundant encoding operation only to compute the size of range responses with [`proto.Size`](https://github.com/gogo/protobuf/blob/v1.3.2/proto/table_marshal.go#L2913-L2931) call. As a result, **a large range query had up to 60% heap allocation overhead, thus causing out-of-memory crashes (OOM) in overloaded etcd servers** (see *Figure 1*). Then we **optimized the protocol buffer message size operation** and as a result, **reduced etcd memory consumption up to 50% during peak** (see *Figure 2*). It was a set of small code changes, but for years, such performance gold was invisible without extensive testing and workload simulation. See [chaochn47@'s investigation (from Amazon Web Services)](https://github.com/etcd-io/etcd/issues/12835) and [patch to replace `proto.Size` calls](https://github.com/etcd-io/etcd/pull/12871).
 
-![figure-1](./announcing-etcd-3.5/figure-1.png)
+![figure-1](../announcing-etcd-3.5/figure-1.png)
 
-![figure-2](./announcing-etcd-3.5/figure-2.png)
+![figure-2](../announcing-etcd-3.5/figure-2.png)
 
 etcd 3.4 release made backend read transactions fully concurrent by copying transaction buffers rather than sharing between writes and concurrent reads (see [code change from 3.4 release](https://github.com/etcd-io/etcd/pull/10523)). However, such buffering mechanism comes with unavoidable copy overhead and negatively impacted write-heavy transaction performance, as creating concurrent read transactions acquires a mutex lock which then blocks incoming write transactions. etcd 3.5 made multiple improvements to further increase the transaction concurrency: (1) If a transaction includes a PUT(update) operation, the transaction instead shares the transaction buffer between reads and writes (same behavior as 3.4) in order to avoid copying buffers. This transaction mode can be disabled via `etcd --experimental-txn-mode-write-with-shared-buffer=false`. The benchmark results show that the **transaction throughput with a high write ratio has increased up to 2.7 times by avoiding copying buffers when creating a write transaction** (see *Figure 3* and *4*). Which **benefits all kube-apiserver create and update calls that use etcd transactions** (see [etcd3 store v1.21 code](https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/apiserver/pkg/storage/etcd3/store.go#L394-L401)). See [wilsonwang371@'s code change and benchmark results (from ByteDance)](https://github.com/etcd-io/etcd/pull/12896).
 
-![figure-3](./announcing-etcd-3.5/figure-3.png)
+![figure-3](../announcing-etcd-3.5/figure-3.png)
 
-![figure-4](./announcing-etcd-3.5/figure-4.png)
+![figure-4](../announcing-etcd-3.5/figure-4.png)
 
 (2) etcd now caches the transaction buffer to avoid the unnecessary copy operations. This speeds up concurrent read transaction creation and as a result, the **transaction with a high read ratio has increased up to 2.4 times** (see *Figure 5* and *6*). See [wilsonwang371@'s code change and benchmark results (from ByteDance)](https://github.com/etcd-io/etcd/pull/12933).
 
-![figure-5](./announcing-etcd-3.5/figure-5.png)
+![figure-5](../announcing-etcd-3.5/figure-5.png)
 
-![figure-6](./announcing-etcd-3.5/figure-6.png)
+![figure-6](../announcing-etcd-3.5/figure-6.png)
 
 ## Monitoring
 
 Long-running load tests revealed that etcd server misrepresented its real memory usage by masking the impact of Go garbage collection. Upon diving into this discrepancy, we discovered that etcd server with Go 1.12 changed the runtime to use `MADV_FREE` in Linux kernel, and as a result, reclaimed memory was not reflected in the resident set size (RSS) metric. This had made the etcd memory usage metric inaccurately static thus showing no sign of Go garbage collection. To fix this monitoring problem, we compile etcd 3.5 with Go 1.16 that defaults to `MADV_DONTNEED` on Linux (see [github issue](https://github.com/golang/go/issues/42330) and *Figure 7*).
 
-![figure-7](./announcing-etcd-3.5/figure-7.png)
+![figure-7](../announcing-etcd-3.5/figure-7.png)
 
 Monitoring is fundamental to service reliability and observability. Monitoring enables individual service owners to understand its current state and identify possible causes for problem reports -- such engineering discipline is referred to as telemetry. The goal is to detect problems with early warning signals and explain such metrics to diagnose the issue. etcd has server logs with tracing information and publishes Prometheus metrics. This information, combined with our knowledge of how etcd systems are built, gives enough to determine the service impact and its possible causes. However, when a request call chain spans multiple external components (e.g., from kube-apiserver to etcd), it is harder to identify the culprit. In order to efficiently identify the root cause, we added distributed tracing support using [OpenTelemetry](https://opentelemetry.io): When the **distributed tracing is enabled, etcd now uses OpenTelemetry to produce a trace across the RPC call chain and thus can easily be integrated with its surrounding ecosystem**. See *Figure 8* and [lilic@'s proposal (from Red Hat)](https://github.com/etcd-io/etcd/pull/12919) and [github issue](https://github.com/etcd-io/etcd/issues/12460).
 
-![figure-8](./announcing-etcd-3.5/figure-8.png)
+![figure-8](../announcing-etcd-3.5/figure-8.png)
 
 ## Testing
 
@@ -119,7 +119,7 @@ Traffic overloads can cause cascading node failures and as a result, scaling suc
 
 Large range query from kube-apiserver is still the most troubling source of process crash today, as it is relatively unpredictable. Our heap profile on such workload found that **etcd range request handler decodes and holds the entire response before sending it out to gRPC server, adding up to 37% heap allocation** -- see *Figure 9* and [chaochn47@'s investigation (from Amazon Web Services)](https://github.com/etcd-io/etcd/issues/12835). Paginating range calls in client code is not enough, because it entails additional consistency considerations and still requires full relists for expired resources (see [kube-apiserver v1.21 code](https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/client-go/tools/cache/reflector.go#L302-L312)). To work around this inefficiency, **etcd needs to support range streams**. We will revisit [yangxuanjia@'s range stream proposal (from JD)](https://github.com/etcd-io/etcd/pull/12343), as it requires a significant amount of work to introduce such semantic changes both in etcd and downstream projects.
 
-![figure-9](./announcing-etcd-3.5/figure-9.png)
+![figure-9](../announcing-etcd-3.5/figure-9.png)
 
 We've made a decision to **completely deprecate the etcd v2 API in favor of a more performant and widely adopted v3 API**, in order to reduce the maintenance burden. And the v2 storage translation layer via `etcd --experimental-enable-v2v3` remains experimental in 3.5 and to be removed in the next release. See [ptabor@'s proposal (from Google)](https://github.com/etcd-io/etcd/issues/12913).
 
