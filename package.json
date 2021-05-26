@@ -9,7 +9,7 @@
     "build": "hugo $npm_package_config_DEV_ARGS",
     "check-env": "node -e 'console.log(process.env)' | grep npm",
     "get-submodules": "git submodule update --init --recursive --depth 1",
-    "postbuild:preview": "make ci-check-links",
+    "disable-postbuild:preview": "make ci-check-links",
     "prebuild:preview": "npm run get-submodules && ./check-hugo.sh",
     "prebuild:production": "npm run get-submodules && ./check-hugo.sh",
     "prebuild": "./check-hugo.sh",
