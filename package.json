@@ -4,7 +4,7 @@
   },
   "scripts": {
     "build-and-serve": "npm run build && sleep 1 && npm run serve",
-    "build:preview": "hugo --baseURL $DEPLOY_PRIME_URL -e development --minify",
+    "build:preview": "hugo --baseURL $DEPLOY_PRIME_URL -e development --minify -DF",
     "build:production": "hugo --cleanDestinationDir --minify",
     "build": "hugo $npm_package_config_DEV_ARGS",
     "check-env": "node -e 'console.log(process.env)' | grep npm",
