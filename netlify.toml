@@ -42,9 +42,7 @@ package = "netlify-plugin-checklinks"
   # You can mark some check as skipped, which will block checklinks
   # from ever attempting to execute them.
   # skipPatterns is an array of strings you can match against failing reports
-  skipPatterns = [
-    "_redirects",
-  ]
+  skipPatterns = []
  
   # You can mark some check as todo, which will execute the check, but allow failures.
   # todoPatterns is an array of strings you can match against failing reports
@@ -57,4 +55,4 @@ package = "netlify-plugin-checklinks"
  
   # Enable to check references to source maps, source map sources etc.
   # Many build tools don't emit working references, so this is disabled by default
-  followSourceMaps = true
+  followSourceMaps = false
