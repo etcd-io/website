@@ -1,8 +1,8 @@
-### etcd API Reference
-
-
-This is a generated documentation. Please read the proto files for more.
-
+---
+title: etcd API Reference
+description: This is a generated documentation. Please read the proto files for more.
+weight: 3850
+---
 
 ##### service `Auth` (api/etcdserverpb/rpc.proto)
 
