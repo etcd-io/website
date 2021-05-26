@@ -57,4 +57,4 @@ package = "netlify-plugin-checklinks"
  
   # Enable to check references to source maps, source map sources etc.
   # Many build tools don't emit working references, so this is disabled by default
-  followSourceMaps = false
+  followSourceMaps = true
