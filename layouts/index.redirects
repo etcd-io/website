@@ -30,3 +30,7 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /blog/jepsen-343-results  /blog/2020/jepsen-343-results/
 
 /docs/next/dl-build  /docs/next/install/
+
+# Temporary until v3.5 lands, so that we can link into the v3.5 docs:
+/docs/v3.5    /docs/next/
+/docs/v3.5/*  /docs/next/:splat
