@@ -78,6 +78,5 @@ For a slightly more involved sanity check of your installation, see
 [Hardware recommendations]: {{< relref "op-guide/hardware" >}}
 [Quickstart]: {{< relref "quickstart" >}}
 [releases]: https://github.com/etcd-io/etcd/releases/
-[tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{<param git_version_tag>}}
+[tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/hardware" >}}
-
