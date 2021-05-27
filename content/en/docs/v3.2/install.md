@@ -1,5 +1,5 @@
 ---
-title: Download and build
+title: Install
 ---
 
 ## System requirements
