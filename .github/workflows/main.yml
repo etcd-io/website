@@ -28,4 +28,3 @@ jobs:
           timeout: 0
           markdown: false
           directoryListing: false
-
