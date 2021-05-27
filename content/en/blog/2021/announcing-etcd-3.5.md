@@ -4,31 +4,25 @@ spelling: cSpell:ignore Gyuho
 author:  "[Gyuho Lee](https://github.com/gyuho), Amazon Web Services"
 date: 2021-06-15
 draft: true
-original_link: https://docs.google.com/document/d/1F2p2LVPo4gj3n8XFMd4QrlarbCdJrbd-pNrT3XLYXmM/edit
 ---
 
-When we launched [etcd 3.4](https://github.com/etcd-io/etcd/releases/tag/v3.4.0)
-back in August 2019 (see ["Announcing etcd
-3.4"](https://kubernetes.io/blog/2019/08/30/announcing-etcd-3-4/)), it focused
-on storage backend improvements, non-voting member and pre-vote features. Today,
-etcd is more widely used for various mission critical clustering and database
-applications and as a result, its feature set grew more broad and complex. Thus,
-improving its stability and reliability has been top priority for recent
+When we [launched etcd 3.4 back in August 2019][3.4-blog], our focus was on
+storage backend improvements, non-voting member and pre-vote features. Since then,
+etcd has become more widely used for various mission critical clustering and database
+applications and as a result, its feature set has grown more broad and complex. Thus,
+improving its stability and reliability has been top priority in recent
 development.
 
-Today, we are releasing [etcd
-3.5](https://github.com/etcd-io/etcd/releases/tag/v3.5.0). The past two years
+Today, we are releasing [etcd 3.5][]. The past two years
 allowed for extensive iterations in fixing numerous bugs, identifying
-optimization opportunities at scale, and evolving its surrounding ecosystem. And
-the release is the result of continuous evolution and grungy, thankless tasks
-done by etcd community.
+optimization opportunities at scale, and evolving its surrounding ecosystem.
+This release is the result of continuous evolution and grungy, thankless tasks
+done by the etcd community.
 
-This reviews notable changes in etcd 3.5 release and presents its project
-roadmap for the next. Please see [CHANGELOG
-3.5](https://github.com/etcd-io/etcd/blob/master/CHANGELOG-3.5.md) for full
-lists of changes. You can get it from the [download
-page](https://github.com/etcd-io/etcd/releases/tag/v3.5.0) and follow [etcdio@
-at Twitter](https://twitter.com/etcdio) for more updates.
+In this blog post, we review the most notable changes to etcd 3.5, and present a
+project road map for future releases. For a complete list of changes, see
+[CHANGELOG 3.5][]. For more updates, follow us on Twitter [@etcdio][]. To get
+etcd, see [Install][].
 
 ## Security
 
@@ -378,3 +372,9 @@ Historically, etcd release has been quite costly, due to its being relatively
 infrequent and often representing a large delta. This is partially because of
 lack of release automation. We will **develop an automated release system** that
 is more accessible to the community.
+
+[@etcdio]: https://twitter.com/etcdio
+[3.4-blog]: https://kubernetes.io/blog/2019/08/30/announcing-etcd-3-4/
+[CHANGELOG 3.5]: https://github.com/etcd-io/etcd/blob/master/CHANGELOG-3.5.md
+[etcd 3.5]: https://github.com/etcd-io/etcd/releases/tag/v3.5.0
+[Install]: /docs/v3.5/install
