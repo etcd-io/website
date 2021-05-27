@@ -180,3 +180,5 @@ menu:
       weight: -10
     - name: Blog
       url: /blog/
+    - name: Install
+      url: /docs/v3.4/install/
