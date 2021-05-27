@@ -30,6 +30,10 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /blog/jepsen-343-results  /blog/2020/jepsen-343-results/
 
 /docs/next/dl-build  /docs/next/install/
+/docs/v3.4/dl-build  /docs/v3.4/install/
+/docs/v3.3/dl_build  /docs/v3.3/install/
+/docs/v3.2/dl_build  /docs/v3.2/install/
+/docs/v3.1/dl_build  /docs/v3.1/install/
 
 # Temporary until v3.5 lands, so that we can link into the v3.5 docs:
 /docs/v3.5    /docs/next/

@@ -180,3 +180,5 @@ menu:
       weight: -10
     - name: Blog
       url: /blog/
+    - name: Install
+      url: /docs/v3.4/install/ # FIXME(Nate W.): workaround to make link checker happy. Change back to latest. For details, see https://github.com/etcd-io/website/issues/307

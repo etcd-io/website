@@ -1,10 +1,10 @@
 ---
-title: Download and build
+title: Install
 ---
 
 ## System requirements
 
-The etcd performance benchmarks run etcd on 8 vCPU, 16GB RAM, 50GB SSD GCE instances, but any relatively modern machine with low latency storage and a few gigabytes of memory should suffice for most use cases. Applications with large v2 data stores will require more memory than a large v3 data store since data is kept in anonymous memory instead of memory mapped from a file. than For running etcd on a cloud provider, we suggest at least a medium instance on AWS or a standard-1 instance on GCE.
+The etcd performance benchmarks run etcd on 8 vCPU, 16GB RAM, 50GB SSD GCE instances, but any relatively modern machine with low latency storage and a few gigabytes of memory should suffice for most use cases. Applications with large v2 data stores will require more memory than a large v3 data store since data is kept in anonymous memory instead of memory mapped from a file. For running etcd on a cloud provider, we suggest at least a medium instance on AWS or a standard-1 instance on GCE.
 
 ## Download the pre-built binary
 
@@ -12,21 +12,12 @@ The easiest way to get etcd is to use one of the pre-built release binaries whic
 
 ## Build the latest version
 
-For those wanting to try the very latest version, build etcd from the `master` branch. [Go](https://golang.org/) version 1.7+ is required to build the latest version of etcd. To ensure etcd is built against well-tested libraries, etcd vendors its dependencies for official release binaries. However, etcd's vendoring is also optional to avoid potential import conflicts when embedding the etcd server or using the etcd client.
-
-First, confirm go 1.7+ is installed:
-
-```sh
-# go is required
-$ go version
-go version go1.7.3 darwin/amd64
-
-```
+For those wanting to try the very latest version, build etcd from the `master` branch. [Go](https://golang.org/) version 1.8+ is required to build the latest version of etcd. To ensure etcd is built against well-tested libraries, etcd vendors its dependencies for official release binaries. However, etcd's vendoring is also optional to avoid potential import conflicts when embedding the etcd server or using the etcd client.
 
 To build `etcd` from the `master` branch without a `GOPATH` using the official `build` script:
 
 ```sh
-$ git clone https://github.com/etcd-io/etcd.git
+$ git clone https://github.com/coreos/etcd.git
 $ cd etcd
 $ ./build
 $ ./bin/etcd
@@ -38,7 +29,7 @@ To build a vendored `etcd` from the `master` branch via `go get`:
 # GOPATH should be set
 $ echo $GOPATH
 /Users/example/go
-$ go get github.com/etcd-io/etcd/cmd/etcd
+$ go get github.com/coreos/etcd/cmd/etcd
 $ $GOPATH/bin/etcd
 ```
 
@@ -48,7 +39,7 @@ To build `etcd` from the `master` branch without vendoring (may not build due to
 # GOPATH should be set
 $ echo $GOPATH
 /Users/example/go
-$ go get github.com/etcd-io/etcd
+$ go get github.com/coreos/etcd
 $ $GOPATH/bin/etcd
 ```
 

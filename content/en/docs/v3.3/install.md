@@ -1,7 +1,6 @@
 ---
-title: Download and build
-weight: 1150
-description: Instructions for downloading and building different versions of etcd
+title: Install
+weight: 1
 ---
 
 ## System requirements
@@ -23,11 +22,11 @@ using these binaries are on the [GitHub releases page][github-release].
 ## Build the latest version
 
 For those wanting to try the very latest version, build etcd from the `master`
-branch. [Go][go-install] version 1.13+ is required to build the latest version
-of etcd. To ensure etcd is built against well-tested libraries, etcd vendors its
-dependencies for official release binaries. However, etcd's vendoring is also
-optional to avoid potential import conflicts when embedding the etcd server or
-using the etcd client.
+branch. [Go](https://golang.org/) version 1.9+ is required to build the latest
+version of etcd. To ensure etcd is built against well-tested libraries, etcd
+vendors its dependencies for official release binaries. However, etcd's
+vendoring is also optional to avoid potential import conflicts when embedding
+the etcd server or using the etcd client.
 
 To build `etcd` from the `master` branch without a `GOPATH` using the official
 `build` script:
@@ -35,10 +34,10 @@ To build `etcd` from the `master` branch without a `GOPATH` using the official
 ```sh
 $ git clone https://github.com/etcd-io/etcd.git
 $ cd etcd
-$ ./build.sh
+$ ./build
 ```
 
-To build a modularized `etcd` from the `master` branch via `go get`:
+To build a vendored `etcd` from the `master` branch via `go get`:
 
 ```sh
 # GOPATH should be set
@@ -82,4 +81,4 @@ If OK is printed, then etcd is working!
 [cmd-directory]: ../cmd
 [example-hardware-configurations]: op-guide/hardware#example-hardware-configurations
 [github-release]: https://github.com/etcd-io/etcd/releases/
-[go-install]: https://golang.org/doc/install
+[go]: https://golang.org/doc/install
