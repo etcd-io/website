@@ -25,4 +25,8 @@
       <a class="dropdown-item" href="{{ $targetURL }}">{{ $versName }}</a>
     {{ end -}}
   </div>
+{{ else }}
+  <a class="nav-link dropdown-toggle disabled" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{- .Site.Params.version_menu -}}
+  </a>
 {{ end -}}
