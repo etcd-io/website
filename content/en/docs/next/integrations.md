@@ -46,6 +46,7 @@ The sections below list etcd client libraries by language.
 
 - [maciej/etcd-client](https://github.com/maciej/etcd-client) - Supports v2. Akka HTTP-based fully async client
 - [eiipii/etcdhttpclient](https://bitbucket.org/eiipii/etcdhttpclient) - Supports v2. Async HTTP client based on Netty and Scala Futures.
+- [mingchuno/etcd4s](https://github.com/mingchuno/etcd4s) - Supports v3 using gRPC with optional Akka Stream support.
 
 ### Perl
 
