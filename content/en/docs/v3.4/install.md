@@ -52,7 +52,7 @@ source by following these steps:
  3. Run the build script:
 
     ```sh
-    $ ./build.sh
+    $ ./build
     ```
 
     The binaries are under the `bin` directory.
