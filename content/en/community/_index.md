@@ -90,7 +90,7 @@ For etcd contribution guidelines, see [How to contribute][].
 
 Our dedicated community has created the following resource:
 
-* [Chinese version of this site](https://etcd.cn) (此网站的中文版). Note that the Chinese language site is an independent project and isn't officially endorsed by the etcd.io maintainers.
+* [Chinese translation of etcd.io (本网站中文翻译)](https://etcd.cn). The website is an independent project and isn't officially endorsed by etcd maintainers.
 
 </div>
 
