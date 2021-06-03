@@ -29,11 +29,11 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/v3.4/etcd-mixin    /docs/v3.4/op-guide/monitoring/#alerting
 /docs/v3.4/etcd-mixin/*  /docs/v3.4/op-guide/monitoring/#alerting
 
-/docs/next/learning/lock/*  /docs/next/learning/why/#notes-on-the-usage-of-lock-and-lease
+/docs/v3.5/learning/lock/*  /docs/v3.5/learning/why/#notes-on-the-usage-of-lock-and-lease
 
 /blog/jepsen-343-results  /blog/2020/jepsen-343-results/
 
-/docs/next/dl-build  /docs/next/install/
+/docs/next/dl-build  /docs/v3.5/install/
 /docs/v3.4/dl-build  /docs/v3.4/install/
 /docs/v3.3/dl_build  /docs/v3.3/install/
 /docs/v3.2/dl_build  /docs/v3.2/install/
