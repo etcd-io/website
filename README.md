@@ -19,10 +19,16 @@ To build and serve the site, you'll need these tools:
 
 ### Setup
 
-Once you've installed the [prerequisites](#prerequisites), get local packages:
+This site uses the Docsy theme. Get Docsy as a submodule using the following command:
 
 ```bash
-npm install
+npm run get-submodules
+```
+
+Next, get local packages:
+
+```bash
+npm install 
 ```
 
 ### Running
