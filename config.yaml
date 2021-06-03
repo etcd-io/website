@@ -84,7 +84,7 @@ params:
   versions:
     latest: v3.4
     all:
-      - next
+      - v3.5
       - v3.4
       - v3.3
       - v3.2
