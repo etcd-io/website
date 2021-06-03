@@ -8,3 +8,6 @@ linkTitle: *vers
 simple_list: true
 weight: -330
 ---
+
+These docs cover everything from setting up and running an etcd cluster to using
+etcd in applications.
