@@ -9,22 +9,13 @@ single-member cluster of etcd.
 
 ## Install etcd
 
-To help with the commands that follow, set these environment variables:
+Download and install etcd on Linux from pre-built binaries:
 
 ```
 ETCD_VER={{< param git_version_tag >}}
 ETCD_BIN=/tmp/test-etcd
 
-GOOGLE_URL=https://storage.googleapis.com/etcd
-GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
-```
-
-Download and install etcd from pre-built binaries:
-
-On Linux
-
-```
-DOWNLOAD_URL=${GITHUB_URL}
+DOWNLOAD_URL=https://storage.googleapis.com/etcd
 
 rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 rm -rf $ETCD_BIN
@@ -35,24 +26,8 @@ curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/
 tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C $ETCD_BIN --strip-components=1
 ```
 
-On macOS
-
-```
-DOWNLOAD_URL=${GOOGLE_URL}
-
-rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
-rm -rf /tmp/etcd-${ETCD_VER}-darwin-amd64
-rm -rf $ETCD_BIN
-mkdir -p $ETCD_BIN
-
-curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
-
-unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp
-ln -s /tmp/etcd-${ETCD_VER}-darwin-amd64/* $ETCD_BIN
-```
-
 {{% alert title="Note" color="info" %}}
-To work with the latest version, learn how to [build from the main branch](/docs/{{< param version >}}/install/#build-from-source).
+To work with other operating systems, or to work with the latest version, learn how to [build from the main branch](/docs/{{< param version >}}/install/#build-from-source).
 {{% /alert %}}
 
 ## Launch etcd
