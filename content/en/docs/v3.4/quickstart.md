@@ -27,7 +27,12 @@ tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C $ETCD_BIN --strip-component
 ```
 
 {{% alert title="Note" color="info" %}}
-To work with other operating systems, or to work with the latest version, learn how to [build from the main branch](/docs/{{< param version >}}/install/#build-from-source).
+To work with the latest version, learn how to
+[build from the main branch](/docs/{{< param version >}}/install/#build-from-source).
+
+etcd is installable on a variety of platforms, including macOS and Windows. See
+the [Install page](/docs/{{< param version >}}/install/) to find out how to
+install etcd on your preferred Operating System.
 {{% /alert %}}
 
 ## Launch etcd
