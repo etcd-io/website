@@ -307,7 +307,7 @@ contributors. In etcd 3.5 release, we've [added two core
 maintainers](https://github.com/etcd-io/etcd/pull/12624): Wenjia Zhang (Google,
 [github.com/wenjiaswe](https://github.com/wenjiaswe)) who's been leading etcd
 community meetings and Kubernetes integration, and Piotr Tabor (Google,
-[github.com/ptabor](https://github.com/ptabor)) who's been leading numerous bug
+[github.com/ptabor](github.com/ptabor)) who's been leading numerous bug
 fixes and codebase modularization work. The diversity of contributors is key to
 building a sustainable, welcoming open source project and fostering manageable
 work environments.
