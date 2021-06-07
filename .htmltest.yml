@@ -2,3 +2,4 @@ DirectoryPath: public.htmltest
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 CheckExternal: false
+EnforceHTTPS: false
