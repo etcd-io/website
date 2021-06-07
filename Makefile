@@ -22,7 +22,7 @@ run-link-checker:
 		ln -s next v3.5; \
 		ln -s v3.4 latest; \
 	)
-	$(HTMLTEST)
+	$(HTMLTEST) --conf .htmltest.yml
 	rm -Rf $(TESTDIR)
 
 check-links: production-build link-checker-setup run-link-checker
