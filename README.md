@@ -19,7 +19,7 @@ To build and serve the site, you'll need these tools:
 
 ### Setup
 
-This site uses the Docsy theme. Get Docsy as a submodule using the following command:
+This site uses the [Docsy theme](https://www.docsy.dev/). Get Docsy as a submodule using the following command:
 
 ```bash
 npm run get-submodules
