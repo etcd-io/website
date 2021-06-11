@@ -110,7 +110,9 @@ Now Prometheus will scrape etcd metrics every 10 seconds.
 
 There is a set of [default alerts](https://github.com/etcd-io/etcd/tree/master/contrib/mixin) for etcd v3 clusters for Prometheus.
 
-> Note: `job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.
+{{% alert title="Note" color="info" %}}
+Note that `job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.
+{{% /alert %}}
 
 ### Grafana
 
@@ -129,6 +131,27 @@ Sample dashboard:
 
 ![](../etcd-sample-grafana.png)
 
+## Distributed tracing
+
+In v3.5 etcd has added support for distributed tracing using [OpenTelemetry](https://github.com/open-telemetry).
+
+{{% alert title="Note" color="info" %}}
+This feature is still experimental and can change at any time.
+{{% /alert %}}
+
+To enable this experimental feature, pass the `--experimental-enable-distributed-tracing=true` to the etcd server. Setup and configure the distributed tracing by starting etcd server with the following optional flags:
+
+- `--experimental-distributed-tracing-address` - (Optional) - "localhost:4317" - Address of the tracing collector.
+
+- `--experimental-distributed-tracing-service-name` - (Optional) - "etcd" - Distributed tracing service name, must be same across all etcd instances.
+
+- `--experimental-distributed-tracing-instance-id` - (Optional) - Instace ID, while optional it's strongly recommended to set, must be unique per etcd instance.
+
+Before enabling the distributed tracing, make sure to have the OpenTelemetry endpoint, if that address differs to the default one, override with the `--experimental-distributed-tracing-address` flag. Due to OpenTelemetry having different ways of running, refer to the [collector documentation](https://opentelemetry.io/docs/collector/getting-started/) to learn more.
+
+{{% alert title="Note" color="info" %}}
+There is a resource overhead, as with any observability signal, according to our initial measurements that overhead could be between 2% - 4% CPU overhead.
+{{% /alert %}}
 
 [grafana]: http://grafana.org/
 [prometheus]: https://prometheus.io/
