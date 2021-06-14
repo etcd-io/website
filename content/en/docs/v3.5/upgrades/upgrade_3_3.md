@@ -64,7 +64,7 @@ func (e *EtcdServer) Start() error {
 
 #### Added `embed.Config.LogOutput` struct
 
-**Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](/docs/next/upgrades/upgrade_3_4/) for more details.**
+**Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](/docs/{{< param version >}}/upgrades/upgrade_3_4/) for more details.**
 
 Field `LogOutput` is added to `embed.Config`:
 
@@ -87,7 +87,7 @@ WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create clie
 
 From v3.3, gRPC server logs are disabled by default.
 
-**Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/next/upgrades/upgrade_3_4/) for more details.**
+**Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/{{< param version >}}/upgrades/upgrade_3_4/) for more details.**
 
 ```go
 import "github.com/coreos/etcd/embed"
@@ -399,7 +399,7 @@ _, err := kvc.Get(ctx, "a")
 +  if s.Code() == codes.Canceled
 ```
 
-[The new client balancer](/docs/next/learning/design-client/) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, [v3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14) or later requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
+[The new client balancer](/docs/{{< param version >}}/learning/design-client/) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, [v3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14) or later requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
 
 ```diff
 import (
