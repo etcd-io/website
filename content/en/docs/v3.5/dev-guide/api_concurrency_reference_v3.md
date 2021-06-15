@@ -164,5 +164,3 @@ The election service exposes client-side election facilities as a gRPC interface
 | value | value is the value held by the key, in bytes. | bytes |
 | lease | lease is the ID of the lease that attached to key. When the attached lease expires, the key will be deleted. If lease is 0, then no lease is attached to the key. | int64 |
 
-
-

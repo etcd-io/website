@@ -1052,5 +1052,3 @@ User is a single entry in the bucket authUsers
 | ----- | ----------- | ---- |
 | no_password |  | bool |
 
-
-
