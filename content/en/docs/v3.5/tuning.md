@@ -84,3 +84,12 @@ tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 2379 0xff
 ```
 
 [ping]: https://en.wikipedia.org/wiki/Ping_(networking_utility)
+
+## CPU
+
+As etcd is very sensitive to latency, performance can further be optimized on Linux systems by setting the CPU governor to performance or conservative mode.
+
+On Linux, the CPU governor can be configured to performance mode:
+```
+echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
