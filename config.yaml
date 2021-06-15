@@ -82,7 +82,7 @@ params:
   # This menu appears only if you have at least one [params.versions] set.
   version_menu: Versions
   versions:
-    latest: v3.4
+    latest: v3.5
     all:
       - v3.5
       - v3.4

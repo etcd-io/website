@@ -3,7 +3,7 @@ title: Announcing etcd 3.5
 spelling: cSpell:ignore Gyuho
 author:  "[Gyuho Lee](https://github.com/gyuho), Amazon Web Services"
 date: 2021-06-15
-draft: true
+draft: false
 ---
 
 When we [launched etcd 3.4 back in August 2019][3.4-blog], our focus was on
@@ -16,8 +16,10 @@ development.
 Today, we are releasing [etcd 3.5][]. The past two years
 allowed for extensive iterations in fixing numerous bugs, identifying
 optimization opportunities at scale, and evolving its surrounding ecosystem.
-This release is the result of continuous evolution and grungy, thankless tasks
-done by the etcd community.
+The etcd project also became a
+[CNCF graduated project](https://www.cncf.io/announcements/2020/11/24/cloud-native-computing-foundation-announces-etcd-graduation/)
+during this time frame. This release is the result of continuous evolution and
+grungy, thankless tasks done by the etcd community.
 
 In this blog post, we review the most notable changes to etcd 3.5, and present a
 project road map for future releases. For a complete list of changes, see
@@ -57,7 +59,7 @@ compression algorithms, etc. For more information, see [hexfusion@ of Red Hat's 
 "caller":"traceutil/trace.go:116",
 "msg":"trace[123] range",
 "detail":"{
-    range_begin:foo; 
+    range_begin:foo;
     range_end:fooo; response_count:100000; response_revision:191496;}",
 "duration":"132.449773ms",
 "start":"...:32.611-0700",
@@ -74,7 +76,7 @@ Google)](https://github.com/etcd-io/etcd/pull/11179).
 Each etcd cluster maintains its own cluster version, a value agreed on by the
 quorum of the cluster. Previously, downgrading such cluster versions (e.g., etcd
 minor version from 3.5 to 3.4) was not supported in order to protect against
-incompatible changes. 
+incompatible changes.
 
 Let's say we allow 3.3 node to join 3.4 cluster and send a
 lease checkpoint request to the leader, which was introduced only in etcd 3.4.
@@ -104,20 +106,20 @@ curl -X POST -L http://localhost:2379/v3/kv/put -d '{"key": "Zm9v", "value": "Ym
 
 **etcd client now uses the latest gRPC, v1.32.0, requires a new
 import path `"go.etcd.io/etcd/client/v3"`**, and migrates balancer
-implementation upstream **. For more information, see [ptabor@ of
+implementation upstream. For more information, see [ptabor@ of
 Google's code change](https://github.com/etcd-io/etcd/pull/12671).
 
 ## Bug fixes
 
 etcd reliability and correctness are of utmost importance. That is why we
 backport all critical bug fixes to previous etcd releases. The following are
-the notable bugs we identified and fixed during etcd 3.5 development: 
+the notable bugs we identified and fixed during etcd 3.5 development:
 
 1. Lease objects piling up caused memory leaks, and the solution was to clear the expired
 lease queue in the old leader. For details, see [tangcong@ of Tencent's fix](https://github.com/etcd-io/etcd/pull/11731).
-1. Ongoing compact operation caused deadlock in mvcc storage layer. For details, see [tangcong@ of Tencent's fix](https://github.com/etcd-io/etcd/pull/11817). 
+1. Ongoing compact operation caused deadlock in mvcc storage layer. For details, see [tangcong@ of Tencent's fix](https://github.com/etcd-io/etcd/pull/11817).
 1. etcd server restart had redundant backend database open operations and as a result, reloading
-40-million keys took over 5-minutes, and the solution reduced the restart time by half. 
+40-million keys took over 5-minutes, and the solution reduced the restart time by half.
 For details, see [tangcong@ of Tencent's fix](https://github.com/etcd-io/etcd/pull/11779).
 1. If etcd crashed before completing defragmentation, the next defragment operation
 might have read the corrupted file. The solution was to ignore and overwrite the
@@ -174,13 +176,13 @@ transaction buffers rather than sharing between writes and concurrent reads (see
 However, such a buffering mechanism comes with unavoidable copy overhead and
 negatively impacted write-heavy transaction performance, as creating concurrent
 read transactions acquires a mutex lock which then blocks incoming write
-transactions. 
+transactions.
 
-etcd 3.5 improvements further increase transaction concurrency. 
-1. If a transaction includes a `PUT` (update) operation, the transaction instead shares the transaction buffer between reads and writes (same behavior as 3.4) in order to avoid copying buffers. This transaction mode can be disabled via `etcd --experimental-txn-mode-write-with-shared-buffer=false`. 
+etcd 3.5 improvements further increase transaction concurrency.
+1. If a transaction includes a `PUT` (update) operation, the transaction instead shares the transaction buffer between reads and writes (same behavior as 3.4) in order to avoid copying buffers. This transaction mode can be disabled via `etcd --experimental-txn-mode-write-with-shared-buffer=false`.
 
-    The benchmark results show that the **transaction throughput with a high write ratio has increased up to 2.7 times by avoiding copying buffers when creating a write transaction** (see *Figures 3* and *4*). 
-    This **benefits all kube-apiserver create and update calls that use etcd transactions** (see [etcd3 store v1.21 code](https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/apiserver/pkg/storage/etcd3/store.go#L394-L401)). 
+    The benchmark results show that the **transaction throughput with a high write ratio has increased up to 2.7 times by avoiding copying buffers when creating a write transaction** (see *Figures 3* and *4*).
+    This **benefits all kube-apiserver create and update calls that use etcd transactions** (see [etcd3 store v1.21 code](https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/apiserver/pkg/storage/etcd3/store.go#L394-L401)).
     For more information, see [wilsonwang371@ of ByteDance's code change and benchmark results](https://github.com/etcd-io/etcd/pull/12896).
 
     ![figure-3](../announcing-etcd-3.5/figure-3.png "Diagrams of etcd transaction throughput that shows that with a shared buffer approach for writes, the transaction throughput increases up to 2.7 times.")
@@ -217,7 +219,7 @@ Monitoring is a fundamental service for reliability and observability. Monitorin
 enables individual service owners to understand the current state and identify
 possible causes for problem reports. Known as telemetry, the goal is to detect early warning signs and
 diagnose potential issues. etcd creates server logs with tracing
-information and publishes Prometheus metrics. 
+information and publishes Prometheus metrics.
 
 This information helps us determine possible
 service impacts and causes. However, when a request call chain spans
@@ -227,7 +229,7 @@ added distributed tracing support using
 [OpenTelemetry](https://opentelemetry.io): When the **distributed tracing is
 enabled, etcd now uses OpenTelemetry to produce a trace across the RPC call
 chain and thus easily integrate with the surrounding ecosystem**. See
-*Figure 8*, [lilic@ Red Hat's proposal](https://github.com/etcd-io/etcd/pull/12919), and [GitHub issue 12460](https://github.com/etcd-io/etcd/issues/12460).
+*Figure 8*, [lilic@ of Red Hat's proposal](https://github.com/etcd-io/etcd/pull/12919), and [GitHub issue 12460](https://github.com/etcd-io/etcd/issues/12460).
 
 ![figure-8](../announcing-etcd-3.5/figure-8.png)
 
@@ -242,7 +244,7 @@ tests, which provide a reliable and faster way to validate each change. However,
 as development continued with extended feature sets, flaky tests quickly piled
 up draining our productivity. So, we took on the series of arduous tasks that
 often required multiple hours of debugging to root cause of failures to
-improve test quality. Some notable changes include the following: 
+improve test quality. Some notable changes include the following:
 
 * [reduce unit tests runtime by half](https://github.com/etcd-io/etcd/pull/12286)
 * [configure test logger](https://github.com/etcd-io/etcd/pull/12753)
@@ -257,11 +259,11 @@ like ARM (see [GitHub issue 12852](https://github.com/etcd-io/etcd/issues/12852)
 s390x (see [GitHub issue 11163](https://github.com/etcd-io/etcd/issues/11163)).
 A [self-hosted GitHub action runner](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners)
 provides a consistent way of hosting various external test workers (see [GitHub
-issue 12856](https://github.com/etcd-io/etcd/issues/12856)). Using the GitHub 
-action, etcd now [**runs tests on ARM-based AWS EC2 instances (Graviton)**](https://github.com/etcd-io/etcd/pull/12928), 
-thereby [**officially supporting ARM64 (aarch64) platform**](https://github.com/etcd-io/etcd/pull/12929). 
-In addition, we introduced a mechanism to support other platforms and 
-**categorized support tiers based on testing coverage**. For more information, 
+issue 12856](https://github.com/etcd-io/etcd/issues/12856)). Using the GitHub
+action, etcd now [**runs tests on ARM-based AWS EC2 instances (Graviton)**](https://github.com/etcd-io/etcd/pull/12928),
+thereby [**officially supporting ARM64 (aarch64) platform**](https://github.com/etcd-io/etcd/pull/12929).
+In addition, we introduced a mechanism to support other platforms and
+**categorized support tiers based on testing coverage**. For more information,
 see the [Supported platforms documentation PR 273](https://github.com/etcd-io/website/pull/273) and the [Supported platforms documentation](https://github.com/etcd-io/website/pull/273).
 
 ## Developer experience
@@ -304,20 +306,20 @@ issue 11930](https://github.com/etcd-io/etcd/issues/11930).
 
 ## Community
 
-The diversity of etcd end users keeps expanding: Cloudflare 
+The diversity of etcd end users keeps expanding: Cloudflare
 [relies on etcd for managing its data center](https://blog.cloudflare.com/a-byzantine-failure-in-the-real-world),
 Grafana Cortex [stores its configuration data in etcd](https://grafana.com/blog/2020/04/07/how-a-production-outage-in-grafana-clouds-hosted-prometheus-service-was-caused-by-a-bad-etcd-client-setup),
-Netflix [Titus](https://netflix.github.io/titus/) uses etcd for [managing its container workloads](https://www.slideshare.net/aspyker/herding-kats-netflixs-journey-to-kubernetes-public), 
-and Tailscale 
+Netflix [Titus](https://netflix.github.io/titus/) uses etcd for [managing its container workloads](https://www.slideshare.net/aspyker/herding-kats-netflixs-journey-to-kubernetes-public),
+and Tailscale
 [runs its control plane on top of etcd](https://tailscale.com/blog/an-unlikely-database-migration).
 
-We have also extended our team of vendor contributors.  
+We have also extended our team of vendor contributors.
 In the etcd 3.5 release, we've [added two core
-maintainers](https://github.com/etcd-io/etcd/pull/12624); [Wenjia Zhang](https://github.com/wenjiaswe) 
+maintainers](https://github.com/etcd-io/etcd/pull/12624); [Wenjia Zhang](https://github.com/wenjiaswe)
 of Google, who's been leading etcd
-community meetings and Kubernetes integration, and [Piotr Tabor](https://github.com/ptabor) 
+community meetings and Kubernetes integration, and [Piotr Tabor](https://github.com/ptabor)
 of Google, who's been leading numerous bug
-fixes and codebase modularization work. 
+fixes and codebase modularization work.
 
 The diversity of contributors is key to
 building a sustainable, welcoming open source project and fostering manageable
@@ -355,32 +357,30 @@ process crashing, as it is relatively unpredictable. Our heap profile on such
 workloads found that **the etcd range request handler decodes and holds the entire
 response before sending it out to gRPC server, adding up to 37% heap
 allocation**. See *Figure 9* and [chaochn47@ of Amazon Web
-Services's investigation](https://github.com/etcd-io/etcd/issues/12835). 
+Services's investigation](https://github.com/etcd-io/etcd/issues/12835).
 
-Paginating range calls in client code doesn't fully address the issue, 
-because it entails additional consistency considerations and 
-still requires full relists for expired resources. For more 
-information, see [kube-apiserver v1.21 code]
-(https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/client-go/tools/cache/reflector.go#L302-L312)).
+Paginating range calls in client code doesn't fully address the issue,
+because it entails additional consistency considerations and
+still requires full relists for expired resources. For more
+information, see [kube-apiserver v1.21 code](https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/client-go/tools/cache/reflector.go#L302-L312)).
 To work around this inefficiency, **etcd needs to support range streams**. We
-will revisit [yangxuanjia@ of JD's range stream proposal]
-(https://github.com/etcd-io/etcd/pull/12343), as it requires a significant 
-level of effort to introduce such semantic changes 
+will revisit [yangxuanjia@ of JD's range stream proposal](https://github.com/etcd-io/etcd/pull/12343),
+as it requires a significant level of effort to introduce such semantic changes
 in etcd and in downstream projects.
 
 ![figure-9](../announcing-etcd-3.5/figure-9.png "Diagram showing etcd usage during a range query for listing Kubernetes pods")
 
 _**Figure 9:** etcd usage during a range query for listing Kubernetes pods. 37% of the heap was allocated in etcd mvcc `rangeKeys` to hold key-value pairs for creating a range query response._
 
-In order to reduce maintenance overhead, we are **completely deprecating 
-the etcd v2 API in favor of a more performant and widely adopted v3 API**. 
-The v2 storage translation layer  via `etcd --experimental-enable-v2v3` 
+In order to reduce maintenance overhead, we are **completely deprecating
+the etcd v2 API in favor of a more performant and widely adopted v3 API**.
+The v2 storage translation layer  via `etcd --experimental-enable-v2v3`
 remains experimental in 3.5 and to be removed in the
-next release. For details, see 
+next release. For details, see
 [ptabor@ of Google's proposal](https://github.com/etcd-io/etcd/issues/12913).
 
-Historically, etcd releases have been a large undertaking due to infrequency, 
-because of the large delta, and a need for release automation. 
+Historically, etcd releases have been a large undertaking due to infrequency,
+because of the large delta, and a need for release automation.
 We will **develop an automated release system** that
 is more accessible to the community.
 
