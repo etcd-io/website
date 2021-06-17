@@ -125,7 +125,7 @@ For details, see [tangcong@ of Tencent's fix](https://github.com/etcd-io/etcd/pu
 might have read the corrupted file. The solution was to ignore and overwrite the
 existing file. See [jpbetz@ of Google's fix](https://github.com/etcd-io/etcd/pull/11613).
 1. Client cancelling watch did not signal the server to create leaky watchers. The solution was to
-explicitly send a cancel request to the server. See [jackkleeman@ of Apple's fix](https://github.com/etcd-io/etcd/pull/11613).
+explicitly send a cancel request to the server. See [jackkleeman@ of Apple's fix](https://github.com/etcd-io/etcd/pull/11850).
 
 ## Performance
 
@@ -179,7 +179,7 @@ read transactions acquires a mutex lock which then blocks incoming write
 transactions.
 
 etcd 3.5 improvements further increase transaction concurrency.
-1. If a transaction includes a `PUT` (update) operation, the transaction instead shares the transaction buffer between reads and writes (same behavior as 3.4) in order to avoid copying buffers. This transaction mode can be disabled via `etcd --experimental-txn-mode-write-with-shared-buffer=false`.
+1. If a transaction includes a `PUT` (update) operation, the transaction instead shares the transaction buffer between reads and writes (same behavior as 3.3) in order to avoid copying buffers. This transaction mode can be disabled via `etcd --experimental-txn-mode-write-with-shared-buffer=false`.
 
     The benchmark results show that the **transaction throughput with a high write ratio has increased up to 2.7 times by avoiding copying buffers when creating a write transaction** (see *Figures 3* and *4*).
     This **benefits all kube-apiserver create and update calls that use etcd transactions** (see [etcd3 store v1.21 code](https://github.com/kubernetes/kubernetes/blob/v1.21.0/staging/src/k8s.io/apiserver/pkg/storage/etcd3/store.go#L394-L401)).
