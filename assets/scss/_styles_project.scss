@@ -203,3 +203,16 @@
 #td-content__toc-link-expanded {
   background-color: $gray-200;
 }
+
+// add icon to signify that a link is external
+// from https://fontawesome.com/v5.15/icons/external-link-alt?style=solid
+
+.td-content a[href^="http://"]:after, 
+.td-content a[href^="https://"]:after {
+  font-family: 'Font Awesome\ 5 Free';  
+  content: "\f35d";
+  position: relative;
+  bottom: 1px;
+  padding: 0 3px;
+  font-size: .7rem;
+}
