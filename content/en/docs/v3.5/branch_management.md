@@ -6,7 +6,7 @@ description: etcd branch management
 
 ## Guide
 
-* New development occurs on the [master branch][master].
+* New development occurs on the [main branch][main].
 * Master branch should always have a green build!
 * Backwards-compatible bug fixes should target the master branch and subsequently be ported to stable branches.
 * Once the master branch is ready for release, it will be tagged and become the new stable branch.
@@ -27,5 +27,5 @@ All branches with prefix `release-` are considered _stable_ branches.
 
 After every minor release ([semver.org](https://semver.org/)), we will have a new stable branch for that release, managed by a [patch release manager](./dev-internal/release#release-management). We will keep fixing the backwards-compatible bugs for the latest two stable releases. A _patch_ release to each supported release branch, incorporating any bug fixes, will be once every two weeks, given any patches.
 
-[master]: https://github.com/etcd-io/etcd/tree/master
+[main]: https://github.com/etcd-io/etcd/tree/main
 
