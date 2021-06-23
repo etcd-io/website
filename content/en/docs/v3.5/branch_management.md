@@ -7,7 +7,7 @@ description: etcd branch management
 ## Guide
 
 * New development occurs on the [main branch][main].
-* Master branch should always have a green build!
+* Main branch should always have a green build!
 * Backwards-compatible bug fixes should target the master branch and subsequently be ported to stable branches.
 * Once the master branch is ready for release, it will be tagged and become the new stable branch.
 
