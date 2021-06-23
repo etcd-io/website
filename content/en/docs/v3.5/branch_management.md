@@ -8,16 +8,16 @@ description: etcd branch management
 
 * New development occurs on the [main branch][main].
 * Main branch should always have a green build!
-* Backwards-compatible bug fixes should target the master branch and subsequently be ported to stable branches.
-* Once the master branch is ready for release, it will be tagged and become the new stable branch.
+* Backwards-compatible bug fixes should target the main branch and subsequently be ported to stable branches.
+* Once the main branch is ready for release, it will be tagged and become the new stable branch.
 
 The etcd team has adopted a *rolling release model* and supports two stable versions of etcd.
 
-### Master branch
+### Main branch
 
-The `master` branch is our development branch. All new features land here first.
+The `main` branch is our development branch. All new features land here first.
 
-To try new and experimental features, pull `master` and play with it. Note that `master` may not be stable because new features may introduce bugs.
+To try new and experimental features, pull `main` and play with it. Note that `main` may not be stable because new features may introduce bugs.
 
 Before the release of the next stable version, feature PRs will be frozen. A [release manager](./dev-internal/release#release-management) will be assigned to major/minor version and will lead the etcd community in test, bug-fix and documentation of the release for one to two weeks.
 
