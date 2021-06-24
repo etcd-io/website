@@ -7,6 +7,10 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 
 /docs/current     /docs/next/
 /docs/current/*     /docs/next/:splat
+
+/docs/next    /docs/v3.5/
+/docs/next/*    /docs/v3.5/:splat
+
 /docs/v2    /docs/v2.3/
 /docs/v2/*    /docs/v2.3/:splat
 /docs/v3.1.12    /docs/v3.1/
@@ -28,3 +32,10 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/next/learning/lock/*  /docs/next/learning/why/#notes-on-the-usage-of-lock-and-lease
 
 /blog/jepsen-343-results  /blog/2020/jepsen-343-results/
+
+/docs/next/dl-build  /docs/next/install/
+/docs/v3.4/dl-build  /docs/v3.4/install/
+/docs/v3.3/dl_build  /docs/v3.3/install/
+/docs/v3.2/dl_build  /docs/v3.2/install/
+/docs/v3.1/dl_build  /docs/v3.1/install/
+

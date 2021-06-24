@@ -17,7 +17,7 @@ description: A listing of etcd tools and client libraries
 - [etcdtool](https://github.com/mickep76/etcdtool) - Export/Import/Edit etcd directory as JSON/YAML/TOML and Validate directory using JSON schema
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
-- [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free ETCD 3.x GUI & client tool. Available for Windows, Linux and Mac.
+- [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free etcd 3.x GUI & client tool. Available for Windows, Linux and Mac.
 - [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) -  Utility to periodic and incrementally backup and restore the etcd.
 
 ## Libraries
@@ -46,6 +46,7 @@ The sections below list etcd client libraries by language.
 
 - [maciej/etcd-client](https://github.com/maciej/etcd-client) - Supports v2. Akka HTTP-based fully async client
 - [eiipii/etcdhttpclient](https://bitbucket.org/eiipii/etcdhttpclient) - Supports v2. Async HTTP client based on Netty and Scala Futures.
+- [mingchuno/etcd4s](https://github.com/mingchuno/etcd4s) - Supports v3 using gRPC with optional Akka Stream support.
 
 ### Perl
 

@@ -82,9 +82,9 @@ params:
   # This menu appears only if you have at least one [params.versions] set.
   version_menu: Versions
   versions:
-    latest: v3.4
+    latest: v3.5
     all:
-      - next
+      - v3.5
       - v3.4
       - v3.3
       - v3.2
@@ -172,11 +172,15 @@ outputs:
     - HTML
     - REDIRECTS
 
-# Site Menu
+# Site menu (partial -- also see pages with 'menu' in front matter)
 menu:
   main:
     - name: Docs
-      url: /docs/v3.4/
+      url: /docs/latest/
       weight: -10
     - name: Blog
       url: /blog/
+    - name: Install
+      url: /docs/latest/install/
+    - name: Play
+      url: http://play.etcd.io/play
