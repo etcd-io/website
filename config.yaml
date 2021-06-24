@@ -67,6 +67,9 @@ params:
   # An optional link to a related project repo. For example, the sibling repository where your product code lives.
   github_project_repo: https://github.com/etcd-io/etcd
 
+  # Google Custom Search Engine ID. Remove or comment out to disable search.
+  gcs_engine_id: " f284205fe16777e43"
+
   # Enable Algolia DocSearch
   algolia_docsearch: false
 
