@@ -4,6 +4,7 @@ cascade:
   version: &vers v3.1
   git_version_tag: v3.1.20
   is_deprecated: true
+  exclude_search: true
 linkTitle: *vers
 simple_list: true
 weight: -310
