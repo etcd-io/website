@@ -1,7 +1,7 @@
 {{/* etcd-docsy file override */ -}}
 
-{{ if .Params.is_deprecated | or .Params.page_warning -}}
-  {{ $pageWarning := .Params.page_warning | default .Site.Params.versions.deprecation_warning -}}
+{{ if or (eq .Params.versStatus "DRAFT") (eq .Params.versStatus "ARCHIVE") -}}
+  {{ $pageWarning := .Params.page_warning -}}
   {{ $thisFile  := .File -}}
   {{ $thisURL   := .RelPermalink -}}
   {{ $thisVers  := .Params.version -}}
@@ -20,11 +20,15 @@
 
   {{ $color := "warning" -}}
   <div class="alert alert-warning" role="alert">
-    <p>Version <strong>{{ $thisVersName }}</strong> of
+    <p>
+    <i class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</i>
+    {{ if eq .Params.versStatus "DRAFT" }}
     {{ $pageWarning | markdownify }}
-    For the latest stable documentation, see
-    <a href="{{ $targetURL }}">
-      {{- $vers -}}
-    </a>.</p>
+    {{ else }}
+    Documentation for version {{ $thisVersName }} is no longer actively maintained.
+    The version you are currently viewing is a static snapshot.
+    {{ end }}
+    See the <a href="{{ $targetURL }}">latest version</a>.
+    </p>
   </div>
 {{ end }}

@@ -2,8 +2,8 @@
 title: v3.1 docs
 cascade:
   version: &vers v3.1
+  versStatus: ARCHIVE
   git_version_tag: v3.1.20
-  is_deprecated: true
 linkTitle: *vers
 simple_list: true
 weight: -310
