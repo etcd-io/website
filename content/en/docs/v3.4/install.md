@@ -16,6 +16,8 @@ Before installing etcd, see the following pages:
 
 The easiest way to install etcd is from pre-built binaries:
 
+### Linux
+
  1. Download the compressed archive file for your platform from [Releases][],
     choosing release [{{< param git_version_tag >}}][tagged-release] or later.
  2. Unpack the archive file. This results in a directory containing the binaries.
@@ -29,6 +31,22 @@ The easiest way to install etcd is from pre-built binaries:
     etcd Version: {{< psubstr git_version_tag 1 >}}
     ...
     ```
+
+### macOS
+
+Following the same directions [as above](#linux), here is a sample macOS install from a pre-built binary:
+
+```
+ETCD_VER={{< param git_version_tag >}}
+ETCD_BIN=/usr/local/bin
+
+DOWNLOAD_URL=https://storage.googleapis.com/etcd
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* $ETCD_BIN
+```
 
 ## Build from source
 
@@ -68,6 +86,11 @@ source by following these steps:
     ```sh
     $ etcd --version
     ```
+
+## Other methods
+
+For other ways to deploy etcd, including installing on Docker, and setting up TLS encription, see the [Play install page](http://play.etcd.io/install).
+
 ## Installation check
 
 For a slightly more involved sanity check of your installation, see
