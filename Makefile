@@ -15,12 +15,12 @@ link-checker-setup:
 
 run-link-checker:
 	rm -Rf $(TESTDIR)
-	cp -R public $(TESTDIR)
+	cp -R public/ $(TESTDIR)
 	# Update values below when latest & next change, or find a dynamic way to fetch the corresponding versions.
 	( \
 		cd $(TESTDIR)/docs; \
-		ln -s next v3.5; \
-		ln -s v3.4 latest; \
+		ln -s v3.5 next; \
+		ln -s v3.5 latest; \
 	)
 	$(HTMLTEST)
 	rm -Rf $(TESTDIR)
