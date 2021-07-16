@@ -1,4 +1,4 @@
-DirectoryPath: public.htmltest
+DirectoryPath: tmp/public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 CheckExternal: false
