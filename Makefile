@@ -27,7 +27,7 @@ get-link-checker:
 link-check-prep:
 	mkdir -p $(HTMLTEST_DIR)
 	rm -Rf $(HTMLTEST_DIR)/public
-	[[ -e public  ]] && cp -R public/ $(HTMLTEST_DIR)/public && \
+	cp -R public/ $(HTMLTEST_DIR)/public && \
 	( \
 		cd $(HTMLTEST_DIR)/public/docs; \
 		ln -s $(NEXTv) next; \
