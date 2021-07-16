@@ -12,9 +12,6 @@ ifeq (, $(shell command -v $(HTMLTEST)))
 override HTMLTEST=$(HTMLTEST_DIR)/bin/htmltest
 endif
 
-production-build:
-	npm run build:production
-
 docker-serve:
 	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) server $(DRAFT_ARGS)
 
