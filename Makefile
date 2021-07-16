@@ -1,7 +1,16 @@
 DOCKER_IMG = klakegg/hugo:ext-alpine
 DRAFT_ARGS = --buildDrafts --buildFuture  --buildExpired
-HTMLTEST?=bin/htmltest
-TESTDIR=public.htmltest
+
+# Keep these consistent with the values in config.yaml and layouts/index.redirects:
+NEXTv=v3.5
+LATESTv=v3.5
+
+HTMLTEST_DIR=tmp
+HTMLTEST?=htmltest # Specify as make arg if different
+# Use $(HTMLTEST) in PATH, if available; otherwise, we'll get a copy
+ifeq (, $(shell command -v $(HTMLTEST)))
+override HTMLTEST=$(HTMLTEST_DIR)/bin/htmltest
+endif
 
 production-build:
 	npm run build:production
@@ -9,29 +18,24 @@ production-build:
 docker-serve:
 	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) server $(DRAFT_ARGS)
 
-link-checker-setup:
-	# https://wjdp.uk/work/htmltest/
-	curl https://htmltest.wjdp.uk | bash
+clean-htmltest-dir:
+	rm -Rf $(HTMLTEST_DIR)
 
-run-link-checker:
-	rm -Rf $(TESTDIR)
-	cp -R public/ $(TESTDIR)
-	# Update values below when latest & next change, or find a dynamic way to fetch the corresponding versions.
+get-link-checker:
+	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
+
+link-check-prep:
+	mkdir -p $(HTMLTEST_DIR)
+	rm -Rf $(HTMLTEST_DIR)/public
+	cp -R public/ $(HTMLTEST_DIR)/public && \
 	( \
-		cd $(TESTDIR)/docs; \
-		ln -s v3.5 next; \
-		ln -s v3.5 latest; \
+		cd $(HTMLTEST_DIR)/public/docs; \
+		ln -s $(NEXTv) next; \
+		ln -s $(LATESTv) latest; \
 	)
+
+check-internal-links: link-check-prep
 	$(HTMLTEST)
-	rm -Rf $(TESTDIR)
 
-check-links: production-build link-checker-setup run-link-checker
-
-ci-check-links: link-checker-setup run-link-checker
-
-# Adding additional link checks based on https://github.com/grpc/grpc.io/blob/main/Makefile
-check-internal-links: production-build link-checker-setup run-link-checker
-	bin/htmltest --conf .htmltest.yml
-
-check-all-links: production-build link-checker-setup
-	bin/htmltest --conf .htmltest.external.yml
+check-all-links: link-check-prep
+	$(HTMLTEST) --conf .htmltest.external.yml
