@@ -10,14 +10,3 @@ command = "npm run build:preview"
 
 [context.branch-deploy]
 command = "npm run build:preview"
-
-# Set headers for docsy conversion development to prevent search engines from
-# indexing the WIP site.
-#
-# Based on hrishikesh's comment here:
-# https://answers.netlify.com/t/prevent-google-indexing-dev-staging-subdomain/32456/8
-[context.branch-deploy.headers]
-  for = "/*"
-  [context.banch-deploy.headers.values]
-    X-Robots-Tag = "noindex"
-
