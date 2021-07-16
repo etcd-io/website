@@ -25,7 +25,7 @@ get-link-checker:
 	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
 
 link-check-prep:
-	[[ -e $(HTMLTEST_DIR) ]] || mkdir $(HTMLTEST_DIR)
+	mkdir -p $(HTMLTEST_DIR)
 	rm -Rf $(HTMLTEST_DIR)/public
 	[[ -e public  ]] && cp -R public/ $(HTMLTEST_DIR)/public && \
 	( \
