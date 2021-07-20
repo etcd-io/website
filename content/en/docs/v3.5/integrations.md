@@ -139,6 +139,10 @@ The sections below list etcd client libraries by language.
 
 - [gradle-etcd-rest-plugin](https://github.com/cdancy/gradle-etcd-rest-plugin) - Supports v2
 
+### Lua
+
+- [api7/lua-resty-etcd](https://github.com/api7/lua-resty-etcd) - Supports v2 and v3 (grpc gateway HTTP API)
+
 ## Deployment tools
 
 ### Chef integrations
@@ -188,3 +192,4 @@ The sections below list etcd client libraries by language.
 - [Rook](https://github.com/rook/rook) - Storage Orchestration for Kubernetes
 - [Patroni](https://github.com/zalando/patroni) - A template for PostgreSQL High Availability with ZooKeeper, etcd, or Consul
 - [Trillian](https://github.com/google/trillian) - Trillian implements a Merkle tree whose contents are served from a data storage layer, to allow scalability to extremely large trees.
+- [Apache APISIX](https://github.com/apache/apisix) - Apache APISIX is a dynamic, real-time, high-performance API gateway.
