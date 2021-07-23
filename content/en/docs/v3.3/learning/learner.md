@@ -70,7 +70,7 @@ Learner only serves as a standby node until promoted: Leadership cannot be trans
 
 In addition, etcd limits the total number of learners that a cluster can have, and avoids overloading the leader with log replication. Learner never promotes itself. While etcd provides learner status information and safety checks, cluster operator must make the final decision whether to promote learner or not.
 
-## Features in v3.5
+## Proposed features for future releases
 
 **Make learner state only and default** --- Defaulting a new member state to learner will greatly improve membership reconfiguration safety, because learner does not change the size of quorum. Misconfiguration will always be reversible without losing the quorum.
 
