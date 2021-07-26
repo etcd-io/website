@@ -73,7 +73,7 @@ In the golang:
 
 ```go
 em := endpoints.NewManager(client, "foo/bar/my-service")
-err := endpoints.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
+err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
 ```
 
 ### Atomically updating endpoints
