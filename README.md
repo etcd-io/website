@@ -19,32 +19,26 @@ To build and serve the site, you'll need these tools:
 
 ### Setup
 
-This site uses the [Docsy theme](https://www.docsy.dev/). Get Docsy as a submodule using the following command:
+Get npm packages and the [Docsy theme](https://www.docsy.dev/) submodule:
 
-```bash
-npm run get-submodules
-```
-
-Next, get local packages:
-
-```bash
-npm install 
+```console
+$ npm install 
 ```
 
 ### Running
 
 Once the [setup](#setup) has completed, you can locally serve the site:
 
-```bash
-npm run serve
+```console
+$ npm run serve
 ```
 
 #### Docker
 
 You can also run the site locally using [Docker](https://docker.com):
 
-```bash
-make docker-serve
+```console
+$ make docker-serve
 ```
 
 ## Publishing the site
