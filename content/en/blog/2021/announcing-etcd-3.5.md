@@ -388,4 +388,4 @@ is more accessible to the community.
 [3.4-blog]: https://kubernetes.io/blog/2019/08/30/announcing-etcd-3-4/
 [CHANGELOG 3.5]: https://github.com/etcd-io/etcd/blob/master/CHANGELOG-3.5.md
 [etcd 3.5]: https://github.com/etcd-io/etcd/releases/tag/v3.5.0
-[Install]: /docs/v3.5/install
+[Install]: /docs/v3.5/install/
