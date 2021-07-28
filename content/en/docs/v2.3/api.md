@@ -82,7 +82,7 @@ X-Raft-Term: 1
 
 * `X-Etcd-Index` is the current etcd index as explained above. When request is a watch on key space, `X-Etcd-Index` is the current etcd index when the watch starts, which means that the watched event may happen after `X-Etcd-Index`.
 * `X-Raft-Index` is similar to the etcd index but is for the underlying raft protocol.
-* `X-Raft-Term` is an integer that will increase whenever an etcd master election happens in the cluster. If this number is increasing rapidly, you may need to tune the election timeout. See the [tuning][tuning] section for details.
+* `X-Raft-Term` is an integer that will increase whenever an etcd master election happens in the cluster. If this number is increasing rapidly, you may need to tune the election timeout. See the [tuning](../tuning/) section for details.
 
 ### Get the value of a key
 
@@ -1145,8 +1145,6 @@ curl http://127.0.0.1:2379/v2/stats/store
 
 ## Cluster Config
 
-See the [members API][members-api] for details on the cluster management.
+See the [members API](../members_api/) for details on the cluster management.
 
 [directories]: #listing-a-directory
-[members-api]: members_api
-[tuning]: tuning
