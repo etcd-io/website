@@ -78,7 +78,7 @@ meetings, see [etcd community meeting][meeting-doc].
 
 {{% cards "community_resources" %}}
 
-## Contribute
+## Contributing
 
 Your contributions to etcd code and documentation are welcome! If you find a
 problem or would like an enhancement, create an issue -- or better yet, consider
