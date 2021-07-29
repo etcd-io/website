@@ -1,60 +1,61 @@
 # etcd.io
 
-This repository houses all of the assets used to build the etcd docs and website available at https://etcd.io.
+The [etcd.io][] website, built using [Hugo][] and hosted on [Netlify][].
 
-## Run the site locally
+## Build prerequisites
 
-### Prerequisites
-
-To build and serve the site, you'll need these tools:
-
-- **[Hugo, extended edition][hugo-install]**; match the version specified in
-  [netlify.toml](netlify.toml)
-- **Node**, the latest [LTS release][]. Like Netlify, we use **[nvm][]**, the
-  Node Version Manager, to install and manage Node versions:
-  ```console
-  $ nvm install --lts
-  $ nvm use --lts
-  ```
-
-### Setup
-
-Get npm packages and the [Docsy theme](https://www.docsy.dev/) submodule:
+To build and serve the site, you'll need the latest [LTS release][] of **Node**.
+Like Netlify, we use **[nvm][]**, the Node Version Manager, to install and
+manage Node versions:
 
 ```console
-$ npm install 
+$ nvm install --lts
 ```
 
-### Running
+## Setup
 
-Once the [setup](#setup) has completed, you can locally serve the site:
+ 1. Clone or download a copy of this repo.
+ 2. From a terminal window, change to the cloned or unzipped repo directory.
+ 3. Get NPM packages and git submodules, including the the [Docsy][] theme:
+    ```console
+    $ npm install 
+    ```
+
+## Build or serve the site
+
+To locally serve the site at [localhost:8888][], run the following command:
 
 ```console
 $ npm run serve
 ```
 
-#### Docker
+To build and check links, run these commands:
 
-You can also run the site locally using [Docker](https://docker.com):
+```console
+$ npm run build
+$ npm run ci-check-links
+```
+
+> **Note**: If you have `htmltest` in our path, you can run the `check-links`
+> script instead.
+
+You can also locally serve using [Docker](https://docker.com):
 
 ```console
 $ make docker-serve
 ```
 
-## Publishing the site
+## Contributing
 
-The site is published automatically by [Netlify](https://netlify.com). Any time
-changes are pushed to the main branch, the site is built and deployed.
+We welcome issues and PRs! For details, see [Contributing][].
 
-### Preview builds
-
-Any time you submit a pull request to this repository, Netlify will publish a
-[preview
-build](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/)
-of the changes in that pull request. You can find a link to the preview build in
-the checks section of the pull request, under **netlify/etcd/deploy-preview**.
+If you submit a PR, Netlify will automatically create a [deploy preview][] so
+that you can view your changes. Once merged, Netlify automcatically deploys to
+the production site [etcd.io][].
 
 ## Releasing a new version of the etcd documentation
+
+> **IMPORTANT**: this section is out-of-date, see issue [#406][].
 
 Follow these steps to add documentation for a newly released version of etcd, vX.Y:
 
@@ -81,11 +82,13 @@ Follow these steps to add documentation for a newly released version of etcd, vX
   `params.versions.latest` parameter to the desired new version.
 * Submit a pull request with the changes.
 
-## Troubleshooting
-
-If you have an issue with updating the documentation, file an issue against this
-repo.
-
-[hugo-install]: https://gohugo.io/getting-started/installing
+[#406]: https://github.com/etcd-io/website/issues/406
+[Contributing]: https://etcd.io/community/#contributing
+[deploy preview]: https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[Docsy]: https://www.docsy.dev
+[etcd.io]: https://etcd.io
+[Hugo]: https://gohugo.io
+[localhost:8888]: http://localhost:8888
 [LTS release]: https://nodejs.org/en/about/releases/
+[Netlify]: https://netlify.com
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
