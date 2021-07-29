@@ -4,6 +4,7 @@
     "build:preview": "hugo --cleanDestinationDir -DFE --minify --baseURL $DEPLOY_PRIME_URL",
     "build:production": "hugo --cleanDestinationDir --minify",
     "build": "hugo --cleanDestinationDir -e dev -DFE",
+    "check-links": "make clean-htmltest-dir check-internal-links",
     "ci-check-links": "make clean-htmltest-dir get-link-checker check-internal-links",
     "get-submodules": "git submodule update --init --recursive --depth 1",
     "postbuild:preview": "npm run ci-check-links",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
+    "hugo-extended": "^0.83.1",
     "netlify-cli": "^3.39.4",
     "postcss": "^8.3.5",
     "postcss-cli": "^8.3.1"
