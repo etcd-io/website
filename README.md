@@ -10,7 +10,6 @@ manage Node versions:
 
 ```console
 $ nvm install --lts
-$ nvm use --lts
 ```
 
 ## Setup
