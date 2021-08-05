@@ -82,3 +82,9 @@ tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 2379 0xff
 ```
 
 [ping]: https://en.wikipedia.org/wiki/Ping_(networking_utility)
+
+If user want to cancel tc, just execute:
+
+```
+tc qdisc del dev eth0 root
+```
