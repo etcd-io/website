@@ -8,11 +8,7 @@
     "ci-check-links": "make clean-htmltest-dir get-link-checker check-internal-links",
     "get-submodules": "git submodule update --init --recursive --depth 1",
     "postbuild:preview": "npm run ci-check-links",
-    "prebuild:preview": "./check-hugo.sh",
-    "prebuild:production": "./check-hugo.sh",
-    "prebuild": "./check-hugo.sh",
     "preinstall": "npm run get-submodules",
-    "preserve": "./check-hugo.sh",
     "serve": "netlify dev -c \"hugo serve --minify -DFE -w\""
   },
   "devDependencies": {
