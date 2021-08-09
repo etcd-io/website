@@ -142,13 +142,12 @@ In [hyper.sh][hyper.sh], the container service is backed by [hypernetes][hyperne
 - *Application*: system configuration for services, service discovery
 - *Launched*: June 2016
 - *Cluster Size*: 1 cluster of 7 members
-- *Order of Data Size*: megabytes
-- *Operator*: Grab, [taxitan][taxitan], [reterVision][reterVision]
+- *Order of Data Size*: hundreds of megabytes
+- *Operator*: [Grab][]
 - *Environment*: AWS
 - *Backups*: None, all data can be recreated if necessary.
 
-[taxitan]:https://github.com/taxitan
-[reterVision]:https://github.com/reterVision
+[Grab]:https://github.com/grab
 
 ## DaoCloud.io
 
