@@ -159,18 +159,16 @@ params:
     https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png
 
 mediaTypes:
-  text/netlify:
-    delimiter: ''
+  text/netlify: {}
 
 outputFormats:
   REDIRECTS:
     mediaType: text/netlify
     baseName: _redirects
+    notAlternative: true
 
 outputs:
-  home:
-    - HTML
-    - REDIRECTS
+  home: [HTML, REDIRECTS, RSS]
 
 # Site menu (partial -- also see pages with 'menu' in front matter)
 menu:
