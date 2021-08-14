@@ -33,11 +33,8 @@ To build and check links, run these commands:
 
 ```console
 $ npm run build
-$ npm run ci-check-links
+$ npm run check-links
 ```
-
-> **Note**: If you have `htmltest` in our path, you can run the `check-links`
-> script instead.
 
 You can also locally serve using [Docker](https://docker.com):
 

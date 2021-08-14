@@ -9,6 +9,7 @@ HTMLTEST_DIR=tmp
 HTMLTEST?=htmltest # Specify as make arg if different
 # Use $(HTMLTEST) in PATH, if available; otherwise, we'll get a copy
 ifeq (, $(shell command -v $(HTMLTEST)))
+GET_LINK_CHECKER_IF_NEEDED=get-link-checker
 override HTMLTEST=$(HTMLTEST_DIR)/bin/htmltest
 endif
 
@@ -21,7 +22,7 @@ clean-htmltest-dir:
 get-link-checker:
 	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
 
-link-check-prep:
+link-check-prep: $(GET_LINK_CHECKER_IF_NEEDED)
 	mkdir -p $(HTMLTEST_DIR)
 	rm -Rf $(HTMLTEST_DIR)/public
 	cp -R public/ $(HTMLTEST_DIR)/public && \
@@ -31,8 +32,8 @@ link-check-prep:
 		ln -s $(LATESTv) latest; \
 	)
 
-check-internal-links: link-check-prep
+check-internal-links: clean-htmltest-dir link-check-prep
 	$(HTMLTEST)
 
-check-all-links: link-check-prep
+check-all-links: clean-htmltest-dir link-check-prep
 	$(HTMLTEST) --conf .htmltest.external.yml
