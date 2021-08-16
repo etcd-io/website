@@ -90,7 +90,7 @@ Follow these steps to add documentation for a newly released version of etcd, vX
   `params.versions.latest` parameter to the desired new version.
 * Submit a pull request with the changes.
 
-## Communication Channels 
+
 
 [#406]: https://github.com/etcd-io/website/issues/406
 [Contributing]: https://etcd.io/community/#contributing
