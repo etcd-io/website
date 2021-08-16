@@ -1,6 +1,17 @@
 # etcd.io
 
+A distributed, reliable key-value store for the most critical data of a distributed system.
+
+## etcd Intro
+etcd is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node
+
 The [etcd.io][] website, built using [Hugo][] and hosted on [Netlify][].
+
+
+## Features
+1. Simple Interface
+2. Key-value storage
+3. Watch Keys and directories for changes
 
 ## Build prerequisites
 
@@ -78,6 +89,8 @@ Follow these steps to add documentation for a newly released version of etcd, vX
 * If the version is meant to be the latest version of etcd, change the
   `params.versions.latest` parameter to the desired new version.
 * Submit a pull request with the changes.
+
+## Communication Channels 
 
 [#406]: https://github.com/etcd-io/website/issues/406
 [Contributing]: https://etcd.io/community/#contributing
