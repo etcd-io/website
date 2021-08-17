@@ -145,19 +145,19 @@ If none of the above suggestions clear the warnings, please [open an issue][new_
 etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
 
 
-[api-mvcc]: learning/api#revisions
-[backend_commit_metrics]: ./metrics#disk
+[api-mvcc]: /docs/v3.3/learning/api#revisions
+[backend_commit_metrics]: /docs/v3.3/metrics#disk
 [backup]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
 [benchmark]: https://github.com/etcd-io/etcd/tree/master/tools/benchmark
 [benchmark-result]: /docs/v3.3/op-guide/performance/
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
-[hardware-setup]: ./op-guide/hardware
-[maintenance-compact]:  op-guide/maintenance#history-compaction-v3-api-key-value-database
-[maintenance-defragment]: op-guide/maintenance#defragmentation
+[hardware-setup]: /docs/v3.3/op-guide/hardware
+[maintenance-compact]:  /docs/v3.3/op-guide/maintenance#history-compaction-v3-api-key-value-database
+[maintenance-defragment]: /docs/v3.3/op-guide/maintenance#defragmentation
 [maintenance-disarm]: https://github.com/etcd-io/etcd/tree/master/etcdctl#alarm-disarm
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
 [raft]: https://raft.github.io/raft.pdf
 [runtime reconfiguration]: /docs/v3.3/op-guide/runtime-configuration/
-[supported-platform]: ./op-guide/supported-platform
-[tuning]: ./tuning
-[wal_fsync_duration_seconds]: ./metrics#disk
+[supported-platform]: /docs/v3.3/op-guide/supported-platform
+[tuning]: /docs/v3.3/tuning
+[wal_fsync_duration_seconds]: /docs/v3.3/metrics#disk

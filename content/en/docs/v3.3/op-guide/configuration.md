@@ -418,15 +418,15 @@ Follow the instructions when using these flags.
 + default: 0s
 + env variable: ETCD_EXPERIMENTAL_CORRUPT_CHECK_TIME
 
-[build-cluster]: clustering#static
-[discovery]: clustering#discovery
+[build-cluster]: /docs/v3.3/op-guide/clustering#static
+[discovery]: /docs/v3.3/op-guide/clustering#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
 [proxy]: /docs/v2.3/proxy
-[reconfig]: runtime-configuration
+[reconfig]: /docs/v3.3/op-guide/runtime-configuration
 [recovery]: ../recovery
 [restore]: /docs/v2.3/admin_guide#restoring-a-backup
 [sample-config-file]: https://github.com/etcd-io/etcd/blob/release-3.4/etcd.conf.yml.sample
-[security]: security
-[static bootstrap]: clustering#static
+[security]: /docs/v3.3/op-guide/security
+[static bootstrap]: /docs/v3.3/op-guide/clustering#static
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../tuning#time-parameters
+[tuning]: /docs/v3.3/tuning#time-parameters

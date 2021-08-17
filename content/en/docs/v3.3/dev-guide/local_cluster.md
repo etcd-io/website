@@ -147,5 +147,5 @@ To exercise etcd's fault tolerance, kill a member and attempt to retrieve the ke
 
     Restarting the member re-establish the connection. `etcdctl` will now be able to retrieve the key successfully. To learn more about interacting with etcd, read [interacting with etcd section][interacting].
 
-[clustering]: ../op-guide/clustering
-[interacting]: ./interacting_v3
+[clustering]: /docs/v3.3/op-guide/clustering
+[interacting]: /docs/v3.3/dev-guide/interacting_v3
