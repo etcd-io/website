@@ -222,7 +222,7 @@ Requests to `/v3beta` endpoints will redirect to `/v3`, and `/v3beta` will be re
 
 #### Upgrade requirements
 
-To upgrade an existing etcd deployment to 3.4, the running cluster must be 3.3 or greater. If it's before 3.3, please [upgrade to 3.3](upgrade_3_3.md) before upgrading to 3.4.
+To upgrade an existing etcd deployment to 3.4, the running cluster must be 3.3 or greater. If it's before 3.3, please [upgrade to 3.3](/docs/v3.3/upgrades/upgrade_3_3/) before upgrading to 3.4.
 
 Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. Check the health of the cluster by using the `etcdctl endpoint health` command before proceeding.
 
@@ -230,7 +230,7 @@ Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. C
 
 Before upgrading etcd, always test the services relying on etcd in a staging environment before deploying the upgrade to the production environment.
 
-Before beginning, [download the snapshot backup](../op-guide/maintenance#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](/docs/v2.3/admin_guide#backing-up-the-datastore).
+Before beginning, [download the snapshot backup](/docs/v3.3/op-guide/maintenance#snapshot-backup). Should something go wrong with the upgrade, it is possible to use this backup to [downgrade](#downgrade) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](/docs/v2.3/admin_guide#backing-up-the-datastore).
 
 #### Mixed versions
 
@@ -248,7 +248,7 @@ For a much larger total data size, 100MB or more , this one-time process might t
 
 If all members have been upgraded to v3.4, the cluster will be upgraded to v3.4, and downgrade from this completed state is **not possible**. If any single member is still v3.3, however, the cluster and its operations remains "v3.3", and it is possible from this mixed cluster state to return to using a v3.3 etcd binary on all members.
 
-Please [download the snapshot backup](../op-guide/maintenance#snapshot-backup) to make downgrading the cluster possible even after it has been completely upgraded.
+Please [download the snapshot backup](/docs/v3.3/op-guide/maintenance#snapshot-backup) to make downgrading the cluster possible even after it has been completely upgraded.
 
 ### Upgrade procedure
 
@@ -284,7 +284,7 @@ COMMENT
 
 #### Step 2: download snapshot backup from leader
 
-[Download the snapshot backup](../op-guide/maintenance#snapshot-backup) to provide a downgrade path should any problems occur.
+[Download the snapshot backup](/docs/v3.3/op-guide/maintenance#snapshot-backup) to provide a downgrade path should any problems occur.
 
 etcd leader is guaranteed to have the latest application data, thus fetch snapshot from leader:
 

@@ -48,5 +48,5 @@ It seems that using public discovery service is a convenient way to do runtime r
 
 To have a discovery service that supports runtime reconfiguration, the best choice is to build a private one.
 
-[add-member]: runtime-configuration#add-a-new-member
-[disaster-recovery]: recovery
+[add-member]: /docs/v3.3/op-guide/runtime-configuration#add-a-new-member
+[disaster-recovery]: /docs/v3.3/op-guide/recovery
