@@ -6,7 +6,7 @@ title: Clustering Guide
 
 Starting an etcd cluster statically requires that each member knows another in the cluster. In a number of cases, the IPs of the cluster members may be unknown ahead of time. In these cases, the etcd cluster can be bootstrapped with the help of a discovery service.
 
-Once an etcd cluster is up and running, adding or removing members is done via [runtime reconfiguration][runtime-conf]. To better understand the design behind runtime reconfiguration, we suggest reading [the runtime configuration design document][runtime-reconf-design].
+Once an etcd cluster is up and running, adding or removing members is done via [runtime reconfiguration][runtime-conf]. To better understand the design behind runtime reconfiguration, we suggest reading [the runtime configuration design document][../../runtime-reconf-design].
 
 This guide will cover the following mechanisms for bootstrapping an etcd cluster:
 
@@ -485,14 +485,14 @@ When the `--proxy` flag is set, etcd runs in [proxy mode][proxy]. This proxy mod
 To setup an etcd cluster with proxies of v2 API, please read the the [clustering doc in etcd 2.3 release][clustering_etcd2].
 
 [clustering_etcd2]: https://github.com/etcd-io/etcd/blob/release-2.3/Documentation/clustering.md
-[conf-adv-client]: configuration#--advertise-client-urls
-[conf-listen-client]: configuration#--listen-client-urls
-[discovery-proto]: ../dev-internal/discovery_protocol
-[gateway]: gateway
+[conf-adv-client]: /docs/v3.3/op-guide/configuration#--advertise-client-urls
+[conf-listen-client]: /docs/v3.3/op-guide/configuration#--listen-client-urls
+[discovery-proto]: /docs/v3.3/dev-internal/discovery_protocol
+[gateway]: /docs/v3.3/op-guide/gateway
 [proxy]: https://github.com/etcd-io/etcd/blob/release-2.3/Documentation/proxy.md
 [rfc-srv]: http://www.ietf.org/rfc/rfc2052.txt
-[runtime-conf]: runtime-configuration
-[runtime-reconf-design]: runtime-reconf-design
-[security-guide-dns-srv]: security#notes-for-dns-srv
-[security-guide]: security
+[runtime-conf]: /docs/v3.3/op-guide/runtime-configuration
+[runtime-reconf-design]: /docs/v3.3/op-guide/runtime-reconf-design
+[security-guide-dns-srv]: /docs/v3.3/op-guide/security#notes-for-dns-srv
+[security-guide]: /docs/v3.3/op-guide/security
 [tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
