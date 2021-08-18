@@ -126,5 +126,5 @@ Usually this warning happens after tearing down an old cluster, then reusing som
 [raft]: https://raft.github.io/raft.pdf
 [runtime reconfiguration]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/Documentation/op-guide/runtime-configuration.md
 [supported-platform]: ../op-guide/supported-platform/
-[tuning]: ../tuning
+[tuning]: ../tuning/
 [wal_fsync_duration_seconds]: ../metrics/#disk
