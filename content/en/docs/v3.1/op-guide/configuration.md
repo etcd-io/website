@@ -283,13 +283,13 @@ Follow the instructions when using these flags.
 + Set level of detail for exported metrics, specify 'extensive' to include histogram metrics.
 + default: basic
 
-[build-cluster]: clustering#static
-[discovery]: clustering#discovery
+[build-cluster]: ../clustering/#static
+[discovery]: ../../op-guide/clustering/#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
-[proxy]: /docs/v2.3/proxy
-[reconfig]: runtime-configuration
-[restore]: /docs/v2.3/admin_guide#restoring-a-backup
-[security]: security
-[static bootstrap]: clustering#static
+[proxy]: /docs/v2.3/proxy/
+[reconfig]: ../runtime-configuration/
+[restore]: /docs/v2.3/admin_guide/#restoring-a-backup
+[security]: ../security/
+[static bootstrap]: ../clustering/#static
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../tuning#time-parameters
+[tuning]: ../../tuning/#time-parameters
