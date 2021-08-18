@@ -6,7 +6,7 @@ etcd comes with support for incremental runtime reconfiguration, which allows us
 
 Reconfiguration requests can only be processed when a majority of cluster members are functioning. It is **highly recommended** to always have a cluster size greater than two in production. It is unsafe to remove a member from a two member cluster. The majority of a two member cluster is also two. If there is a failure during the removal process, the cluster might not be able to make progress and need to [restart from majority failure][majority failure].
 
-To better understand the design behind runtime reconfiguration, please read [the runtime reconfiguration document][../../runtime-reconf].
+To better understand the design behind runtime reconfiguration, please read [the runtime reconfiguration document][runtime-reconf].
 
 ## Reconfiguration use cases
 
@@ -172,4 +172,4 @@ It is enabled by default.
 [member-api]: /docs/v2.3/members_api
 [member-api-grpc]: /docs/v3.3/dev-guide/api_reference_v3#service-cluster-etcdserveretcdserverpbrpcproto
 [remove member]: #remove-a-member
-[runtime-reconf]: runtime-reconf-design
+[runtime-reconf]: ../runtime-reconf-design/

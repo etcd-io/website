@@ -6,7 +6,7 @@ title: Clustering Guide
 
 Starting an etcd cluster statically requires that each member knows another in the cluster. In a number of cases, the IPs of the cluster members may be unknown ahead of time. In these cases, the etcd cluster can be bootstrapped with the help of a discovery service.
 
-Once an etcd cluster is up and running, adding or removing members is done via [runtime reconfiguration][runtime-conf]. To better understand the design behind runtime reconfiguration, we suggest reading [the runtime configuration design document][../../runtime-reconf-design].
+Once an etcd cluster is up and running, adding or removing members is done via [runtime reconfiguration][runtime-conf]. To better understand the design behind runtime reconfiguration, we suggest reading [the runtime configuration design document][runtime-reconf-design].
 
 This guide will cover the following mechanisms for bootstrapping an etcd cluster:
 
