@@ -19,7 +19,7 @@ The major flag changes are to mostly related to bootstrapping. The `initial-*` f
  - `-peer-heartbeat-interval` is replaced by `-heartbeat-interval`.
  - `-peer-election-timeout` is replaced by `-election-timeout`.
 
-The documentation of new command line flags can be found at [configuration](configuration).
+The documentation of new command line flags can be found at [configuration](../configuration/).
 
 ## Data Directory Naming
 

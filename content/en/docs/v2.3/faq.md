@@ -83,4 +83,4 @@ the clusters. This is probably not what you want.
 Note: --peers flag is now deprecated and --endpoint should be used instead,
 as it might confuse users to give etcdctl a peerURL.
 
-[runtime-reconf-design]: runtime-reconf-design
+[runtime-reconf-design]: ../runtime-reconf-design/

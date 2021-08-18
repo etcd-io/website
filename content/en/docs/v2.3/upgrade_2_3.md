@@ -20,7 +20,7 @@ Also, to ensure a smooth rolling upgrade, the running cluster must be healthy. Y
 
 Before upgrading etcd, always test the services relying on etcd in a staging environment before deploying the upgrade to the production environment.
 
-Before beginning,  [backup the etcd data directory](admin_guide#backing-up-the-datastore). Should something go wrong with the upgrade, it is possible to use this backup to[downgrade](#downgrade) back to existing etcd version.
+Before beginning,  [backup the etcd data directory](../admin_guide/#backing-up-the-datastore). Should something go wrong with the upgrade, it is possible to use this backup to[downgrade](#downgrade) back to existing etcd version.
 
 #### Mixed Versions
 
@@ -36,7 +36,7 @@ For a much larger total data size, 100MB or more , this one-time process might t
 
 If all members have been upgraded to v2.3, the cluster will be upgraded to v2.3, and downgrade from this completed state is **not possible**. If any single member is still v2.2, however, the cluster and its operations remains “v2.2”, and it is possible from this mixed cluster state to return to using a v2.2 etcd binary on all members.
 
-Please [backup the data directory](admin_guide#backing-up-the-datastore) of all etcd members to make downgrading the cluster possible even after it has been completely upgraded.
+Please [backup the data directory](../admin_guide/#backing-up-the-datastore) of all etcd members to make downgrading the cluster possible even after it has been completely upgraded.
 
 ### Upgrade Procedure
 
