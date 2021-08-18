@@ -434,11 +434,11 @@ To make understanding this feature easier, we changed the naming of some flags, 
 
 [client]: https://github.com/etcd-io/etcd/tree/master/client/v2
 [client-discoverer]: https://pkg.go.dev/github.com/etcd-io/etcd/client#Discoverer
-[conf-adv-client]: configuration#--advertise-client-urls
-[conf-listen-client]: configuration#--listen-client-urls
-[discovery-proto]: discovery_protocol
-[fall-back]: proxy#fallback-to-proxy-mode-with-discovery-service
-[proxy]: proxy
+[conf-adv-client]: ../configuration/#--advertise-client-urls
+[conf-listen-client]: ../configuration/#--listen-client-urls
+[discovery-proto]: ../discovery_protocol/
+[fall-back]: ../proxy/#fallback-to-proxy-mode-with-discovery-service
+[proxy]: ../proxy/
 [rfc-srv]: http://www.ietf.org/rfc/rfc2052.txt
-[runtime-conf]: runtime-configuration
-[runtime-reconf-design]: runtime-reconf-design
+[runtime-conf]: ../runtime-configuration/
+[runtime-reconf-design]: ../runtime-reconf-design/
