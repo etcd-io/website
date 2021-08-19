@@ -135,19 +135,19 @@ If none of the above suggestions clear the warnings, please [open an issue][new_
 etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
 
 
-[api-mvcc]: learning/api#revisions
-[backend_commit_metrics]: ./metrics#disk
+[api-mvcc]: ../learning/api/#revisions
+[backend_commit_metrics]: ../metrics/#disk
 [backup]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/Documentation/op-guide/recovery.md#snapshotting-the-keyspace
 [benchmark]: https://github.com/etcd-io/etcd/tree/v3.2.18/tools/benchmark
 [benchmark-result]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/Documentation/op-guide/performance.md
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
-[hardware-setup]: ./op-guide/hardware
-[maintenance-compact]:  op-guide/maintenance#history-compaction
-[maintenance-defragment]: op-guide/maintenance#defragmentation
+[hardware-setup]: ../op-guide/hardware/
+[maintenance-compact]:  ../op-guide/maintenance/#history-compaction
+[maintenance-defragment]: ../op-guide/maintenance/#defragmentation
 [maintenance-disarm]: https://github.com/etcd-io/etcd/tree/master/etcdctl#alarm-disarm
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
 [raft]: https://raft.github.io/raft.pdf
 [runtime reconfiguration]: https://github.com/etcd-io/etcd/blob/{{< param git_version_tag >}}/Documentation/op-guide/runtime-configuration.md
-[supported-platform]: ./op-guide/supported-platform
-[tuning]: ./tuning
-[wal_fsync_duration_seconds]: ./metrics#disk
+[supported-platform]: ../op-guide/supported-platform/
+[tuning]: ../tuning/
+[wal_fsync_duration_seconds]: ../metrics/#disk
