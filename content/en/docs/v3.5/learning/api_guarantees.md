@@ -64,5 +64,5 @@ etcd provides [a lease mechanism][lease]. The primary use case of a lease is imp
 [linearizability]: https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf
 [serializable_isolation]: https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable
 [strict_serializability]: http://jepsen.io/consistency/models/strict-serializable
-[txn]: api#transaction
-[why]: why#notes-on-the-usage-of-lock-and-lease
+[txn]: ../api/#transaction
+[why]: ../why/#notes-on-the-usage-of-lock-and-lease

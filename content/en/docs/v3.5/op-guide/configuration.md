@@ -465,15 +465,15 @@ a private certificate authority using `--peer-cert-file`, `--peer-key-file`, `--
 + default: false
 + env variable: ETCD_EXPERIMENTAL_PEER_SKIP_CLIENT_SAN_VERIFICATION
 
-[build-cluster]: clustering#static
-[discovery]: clustering#discovery
+[build-cluster]: ../clustering/#static
+[discovery]: ../clustering/#discovery
 [iana-ports]: http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
-[proxy]: /docs/v2.3/proxy
-[reconfig]: runtime-configuration
-[recovery]: ../recovery
-[restore]: /docs/v2/admin_guide#restoring-a-backup
+[proxy]: /docs/v2.3/proxy/
+[reconfig]: ../runtime-configuration/
+[recovery]: ../recovery/
+[restore]: /docs/v2/admin_guide/#restoring-a-backup
 [sample-config-file]: https://github.com/etcd-io/etcd/blob/master/etcd.conf.yml.sample
-[security]: ../security
-[static bootstrap]: clustering#static
+[security]: ../security/
+[static bootstrap]: ../clustering/#static
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../tuning#time-parameters
+[tuning]: ../../tuning/#time-parameters
