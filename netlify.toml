@@ -2,6 +2,9 @@
 publish = "public"
 command = "npm run build:production"
 
+[build.environment]
+GO_VERSION = "1.16" # Temporary, while we need to build htmltext >v0.14
+
 [context.deploy-preview]
 command = "npm run build:preview"
 
