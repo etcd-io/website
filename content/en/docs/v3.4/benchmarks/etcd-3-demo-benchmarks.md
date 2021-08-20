@@ -6,4 +6,4 @@ description: Performance measures for etcd v3
 
 See [etcd v3 performance benchmarking][etcd-v3-benchmark].
 
-[etcd-v3-benchmark]: ../op-guide/performance/#benchmarks
+[etcd-v3-benchmark]: ../../op-guide/performance/#benchmarks
