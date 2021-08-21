@@ -234,15 +234,15 @@ It is enabled by default.
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: configuration#--initial-advertise-peer-urls
-[conf-name]: configuration#--name
-[design-learner]: ../learning/design-learner
-[disaster recovery]: recovery
+[conf-adv-peer]: ../configuration/#--initial-advertise-peer-urls
+[conf-name]: ../configuration/#--name
+[design-learner]: ../../learning/design-learner
+[disaster recovery]: ../recovery/
 [error cases when promoting a member]: #error-cases-when-promoting-a-learner-member
 [fault tolerance table]: /docs/v2.3/admin_guide#fault-tolerance-table
 [majority failure]: #restart-cluster-from-majority-failure
-[member migration]: /docs/v2.3/admin_guide#member-migration
+[member migration]: /docs/v2.3/admin_guide/#member-migration
 [member-api]: /docs/v2.3/members_api
-[member-api-grpc]: ../dev-guide/api_reference_v3#service-cluster-etcdserveretcdserverpbrpcproto
+[member-api-grpc]: ../../dev-guide/api_reference_v3/#service-cluster-etcdserveretcdserverpbrpcproto
 [remove member]: #remove-a-member
-[runtime-reconf]: runtime-reconf-design
+[runtime-reconf]: ../runtime-reconf-design/
