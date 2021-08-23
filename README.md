@@ -29,6 +29,10 @@ To locally serve the site at [localhost:8888][], run the following command:
 $ npm run serve
 ```
 
+> **NOTE:** If you want to **check links** locally, you (temporarily) might have
+> some extra setup to do. For details, see issue
+> [#459](https://github.com/etcd-io/website/issues/459).
+
 To build and check links, run these commands:
 
 ```console
