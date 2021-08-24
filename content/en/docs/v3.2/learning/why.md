@@ -82,10 +82,10 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [consul-acl]: https://www.consul.io/docs/security/acl
 [consul-bulletproof]: https://www.consul.io/docs/dynamic-app-config/sessions
 [consul-json]: https://www.consul.io/api-docs#formatted-json-output
-[consul-linread]: https://www.consul.io/api-docs#consistency
+[consul-linread]: https://www.consul.io/api-docs/features/consistency
 [consul-lock]: https://www.consul.io/commands/lock
 [consul-reconfig]: https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations
-[consul-txn]: https://www.consul.io/api/kv#txn
+[consul-txn]: https://www.consul.io/api/kv
 [consul-watch]: https://www.consul.io/docs/dynamic-app-config/watches
 [container-linux]: https://coreos.com/why
 [curator]: http://curator.apache.org/

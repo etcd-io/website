@@ -88,7 +88,7 @@ PD(Placement Driver) is the central controller in the TiDB cluster. It saves the
 - *Cluster Size*: 3 members for each cluster
 - *Order of Data Size*: kilobytes
 - *Operator*: Huawei Euler Department
-- *Environment*: [Huawei Cloud](http://www.hwclouds.com/product/cce.html)
+- *Environment*: [Huawei Cloud](https://www.huaweicloud.com/intl/en-us/product/cce.html)
 - *Backups*: None, all data can be recreated if necessary.
 
 [teamcity]: https://www.jetbrains.com/teamcity/

@@ -80,7 +80,7 @@ In theory, it’s possible to build these primitives atop any storage systems pr
 For distributed coordination, choosing etcd can help prevent operational headaches and save engineering effort.
 
 ### Notes on the usage of lock and lease
-etcd provides [lock APIs][etcd-v3lock] which are based on [the lease mechanism][lease] and [its implementation in etcd][etcdlease]. The basic idea of the lease mechanism is: a server grants a token, which is called a lease, to a requesting client. When the server grants a lease, it associates a TTL with the lease. When the server detects the passage of time longer than the TTL, it revokes the lease. While the client holds a non revoked lease it can claim that it owns access to a resource associated with the lease. In the case of etcd, the resource is a key in the etcd keyspace. etcd provides lock APIs with this scheme. However, the lock APIs cannot be used as mutual exclusion mechanism by themselves. The APIs are called lock because [for historical reasons][chubby]. The lock APIs can, however, be used as an optimization mechanism of mutual exclusion as described below.
+etcd provides lock APIs which are based on [the lease mechanism][lease] and [its implementation in etcd][etcdlease]. The basic idea of the lease mechanism is: a server grants a token, which is called a lease, to a requesting client. When the server grants a lease, it associates a TTL with the lease. When the server detects the passage of time longer than the TTL, it revokes the lease. While the client holds a non revoked lease it can claim that it owns access to a resource associated with the lease. In the case of etcd, the resource is a key in the etcd keyspace. etcd provides lock APIs with this scheme. However, the lock APIs cannot be used as mutual exclusion mechanism by themselves. The APIs are called lock because [for historical reasons][chubby]. The lock APIs can, however, be used as an optimization mechanism of mutual exclusion as described below.
 
 The most important aspect of the lease mechanism is that TTL is defined as a physical time interval. Both of the server and client measures passing of time with their own clocks. It allows a situation that the server revokes the lease but the client still claims it owns the lease.
 
@@ -103,10 +103,10 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [consul-acl]: https://www.consul.io/docs/security/acl
 [consul-bulletproof]: https://www.consul.io/docs/dynamic-app-config/sessions
 [consul-json]: https://www.consul.io/api-docs#formatted-json-output
-[consul-linread]: https://www.consul.io/api-docs#consistency
+[consul-linread]: https://www.consul.io/api-docs/features/consistency
 [consul-lock]: https://www.consul.io/commands/lock
 [consul-reconfig]: https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations
-[consul-txn]: https://www.consul.io/api/kv#txn
+[consul-txn]: https://www.consul.io/api/kv
 [consul-watch]: https://www.consul.io/docs/dynamic-app-config/watches
 [container-linux]: https://coreos.com/why
 [curator]: http://curator.apache.org/
@@ -118,13 +118,13 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [etcd-linread]: ../api_guarantees/#isolation-level-and-consistency-of-replicas
 [etcd-mvcc]: ../data_model/
 [etcd-rbac]: ../../op-guide/authentication/#working-with-roles
-[etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/client/v3/experimental/recipes
+[etcd-recipe]: https://github.com/etcd-io/etcd/tree/main/client/v3/experimental/recipes
 [etcd-reconfig]: ../../op-guide/runtime-configuration
 [etcd-txn]: ../api/#transaction
-[etcd-v3election]: https://godoc.org/github.com/etcd-io/etcd/server/etcdserver/api/v3election/v3electionpb
-[etcd-v3lock]: https://godoc.org/github.com/etcd-io/etcd/server/etcdserver/api/v3lock/v3lockpb
+[etcd-v3election]: https://github.com/etcd-io/etcd/tree/main/server/etcdserver/api/v3election/v3electionpb
+[etcd-v3lock]: https://github.com/etcd-io/etcd/tree/main/server/etcdserver/api/v3lock/v3lockpb
 [etcd-watch]: ../api/#watch-streams
-[etcdlease]: https://godoc.org/github.com/etcd-io/etcd/client/v3/leasing
+[etcdlease]: https://github.com/etcd-io/etcd/tree/main/client/v3/leasing
 [fencing]: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
 [fencing-zk]: https://fpj.me/2016/02/10/note-on-fencing-and-distributed-locks/
 [grpc]: https://www.grpc.io
