@@ -87,7 +87,7 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [consul-linread]: https://www.consul.io/api-docs#consistency
 [consul-lock]: https://www.consul.io/commands/lock
 [consul-reconfig]: https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations
-[consul-txn]: https://www.consul.io/api/kv#txn
+[consul-txn]: https://www.consul.io/api/txn
 [consul-watch]: https://www.consul.io/docs/dynamic-app-config/watches
 [container-linux]: https://coreos.com/why
 [curator]: http://curator.apache.org/
@@ -102,8 +102,8 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/contrib/recipes
 [etcd-reconfig]: ../../op-guide/runtime-configuration/
 [etcd-txn]: ../api/#transaction
-[etcd-v3election]: https://godoc.org/github.com/coreos/etcd-io/etcdserver/api/v3election/v3electionpb
-[etcd-v3lock]: https://godoc.org/github.com/etcd-io/etcd/etcdserver/api/v3lock/v3lockpb
+[etcd-v3election]: https://pkg.go.dev/github.com/CloudcadeSF/etcd/etcdserver/api/v3election/v3electionpb
+[etcd-v3lock]: https://pkg.go.dev/go.etcd.io/etcd/server/v3/etcdserver/api/v3lock/v3lockpb
 [etcd-watch]: ../api/#watch-streams
 [grpc]: https://www.grpc.io
 [kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
