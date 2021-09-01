@@ -4,7 +4,7 @@ description: Welcome to the etcd user and developer community page
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
-      <a href="https://groups.google.com/forum/#!forum/grpc-io" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Group</a>
+      <a href="https://groups.google.com/forum/?hl=en#!forum/etcd-dev" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Group</a>
     desc: >
       Join the [etcd-dev][] forum to ask questions and get the latest etcd news.
   - title: >
