@@ -20,13 +20,13 @@ This blog post provides an introduction to design considerations when designing 
 
 As a critical building block for distributed systems it is crucial to perform adequate capacity planning in order to support the intended cluster workload. As etcd is a highly available and strongly consistent data store, so increasing the number of nodes in an etcd cluster will generally affect performance adversely. This makes sense intuitively, as more nodes means more members for the leader to coordinate state across. The most direct way to increase throughput and decrease latency of an etcd cluster is allocate more disk I/O, network I/O, CPU, and memory to the cluster members. In this scenario, it is impossible to temporarily divert incoming requests to the cluster, though scaling the EC2 instances which comprise the etcd cluster members one at a time may improve performance. It is, however, best to avoid bottlenecks through capacity planning.
 
-The etcd team has produced a [hardware recommendation guide](https://etcd.io/docs/v3.5/op-guide/hardware/) which is very useful for "ballparking" how many nodes and what instance type are necessary for a cluster.
+The etcd team has produced a [hardware recommendation guide](../../../docs/v3.5/op-guide/hardware/) which is very useful for "ballparking" how many nodes and what instance type are necessary for a cluster.
 
 AWS provides a service for creating groups of EC2 instances which are dynamically sized to match load on the instances. Using an Auto Scaling Group ([ASG](http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html)) to dynamically scale an etcd cluster, is not recommended for several reasons including the following:
 
 * etcd performance is generally inversely proportional to the number of members in a cluster due to the synchronous replication which provides strong consistency of data stored in etcd.
 
-* The operational complexity of adding [lifecycle hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html) to properly add and remove members from an etcd cluster by modifying the [runtime configuration](https://etcd.io/docs/v3.5/op-guide/runtime-configuration/).
+* The operational complexity of adding [lifecycle hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html) to properly add and remove members from an etcd cluster by modifying the [runtime configuration](../../../docs/v3.5/op-guide/runtime-configuration/).
 
 Auto Scaling Groups do provide a number of benefits besides cluster scaling which include:
 
@@ -74,7 +74,7 @@ A highly available etcd cluster is resilient to member loss, however, it is impo
 
 ## Performance/Throughput
 
-The performance of an etcd cluster is roughly quantifiable through latency and throughput metrics which are primarily affected by disk and network performance. Detailed performance planning information is provided in the [performance section](https://etcd.io/docs/v3.5/op-guide/performance/) of the etcd operations guide.
+The performance of an etcd cluster is roughly quantifiable through latency and throughput metrics which are primarily affected by disk and network performance. Detailed performance planning information is provided in the [performance section](../../../docs/v3.5/op-guide/performance/) of the etcd operations guide.
 
 ## Network
 
