@@ -11,6 +11,7 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/next    /docs/v3.5/
 /docs/next/*    /docs/v3.5/:splat
 /docs/v3.5/platforms/aws/	/blog/2021/etcd-deployments-on-aws/
+/docs/v3.5/platforms/freebsd/	/blog/2021/etcd-freebsd/
 
 /docs/v2    /docs/v2.3/
 /docs/v2/*    /docs/v2.3/:splat
