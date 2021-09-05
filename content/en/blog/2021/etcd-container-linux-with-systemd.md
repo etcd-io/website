@@ -1,10 +1,11 @@
 ---
 title: Container Linux with systemd
-weight: 7200
+author: Somoshree Datta
+date: 2021-09-05
 description: etcd deployments with systemd under Container Linux
 ---
 
-The following guide shows how to run etcd with [systemd][systemd-docs] under [Container Linux][container-linux-docs].
+The following blog post shows how to run etcd with [systemd][systemd-docs] under [Container Linux][container-linux-docs].
 
 ## Provisioning an etcd cluster
 
@@ -205,3 +206,5 @@ systemctl disable --now etcd2.service
 [container-linux-ignition]: https://github.com/coreos/docs/blob/master/ignition/what-is-ignition.md
 [container-linux-provision]: https://github.com/coreos/docs/blob/master/os/provisioning.md
 [systemd-docs]: https://github.com/systemd/systemd
+
+**Note**: The page "Platforms/Container Linux with systemd" has been removed and converted into this blog post.
