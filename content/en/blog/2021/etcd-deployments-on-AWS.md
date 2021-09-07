@@ -1,6 +1,6 @@
 ---
 title: Deployment of etcd on AWS EC2
-author: [Caleb Miles](#https://github.com/calebamiles), [Somoshree Datta](#https://github.com/Somoshree)
+author: Caleb Miles, Somoshree Datta
 date: 2021-09-03
 ---
 
