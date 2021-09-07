@@ -1,6 +1,6 @@
 ---
 title: Container Linux with systemd
-author: Somoshree Datta
+author: Gyuho Lee, Somoshree Datta
 date: 2021-09-05
 description: etcd deployments with systemd under Container Linux
 ---
