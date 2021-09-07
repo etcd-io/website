@@ -1,6 +1,6 @@
 ---
 title: FreeBSD
-author: Somoshree Datta
+author: Bartłomiej Rutkowski, Somoshree Datta
 date: 2021-09-05
 description: etcd deployments using FreeBSD
 ---
