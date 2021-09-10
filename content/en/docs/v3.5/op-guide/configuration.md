@@ -250,7 +250,7 @@ The security flags help to [build a secure etcd cluster][security].
 
 **REMOVED**
 
-This flag has been removed. `--trusted-ca-file ca.crt --client-cert-auth` can be used to perform the same task as was performed by `--ca-file ca.crt` previously. 
++ This flag has been removed. `--trusted-ca-file ca.crt --client-cert-auth` can be used to perform the same task as was performed by `--ca-file ca.crt` previously.
 
 ### --cert-file
 + Path to the client server TLS cert file.
@@ -292,7 +292,7 @@ This flag has been removed. `--trusted-ca-file ca.crt --client-cert-auth` can be
 
 **REMOVED**
 
-This flag has been removed. `--peer-trusted-ca-file ca.crt --peer-client-cert-auth` can be used to perform the same task as was performed by `--peer-ca-file ca.crt` previously. 
++ This flag has been removed. `--peer-trusted-ca-file ca.crt --peer-client-cert-auth` can be used to perform the same task as was performed by `--peer-ca-file ca.crt` previously.
 
 ### --peer-cert-file
 + Path to the peer server TLS cert file. This is the cert for peer-to-peer traffic, used both for server and client.
