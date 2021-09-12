@@ -3,6 +3,7 @@ title: Kubernetes Stateful Friend - What’s more to etcd?
 spelling: cSpell:ignore Hrittik
 author:  "[Hrittik Roy](https://github.com/hrittikhere), p3r.one"
 date: 2021-09-11
+description: etcd was released even before Kubernetes, and now adopted by Kubernetes as the ideal database for configuration management. Learn what's more to it! 
 ---
 
 *This post originally appeared on [p3r.one](https://www.p3r.one/etcd-and-kubernetes/), and is re-published with permission.* 
@@ -89,7 +90,7 @@ Using standard HTTP/JSON tools, any program, from simple web apps to extremely c
 
 ## Final Thoughts
 
-Etcd was released even before Kubernetes, but in 2014 Google adopted the database for configuration management. They are now a perfect fit, and you might have understood with your first contact with the orchestration tool. But, one thing to point out is etcd exists without Kubernetes, and it has more application than just being a part of the control plane like in Rook and CoreDNS.
+etcd was released even before Kubernetes, but in 2014 Google adopted the database for configuration management. They are now a perfect fit, and you might have understood with your first contact with the orchestration tool. But, one thing to point out is etcd exists without Kubernetes, and it has more application than just being a part of the control plane like in Rook and CoreDNS.
 
 I hope you enjoyed this article, and there are a few more introductory articles like [Helm: Why DevOps Engineers Love it?](https://www.p3r.one/helm-package-manager-kubernetes/), [Service Mesh: The Gateway to Happiness](https://www.p3r.one/service-mesh/) and [Turbo-charge with Container Orchestration](https://www.p3r.one/container-orchestration/) which you might want to go through.
 
