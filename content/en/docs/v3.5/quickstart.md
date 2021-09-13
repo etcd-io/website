@@ -87,7 +87,6 @@ Learn about more ways to configure and use etcd from the following pages:
 - Explore the gRPC [API][].
 - Set up a [multi-machine cluster][clustering].
 - Learn how to [configure][] etcd.
-- Learn how to get started with [etcdctl][]. 
 - Find [language bindings and tools][integrations].
 - Use TLS to [secure an etcd cluster][security].
 - [Tune etcd][tuning].
@@ -95,7 +94,6 @@ Learn about more ways to configure and use etcd from the following pages:
 [api]: /docs/{{< param version >}}/learning/api
 [clustering]: /docs/{{< param version >}}/op-guide/clustering
 [configure]: /docs/{{< param version >}}/op-guide/configuration
-[etcdctl]: /docs/{{< param version >}}/Getting-started-with-etcdctl
 [integrations]: /docs/{{< param version >}}/integrations
 [security]: /docs/{{< param version >}}/op-guide/security
 [tuning]: /docs/{{< param version >}}/tuning
