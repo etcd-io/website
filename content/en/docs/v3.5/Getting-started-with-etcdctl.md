@@ -14,9 +14,9 @@ Note that any key that was created using the v2 API will not be able to be queri
 export ETCDCTL_API=3
 ```
 
-To get started with installing and setting up an etcd cluster, follow the instructions in [Install]( ../../../docs/v3.5/install) page of the documentation.
++ To get started with installing and setting up an etcd cluster, follow the instructions in **[Install]( ../../../docs/v3.5/install)** page of the documentation.
 
-To configure local etcd cluster for testing and development purposes, visit [Set up a local cluster](../../../docs/v3.5/dev-guide/local_cluster) for more details.
++ To configure local etcd cluster for testing and development purposes, visit **[Set up a local cluster](../../../docs/v3.5/dev-guide/local_cluster)** for more details.
 
 Once the etcd cluster is set up and running, it might be a good option to know the versions of etcdctl and Server API in order to find the appropriate commands to be used for performing various operations on etcd.
 
@@ -27,14 +27,14 @@ $ etcdctl version
 etcdctl version: 3.1.0-alpha.0+git
 API version: 3.1
 ```
-To write a key to be stored into the etcd cluster, below is the command to set the value of a key `foo` to `bar`:
+To **write a key** to be stored into the etcd cluster, below is the command to set the value of a key `foo` to `bar`:
 
 ```bash
 $ etcdctl put foo bar
 OK
 ```
 
-Similarly, to read the values of keys from an etcd cluster, here is the command to read the value of the key `foo`:
+Similarly, to **read the values of keys** from an etcd cluster, here is the command to read the value of the key `foo`:
 
 ```bash
 $ etcdctl get foo
@@ -42,4 +42,4 @@ foo
 bar
 ```
 
-To know more about all the functionalities that etcdctl offers, visit [Interacting with etcd](../../../docs/v3.5/dev-guide/interacting_v3) for more details.
+To know more about all the functionalities that etcdctl offers, visit **[Interacting with etcd](../../../docs/v3.5/dev-guide/interacting_v3)** for more details.
