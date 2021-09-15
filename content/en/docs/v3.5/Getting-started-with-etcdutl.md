@@ -4,7 +4,7 @@ weight: 3250
 description: "etcdutl: a command line administration utility for etcd"
 ---
 
-**Note**: etcdutl is designed to operate on [etcd][etcd] data files. For operations over a network, please use [etcdctl](../../../docs/v3.5/getting-started-with-etcdctl).
+**Note**: etcdutl is designed to operate on [etcd][etcd] data files. For operations over a network, please use [etcdctl](../../../docs/v3.5/dev-guide/interacting_v3).
 
 ## Synopsis of commands
 
