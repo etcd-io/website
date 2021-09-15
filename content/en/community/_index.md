@@ -4,35 +4,28 @@ description: Welcome to the etcd user and developer community page
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
-      <a href="https://groups.google.com/forum/?hl=en#!forum/etcd-dev" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Group</a>
+      [<i class="fab fa-google"></i>Google Group][etcd-dev]
     desc: >
       Join the [etcd-dev][] forum to ask questions and get the latest etcd news.
   - title: >
-      <a href="https://twitter.com/etcdio" target="_blank" rel="noopener"><i class="fab
-      fa-twitter"></i>&nbsp;Twitter</a>
+      [<i class="fab fa-twitter"></i>Twitter][@etcdio]
     desc: >
       Follow us at [@etcdio][] for real-time announcements, blogs posts, and more.
   - title: >
-      <a href="https://stackoverflow.com/questions/tagged/etcd"
-        target="_blank" rel="noopener"><i class="fab
-        fa-stack-overflow"></i>&nbsp;Stack Overflow</a>
+      [<i class="fab fa-stack-overflow"></i>Stack Overflow][SO]
     desc: >
       Ask and find answers to your etcd technical questions.
 community_resources:
   - title: >
-      <a href="https://meet.google.com/umg-nrxn-qvs" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Meet</a>
+      [<i class="fab fa-google"></i>Google Meet][online]
     desc: >
       Join contributors and maintainers [online][], every four weeks.
   - title: >
-      <a href="https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM"
-        target="_blank" rel="noopener"><i class="fas
-        fa-file-alt"></i>&nbsp;Meeting doc</a>
+      [<i class="fas fa-file-alt"></i>Meeting doc][meeting-doc]
     desc: >
       For meeting details, consult the [etcd community meeting][meeting-doc] document.
   - title: >
-      <a href="https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg"
-        target="_blank" rel="noopener"><i class="fab
-        fa-youtube"></i>&nbsp;YouTube</a>
+      [<i class="fab fa-youtube"></i>YouTube][etcd-youtube]
     desc: >
       Missed a meeting? No problem. See the [etcd channel][etcd-youtube] for
       meeting videos.
@@ -54,9 +47,8 @@ menu:
 <div class="col-12 col-lg-8">
 
 {{% alert color="success" %}}
-  <i class='fas fa-users'></i>
-  Our community values respect and inclusiveness. We enforce our [Code of
-  Conduct][] in all interactions.
+  <i class='fas fa-users mr-1'></i> Our community values respect and
+  inclusiveness. We enforce our [Code of Conduct][] in all interactions.
 
   [Code of Conduct]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
 {{% /alert %}}
@@ -109,3 +101,4 @@ Our dedicated community has created the following resource:
 [meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
 [online]: https://meet.google.com/umg-nrxn-qvs
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
+[SO]: https://stackoverflow.com/questions/tagged/etcd
