@@ -88,6 +88,7 @@ Learn about more ways to configure and use etcd from the following pages:
 - Set up a [multi-machine cluster][clustering].
 - Learn how to [configure][] etcd.
 - Learn how to get started with [etcdctl][].
+- Learn how to use [etcdutl][].
 - Find [language bindings and tools][integrations].
 - Use TLS to [secure an etcd cluster][security].
 - [Tune etcd][tuning].
@@ -96,6 +97,7 @@ Learn about more ways to configure and use etcd from the following pages:
 [clustering]: /docs/{{< param version >}}/op-guide/clustering
 [configure]: /docs/{{< param version >}}/op-guide/configuration
 [etcdctl]: /docs/{{< param version >}}/getting-started-with-etcdctl
+[etcdutl]: /docs/{{< param version >}}/getting-started-with-etcdutl
 [integrations]: /docs/{{< param version >}}/integrations
 [security]: /docs/{{< param version >}}/op-guide/security
 [tuning]: /docs/{{< param version >}}/tuning
