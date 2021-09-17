@@ -94,3 +94,7 @@ While using an ASG to scale the size of an etcd cluster is not recommended, an A
 
 The operational life cycle of an etcd cluster can be greatly simplified through the use of the etcd-operator. The open source etcd operator is a Kubernetes control plane operator which deploys and manages etcd clusters atop Kubernetes. While still in its early stages the etcd-operator already offers periodic backups to S3, detection and replacement of failed nodes, and automated disaster recovery from backups in the event of permanent quorum loss.
 
+
+## **Note** 
+
+This blog post is an adaptation from a page in the documentation which described etcd deployments on various platform services. The original page in the documention was authored by **Caleb Miles**. As this article is more about etcd deployment on various platforms and not really about the core etcd concepts, hence maintainers of this website found it most suitable to remove this page from the actual documentation and put it in as a blog post.
