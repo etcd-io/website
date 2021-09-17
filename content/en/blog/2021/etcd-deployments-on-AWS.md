@@ -97,4 +97,4 @@ The operational life cycle of an etcd cluster can be greatly simplified through 
 
 ## **Note** 
 
-This blog post is an adaptation from a page in the documentation which described etcd deployments on various platform services. The original page in the documention was authored by **Caleb Miles**. As this article is more about etcd deployment on AWS and not really about the core etcd concepts, hence maintainers of this website found it most suitable to remove this page from the actual documentation and put it in as a blog post.
+This blog post is an adaptation from a page in the documentation, previously under [Platforms](../../../docs/v3.5/platforms/), which describes etcd deployments on various platform services. The original page in the documention was authored by **Caleb Miles**. As this article is more about etcd deployment on AWS and not really about the core etcd concepts, hence maintainers of this website found it most suitable to remove this page from the actual documentation and put it in as a blog post.
