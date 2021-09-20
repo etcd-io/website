@@ -16,9 +16,9 @@ cluster of etcd:
 
  2. Launch `etcd`:
 
-    ```
+    ```console
     $ etcd
-    {"level":"info","ts":"2021-09-17T09:19:32.783-0400","caller":"etcdmain/etcd.go:72","msg":"Running: ","args":["etcd"]}
+    {"level":"info","ts":"2021-09-17T09:19:32.783-0400","caller":"etcdmain/etcd.go:72","msg":... }
     ⋮
     ```
 
@@ -28,14 +28,14 @@ cluster of etcd:
 
  3. From **another terminal**, use `etcdctl` to set a key:
 
-    ```
+    ```console
     $ etcdctl put greeting "Hello, etcd"
     OK
     ```
 
  4. From the same terminal, retrieve the key:
 
-    ```
+    ```console
     $ etcdctl get greeting
     greeting
     Hello, etcd
