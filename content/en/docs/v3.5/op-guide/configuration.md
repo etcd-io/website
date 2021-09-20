@@ -1,7 +1,7 @@
 ---
 title: Configuration flags
 weight: 4050
-description: "etcd configuration: files, flags, and environment variables"
+description: etcd configuration files, flags, and environment variables
 ---
 
 You can configure etcd through the following:
