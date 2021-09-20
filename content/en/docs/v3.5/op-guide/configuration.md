@@ -13,8 +13,8 @@ You can configure etcd through the following:
 - **[Configuration file](#configuration-file)**
 
 {{% alert color="warning" %}}
-<i class="fas fa-exclamation-triangle mr-1"></i> If you mix-and-match configuration options, then the following
-rules apply:
+<i class="fas fa-exclamation-triangle mr-1"></i> **Caution**: If you mix-and-match configuration options, then the following
+rules apply.
 
 - Command-line flags take precedence over environment variables.
 - If you provide a _configuration file_ all command-line flags and environment variables are **ignored**.
