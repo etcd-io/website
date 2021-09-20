@@ -250,7 +250,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 --experimental-watch-progress-notify-interval '10m'
   Duration of periodical watch progress notification.
 --experimental-warning-apply-duration '100ms'
-Warning is generated if requests take more than this duration.
+  Warning is generated if requests take more than this duration.
 --experimental-txn-mode-write-with-shared-buffer 'true'
   Enable the write transaction to use a shared buffer in its readonly check operations.
 --experimental-bootstrap-defrag-threshold-megabytes
