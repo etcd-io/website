@@ -24,6 +24,13 @@ rules apply.
 
 Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 
+{{% alert color="info" %}}
+  **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
+  see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
+
+  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG-{{< psubstr version 1 >}}.md
+{{% /alert %}}
+
 ### Member
 
 ```nocode
