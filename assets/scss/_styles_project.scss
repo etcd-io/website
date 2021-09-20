@@ -209,12 +209,12 @@
 
 .td-content a[href^="http://"]:after, 
 .td-content a[href^="https://"]:after {
-  font-family: 'Font Awesome\ 5 Free';  
-  content: "\f35d";
-  position: relative;
-  bottom: 1px;
-  padding: 0 3px;
-  font-size: .7rem;
+  @extend .fas;
+  font-size: 50%;
+  margin-left: 1px;
+  opacity: 0.8;
+  vertical-align: text-top;
+  content: fa-content($fa-var-external-link-alt);
 }
 
 .card-title {
