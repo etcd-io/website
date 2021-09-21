@@ -158,6 +158,11 @@
   padding-top: 4.75rem;
 }
 
+.td-sidebar-nav__section {
+  .ul-1 ul { padding-left: 1rem; }
+  .ul-2 { padding-left: 0 !important; }
+}
+
 // Custom in-page toc. Apply this class as a modifier on top of the Docsy-provided .td-toc
 .td-toc--inline {
   padding-top: 0;
