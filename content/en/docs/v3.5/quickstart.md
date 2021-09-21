@@ -4,81 +4,42 @@ weight: 900
 description: Get etcd up and running in less than 5 minutes!
 ---
 
-Follow the instructions below to locally install, run, and test a simple
-single-member cluster of etcd.
+Follow these instructions to locally install, run, and test a single-member
+cluster of etcd:
 
-## Install etcd
+ 1. Install etcd from pre-built binaries or from source. For details, see
+    [Install][].
 
-To help with the commands that follow, set these environment variables:
+    {{% alert color="warning" %}}**Important**: Ensure that you perform the last
+    step of the installation instructions to verify that `etcd` is in your path.
+    {{% /alert %}}
 
-```
-ETCD_VER={{< param git_version_tag >}}
-ETCD_BIN=/tmp/test-etcd
+ 2. Launch `etcd`:
 
-GOOGLE_URL=https://storage.googleapis.com/etcd
-GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
-```
+    ```console
+    $ etcd
+    {"level":"info","ts":"2021-09-17T09:19:32.783-0400","caller":"etcdmain/etcd.go:72","msg":... }
+    ⋮
+    ```
 
-Download and install etcd from pre-built binaries:
+    {{% alert color="info" %}}**Note**: The output produced by `etcd` are
+    [logs](../op-guide/configuration/#logging-flags) &mdash; info-level logs can
+    be ignored. {{% /alert %}}
 
-On Linux
+ 3. From **another terminal**, use `etcdctl` to set a key:
 
-```
-DOWNLOAD_URL=${GITHUB_URL}
+    ```console
+    $ etcdctl put greeting "Hello, etcd"
+    OK
+    ```
 
-rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
-rm -rf $ETCD_BIN
-mkdir -p $ETCD_BIN
+ 4. From the same terminal, retrieve the key:
 
-curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
-
-tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C $ETCD_BIN --strip-components=1
-```
-
-On macOS
-
-```
-DOWNLOAD_URL=${GOOGLE_URL}
-
-rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
-rm -rf /tmp/etcd-${ETCD_VER}-darwin-amd64
-rm -rf $ETCD_BIN
-mkdir -p $ETCD_BIN
-
-curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
-
-unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp
-ln -s /tmp/etcd-${ETCD_VER}-darwin-amd64/* $ETCD_BIN
-```
-
-{{% alert title="Note" color="info" %}}
-To work with the latest version, learn how to [build from the main branch](/docs/{{< param version >}}/install/#build-from-source).
-{{% /alert %}}
-
-## Launch etcd
-
-```
-$ $ETCD_BIN/etcd
-{"level":"warn","ts":"2021-05-12T11:03:01.247-0700","caller":"etcdmain/etcd.go:119","msg":"'data-dir' was empty; using default","data-dir":"default.etcd"}
-⋮
-```
-
-## Set and get a key
-
-From another terminal, use etcdctl to set a key:
-
-```
-$ $ETCD_BIN/etcdctl put greeting "Hello, etcd"
-OK
-```
-
-Now that a key has been set, retrieve it:
-
-```
-$ $ETCD_BIN/etcdctl get greeting
-greeting
-Hello, etcd
-```
+    ```console
+    $ etcdctl get greeting
+    greeting
+    Hello, etcd
+    ```
 
 ## What's next?
 
@@ -97,4 +58,4 @@ Learn about more ways to configure and use etcd from the following pages:
 [integrations]: /docs/{{< param version >}}/integrations
 [security]: /docs/{{< param version >}}/op-guide/security
 [tuning]: /docs/{{< param version >}}/tuning
-
+[Install]: ../install/
