@@ -216,3 +216,7 @@
   padding: 0 3px;
   font-size: .7rem;
 }
+
+.card-title {
+  .fab::before, .fas::before { margin-right: .5rem; }
+}
