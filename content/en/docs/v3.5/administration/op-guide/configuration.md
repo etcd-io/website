@@ -472,4 +472,4 @@ a private certificate authority using `--peer-cert-file`, `--peer-key-file`, `--
 [security]: ../security/
 [static bootstrap]: ../clustering/#static
 [systemd-intro]: http://freedesktop.org/wiki/Software/systemd/
-[tuning]: ../../tuning/#time-parameters
+[tuning]: ../../../tuning/#time-parameters

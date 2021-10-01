@@ -157,19 +157,19 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 
 [api-mvcc]: ../learning/api/#revisions
 [backend_commit_metrics]: ../metrics/#disk
-[backup]: ../op-guide/recovery/#snapshotting-the-keyspace
+[backup]: ../administration/op-guide/recovery/#snapshotting-the-keyspace
 [benchmark]: https://github.com/etcd-io/etcd/tree/master/tools/benchmark
-[benchmark-result]: ../op-guide/performance/
+[benchmark-result]: ../administration/op-guide/performance/
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
 [fio]: https://github.com/axboe/fio
 [fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
-[hardware-setup]: ../op-guide/hardware/
-[maintenance-compact]:  ../op-guide/maintenance/#history-compaction-v3-api-key-value-database
-[maintenance-defragment]: ../op-guide/maintenance/#defragmentation
+[hardware-setup]: ../administration/op-guide/hardware/
+[maintenance-compact]:  ../administration/op-guide/maintenance/#history-compaction-v3-api-key-value-database
+[maintenance-defragment]: ../administration/op-guide/maintenance/#defragmentation
 [maintenance-disarm]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#alarm-disarm
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
 [raft]: https://raft.github.io/raft.pdf
-[runtime reconfiguration]: ../op-guide/runtime-configuration/
-[supported-platform]: ../op-guide/supported-platform/
+[runtime reconfiguration]: ../administration/op-guide/runtime-configuration/
+[supported-platform]: ../administration/op-guide/supported-platform/
 [tuning]: ../tuning/
 [wal_fsync_duration_seconds]: ../metrics/#disk

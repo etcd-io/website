@@ -489,7 +489,7 @@ To setup an etcd cluster with proxies of v2 API, please read the the [clustering
 [clustering_etcd2]: https://github.com/etcd-io/etcd/blob/release-2.3/Documentation/clustering.md
 [conf-adv-client]: ../configuration/#--advertise-client-urls
 [conf-listen-client]: ../configuration/#--listen-client-urls
-[discovery-proto]: ../../dev-internal/discovery_protocol/
+[discovery-proto]: ../../../dev-internal/discovery_protocol/
 [gateway]: ../gateway/
 [proxy]: https://github.com/etcd-io/etcd/blob/release-2.3/Documentation/proxy.md
 [rfc-srv]: http://www.ietf.org/rfc/rfc2052.txt

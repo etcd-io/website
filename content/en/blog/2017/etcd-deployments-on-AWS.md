@@ -34,14 +34,14 @@ The most direct way to increase throughput and decrease latency of an etcd clust
 In this scenario, it is impossible to temporarily divert incoming requests to the cluster, though scaling the EC2 instances which comprise the etcd cluster members one at a time may improve performance.
 It is, however, best to avoid bottlenecks through capacity planning.
 
-The etcd team has produced a [hardware recommendation guide](../../../docs/v3.5/op-guide/hardware/) which is very useful for "ballparking" how many nodes and what instance type are necessary for a cluster.
+The etcd team has produced a [hardware recommendation guide](../../../docs/v3.5/administration/op-guide/hardware/) which is very useful for "ballparking" how many nodes and what instance type are necessary for a cluster.
 
 AWS provides a service for creating groups of EC2 instances which are dynamically sized to match load on the instances.
 Using an Auto Scaling Group ([ASG](http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html)) to dynamically scale an etcd cluster, is not recommended for several reasons including the following:
 
 * etcd performance is generally inversely proportional to the number of members in a cluster due to the synchronous replication which provides strong consistency of data stored in etcd.
 
-* The operational complexity of adding [lifecycle hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html) to properly add and remove members from an etcd cluster by modifying the [runtime configuration](../../../docs/v3.5/op-guide/runtime-configuration/).
+* The operational complexity of adding [lifecycle hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html) to properly add and remove members from an etcd cluster by modifying the [runtime configuration](../../../docs/v3.5/administration/op-guide/runtime-configuration/).
 
 Auto Scaling Groups do provide a number of benefits besides cluster scaling which include:
 
@@ -95,7 +95,7 @@ The life cycle of an EBS volume is not necessarily tied to an EC2 instance and c
 
 ## Performance/Throughput
 
-The performance of an etcd cluster is roughly quantifiable through latency and throughput metrics which are primarily affected by disk and network performance. Detailed performance planning information is provided in the [performance section](../../../docs/v3.5/op-guide/performance/) of the etcd operations guide.
+The performance of an etcd cluster is roughly quantifiable through latency and throughput metrics which are primarily affected by disk and network performance. Detailed performance planning information is provided in the [performance section](../../../docs/v3.5/administration/op-guide/performance/) of the etcd operations guide.
 
 ## Network
 

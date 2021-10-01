@@ -23,7 +23,7 @@ cluster of etcd:
     ```
 
     {{% alert color="info" %}}**Note**: The output produced by `etcd` are
-    [logs](../op-guide/configuration/#logging-flags) &mdash; info-level logs can
+    [logs](../administration/op-guide/configuration/#logging-flags) &mdash; info-level logs can
     be ignored. {{% /alert %}}
 
  3. From **another terminal**, use `etcdctl` to set a key:
@@ -53,9 +53,9 @@ Learn about more ways to configure and use etcd from the following pages:
 - [Tune etcd][tuning].
 
 [api]: /docs/{{< param version >}}/learning/api
-[clustering]: /docs/{{< param version >}}/op-guide/clustering
-[configure]: /docs/{{< param version >}}/op-guide/configuration
+[clustering]: /docs/{{< param version >}}/administration/op-guide/clustering
+[configure]: /docs/{{< param version >}}/administration/op-guide/configuration
 [integrations]: /docs/{{< param version >}}/integrations
-[security]: /docs/{{< param version >}}/op-guide/security
+[security]: /docs/{{< param version >}}/administration/op-guide/security
 [tuning]: /docs/{{< param version >}}/tuning
 [Install]: ../install/
