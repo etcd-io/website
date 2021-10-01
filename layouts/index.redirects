@@ -2,6 +2,12 @@
 /docs/latest     /docs/{{ $latest }}/
 /docs/latest/*     /docs/{{ $latest }}/:splat
 
+/docs/v3.5/op-guide    /docs/v3.5/administration/op-guide/
+/docs/v3.5/op-guide/*    /docs/v3.5/administration/op-guide/:splat
+/docs/v3.5/upgrades    /docs/v3.5/administration/upgrades/
+/docs/v3.5/upgrades/*    /docs/v3.5/administration/upgrades/:splat
+/docs/v3.5/benchmarks    /docs/v3.5/administration/benchmarks/
+/docs/v3.5/benchmarks/*    /docs/v3.5/administration/benchmarks/:splat   
 /docs/v3.4.0/branch-management    /docs/v3.4.0/branch_management/
 docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 
