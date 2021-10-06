@@ -1,8 +1,14 @@
 ---
 title: Container Linux with systemd
-author: Gyuho Lee
-date: 
+date: 2017-05-23
 description: etcd deployments with systemd under Container Linux
+---
+
+---
+
+_This is an adaptation of a page previously found in the Platforms section of the documentation which described etcd deployments on various platform services.
+The original page was authored by [**Gyuho Lee**](https://github.com/etcd-io/etcd/commits/8b290c680a5d4b4067c4d91b33f70c5506f654f0/Documentation/platforms/container-linux-systemd.md)._
+
 ---
 
 The following blog post shows how to run etcd with [systemd][systemd-docs] under [Container Linux][container-linux-docs].
@@ -207,6 +213,6 @@ systemctl disable --now etcd2.service
 [container-linux-provision]: https://github.com/coreos/docs/blob/master/os/provisioning.md
 [systemd-docs]: https://github.com/systemd/systemd
 
-## **Note**: 
+## **Note**:
 
 This post is an adaption of a page previously found in the Platforms section of the documentation which described etcd deployments on various platform services. The original page was authored by [**Gyuho Lee**](https://github.com/etcd-io/etcd/commits/8b290c680a5d4b4067c4d91b33f70c5506f654f0/Documentation/platforms/container-linux-systemd.md). As this page is more about deploying and running etcd on Container Linux than core etcd concepts, the etcd maintainers suggested removing the page from the documentation and converting it to this blog post.
