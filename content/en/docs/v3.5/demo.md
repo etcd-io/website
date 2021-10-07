@@ -140,21 +140,6 @@ etcdctl --endpoints=$ENDPOINTS put web3 value3
 etcdctl --endpoints=$ENDPOINTS get web --prefix
 ```
 
-
-## Delete
-
-![04_etcdctl_delete_2016050601](https://storage.googleapis.com/etcd/demo/04_etcdctl_delete_2016050601.gif)
-
-```shell
-etcdctl --endpoints=$ENDPOINTS put key myvalue
-etcdctl --endpoints=$ENDPOINTS del key
-
-etcdctl --endpoints=$ENDPOINTS put k1 value1
-etcdctl --endpoints=$ENDPOINTS put k2 value2
-etcdctl --endpoints=$ENDPOINTS del k --prefix
-```
-
-
 ## Transactional write
 
 `txn` to wrap multiple requests into one transaction:
