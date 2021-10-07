@@ -1,8 +1,14 @@
 ---
 title: FreeBSD
-author: Bartłomiej Rutkowski, Somoshree Datta
-date: 2021-09-05
+date: 2014-01-23
 description: etcd deployments using FreeBSD
+---
+
+---
+
+_This is an adaptation of a page previously found in the Platforms section of the documentation which described etcd deployments on various platform services.
+The original page was authored by [**Bartłomiej Rutkowski** and others](https://github.com/etcd-io/etcd/commits/6c08437ec330f84f78a59f7772884c7ef5374247/Documentation/platforms/freebsd.md)._
+
 ---
 
 Starting with version 0.1.2 both etcd and etcdctl have been ported to FreeBSD and can be installed either via packages or ports system. Their versions have been recently updated to 0.2.0 so now etcd and etcdctl can be enjoyed on FreeBSD 10.0 (RC4 as of now) and 9.x, where they have been tested. They might also work when installed from ports on earlier versions of FreeBSD, but it is untested; caveat emptor.
@@ -27,7 +33,7 @@ r@fbsd­10:/ #
 ```
 
 5. etcd and etcdctl are ready to use! For more information about using pkgng, please see: http://www.freebsd.org/doc/handbook/pkgng­intro.html
- 
+
 ### Using ports system
 
 1. If ports is not installed, install with `portsnap fetch extract` (it may take some time depending on hardware and network connection).
@@ -37,7 +43,7 @@ r@fbsd­10:/ #
 3. If etcd wasn't installed with etcdctl, it can be built later with `cd /usr/ports/devel/etcdctl && make install clean`.
 
 4. Verify successful installation by confirming `pkg info | grep etcd` matches:
- 
+
 
 ```
 r@fbsd­10:/ # pkg info | grep etcd
