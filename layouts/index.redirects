@@ -10,7 +10,7 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 
 /docs/next    /docs/v3.5/
 /docs/next/*    /docs/v3.5/:splat
-/docs/v3.5/platforms/container-linux-systemd/	/blog/2021/etcd-container-linux-with-systemd/
+/docs/v3.5/platforms/container-linux-systemd/	/blog/2014/etcd-container-linux-with-systemd/
 /docs/v2    /docs/v2.3/
 /docs/v2/*    /docs/v2.3/:splat
 /docs/v3.1.12    /docs/v3.1/
