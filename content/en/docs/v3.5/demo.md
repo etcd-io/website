@@ -128,19 +128,6 @@ etcdctl --endpoints=$ENDPOINTS --write-out="json" get foo
 ```
 
 
-## Get by prefix
-
-![03_etcdctl_get_by_prefix_2016050501](https://storage.googleapis.com/etcd/demo/03_etcdctl_get_by_prefix_2016050501.gif)
-
-```shell
-etcdctl --endpoints=$ENDPOINTS put web1 value1
-etcdctl --endpoints=$ENDPOINTS put web2 value2
-etcdctl --endpoints=$ENDPOINTS put web3 value3
-
-etcdctl --endpoints=$ENDPOINTS get web --prefix
-```
-
-
 ## Delete
 
 ![04_etcdctl_delete_2016050601](https://storage.googleapis.com/etcd/demo/04_etcdctl_delete_2016050601.gif)
