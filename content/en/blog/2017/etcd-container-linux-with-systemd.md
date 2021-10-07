@@ -212,7 +212,3 @@ systemctl disable --now etcd2.service
 [container-linux-ignition]: https://github.com/coreos/docs/blob/master/ignition/what-is-ignition.md
 [container-linux-provision]: https://github.com/coreos/docs/blob/master/os/provisioning.md
 [systemd-docs]: https://github.com/systemd/systemd
-
-## **Note**:
-
-This post is an adaption of a page previously found in the Platforms section of the documentation which described etcd deployments on various platform services. The original page was authored by [**Gyuho Lee**](https://github.com/etcd-io/etcd/commits/8b290c680a5d4b4067c4d91b33f70c5506f654f0/Documentation/platforms/container-linux-systemd.md). As this page is more about deploying and running etcd on Container Linux than core etcd concepts, the etcd maintainers suggested removing the page from the documentation and converting it to this blog post.
