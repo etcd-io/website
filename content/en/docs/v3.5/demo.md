@@ -226,21 +226,6 @@ etcdctl --endpoints=$ENDPOINTS lock mutex1
 etcdctl --endpoints=$ENDPOINTS lock mutex1
 ```
 
-
-## Elections
-
-`elect` for leader election:
-
-![09_etcdctl_elect_2016050501](https://storage.googleapis.com/etcd/demo/09_etcdctl_elect_2016050501.gif)
-
-```shell
-etcdctl --endpoints=$ENDPOINTS elect one p1
-
-# another client with the same name blocks
-etcdctl --endpoints=$ENDPOINTS elect one p2
-```
-
-
 ## Cluster status
 
 Specify the initial cluster configuration for each machine:
