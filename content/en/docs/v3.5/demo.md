@@ -110,24 +110,6 @@ etcdctl --endpoints=$ENDPOINTS member list
 ```
 
 
-## Access etcd
-
-![02_etcdctl_access_etcd_2016051001](https://storage.googleapis.com/etcd/demo/02_etcdctl_access_etcd_2016051001.gif)
-
-`put` command to write:
-
-```shell
-etcdctl --endpoints=$ENDPOINTS put foo "Hello World!"
-```
-
-`get` to read from etcd:
-
-```shell
-etcdctl --endpoints=$ENDPOINTS get foo
-etcdctl --endpoints=$ENDPOINTS --write-out="json" get foo
-```
-
-
 ## Get by prefix
 
 ![03_etcdctl_get_by_prefix_2016050501](https://storage.googleapis.com/etcd/demo/03_etcdctl_get_by_prefix_2016050501.gif)
