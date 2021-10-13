@@ -10,8 +10,10 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 
 /docs/next    /docs/v3.5/
 /docs/next/*    /docs/v3.5/:splat
-/docs/v3.5/platforms/aws/	/blog/2017/etcd-deployments-on-aws/
 
+/docs/v3.5/platforms/container-linux-systemd/    /blog/2017/etcd-container-linux-with-systemd/
+/docs/v3.5/platforms/freebsd/    /blog/2014/etcd-freebsd/
+/docs/v3.5/platforms/aws/    /blog/2017/etcd-deployments-on-aws/
 /docs/v2    /docs/v2.3/
 /docs/v2/*    /docs/v2.3/:splat
 /docs/v3.1.12    /docs/v3.1/
@@ -39,4 +41,3 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/v3.3/dl_build  /docs/v3.3/install/
 /docs/v3.2/dl_build  /docs/v3.2/install/
 /docs/v3.1/dl_build  /docs/v3.1/install/
-
