@@ -140,37 +140,6 @@ etcdctl --endpoints=$ENDPOINTS put web3 value3
 etcdctl --endpoints=$ENDPOINTS get web --prefix
 ```
 
-
-## Delete
-
-![04_etcdctl_delete_2016050601](https://storage.googleapis.com/etcd/demo/04_etcdctl_delete_2016050601.gif)
-
-```shell
-etcdctl --endpoints=$ENDPOINTS put key myvalue
-etcdctl --endpoints=$ENDPOINTS del key
-
-etcdctl --endpoints=$ENDPOINTS put k1 value1
-etcdctl --endpoints=$ENDPOINTS put k2 value2
-etcdctl --endpoints=$ENDPOINTS del k --prefix
-```
-
-
-## Watch
-
-`watch` to get notified of future changes:
-
-![06_etcdctl_watch_2016050501](https://storage.googleapis.com/etcd/demo/06_etcdctl_watch_2016050501.gif)
-
-```shell
-etcdctl --endpoints=$ENDPOINTS watch stock1
-etcdctl --endpoints=$ENDPOINTS put stock1 1000
-
-etcdctl --endpoints=$ENDPOINTS watch stock --prefix
-etcdctl --endpoints=$ENDPOINTS put stock1 10
-etcdctl --endpoints=$ENDPOINTS put stock2 20
-```
-
-
 ## Lease
 
 `lease` to write with TTL:
