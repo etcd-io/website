@@ -142,20 +142,6 @@ etcdctl --endpoints=$ENDPOINTS lease revoke 2be7547fbc6a5afa
 etcdctl --endpoints=$ENDPOINTS get sample
 ```
 
-
-## Distributed locks
-
-`lock` for distributed lock:
-
-![08_etcdctl_lock_2016050501](https://storage.googleapis.com/etcd/demo/08_etcdctl_lock_2016050501.gif)
-
-```shell
-etcdctl --endpoints=$ENDPOINTS lock mutex1
-
-# another client with the same name blocks
-etcdctl --endpoints=$ENDPOINTS lock mutex1
-```
-
 ## Cluster status
 
 Specify the initial cluster configuration for each machine:
