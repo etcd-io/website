@@ -1,6 +1,7 @@
 ---
 title: How to conduct leader election in etcd cluster
 description: Guide to conducting leader election in an etcd cluster
+weight: 900
 ---
 
 `elect` for leader election:

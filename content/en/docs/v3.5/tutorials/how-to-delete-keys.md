@@ -1,6 +1,7 @@
 ---
 title: How to delete keys
 description: Describes a way to delete etcd keys
+weight: 400
 ---
 
 ![04_etcdctl_delete_2016050601](https://storage.googleapis.com/etcd/demo/04_etcdctl_delete_2016050601.gif)

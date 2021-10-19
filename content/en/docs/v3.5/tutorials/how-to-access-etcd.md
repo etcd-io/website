@@ -1,6 +1,7 @@
 ---
 title: How to access etcd
 description: Guide to access an etcd cluster
+weight: 200
 ---
 
 
