@@ -1,6 +1,7 @@
 ---
 title: How to setup an etcd cluster
 description: Guide to setting up a cluster in etcd
+weight: 100
 ---
 
 ![01_etcd_clustering_2016050601](https://storage.googleapis.com/etcd/demo/01_etcd_clustering_2016051001.gif)
