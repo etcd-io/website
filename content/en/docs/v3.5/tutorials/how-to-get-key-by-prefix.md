@@ -1,6 +1,7 @@
 ---
 title: How to get keys by prefix
 description: Guide to extracting etcd keys by their prefix
+weight: 300
 ---
 
 ![03_etcdctl_get_by_prefix_2016050501](https://storage.googleapis.com/etcd/demo/03_etcdctl_get_by_prefix_2016050501.gif)
