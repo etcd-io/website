@@ -1,6 +1,6 @@
 ---
-title: How to migrate from Etcd2 to Etcd3
-description: Migration guide from Etcd2 to Etcd3
+title: How to migrate from etcd2 to etcd3
+description: Migration guide from etcd2 to etcd3
 ---
 
 
