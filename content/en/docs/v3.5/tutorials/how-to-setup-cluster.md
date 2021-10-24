@@ -1,5 +1,5 @@
 ---
-title: How to Set Up a Demo Etcd Cluster
+title: How to Set Up a Demo etcd Cluster
 description: Guide to setting up a cluster in etcd
 weight: 100
 ---
