@@ -1,6 +1,7 @@
 ---
 title: How to make multiple writes in a transaction
 description: Guide to making transactional writes
+weight: 500
 ---
 
 `txn` to wrap multiple requests into one transaction:

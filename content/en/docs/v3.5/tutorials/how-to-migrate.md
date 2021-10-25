@@ -1,6 +1,7 @@
 ---
 title: How to migrate from Etcd2 to Etcd3
 description: Migration guide from Etcd2 to Etcd3
+weight: 1200
 ---
 
 
