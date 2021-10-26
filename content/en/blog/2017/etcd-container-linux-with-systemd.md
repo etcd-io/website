@@ -1,10 +1,17 @@
 ---
 title: Container Linux with systemd
-weight: 7200
+date: 2017-05-23
 description: etcd deployments with systemd under Container Linux
 ---
 
-The following guide shows how to run etcd with [systemd][systemd-docs] under [Container Linux][container-linux-docs].
+---
+
+_This is an adaptation of a page previously found in the Platforms section of the documentation which described etcd deployments on various platform services.
+The original page was authored by [**Gyuho Lee**](https://github.com/etcd-io/etcd/commits/8b290c680a5d4b4067c4d91b33f70c5506f654f0/Documentation/platforms/container-linux-systemd.md)._
+
+---
+
+The following blog post shows how to run etcd with [systemd][systemd-docs] under [Container Linux][container-linux-docs].
 
 ## Provisioning an etcd cluster
 
