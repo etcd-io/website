@@ -71,14 +71,15 @@ source by following these steps:
 
 ## Installation via OS packages
 
-
+TBD---Help Wanted
 
 ## Installation as part of Kubernetes installation
 
+TBD---Help Wanted
 
 ## Installation on Kubernetes, using a statefulset or helm chart
 
-
+TBD---Help Wanted
 
 ## Installation check
 
