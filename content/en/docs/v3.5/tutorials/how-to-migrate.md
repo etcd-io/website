@@ -1,6 +1,6 @@
 ---
 title: How to migrate etcd from v2 to v3
-description: Migration guide for upgrading etcd from v2 to v3
+description: etcd v2 to v3 migration guide
 ---
 
 
