@@ -1,7 +1,7 @@
 # Commands to start on workspace startup
 tasks:
   - name: Dev Server
-    init: npm install
+    init: npm install --lts
     command: npm run serve
 
 # Ports to expose on workspace startup
