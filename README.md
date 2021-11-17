@@ -4,7 +4,7 @@ The [etcd.io][] website, built using [Hugo][] and hosted on [Netlify][].
 
 ## Cloud build
 
-Visit [https://gitpod.io/#https://github.com/etcd-io/website](https://gitpod.io/#https://github.com/etcd-io/website) to launch a [Gitpod.io](https://gitpod.io) IDE that will allow you to build, preview and make changes to this repo.
+Visit [here](https://gitpod.io/#https://github.com/etcd-io/website) to launch a [Gitpod.io](https://gitpod.io) IDE that will allow you to build, preview and make changes to this repo.
 
 ## Local build
 
