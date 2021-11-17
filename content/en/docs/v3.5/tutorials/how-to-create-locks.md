@@ -1,6 +1,7 @@
 ---
 title: How to create locks
 description: Guide to creating distributed locks in etcd
+weight: 800
 ---
 
 `lock` for distributed lock:

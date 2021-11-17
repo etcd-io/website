@@ -23,7 +23,7 @@ cluster of etcd:
     ```
 
     {{% alert color="info" %}}**Note**: The output produced by `etcd` are
-    [logs](../op-guide/configuration/#logging-flags) &mdash; info-level logs can
+    [logs](../op-guide/configuration/#logging) &mdash; info-level logs can
     be ignored. {{% /alert %}}
 
  3. From **another terminal**, use `etcdctl` to set a key:

@@ -1,6 +1,7 @@
 ---
 title: How to save the database
 description: Guide to taking a snapshot of the etcd database
+weight: 1100
 ---
 
 

@@ -1,0 +1,13 @@
+# Commands to start on workspace startup
+tasks:
+  - name: Dev Server
+    init: |
+      nvm install --lts
+      npm install
+    command: npm run serve
+
+# Ports to expose on workspace startup
+ports:
+  - port: 8888
+    onOpen: open-browser
+

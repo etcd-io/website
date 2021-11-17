@@ -1,13 +1,7 @@
 ---
-title: Demo
-weight: 1100
-description: Procedures for working with an etcd cluster
+title: Authentication
+description: Guide to authenticating an etcd cluster
 ---
-
-This series of examples shows the basic procedures for working with an etcd cluster.
-
-
-## Auth
 
 `auth`,`user`,`role` for authentication:
 
@@ -37,3 +31,6 @@ etcdctl --endpoints=${ENDPOINTS} --user=user0:123 get foo
 # user0 can read the key foo
 etcdctl --endpoints=${ENDPOINTS} --user=user0:123 get foo1
 ```
+
+### Note: 
+This is just a stub which needs to be filled and updated with more information on authentication. The text above is just a code example.

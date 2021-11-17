@@ -238,8 +238,8 @@ It is enabled by default.
 
 [add member]: #add-a-new-member
 [cluster-reconf]: #cluster-reconfiguration-operations
-[conf-adv-peer]: ../configuration#clustering-flags
-[conf-name]: ../configuration#member-flags
+[conf-adv-peer]: ../configuration#clustering
+[conf-name]: ../configuration#member
 [design-learner]: ../../learning/design-learner
 [disaster recovery]: ../recovery
 [error cases when promoting a member]: #error-cases-when-promoting-a-learner-member

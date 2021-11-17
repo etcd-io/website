@@ -1,6 +1,7 @@
 ---
 title: How to check Cluster status
 description: Guide to checking etcd cluster status
+weight: 1000
 ---
 
 

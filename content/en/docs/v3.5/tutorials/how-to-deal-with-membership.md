@@ -1,6 +1,7 @@
 ---
 title: How to Add and Remove Members
 description: Guide to dealing with membership in etcd cluster
+weight: 1300
 ---
 
 

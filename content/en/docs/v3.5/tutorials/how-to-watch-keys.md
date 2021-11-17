@@ -1,6 +1,7 @@
 ---
 title: How to watch keys
 description: Guide to watching etcd keys
+weight: 600
 ---
 
 
