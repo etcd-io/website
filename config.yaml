@@ -169,7 +169,7 @@ menu:
       url: /docs/latest/
       weight: -10
     - name: Blog
-      url: /blog/
+      pageref: /blog/
     - name: Install
       url: /docs/latest/install/
     - name: Play
