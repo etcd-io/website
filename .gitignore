@@ -3,6 +3,7 @@ node_modules/
 package-lock.json
 
 # Hugo-generated assets
+.hugo_build.lock
 /public
 resources/
 
