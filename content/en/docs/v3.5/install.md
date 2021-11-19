@@ -68,6 +68,19 @@ source by following these steps:
     ```sh
     $ etcd --version
     ```
+
+## Installation via OS packages
+
+TBD---Help Wanted
+
+## Installation as part of Kubernetes installation
+
+TBD---Help Wanted
+
+## Installation on Kubernetes, using a statefulset or helm chart
+
+TBD---Help Wanted
+
 ## Installation check
 
 For a slightly more involved sanity check of your installation, see
