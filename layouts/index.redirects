@@ -4,7 +4,7 @@
 
 /docs/v3.4.0/branch-management    /docs/v3.4.0/branch_management/
 docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
-
+/docs/v3.5/authentication    /docs/v3.5/op-guide/authentication/
 /docs/current     /docs/next/
 /docs/current/*     /docs/next/:splat
 

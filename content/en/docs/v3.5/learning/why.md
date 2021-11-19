@@ -117,7 +117,7 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [etcd-json]: ../../dev-guide/api_grpc_gateway/
 [etcd-linread]: ../api_guarantees/#isolation-level-and-consistency-of-replicas
 [etcd-mvcc]: ../data_model/
-[etcd-rbac]: ../../op-guide/authentication/#working-with-roles
+[etcd-rbac]: ../../op-guide/authentication/rbac
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/client/v3/experimental/recipes
 [etcd-reconfig]: ../../op-guide/runtime-configuration
 [etcd-txn]: ../api/#transaction
