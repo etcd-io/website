@@ -226,3 +226,56 @@
 .card-title {
   .fab::before, .fas::before { margin-right: .5rem; }
 }
+
+// ************************************
+
+// Styles for icon in version menu
+
+// ************************************
+
+// style options in Versions drop down on the upper right of the docs so that it's clear if a doc exists for a particular version as not all docs exist in all versions
+
+//  establish fontawesome on dropdown:after
+
+a.dropdown-item:after {
+
+  font-family: 'Font Awesome\ 5 Free';  
+  position: relative;
+  bottom: 1px;
+  padding: 0 3px;
+  font-size: .7rem;
+
+}
+
+// Document icon is from https://fontawesome.com/v5.15/icons/file-alt?style=solid and signifies a doc exists in a particular version
+
+a.dropdown-item[href*="/docs/"] {
+  
+  &:hover {
+    background: #a0d0ff linear-gradient(180deg, #1f6897, #1f6897) repeat-x;
+    color: #fff;
+  }
+  
+  &:after {
+    content: "\f15c";
+  }
+}
+
+// Remove the doc icon from the version numbers in the dropdown that don't have a corresponding doc. 
+// ~= means that the href value ends in the string specified. Maintainers will have to add new versions as they come out if there aren't docs for that version.
+a.dropdown-item[href~="/docs/v2.3/"], 
+a.dropdown-item[href~="/docs/v3.1/"], 
+a.dropdown-item[href~="/docs/v3.2/"], 
+a.dropdown-item[href~="/docs/v3.3/"], 
+a.dropdown-item[href~="/docs/v3.4/"],
+a.dropdown-item[href~="/docs/v3.5/"] {
+
+  &:hover {
+    background:#accff3 linear-gradient(180deg, #deeaf7, #e3ecf5) repeat-x;
+    color: #222;
+  }
+  
+  &:after {
+    content: "";
+  }
+}
