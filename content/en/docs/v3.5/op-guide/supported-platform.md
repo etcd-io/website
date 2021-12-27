@@ -31,6 +31,7 @@ etcd support tier:
 | ARM          | Linux            | 3            |                             |
 | 386          | Linux            | 3            |                             |
 | ppc64le      | Linux            | 3            | [@mkumatag][]               |
+| riscv64      | Linux            | 3            |                             | 
 
 Unlisted platforms are unsupported.
 
