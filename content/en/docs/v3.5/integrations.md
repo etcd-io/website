@@ -19,6 +19,7 @@ description: A listing of etcd tools and client libraries
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
 - [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free etcd 3.x GUI & client tool. Available for Windows, Linux and Mac.
 - [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) -  Utility to periodic and incrementally backup and restore the etcd.
+- [etcd-postgresql-sync](https://github.com/Jille/etcd-postgresql-sync) - Daemon that syncs etcd's KVs (and authentication config) to PostgreSQL.
 
 ## Libraries
 
@@ -30,6 +31,7 @@ The sections below list etcd client libraries by language.
 - [etcd/client/v2](https://github.com/etcd-io/etcd/tree/master/client/v2) - the officially maintained Go client for v2
 - [go-etcd](https://github.com/coreos/go-etcd) - the deprecated official client. May be useful for older (<2.0.0) versions of etcd.
 - [encWrapper](https://github.com/lumjjb/etcd/tree/enc_wrapper/clientwrap/encwrapper) - encWrapper is an encryption wrapper for the etcd client Keys API/KV.
+- [etcd-client-from-env](https://github.com/Jille/etcd-client-from-env) - Library that reads environment variables for connecting to an etcd cluster.
 
 ### Java
 
