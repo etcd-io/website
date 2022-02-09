@@ -71,7 +71,13 @@ source by following these steps:
 
 ## Installation via OS packages
 
-TBD---Help Wanted
+In case you're on Debian-based Linux distribution, such as Ubuntu 18.04: 
+
+ ```sh
+   sudo snap install etcd
+   sudo apt install etcd-server
+ ```
+
 
 ## Installation as part of Kubernetes installation
 
