@@ -2,7 +2,7 @@
 title: How to create lease
 description: Guide to creating a lease in etcd
 weight: 700
-----
+---
 
 `lease` to write with TTL:
 
