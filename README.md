@@ -55,7 +55,7 @@ $ make docker-serve
 We welcome issues and PRs! For details, see [Contributing][].
 
 If you submit a PR, Netlify will automatically create a [deploy preview][] so
-that you can view your changes. Once merged, Netlify automcatically deploys to
+that you can view your changes. Once merged, Netlify automatically deploys to
 the production site [etcd.io][].
 
 ## Releasing a new version of the etcd documentation
