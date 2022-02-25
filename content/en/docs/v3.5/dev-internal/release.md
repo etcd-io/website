@@ -114,7 +114,7 @@ The public key for GPG signing can be found at [CoreOS Application Signing Key](
 ```
 gcloud docker -- login -u _json_key -p "$(cat /etc/gcp-key-etcd.json)" https://gcr.io
 
-for TARGET_ARCH in "-arm64" "-ppc64le" ""; do
+for TARGET_ARCH in "-arm64" "-ppc64le" "-s390x" ""; do
   gcloud docker -- push gcr.io/etcd-development/etcd:${VERSION}${TARGET_ARCH}
 done
 ```
@@ -126,7 +126,7 @@ done
 - Build docker images with quay.io:
 
 ```
-for TARGET_ARCH in "amd64" "arm64" "ppc64le"; do
+for TARGET_ARCH in "amd64" "arm64" "ppc64le" "s390x"; do
   TAG=quay.io/coreos/etcd GOARCH=${TARGET_ARCH} \
     BINARYDIR=release/etcd-${VERSION}-linux-${TARGET_ARCH} \
     BUILDDIR=release \
@@ -139,7 +139,7 @@ done
 ```
 docker login quay.io
 
-for TARGET_ARCH in "-arm64" "-ppc64le" ""; do
+for TARGET_ARCH in "-arm64" "-ppc64le" "-s390x" ""; do
   docker push quay.io/coreos/etcd:${VERSION}${TARGET_ARCH}
 done
 ```
