@@ -13,7 +13,7 @@ The etcd project was created at CoreOS in 2013 and later joined the CNCF in 2018
 
 ## What is fuzzing?
 
-Fuzzing is a technique used to automate parts of the software testing process by way of a form of stress testing. The key idea is to write a fuzzing harness, which is similar in nature to a unit- or integration test, that will execute the application under test with some arbitrary input. The fuzzing engine that will run the fuzzing harness then uses genetic algorithms to extrapolate inputs that will cause the code under test to execute in a unique manner, i.e. generate inputs that trigger new code execution paths. The goal is then to observe if the code under test misbehaves in the event of any of the generated inputs. Fuzzing has been effective in uncovering reliability bugs and vulnerabilities in software for more than two decades, and open source software is increasingly adopting the technique. 
+Fuzzing is a technique used to automate parts of the software testing process by way of a form of stress testing. The key idea is to write a fuzzing harness similar to a unit—or integration—test that will execute the application under test with some arbitrary input. The fuzzing engine that will run the fuzzing harness then uses genetic algorithms to extrapolate inputs that will cause the code under test to execute uniquely, i.e., generate inputs that trigger new code execution paths. The goal is then to observe if the code under test misbehaves in the event of any of the generated inputs. Fuzzing has been effective in uncovering reliability bugs and vulnerabilities in software for more than two decades, and open source software is increasingly adopting the technique. 
 
 ## Etcd fuzzing overview
 
