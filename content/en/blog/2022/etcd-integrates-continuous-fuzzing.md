@@ -23,7 +23,7 @@ Etcd is written in the Go programming language which makes it safe from memory-c
 
 ![figure-1](../etcd-integrates-continuous-fuzzing/etcd-fuzzing-found-bugs.png "The fuzzing engagement found 2 nil-pointer dereference, 2 slice/index out of range, 2 panics from invalid utf-8 strings, and 2 type confusions.")
 
-At the end of this engagement the fuzzers provide significant coverage of the etcd project as a whole including critical parts such as the etcd server, WAL, the auth store and the raft package. 
+At the end of this engagement, the fuzzers provide significant coverage of the etcd project, including critical parts such as the etcd server, WAL, the auth store, and the raft package.
 During the engagement, Ada Logics found that only a few of the critical parts of etcd would be accessible with a byte slice or string but instead accepted complex types such as structs. An example of this is [the fuzzers for the etcd server](https://github.com/cncf/cncf-fuzzing/blob/main/projects/etcd/etcdserver_fuzzer.go), which configures and sets up an etcd server and then creates a series of pseudo-randomized structs representing different requests sent to the server. To write these fuzzers, Ada Logics used [go-fuzz-headers](https://github.com/AdaLogics/go-fuzz-headers) to deterministically create pseudo-random structs from the data provided by libFuzzer.
 
 ## Closing thoughts
