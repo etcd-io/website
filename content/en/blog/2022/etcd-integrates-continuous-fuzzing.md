@@ -17,7 +17,7 @@ Fuzzing is a technique used to automate parts of the software testing process by
 
 ## Etcd fuzzing overview
 
-In this engagement the goal was to write a set of fuzzers that would cover a lot of the etcd codebase and also integrate the setup into the open source fuzzing service OSS-Fuzz. OSS-Fuzz is a free service offered by Google for critical open source projects to run their fuzzers continuously and report any crashes. Continuous analysis is important due to fuzzing relying on genetic algorithms, which effectively means the fuzzers will improve over time, and OSS-Fuzz will run the fuzzers on a daily basis indefinitely. In addition to this, continuous analysis is crucial for capturing any regressions that may occur.
+In this engagement, the goal was to write a set of fuzzers that would cover a lot of the etcd codebase and integrate the setup into the open source fuzzing service OSS-Fuzz. OSS-Fuzz is a free service offered by Google for critical open source projects to run their fuzzers continuously and report any crashes. Continuous analysis is important due to fuzzing relying on genetic algorithms, which effectively means the fuzzers will improve over time, and OSS-Fuzz will run the fuzzers daily indefinitely. In addition to this, continuous analysis is crucial for capturing any regressions.
 
 Etcd is written in the Go programming language which makes it safe from memory-corruptions. Fuzzing Go will result in finding panics such as slice/index out of range, nil-pointer dereferences, invalid type assertions, timeouts, out of memory. At the end of this engagement a total of 8 issues were found of which all were fixed. They are broken down as such:
 
