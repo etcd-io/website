@@ -28,7 +28,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
 
-  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG-{{< psubstr version 1 >}}.md
+  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
 {{% /alert %}}
 
 ### Member
@@ -197,7 +197,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 --enable-log-rotation 'false'
   Enable log rotation of a single log-outputs file target.
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
-  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)". 
+  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
 ```
 ### Experimental distributed tracing
 
