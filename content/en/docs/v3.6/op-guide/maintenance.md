@@ -101,7 +101,7 @@ Finished defragmenting etcd member[http://127.0.0.1:32379]
 To defragment an etcd data directory directly, while etcd is not running, use the command:
 
 ``` sh
-$ etcdctl defrag --data-dir <path-to-etcd-data-dir>
+$ etcdutl defrag --data-dir <path-to-etcd-data-dir>
 ```
 
 ## Space quota
