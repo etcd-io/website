@@ -1514,7 +1514,7 @@
         "prev_kv": {
           "type": "boolean",
           "format": "boolean",
-          "description": "If prev_kv is set, etcd gets the previous key-value pairs before deleting it.\nThe previous key-value pairs will be returned in the delte response."
+          "description": "If prev_kv is set, etcd gets the previous key-value pairs before deleting it.\nThe previous key-value pairs will be returned in the delete response."
         },
         "range_end": {
           "type": "string",

@@ -145,7 +145,7 @@ To enable this experimental feature, pass the `--experimental-enable-distributed
 
 - `--experimental-distributed-tracing-service-name` - (Optional) - "etcd" - Distributed tracing service name, must be same across all etcd instances.
 
-- `--experimental-distributed-tracing-instance-id` - (Optional) - Instace ID, while optional it's strongly recommended to set, must be unique per etcd instance.
+- `--experimental-distributed-tracing-instance-id` - (Optional) - Instance ID, while optional it's strongly recommended to set, must be unique per etcd instance.
 
 Before enabling the distributed tracing, make sure to have the OpenTelemetry endpoint, if that address differs to the default one, override with the `--experimental-distributed-tracing-address` flag. Due to OpenTelemetry having different ways of running, refer to the [collector documentation](https://opentelemetry.io/docs/collector/getting-started/) to learn more.
 
