@@ -104,7 +104,7 @@ For distributed coordination, choosing etcd can help prevent operational headach
 [etcd-v3lock]: https://pkg.go.dev/github.com/etcd-io/etcd/etcdserver/api/v3lock/v3lockpb
 [etcd-watch]: ../api/#watch-streams
 [grpc]: http://www.grpc.io
-[kubernetes]: http://kubernetes.io/docs/whatisk8s
+[kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
 [locksmith]: https://github.com/coreos/locksmith
 [newsql-leader]: http://dl.acm.org/citation.cfm?id=2960999
 [production-users]: ../../production-users/

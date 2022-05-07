@@ -18,5 +18,5 @@ TODO
 
 [container-linux]: https://coreos.com/why
 [etcd-concurrency]: https://pkg.go.dev/github.com/etcd-io/etcd/clientv3/concurrency
-[kubernetes]: http://kubernetes.io/docs/whatisk8s
+[kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
 [locksmith]: https://github.com/coreos/locksmith
