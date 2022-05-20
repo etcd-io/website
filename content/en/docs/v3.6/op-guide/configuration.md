@@ -57,7 +57,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 --max-wals '5'
   Maximum number of wal files to retain (0 is unlimited).
 --quota-backend-bytes '0'
-  Raise alarms when backend size exceeds the given quota (0 defaults to low space quota).
+  Raise alarms when backend size exceeds the given quota (0 defaults to low space quota, which is 2GiB).
 --backend-bbolt-freelist-type 'map'
   BackendFreelistType specifies the type of freelist that boltdb backend uses(array and map are supported types).
 --backend-batch-interval ''
@@ -197,7 +197,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 --enable-log-rotation 'false'
   Enable log rotation of a single log-outputs file target.
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
-  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)". 
+  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
 ```
 ### Experimental distributed tracing
 

@@ -10,4 +10,4 @@ etcd is designed to handle small key value pairs typical for metadata. Larger re
 
 ## Storage size limit
 
-The default storage size limit is 2GB, configurable with `--quota-backend-bytes` flag. 8GB is a suggested maximum size for normal environments and etcd warns at startup if the configured value exceeds it.
+The default storage size limit is 2GiB, configurable with `--quota-backend-bytes` flag. 8GiB is a suggested maximum size for normal environments and etcd warns at startup if the configured value exceeds it.
