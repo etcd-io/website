@@ -194,11 +194,11 @@ etcd 3.5 improvements further increase transaction concurrency.
 
 1. etcd now caches the transaction buffer to avoid the unnecessary copy operations. This speeds up concurrent read transaction creation and as a result, the **transaction with a high read ratio has increased up to 2.4 times** (see *Figures 5* and *6*). See [wilsonwang371@ of ByteDance's code change and benchmark results](https://github.com/etcd-io/etcd/pull/12933).
 
-    ![figure-5](../announcing-etcd-3.5/figure-5.png "Diagrams of etcd transaction throughput that shows with the caching mechanism for read transations, the transaction throughput increases up to 1.4 times.")
+    ![figure-5](../announcing-etcd-3.5/figure-5.png "Diagrams of etcd transaction throughput that shows with the caching mechanism for read transactions, the transaction throughput increases up to 1.4 times.")
 
     _**Figure 5:** etcd transaction ratio with a high write ratio. The value at the top is the ratio of reads and writes. The first ratio, 0.125, is 1 read per 8 writes. The second ratio, 0.25, is 1 read per 4 writes. The value at the right bar represents the inverse ratio of transaction throughput before and after [etcd/pull/12933](https://github.com/etcd-io/etcd/pull/12933). With the caching mechanism for read transactions, the transaction throughput is increased up to 1.4 times._
 
-    ![figure-6](../announcing-etcd-3.5/figure-6.png "Diagrams of etcd transaction throughput that shows with the caching mechanism for read transations, the transaction throughput increases up to 2.5 times.")
+    ![figure-6](../announcing-etcd-3.5/figure-6.png "Diagrams of etcd transaction throughput that shows with the caching mechanism for read transactions, the transaction throughput increases up to 2.5 times.")
 
     _**Figure 6:** etcd transaction ratio with a high read ratio. The value at the top is the ratio of reads and writes. The first ratio, 4.0, is 4 reads per 1 write. The second ratio, 8.0, is 8 reads per 1 write. The value at the right bar represents the inverse ratio of transaction throughput before and after [etcd/pull/12933](https://github.com/etcd-io/etcd/pull/12933). With the caching mechanism for read transactions, the transaction throughput is increased up to 2.5 times._
 

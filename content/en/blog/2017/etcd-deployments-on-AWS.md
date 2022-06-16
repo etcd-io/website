@@ -19,7 +19,7 @@ Also, this post assumes operational knowledge of Amazon Web Services (AWS), spec
 * [Cluster Design](#cluster-design)
 * [Availability](#availability)
 * [Data durability after member failure](#data-durability-after-member-failure)
-* [Perfomance/Throughput](#performancethroughput)
+* [Performance/Throughput](#performancethroughput)
 * [Network](#network)
 * [Disk](#disk)
 * [Self-healing](#self-healing)

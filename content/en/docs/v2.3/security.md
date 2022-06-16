@@ -124,7 +124,7 @@ And also the response from the server:
 
 etcd supports the same model as above for **peer communication**, that means the communication between etcd members in a cluster.
 
-Assuming we have our `ca.crt` and two members with their own keypairs (`member1.crt` & `member1.key`, `member2.crt` & `member2.key`) signed by this CA, we launch etcd as follows:
+Assuming we have our `ca.crt` and two members with their own key pairs (`member1.crt` & `member1.key`, `member2.crt` & `member2.key`) signed by this CA, we launch etcd as follows:
 
 
 ```sh

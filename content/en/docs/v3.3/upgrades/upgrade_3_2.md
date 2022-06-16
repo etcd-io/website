@@ -212,7 +212,7 @@ clientv3yaml.NewConfig
 
 #### Change in `--listen-peer-urls` and `--listen-client-urls`
 
-3.2 now rejects domains names for `--listen-peer-urls` and `--listen-client-urls` (3.1 only prints out warnings), since domain name is invalid for network interface binding. Make sure that those URLs are properly formated as `scheme://IP:port`.
+3.2 now rejects domains names for `--listen-peer-urls` and `--listen-client-urls` (3.1 only prints out warnings), since domain name is invalid for network interface binding. Make sure that those URLs are properly formatted as `scheme://IP:port`.
 
 See [issue #6336](https://github.com/etcd-io/etcd/issues/6336) for more contexts.
 
