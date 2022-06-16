@@ -18,7 +18,7 @@ Highlighted breaking changes in 3.5.
 
 #### Deprecate `etcd_debugging_mvcc_db_total_size_in_bytes` Prometheus metrics
 
-v3.4 promoted `etcd_debugging_mvcc_db_total_size_in_bytes` Prometheus metrics to `etcd_mvcc_db_total_size_in_bytes`, in order to encourage etcd storage monitoring. And v3.5 completely deprcates `etcd_debugging_mvcc_db_total_size_in_bytes`.
+v3.4 promoted `etcd_debugging_mvcc_db_total_size_in_bytes` Prometheus metrics to `etcd_mvcc_db_total_size_in_bytes`, in order to encourage etcd storage monitoring. And v3.5 completely deprecates `etcd_debugging_mvcc_db_total_size_in_bytes`.
 
 ```diff
 -etcd_debugging_mvcc_db_total_size_in_bytes
