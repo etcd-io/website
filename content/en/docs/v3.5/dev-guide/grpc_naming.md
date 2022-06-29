@@ -72,8 +72,9 @@ ETCDCTL_API=3 etcdctl lease keep-alive $lease
 In the golang:
 
 ```go
+lease, _ := client.Grant(context.TODO(), ttl)
 em := endpoints.NewManager(client, "foo/bar/my-service")
-err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
+err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"}, clientv3.WithLease(lease.ID));
 ```
 
 ### Atomically updating endpoints
