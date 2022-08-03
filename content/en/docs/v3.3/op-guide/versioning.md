@@ -11,9 +11,9 @@ This document describes the versions supported by the etcd project.
 etcd versions are expressed as **x.y.z**, where **x** is the major version, **y** is the minor version, and **z** is the patch version, following [Semantic Versioning](https://semver.org/) terminology.
 New minor versions may add additional features to the API.
 
-The etcd project maintains release branches for the current version and two minor releases, 3.5, 3.4 and 3.3 currently.
+The etcd project maintains release branches for the current version and previous release. For example, when v3.5 is the current version, v3.4 is supported. When v3.6 is released, v3.4 goes out of support.
 
-Applicable fixes, including security fixes, may be backported to those three release branches, depending on severity and feasibility.
+Applicable fixes, including security fixes, may be backported to those two release branches, depending on severity and feasibility.
 Patch releases are cut from those branches when required.
 
 The project [Maintainers](https://github.com/etcd-io/etcd/blob/main/MAINTAINERS) own this decision.
