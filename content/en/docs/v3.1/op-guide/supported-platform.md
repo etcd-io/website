@@ -7,11 +7,11 @@ title: Supported platforms
 The following table lists etcd support status for common architectures and operating systems,
 
 | Architecture | Operating System | Status       | Maintainers      |
-| ------------ | ---------------- | ------------ | ---------------- |
+| ------------ | ---------------- | ------------ |------------------|
 | amd64        | Darwin           | Experimental | etcd maintainers |
 | amd64        | Linux            | Stable       | etcd maintainers |
 | amd64        | Windows          | Experimental |                  |
-| arm64        | Linux            | Experimental | @glevand         |
+| arm64        | Linux            | Experimental |                  |
 | arm          | Linux            | Unstable     |                  |
 | 386          | Linux            | Unstable     |                  |
 
