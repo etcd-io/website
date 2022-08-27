@@ -40,6 +40,12 @@ First, all members in the etcd cluster must converge to the same state. This can
 
 Second, migrate the v2 keys into v3 with the [migrate][migrate_command] (`ETCDCTL_API=3 etcdctl migrate`) command. The migrate command writes keys in the v2 store to a user-provided transformer program and reads back transformed keys. It then writes transformed keys into the mvcc store. This usually takes at most tens of seconds.
 
+{{% alert title="known issue" color="warning" %}}
+  The migrate command has a known issue that new members added after the migration do not receive existing data if no .snap file exists.
+  The workaround is to perform a snapshot restore after the migration.
+  For more information see [GitHub issue](https://github.com/etcd-io/etcd/issues/8804).
+{{% /alert %}}
+
 Restart the etcd members and everything should just work.
 
 For etcd v3.3+, run `ETCDCTL_API=3 etcdctl endpoint hashkv --cluster` to ensure key-value stores are consistent post migration.
