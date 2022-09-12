@@ -24,14 +24,14 @@ These metrics describe the status of the etcd server. In order to detect outages
 
 All these metrics are prefixed with `etcd_server_`
 
-| Name                      | Description                                              | Type    |
-|---------------------------|----------------------------------------------------------|---------|
-| has_leader                | Whether or not a leader exists. 1 is existence, 0 is not.| Gauge   |
-| leader_changes_seen_total | The number of leader changes seen.                       | Counter |
-| proposals_committed_total | The total number of consensus proposals committed.       | Gauge   |
-| proposals_applied_total   | The total number of consensus proposals applied.         | Gauge   |
-| proposals_pending         | The current number of pending proposals.                 | Gauge   |
-| proposals_failed_total    | The total number of failed proposals seen.               | Counter |
+| Name                      | Description                                              | Type    | Stability Level |
+|---------------------------|----------------------------------------------------------|---------|-----------------|
+| has_leader                | Whether or not a leader exists. 1 is existence, 0 is not.| Gauge   | Stable          |
+| leader_changes_seen_total | The number of leader changes seen.                       | Counter | Stable          |
+| proposals_committed_total | The total number of consensus proposals committed.       | Gauge   | Stable          |
+| proposals_applied_total   | The total number of consensus proposals applied.         | Gauge   | Stable          |
+| proposals_pending         | The current number of pending proposals.                 | Gauge   | Stable          |
+| proposals_failed_total    | The total number of failed proposals seen.               | Counter | Stable          |
 
 `has_leader` indicates whether the member has a leader. If a member does not have a leader, it is
 totally unavailable. If all the members in the cluster do not have any leader, the entire cluster
@@ -53,10 +53,11 @@ These metrics describe the status of the disk operations.
 
 All these metrics are prefixed with `etcd_disk_`.
 
-| Name                               | Description                                           | Type      |
-|------------------------------------|-------------------------------------------------------|-----------|
-| wal_fsync_duration_seconds         | The latency distributions of fsync called by wal      | Histogram |
-| backend_commit_duration_seconds    | The latency distributions of commit called by backend.| Histogram |
+| Name                               | Description                                           | Type      | Stability Level |
+|------------------------------------|-------------------------------------------------------|-----------|-----------------|
+| wal_fsync_duration_seconds         | The latency distributions of fsync called by wal.     | Histogram | Stable          |
+| backend_commit_duration_seconds    | The latency distributions of commit called by backend.| Histogram | Stable          |
+| backend_defrag_duration_seconds    | The latency distributions of defragmentation.         | Histogram | Stable          |
 
 A `wal_fsync` is called when etcd persists its log entries to disk before applying them.
 
@@ -70,15 +71,15 @@ These metrics describe the status of the network.
 
 All these metrics are prefixed with `etcd_network_`
 
-| Name                      | Description                                                        | Type          |
-|---------------------------|--------------------------------------------------------------------|---------------|
-| peer_sent_bytes_total           | The total number of bytes sent to the peer with ID `To`.         | Counter(To)   |
-| peer_received_bytes_total       | The total number of bytes received from the peer with ID `From`. | Counter(From) |
-| peer_sent_failures_total        | The total number of send failures from the peer with ID `To`.         | Counter(To)   |
-| peer_received_failures_total    | The total number of receive failures from the peer with ID `From`. | Counter(From) |
-| peer_round_trip_time_seconds    | Round-Trip-Time histogram between peers.                         | Histogram(To) |
-| client_grpc_sent_bytes_total    | The total number of bytes sent to grpc clients.                  | Counter   |
-| client_grpc_received_bytes_total| The total number of bytes received to grpc clients.              | Counter   |
+| Name                      | Description                                                        | Type          | Stability Level |
+|---------------------------|--------------------------------------------------------------------|---------------|-----------------|
+| peer_sent_bytes_total           | The total number of bytes sent to the peer with ID `To`.         | Counter(To)   | Experimental    |
+| peer_received_bytes_total       | The total number of bytes received from the peer with ID `From`. | Counter(From) | Experimental    |
+| peer_sent_failures_total        | The total number of send failures from the peer with ID `To`.         | Counter(To)   | Experimental    |
+| peer_received_failures_total    | The total number of receive failures from the peer with ID `From`. | Counter(From) | Experimental    |
+| peer_round_trip_time_seconds    | Round-Trip-Time histogram between peers.                         | Histogram(To) | Experimental    |
+| client_grpc_sent_bytes_total    | The total number of bytes sent to grpc clients.                  | Counter   | Stable          |
+| client_grpc_received_bytes_total| The total number of bytes received to grpc clients.              | Counter   | Stable          |
 
 `peer_sent_bytes_total` counts the total number of bytes sent to a specific peer. Usually the leader member sends more data than other members since it is responsible for transmitting replicated data.
 
@@ -95,9 +96,9 @@ The metrics under the `etcd_debugging` prefix are for debugging. They are very i
 
 ### Snapshot
 
-| Name                                       | Description                                                | Type      |
-|--------------------------------------------|------------------------------------------------------------|-----------|
-| snapshot_save_total_duration_seconds      | The total latency distributions of save called by snapshot | Histogram |
+| Name                                       | Description                                                | Type      | Stability Level|
+|--------------------------------------------|------------------------------------------------------------|-----------|----------------|
+| snapshot_save_total_duration_seconds      | The total latency distributions of save called by snapshot | Histogram | Experimental   |
 
 Abnormally high snapshot duration (`snapshot_save_total_duration_seconds`) indicates disk issues and might cause the cluster to be unstable.
 
