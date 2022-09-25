@@ -71,7 +71,17 @@ source by following these steps:
 
 ## Installation via OS packages
 
-TBD---Help Wanted
+  1. Install Brew
+  
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+    
+  2. Install etcd
+    
+    ```sh
+    brew install etcd
+    ```
 
 ## Installation as part of Kubernetes installation
 
