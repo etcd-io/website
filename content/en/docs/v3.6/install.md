@@ -71,6 +71,8 @@ source by following these steps:
 
 ## Installation via OS packages
 
+### Mac OS
+
   1. Install Brew
   
     ```sh
