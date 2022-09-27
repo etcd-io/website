@@ -39,20 +39,22 @@ source by following these steps:
     repo using the following command.
 
     ```sh
-    $ git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
+    git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
     ```
+
     To build from `{{< param github_branch >}}@HEAD`, omit the `-b  {{< param
     git_version_tag >}}` flag.
 
  2. Change directory:
 
     ```sh
-    $ cd etcd
+    cd etcd
     ```
+
  3. Run the build script:
 
     ```sh
-    $ ./scripts/build.sh
+    ./scripts/build.sh
     ```
 
     The binaries are under the `bin` directory.
@@ -60,18 +62,30 @@ source by following these steps:
  4. Add the full path to the `bin` directory to your path, for example:
 
     ```sh
-    $ export PATH="$PATH:`pwd`/bin"
+    export PATH="$PATH:`pwd`/bin"
     ```
 
  5. Test that `etcd` is in your path:
 
     ```sh
-    $ etcd --version
+    etcd --version
     ```
 
 ## Installation via OS packages
 
-TBD---Help Wanted
+### Mac OS
+
+  1. Install Brew
+
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+  2. Install etcd
+
+    ```sh
+    brew install etcd
+    ```
 
 ## Installation as part of Kubernetes installation
 
@@ -86,10 +100,10 @@ TBD---Help Wanted
 For a slightly more involved sanity check of your installation, see
 [Quickstart][].
 
-[download]: https://github.com/etcd-io/etcd/archive/{{< param git_version_tag >}}.zip
-[go]: https://golang.org/doc/install
+[download]: <https://github.com/etcd-io/etcd/archive/>{{< param git_version_tag >}}.zip
+[go]: <https://golang.org/doc/install>
 [Hardware recommendations]: {{< relref "op-guide/hardware" >}}
 [Quickstart]: {{< relref "quickstart" >}}
-[releases]: https://github.com/etcd-io/etcd/releases/
-[tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
+[releases]: <https://github.com/etcd-io/etcd/releases/>
+[tagged-release]: <https://github.com/etcd-io/etcd/releases/tag/>{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
