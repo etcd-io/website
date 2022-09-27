@@ -8,32 +8,17 @@ etcd has built in automated data corruption detection to prevent member state fr
 
 ## Enabling data corruption detection
 
-Data corruption detection can be done using:
+Data corruption detection can be done in two ways:
 * Initial check, enabled with `--experimental-initial-corrupt-check` flag.
-* Periodic check of:
-  * Compacted revision hash, enabled with `--experimental-compact-hash-check-enabled` flag.
-  * Latest revision hash, enabled with `--experimental-corrupt-check-time` flag.
+* Periodic check, enabled with `--experimental-corrupt-check-time` flag.
 
 Initial check will be executed during bootstrap of etcd member.
 Member will compare it's persistent state vs other members and exit if there is a mismatch.
 
-Both periodic check will be executed by the cluster leader in a cluster that is already running.
+Periodic check will be executed by the cluster leader in a cluster that is already running.
 Leader will compare it's persistent state vs other members and raise a CORRUPT ALARM if there is a mismatch.
-Both checks serve the same purpose, however they are both worth enabling to balance performance and time to detection.
-* Compacted revision hash check - requires regular compaction, minimal performance cost, handles slow followers.
-* Latest revision hash check - high performance cost, doesn't handle slow followers or frequent compactions.
-
-### Compacted revision hash check
-
-When enabled using `--experimental-compact-hash-check-enabled` flag, check will be executed once every minute.
-This can be adjusted using `--experimental-compact-hash-check-time` flag using format: `1m` - every minute, `1h` - evey hour.
-This check extends compaction to also calculate checksum that can be compared between cluster members.
-Doesn't cause additional database scan making it very cheap, but requiring a regular compaction in cluster.
-
-### Latest revision hash check
-
-Enabled using `--experimental-corrupt-check-time` flag, requires providing an execution period in format: `1m` - every minute, `1h` - evey hour.
-Recommended period is a couple of hours due to a high performance cost.
+Period of checks is configured using format: `1m` - every minute, `1h` - evey hour.
+Recommended period is a couple of hours as there is a high performance cost.
 Running a check requires computing a checksum by scanning entire etcd content at given revision.
 
 ## Restoring a corrupted member
