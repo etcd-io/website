@@ -77,7 +77,7 @@ First, install Prometheus:
 PROMETHEUS_VERSION="2.0.0"
 wget https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz -O /tmp/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz
 tar -xvzf /tmp/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz --directory /tmp/ --strip-components=1
-/tmp/prometheus -version
+/tmp/prometheus --version
 ```
 
 Set Prometheus's scraper to target the etcd cluster endpoints:
