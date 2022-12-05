@@ -78,12 +78,6 @@ submitting a pull request.
 
 For etcd contribution guidelines, see [How to contribute][].
 
-## Additional community resources
-
-Our dedicated community has created the following resource:
-
-* [Chinese translation of etcd.io (本网站的中文翻译)](https://etcd.cn). The website is an independent project and isn't officially endorsed by etcd maintainers.
-
 </div>
 
 {{< page/toc placement="sidebar" >}}
