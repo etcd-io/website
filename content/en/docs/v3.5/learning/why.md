@@ -121,8 +121,8 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/client/v3/experimental/recipes
 [etcd-reconfig]: ../../op-guide/runtime-configuration
 [etcd-txn]: ../api/#transaction
-[etcd-v3election]: https://godoc.org/github.com/etcd-io/etcd/server/etcdserver/api/v3election/v3electionpb
-[etcd-v3lock]: https://godoc.org/github.com/etcd-io/etcd/server/etcdserver/api/v3lock/v3lockpb
+[etcd-v3election]: https://pkg.go.dev/go.etcd.io/etcd/server/v3/etcdserver/api/v3election/v3electionpb
+[etcd-v3lock]: https://pkg.go.dev/go.etcd.io/etcd/server/v3/etcdserver/api/v3lock/v3lockpb
 [etcd-watch]: ../api/#watch-streams
 [etcdlease]: https://godoc.org/github.com/etcd-io/etcd/client/v3/leasing
 [fencing]: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
