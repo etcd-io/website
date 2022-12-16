@@ -19,7 +19,7 @@ import (
 )
 
 cli, cerr := clientv3.NewFromURL("http://localhost:2379")
-etcdResolver, err := resolver.NewBuilder(cli);
+etcdResolver, err := resolver.NewBuilder(cli)
 conn, gerr := grpc.Dial("etcd:///foo/bar/my-service", grpc.WithResolvers(etcdResolver))
 ```
 
@@ -42,7 +42,7 @@ The etcd client's `endpoints.Manager` method can also register new endpoints wit
 ```go
 
 em := endpoints.NewManager(client, "foo/bar/my-service")
-err := em.AddEndpoint(context.TODO(),"foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
+err := em.AddEndpoint(context.TODO(),"foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"})
 ```
 
 ### Deleting an endpoint
@@ -57,7 +57,7 @@ The etcd client's `endpoints.Manager` method also supports deleting endpoints:
 
 ```go
 em := endpoints.NewManager(client, "foo/bar/my-service")
-err := em.DeleteEndpoint(context.TODO(), "foo/bar/my-service/e1");
+err := em.DeleteEndpoint(context.TODO(), "foo/bar/my-service/e1")
 ```
 
 ### Registering an endpoint with a lease
@@ -73,7 +73,7 @@ In the golang:
 
 ```go
 em := endpoints.NewManager(client, "foo/bar/my-service")
-err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
+err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"})
 ```
 
 ### Atomically updating endpoints
