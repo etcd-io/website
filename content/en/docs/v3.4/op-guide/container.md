@@ -181,7 +181,7 @@ docker run \
 To run `etcdctl` using API version 3:
 
 ```
-docker exec etcd /bin/sh -c "export ETCDCTL_API=3 && /usr/local/bin/etcdctl put foo bar"
+docker exec etcd /usr/local/bin/etcdctl put foo bar
 ```
 
 ## Bare Metal
