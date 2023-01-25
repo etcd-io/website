@@ -10,6 +10,8 @@ To get up and running, first have a CA certificate and a signed key pair for one
 
 For convenience, the [cfssl] tool provides an easy interface to certificate generation, and we provide an example using the tool [here][tls-setup]. Alternatively, try this [guide to generating self-signed key pairs][tls-guide].
 
+The list of flags provided below may not be up-to-date due to ongoing development changes. For the latest available flags, run `etcd --help` or refer to the [etcd help][].
+
 ## Basic setup
 
 etcd takes several certificate related configuration options, either through command-line flags or environment variables:
@@ -42,7 +44,13 @@ The peer options work the same way as the client-to-server options:
 
 If either a client-to-server or peer certificate is supplied the key must also be set. All of these configuration options are also available through the environment variables, `ETCD_CA_FILE`, `ETCD_PEER_CA_FILE` and so on.
 
-`--cipher-suites`: Comma-separated list of supported TLS cipher suites between server/client and peers (empty will be auto-populated by Go). Available from v3.2.22+, v3.3.7+, and v3.4+.
+**Common options:**
+
+`--cipher-suites`: Comma-separated list of supported TLS cipher suites between server/client and peers (empty will be auto-populated by Go).
+
+`--tls-min-version=<version>` Sets the minimum TLS version supported by etcd.
+
+`--tls-max-version=<version>` Sets the maximum TLS version supported by etcd. If not set the maximum version supported by Go will be used.
 
 ## Example 1: Client-to-server transport security with HTTPS
 
@@ -443,3 +451,4 @@ When etcd create certain new directories it sets file permission to 700 to preve
 [dm-crypt]: https://en.wikipedia.org/wiki/Dm-crypt
 [tls-guide]: https://github.com/coreos/docs/blob/master/os/generate-self-signed-certificates.md
 [tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
+[etcd help]: https://github.com/etcd-io/etcd/blob/main/server/etcdmain/help.go
