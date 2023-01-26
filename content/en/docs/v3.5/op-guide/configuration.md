@@ -1,5 +1,5 @@
 ---
-title: Configuration flags
+title: Configuration options
 weight: 4050
 description: etcd configuration files, flags, and environment variables
 ---
@@ -23,6 +23,8 @@ rules apply.
 ## Command-line flags
 
 Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
+
+The list of flags provided below may not be up-to-date due to ongoing development changes. For the latest available flags, run `etcd --help` or refer to the [etcd help][].
 
 {{% alert color="info" %}}
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
@@ -197,7 +199,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 --enable-log-rotation 'false'
   Enable log rotation of a single log-outputs file target.
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
-  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)". 
+  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
 ```
 ### Experimental distributed tracing
 
@@ -276,5 +278,6 @@ flag names and values are the flag values.
 
 For an example, see the [etcd.conf.yml sample][].
 
+[etcd help]: https://github.com/etcd-io/etcd/blob/main/server/etcdmain/help.go
 [etcd.conf.yml sample]: https://github.com/etcd-io/etcd/blob/main/etcd.conf.yml.sample
 [snake case]: https://en.wikipedia.org/wiki/Snake_case
