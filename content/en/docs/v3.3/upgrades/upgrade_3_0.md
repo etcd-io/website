@@ -42,7 +42,7 @@ Please [backup the data directory](/docs/v2.3/admin_guide#backing-up-the-datasto
 
 ### Upgrade procedure
 
-This example details the upgrade of a three-member v2.3 ectd cluster running on a local machine.
+This example details the upgrade of a three-member v2.3 etcd cluster running on a local machine.
 
 #### 1. Check upgrade requirements.
 

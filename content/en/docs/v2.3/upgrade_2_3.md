@@ -41,7 +41,7 @@ Please [backup the data directory](../admin_guide/#backing-up-the-datastore) of 
 ### Upgrade Procedure
 
 
-This example details the  upgrade of a three-member v2.2 ectd cluster running on a local machine.
+This example details the  upgrade of a three-member v2.2 etcd cluster running on a local machine.
 
 #### 1. Check upgrade requirements.
 
