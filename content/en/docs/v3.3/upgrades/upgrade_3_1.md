@@ -53,7 +53,7 @@ Please [backup the data directory](/docs/v3.3/op-guide/maintenance#snapshot-back
 
 ### Upgrade procedure
 
-This example shows how to upgrade a 3-member v3.0 ectd cluster running on a local machine.
+This example shows how to upgrade a 3-member v3.0 etcd cluster running on a local machine.
 
 #### 1. Check upgrade requirements
 
