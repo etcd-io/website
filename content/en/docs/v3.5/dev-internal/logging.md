@@ -4,7 +4,7 @@ weight: 1600
 description: Logging level categories
 ---
 
-etcd uses the [capnslog][capnslog] library for logging application output categorized into *levels*. A log message's level is determined according to these conventions:
+etcd uses the [zap][zap] library for logging application output categorized into *levels*. A log message's level is determined according to these conventions:
 
 * Error: Data has been lost, a request has failed for a bad reason, or a required resource has been lost
   * Examples:
@@ -30,4 +30,4 @@ etcd uses the [capnslog][capnslog] library for logging application output catego
     * Send a normal message to a remote peer
     * Write a log entry to disk
 
-[capnslog]: https://github.com/coreos/pkg/tree/master/capnslog
+[zap]: https://github.com/uber-go/zap
