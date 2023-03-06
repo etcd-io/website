@@ -30,7 +30,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
 
-  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG-{{< psubstr version 1 >}}.md
+  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
 {{% /alert %}}
 
 ### Member
