@@ -102,8 +102,9 @@ Watches make guarantees about events:
 * Bookmarkable - Progress notification events guarantee that all events up to a
   revision have been already delivered.
 
-etcd does not ensure linearizability for watch operations. Users are expected
-to verify the revision of watch events to ensure correct ordering with other operations.
+etcd does not ensure linearizability for watch operations. The responses are
+ordered but may be stale. Users are expected to verify the revision of watch
+responses to ensure correct ordering against other operations.
 
 ## Lease APIs
 
