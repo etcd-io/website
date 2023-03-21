@@ -89,7 +89,7 @@ For etcd contribution guidelines, see [How to contribute][].
 </div>
 
 [@etcdio]: https://twitter.com/etcdio
-[etcd-dev]: https://groups.google.com/forum/?hl=en#!forum/etcd-dev
+[etcd-dev]: https://groups.google.com/g/etcd-dev
 [etcd-youtube]: https://www.youtube.com/channel/UC7tUWR24I5AR9NMsG-NYBlg
 [How to contribute]: https://github.com/etcd-io/etcd/blob/main/CONTRIBUTING.md
 [meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
