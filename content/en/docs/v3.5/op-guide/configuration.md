@@ -166,6 +166,10 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Comma-separated whitelist of origins for CORS, or cross-origin resource sharing, (empty or * means allow all).
 --host-whitelist '*'
   Acceptable hostnames from HTTP client requests, if server is not secure (empty or * means allow all).
+--tls-min-version 'TLS1.2'
+  Minimum TLS version supported by etcd.
+--tls-max-version ''
+  Maximum TLS version supported by etcd (empty will be auto-populated by Go).
 ```
 ### Auth
 

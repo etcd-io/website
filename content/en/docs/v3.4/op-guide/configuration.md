@@ -350,6 +350,14 @@ The security flags help to [build a secure etcd cluster][security].
 + default: ""
 + env variable: ETCD_CIPHER_SUITES
 
+### --tls-min-version
++ Minimum TLS version supported by etcd.
++ default: "TLS1.2"
+
+### --tls-max-version
++ Maximum TLS version supported by etcd.
++ detault: ""
+
 ## Logging flags
 
 ### --logger
