@@ -104,7 +104,7 @@ Watches make guarantees about events:
 
 etcd does not ensure linearizability for watch operations. The responses are
 ordered but may be stale. Users are expected to verify the revision of watch
-responses to ensure correct ordering against other operations.
+responses to ensure correct ordering with other operations.
 
 ## Lease APIs
 
