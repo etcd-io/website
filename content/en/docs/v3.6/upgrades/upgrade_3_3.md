@@ -418,7 +418,7 @@ ccfg := clientv3.Config{
 }
 ```
 
-Please see [CHANGELOG](https://github.com/etcd-io/etcd/blob/master/CHANGELOG-3.3.md) for a full list of changes.
+Please see [CHANGELOG](https://github.com/etcd-io/etcd/blob/main/CHANGELOG-3.3.md) for a full list of changes.
 
 ### Server upgrade checklists
 

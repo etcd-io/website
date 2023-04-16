@@ -6,7 +6,7 @@ description: A listing of etcd tools and client libraries
 
 ## Tools
 
-- [etcdctl](https://github.com/etcd-io/etcd/tree/master/etcdctl) - A command line client for etcd
+- [etcdctl](https://github.com/etcd-io/etcd/tree/main/etcdctl) - A command line client for etcd
 - [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd.
 - [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
 - [etcddir](https://github.com/rekby/etcddir) - Realtime sync etcd and local directory. Work with windows and linux.
@@ -27,8 +27,8 @@ The sections below list etcd client libraries by language.
 
 ### Go
 
-- [etcd/client/v3](https://github.com/etcd-io/etcd/tree/master/client/v3) - the officially maintained Go client for v3
-- [etcd/client/v2](https://github.com/etcd-io/etcd/tree/master/client/v2) - the officially maintained Go client for v2
+- [etcd/client/v3](https://github.com/etcd-io/etcd/tree/main/client/v3) - the officially maintained Go client for v3
+- [etcd/client/v2](https://github.com/etcd-io/etcd/tree/main/client/v2) - the officially maintained Go client for v2
 - [go-etcd](https://github.com/coreos/go-etcd) - the deprecated official client. May be useful for older (<2.0.0) versions of etcd.
 - [encWrapper](https://github.com/lumjjb/etcd/tree/enc_wrapper/clientwrap/encwrapper) - encWrapper is an encryption wrapper for the etcd client Keys API/KV.
 
@@ -161,7 +161,7 @@ The sections below list etcd client libraries by language.
 
 ## Projects using etcd
 
-- [etcd Raft users](https://github.com/etcd-io/etcd/blob/master/raft/README.md#notable-users) - projects using etcd's raft library implementation.
+- [etcd Raft users](https://github.com/etcd-io/raft/blob/main/README.md#notable-users) - projects using etcd's raft library implementation.
 - [apache/celix](https://github.com/apache/celix) - an implementation of the OSGi specification adapted to C and C++
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [blox/blox](https://github.com/blox/blox) - a collection of open source projects for container management and orchestration with AWS ECS
