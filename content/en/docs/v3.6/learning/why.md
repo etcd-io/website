@@ -112,8 +112,8 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [curator]: http://curator.apache.org/
 [dbtester-comparison-results]: https://github.com/coreos/dbtester/tree/master/test-results/2018Q1-02-etcd-zookeeper-consul
 [etcd-commonname]: ../../op-guide/authentication/#using-tls-common-name
-[etcd-etcdctl-elect]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#elect-options-election-name-proposal
-[etcd-etcdctl-lock]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#lock-options-lockname-command-arg1-arg2-
+[etcd-etcdctl-elect]: https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#elect-options-election-name-proposal
+[etcd-etcdctl-lock]: https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#lock-options-lockname-command-arg1-arg2-
 [etcd-json]: ../../dev-guide/api_grpc_gateway/
 [etcd-linread]: ../api_guarantees/#isolation-level-and-consistency-of-replicas
 [etcd-mvcc]: ../data_model/
@@ -133,7 +133,7 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [locksmith]: https://github.com/coreos/locksmith
 [newsql-leader]: http://dl.acm.org/citation.cfm?id=2960999
 [physicalclock]: https://web.archive.org/web/20190725151657/http://www.dainf.cefetpr.br/~tacla/SDII/PracticalUseOfClocks.pdf
-[production-users]: https://github.com/etcd-io/etcd/blob/master/ADOPTERS.md
+[production-users]: https://github.com/etcd-io/etcd/blob/main/ADOPTERS.md
 [spanner]: https://cloud.google.com/spanner/
 [spanner-roles]: https://cloud.google.com/spanner/docs/iam#roles
 [tidb]: https://github.com/pingcap/tidb
