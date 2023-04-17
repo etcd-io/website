@@ -52,7 +52,7 @@ A `Procfile` at the base of the etcd git repository is provided to easily config
 1. Install `goreman` to control Procfile-based applications:
 
     ```
-    $ go get github.com/mattn/goreman
+    $ go install github.com/mattn/goreman@latest
     ```
 
 2. Start a cluster with `goreman` using etcd's stock Procfile:
