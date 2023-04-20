@@ -79,7 +79,7 @@ TBD---Help Wanted
 
 ## Installation on Kubernetes, using a statefulset or helm chart
 
-TBD---Help Wanted
+The etcd project does not currently maintain a helm chart, however you can follow the instructions provided by [Bitnami's etcd Helm chart].
 
 ## Installation check
 
@@ -93,3 +93,4 @@ For a slightly more involved sanity check of your installation, see
 [releases]: https://github.com/etcd-io/etcd/releases/
 [tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
+[Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm
