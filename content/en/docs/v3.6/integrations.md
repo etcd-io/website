@@ -162,6 +162,7 @@ The sections below list etcd client libraries by language.
 ## Projects using etcd
 
 - [etcd Raft users](https://github.com/etcd-io/raft/blob/main/README.md#notable-users) - projects using etcd's raft library implementation.
+- [apache/apisix](https://github.com/apache/apisix) - A dynamic, real-time, high-performance API gateway
 - [apache/celix](https://github.com/apache/celix) - an implementation of the OSGi specification adapted to C and C++
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [blox/blox](https://github.com/blox/blox) - a collection of open source projects for container management and orchestration with AWS ECS
