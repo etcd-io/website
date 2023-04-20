@@ -106,7 +106,7 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [consul-linread]: https://www.consul.io/api-docs#consistency
 [consul-lock]: https://www.consul.io/commands/lock
 [consul-reconfig]: https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations
-[consul-txn]: https://www.consul.io/api/kv#txn
+[consul-txn]: https://www.consul.io/api/txn
 [consul-watch]: https://www.consul.io/docs/dynamic-app-config/watches
 [container-linux]: https://coreos.com/why
 [curator]: http://curator.apache.org/
