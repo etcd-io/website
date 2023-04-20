@@ -8,7 +8,7 @@ Each etcd server provides local monitoring information on its client port throug
 
 ## Debug endpoint
 
-If `--debug` is set, the etcd server exports debugging information on its client port under the `/debug` path. Take care when setting `--debug`, since there will be degraded performance and verbose logging.
+If `--log-level=debug` is set, the etcd server exports debugging information on its client port under the `/debug` path. Take care when setting `--log-level=debug`, since there will be degraded performance and verbose logging.
 
 The `/debug/pprof` endpoint is the standard go runtime profiling endpoint. This can be used to profile CPU, heap, mutex, and goroutine utilization. For example, here `go tool pprof` gets the top 10 functions where etcd spends its time:
 
