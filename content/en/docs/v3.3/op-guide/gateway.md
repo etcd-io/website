@@ -78,7 +78,7 @@ $ etcd gateway start --discovery-srv=example.com
 
 #### --discovery-srv
 
- * DNS domain used to bootstrap cluster endpoints through SRV recrods.
+ * DNS domain used to bootstrap cluster endpoints through SRV records.
  * Default: (not set)
 
 ### Network

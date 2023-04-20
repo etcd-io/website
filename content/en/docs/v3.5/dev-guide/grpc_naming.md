@@ -12,7 +12,7 @@ The etcd client provides a gRPC resolver for resolving gRPC endpoints with an et
 
 ```go
 import (
-	"go.etcd.io/etcd/v3/clientv3"
+	clientv3 "go.etcd.io/etcd/client/v3"
 	resolver "go.etcd.io/etcd/client/v3/naming/resolver"
 
 	"google.golang.org/grpc"
@@ -44,6 +44,14 @@ The etcd client's `endpoints.Manager` method can also register new endpoints wit
 em := endpoints.NewManager(client, "foo/bar/my-service")
 err := em.AddEndpoint(context.TODO(),"foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
 ```
+To enable round-robin load balancing when dialing service with multiple endpoints, you can set up you connection with grpc
+ internal round-robin load balancer:
+
+ ```go
+
+ 	conn, gerr := grpc.Dial("etcd:///foo", grpc.WithResolvers(etcdResolver),
+ 		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy":"round_robin"}`))
+ ```
 
 ### Deleting an endpoint
 
@@ -72,8 +80,9 @@ ETCDCTL_API=3 etcdctl lease keep-alive $lease
 In the golang:
 
 ```go
+lease, _ := client.Grant(context.TODO(), ttl)
 em := endpoints.NewManager(client, "foo/bar/my-service")
-err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"});
+err := em.AddEndpoint(context.TODO(), "foo/bar/my-service/e1", endpoints.Endpoint{Addr:"1.2.3.4"}, clientv3.WithLease(lease.ID));
 ```
 
 ### Atomically updating endpoints

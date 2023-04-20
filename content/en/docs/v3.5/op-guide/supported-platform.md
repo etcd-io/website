@@ -22,15 +22,16 @@ platform's support tier:
 The following table lists currently supported platforms and their corresponding
 etcd support tier:
 
-| Architecture | Operating system | Support tier | Maintainers                 |
-|:------------:|:----------------:|:------------:|:---------------------------:|
-| AMD64        | Linux            | 1            | [etcd maintainers][]        |
-| ARM64        | Linux            | 2            | [@gyuho][], [@glevand][]    |
-| AMD64        | Darwin           | 3            |                             |
-| AMD64        | Windows          | 3            |                             |
-| ARM          | Linux            | 3            |                             |
-| 386          | Linux            | 3            |                             |
-| ppc64le      | Linux            | 3            | [@mkumatag][]               |
+| Architecture | Operating system | Support tier |     Maintainers      |
+|:------------:|:----------------:|:------------:|:--------------------:|
+| AMD64        | Linux            |      1       | [etcd maintainers][] |
+| ARM64        | Linux            |      3       |                      |
+| AMD64        | Darwin           |      3       |                      |
+| AMD64        | Windows          |      3       |                      |
+| ARM          | Linux            |      3       |                      |
+| 386          | Linux            |      3       |                      |
+| ppc64le      | Linux            |      3       |                      |
+| s390x        | Linux            |      3       |                      |
 
 Unlisted platforms are unsupported.
 
@@ -65,8 +66,5 @@ prints a warning message and exits immediately unless the environment variable
   [go-issue]: https://github.com/golang/go/issues/599
 {{% /alert %}}
 
-[@glevand]: https://github.com/glevand
-[@gyuho]: https://github.com/gyuho
-[@mkumatag]: https://github.com/mkumatag
 [etcd maintainers]: https://github.com/etcd-io/etcd/blob/master/MAINTAINERS
 [etcd PR #12928]: https://github.com/etcd-io/etcd/pull/12928

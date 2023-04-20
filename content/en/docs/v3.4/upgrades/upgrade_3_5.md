@@ -20,7 +20,7 @@ Highlighted breaking changes in 3.5.
 
 #### Deprecated `etcd_debugging_mvcc_db_total_size_in_bytes` Prometheus metrics
 
-v3.5 promoted `etcd_debugging_mvcc_db_total_size_in_bytes` Prometheus metrics to `etcd_mvcc_db_total_size_in_bytes`, in order to encourage etcd storage monitoring. And v3.5 completely deprcates `etcd_debugging_mvcc_db_total_size_in_bytes`.
+v3.5 promoted `etcd_debugging_mvcc_db_total_size_in_bytes` Prometheus metrics to `etcd_mvcc_db_total_size_in_bytes`, in order to encourage etcd storage monitoring. And v3.5 completely deprecates `etcd_debugging_mvcc_db_total_size_in_bytes`.
 
 ```diff
 -etcd_debugging_mvcc_db_total_size_in_bytes
@@ -31,7 +31,7 @@ Note that `etcd_debugging_*` namespace metrics have been marked as experimental.
 
 #### Deprecated `etcd_debugging_mvcc_put_total` Prometheus metrics
 
-v3.5 promoted `etcd_debugging_mvcc_put_total` Prometheus metrics to `etcd_mvcc_put_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprcates `etcd_debugging_mvcc_put_total`.
+v3.5 promoted `etcd_debugging_mvcc_put_total` Prometheus metrics to `etcd_mvcc_put_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprecates `etcd_debugging_mvcc_put_total`.
 
 ```diff
 -etcd_debugging_mvcc_put_total
@@ -42,7 +42,7 @@ Note that `etcd_debugging_*` namespace metrics have been marked as experimental.
 
 #### Deprecated `etcd_debugging_mvcc_delete_total` Prometheus metrics
 
-v3.5 promoted `etcd_debugging_mvcc_delete_total` Prometheus metrics to `etcd_mvcc_delete_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprcates `etcd_debugging_mvcc_delete_total`.
+v3.5 promoted `etcd_debugging_mvcc_delete_total` Prometheus metrics to `etcd_mvcc_delete_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprecates `etcd_debugging_mvcc_delete_total`.
 
 ```diff
 -etcd_debugging_mvcc_delete_total
@@ -53,7 +53,7 @@ Note that `etcd_debugging_*` namespace metrics have been marked as experimental.
 
 #### Deprecated `etcd_debugging_mvcc_txn_total` Prometheus metrics
 
-v3.5 promoted `etcd_debugging_mvcc_txn_total` Prometheus metrics to `etcd_mvcc_txn_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprcates `etcd_debugging_mvcc_txn_total`.
+v3.5 promoted `etcd_debugging_mvcc_txn_total` Prometheus metrics to `etcd_mvcc_txn_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprecates `etcd_debugging_mvcc_txn_total`.
 
 ```diff
 -etcd_debugging_mvcc_txn_total
@@ -64,7 +64,7 @@ Note that `etcd_debugging_*` namespace metrics have been marked as experimental.
 
 #### Deprecated `etcd_debugging_mvcc_range_total` Prometheus metrics
 
-v3.5 promoted `etcd_debugging_mvcc_range_total` Prometheus metrics to `etcd_mvcc_range_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprcates `etcd_debugging_mvcc_range_total`.
+v3.5 promoted `etcd_debugging_mvcc_range_total` Prometheus metrics to `etcd_mvcc_range_total`, in order to encourage etcd storage monitoring. And v3.5 completely deprecates `etcd_debugging_mvcc_range_total`.
 
 ```diff
 -etcd_debugging_mvcc_range_total
@@ -183,7 +183,7 @@ Please [download the snapshot backup](../../op-guide/maintenance/#snapshot-backu
 
 ### Upgrade procedure
 
-This example shows how to upgrade a 3-member v3.4 ectd cluster running on a local machine.
+This example shows how to upgrade a 3-member v3.4 etcd cluster running on a local machine.
 
 #### Step 1: check upgrade requirements
 

@@ -88,7 +88,7 @@ The election service exposes client-side election facilities as a gRPC interface
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
-| name | name is the election identifier that correponds to the leadership key. | bytes |
+| name | name is the election identifier that corresponds to the leadership key. | bytes |
 | key | key is an opaque key representing the ownership of the election. If the key is deleted, then leadership is lost. | bytes |
 | rev | rev is the creation revision of the key. It can be used to test for ownership of an election during transactions by testing the key's creation revision matches rev. | int64 |
 | lease | lease is the lease ID of the election leader. | int64 |

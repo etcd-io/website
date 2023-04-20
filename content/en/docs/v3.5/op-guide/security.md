@@ -42,7 +42,13 @@ The peer options work the same way as the client-to-server options:
 
 If either a client-to-server or peer certificate is supplied the key must also be set. All of these configuration options are also available through the environment variables, `ETCD_CA_FILE`, `ETCD_PEER_CA_FILE` and so on.
 
-`--cipher-suites`: Comma-separated list of supported TLS cipher suites between server/client and peers (empty will be auto-populated by Go). Available from v3.2.22+, v3.3.7+, and v3.4+.
+**Common options:**
+
+`--cipher-suites`: Comma-separated list of supported TLS cipher suites between server/client and peers (empty will be auto-populated by Go).
+
+`--tls-min-version=<version>` Sets the minimum TLS version supported by etcd.
+
+`--tls-max-version=<version>` Sets the maximum TLS version supported by etcd. If not set the maximum version supported by Go will be used.
 
 ## Example 1: Client-to-server transport security with HTTPS
 
@@ -175,7 +181,7 @@ $ curl \
 
 etcd supports the same model as above for **peer communication**, that means the communication between etcd members in a cluster.
 
-Assuming we have our `ca.crt` and two members with their own keypairs (`member1.crt` & `member1.key`, `member2.crt` & `member2.key`) signed by this CA, we launch etcd as follows:
+Assuming we have our `ca.crt` and two members with their own key pairs (`member1.crt` & `member1.key`, `member2.crt` & `member2.key`) signed by this CA, we launch etcd as follows:
 
 
 ```sh

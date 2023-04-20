@@ -117,11 +117,11 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [etcd-json]: ../../dev-guide/api_grpc_gateway/
 [etcd-linread]: ../api_guarantees/#isolation-level-and-consistency-of-replicas
 [etcd-mvcc]: ../data_model/
-[etcd-rbac]: ../../op-guide/authentication/#working-with-roles
+[etcd-rbac]: ../../op-guide/authentication/rbac
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/client/v3/experimental/recipes
 [etcd-reconfig]: ../../op-guide/runtime-configuration
 [etcd-txn]: ../api/#transaction
-[etcd-v3election]: https://pkg.go.dev/github.com/CloudcadeSF/etcd/etcdserver/api/v3election/v3electionpb
+[etcd-v3election]: https://pkg.go.dev/go.etcd.io/etcd/server/v3/etcdserver/api/v3election/v3electionpb
 [etcd-v3lock]: https://pkg.go.dev/go.etcd.io/etcd/server/v3/etcdserver/api/v3lock/v3lockpb
 [etcd-watch]: ../api/#watch-streams
 [etcdlease]: https://godoc.org/github.com/etcd-io/etcd/client/v3/leasing

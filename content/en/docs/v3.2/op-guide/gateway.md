@@ -6,7 +6,7 @@ title: etcd gateway
 
 etcd gateway is a simple TCP proxy that forwards network data to the etcd cluster. The gateway is stateless and transparent; it neither inspects client requests nor interferes with cluster responses.
 
-The gateway supports multiple etcd server endpoints and works on a simple round-robin policy. It only routes to available enpoints and hides failures from its clients. Other retry policies, such as weighted round-robin, may be supported in the future.
+The gateway supports multiple etcd server endpoints and works on a simple round-robin policy. It only routes to available endpoints and hides failures from its clients. Other retry policies, such as weighted round-robin, may be supported in the future.
 
 ## When to use etcd gateway
 
@@ -78,7 +78,7 @@ $ etcd gateway --discovery-srv=example.com
 
 #### --discovery-srv
 
- * DNS domain used to bootstrap cluster endpoints through SRV recrods.
+ * DNS domain used to bootstrap cluster endpoints through SRV records.
  * Default: (not set)
 
 ### Network
