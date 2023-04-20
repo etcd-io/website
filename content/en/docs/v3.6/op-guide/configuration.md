@@ -279,6 +279,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 
 An etcd configuration file consists of a YAML map whose keys are command-line
 flag names and values are the flag values.
+In order to use this file, specify the file path as a value to the `--config-file` flag or `ETCD_CONFIG_FILE` environment variable.
 
 For an example, see the [etcd.conf.yml sample][].
 
