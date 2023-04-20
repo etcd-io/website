@@ -79,7 +79,7 @@ TBD---Help Wanted
 
 ## Installation on Kubernetes, using a statefulset or helm chart
 
-You can follow the instructions provided by [Bitnami's etcd Helm chart]
+The etcd project does not currently maintain a helm chart, however you can follow the instructions provided by [Bitnami's etcd Helm chart].
 
 ## Installation check
 
