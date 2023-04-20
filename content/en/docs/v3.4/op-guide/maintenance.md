@@ -111,7 +111,7 @@ The space quota in `etcd` ensures the cluster operates in a reliable fashion. Wi
 By default, `etcd` sets a conservative space quota suitable for most applications, but it may be configured on the command line, in bytes:
 
 ```sh
-# set a very small 16MB quota
+# set a very small 16 MiB quota
 $ etcd --quota-backend-bytes=$((16*1024*1024))
 ```
 
