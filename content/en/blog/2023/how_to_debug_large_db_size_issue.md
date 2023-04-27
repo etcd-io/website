@@ -121,6 +121,13 @@ and `dbSizeInUse`. Let's use the first endpoint as an example, its `dbSize` is 5
 ]
 ```
 
+etcd also exposes the following metrics (click [here](https://etcd.io/docs/current/metrics/etcd-metrics-latest.txt) to see a full list of metrics),
+| Metrics |  Description |
+|-------|--------------|
+| etcd_server_quota_backend_bytes  | Current backend storage quota size in bytes.  |
+| etcd_mvcc_db_total_size_in_bytes | Total size of the underlying database physically allocated in bytes. |
+| etcd_mvcc_db_total_size_in_use_in_bytes | Total size of the underlying database logically in use in bytes. |
+
 # Compaction & Defragmentation
 etcd supports MVCC(Multi-Version Concurrent Control), and it keeps an exact history of its key spaces.
 The compaction operation is the only way to purge history. But the free space will not be reclaimed automatically,
@@ -134,7 +141,11 @@ Notes:
 1. Compaction is a cluster-wide operation, so you only need to execute compaction once on whichever etcd member.
 Of course, it will not do any harm if executing it multiple times.
 2. Defragmentation is a time-consuming task, so it's recommended to do it for each member one by one.
-3. **There is a known issue that etcd might run into data inconsistency issue if it crashes in the middle of an online
+3. Defragmentation is an expensive operation, so you should do it as infrequent as possible. On the other hand,
+you also need to make sure any etcd member will not run out of the storage quota. `etcdctl defrag [flags]` can be used
+for defragmentation, but tools such as [etcd-defrag](https://github.com/ahrtr/etcd-defrag/) can provide enhanced
+functionality and ease of use and should be considered to use.
+4. **There is a known issue that etcd might run into data inconsistency issue if it crashes in the middle of an online
 defragmentation operation using `etcdctl` or clientv3 API. All the existing v3.5 releases are affected, including 3.5.0 ~ 3.5.5.
 So please use `etcdutl` to offline perform defragmentation operation**, but this requires taking each member offline one at a time.
 It means that you need to stop each etcd instance firstly, then perform defragmentation using `etcdutl`, start the instance at last.
