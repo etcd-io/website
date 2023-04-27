@@ -246,5 +246,7 @@ In the following example, there are two etcd clusters; one for the normal usage,
 --etcd-servers-overrides="/events#https://etcd-3:2379,https://etcd-4:2379,https://etcd-5:2379"
 ```
 
+As a mitigation, you may also want to delete unneeded objects to free up some space. You will need to delete objects before running compaction and defragmentation to free up the space.
+
 If the behavior (db size exceeds the quota) isn't expected, then you'd better figure out the root cause and resolve
 it firstly. If you insist on applying solutions mentioned above, it can mitigate the issue instead of resolving it.
