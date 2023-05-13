@@ -12,9 +12,9 @@ main_channels:
     desc: >
       Follow us at [@etcdio][] for real-time announcements, blogs posts, and more.
   - title: >
-      [<i class="fab fa-stack-overflow"></i>Stack Overflow][SO]
+      [<i class="fab fa-github"></i>Github Discussions][GD]
     desc: >
-      Ask and find answers to your etcd technical questions.
+      Ask and find answers to your etcd questions.
 community_resources:
   - title: >
       [<i class="fab fa-google"></i>Google Meet][online]
@@ -95,4 +95,4 @@ For etcd contribution guidelines, see [How to contribute][].
 [meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
 [online]: https://meet.google.com/umg-nrxn-qvs
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
-[SO]: https://stackoverflow.com/questions/tagged/etcd
+[GD]: https://github.com/etcd-io/etcd/discussions

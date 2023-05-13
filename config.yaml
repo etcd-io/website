@@ -136,9 +136,9 @@ params:
       - name: Twitter
         url: https://twitter.com/etcdio
         icon: fab fa-twitter
-      - name: Stack Overflow
-        url: https://stackoverflow.com/questions/tagged/etcd
-        icon: fab fa-stack-overflow
+      - name: Github Discussions
+        url: https://github.com/etcd-io/etcd/discussions
+        icon: fab fa-github
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
       - name: Etcd on GitHub
