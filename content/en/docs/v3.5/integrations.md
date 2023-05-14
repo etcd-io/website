@@ -194,3 +194,4 @@ The sections below list etcd client libraries by language.
 - [Patroni](https://github.com/zalando/patroni) - A template for PostgreSQL High Availability with ZooKeeper, etcd, or Consul
 - [Trillian](https://github.com/google/trillian) - Trillian implements a Merkle tree whose contents are served from a data storage layer, to allow scalability to extremely large trees.
 - [Apache APISIX](https://github.com/apache/apisix) - Apache APISIX is a dynamic, real-time, high-performance API gateway.
+- [purpleidea/mgmt](https://github.com/purpleidea/mgmt) - Next generation distributed, event-driven, parallel config management!
