@@ -70,9 +70,30 @@ source by following these steps:
     ```
 
 ## Installation via OS packages
+*Disclaimer: etcd installations through OS package managers can deliver outdated versions since they are not being automatically maintained nor officially supported by etcd project. Therefore use OS packages with caution.*
 
-TBD---Help Wanted
+There are various ways of installing etcd on different operating systems and these are just some examples how it can be done.
 
+### MacOS (Homebrew)
+
+1. Update homebrew:
+```sh
+$ brew update
+```
+
+2. Install etcd:
+```sh
+$ brew install etcd
+```
+
+3. Verify install 
+```sh
+$ etcd --version
+```
+
+## Linux
+
+TBD
 ## Installation as part of Kubernetes installation
 
 TBD---Help Wanted
