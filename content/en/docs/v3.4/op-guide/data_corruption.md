@@ -13,10 +13,10 @@ Data corruption detection can be done in two ways:
 * Periodic check, enabled with `--experimental-corrupt-check-time` flag.
 
 Initial check will be executed during bootstrap of etcd member.
-Member will compare it's persistent state vs other members and exit if there is a mismatch.
+Member will compare its persistent state vs other members and exit if there is a mismatch.
 
 Periodic check will be executed by the cluster leader in a cluster that is already running.
-Leader will compare it's persistent state vs other members and raise a CORRUPT ALARM if there is a mismatch.
+Leader will compare its persistent state vs other members and raise a CORRUPT ALARM if there is a mismatch.
 Period of checks is configured using format: `1m` - every minute, `1h` - evey hour.
 Recommended period is a couple of hours as there is a high performance cost.
 Running a check requires computing a checksum by scanning entire etcd content at given revision.
