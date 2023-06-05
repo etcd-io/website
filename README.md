@@ -44,12 +44,6 @@ $ npm run build
 $ npm run check-links
 ```
 
-You can also locally serve using [Docker](https://docker.com):
-
-```console
-$ make docker-serve
-```
-
 ## Contributing
 
 We welcome issues and PRs! For details, see [Contributing][].
