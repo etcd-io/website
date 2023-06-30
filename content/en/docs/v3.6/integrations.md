@@ -199,3 +199,4 @@ The sections below list etcd client libraries by language.
 - [Apache APISIX](https://github.com/apache/apisix) - Apache APISIX is a dynamic, real-time, high-performance API gateway.
 - [purpleidea/mgmt](https://github.com/purpleidea/mgmt) - Next generation distributed, event-driven, parallel config management!
 - [Portworx/kvdb](https://docs.portworx.com/concepts/internal-kvdb/) - The internal kvdb for storing Portworx cluster configuration.
+- [Apache Pulsar](https://pulsar.apache.org/) - Apache Pulsar is an open-source, distributed messaging and streaming platform built for the cloud.
