@@ -23,6 +23,7 @@ description: A listing of etcd tools and client libraries
 - [etcdadm](https://github.com/kubernetes-sigs/etcdadm) - A command-line tool for operating an etcd cluster.
 - [etcd-defrag](https://github.com/ahrtr/etcd-defrag) - An easier to use and smarter etcd defragmentation tool.
 - [etcdhelper](https://github.com/tsonglew/intellij-etcdhelper) - An intellij platform plugin for etcd.
+- [etcd-diagnosis](https://github.com/ahrtr/etcd-diagnosis) - A comprehensive tool for etcd diagnosis.
 
 ## Libraries
 
