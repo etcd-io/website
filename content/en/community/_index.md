@@ -19,7 +19,7 @@ community_resources:
   - title: >
       [<i class="fab fa-google"></i>Google Meet][online]
     desc: >
-      Join contributors and maintainers [online][], every four weeks.
+      Join contributors and maintainers [online][], every two weeks.
   - title: >
       [<i class="fas fa-file-alt"></i>Meeting doc][meeting-doc]
     desc: >
@@ -62,7 +62,7 @@ questions:
 
 ## Community meetings
 
-etcd contributors and maintainers meet [online][] every four weeks, on **Thursday
+etcd contributors and maintainers meet [online][] every two weeks, on **Thursday
 at 11 AM** [Pacific Time][].
 
 For phone-in information, the date of the next meeting, and minutes from past
