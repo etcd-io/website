@@ -10,14 +10,13 @@ etcd runs on different platforms, but the guarantees it provides depends on a
 platform's support tier:
 
 - **Tier 1**: fully supported by [etcd maintainers][]; etcd is guaranteed to
-  pass all tests including functional and stress tests.
+  pass all tests including functional and robustness tests.
 - **Tier 2**: etcd is guaranteed to pass integration and end-to-end tests but
-  not necessarily functional or stress tests.
+  not necessarily functional or robustness tests.
 - **Tier 3**: etcd is guaranteed to build, may be lightly tested (or not), and
   so it should be considered _unstable_.
 
 ## Current support
-
 
 The following table lists currently supported platforms and their corresponding
 etcd support tier:
@@ -25,7 +24,7 @@ etcd support tier:
 | Architecture | Operating system | Support tier |     Maintainers      |
 |:------------:|:----------------:|:------------:|:--------------------:|
 | AMD64        | Linux            |      1       | [etcd maintainers][] |
-| ARM64        | Linux            |      3       |                      |
+| ARM64        | Linux            |      1       | [etcd maintainers][] |
 | AMD64        | Darwin           |      3       |                      |
 | AMD64        | Windows          |      3       |                      |
 | ARM          | Linux            |      3       |                      |
@@ -42,12 +41,12 @@ addition to committing to support the platform, you must setup etcd continuous
 integration (CI) satisfying the following requirements, depending on the support
 tier:
 
-| etcd continuous integration           | Tier 1 | Tier 2 | Tier 3 |
-| ------------------------------------- |:------:|:------:|:------:|
-| Build passes                          | &check;| &check;| &check;|
-| Unit tests pass                       | &check;| &check;|        |
-| Integration and end-to-end tests pass | &check;| &check;|        |
-| Functional and stress tests pass      | &check;|        |        |
+| etcd continuous integration           | Tier 1  | Tier 2  | Tier 3  |
+|---------------------------------------|:-------:|:-------:|:-------:|
+| Build passes                          | &check; | &check; | &check; |
+| Unit tests pass                       | &check; | &check; |         |
+| Integration and end-to-end tests pass | &check; | &check; |         |
+| Robustness tests pass                 | &check; |         |         |
 
 For an example of setting up tier-2 CI for ARM64, see [etcd PR #12928][].
 
