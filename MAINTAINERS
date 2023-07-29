@@ -1,0 +1,24 @@
+# The official list of maintainers and reviewers for the project maintenance.
+#
+# Refer to https://github.com/etcd-io/etcd/blob/main/Documentation/contributor-guide/community-membership.md
+# for a description of these roles.
+#
+# Names should be added to this file like so:
+#     Individual's name <submission email address> (@GITHUB_HANDLE) *
+#     Individual's name <submission email address> <email2> <emailN> (@GITHUB_HANDLE) *
+#
+# Please keep the list sorted.
+
+# MAINTAINERS
+Benjamin Wang <wachao@vmware.com> (ahrtr@) *
+Hitoshi Mitake <h.mitake@gmail.com> (@mitake) *
+Josh Berkus <jberkus@redhat.com> (@jberkus) *
+Marek Siarkowicz <siarkowicz@google.com> <marek.siarkowicz@gmail.com> (@serathius) *
+Nate W. <natew@cncf.io> (@nate-double-u) *
+Patrice Chalin <chalin@cncf.io> (@chalin) *
+Piotr Tabor <piotr.tabor@gmail.com> (@ptabor) *
+Sahdev Zala <spzala@us.ibm.com> (@spzala) *
+Wenjia Zhang <wenjiazhang@google.com> <wenjia.swe@gmail.com> (@wenjiaswe) *
+
+# REVIEWERS
+James Blair <jablair@redhat.com> <mail@jamesblair.net> (@jmhbnz) *
