@@ -93,5 +93,5 @@ Example application workload: A 3,000 node Kubernetes cluster
 
 [diskbench]: https://github.com/ongardie/diskbenchmark
 [fio]: https://github.com/axboe/fio
-[fio-blog-post]: https://sudonull.com/post/28779-Is-storage-speed-suitable-for-etcd-Ask-fio-Southbridge-Blog
+[fio-blog-post]: https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/
 [tuning]: ../../tuning/
