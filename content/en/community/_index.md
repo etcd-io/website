@@ -93,6 +93,6 @@ For etcd contribution guidelines, see [How to contribute][].
 [etcd-youtube]: https://www.youtube.com/channel/UC7tUWR24I5AR9NMsG-NYBlg
 [How to contribute]: https://github.com/etcd-io/etcd/blob/main/CONTRIBUTING.md
 [meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
-[online]: https://meet.google.com/umg-nrxn-qvs
+[online]: https://zoom.us/my/cncfetcdproject
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
 [GD]: https://github.com/etcd-io/etcd/discussions
