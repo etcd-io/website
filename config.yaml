@@ -98,8 +98,7 @@ params:
   # User interface configuration
   ui:
     sidebar_menu_compact: true
-    breadcrumb_disable: false
-    sidebar_search_disable: false
+    sidebar_search_disable: true
     navbar_logo: true
     footer_about_disable: true
     navbar_translucent_over_cover_disable: true
