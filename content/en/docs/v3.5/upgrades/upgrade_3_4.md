@@ -602,4 +602,4 @@ curl http://localhost:32379/version
 COMMENT
 ```
 
-[etcd-contact]: https://groups.google.com/forum/#!forum/etcd-dev
+[etcd-contact]: https://groups.google.com/g/etcd-dev
