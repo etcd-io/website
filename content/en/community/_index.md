@@ -17,7 +17,7 @@ main_channels:
       Ask and find answers to your etcd questions.
 community_resources:
   - title: >
-      [<i class="fab fa-google"></i>Google Meet][online]
+      [<i class="fab"></i>Zoom Meeting][online]
     desc: >
       Join contributors and maintainers [online][], every two weeks.
   - title: >
