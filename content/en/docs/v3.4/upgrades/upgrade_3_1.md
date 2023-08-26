@@ -135,4 +135,4 @@ localhost:22379 is healthy: successfully committed proposal: took = 2.553476ms
 localhost:32379 is healthy: successfully committed proposal: took = 2.516902ms
 ```
 
-[etcd-contact]: https://groups.google.com/forum/#!forum/etcd-dev
+[etcd-contact]: https://groups.google.com/g/etcd-dev
