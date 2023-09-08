@@ -100,6 +100,10 @@ description: A listing of etcd tools and client libraries
 - [marshall-lee/etcd.erl](https://github.com/marshall-lee/etcd.erl) - Supports v2
 - [zhongwencool/eetcd](https://github.com/zhongwencool/eetcd) - Supports v3+ (GRPC only)
 
+### Elixir
+
+- [team-telnyx/etcdex](https://github.com/team-telnyx/etcdex) - Supports v3+ (GRPC only)
+
 **.Net Libraries**
 
 - [wangjia184/etcdnet](https://github.com/wangjia184/etcdnet) - Supports v2
