@@ -18,7 +18,11 @@ description: A listing of etcd tools and client libraries
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
 - [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free etcd 3.x GUI & client tool. Available for Windows, Linux and Mac.
-- [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) -  Utility to periodic and incrementally backup and restore the etcd.
+- [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) - Utility to periodically and incrementally backup and restore the etcd.
+- [etcd-druid](https://github.com/gardener/etcd-druid) - A Kubernetes operator to deploy etcd clusters and manage day-2 operations.
+- [etcdadm](https://github.com/kubernetes-sigs/etcdadm) - A command-line tool for operating an etcd cluster.
+- [etcd-defrag](https://github.com/ahrtr/etcd-defrag) - An easier to use and smarter etcd defragmentation tool.
+- [etcdhelper](https://github.com/tsonglew/intellij-etcdhelper) - An intellij platform plugin for etcd.
 
 ## Libraries
 
@@ -61,7 +65,6 @@ The sections below list etcd client libraries by language.
 - [cholcombe973/autodock](https://github.com/cholcombe973/autodock) - A docker deployment automation tool
 - [lisael/aioetcd](https://github.com/lisael/aioetcd) - (Python 3.4+) Asyncio coroutines client (Supports v2)
 - [txaio-etcd](https://github.com/crossbario/txaio-etcd) - Asynchronous etcd v3-only client library for Twisted (today) and asyncio (future)
-- [dims/etcd3-gateway](https://github.com/dims/etcd3-gateway) - etcd v3 API library using the HTTP grpc gateway
 - [aioetcd3](https://github.com/gaopeiliang/aioetcd3) - (Python 3.6+) etcd v3 API for asyncio
 - [Revolution1/etcd3-py](https://github.com/Revolution1/etcd3-py) - (python2.7 and python3.5+) Python client for etcd v3, using gRPC-JSON-Gateway
 
@@ -197,3 +200,6 @@ The sections below list etcd client libraries by language.
 - [Patroni](https://github.com/zalando/patroni) - A template for PostgreSQL High Availability with ZooKeeper, etcd, or Consul
 - [Trillian](https://github.com/google/trillian) - Trillian implements a Merkle tree whose contents are served from a data storage layer, to allow scalability to extremely large trees.
 - [Apache APISIX](https://github.com/apache/apisix) - Apache APISIX is a dynamic, real-time, high-performance API gateway.
+- [purpleidea/mgmt](https://github.com/purpleidea/mgmt) - Next generation distributed, event-driven, parallel config management!
+- [Portworx/kvdb](https://docs.portworx.com/concepts/internal-kvdb/) - The internal kvdb for storing Portworx cluster configuration.
+- [Apache Pulsar](https://pulsar.apache.org/) - Apache Pulsar is an open-source, distributed messaging and streaming platform built for the cloud.

@@ -44,7 +44,7 @@ Please [backup the data directory](/docs/v2.3/admin_guide#backing-up-the-datasto
 
 ### Upgrade procedure
 
-This example details the upgrade of a three-member v2.3 ectd cluster running on a local machine.
+This example details the upgrade of a three-member v2.3 etcd cluster running on a local machine.
 
 #### 1. Check upgrade requirements.
 
@@ -124,7 +124,7 @@ $ ETCDCTL_API=3 etcdctl endpoint health
 
 ## Further considerations
 
-- etcdctl environment variables have been updated. If `ETCDCTL_API=2 etcdctl cluster-health` works properly but `ETCDCTL_API=3 etcdctl endpoints health` responds with `Error:  grpc: timed out when dialing`, be sure to use the [new variable names](https://github.com/etcd-io/etcd/tree/master/etcdctl#etcdctl).
+- etcdctl environment variables have been updated. If `ETCDCTL_API=2 etcdctl cluster-health` works properly but `ETCDCTL_API=3 etcdctl endpoints health` responds with `Error:  grpc: timed out when dialing`, be sure to use the [new variable names](https://github.com/etcd-io/etcd/tree/main/etcdctl#etcdctl).
 
 ## Known Issues
 
@@ -132,4 +132,4 @@ $ ETCDCTL_API=3 etcdctl endpoint health
 - If an error such as `transport: http2Client.notifyError got notified that the client transport was broken unexpected EOF.` shows up in the etcd server logs, be sure etcd is a pre-built release or built with (etcd v3.1+ &amp; go v1.7+) or (etcd &lt;v3.1 &amp; go v1.6.x).
 - Adding a v3 node to v2.3 cluster during upgrades is not supported and could trigger panics. See [Issue 7249](https://github.com/etcd-io/etcd/issues/7429) for additional information. Mixed versions of etcd members are only allowed during v3 migration. Finish upgrades before making any membership changes.
 
-[etcd-contact]: https://groups.google.com/forum/#!forum/etcd-dev
+[etcd-contact]: https://groups.google.com/g/etcd-dev

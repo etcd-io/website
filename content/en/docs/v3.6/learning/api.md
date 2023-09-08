@@ -1,14 +1,18 @@
 ---
-title: etcd3 API
+title: etcd API
 weight: 2625
-description: etcd3 API central design overview
+description: etcd API central design overview
 ---
 
-This document is meant to give an overview of the etcd3 API's central design. It is by no means all encompassing, but intended to focus on the basic ideas needed to understand etcd without the distraction of less common API calls. All etcd3 API's are defined in [gRPC services][grpc-service], which categorize remote procedure calls (RPCs) understood by the etcd server. A full listing of all etcd RPCs are documented in markdown in the [gRPC API listing][grpc-api].
+This document is meant to give an overview of the v3 etcd APIs central design.
+This should not be mistaken with etcd v2 API, deprecated in etcd v3.5.
+It is by no means all encompassing, but intended to focus on the basic ideas needed to understand etcd without the distraction of less common API calls.
+All etcd APIs are defined in [gRPC services][grpc-service], which categorize remote procedure calls (RPCs) understood by the etcd server.
+A full listing of all etcd RPCs are documented in markdown in the [gRPC API listing][grpc-api].
 
 ## gRPC Services
 
-Every API request sent to an etcd server is a gRPC remote procedure call. RPCs in etcd3 are categorized based on functionality into services.
+Every API request sent to an etcd server is a gRPC remote procedure call. RPCs in etcd are categorized based on functionality into services.
 
 Services important for dealing with etcd's key space include:
 * KV - Creates, updates, fetches, and deletes key-value pairs.
@@ -22,7 +26,7 @@ Services which manage the cluster itself include:
 
 ### Requests and Responses
 
-All RPCs in etcd3 follow the same format. Each RPC has a function `Name` which takes `NameRequest` as an argument and returns `NameResponse` as a response. For example, here is the `Range` RPC description:
+All RPCs in etcd follow the same format. Each RPC has a function `Name` which takes `NameRequest` as an argument and returns `NameResponse` as a response. For example, here is the `Range` RPC description:
 
 ```protobuf
 service KV {
@@ -90,13 +94,13 @@ In addition to just the key and value, etcd attaches additional revision metadat
 
 etcd maintains a 64-bit cluster-wide counter, the store revision, that is incremented each time the key space is modified. The revision serves as a global logical clock, sequentially ordering all updates to the store. The change represented by a new revision is incremental; the data associated with a revision is the data that changed the store. Internally, a new revision means writing the changes to the backend's B+tree, keyed by the incremented revision.
 
-Revisions become more valuable when considering etcd3's [multi-version concurrency control][mvcc] backend. The MVCC model means that the key-value store can be viewed from past revisions since historical key revisions are retained. The retention policy for this history can be configured by cluster administrators for fine-grained storage management; usually etcd3 discards old revisions of keys on a timer. A typical etcd3 cluster retains superseded key data for hours. This also provides reliable handling for long client disconnection, not just transient network disruptions: watchers simply resume from the last observed historical revision. Similarly, to read from the store at a particular point-in-time, read requests can be tagged with a revision to return keys from a view of the key space at the point-in-time that revision was committed.
+Revisions become more valuable when considering etcd's [multi-version concurrency control][mvcc] backend. The MVCC model means that the key-value store can be viewed from past revisions since historical key revisions are retained. The retention policy for this history can be configured by cluster administrators for fine-grained storage management; usually etcd discards old revisions of keys on a timer. A typical etcd cluster retains superseded key data for hours. This also provides reliable handling for long client disconnection, not just transient network disruptions: watchers simply resume from the last observed historical revision. Similarly, to read from the store at a particular point-in-time, read requests can be tagged with a revision to return keys from a view of the key space at the point-in-time that revision was committed.
 
 #### Key ranges
 
-The etcd3 data model indexes all keys over a flat binary key space. This differs from other key-value store systems that use a hierarchical system of organizing keys into directories. Instead of listing keys by directory, keys are listed by key intervals `[a, b)`.
+The etcd data model indexes all keys over a flat binary key space. This differs from other key-value store systems that use a hierarchical system of organizing keys into directories. Instead of listing keys by directory, keys are listed by key intervals `[a, b)`.
 
-These intervals are often referred to as "ranges" in etcd3. Operations over ranges are more powerful than operations on directories. Like a hierarchical store, intervals support single key lookups via `[a, a+1)` (e.g., ['a', 'a\x00') looks up 'a') and directory lookups by encoding keys by directory depth. In addition to those operations, intervals can also encode prefixes; for example  the interval `['a', 'b')` looks up all keys prefixed by the string 'a'.
+These intervals are often referred to as "ranges" in etcd. Operations over ranges are more powerful than operations on directories. Like a hierarchical store, intervals support single key lookups via `[a, a+1)` (e.g., ['a', 'a\x00') looks up 'a') and directory lookups by encoding keys by directory depth. In addition to those operations, intervals can also encode prefixes; for example  the interval `['a', 'b')` looks up all keys prefixed by the string 'a'.
 
 By convention, ranges for a request are denoted by the fields `key` and `range_end`. The `key` field is the first key of the range and should be non-empty. The `range_end` is the key following the last key of the range. If `range_end` is not given or empty, the range is defined to contain only the key argument. If `range_end` is `key` plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"), then the range represents all keys prefixed with key. If both `key` and `range_end` are '\0', then range represents all keys. If `range_end` is '\0', the range is all keys greater than or equal to the key argument.
 
@@ -323,9 +327,13 @@ message ResponseOp {
 }
 ```
 
+The `ResponseHeader` included in each inner response shouldn't be interpreted in any way.
+If clients need to get the latest revision, then they should always check the top level `ResponseHeader` in `TxnResponse`.
+
+
 ## Watch API
 
-The `Watch` API provides an event-based interface for asynchronously monitoring changes to keys. An etcd3 watch waits for changes to keys by continuously watching from a given revision, either current or historical, and streams key updates back to the client.
+The `Watch` API provides an event-based interface for asynchronously monitoring changes to keys. An etcd watch waits for changes to keys by continuously watching from a given revision, either current or historical, and streams key updates back to the client.
 
 ### Events
 
@@ -351,10 +359,7 @@ message Event {
 
 Watches are long-running requests and use gRPC streams to stream event data. A watch stream is bi-directional; the client writes to the stream to establish watches and reads to receive watch events. A single watch stream can multiplex many distinct watches by tagging events with per-watch identifiers. This multiplexing helps reducing the memory footprint and connection overhead on the core etcd cluster.
 
-Watches make three guarantees about events:
-* Ordered - events are ordered by revision; an event will never appear on a watch if it precedes an event in time that has already been posted.
-* Reliable - a sequence of events will never drop any subsequence of events; if there are events ordered in time as a < b < c, then if the watch receives events a and c, it is guaranteed to receive b.
-* Atomic - a list of events is guaranteed to encompass complete revisions; updates in the same revision over multiple keys will not be split over several lists of events.
+To read about guarantees made about watch events, please read [etcd api guarantees][watch-api-guarantees].
 
 A client creates a watch by sending a `WatchCreateRequest` over a stream returned by `Watch`:
 
@@ -476,10 +481,11 @@ message LeaseKeepAliveResponse {
 * ID - the lease that was refreshed with a new TTL.
 * TTL - the new time-to-live, in seconds, that the lease has remaining.
 
-[elections]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/election.go
+[watch-api-guarantees]: ../api_guarantees/#watch-apis
+[elections]: https://github.com/etcd-io/etcd/blob/main/client/v3/concurrency/election.go
 [grpc-api]: ../../dev-guide/api_reference_v3/
-[grpc-service]: https://github.com/etcd-io/etcd/blob/master/api/etcdserverpb/rpc.proto
-[kv-proto]: https://github.com/etcd-io/etcd/blob/master/api/mvccpb/kv.proto
-[locks]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/mutex.go
+[grpc-service]: https://github.com/etcd-io/etcd/blob/main/api/etcdserverpb/rpc.proto
+[kv-proto]: https://github.com/etcd-io/etcd/blob/main/api/mvccpb/kv.proto
+[locks]: https://github.com/etcd-io/etcd/blob/main/client/v3/concurrency/mutex.go
 [mvcc]: https://en.wikipedia.org/wiki/Multiversion_concurrency_control
-[stm]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/stm.go
+[stm]: https://github.com/etcd-io/etcd/blob/main/client/v3/concurrency/stm.go

@@ -70,16 +70,37 @@ source by following these steps:
     ```
 
 ## Installation via OS packages
+*Disclaimer: etcd installations through OS package managers can deliver outdated versions since they are not being automatically maintained nor officially supported by etcd project. Therefore use OS packages with caution.*
 
-TBD---Help Wanted
+There are various ways of installing etcd on different operating systems and these are just some examples how it can be done.
 
+### MacOS (Homebrew)
+
+1. Update homebrew:
+```sh
+$ brew update
+```
+
+2. Install etcd:
+```sh
+$ brew install etcd
+```
+
+3. Verify install 
+```sh
+$ etcd --version
+```
+
+## Linux
+
+TBD
 ## Installation as part of Kubernetes installation
 
 TBD---Help Wanted
 
 ## Installation on Kubernetes, using a statefulset or helm chart
 
-TBD---Help Wanted
+The etcd project does not currently maintain a helm chart, however you can follow the instructions provided by [Bitnami's etcd Helm chart].
 
 ## Installation check
 
@@ -93,3 +114,4 @@ For a slightly more involved sanity check of your installation, see
 [releases]: https://github.com/etcd-io/etcd/releases/
 [tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
+[Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm

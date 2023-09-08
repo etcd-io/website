@@ -1,5 +1,5 @@
 ---
-title: Configuration flags
+title: Configuration options
 weight: 4050
 description: etcd configuration files, flags, and environment variables
 ---
@@ -24,11 +24,13 @@ rules apply.
 
 Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 
+The list of flags provided below may not be up-to-date due to ongoing development changes. For the latest available flags, run `etcd --help` or refer to the [etcd help][].
+
 {{% alert color="info" %}}
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
 
-  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG-{{< psubstr version 1 >}}.md
+  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
 {{% /alert %}}
 
 ### Member
@@ -164,6 +166,10 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
   Comma-separated whitelist of origins for CORS, or cross-origin resource sharing, (empty or * means allow all).
 --host-whitelist '*'
   Acceptable hostnames from HTTP client requests, if server is not secure (empty or * means allow all).
+--tls-min-version 'TLS1.2'
+  Minimum TLS version supported by etcd.
+--tls-max-version ''
+  Maximum TLS version supported by etcd (empty will be auto-populated by Go).
 ```
 ### Auth
 
@@ -197,7 +203,7 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 --enable-log-rotation 'false'
   Enable log rotation of a single log-outputs file target.
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
-  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)". 
+  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
 ```
 ### Experimental distributed tracing
 
@@ -273,8 +279,10 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 
 An etcd configuration file consists of a YAML map whose keys are command-line
 flag names and values are the flag values.
+In order to use this file, specify the file path as a value to the `--config-file` flag or `ETCD_CONFIG_FILE` environment variable.
 
 For an example, see the [etcd.conf.yml sample][].
 
+[etcd help]: https://github.com/etcd-io/etcd/blob/main/server/etcdmain/help.go
 [etcd.conf.yml sample]: https://github.com/etcd-io/etcd/blob/main/etcd.conf.yml.sample
 [snake case]: https://en.wikipedia.org/wiki/Snake_case

@@ -418,7 +418,7 @@ ccfg := clientv3.Config{
 }
 ```
 
-Please see [CHANGELOG](https://github.com/etcd-io/etcd/blob/master/CHANGELOG-3.3.md) for a full list of changes.
+Please see [CHANGELOG](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.3.md) for a full list of changes.
 
 ### Server upgrade checklists
 
@@ -454,7 +454,7 @@ Please [backup the data directory](../../op-guide/maintenance/#snapshot-backup) 
 
 ### Upgrade procedure
 
-This example shows how to upgrade a 3-member v3.2 ectd cluster running on a local machine.
+This example shows how to upgrade a 3-member v3.2 etcd cluster running on a local machine.
 
 #### 1. Check upgrade requirements
 
@@ -543,4 +543,4 @@ localhost:22379 is healthy: successfully committed proposal: took = 2.553476ms
 localhost:32379 is healthy: successfully committed proposal: took = 2.517902ms
 ```
 
-[etcd-contact]: https://groups.google.com/forum/#!forum/etcd-dev
+[etcd-contact]: https://groups.google.com/g/etcd-dev

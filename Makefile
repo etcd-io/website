@@ -1,6 +1,3 @@
-DOCKER_IMG = klakegg/hugo:ext-alpine
-DRAFT_ARGS = --buildDrafts --buildFuture  --buildExpired
-
 HTMLTEST?=htmltest # Specify as make arg if different
 HTMLTEST_ARGS?=--skip-external
 HTMLTEST_DIR=tmp
@@ -16,22 +13,9 @@ endif
 check-links: $(GET_LINK_CHECKER_IF_NEEDED)
 	$(HTMLTEST) $(HTMLTEST_ARGS)
 
-docker-serve:
-	docker run --rm -it -v $(PWD):/src -p 1313:1313 $(DOCKER_IMG) server $(DRAFT_ARGS)
-
-# Until htmltext >0.14.x is released, get and build our own from source:
 get-link-checker:
-	rm -Rf $(HTMLTEST_DIR)
-	mkdir -p $(HTMLTEST_DIR)/bin && \
-	cd $(HTMLTEST_DIR) && \
-	git clone --depth=1 https://github.com/wjdp/htmltest.git && \
-	( \
-		cd htmltest && \
-		./build.sh && \
-		cp bin/htmltest ../bin \
-	)
+	rm -Rf $(HTMLTEST_DIR)/bin
+	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
 
-# Once htmltext >0.14.x is released, replace the get-and-build code above with this:
-# get-link-checker:
-# 	rm -Rf $(HTMLTEST_DIR)/bin
-# 	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
+clean:
+	rm -rf $(HTMLTEST_DIR) public/* resources

@@ -12,14 +12,14 @@ main_channels:
     desc: >
       Follow us at [@etcdio][] for real-time announcements, blogs posts, and more.
   - title: >
-      [<i class="fab fa-stack-overflow"></i>Stack Overflow][SO]
+      [<i class="fab fa-github"></i>Github Discussions][GD]
     desc: >
-      Ask and find answers to your etcd technical questions.
+      Ask and find answers to your etcd questions.
 community_resources:
   - title: >
-      [<i class="fab fa-google"></i>Google Meet][online]
+      [<i class="fab"></i>Zoom Meeting][online]
     desc: >
-      Join contributors and maintainers [online][], every four weeks.
+      Join contributors and maintainers [online][], every two weeks.
   - title: >
       [<i class="fas fa-file-alt"></i>Meeting doc][meeting-doc]
     desc: >
@@ -62,7 +62,7 @@ questions:
 
 ## Community meetings
 
-etcd contributors and maintainers meet [online][] every four weeks, on **Thursday
+etcd contributors and maintainers meet [online][] every two weeks, on **Thursday
 at 11 AM** [Pacific Time][].
 
 For phone-in information, the date of the next meeting, and minutes from past
@@ -78,12 +78,6 @@ submitting a pull request.
 
 For etcd contribution guidelines, see [How to contribute][].
 
-## Additional community resources
-
-Our dedicated community has created the following resource:
-
-* [Chinese translation of etcd.io (本网站的中文翻译)](https://etcd.cn). The website is an independent project and isn't officially endorsed by etcd maintainers.
-
 </div>
 
 {{< page/toc placement="sidebar" >}}
@@ -95,10 +89,10 @@ Our dedicated community has created the following resource:
 </div>
 
 [@etcdio]: https://twitter.com/etcdio
-[etcd-dev]: https://groups.google.com/forum/?hl=en#!forum/etcd-dev
+[etcd-dev]: https://groups.google.com/g/etcd-dev
 [etcd-youtube]: https://www.youtube.com/channel/UC7tUWR24I5AR9NMsG-NYBlg
 [How to contribute]: https://github.com/etcd-io/etcd/blob/main/CONTRIBUTING.md
 [meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
-[online]: https://meet.google.com/umg-nrxn-qvs
+[online]: https://zoom.us/my/cncfetcdproject
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
-[SO]: https://stackoverflow.com/questions/tagged/etcd
+[GD]: https://github.com/etcd-io/etcd/discussions

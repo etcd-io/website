@@ -118,7 +118,7 @@ To recover from the low space quota alarm:
 
 This is gRPC-side warning when a server receives a TCP RST flag with client-side streams being prematurely closed. For example, a client closes its connection, while gRPC server has not yet processed all HTTP/2 frames in the TCP queue. Some data may have been lost in server side, but it is ok so long as client connection has already been closed.
 
-Only [old versions of gRPC](https://github.com/grpc/grpc-go/issues/1362) log this. etcd [>=v3.2.13 by default log this with DEBUG level](https://github.com/etcd-io/etcd/pull/9080), thus only visible with `--debug` flag enabled.
+Only [old versions of gRPC](https://github.com/grpc/grpc-go/issues/1362) log this. etcd [>=v3.2.13 by default log this with DEBUG level](https://github.com/etcd-io/etcd/pull/9080), thus only visible with `--log-level=debug` flag enabled.
 
 ## Performance
 
@@ -158,7 +158,7 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 [api-mvcc]: ../learning/api/#revisions
 [backend_commit_metrics]: ../metrics/#disk
 [backup]: ../op-guide/recovery/#snapshotting-the-keyspace
-[benchmark]: https://github.com/etcd-io/etcd/tree/master/tools/benchmark
+[benchmark]: https://github.com/etcd-io/etcd/tree/main/tools/benchmark
 [benchmark-result]: ../op-guide/performance/
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
 [fio]: https://github.com/axboe/fio
@@ -166,7 +166,7 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 [hardware-setup]: ../op-guide/hardware/
 [maintenance-compact]:  ../op-guide/maintenance/#history-compaction-v3-api-key-value-database
 [maintenance-defragment]: ../op-guide/maintenance/#defragmentation
-[maintenance-disarm]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#alarm-disarm
+[maintenance-disarm]: https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#alarm-disarm
 [new_issue]: https://github.com/etcd-io/etcd/issues/new
 [raft]: https://raft.github.io/raft.pdf
 [runtime reconfiguration]: ../op-guide/runtime-configuration/

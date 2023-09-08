@@ -88,6 +88,11 @@ A point-in-time backup of the etcd cluster state.
 
 The physical storage backing the cluster keyspace.
 
+## Term
+
+A term is a monotonically increasing integer that is associated with each leader election in the Raft algorithm.
+For a term there can only be one elected leader and term is incremented on leader change.
+
 ## Transaction
 
 An atomically executed set of operations. All modified keys in a transaction share the same modification revision.

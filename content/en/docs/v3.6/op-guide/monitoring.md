@@ -8,7 +8,7 @@ Each etcd server provides local monitoring information on its client port throug
 
 ## Debug endpoint
 
-If `--debug` is set, the etcd server exports debugging information on its client port under the `/debug` path. Take care when setting `--debug`, since there will be degraded performance and verbose logging.
+If `--log-level=debug` is set, the etcd server exports debugging information on its client port under the `/debug` path. Take care when setting `--log-level=debug`, since there will be degraded performance and verbose logging.
 
 The `/debug/pprof` endpoint is the standard go runtime profiling endpoint. This can be used to profile CPU, heap, mutex, and goroutine utilization. For example, here `go tool pprof` gets the top 10 functions where etcd spends its time:
 
@@ -108,7 +108,7 @@ Now Prometheus will scrape etcd metrics every 10 seconds.
 
 ### Alerting
 
-There is a set of [default alerts](https://github.com/etcd-io/etcd/tree/master/contrib/mixin) for etcd v3 clusters for Prometheus.
+There is a set of [default alerts](https://github.com/etcd-io/etcd/tree/main/contrib/mixin) for etcd v3 clusters for Prometheus.
 
 {{% alert title="Note" color="info" %}}
 Note that `job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.

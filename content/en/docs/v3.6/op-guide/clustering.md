@@ -497,4 +497,4 @@ To setup an etcd cluster with proxies of v2 API, please read the the [clustering
 [runtime-reconf-design]: ../runtime-reconf-design/
 [security-guide-dns-srv]: ../security/#notes-for-dns-srv
 [security-guide]: ../security/
-[tls-setup]: https://github.com/etcd-io/etcd/tree/master/hack/tls-setup
+[tls-setup]: https://github.com/etcd-io/etcd/tree/main/hack/tls-setup

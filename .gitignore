@@ -12,3 +12,7 @@ tmp/
 
 # Local Netlify folder
 .netlify
+
+# IDEs
+.idea
+*.iml

@@ -32,16 +32,16 @@ Advanced cluster management systems like Kubernetes natively support service dis
 
 Consider an etcd cluster with the following static endpoints:
 
-|Name|Address|Hostname|
-|------|---------|------------------|
-|infra0|10.0.1.10|infra0.example.com|
-|infra1|10.0.1.11|infra1.example.com|
-|infra2|10.0.1.12|infra2.example.com|
+|Name|Address|Hostname|Port|
+|------|---------|------------------|----|
+|infra0|10.0.1.10|infra0.example.com|2379|
+|infra1|10.0.1.11|infra1.example.com|2379|
+|infra2|10.0.1.12|infra2.example.com|2379|
 
 Start the etcd gateway to use these static endpoints with the command:
 
 ```bash
-$ etcd gateway start --endpoints=infra0.example.com,infra1.example.com,infra2.example.com
+$ etcd gateway start --endpoints=infra0.example.com:2379,infra1.example.com:2379,infra2.example.com:2379
 2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]
 ```
 
@@ -76,6 +76,7 @@ $ etcd gateway start --discovery-srv=example.com
 
  * Comma-separated list of etcd server targets for forwarding client connections.
  * Default: `127.0.0.1:2379`
+ * Port must be included.
  * Invalid example: `https://127.0.0.1:2379` (gateway does not terminate TLS). Note that the gateway does not verify the HTTP schema or inspect the requests, it only forwards requests to the given endpoints.
 
 #### --discovery-srv

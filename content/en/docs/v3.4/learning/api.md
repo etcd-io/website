@@ -323,6 +323,10 @@ message ResponseOp {
 }
 ```
 
+The `ResponseHeader` included in each inner response shouldn't be interpreted in any way.
+If clients need to get the latest revision, then they should always check the top level `ResponseHeader` in `TxnResponse`.
+
+
 ## Watch API
 
 The `Watch` API provides an event-based interface for asynchronously monitoring changes to keys. An etcd3 watch waits for changes to keys by continuously watching from a given revision, either current or historical, and streams key updates back to the client.

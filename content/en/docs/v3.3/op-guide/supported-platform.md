@@ -6,15 +6,15 @@ title: Supported systems
 
 The following table lists etcd support status for common architectures and operating systems:
 
-| Architecture | Operating System | Status       | Maintainers                 |
-| ------------ | ---------------- | ------------ | --------------------------- |
-| amd64        | Darwin           | Experimental | etcd maintainers            |
-| amd64        | Linux            | Stable       | etcd maintainers            |
-| amd64        | Windows          | Experimental |                             |
-| arm64        | Linux            | Experimental | @glevand                    |
-| arm          | Linux            | Unstable     |                             |
-| 386          | Linux            | Unstable     |                             |
-| ppc64le      | Linux            | Stable       | etcd maintainers, @mkumatag |
+| Architecture | Operating System | Status       | Maintainers       |
+| ------------ | ---------------- | ------------ |-------------------|
+| amd64        | Darwin           | Experimental | etcd maintainers  |
+| amd64        | Linux            | Stable       | etcd maintainers  |
+| amd64        | Windows          | Experimental |                   |
+| arm64        | Linux            | Experimental |                   |
+| arm          | Linux            | Unstable     |                   |
+| 386          | Linux            | Unstable     |                   |
+| ppc64le      | Linux            | Stable       | etcd maintainers  |
 
 * etcd-maintainers are listed in https://github.com/etcd-io/etcd/blob/master/MAINTAINERS.
 

@@ -3,6 +3,20 @@ IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreURLs:
   - "^http://play.etcd.io.*"
+  # Manually verified external links below this point
+  - "^https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations"
+  - "^https://www.consul.io/docs/dynamic-app-config/sessions"
+  - "^https://www.consul.io/commands/lock"
+  - "^https://www.consul.io/docs/dynamic-app-config/watches"
+  - "^https://www.consul.io/docs/security/acl"
+  - "^https://www.consul.io/api-docs#formatted-json-output"
+  - "^https://www.consul.io/api-docs#consistency"
+  - "^https://www.consul.io/api/txn"
+
+  # Test links to ignore
+  - "^http://example.com"
+  - "^http://example.com"
+
 IgnoreInternalURLs:
   - /docs/latest/
   - /docs/latest/install/

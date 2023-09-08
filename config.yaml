@@ -11,7 +11,7 @@ contentDir: content/en
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 languageCode: en-us
-googleAnalytics: UA-82811140-29
+googleAnalytics: G-VF9H3EHMDK
 
 # Useful when translating.
 enableMissingTranslationPlaceholders: true
@@ -98,8 +98,7 @@ params:
   # User interface configuration
   ui:
     sidebar_menu_compact: true
-    breadcrumb_disable: false
-    sidebar_search_disable: false
+    sidebar_search_disable: true
     navbar_logo: true
     footer_about_disable: true
     navbar_translucent_over_cover_disable: true
@@ -131,14 +130,14 @@ params:
     # End user relevant links. These will show up on left side of footer and in the community page if you have one.
     user:
       - name: Google Group
-        url: https://groups.google.com/forum/?hl=en#!forum/etcd-dev
+        url: https://groups.google.com/g/etcd-dev
         icon: fab fa-google
       - name: Twitter
         url: https://twitter.com/etcdio
         icon: fab fa-twitter
-      - name: Stack Overflow
-        url: https://stackoverflow.com/questions/tagged/etcd
-        icon: fab fa-stack-overflow
+      - name: Github Discussions
+        url: https://github.com/etcd-io/etcd/discussions
+        icon: fab fa-github
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
       - name: Etcd on GitHub

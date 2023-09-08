@@ -38,6 +38,14 @@ $ etcdctl user add myusername
 
 Creating a new user will prompt for a new password. The password can be supplied from standard input when an option `--interactive=false` is given. `--new-user-password` can also be used for supplying the password.
 
+Creating a user which cannot be authenticated with password is also possible like below:
+
+```
+$ etcdctl user add myusername --no-password
+```
+
+Such a user can only be [authenticated with TLS Common Name](#using-tls-common-name).
+
 Roles can be granted and revoked for a user with:
 
 ```
@@ -173,8 +181,5 @@ Otherwise, all `etcdctl` commands remain the same. Users and roles can still be 
 ## Using TLS Common Name
 As of version v3.2 if an etcd server is launched with the option `--client-cert-auth=true`, the field of Common Name (CN) in the client's TLS cert will be used as an etcd user. In this case, the common name authenticates the user and the client does not need a password. Note that if both of 1. `--client-cert-auth=true` is passed and CN is provided by the client, and 2. username and password are provided by the client, the username and password based authentication is prioritized. Note that this feature cannot be used with gRPC-proxy and gRPC-gateway. This is because gRPC-proxy terminates TLS from its client so all the clients share a cert of the proxy. gRPC-gateway uses a TLS connection internally for transforming HTTP request to gRPC request so it shares the same limitation. Therefore the clients cannot provide their CN to the server correctly. gRPC-proxy will cause an error and stop if a given cert has non empty CN. gRPC-proxy returns an error which indicates that the client has an non empty CN in its cert.
 
-As of version v3.3 if an etcd server is launched with the option `--peer-cert-allowed-cn` or `--peer-cert-allowed-hostname` filtering of inter-peer connections is enabled.  Nodes can only join the etcd cluster if their TLS certificate identity match the allowed one.
-See [etcd security page](/docs/{{< param version >}}/op-guide/security/) for more details.
-
 ## Notes on password strength
-The `etcdctl` and etcd API do not enforce a specific password length during user creation or user password update operations. It is the responsibility of the administrator to enforce these requirements.
+The `etcdctl` and etcd API do not enforce a specific password length during user creation or user password update operations. It is the responsibility of the administrator to enforce these requirements. For avoiding security risks related to password strength, [TLS Common Name based authentication](#using-tls-common-name) and users created with `--no-password` option can be utilized.

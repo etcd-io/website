@@ -395,7 +395,7 @@ Please [download the snapshot backup](../../op-guide/maintenance/#snapshot-backu
 
 ### Upgrade procedure
 
-This example shows how to upgrade a 3-member v3.3 ectd cluster running on a local machine.
+This example shows how to upgrade a 3-member v3.3 etcd cluster running on a local machine.
 
 #### Step 1: check upgrade requirements
 
@@ -602,4 +602,4 @@ curl http://localhost:32379/version
 COMMENT
 ```
 
-[etcd-contact]: https://groups.google.com/forum/#!forum/etcd-dev
+[etcd-contact]: https://groups.google.com/g/etcd-dev

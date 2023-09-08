@@ -252,7 +252,7 @@ Please [backup the data directory](../../op-guide/maintenance#snapshot-backup) o
 
 ### Upgrade procedure
 
-This example shows how to upgrade a 3-member v3.1 ectd cluster running on a local machine.
+This example shows how to upgrade a 3-member v3.1 etcd cluster running on a local machine.
 
 #### 1. Check upgrade requirements
 
@@ -341,4 +341,4 @@ localhost:22379 is healthy: successfully committed proposal: took = 2.553476ms
 localhost:32379 is healthy: successfully committed proposal: took = 2.517902ms
 ```
 
-[etcd-contact]: https://groups.google.com/forum/#!forum/etcd-dev
+[etcd-contact]: https://groups.google.com/g/etcd-dev
