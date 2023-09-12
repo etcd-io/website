@@ -155,9 +155,9 @@ Then, client requests must specify one of the cipher suites specified in the ser
 ```bash
 # valid cipher suite
 $ curl \
-  --cacert ./ca.crt \
-  --cert ./server.crt \
-  --key ./server.key \
+  --cacert /path/to/ca.crt \
+  --cert /path/to/client.crt \
+  --key /path/to/client.key \
   -L [CLIENT-URL]/metrics \
   --ciphers ECDHE-RSA-AES128-GCM-SHA256
 
@@ -169,9 +169,9 @@ etcd_server_version{server_version="3.2.22"} 1
 ```bash
 # invalid cipher suite
 $ curl \
-  --cacert ./ca.crt \
-  --cert ./server.crt \
-  --key ./server.key \
+  --cacert /path/to/ca.crt \
+  --cert /path/to/client.crt \
+  --key /path/to/client.key \
   -L [CLIENT-URL]/metrics \
   --ciphers ECDHE-RSA-DES-CBC3-SHA
 
