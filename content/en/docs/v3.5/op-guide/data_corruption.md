@@ -15,10 +15,10 @@ Data corruption detection can be done using:
   * Latest revision hash, enabled with `--experimental-corrupt-check-time` flag.
 
 Initial check will be executed during bootstrap of etcd member.
-Member will compare it's persistent state vs other members and exit if there is a mismatch.
+Member will compare its persistent state vs other members and exit if there is a mismatch.
 
 Both periodic check will be executed by the cluster leader in a cluster that is already running.
-Leader will compare it's persistent state vs other members and raise a CORRUPT ALARM if there is a mismatch.
+Leader will compare its persistent state vs other members and raise a CORRUPT ALARM if there is a mismatch.
 Both checks serve the same purpose, however they are both worth enabling to balance performance and time to detection.
 * Compacted revision hash check - requires regular compaction, minimal performance cost, handles slow followers.
 * Latest revision hash check - high performance cost, doesn't handle slow followers or frequent compactions.
