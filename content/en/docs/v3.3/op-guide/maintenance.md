@@ -74,7 +74,7 @@ In [v3.3.3](https://github.com/etcd-io/etcd/blob/master/CHANGELOG-3.3.md), `--au
 
 After compacting the keyspace, the backend database may exhibit internal fragmentation. Any internal fragmentation is space that is free to use by the backend but still consumes storage space. Compacting old revisions internally fragments `etcd` by leaving gaps in backend database. Fragmented space is available for use by `etcd` but unavailable to the host filesystem. In other words, deleting application data does not reclaim the space on disk.
 
-The process of defragmentation releases this storage space back to the file system. Defragmentation is issued on a per-member so that cluster-wide latency spikes may be avoided.
+The process of defragmentation releases this storage space back to the file system. Defragmentation is issued on a per-member basis so that cluster-wide latency spikes may be avoided.
 
 To defragment an etcd member, use the `etcdctl defrag` command:
 
