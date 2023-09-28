@@ -1,0 +1,14 @@
+# See the OWNERS docs at https://go.k8s.io/owners
+
+approvers:
+  - ahrtr           # Benjamin Wang <wachao@vmware.com> <benjamin.ahrtr@gmail.com>
+  - mitake          # Hitoshi Mitake <h.mitake@gmail.com>
+  - serathius       # Marek Siarkowicz <siarkowicz@google.com> <marek.siarkowicz@gmail.com>
+  - ptabor          # Piotr Tabor <piotr.tabor@gmail.com>
+  - spzala          # Sahdev Zala <spzala@us.ibm.com>
+  - wenjiaswe       # Wenjia Zhang <wenjiazhang@google.com> <wenjia.swe@gmail.com>
+  - jberkus         # Josh Berkus <jberkus@redhat.com>
+  - nate-double-u   # Nate W. <natew@cncf.io>
+  - chalin          # Patrice Chalin <chalin@cncf.io>
+reviewers:
+  - jmhbnz          # James Blair <jablair@redhat.com> <mail@jamesblair.net>
