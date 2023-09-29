@@ -140,6 +140,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Allowed TLS hostname for client cert authentication.
 --trusted-ca-file ''
   Path to the client server TLS trusted CA cert file.
+  Note setting this parameter will also automatically enable client cert authentication no matter what value is set for `--client-cert-auth`.
 --auto-tls 'false'
   Client TLS using generated certificates.
 --peer-cert-file ''
