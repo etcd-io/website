@@ -291,6 +291,7 @@ The security flags help to [build a secure etcd cluster][security].
 + Path to the client server TLS trusted CA cert file.
 + default: ""
 + env variable: ETCD_TRUSTED_CA_FILE
++ Note setting this parameter will also automatically enable client cert authentication no matter what value is set for `--client-cert-auth`.
 
 ### --auto-tls
 + Client TLS using generated certificates

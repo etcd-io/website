@@ -56,6 +56,8 @@ Other HTTP APIs will still work (e.g. `[CLIENT-URL]/metrics`, `[CLIENT-URL]/heal
 
 `--ca-file` and `--peer-ca-file` flags are deprecated; they have been deprecated since v2.1.
 
+Note setting this parameter will also automatically enable client cert authentication no matter what value is set for `--client-cert-auth`.
+
 ```diff
 -etcd --ca-file ca-client.crt
 +etcd --trusted-ca-file ca-client.crt
