@@ -16,10 +16,10 @@
     "submodule:update": "git submodule update --remote --recursive --depth 1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "hugo-extended": "^0.89.4",
-    "netlify-cli": "^7.0.0",
-    "postcss": "^8.3.11",
-    "postcss-cli": "^9.0.2"
+    "autoprefixer": "^10.4.16",
+    "hugo-extended": "^0.101.0",
+    "netlify-cli": "^16.6.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
   }
 }
