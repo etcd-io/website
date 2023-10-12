@@ -60,6 +60,9 @@ questions:
 
 {{% cards "main_channels" %}}
 
+You can also chat with other Etcd users and contributors in the #sig-etcd slack
+channel on [Kubernetes Slack][].
+
 ## Community meetings
 
 etcd contributors and maintainers meet [online][] every two weeks, on **Thursday
@@ -96,3 +99,4 @@ For etcd contribution guidelines, see [How to contribute][].
 [online]: https://zoom.us/my/cncfetcdproject
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
 [GD]: https://github.com/etcd-io/etcd/discussions
+[Kubernetes Slack]: https://slack.k8s.io
