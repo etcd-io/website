@@ -65,5 +65,5 @@ prints a warning message and exits immediately unless the environment variable
   [go-issue]: https://github.com/golang/go/issues/599
 {{% /alert %}}
 
-[etcd maintainers]: https://github.com/etcd-io/etcd/blob/master/MAINTAINERS
+[etcd maintainers]: https://github.com/etcd-io/etcd/blob/main/OWNERS
 [etcd PR #12928]: https://github.com/etcd-io/etcd/pull/12928

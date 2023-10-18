@@ -16,7 +16,7 @@ The etcd project maintains release branches for the current version and previous
 Applicable fixes, including security fixes, may be backported to those two release branches, depending on severity and feasibility.
 Patch releases are cut from those branches when required.
 
-The project [Maintainers](https://github.com/etcd-io/etcd/blob/main/MAINTAINERS) own this decision.
+The project [Maintainers](https://github.com/etcd-io/etcd/blob/main/OWNERS) own this decision.
 
 You can check the running etcd cluster version with `etcdctl`:
 
