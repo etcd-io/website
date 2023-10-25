@@ -410,8 +410,7 @@ By default, `etcd --host-whitelist` and `embed.Config.HostWhitelist` are set *em
 
 ### I'm seeing a SSLv3 alert handshake failure when using TLS client authentication?
 
-The `crypto/tls` package of `golang` checks the key usage of the certificate public key before using it.
-To use the certificate public key to do client auth, we need to add `clientAuth` to `Extended Key Usage` when creating the certificate public key.
+The `crypto/tls` package of `golang` checks the key usage of the certificate public key before using it. To use the certificate public key to do client auth, we need to add `clientAuth` to `Extended Key Usage` when creating the certificate public key.
 
 Here is how to do it:
 
@@ -429,6 +428,10 @@ When creating the cert be sure to reference it in the `-extensions` flag:
 ```
 $ openssl ca -config openssl.cnf -policy policy_anything -extensions ssl_client -out certs/machine.crt -infiles machine.csr
 ```
+
+The [`Verify`](https://pkg.go.dev/crypto/x509#Certificate.Verify) function in the `crypto/x509` logic implements a common, but non-standard extension - it requires that CA & intermediate certificates either define no extended key usage, or a superset of those on the end-entity certificates. If certificates in your chain define any extended key usages, they must also include `serverAuth` and/or `clientAuth`.
+
+Otherwise, you may see an error like `unsuitable certificate purpose` (OpenSSL) or `certificate specifies an incompatible key usage` (Go).
 
 ### With peer certificate authentication I receive "certificate is valid for 127.0.0.1, not $MY_IP"
 Make sure to sign the certificates with a Subject Name the member's public IP address. The `etcd-ca` tool for example provides an `--ip=` option for its `new-cert` command.
