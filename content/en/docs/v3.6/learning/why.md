@@ -90,7 +90,7 @@ In the case of controlling mutual accesses to keys of etcd itself with etcd lock
 
 In distributed locking literature similar designs are described:
 * In [the paper of Chubby][chubby], the concept of *sequencer* is introduced. We interpret that sequencer is an almost same to the combination of revision number and lease ID of etcd.
-* In [How to do distributed locking][fencing], Martin Kleppmann introduced the idea of *fencing token*. The authors interpret that fencing token is revision number in the case of etcd. In [Note on fencing and distributed locks][fencing-zk] Flavio Junqueira discussed how the idea of fencing token should be implemented in the case of zookeeper.
+* In [How to do distributed locking][fencing], Martin Kleppmann introduced the idea of *fencing token*. The authors interpret that fencing token is revision number in the case of etcd.
 * In [Practical Uses of Synchronized Clocks in Distributed Systems][physicalclock], we can find a description that Thor implements a distributed locking mechanism based on version number validation and lease.
 
 Why do etcd and other systems provide lease if they provide mutual exclusion based on version number validation? Well, leases provide an optimization mechanism for reducing a number of aborted requests.
@@ -126,7 +126,6 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [etcd-watch]: ../api/#watch-streams
 [etcdlease]: https://godoc.org/github.com/etcd-io/etcd/client/v3/leasing
 [fencing]: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
-[fencing-zk]: https://fpj.me/2016/02/10/note-on-fencing-and-distributed-locks/
 [grpc]: https://www.grpc.io
 [kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
 [lease]: https://web.stanford.edu/class/cs240/readings/89-leases.pdf
