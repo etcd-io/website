@@ -22,8 +22,8 @@ weight: 2
 
 **Go libraries**
 
-- [etcd/client/v3](https://github.com/etcd-io/etcd/tree/master/client/v3) - the officially maintained Go client for v3
-- [etcd/client/v2](https://github.com/etcd-io/etcd/tree/master/client/v2) - the officially maintained Go client for v2
+- [etcd/client/v3](https://github.com/etcd-io/etcd/tree/main/client/v3) - the officially maintained Go client for v3
+- [etcd/client/v2](https://github.com/etcd-io/etcd/tree/release-3.3/client/) - the officially maintained Go client for v2
 - [go-etcd](https://github.com/coreos/go-etcd) - the deprecated official client. May be useful for older (<2.0.0) versions of etcd.
 - [encWrapper](https://github.com/lumjjb/etcd/tree/enc_wrapper/clientwrap/encwrapper) - encWrapper is an encryption wrapper for the etcd client Keys API/KV.
 
