@@ -35,6 +35,7 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/next/learning/lock/*  /docs/next/learning/why/#notes-on-the-usage-of-lock-and-lease
 
 /blog/jepsen-343-results  /blog/2020/jepsen-343-results/
+/kubecon    /blog/2023/engage_with_etcd_at_kccncna2023
 
 /docs/next/dl-build  /docs/next/install/
 /docs/v3.4/dl-build  /docs/v3.4/install/
