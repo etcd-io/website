@@ -1,8 +1,8 @@
 ---
 title: Engage with the etcd project at KubeCon NA 2023
 author:  "[James Blair](https://github.com/jmhbnz), Red Hat"
-date: 2023-10-19
-draft: true
+date: 2023-11-05
+draft: false
 ---
 
 KubeCon NA 2023 in Chicago is just around the corner! This year, the etcd project has a diverse range of talks, tutorials, and even interactive contribfest sessions for you to get involved in . As a critical foundational pillar of the Kubernetes ecosystem, etcd's presence at Kubecon underscores its importance in ensuring all our Kubernetes clusters continue to have robust and reliable distributed persistent state.
