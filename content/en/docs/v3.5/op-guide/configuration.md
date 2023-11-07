@@ -176,7 +176,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 
 ```nocode
 --auth-token 'simple'
-  Specify a v3 authentication token type and its options ('simple' or 'jwt').
+  Specify a v3 authentication token type and token specific options, especially for JWT. Its format is "type,var1=val1,var2=val2,...". Possible type is 'simple' or 'jwt'. Possible variables are 'sign-method' for specifying a sign method of jwt (its possible values are 'ES256', 'ES384', 'ES512', 'HS256', 'HS384', 'HS512', 'RS256', 'RS384', 'RS512', 'PS256', 'PS384', or 'PS512'), 'pub-key' for specifying a path to a public key for verifying jwt, 'priv-key' for specifying a path to a private key for signing jwt, and 'ttl' for specifying TTL of jwt tokens.
 --bcrypt-cost 10
   Specify the cost / strength of the bcrypt algorithm for hashing auth passwords. Valid values are between 4 and 31.
 --auth-token-ttl 300
