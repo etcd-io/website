@@ -65,8 +65,12 @@ channel on [Kubernetes Slack][].
 
 ## Community meetings
 
-etcd contributors and maintainers meet [online][] every two weeks, on **Thursday
-at 11 AM** [Pacific Time][].
+etcd contributors and maintainers meet [online][] every week, on **Thursday
+at 11 AM** [Pacific Time][], alternating between community meetings and issue
+triage meetings. Issue triage meetings are aimed at getting through our backlog
+of PRs and Issues. Triage meetings are open to any contributor; you don't have
+to be a reviewer or approver to help out! They can also be a good way to get
+started contributing.
 
 For phone-in information, the date of the next meeting, and minutes from past
 meetings, see [etcd community meeting][meeting-doc].

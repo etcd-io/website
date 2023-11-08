@@ -17,6 +17,7 @@ Following are few predetermined searches on issues for convenience:
 * [Bugs](https://github.com/etcd-io/etcd/labels/area%2Fbug)
 * [Help Wanted](https://github.com/etcd-io/etcd/labels/Help%20Wanted)
 * [Longest untriaged issues](https://github.com/etcd-io/etcd/issues?utf8=%E2%9C%93&q=is%3Aopen+sort%3Aupdated-asc+)
+* [Issue Triage Meeting](https://etcd.io/community/#community-meetings)
 
 ## Scope
 
