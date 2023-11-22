@@ -134,6 +134,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Path to the client server TLS key file.
 --client-cert-auth 'false'
   Enable client cert authentication.
+  It's recommended to enable client cert authentication to prevent attacks from unauthenticated clients (e.g. CVE-2023-44487), especially when running etcd as a public service.
 --client-crl-file ''
   Path to the client certificate revocation list file.
 --client-cert-allowed-hostname ''
@@ -149,6 +150,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Path to the peer server TLS key file.
 --peer-client-cert-auth 'false'
   Enable peer client cert authentication.
+  It's recommended to enable peer client cert authentication to prevent attacks from unauthenticated forged peers (e.g. CVE-2023-44487).
 --peer-trusted-ca-file ''
   Path to the peer server TLS trusted CA file.
 --peer-cert-allowed-cn ''

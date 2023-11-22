@@ -275,7 +275,7 @@ The security flags help to [build a secure etcd cluster][security].
 + Enable client cert authentication.
 + default: false
 + env variable: ETCD_CLIENT_CERT_AUTH
-+ CN authentication is not supported by gRPC-gateway.
++ CN authentication is not supported by gRPC-gateway. It's recommended to enable client cert authentication to prevent attacks from unauthenticated clients (e.g. CVE-2023-44487), especially when running etcd as a public service.
 
 ### --client-crl-file
 + Path to the client certificate revocation list file.
@@ -320,6 +320,7 @@ The security flags help to [build a secure etcd cluster][security].
 + Enable peer client cert authentication.
 + default: false
 + env variable: ETCD_PEER_CLIENT_CERT_AUTH
++ It's recommended to enable peer client cert authentication to prevent attacks from unauthenticated forged peers (e.g. CVE-2023-44487).
 
 ### --peer-crl-file
 + Path to the peer certificate revocation list file.
