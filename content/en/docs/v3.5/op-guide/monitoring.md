@@ -139,7 +139,9 @@ In v3.5 etcd has added support for distributed tracing using [OpenTelemetry](htt
 This feature is still experimental and can change at any time.
 {{% /alert %}}
 
-To enable this experimental feature, pass the `--experimental-enable-distributed-tracing=true` to the etcd server. Setup and configure the distributed tracing by starting etcd server with the following optional flags:
+To enable this experimental feature, pass the `--experimental-enable-distributed-tracing=true` to the etcd server, along with the `--experimental-distributed-tracing-sampling-rate=<number>` flag to choose how many samples to collect per million spans, the default sampling rate is `0`.
+
+Configure the distributed tracing by starting etcd server with the following optional flags:
 
 - `--experimental-distributed-tracing-address` - (Optional) - "localhost:4317" - Address of the tracing collector.
 
