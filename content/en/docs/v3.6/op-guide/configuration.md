@@ -219,6 +219,8 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Distributed tracing service name, must be same across all etcd instances.
 --experimental-distributed-tracing-instance-id ''
   Distributed tracing instance ID, must be unique per each etcd instance.
+--experimental-distributed-tracing-sampling-rate '0'
+  Number of samples to collect per million spans for OpenTelemetry Tracing (if enabled with experimental-enable-distributed-tracing flag).
 ```
 ### v2 Proxy
 
