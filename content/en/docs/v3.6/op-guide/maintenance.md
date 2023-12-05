@@ -165,7 +165,7 @@ A snapshot is taken with `etcdctl`:
 
 ```sh
 $ etcdctl snapshot save backup.db
-$ etcdctl --write-out=table snapshot status backup.db
+$ etcdutl --write-out=table snapshot status backup.db
 +----------+----------+------------+------------+
 |   HASH   | REVISION | TOTAL KEYS | TOTAL SIZE |
 +----------+----------+------------+------------+

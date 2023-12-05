@@ -19,7 +19,7 @@ Snapshot saved at my.db
 ```
 
 ```shell
-etcdctl --write-out=table --endpoints=$ENDPOINTS snapshot status my.db
+etcdutl --write-out=table snapshot status my.db
 
 +---------+----------+------------+------------+
 |  HASH   | REVISION | TOTAL KEYS | TOTAL SIZE |
