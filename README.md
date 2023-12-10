@@ -88,6 +88,6 @@ Follow these steps to add documentation for a newly released version of etcd, vX
 [etcd.io]: https://etcd.io
 [Hugo]: https://gohugo.io
 [localhost:8888]: http://localhost:8888
-[LTS release]: https://nodejs.org/en/about/releases/
+[LTS release]: https://nodejs.org/en/download/
 [Netlify]: https://netlify.com
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
