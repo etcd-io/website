@@ -2,7 +2,7 @@
 title: Install
 weight: 1150
 description: Instructions for installing etcd from pre-built binaries or from source.
-minGoVers: 1.16
+minGoVers: 1.21
 ---
 
 ## Requirements
