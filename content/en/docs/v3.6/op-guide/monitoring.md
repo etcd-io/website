@@ -67,6 +67,34 @@ etcd_disk_backend_commit_duration_seconds_bucket{le="0.016"} 406464
 
 Since v3.3.0, in addition to responding to the `/metrics` endpoint, any locations specified by `--listen-metrics-urls` will also respond to the `/health` endpoint. This can be useful if the standard endpoint is configured with mutual (client) TLS authentication, but a load balancer or monitoring service still needs access to the health check.
 
+Since v3.4, two new endpoints `/livez` and `/readyz` are added.
+
+* the `/livez` endpoint reflects whether the process is alive or if it needs a restart.
+* the `/readyz` endpoint reflects whether the process is ready to serve traffic.
+
+Design details of the endpoints are documented in the [KEP](https://github.com/kubernetes/enhancements/tree/master/keps/sig-etcd/4331-livez-readyz).
+
+Each endpoint includes several individual health checks, and you can use the `verbose` parameter to print out the details of the checks and their status, for example 
+
+```bash
+curl -k http://localhost:2379/readyz?verbose
+```
+
+and you would see the response similar to 
+
+```text
+[+]data_corruption ok
+[+]serializable_read ok
+[+]linearizable_read ok
+ok
+```
+
+The http API also supports to exclude specific checks, for example
+
+```bash
+curl -k http://localhost:2379/readyz?exclude=data_corruption
+```
+
 ## Prometheus
 
 Running a [Prometheus][prometheus] monitoring service is the easiest way to ingest and record etcd's metrics.
