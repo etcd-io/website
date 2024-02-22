@@ -86,14 +86,148 @@ $ brew update
 $ brew install etcd
 ```
 
-3. Verify install 
+3. Verify install
 ```sh
 $ etcd --version
 ```
 
 ## Linux
 
-TBD
+Although it is possible to install etcd through many major Linux distribution's official repositories and package managers, the versions published are significantly outdated. So, installing this way is strongly discouraged.
+
+The following package managers are community maintained and have the most up-to-date version:
+
+### Homebrew on Linux
+
+[Homebrew can run on Linux], and can provide recent software versions.
+
+- Prerequisites
+  - Update Homebrew:
+
+    ```sh
+    $ brew update
+    ```
+
+- Procedure
+  - Install using `brew`:
+
+    ```sh
+    $ brew install etcd
+    ```
+
+- Result
+  - Verify installation by getting the version:
+
+    ```sh
+    $ etcd --version
+    etcd Version: {{< psubstr git_version_tag 1 >}}
+    ...
+    ```
+
+### Alpine Linux
+
+Alpine Linux provides two separate packages: `etcd` and `etcd-ctl`. They are in the testing repository, so you must enable it before installing.
+
+- Prerequisites
+  - Enable testing repository:
+
+    ```sh
+    $ echo 'https://dl-cdn.alpinelinux.org/alpine/edge/testing/' | sudo tee -a /etc/apk/repositories
+    # or if you're running as root:
+    $ echo 'https://dl-cdn.alpinelinux.org/alpine/edge/testing/' >> /etc/apk/repositories
+    ```
+
+- Procedure
+  - Install using apk:
+
+    ```sh
+    $ sudo apk add etcd etcd-ctl
+    # or if you're running as root:
+    $ apk add etcd etcd-ctl
+    ```
+
+- Result
+  - Verify installation by getting the version:
+
+    ```sh
+    $ etcd --version
+    etcd Version: {{< psubstr git_version_tag 1 >}}
+    ...
+    ```
+
+### ArchLinux (AUR)
+
+The [Arch User Repository (AUR)] keeps an up-to-date version.
+
+- Prerequisites
+  - Ensure you have installed the `base-devel` package:
+
+    ```sh
+    $ sudo pacman -S base-devel
+    ```
+
+  - Fetch the most recent snapshot by going to <https://aur.archlinux.org/packages/etcd>
+  - Extract the downloaded tar.gz file:
+
+    ```sh
+    $ tar -zxf etcd.tar.gz
+    ```
+
+  - Change the working directory:
+
+    ```sh
+    $ cd etcd
+    ```
+
+- Procedure
+  - Run `makepkg`:
+
+    ```sh
+    $ makepkg -s
+    ```
+
+  - Install the generated pkg file:
+
+    ```sh
+    $ sudo pacman -U etcd-*.pkg.tar.zst
+    ```
+
+- Result
+  - Verify installation by getting the version:
+
+    ```sh
+    $ etcd --version
+    etcd Version: {{< psubstr git_version_tag 1 >}}
+    ...
+    ```
+
+### ALT Linux Sisyphus
+
+ALT Linux Sisyphus maintains an up-to-date version.
+
+- Prerequisites
+  - Update apt repository
+
+    ```sh
+    $ sudo apt-get update
+    ```
+
+- Procedure
+  - Install using `apt-get`:
+
+    ```sh
+    $ sudo apt-get install etcd
+    ```
+
+- Result
+  - Verify installation by getting the vesion:
+
+    ```sh
+    $ etcd --version
+    etcd Version: {{< psubstr git_version_tag 1 >}}
+    ...
+    ```
+
 ## Installation as part of Kubernetes installation
 
 TBD---Help Wanted
@@ -115,3 +249,5 @@ For a slightly more involved sanity check of your installation, see
 [tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
 [Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm
+[Arch User Repository (AUR)]: <https://wiki.archlinux.org/title/Arch_User_Repository>
+[Homebrew can run on Linux]: <https://docs.brew.sh/Homebrew-on-Linux>
