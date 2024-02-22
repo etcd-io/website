@@ -86,14 +86,43 @@ $ brew update
 $ brew install etcd
 ```
 
-3. Verify install 
+3. Verify install
 ```sh
 $ etcd --version
 ```
 
 ## Linux
 
-TBD
+Although installing etcd through many major Linux distributions' official repositories and package managers is possible, the published versions can be significantly outdated. So, installing this way is strongly discouraged.
+
+The recommended way to install etcd on Linux is either through [pre-built binaries](#install-pre-built-binaries) or by using Homebrew.
+
+### Homebrew on Linux
+
+[Homebrew can run on Linux], and can provide recent software versions.
+
+- Prerequisites
+  - Update Homebrew:
+
+    ```sh
+    $ brew update
+    ```
+
+- Procedure
+  - Install using `brew`:
+
+    ```sh
+    $ brew install etcd
+    ```
+
+- Result
+  - Verify installation by getting the version:
+
+    ```sh
+    $ etcd --version
+    etcd Version: {{< psubstr git_version_tag 1 >}}
+    ...
+    ```
 
 ## Installation as part of Kubernetes installation
 
@@ -116,3 +145,4 @@ For a slightly more involved sanity check of your installation, see
 [tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
 [Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm
+[Homebrew can run on Linux]: <https://docs.brew.sh/Homebrew-on-Linux>
