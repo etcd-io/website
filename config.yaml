@@ -3,6 +3,7 @@ baseURL: https://etcd.io
 enableRobotsTxt: true
 
 theme: [docsy]
+themesDir: "node_modules" # docsy is installed via npm
 
 # Will give values to .Lastmod etc.
 enableGitInfo: true
