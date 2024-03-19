@@ -1,4 +1,4 @@
-{{ $latest := site.Params.versions.latest }}
+{{ $latest := site.Params.latest_stable_version }}
 /docs/latest     /docs/{{ $latest }}/
 /docs/latest/*     /docs/{{ $latest }}/:splat
 
