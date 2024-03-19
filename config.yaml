@@ -115,7 +115,7 @@ params:
     sidebar_menu_compact: true
     sidebar_search_disable: true
     navbar_logo: true
-    footer_about_disable: true
+    footer_about_enable: false
     navbar_translucent_over_cover_disable: true
 
     # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
