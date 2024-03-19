@@ -78,7 +78,7 @@ Follow these steps to add documentation for a newly released version of etcd, vX
 * Add the version to the `params.versions.all` array in the
   [config.toml](config.toml) configuration file.
 * If the version is meant to be the latest version of etcd, change the
-  `params.versions.latest` parameter to the desired new version.
+  `params.latest_stable_version` parameter to the desired new version.
 * Submit a pull request with the changes.
 
 [#406]: https://github.com/etcd-io/website/issues/406
