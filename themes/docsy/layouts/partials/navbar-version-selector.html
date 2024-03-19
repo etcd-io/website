@@ -1,0 +1,34 @@
+{{/* etcd-docsy file override */ -}}
+
+{{ $thisURL   := .RelPermalink -}}
+{{ if and (eq .Section "docs") (ne $thisURL "/docs/") -}}
+  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{- .Site.Params.version_menu -}}
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    {{ $thisFile  := .File -}}
+    {{ $thisVers  := .Params.version -}}
+    {{ $thisVersName := .Params.versName | default $thisVers -}}
+    {{ $thisVersURI := printf "/%s/" $thisVers -}}
+
+    {{ range $vers := .Site.Params.versions.all -}}
+      {{ $versPath := printf "/docs/%s/" $vers -}}
+      {{ $versName := ($.GetPage $versPath).Params.versName | default $vers -}}
+      {{ $versURI := printf "/%s/" $vers -}}
+      {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
+
+      {{/* Link to corresponding page under the docs $versURI, if it exists; otherwise link to the new version landing page */ -}}
+      {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
+      {{ $notFoundClass := "" -}}
+      {{ if not (and $thisVers (fileExists $targetFile)) -}}
+        {{ $targetURL = $versPath -}}
+        {{ $notFoundClass = " cncf-vers-menu--item__not-found" -}}
+      {{ end -}}
+      <a class="dropdown-item cncf-vers-menu--item {{- $notFoundClass }}" href="{{ $targetURL }}">{{ $versName }}</a>
+    {{ end -}}
+  </div>
+{{ else }}
+  <a class="nav-link dropdown-toggle disabled" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{- .Site.Params.version_menu -}}
+  </a>
+{{ end -}}

@@ -1,0 +1,65 @@
+#+title: Docs Sprint
+* Install NVM
+#+name: install vm
+#+begin_src tmux :session "servers:ii"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+#+end_src
+#+name: setup nvm
+#+begin_src tmux :session "servers:ii"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#+end_src
+* NVM Install
+#+name: nvm install
+#+begin_src tmux :session "servers:ii"
+nvm install --lts
+#+end_src
+
+#+RESULTS:
+* NPM Install
+#+name: npm install
+#+begin_src tmux :session "servers:ii"
+npm install
+#+end_src
+
+* npm run serve
+#+name: npm install
+#+begin_src tmux :session "servers:ii"
+npm run serve
+#+end_src
+* NTOSE
+we are vendoring docsy at the original version
+mkdir themes
+rsync -a ../docsy/ themes/docsy/
+cd themes/docsy
+rm -rf .git
+
+http
+
+git checkout main -- config.yaml
+
+
+* aoeu
+#+begin_src text
+◈ Starting Netlify Dev with Hugo
+Error: module "github.com/FortAwesome/Font-Awesome" not found; either add it as a Hugo Module or store it in "/home/ii/website/themes".: module does not exist
+⠧ Waiting for framework port 1313. This can be configured using the 'targetPort' property in the netlify.toml◈ Command failed with exit code 255: hugo serve --minify -DFE -w. Shutting down Netlify Dev server
+#+end_src
+
+* NOTES
+https://github.com/etcd-io/website/issues/765#issuecomment-2003741980
+* Other good issues
+#+begin_src shell
+
+#+end_src
+* Footnotes
+** BFS
+Breath frist
+#+begin_src tmux :session "servers:ii"
+sudo apt-get update
+sudo apt-get install bfs
+#+end_src
+** RENAME BRANCH
+#+begin_src tmux
+git branch -m and/docs-upgrade
+#+end_src
