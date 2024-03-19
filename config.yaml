@@ -2,7 +2,11 @@
 baseURL: https://etcd.io
 enableRobotsTxt: true
 
-theme: [docsy]
+module:
+  replacements: 'github.com/FortAwesome/Font-Awesome -> ., github.com/twbs/bootstrap -> .'
+  imports:
+    - path: docsy
+
 themesDir: "node_modules" # docsy is installed via npm
 
 # Will give values to .Lastmod etc.
