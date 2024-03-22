@@ -93,7 +93,30 @@ $ etcd --version
 
 ## Linux
 
-TBD
+### Enterprise Linux (CentOS Stream, RHEL)
+
+- Prerequisites
+   - Enable a repository that ships etcd:
+      - [PostgreSQL YUM Repository](https://yum.postgresql.org/). Includes
+      up-to-date versions
+      - [RDO repository](https://www.rdoproject.org/what/repos/) or a
+      [OpenStack repository from extras](https://docs.openstack.org/install-guide/environment-packages-rdo.html#enable-the-openstack-repository).
+      Includes older versions for compatibility with the OpenStack release.
+
+- Procedure
+   - Install using dnf
+
+   ```sh
+   $ sudo dnf install etcd
+   ```
+
+   - After configuring, start and enable Systemd service
+
+   ```sh
+   $ sudo systemctl start etcd
+   $ sudo systemctl enable etcd
+   ```
+
 ## Installation as part of Kubernetes installation
 
 TBD---Help Wanted
