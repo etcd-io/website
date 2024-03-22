@@ -17,6 +17,7 @@ IgnoreURLs:
   - "^http://example.com"
   - "^http://example.com"
 
+IgnoreInternalEmptyHash: true # because `docsy/layouts/partials/navbar-version-selector.html` uses `href="#"` and that lands everywhere
 IgnoreInternalURLs:
   - /docs/latest/
   - /docs/latest/install/

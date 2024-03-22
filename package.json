@@ -16,8 +16,9 @@
     "submodule:update": "git submodule update --remote --recursive --depth 1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "hugo-extended": "^0.110.0",
+    "autoprefixer": "^10.4.18",
+    "docsy": "github:google/docsy#semver:0.9.1",
+    "hugo-extended": "^0.123.8",
     "netlify-cli": "^17.15.2",
     "postcss": "^8.4.31",
     "postcss-cli": "^11.0.0"

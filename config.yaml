@@ -2,7 +2,12 @@
 baseURL: https://etcd.io
 enableRobotsTxt: true
 
-theme: [docsy]
+module:
+  replacements: 'github.com/FortAwesome/Font-Awesome -> ., github.com/twbs/bootstrap -> .'
+  imports:
+    - path: docsy
+
+themesDir: "node_modules" # docsy is installed via npm
 
 # Will give values to .Lastmod etc.
 enableGitInfo: true
@@ -56,7 +61,19 @@ markup:
 # Everything below this are Site Params
 
 params:
-  copyright: etcd Authors
+  copyright:
+    from_year: 2013
+    authors: |
+      etcd Authors
+
+      <div class="row text-center text-white small">
+        <div class="col-12 text-center py-2 order-sm-2">
+          <a href="https://www.linuxfoundation.org/terms" target="_blank" rel="noopener">Terms</a> |
+          <a href="https://www.linuxfoundation.org/privacy" target="_blank" rel="noopener">Privacy</a> |
+          <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener">Trademarks</a> |
+          <a href="https://github.com/etcd-io/website/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
   description: >-
     A distributed, reliable key-value store for the most critical data of a
     distributed system
@@ -82,26 +99,35 @@ params:
   # Menu title if your navbar has a versions selector to access old versions of your site.
   # This menu appears only if you have at least one [params.versions] set.
   version_menu: Versions
+  latest_stable_version: v3.5
   versions:
-    latest: v3.5
-    all:
-      - v3.6
-      - v3.5
-      - v3.4
-      - v3.3
-      - v3.2
-      - v3.1
-      - v2.3
-    deprecation_warning: |-
-      the documentation is no longer actively maintained.
-        The page that you are viewing is the last archived version.
+    - version: v3.6
+      url: /docs/v3.6/
+
+    - version: v3.5
+      url: /docs/v3.5/
+
+    - version: v3.4
+      url: /docs/v3.4/
+
+    - version: v3.3
+      url: /docs/v3.3/
+
+    - version: v3.2
+      url: /docs/v3.2/
+
+    - version: v3.1
+      url: /docs/v3.1/
+
+    - version: v2.3
+      url: /docs/v2.3/
 
   # User interface configuration
   ui:
     sidebar_menu_compact: true
     sidebar_search_disable: true
     navbar_logo: true
-    footer_about_disable: true
+    footer_about_enable: false
     navbar_translucent_over_cover_disable: true
 
     # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
