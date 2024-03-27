@@ -115,7 +115,7 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [etcd-etcdctl-elect]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#elect-options-election-name-proposal
 [etcd-etcdctl-lock]: https://github.com/etcd-io/etcd/blob/master/etcdctl/README.md#lock-options-lockname-command-arg1-arg2-
 [etcd-json]: ../../dev-guide/api_grpc_gateway/
-[etcd-linread]: ../api_guarantees/#isolation-level-and-consistency-of-replicas
+[etcd-linread]: ../api_guarantees/#linearizability
 [etcd-mvcc]: ../data_model/
 [etcd-rbac]: ../../op-guide/authentication/rbac
 [etcd-recipe]: https://godoc.org/github.com/etcd-io/etcd/client/v3/experimental/recipes
