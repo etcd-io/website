@@ -355,10 +355,7 @@ message Event {
 
 Watches are long-running requests and use gRPC streams to stream event data. A watch stream is bi-directional; the client writes to the stream to establish watches and reads to receive watch events. A single watch stream can multiplex many distinct watches by tagging events with per-watch identifiers. This multiplexing helps reducing the memory footprint and connection overhead on the core etcd cluster.
 
-Watches make three guarantees about events:
-* Ordered - events are ordered by revision; an event will never appear on a watch if it precedes an event in time that has already been posted.
-* Reliable - a sequence of events will never drop any subsequence of events; if there are events ordered in time as a < b < c, then if the watch receives events a and c, it is guaranteed to receive b.
-* Atomic - a list of events is guaranteed to encompass complete revisions; updates in the same revision over multiple keys will not be split over several lists of events.
+To read about guarantees made about watch events, please read [etcd api guarantees][watch-api-guarantees].
 
 A client creates a watch by sending a `WatchCreateRequest` over a stream returned by `Watch`:
 
@@ -480,6 +477,7 @@ message LeaseKeepAliveResponse {
 * ID - the lease that was refreshed with a new TTL.
 * TTL - the new time-to-live, in seconds, that the lease has remaining.
 
++[watch-api-guarantees]: ../api_guarantees/#watch-apis
 [elections]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/election.go
 [grpc-api]: ../../dev-guide/api_reference_v3/
 [grpc-service]: https://github.com/etcd-io/etcd/blob/master/api/etcdserverpb/rpc.proto
