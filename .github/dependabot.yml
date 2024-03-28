@@ -5,7 +5,3 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    ignore:
-      # We can't bump hugo-extended further than 0.110.0.
-      # Refer: https://github.com/etcd-io/website/issues/717
-      - dependency-name: "hugo-extended"
