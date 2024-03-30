@@ -209,6 +209,11 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 + default: false
 + env variable: ETCD_ENABLE_V2
 
+### --next-cluster-version-compatible
++ Enable 3.4 to be compatible with next version 3.5, to allow 3.4 server to join 3.5 cluster and start on 3.5 schema.
++ default: false
++ env variable: ETCD_NEXT_CLUSTER_VERSION_COMPATIBLE
+
 ## Proxy flags
 
 `--proxy` prefix flags configures etcd to run in [proxy mode][proxy]. "proxy" supports v2 API only.
