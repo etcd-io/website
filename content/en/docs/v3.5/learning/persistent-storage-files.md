@@ -483,7 +483,7 @@ cat default.etcd/member/snap/0000000000000002-0000000000049425.snap |
   protoc --decode=snappb.snapshot \
     server/etcdserver/api/snap/snappb/snap.proto \
     -I $(go list -f '{{.Dir}}' github.com/gogo/protobuf/proto)/.. \
-    -I .
+    -I . \
     -I $(go list -m -f '{{.Dir}}' github.com/gogo/protobuf)/protobuf
 ```
 
