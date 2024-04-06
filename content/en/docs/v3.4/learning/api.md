@@ -477,7 +477,7 @@ message LeaseKeepAliveResponse {
 * ID - the lease that was refreshed with a new TTL.
 * TTL - the new time-to-live, in seconds, that the lease has remaining.
 
-+[watch-api-guarantees]: ../api_guarantees/#watch-apis
+[watch-api-guarantees]: ../api_guarantees/#watch-apis
 [elections]: https://github.com/etcd-io/etcd/blob/master/client/v3/concurrency/election.go
 [grpc-api]: ../../dev-guide/api_reference_v3/
 [grpc-service]: https://github.com/etcd-io/etcd/blob/master/api/etcdserverpb/rpc.proto
