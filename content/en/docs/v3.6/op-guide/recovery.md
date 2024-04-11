@@ -25,7 +25,7 @@ Note that taking the snapshot from the `member/snap/db` file might lose data tha
 To understand which revision and hash a given snapshot contains, you can use the `etcdutl snapshot status` command:
 
 ```sh
-$ etcdutl snapshot status member/snap/db -wtable
+$ etcdutl snapshot status snapshot.db -w table
 +---------+----------+------------+------------+
 |  HASH   | REVISION | TOTAL KEYS | TOTAL SIZE |
 +---------+----------+------------+------------+
