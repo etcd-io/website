@@ -110,7 +110,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --strict-reconfig-check 'true'
   Reject reconfiguration requests that would cause quorum loss.
 --pre-vote 'true'
-  Enable to run an additional Raft election phase.
+  Enable the raft Pre-Vote algorithm to prevent disruption when a node that has been partitioned away rejoins the cluster.
 --auto-compaction-retention '0'
   Auto compaction retention length. 0 means disable auto compaction.
 --auto-compaction-mode 'periodic'
