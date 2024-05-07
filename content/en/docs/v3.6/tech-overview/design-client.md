@@ -4,12 +4,6 @@ weight: 2250
 description: Client architectural decisions & their implementation details
 ---
 
-etcd Client Design
-==================
-
-*Gyuho Lee (github.com/gyuho, Amazon Web Services, Inc.), Joe Betz (github.com/jpbetz, Google Inc.)*
-
-
 Introduction
 ============
 
@@ -138,3 +132,5 @@ Client-side keepalive ping still does not reason about network partitions. Strea
 ![client-balancer-figure-07.png](../img/client-balancer-figure-07.png)
 
 Currently, retry logic is handled manually as an interceptor. This may be simplified via [official gRPC retries](https://github.com/grpc/proposal/blob/master/A6-client-retries.md).
+
+*Authors: Gyuho Lee (github.com/gyuho, Amazon Web Services, Inc.), Joe Betz (github.com/jpbetz, Google Inc.)*

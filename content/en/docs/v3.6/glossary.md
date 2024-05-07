@@ -1,10 +1,8 @@
 ---
 title: Glossary
-weight: 2900
-description: Terms used in etcd documentation, command line, and source code
+weight: 1250
+description: Terms used in the etcd documentation, command line, and source code.
 ---
-
-This document defines the various terms used in etcd documentation, command line and source code.
 
 ## Alarm
 

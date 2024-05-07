@@ -399,7 +399,7 @@ _, err := kvc.Get(ctx, "a")
 +  if s.Code() == codes.Canceled
 ```
 
-[The new client balancer](/docs/{{< param version >}}/learning/design-client/) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, [v3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14) or later requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
+[The new client balancer](/docs/{{< param version >}}/tech-overview/design-client/) uses an asynchronous resolver to pass endpoints to the gRPC dial function. As a result, [v3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14) or later requires `grpc.WithBlock` dial option to wait until the underlying connection is up.
 
 ```diff
 import (

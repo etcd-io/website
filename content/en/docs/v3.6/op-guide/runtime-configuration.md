@@ -240,7 +240,7 @@ It is enabled by default.
 [cluster-reconf]: #cluster-reconfiguration-operations
 [conf-adv-peer]: ../configuration#clustering
 [conf-name]: ../configuration#member
-[design-learner]: ../../learning/design-learner
+[design-learner]: ../../tech-overview/design-learner
 [disaster recovery]: ../recovery
 [error cases when promoting a member]: #error-cases-when-promoting-a-learner-member
 [fault tolerance table]: /docs/v2.3/admin_guide/#fault-tolerance-table
