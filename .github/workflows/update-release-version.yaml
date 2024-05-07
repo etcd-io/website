@@ -1,0 +1,19 @@
+---
+name: Update Latest Release Versions Nightly
+permissions:
+  contents: write
+  pull-requests: write
+on:
+  schedule:
+    - cron: '25 9 * * *' # runs every day at 09:25 UTC
+  workflow_dispatch:
+
+jobs:
+  v3_4:
+    uses: ./.github/workflows/update-release-version-template.yaml
+    with:
+      release: v3.4
+  v3_5:
+    uses: ./.github/workflows/update-release-version-template.yaml
+    with:
+      release: v3.5
