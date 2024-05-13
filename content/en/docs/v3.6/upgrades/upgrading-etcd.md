@@ -11,6 +11,7 @@ This section contains documents specific to upgrading etcd clusters and applicat
 * [Upgrade etcd from 3.1 to 3.2](../upgrade_3_2/)
 * [Upgrade etcd from 3.2 to 3.3](../upgrade_3_3/)
 * [Upgrade etcd from 3.3 to 3.4](../upgrade_3_4/)
+* [Upgrade etcd from 3.4 to 3.5](../upgrade_3_5/)
 
 ## Upgrading from etcd v2.3
 * [Upgrade a v2.3 cluster to v3.0](../upgrade_3_0/)
