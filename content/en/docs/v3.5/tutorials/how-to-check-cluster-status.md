@@ -4,8 +4,61 @@ description: Guide to checking etcd cluster status
 weight: 1000
 ---
 
+## Prerequisites
 
-Specify the initial cluster configuration for each machine:
+* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.6/install/)
+
+## Check Overall Status
+
+`endpoint status` to check the overall status of each endpoint specified in `--endpoints` flag:
+
+```bash
+etcdctl endpoint status (--endpoints=$ENDPOINTS|--cluster)
+```
+
+### Options
+
+```bash
+--cluster[=false]: use all endpoints from the cluster member list
+```
+
+## Check Health
+
+`endpoint health` to check the healthiness of each endpoint specified in `--endpoints` flag:
+
+```bash
+etcdctl endpoint health (--endpoints=$ENDPOINTS|--cluster)
+```
+
+### Options
+
+```bash
+--cluster[=false]: use all endpoints from the cluster member list
+```
+
+## Check KV Hash
+
+`endpoint hashkv` to check the KV history hash of each endpoint specified in `--endpoints` flag:
+
+```bash
+etcdctl endpoint hashkv (--endpoints=$ENDPOINTS|--cluster) [rev=$REV]
+```
+
+### Options
+
+```bash
+--cluster[=false]: use all endpoints from the cluster member list
+--rev=0: maximum revision to hash (default: latest revision)
+```
+
+## Options inherited from parent commands
+
+```bash
+--endpoints="127.0.0.1:2379": gRPC endpoints
+-w, --write-out="simple": set the output format (fields, json, protobuf, simple, table)
+```
+
+### Examples
 
 ```shell
 etcdctl --write-out=table --endpoints=$ENDPOINTS endpoint status
@@ -25,4 +78,16 @@ etcdctl --endpoints=$ENDPOINTS endpoint health
 10.240.0.17:2379 is healthy: successfully committed proposal: took = 3.345431ms
 10.240.0.19:2379 is healthy: successfully committed proposal: took = 3.767967ms
 10.240.0.18:2379 is healthy: successfully committed proposal: took = 4.025451ms
+```
+
+```shell
+etcdctl --cluster endpoint hashkv  --write-out=table
+
++------------------+------------+---------------+
+|     ENDPOINT     |    HASH    | HASH REVISION |
++------------------+------------+---------------+
+| 10.240.0.17:2379 | 3892279174 |             3 |
+| 10.240.0.18:2379 | 3892279174 |             3 |
+| 10.240.0.19:2379 | 3892279174 |             3 |
++------------------+------------+---------------+
 ```
