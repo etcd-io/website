@@ -162,7 +162,7 @@ etcd sends a snapshot of its complete key-value store to refresh slow followers 
 [benchmark-result]: ../op-guide/performance/
 [chubby]: http://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf
 [fio]: https://github.com/axboe/fio
-[fio-blog-post]: https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd
+[fio-blog-post]: https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/
 [hardware-setup]: ../op-guide/hardware/
 [maintenance-compact]:  ../op-guide/maintenance/#history-compaction-v3-api-key-value-database
 [maintenance-defragment]: ../op-guide/maintenance/#defragmentation
