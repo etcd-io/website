@@ -21,9 +21,9 @@ community_resources:
     desc: >
       Join contributors and maintainers [online][], every two weeks.
   - title: >
-      [<i class="fas fa-file-alt"></i>Meeting doc][meeting-doc]
+      [<i class="fas fa-file-alt"></i>Meeting docs][community-meeting-doc]
     desc: >
-      For meeting details, consult the [etcd community meeting][meeting-doc] document.
+      For meeting details, consult the [etcd community meeting][community-meeting-doc] and [robustness tests meeting][robustness-tests-meeting-doc] documents.
   - title: >
       [<i class="fab fa-youtube"></i>YouTube][etcd-youtube]
     desc: >
@@ -60,10 +60,14 @@ questions:
 
 {{% cards "main_channels" %}}
 
-You can also chat with other Etcd users and contributors in the #sig-etcd slack
+You can also chat with other etcd users and contributors in the #sig-etcd slack
 channel on [Kubernetes Slack][].
 
-## Community meetings
+## Meeting schedule
+
+Please refer to [the Kubernetes community](https://github.com/kubernetes/community/blob/master/sig-etcd/README.md#meetings) SIG etcd summary for the latest updates to etcd community meeting schedules.
+
+### Community meetings & Issue triage
 
 etcd contributors and maintainers meet [online][] every week, on **Thursday
 at 11 AM** [Pacific Time][], alternating between community meetings and issue
@@ -73,7 +77,20 @@ to be a reviewer or approver to help out! They can also be a good way to get
 started contributing.
 
 For phone-in information, the date of the next meeting, and minutes from past
-meetings, see [etcd community meeting][meeting-doc].
+meetings, see [etcd community meeting doc][community-meeting-doc].
+
+### Robustness tests
+
+Join us for a collaborative exploration of etcd's correctness under pressure
+[online][] **biweekly**, on **Wednesday at 8 AM** [Pacific Time][]. Our goals are
+to demystify distributed system testing by sharing knowledge and fostering a robust
+testing culture within the etcd community, as well as to expand expertise by mentoring
+new reviewers and approvers for etcd robustness tests. We invite community members to
+propose items for the meetings.
+
+For phone-in information, the date of the next meeting, minutes from past
+meetings, and meeting recordings, see [etcd robustness tests meeting doc][robustness-tests-meeting-doc]
+and [robustness tests meeting recordings][robustness-tests-meeting-recordings].
 
 {{% cards "community_resources" %}}
 
@@ -98,8 +115,10 @@ For etcd contribution guidelines, see [How to contribute][].
 [@etcdio]: https://twitter.com/etcdio
 [etcd-dev]: https://groups.google.com/g/etcd-dev
 [etcd-youtube]: https://www.youtube.com/channel/UC7tUWR24I5AR9NMsG-NYBlg
+[robustness-tests-meeting-recordings]: https://www.youtube.com/playlist?list=PLRGL688DpO9oF-YEEfVXMzaOUzFYK74-I
 [How to contribute]: https://github.com/etcd-io/etcd/blob/main/CONTRIBUTING.md
-[meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
+[community-meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
+[robustness-tests-meeting-doc]: https://docs.google.com/document/d/1idZ_7tV6F18v223LyQ0WVUn9gXLSKyeLwYTdAgbjxpw/edit?usp=sharing
 [online]: https://zoom.us/my/cncfetcdproject
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
 [GD]: https://github.com/etcd-io/etcd/discussions
