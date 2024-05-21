@@ -6,7 +6,8 @@ description: API key-value guarantees made by etcd
 
 etcd is a consistent and durable key-value (KV) store. The key value store is exposed through [gRPC Services].
 
-etcd ensures the strongest consistency and durability guarantees for a distributed system. This specification enumerates the API guarantees made by etcd.
+etcd ensures the strongest consistency and durability guarantees for a distributed system. 
+This specification enumerates the API guarantees made by etcd.
 
 ### APIs to consider
 
@@ -28,24 +29,29 @@ The Watch API allows subscribing to key value store changes.
 
 The Lease API allows assigning a time to live to a key.
 
-Both the KV and Watch APIs allow access to the latest versions of keys, plus all previous versions within a continuous history window limited
-by a compaction operation.
+Both the KV and Watch APIs allow access to the latest versions of keys, plus all 
+previous versions within a continuous history window limited by a compaction operation.
 
 Calling the KV API has immediate effect. 
 
-The Watch API returns after an unbounded but usually short delay. In a correctly working etcd cluster, expect to see watch events appear within 10ms after they occur. However, the delay has no limit and events in unhealthy clusters might never arrive.
+The Watch API returns after an unbounded but usually short delay. In a correctly working etcd cluster, 
+expect to see watch events appear within 10ms after they occur. However, the delay has no limit and 
+events in unhealthy clusters might never arrive.
 
 ## KV APIs
 
-etcd ensures durability and strict serializability for all KV API calls, the strongest isolation guarantee available in distributed transactional database systems.
+etcd ensures durability and strict serializability for all KV API calls, 
+the strongest isolation guarantee available in distributed transactional database systems.
 
 ### Durability
 
-Any completed operations is durable. All accessible data is also durable data. A read never returns data that has not been made durable.
+Any completed operations is durable. All accessible data is also durable data. 
+A read never returns data that has not been made durable.
 
 ### Strict serializability
 
-KV Service operations are atomic and occur in a total order, consistent with the real-time order of those operations. Total order is implied through [revision].
+KV Service operations are atomic and occur in a total order, consistent with the 
+real-time order of those operations. Total order is implied through [revision].
 
 Read more about [strict serializability].
 
@@ -63,8 +69,8 @@ From the perspective of client, linearizability provides useful properties that
 facilitate reasoning about operations. This is a description quoted from
 [the original paper][linearizability]: 
 
-> Linearizability provides the illusion that each operation applied by concurrent processes takes effect instantaneously
-at some point between its invocation and its response.
+> Linearizability provides the illusion that each operation applied by concurrent 
+processes takes effect instantaneously at some point between its invocation and its response.
 
 For example, consider a client completing a write at time *t1*. A
 client issuing a read at *t2* (for *t2* > *t1*) should receive a value at least
