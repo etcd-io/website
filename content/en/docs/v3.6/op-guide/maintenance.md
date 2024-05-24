@@ -157,6 +157,8 @@ The metric `etcd_mvcc_db_total_size_in_use_in_bytes` indicates the actual databa
 
 `etcd_debugging_mvcc_db_total_size_in_bytes` is renamed to `etcd_mvcc_db_total_size_in_bytes` from v3.4.
 
+**NOTE:** it is possible to get an `ErrGRPCNoSpace` error for a Put/Txn/LeaseGrant request, and still have the write request succeed in the backend, because etcd checks space quota at the API layer and the internal Apply layer, and the Apply layer will only raise the `NOSPACE` alarm without blocking the transaction from proceeding.
+
 ## Snapshot backup
 
 Snapshotting the `etcd` cluster on a regular basis serves as a durable backup for an etcd keyspace. By taking periodic snapshots of an etcd member's backend database, an `etcd` cluster can be recovered to a point in time with a known good state.
