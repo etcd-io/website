@@ -1,0 +1,28 @@
+---
+name: Reusable Template to Update Release
+
+on:
+  workflow_call:
+    inputs:
+      release:
+        type: string
+        required: true
+
+jobs:
+  update-release:
+    name: Update Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      - id: latest-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo version="$(gh release list --repo etcd-io/etcd --json 'tagName' -q 'map(select(.tagName | test("^'"$(echo "${{ inputs.release }}." | sed s/\\./\\\./g)"'"))) | .[0].tagName')" >> "$GITHUB_OUTPUT"
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          make update-release-version LATEST_VERSION="${{ steps.latest-release.outputs.version }}"
