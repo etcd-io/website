@@ -6,5 +6,5 @@ updates:
     schedule:
       interval: weekly
     allow:
-        dependency-type: "development"
-        dependency-type: "production"
+      - dependency-type: "development"
+      - dependency-type: "production"
