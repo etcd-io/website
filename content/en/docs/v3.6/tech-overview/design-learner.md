@@ -4,11 +4,6 @@ weight: 2375
 description: Mitigating common challenges with membership reconfiguration
 ---
 
-etcd Learner
-============
-
-*Gyuho Lee (github.com/gyuho, Amazon Web Services, Inc.), Joe Betz (github.com/jpbetz, Google Inc.)*
-
 
 Background
 ==========

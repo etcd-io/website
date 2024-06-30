@@ -4,11 +4,11 @@ weight: 2625
 description: etcd API central design overview
 ---
 
-This document is meant to give an overview of the v3 etcd APIs central design.
-This should not be mistaken with etcd v2 API, deprecated in etcd v3.5.
-It is by no means all encompassing, but intended to focus on the basic ideas needed to understand etcd without the distraction of less common API calls.
+This document is meant to give an overview of the v3 etcd API's central design.
+Do not confuse the v3 API with the etcd v2 API, which was deprecated in etcd v3.5.
+This overvieww is not comprehensive. It focuses on the basic ideas needed to understand etcd without the distraction of less common API calls.
 All etcd APIs are defined in [gRPC services][grpc-service], which categorize remote procedure calls (RPCs) understood by the etcd server.
-A full listing of all etcd RPCs are documented in markdown in the [gRPC API listing][grpc-api].
+A full listing of etcd RPCs are documented in Markdown in the [gRPC API listing][grpc-api].
 
 ## gRPC Services
 
