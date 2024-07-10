@@ -53,7 +53,9 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --listen-peer-urls 'http://localhost:2380'
   List of URLs to listen on for peer traffic.
 --listen-client-urls 'http://localhost:2379'
-  List of URLs to listen on for client traffic.
+  List of URLs to listen on for client grpc traffic and http as long as --listen-client-http-urls is not specified.
+--listen-client-http-urls ''
+  List of URLs to listen on for http only client traffic. Enabling this flag removes http services from --listen-client-urls.
 --max-snapshots '5'
   Maximum number of snapshot files to retain (0 is unlimited).
 --max-wals '5'

@@ -58,18 +58,26 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 + env variable: ETCD_INITIAL_ELECTION_TICK_ADVANCE
 
 ### --listen-peer-urls
-+ List of URLs to listen on for peer traffic. This flag tells the etcd to accept incoming requests from its peers on the specified scheme://IP:port combinations. Scheme can be http or https. Alternatively, use `unix://<file-path>` or `unixs://<file-path>` for unix sockets. If 0.0.0.0 is specified as the IP, etcd listens to the given port on all interfaces. If an IP address is given as well as a port, etcd will listen on the given port and interface. Multiple URLs may be used to specify a number of addresses and ports to listen on. The etcd will respond to requests from any of the listed addresses and ports.
++ List of URLs to listen on for peer traffic. This flag tells the etcd to accept incoming requests from its peers on the specified `scheme://IP:port` combinations. Scheme can be `http` or `https`. Alternatively, use `unix://<file-path>` or `unixs://<file-path>` for unix sockets. If `0.0.0.0` is specified as the IP, etcd listens to the given port on all interfaces. If an IP address is given as well as a port, etcd will listen on the given port and interface. Multiple URLs may be used to specify a number of addresses and ports to listen on. The etcd will respond to requests from any of the listed addresses and ports.
 + default: "http://localhost:2380"
 + env variable: ETCD_LISTEN_PEER_URLS
 + example: "http://10.0.0.1:2380"
 + invalid example: "http://example.com:2380" (domain name is invalid for binding)
 
 ### --listen-client-urls
-+ List of URLs to listen on for client traffic. This flag tells the etcd to accept incoming requests from the clients on the specified scheme://IP:port combinations. Scheme can be either http or https. Alternatively, use `unix://<file-path>` or `unixs://<file-path>` for unix sockets. If 0.0.0.0 is specified as the IP, etcd listens to the given port on all interfaces. If an IP address is given as well as a port, etcd will listen on the given port and interface. Multiple URLs may be used to specify a number of addresses and ports to listen on. The etcd will respond to requests from any of the listed addresses and ports.
++ List of URLs to listen on for client traffic. This flag tells the etcd to accept incoming requests from the clients on the specified `scheme://IP:port` combinations as long as `--listen-client-http-urls` is not specified. Scheme can be either `http` or `https`. Alternatively, use `unix://<file-path>` or `unixs://<file-path>` for unix sockets. If `0.0.0.0` is specified as the IP, etcd listens to the given port on all interfaces. If an IP address is given as well as a port, etcd will listen on the given port and interface. Multiple URLs may be used to specify a number of addresses and ports to listen on. The etcd will respond to requests from any of the listed addresses and ports.
 + default: "http://localhost:2379"
 + env variable: ETCD_LISTEN_CLIENT_URLS
 + example: "http://10.0.0.1:2379"
 + invalid example: "http://example.com:2379" (domain name is invalid for binding)
+
+### --listen-client-http-urls
++ List of URLs to listen on for HTTP-only client traffic. This flag tells the etcd to accept incoming requests from clients on the specified `http://IP:port` combinations. Enabling this flag removes HTTP services from `--listen-client-urls`. Use this flag when you want to segregate HTTP traffic from other protocols. If `0.0.0.0` is specified as the IP, etcd listens to the given port on all interfaces. If an IP address is given as well as a port, etcd will listen on the given port and interface. Multiple URLs may be used to specify a number of addresses and ports to listen on. The etcd will respond to requests from any of the listed addresses and ports.
++ default: ""
++ env variable: ETCD_LISTEN_CLIENT_HTTP_URLS
++ example: "http://10.0.0.1:2383"
++ invalid example: "http://example.com:2383" (domain name is invalid for binding)
+
 
 ### --max-snapshots
 + Maximum number of snapshot files to retain (0 is unlimited)
