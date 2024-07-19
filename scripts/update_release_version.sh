@@ -55,6 +55,8 @@ git add "${index_file}"
 git -c user.name="${git_author}" -c user.email="${git_email}" commit --file=- <<EOL
 [${release_minor}] Update installation version to latest tag (${new_version})
 
+cc. @etcd-io/maintainers-website
+
 Signed-off-by: ${git_author} <${git_email}>
 EOL
 git push "${git_remote}" "${branch}"
