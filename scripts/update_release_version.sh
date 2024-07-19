@@ -57,4 +57,7 @@ git -c user.name="$git_author" -c user.email="$git_email" commit --file=- <<EOL
 Signed-off-by: ${git_author} <${git_email}>
 EOL
 git push "$git_remote" "$branch"
-gh pr create --fill --body "Automated update for ${release_minor}: ${new_version}"
+
+if [ -n "${CREATE_PULL_REQUEST}" ]; then
+  gh pr create --fill --body "Automated update for ${release_minor}: ${new_version}"
+fi
