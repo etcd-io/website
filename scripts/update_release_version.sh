@@ -16,12 +16,13 @@ git_remote="${GIT_REMOTE:-origin}"
 branch="release-${release_minor}-update-latest-release-to-${new_version}"
 current_branch=$(git symbolic-ref HEAD --short)
 
-if [ -z "${GITHUB_ACTOR}" ]; then
+if [ -z "${GITHUB_ACTIONS}" ]; then
   git_author="$(git config user.name)"
   git_email="$(git config user.email)"
 else
-  git_author="${GITHUB_ACTOR}"
-  git_email="${GITHUB_ACTOR}@users.noreply.github.com"
+  # Refer to https://github.com/orgs/community/discussions/26560#discussioncomment-3252340
+  git_author="github-actions[bot]"
+  git_email="41898282+github-actions[bot]@users.noreply.github.com"
 fi
 
 # Check for prerequisites to run the script.
