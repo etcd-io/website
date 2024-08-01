@@ -13,17 +13,22 @@ The etcd client provides a gRPC resolver for resolving gRPC endpoints with an et
 ```go
 import (
 	"go.etcd.io/etcd/clientv3"
-	etcdnaming "go.etcd.io/etcd/clientv3/naming"
+	etcdnaming "go.etcd.io/etcd/clientv3/naming/resolver"
 
 	"google.golang.org/grpc"
 )
 
 ...
 
-cli, cerr := clientv3.NewFromURL("http://localhost:2379")
-r := &etcdnaming.GRPCResolver{Client: cli}
-b := grpc.RoundRobin(r)
-conn, gerr := grpc.Dial("my-service", grpc.WithBalancer(b), grpc.WithBlock(), ...)
+cli, err := clientv3.NewFromURL("http://localhost:2379")
+if err != nil {
+	// ...
+}
+r, err := etcdnaming.NewBuilder(cli)
+if err != nil {
+	// ...
+}
+conn, gerr := grpc.Dial("my-service", grpc.WithResolvers(r), grpc.WithBlock(), ...
 ```
 
 ## Managing service endpoints
