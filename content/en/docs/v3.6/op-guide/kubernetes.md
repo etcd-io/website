@@ -10,12 +10,12 @@ Below demonstrates how to perform the [static bootstrap process](../clustering/#
 This manifest contains a service and statefulset for deploying a static etcd cluster in kubernetes.
 
 If you copy the contents of the manifest into a file named `etcd.yaml`, it can be applied to a cluster with this command.
-```
-# kubectl apply -f etcd.yaml
+```shell
+# kubectl apply --filename etcd.yaml
 ```
 
 Upon being applied, wait for the pods to become ready.
-```
+```shell
 # kubectl get pods
 NAME     READY   STATUS    RESTARTS   AGE
 etcd-0   1/1     Running   0          24m
@@ -24,7 +24,7 @@ etcd-2   1/1     Running   0          24m
 ```
 
 The container used in the example includes etcdctl and can be called directly inside the pods.
-```
+```shell
 # kubectl exec -it etcd-0 -- etcdctl member list -wtable
 +------------------+---------+--------+-------------------------+-------------------------+------------+
 |        ID        | STATUS  |  NAME  |       PEER ADDRS        |      CLIENT ADDRS       | IS LEARNER |
@@ -355,7 +355,7 @@ In this section, we use [helm](https://helm.sh) to install an operator called [c
 With cert-manager installed in the cluster, self-signed certificates can be generated in the cluster. These generated certificates get placed inside a secret object that can be attached as files in containers.
 
 This is the helm command to install cert-manager.
-```
+```shell
 helm upgrade --install --create-namespace --namespace cert-manager cert-manager cert-manager --repo https://charts.jetstack.io --set crds.enabled=true
 ```
 
