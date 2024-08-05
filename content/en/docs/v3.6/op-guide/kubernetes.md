@@ -354,7 +354,7 @@ spec:
 ```
 
 ## Generating Certificates
-In this section, we use [helm](https://helm.sh) to install an operator called [cert-manager](https://cert-manager.io/).
+In this section, we use [Helm](https://helm.sh) to install an operator called [cert-manager](https://cert-manager.io/).
 
 With cert-manager installed in the cluster, self-signed certificates can be generated in the cluster. These generated certificates get placed inside a secret object that can be attached as files in containers.
 
