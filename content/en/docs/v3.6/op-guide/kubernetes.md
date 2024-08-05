@@ -6,15 +6,17 @@ description: Running etcd as a Kubernetes StatefulSet
 
 Below demonstrates how to perform the [static bootstrap process](../clustering/#static) as a Kubernetes StatefulSet.
 
-# Example Manifest
+## Example Manifest
 This manifest contains a service and statefulset for deploying a static etcd cluster in kubernetes.
 
 If you copy the contents of the manifest into a file named `etcd.yaml`, it can be applied to a cluster with this command.
+
 ```shell
 # kubectl apply --filename etcd.yaml
 ```
 
 Upon being applied, wait for the pods to become ready.
+
 ```shell
 # kubectl get pods
 NAME     READY   STATUS    RESTARTS   AGE
@@ -24,6 +26,7 @@ etcd-2   1/1     Running   0          24m
 ```
 
 The container used in the example includes etcdctl and can be called directly inside the pods.
+
 ```shell
 # kubectl exec -it etcd-0 -- etcdctl member list -wtable
 +------------------+---------+--------+-------------------------+-------------------------+------------+
@@ -36,6 +39,7 @@ The container used in the example includes etcdctl and can be called directly in
 ```
 
 To deploy with a self-signed certificate, refer to the commented configuration headings starting with `## TLS` to find values that you can uncomment. Additional instructions for generating a cert with cert-manager is included in a section below.
+
 ```yaml
 # file: etcd.yaml
 ---
@@ -349,17 +353,19 @@ spec:
           storage: 1Gi
 ```
 
-# Generating Certificates
+## Generating Certificates
 In this section, we use [helm](https://helm.sh) to install an operator called [cert-manager](https://cert-manager.io/).
 
 With cert-manager installed in the cluster, self-signed certificates can be generated in the cluster. These generated certificates get placed inside a secret object that can be attached as files in containers.
 
 This is the helm command to install cert-manager.
+
 ```shell
 helm upgrade --install --create-namespace --namespace cert-manager cert-manager cert-manager --repo https://charts.jetstack.io --set crds.enabled=true
 ```
 
 This is an example ClusterIssuer configuration for generating self-signed certificates.
+
 ```yaml
 # file: issuer.yaml
 apiVersion: cert-manager.io/v1
@@ -371,6 +377,7 @@ spec:
 ```
 
 This manifest creates Certificate objects for the client and server certs, referencing the ClusterIssuer "selfsigned". The dnsNames should be an exhaustive list of valid hostnames for the certificates that cert-manager creates.
+
 ```yaml
 # file: certificates.yaml
 ---
