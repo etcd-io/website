@@ -6,7 +6,7 @@ description: using etcd features
 
 This document provides an overview of etcd features to help users better understand the features and related deprecation process. If you are interested in knowing about how features are developed in the etcd, please see these [development guidelines](https://github.com/etcd-io/etcd/blob/main/Documentation/contributor-guide/features.md).
 
-The etcd features fall into three stages, experimental, stable, and unsafe. You can get the list of features by running `etcd --help`.
+The etcd features fall into three stages: experimental, stable, and unsafe. You can get the list of features by running `etcd --help`.
 
 ## Experimental
 

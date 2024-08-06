@@ -4,12 +4,6 @@ weight: 2250
 description: Client architectural decisions & their implementation details
 ---
 
-etcd Client Design
-==================
-
-*Gyuho Lee (github.com/gyuho, Amazon Web Services, Inc.), Joe Betz (github.com/jpbetz, Google Inc.)*
-
-
 Introduction
 ============
 
