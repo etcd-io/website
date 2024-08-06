@@ -27,3 +27,7 @@ ifndef LATEST_VERSION
 else
 	./scripts/update_release_version.sh "$(LATEST_VERSION)"
 endif
+
+.PHONY: markdown-diff-lint
+markdown-diff-lint:
+	./scripts/markdown_diff_lint.sh

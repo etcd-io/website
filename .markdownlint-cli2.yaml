@@ -1,0 +1,2 @@
+config:
+  line-length: false # Allow lines longer than 80 characters.
