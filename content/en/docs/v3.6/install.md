@@ -126,7 +126,7 @@ The recommended way to install etcd on Linux is either through [pre-built binari
 
 ## Installation as part of Kubernetes installation
 
-TBD---Help Wanted
+- [Running etcd as a Kubernetes StatefulSet][]
 
 ## Installation on Kubernetes, using a statefulset or helm chart
 
@@ -141,6 +141,7 @@ For a slightly more involved sanity check of your installation, see
 [go]: https://golang.org/doc/install
 [Hardware recommendations]: {{< relref "op-guide/hardware" >}}
 [Quickstart]: {{< relref "quickstart" >}}
+[Running etcd as a Kubernetes StatefulSet]: {{< relref "op-guide/kubernetes" >}}
 [releases]: https://github.com/etcd-io/etcd/releases/
 [tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
