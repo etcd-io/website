@@ -52,6 +52,9 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    extensions:
+      typographer:
+        enDash: '--'
   highlight:
     # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
     style: tango
