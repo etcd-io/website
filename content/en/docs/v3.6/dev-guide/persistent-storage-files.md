@@ -1,18 +1,18 @@
 ---
 title: etcd persistent storage files
-weight: 2650
+weight: 4000
 description: Reference of the persistent storage format and files
 ---
 
-This document explains the etcd persistent storage format: naming, content and tools that allow developers to inspect them. Going forward the document should be extended with changes to the storage model. This document is targeted at etcd developers to help with their data recovery needs.
+This document is targeted at etcd developers to help with their data recovery needs. The document explains the etcd persistent storage format: naming, content and tools that allow developers to inspect them. The document should be kept up-to-date with changes to the storage model. 
 
 
 ## Prerequisites
 
-The following articles provide helpful background information for this document:
+The following articles provide background information relevant to this document:
 
-* etcd data model overview: https://etcd.io/docs/v3.6/learning/data_model
-* Raft overview: https://raft.github.io/raft.pdf (especially "5.3 Log replication" section).
+* The etcd data model overview: https://etcd.io/docs/v3.6/tech-overview/data_model
+* Raft overview: https://raft.github.io/raft.pdf (especially the "5.3 Log replication" section).
 
 
 ## Overview
