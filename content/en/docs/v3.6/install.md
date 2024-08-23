@@ -13,9 +13,7 @@ Before installing etcd, see the following pages:
 - [Hardware recommendations][]
 
 ## Install pre-built binaries
-
 The easiest way to install etcd is from pre-built binaries:
-
  1. Download the compressed archive file for your platform from [Releases][],
     choosing release [{{< param git_version_tag >}}][tagged-release] or later.
  2. Unpack the archive file. This results in a directory containing the binaries.
@@ -29,7 +27,6 @@ The easiest way to install etcd is from pre-built binaries:
     etcd Version: {{< psubstr git_version_tag 1 >}}
     ...
     ```
-
 ## Build from source
 
 If you have [Go version {{< param minGoVers >}}+][go], you can build etcd from
