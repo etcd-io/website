@@ -82,7 +82,7 @@ for file in "${changed_files[@]}"; do
 
     if [ "${i}" -lt "${#start_ranges[@]}" ] && [ "${line_number}" -ge "${start_ranges["${i}"]}" ] && [ "${line_number}" -le "${end_ranges["${i}"]}" ]; then
       # Inside range with changes, raise an error.
-      log_error "${lint_error}"
+      log_error "${lint_error}" [ERROR]
       files_with_failures["${file}"]=1
     else
       # Outside of range, raise a warning.
