@@ -4,6 +4,8 @@
 
 set -eo pipefail
 
+apt-get update && apt-get install -y gawk
+
 if ! command markdownlint-cli2 dummy.md &>/dev/null; then
   echo "markdownlint-cli2 needs to be installed."
   echo "Please refer to https://github.com/DavidAnson/markdownlint-cli2?tab=readme-ov-file#install for installation instructions."
