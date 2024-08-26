@@ -54,7 +54,7 @@ for file in "${changed_files[@]}"; do
            --no-ext-diff \
            --relative \
            --unified=0 -- "${file}" | \
-    awk 'match($0, /^@@\s-[0-9,]+\s\+([0-9]+)(,([0-9]+))?/, m) { \
+    gawk 'match($0, /^@@\s-[0-9,]+\s\+([0-9]+)(,([0-9]+))?/, m) { \
                print m[1] ":" m[1] + ((m[3] == "") ? "0" : m[3]) }')
   i=0
   for range in ${ranges}; do
@@ -68,13 +68,14 @@ for file in "${changed_files[@]}"; do
   fi
 
   i=0
+  # Run markdownlint-cli2 with the changed file and print only the summary (stdout).
   markdownlint-cli2 "${file}" 2>/dev/null || true
   while IFS= read -r line; do
     line_number=$(echo "${line}" | awk -F: '{print $2}' | awk '{print $1}')
     while [ "${i}" -lt "${#end_ranges[@]}" ] && [ "${line_number}" -gt "${end_ranges["${i}"]}" ]; do
       i=$((1 + i))
     done
-    rule=$(echo "${line}" | awk 'match($2, /([^\/]+)/, m) {print tolower(m[1])}')
+    rule=$(echo "${line}" | gawk 'match($2, /([^\/]+)/, m) {print tolower(m[1])}')
     lint_error="${line} (${MD_LINT_URL_PREFIX}${rule}.md)"
 
     if [ "${i}" -lt "${#start_ranges[@]}" ] && [ "${line_number}" -ge "${start_ranges["${i}"]}" ] && [ "${line_number}" -le "${end_ranges["${i}"]}" ]; then
