@@ -1,3 +1,9 @@
+---
+title: How to conduct leader election in etcd cluster
+description: Guide to conducting leader election in an etcd cluster
+weight: 900
+---
+
 ## Prerequisites
 
 - Ensure [`etcd`](https://etcd.io/docs/v3.5/install/) and [`etcdctl`](https://etcd.io/docs/v3.5/install/) is installed.
