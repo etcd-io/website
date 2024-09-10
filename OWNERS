@@ -9,3 +9,5 @@ approvers:
   - serathius       # Marek Siarkowicz <siarkowicz@google.com> <marek.siarkowicz@gmail.com>
   - spzala          # Sahdev Zala <spzala@us.ibm.com>
   - wenjiaswe       # Wenjia Zhang <wenjiazhang@google.com> <wenjia.swe@gmail.com>
+reviewers:
+  - ivanvc          # Ivan Valdes <ivan@vald.es>
