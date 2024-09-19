@@ -79,6 +79,17 @@ started contributing.
 For phone-in information, the date of the next meeting, and minutes from past
 meetings, see [etcd community meeting doc][community-meeting-doc].
 
+## WG etcd Operator Meetings
+
+Join the WG etcd Operator community for discussions on the development and management of the etcd operator. These meetings are held biweekly and are open to all community members who wish to contribute or stay informed about the project.
+
+**Meeting Schedule:**  
+- **Biweekly** on **Tuesdays at 11 a.m. PT**.
+
+**Zoom Details:**  
+The Zoom details are the same as the Robustness and Community/Triage meetings.
+
+
 ### Robustness tests
 
 Join us for a collaborative exploration of etcd's correctness under pressure
