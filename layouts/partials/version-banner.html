@@ -1,0 +1,30 @@
+{{/* etcd-docsy file override */ -}}
+
+{{ if .Params.is_deprecated | or .Params.page_warning -}}
+  {{ $pageWarning := .Params.page_warning | default .Site.Params.version.deprecation_warning -}}
+  {{ $thisFile  := .File -}}
+  {{ $thisURL   := .RelPermalink -}}
+  {{ $thisVers  := .Params.version -}}
+  {{ $thisVersName := .Params.versName | default $thisVers -}}
+  {{ $thisVersURI := printf "/%s/" $thisVers -}}
+
+  {{ $vers := .Site.Params.latest_stable_version -}}
+  {{ $versURI := printf "/%s/" $vers -}}
+  {{ $versPath := printf "/docs/%s/" $vers -}}
+
+  {{ $targetFile := replace $thisFile $thisVersURI $versURI -}}
+  {{ $targetURL := replace $thisURL $thisVersURI $versURI | relURL -}}
+  {{ if not (and $thisVers (fileExists $targetFile)) -}}
+    {{ $targetURL = $versPath -}}
+  {{ end -}}
+
+  {{ $color := "warning" -}}
+  <div class="alert alert-warning" role="alert">
+    <p>Version <strong>{{ $thisVersName }}</strong> of
+    {{ $pageWarning | markdownify }}
+    For the latest stable documentation, see
+    <a href="{{ $targetURL }}">
+      {{- $vers -}}
+    </a>.</p>
+  </div>
+{{ end }}
