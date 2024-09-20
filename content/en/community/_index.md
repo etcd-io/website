@@ -90,7 +90,6 @@ Join the [etcd operator working group](https://github.com/kubernetes/community/t
 **Zoom Details:**  
 The Zoom details are the same as the Robustness and Community/Triage meetings. Meeting notes are available [here](https://docs.google.com/document/d/1ey4zTTRvtCVJJP2vjF95VjG-sAKlNTcqB2HdmC18Lfc/edit?usp=sharing).
 
-
 ### Robustness tests
 
 Join us for a collaborative exploration of etcd's correctness under pressure
