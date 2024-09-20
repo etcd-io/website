@@ -149,7 +149,8 @@ functionality and ease of use and should be considered to use.
 defragmentation operation using `etcdctl` or clientv3 API. All the existing v3.5 releases are affected, including 3.5.0 ~ 3.5.5.
 So please use `etcdutl` to offline perform defragmentation operation**, but this requires taking each member offline one at a time.
 It means that you need to stop each etcd instance firstly, then perform defragmentation using `etcdutl`, start the instance at last.
-Please refer to the issue 1 in [public statement](https://docs.google.com/document/d/1q6PausGMsj-ZyqN2Zx0W8426KsB5GEh3XA801JxBCiE/edit).
+Please refer to the issue 1 in [public statement](https://groups.google.com/g/etcd-dev/c/8S7u6NqW6C4/m/4Z84zCuIAQAJ).
+5. Please run `etcdctl alarm disarm` if there is a `NOSPACE` alarm.
 
 The following example shows you how to execute defragmention using `etcdutl`,
 ```
