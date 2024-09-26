@@ -3,7 +3,7 @@ title: v3.4 docs
 cascade:
   version: &vers v3.4
   git_version_tag: v3.4.34
-  is_deprecated: true
+  is_deprecated: false
   exclude_search: true
 linkTitle: *vers
 simple_list: true

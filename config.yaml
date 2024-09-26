@@ -103,6 +103,10 @@ params:
   # This menu appears only if you have at least one [params.versions] set.
   version_menu: Versions
   latest_stable_version: v3.5
+  version:
+
+    deprecation_warning: >-
+      This version of etcd is no longer supported. For the latest version, please see the [latest stable version](/docs/latest/).
   versions:
     - version: v3.6
       url: /docs/v3.6/
