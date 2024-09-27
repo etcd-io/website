@@ -76,19 +76,21 @@ of PRs and Issues. Triage meetings are open to any contributor; you don't have
 to be a reviewer or approver to help out! They can also be a good way to get
 started contributing.
 
-For phone-in information, the date of the next meeting, and minutes from past
-meetings, see [etcd community meeting doc][community-meeting-doc].
+For phone-in information, the date of the next meeting, minutes from past
+meetings, and meeting recordings, see [etcd community meeting doc][community-meeting-doc].
 
-## Operator working group
+### Operator working group
 
 Join the [etcd operator working group](https://github.com/kubernetes/community/tree/master/wg-etcd-operator) for discussions on the development and management of the etcd operator. These meetings are held biweekly and are open to all community members who wish to contribute or stay informed about the project.
 
 **Meeting Schedule:**
 
-- **Biweekly** on **Tuesdays at 11 a.m. PT**.
+- **Biweekly** on **Tuesdays at 11 AM** [Pacific Time][].
 
-**Zoom Details:**  
-The Zoom details are the same as the Robustness and Community/Triage meetings. Meeting notes are available [here](https://docs.google.com/document/d/1ey4zTTRvtCVJJP2vjF95VjG-sAKlNTcqB2HdmC18Lfc/edit?usp=sharing).
+**Zoom Details:**
+For phone-in information, the date of the next meeting, minutes from past
+meetings, and meeting recordings, see
+[etcd operator working group meeting doc][operator-wg-doc].
 
 ### Robustness tests
 
@@ -134,3 +136,4 @@ For etcd contribution guidelines, see [How to contribute][].
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
 [GD]: https://github.com/etcd-io/etcd/discussions
 [Kubernetes Slack]: https://slack.k8s.io
+[operator-wg-doc]: https://docs.google.com/document/d/1ey4zTTRvtCVJJP2vjF95VjG-sAKlNTcqB2HdmC18Lfc/edit?usp=sharing
