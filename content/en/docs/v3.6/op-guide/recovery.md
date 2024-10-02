@@ -50,7 +50,7 @@ To restore a cluster, all that is needed is a single snapshot "db" file. A clust
 A simple restore can be excuted like this:
 
 ```sh
-$ etcdutl snapshot restore snapshot.db --data-dir output-dir
+$ ETCDCTL_API=3 etcdctl snapshot restore snapshot.db --data-dir output-dir
 ```
 
 ### Integrity Checks
