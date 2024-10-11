@@ -1,4 +1,4 @@
-{{ $dir := printf "/content/%s/%s%s" .Page.File.Lang .Page.File.Dir "metrics" -}}
+{{ $dir := printf "/content/%s/%s%s" .Page.Language.Lang .Page.File.Dir "metrics" -}}
 {{ $regexp := .Get "regexp" | default "." -}}
 
 {{ $counter := 0 -}}

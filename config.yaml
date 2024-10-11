@@ -41,12 +41,13 @@ imaging:
 languages:
   en:
     title: etcd
-    description: >-
-      A distributed, reliable key-value store for the most critical data of a
-      distributed system
     languageName: English
     contentDir: content/en
     weight: 1
+    params:
+      description: >-
+        A distributed, reliable key-value store for the most critical data of a
+        distributed system
 
 markup:
   goldmark:
