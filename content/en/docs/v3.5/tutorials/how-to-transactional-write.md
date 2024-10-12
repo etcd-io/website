@@ -41,4 +41,5 @@ get user1
 failure requests (get, put, del):
 put user1 bad
 ```
+
 {{< figure src="/img/transaction-multiple-writes.gif" >}}
