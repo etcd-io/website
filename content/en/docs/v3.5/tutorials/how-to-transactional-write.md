@@ -41,8 +41,4 @@ get user1
 failure requests (get, put, del):
 put user1 bad
 ```
-
-<!--need to add gif showing the examples for multiple writes and failing when written to same key-->
-
-
-
+{{< figure src="/img/transaction-multiple-writes.gif" >}}
