@@ -1,4 +1,11 @@
 
+---
+title: Run etcd clusters inside containers
+weight: 4200
+description: Running etcd with Docker using static bootstrapping
+---
+The following guide shows how to run etcd with rkt Docker using the [static bootstrap process](../clustering/#static).
+
 ## Docker
 
 In order to expose the etcd API to clients outside of Docker host, use the host IP address of the container. Please see [`docker inspect`](https://docs.docker.com/engine/reference/commandline/inspect) for more detail on how to get the IP address. Alternatively, specify `--net=host` flag to `docker run` command to skip placing the container inside of a separate network stack.
