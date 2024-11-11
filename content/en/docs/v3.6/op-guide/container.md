@@ -1,3 +1,9 @@
+---
+title: Run etcd clusters inside containers
+weight: 4200
+description: Running etcd with Docker using static bootstrapping
+---
+The following guide shows how to run etcd with rkt Docker using the [static bootstrap process](../clustering/#static).
 
 ## Docker
 
@@ -137,7 +143,6 @@ rkt run \
   --advertise-client-urls http://localhost:2379 --listen-client-urls http://localhost:2379 \
   --discovery https://discovery.etcd.io/c11fbcdc16972e45253491a24fcf45e1
 ```
-
 
 ```
 REGISTRY=quay.io/coreos/etcd
