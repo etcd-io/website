@@ -43,4 +43,3 @@ put user1 bad
 ```
 
 {{< figure src="/img/transaction-multiple-writes.gif" >}}
-
