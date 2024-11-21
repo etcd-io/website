@@ -32,7 +32,6 @@ community_resources:
 menu:
   main:
 ---
-
 {{< blocks/cover color="primary" height="sm" >}}
 {{< page/header >}}
 {{< /blocks/cover >}}
@@ -43,11 +42,12 @@ menu:
 {{< page/toc collapsed=true placement="inline" >}}
 </div>
 
+
 <div class="row">
 <div class="col-12 col-lg-8">
 
 {{% alert color="success" %}}
-  <i class='fas fa-users mr-1'></i> Our community values respect and
+  `<i class='fas fa-users mr-1'></i>` Our community values respect and
   inclusiveness. We enforce our [Code of Conduct][] in all interactions.
 
   [Code of Conduct]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
@@ -61,7 +61,7 @@ questions:
 {{% cards "main_channels" %}}
 
 You can also chat with other etcd users and contributors in the #sig-etcd slack
-channel on [Kubernetes Slack][].
+channel on [Kubernetes Slack][Kubernetes Slack].
 
 ## Meeting schedule
 
@@ -69,8 +69,8 @@ Please refer to [the Kubernetes community](https://github.com/kubernetes/communi
 
 ### Community meetings & Issue triage
 
-etcd contributors and maintainers meet [online][] every week, on **Thursday
-at 11 AM** [Pacific Time][], alternating between community meetings and issue
+etcd contributors and maintainers meet [online][online] every week, on **Thursday
+at 11 AM** [Pacific Time][Pacific Time], alternating between community meetings and issue
 triage meetings. Issue triage meetings are aimed at getting through our backlog
 of PRs and Issues. Triage meetings are open to any contributor; you don't have
 to be a reviewer or approver to help out! They can also be a good way to get
@@ -85,7 +85,7 @@ Join the [etcd operator working group](https://github.com/kubernetes/community/t
 
 **Meeting Schedule:**
 
-- **Biweekly** on **Tuesdays at 11 AM** [Pacific Time][].
+- **Biweekly** on **Tuesdays at 11 AM** [Pacific Time][Pacific Time].
 
 **Zoom Details:**
 For phone-in information, the date of the next meeting, minutes from past
@@ -95,7 +95,7 @@ meetings, and meeting recordings, see
 ### Robustness tests
 
 Join us for a collaborative exploration of etcd's correctness under pressure
-[online][] **biweekly**, on **Wednesday at 8 AM** [Pacific Time][]. Our goals are
+[online][online] **biweekly**, on **Wednesday at 11 AM** [Pacific Time][Pacific Time]. Our goals are
 to demystify distributed system testing by sharing knowledge and fostering a robust
 testing culture within the etcd community, as well as to expand expertise by mentoring
 new reviewers and approvers for etcd robustness tests. We invite community members to
@@ -113,7 +113,7 @@ Your contributions to etcd code and documentation are welcome! If you find a
 problem or would like an enhancement, create an issue -- or better yet, consider
 submitting a pull request.
 
-For etcd contribution guidelines, see [How to contribute][].
+For etcd contribution guidelines, see [How to contribute][How to contribute].
 
 </div>
 
@@ -124,6 +124,7 @@ For etcd contribution guidelines, see [How to contribute][].
 {{< page/page-meta-links >}}
 
 </div>
+
 
 [@etcdio]: https://twitter.com/etcdio
 [etcd-dev]: https://groups.google.com/g/etcd-dev
