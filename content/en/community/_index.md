@@ -47,7 +47,7 @@ menu:
 <div class="col-12 col-lg-8">
 
 {{% alert color="success" %}}
-  Our community values respect and
+  Our community values respect and
   inclusiveness. We enforce our [Code of Conduct][] in all interactions.
 
   [Code of Conduct]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
