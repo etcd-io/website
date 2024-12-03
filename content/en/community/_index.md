@@ -95,7 +95,7 @@ meetings, and meeting recordings, see
 ### Robustness tests
 
 Join us for a collaborative exploration of etcd's correctness under pressure
-[online][] **biweekly**, on **Wednesday at 8 AM** [Pacific Time][]. Our goals are
+[online][] **biweekly**, on **Wednesday at 11 AM** [Pacific Time][]. Our goals are
 to demystify distributed system testing by sharing knowledge and fostering a robust
 testing culture within the etcd community, as well as to expand expertise by mentoring
 new reviewers and approvers for etcd robustness tests. We invite community members to
