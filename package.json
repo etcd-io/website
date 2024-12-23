@@ -18,7 +18,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "docsy": "github:google/docsy#semver:0.11.0",
-    "hugo-extended": "0.139.0",
+    "hugo-extended": "0.140.0",
     "netlify-cli": "^17.35.0",
     "postcss": "^8.4.45",
     "postcss-cli": "^11.0.0"
