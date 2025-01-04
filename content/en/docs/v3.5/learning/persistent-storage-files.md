@@ -204,7 +204,7 @@ The bbolt storage is divided into buckets. In each bucket there are stored keys 
     <td><strong>key</strong></td>
     <td>
       <p>[revisionId] encoded using <a href="https://github.com/etcd-io/etcd/blob/ae7862e8bc8007eb396099db4e0e04ac026c8df5/server/mvcc/revision.go#L56">bytesToRev</a>{main,sub}</p>
-      <p>The key-value deletes are marshalled with 't' at the end (as a "Thumbstone")</p>
+      <p>The key-value deletes are marshalled with 't' at the end (as a "Tombstone")</p>
     </td>
     <td><a href="https://github.com/etcd-io/etcd/blob/a1ff0d5373335665b3e5f4cb22a538ac63757cb6/api/mvccpb/kv.proto#L12"><code>mvccpb.KeyValue</code></a> marshalled proto (<code>key, create_rev, mod_rev, version, value, lease id</code>)</td>
     <td></td>
