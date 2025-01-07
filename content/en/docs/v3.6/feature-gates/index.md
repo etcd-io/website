@@ -24,8 +24,7 @@ on ETCD.
 ETCD lets you enable or disable a set of feature gates that
 are relevant to that component.
 Use `-h` flag to see a full set of feature gates for all components.
-To set feature gates for a component, such as kubelet, use the `--feature-gates`
-flag assigned to a list of feature pairs:
+To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs:
 
 ```shell
 --feature-gates=...,DistributedTracing=true
