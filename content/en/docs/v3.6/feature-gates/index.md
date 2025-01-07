@@ -26,7 +26,7 @@ Use `-h` flag to see a full set of feature gates.
 To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs:
 
 ```shell
---feature-gates=...,DistributedTracing=true
+--feature-gates=...,StopGRPCServiceOnDefrag=true
 ```
 
 The following tables are a summary of the feature gates that you can set on
@@ -36,7 +36,6 @@ ETCD.
 
 | Feature                          | Default | Stage |
 |----------------------------------|---------|-------|
-| DistributedTracing               | false   | Alpha |
 | StopGRPCServiceOnDefrag          | false   | Alpha |
 | InitialCorruptCheck              | false   | Alpha |
 | CompactHashCheck                 | false   | Alpha |
@@ -83,7 +82,6 @@ A *Deprecated* feature means:
 
 Each feature gate is designed for enabling/disabling a specific feature.
 
-* `DistributedTracing`: Enable experimental distributed tracing using OpenTelemetry Tracing.
 * `StopGRPCServiceOnDefrag`: Enable etcd gRPC service to stop serving client requests on defragmentation.
 * `TxnModeWriteWithSharedBuffer`: Enables the write transaction to use a shared buffer in its readonly check operations.
 * `InitialCorruptCheck`: Enable to check data corruption before serving any client/peer traffic.
