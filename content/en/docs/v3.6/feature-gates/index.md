@@ -21,9 +21,8 @@ Feature gates are a set of key=value pairs that describe ETCD features.
 You can turn these features on or off using the `--feature-gates` command line flag
 on ETCD.
 
-ETCD lets you enable or disable a set of feature gates that
-are relevant to that component.
-Use `-h` flag to see a full set of feature gates for all components.
+ETCD lets you enable or disable a set of feature gates.
+Use `-h` flag to see a full set of feature gates.
 To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs:
 
 ```shell
@@ -59,17 +58,11 @@ An *Alpha* feature means:
 
 A *Beta* feature means:
 
-* Usually enabled by default.
+* Enabled by default.
 * The feature is well tested. Enabling the feature is considered safe.
 * Support for the overall feature will not be dropped, though details may change.
-* The schema and/or semantics of objects may change in incompatible ways in a
-  subsequent beta or stable release. When this happens, we will provide instructions
-  for migrating to the next version. This may require deleting, editing, and
-  re-creating API objects. The editing process may require some thought.
-  This may require downtime for applications that rely on the feature.
 * Recommended for only non-business-critical uses because of potential for
-  incompatible changes in subsequent releases. If you have multiple clusters
-  that can be upgraded independently, you may be able to relax this restriction.
+  discovering new hard-to-spot bugs through wider adoption.
 
 **Note:**
 Please do try *Beta* features and give feedback on them!
@@ -80,6 +73,11 @@ A *General Availability* (GA) feature is also referred to as a *stable* feature.
 * The feature is always enabled; you cannot disable it.
 * The corresponding feature gate is no longer needed.
 * Stable versions of features will appear in released software for many subsequent versions.
+
+A *Deprecated* feature means:
+
+* The feature gate is no longer in use.
+* The feature has graduated to GA or been removed.
 
 ## List of feature gates {#feature-gates}
 
