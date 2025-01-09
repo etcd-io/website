@@ -9,19 +9,18 @@ card:
 
 <!-- overview -->
 This page contains an overview of the various feature gates an administrator
-can specify on ETCD.
+can specify on etcd.
 
 See [feature stages](#feature-stages) for an explanation of the stages for a feature.
-
 
 <!-- body -->
 ## Overview
 
-Feature gates are a set of key=value pairs that describe ETCD features.
+Feature gates are a set of key=value pairs that describe etcd features.
 You can turn these features on or off using the `--feature-gates` command line flag
-on ETCD.
+on etcd.
 
-ETCD lets you enable or disable a set of feature gates.
+Etcd lets you enable or disable a set of feature gates.
 Use `-h` flag to see a full set of feature gates.
 To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs:
 
@@ -30,7 +29,7 @@ To set feature gates, use the `--feature-gates` flag assigned to a list of featu
 ```
 
 The following tables are a summary of the feature gates that you can set on
-ETCD.
+etcd.
 
 ### Feature gates for Alpha or Beta features
 
