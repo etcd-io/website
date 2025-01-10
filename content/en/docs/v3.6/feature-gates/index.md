@@ -20,7 +20,7 @@ Feature gates are a set of key=value pairs that describe etcd features.
 You can turn these features on or off using the `--feature-gates` command line flag
 on etcd.
 
-Etcd lets you enable or disable a set of feature gates.
+etcd lets you enable or disable a set of feature gates.
 Use `-h` flag to see a full set of feature gates.
 To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs:
 
