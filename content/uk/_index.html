@@ -1,0 +1,45 @@
+---
+# TODO(chalin): drop the `title` field once Hugo is fixed to use the site title
+title: etcd
+features:
+  - title: Простий інтерфейс
+    description: Отримуйте та зберігайте значення використовуючи стандартні інструменти HTTP, такі як curl
+    icon: interface.svg
+  - title: Сховище ключ-значення
+    description: Зберігайте дані в ієрархічно організованих теках, так само як у звичайній файловій системі
+    icon: kv.svg
+  - title: Спостерігайте за замінами
+    description: Спостерігайте за змінами у певних ключах або теках для реагування на зміни в значеннях
+    icon: watch.svg
+---
+
+{{< blocks/cover image_anchor="top" height="min" color="primary" >}}
+<img src="/etcd-horizontal-white.png" class="site-logo" />
+<h2 class="mt-4">
+  Розподілене, надійне сховище ключ-значення для найважливіших даних розподіленої системи
+</h2>
+<div class="mt-5 mx-auto">
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="/uk/docs/{{< param latest_stable_version >}}/">
+		Дізнатись більше
+	</a>
+	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/uk/docs/{{< param latest_stable_version >}}/quickstart">
+		Швидкий старт <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+	</a>
+</div>
+{{< /blocks/cover >}}
+
+{{% blocks/lead color="white" %}}
+  <h1>Що таке etcd?</h1>
+  <p>
+    <b>etcd</b> — це стійке, розподілене сховище ключів-значень, яке забезпечує надійний спосіб зберігання даних, до яких потрібно
+    отримати доступ у розподіленій системі або кластері компʼютерів. Воно ефективно справляється з виборами лідера під час
+    розділення мережі та може витримати відмову системи, навіть вузла-лідера.
+    <a href="/docs/{{< param latest_stable_version >}}/">Дізнатись більше <i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+  </p>
+{{% /blocks/lead %}}
+
+<div class="container">
+  {{< uk/home/features >}}
+  {{< uk/home/used-by >}}
+  {{< uk/home/cncf >}}
+</div>

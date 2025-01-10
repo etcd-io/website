@@ -1,0 +1,64 @@
+title: etcd
+languageName: Українська (uk)
+contentDir: content/uk
+weight: 2
+disabled: true
+params:
+  description: >-
+    Розподілене, надійне сховище ключ-значення для найважливіших даних розподіленої системи
+
+  copyright:
+    from_year: 2013
+    authors: |
+      Автори etcd
+      <div class="row text-center text-white small">
+        <div class="col-12 text-center py-2 order-sm-2">
+          <a href="https://www.linuxfoundation.org/terms" target="_blank" rel="noopener">Умови</a> |
+          <a href="https://www.linuxfoundation.org/privacy" target="_blank" rel="noopener">Конфіденційність</a> |
+          <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener">Товарні знаки</a> |
+          <a href="https://github.com/etcd-io/website/blob/main/LICENSE" target="_blank" rel="noopener">Ліцензія</a>
+        </div>
+      </div>
+
+  version_menu: Версії
+
+  version:
+    deprecation_warning: >-
+      Ця версія etcd більше не підтримується. Останню версію див. у [остання
+      стабільна версія](/docs/latest/).
+  versions:
+    - version: v3.5
+      url: /uk/docs/v3.5/
+
+  ui:
+    feedback:
+      'yes': >-
+        Раді чути! Будь ласка, <a
+        href="https://github.com/etcd-io/website/issues/new">
+        повідомте нам, як ми можемо зробити краще</a>.
+      'no': >-
+        Дуже шкода це чути. Будь ласка, <a
+        href="https://github.com/etcd-io/website/issues/new">
+        повідомте нам, як ми можемо зробити краще</a>.
+
+  # Footer Links
+  links:
+    # End user relevant links. These will show up on left side of footer and in the community page if you have one.
+    user:
+      - name: Google Group
+        url: https://groups.google.com/g/etcd-dev
+        icon: fab fa-google
+      - name: Twitter
+        url: https://twitter.com/etcdio
+        icon: fab fa-twitter
+      - name: Github Discussions
+        url: https://github.com/etcd-io/etcd/discussions
+        icon: fab fa-github
+    # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
+    developer:
+      - name: Etcd на GitHub
+        url: https://github.com/etcd-io/etcd
+        icon: fab fa-github-square
+      - name: Сайт Etcd.io на GitHub
+        url: https://github.com/etcd-io/website
+        icon: fab fa-github
