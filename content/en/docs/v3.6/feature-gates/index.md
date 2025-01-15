@@ -22,10 +22,16 @@ on etcd.
 
 etcd lets you enable or disable a set of feature gates.
 Use `-h` flag to see a full set of feature gates.
-To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs:
+To set feature gates, use the `--feature-gates` flag assigned to a list of feature pairs in commandline:
 
 ```shell
 --feature-gates=...,StopGRPCServiceOnDefrag=true
+```
+
+Or specify them in YAML config file:
+
+```shell
+feature-gates: ...,StopGRPCServiceOnDefrag=true
 ```
 
 The following tables are a summary of the feature gates that you can set on
@@ -33,12 +39,12 @@ etcd.
 
 ### Feature gates for Alpha or Beta features
 
-| Feature                          | Default | Stage |
-|----------------------------------|---------|-------|
-| StopGRPCServiceOnDefrag          | false   | Alpha |
-| InitialCorruptCheck              | false   | Alpha |
-| CompactHashCheck                 | false   | Alpha |
-| TxnModeWriteWithSharedBuffer     | true    | Beta  |
+| Feature                          | Default | Stage | Details                                                                              |
+|----------------------------------|---------|-------|--------------------------------------------------------------------------------------|
+| StopGRPCServiceOnDefrag          | false   | Alpha |Enables etcd gRPC service to stop serving client requests on defragmentation.         |
+| InitialCorruptCheck              | false   | Alpha |Enables the write transaction to use a shared buffer in its readonly check operations.|
+| CompactHashCheck                 | false   | Alpha |Enables to check data corruption before serving any client/peer traffic.              |
+| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables leader to periodically check followers compaction hashes.                     |
 
 ## Using a feature
 
@@ -76,12 +82,3 @@ A *Deprecated* feature means:
 
 * The feature gate is no longer in use.
 * The feature has graduated to GA or been removed.
-
-## List of feature gates {#feature-gates}
-
-Each feature gate is designed for enabling/disabling a specific feature.
-
-* `StopGRPCServiceOnDefrag`: Enable etcd gRPC service to stop serving client requests on defragmentation.
-* `TxnModeWriteWithSharedBuffer`: Enables the write transaction to use a shared buffer in its readonly check operations.
-* `InitialCorruptCheck`: Enable to check data corruption before serving any client/peer traffic.
-* `CompactHashCheck`: Enable leader to periodically check followers compaction hashes.
