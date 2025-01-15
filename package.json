@@ -15,12 +15,14 @@
     "submodule:get": "git submodule update --init --recursive --depth 1",
     "submodule:update": "git submodule update --remote --recursive --depth 1"
   },
+  "//": "TODO: Remove mkdirp once docsy > 0.11.0",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "docsy": "github:google/docsy#semver:0.11.0",
     "hugo-extended": "0.140.2",
-    "netlify-cli": "^17.35.0",
-    "postcss": "^8.4.45",
+    "mkdirp": "^3.0.1",
+    "netlify-cli": "^18.0.1",
+    "postcss": "^8.5.1",
     "postcss-cli": "^11.0.0"
   }
 }
