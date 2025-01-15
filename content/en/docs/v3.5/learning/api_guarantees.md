@@ -140,7 +140,7 @@ value pair with a smaller revision. Two key value pairs that have the same
 revision are modified by an operation "concurrently".
 
 [grpc Services]: ../api/#grpc-services
-[lease]: https://web.stanford.edu/class/cs240/readings/89-leases.pdf
+[lease]: https://web.stanford.edu/class/cs240/readings/leases.pdf
 [linearizability]: https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf
 [serializable_isolation]: https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable
 [strict serializability]: http://jepsen.io/consistency/models/strict-serializable

@@ -129,7 +129,7 @@ Note that in the case of etcd keys, it can be locked efficiently because of the 
 [fencing-zk]: https://fpj.me/2016/02/10/note-on-fencing-and-distributed-locks/
 [grpc]: https://www.grpc.io
 [kubernetes]: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
-[lease]: https://web.stanford.edu/class/cs240/readings/89-leases.pdf
+[lease]: https://web.stanford.edu/class/cs240/readings/leases.pdf
 [locksmith]: https://github.com/coreos/locksmith
 [newsql-leader]: http://dl.acm.org/citation.cfm?id=2960999
 [physicalclock]: https://web.archive.org/web/20190725151657/http://www.dainf.cefetpr.br/~tacla/SDII/PracticalUseOfClocks.pdf
