@@ -28,7 +28,7 @@ To set feature gates, use the `--feature-gates` flag assigned to a list of featu
 --feature-gates=...,StopGRPCServiceOnDefrag=true
 ```
 
-Or specify them in YAML config file:
+Or specify `feature-gates` in YAML config file:
 
 ```shell
 feature-gates: ...,StopGRPCServiceOnDefrag=true
