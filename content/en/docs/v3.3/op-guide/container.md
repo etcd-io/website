@@ -23,10 +23,11 @@ sudo rkt trust --prefix quay.io/coreos/etcd
 # gpg key fingerprint is: 18AD 5014 C99E F7E3 BA5F  6CE9 50BD D3E0 FC8A 365E
 ```
 
-Run the `v3.2` version of etcd or specify another release version.
+Run the `{{< param git_version_tag >}}` version of etcd (or specify another
+release version):
 
 ```
-sudo rkt run --net=default:IP=${NODE1} quay.io/coreos/etcd:v3.2 -- -name=node1 -advertise-client-urls=http://${NODE1}:2379 -initial-advertise-peer-urls=http://${NODE1}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE1}:2380 -initial-cluster=node1=http://${NODE1}:2380
+sudo rkt run --net=default:IP=${NODE1} quay.io/coreos/etcd:{{< param git_version_tag >}} -- -name=node1 -advertise-client-urls=http://${NODE1}:2379 -initial-advertise-peer-urls=http://${NODE1}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE1}:2380 -initial-cluster=node1=http://${NODE1}:2380
 ```
 
 List the cluster member.
@@ -47,13 +48,13 @@ export NODE3=172.16.28.23
 
 ```
 # node 1
-sudo rkt run --net=default:IP=${NODE1} quay.io/coreos/etcd:v3.2 -- -name=node1 -advertise-client-urls=http://${NODE1}:2379 -initial-advertise-peer-urls=http://${NODE1}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE1}:2380 -initial-cluster=node1=http://${NODE1}:2380,node2=http://${NODE2}:2380,node3=http://${NODE3}:2380
+sudo rkt run --net=default:IP=${NODE1} quay.io/coreos/etcd:{{< param git_version_tag >}} -- -name=node1 -advertise-client-urls=http://${NODE1}:2379 -initial-advertise-peer-urls=http://${NODE1}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE1}:2380 -initial-cluster=node1=http://${NODE1}:2380,node2=http://${NODE2}:2380,node3=http://${NODE3}:2380
 
 # node 2
-sudo rkt run --net=default:IP=${NODE2} quay.io/coreos/etcd:v3.2 -- -name=node2 -advertise-client-urls=http://${NODE2}:2379 -initial-advertise-peer-urls=http://${NODE2}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE2}:2380 -initial-cluster=node1=http://${NODE1}:2380,node2=http://${NODE2}:2380,node3=http://${NODE3}:2380
+sudo rkt run --net=default:IP=${NODE2} quay.io/coreos/etcd:{{< param git_version_tag >}} -- -name=node2 -advertise-client-urls=http://${NODE2}:2379 -initial-advertise-peer-urls=http://${NODE2}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE2}:2380 -initial-cluster=node1=http://${NODE1}:2380,node2=http://${NODE2}:2380,node3=http://${NODE3}:2380
 
 # node 3
-sudo rkt run --net=default:IP=${NODE3} quay.io/coreos/etcd:v3.2 -- -name=node3 -advertise-client-urls=http://${NODE3}:2379 -initial-advertise-peer-urls=http://${NODE3}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE3}:2380 -initial-cluster=node1=http://${NODE1}:2380,node2=http://${NODE2}:2380,node3=http://${NODE3}:2380
+sudo rkt run --net=default:IP=${NODE3} quay.io/coreos/etcd:{{< param git_version_tag >}} -- -name=node3 -advertise-client-urls=http://${NODE3}:2379 -initial-advertise-peer-urls=http://${NODE3}:2380 -listen-client-urls=http://0.0.0.0:2379 -listen-peer-urls=http://${NODE3}:2380 -initial-cluster=node1=http://${NODE1}:2380,node2=http://${NODE2}:2380,node3=http://${NODE3}:2380
 ```
 
 Verify the cluster is healthy and can be reached.
@@ -85,9 +86,11 @@ docker volume create --name etcd-data
 export DATA_DIR="etcd-data"
 ```
 
-Run the latest version of etcd:
+Run the latest version of etcd (`{{< param git_version_tag >}}` at the time of
+writing):
 
 ```
+ETCD_VERSION={{< param git_version_tag >}}
 REGISTRY=quay.io/coreos/etcd
 # available from v3.2.5
 REGISTRY=gcr.io/etcd-development/etcd
@@ -96,7 +99,7 @@ docker run \
   -p 2379:2379 \
   -p 2380:2380 \
   --volume=${DATA_DIR}:/etcd-data \
-  --name etcd ${REGISTRY}:latest \
+  --name etcd ${REGISTRY}:${ETCD_VERSION} \
   /usr/local/bin/etcd \
   --data-dir=/etcd-data --name node1 \
   --initial-advertise-peer-urls http://${NODE1}:2380 --listen-peer-urls http://0.0.0.0:2380 \
@@ -118,7 +121,7 @@ REGISTRY=quay.io/coreos/etcd
 REGISTRY=gcr.io/etcd-development/etcd
 
 # For each machine
-ETCD_VERSION=latest
+ETCD_VERSION={{< param git_version_tag >}}
 TOKEN=my-etcd-token
 CLUSTER_STATE=new
 NAME_1=etcd-node-0
@@ -191,6 +194,7 @@ To provision a 3 node etcd cluster on bare-metal, the examples in the [baremetal
 The etcd release container does not include default root certificates. To use HTTPS with certificates trusted by a root authority (e.g., for discovery), mount a certificate directory into the etcd container:
 
 ```
+ETCD_VERSION={{< param git_version_tag >}}
 REGISTRY=quay.io/coreos/etcd
 # available from v3.2.5
 REGISTRY=docker://gcr.io/etcd-development/etcd
@@ -199,13 +203,14 @@ rkt run \
   --insecure-options=image \
   --volume etcd-ssl-certs-bundle,kind=host,source=/etc/ssl/certs/ca-certificates.crt \
   --mount volume=etcd-ssl-certs-bundle,target=/etc/ssl/certs/ca-certificates.crt \
-  ${REGISTRY}:latest -- --name my-name \
+  ${REGISTRY}:${ETCD_VERSION} -- --name my-name \
   --initial-advertise-peer-urls http://localhost:2380 --listen-peer-urls http://localhost:2380 \
   --advertise-client-urls http://localhost:2379 --listen-client-urls http://localhost:2379 \
   --discovery https://discovery.etcd.io/c11fbcdc16972e45253491a24fcf45e1
 ```
 
 ```
+ETCD_VERSION={{< param git_version_tag >}}
 REGISTRY=quay.io/coreos/etcd
 # available from v3.2.5
 REGISTRY=gcr.io/etcd-development/etcd
@@ -214,7 +219,7 @@ docker run \
   -p 2379:2379 \
   -p 2380:2380 \
   --volume=/etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt \
-  ${REGISTRY}:latest \
+  ${REGISTRY}:${ETCD_VERSION} \
   /usr/local/bin/etcd --name my-name \
   --initial-advertise-peer-urls http://localhost:2380 --listen-peer-urls http://localhost:2380 \
   --advertise-client-urls http://localhost:2379 --listen-client-urls http://localhost:2379 \

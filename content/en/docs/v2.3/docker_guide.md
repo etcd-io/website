@@ -12,13 +12,17 @@ In order to expose the etcd API to clients outside of the Docker host you'll nee
 export HostIP="192.168.12.50"
 ```
 
-The following `docker run` command will expose the etcd client API over ports 4001 and 2379, and expose the peer port over 2380.
-
-This will run the latest release version of etcd. You can specify version if needed (e.g. `quay.io/coreos/etcd:v2.2.0`).
+The following `docker run` command will expose the etcd client API over ports
+4001 and 2379, and expose the peer port over 2380. Note that etcd discourages
+the usage of implicit container version tags, such as `latest`, so make sure you
+always provide a specific version tag. In the example below, we use the latest
+version available at the time of writing this guide.
 
 ```
+export ETCD_VERSION="{{< param git_version_tag >}}"
+
 docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380:2380 -p 2379:2379 \
- --name etcd quay.io/coreos/etcd:v2.3.8 \
+ --name etcd quay.io/coreos/etcd:${ETCD_VERSION} \
  -name etcd0 \
  -advertise-client-urls http://${HostIP}:2379,http://${HostIP}:4001 \
  -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
@@ -50,7 +54,7 @@ The main difference being the value used for the `-initial-cluster` flag, which 
 
 ```
 docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380:2380 -p 2379:2379 \
- --name etcd quay.io/coreos/etcd:v2.3.8 \
+ --name etcd quay.io/coreos/etcd:{{< param git_version_tag >}} \
  -name etcd0 \
  -advertise-client-urls http://192.168.12.50:2379,http://192.168.12.50:4001 \
  -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
@@ -65,7 +69,7 @@ docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380
 
 ```
 docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380:2380 -p 2379:2379 \
- --name etcd quay.io/coreos/etcd:v2.3.8 \
+ --name etcd quay.io/coreos/etcd:{{< param git_version_tag >}} \
  -name etcd1 \
  -advertise-client-urls http://192.168.12.51:2379,http://192.168.12.51:4001 \
  -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
@@ -80,7 +84,7 @@ docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380
 
 ```
 docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380:2380 -p 2379:2379 \
- --name etcd quay.io/coreos/etcd:v2.3.8 \
+ --name etcd quay.io/coreos/etcd:{{< param git_version_tag >}} \
  -name etcd2 \
  -advertise-client-urls http://192.168.12.52:2379,http://192.168.12.52:4001 \
  -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
