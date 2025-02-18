@@ -39,7 +39,7 @@ source by following these steps:
     repo using the following command.
 
     ```sh
-    $ git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
+    $ git clone --config core.symlinks=true -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
     ```
     To build from `{{< param github_branch >}}@HEAD`, omit the `-b  {{< param
     git_version_tag >}}` flag.
