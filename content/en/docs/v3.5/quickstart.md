@@ -1,8 +1,10 @@
 ---
-title: Quickstart
+title: Quick start
 weight: 900
 description: Get etcd up and running in less than 5 minutes!
 ---
+
+## Prerequisites
 
 Follow these instructions to locally install, run, and test a single-member
 cluster of etcd:
@@ -45,12 +47,16 @@ cluster of etcd:
 
 Learn about more ways to configure and use etcd from the following pages:
 
-- Explore the gRPC [API][].
-- Set up a [multi-machine cluster][clustering].
-- Learn how to [configure][] etcd.
-- Find [language bindings and tools][integrations].
-- Use TLS to [secure an etcd cluster][security].
-- [Tune etcd][tuning].
+- ### Development 
+
+- #### Explore the gRPC [API][].
+- #### Set up a [multi-machine cluster][clustering].
+- #### Learn how to [configure][] etcd.
+- #### Find [language bindings and tools][integrations].
+- #### Use TLS to [secure an etcd cluster][security].
+- #### [Tune etcd][tuning].
+
+- ### Operations
 
 [api]: /docs/{{< param version >}}/learning/api
 [clustering]: /docs/{{< param version >}}/op-guide/clustering
