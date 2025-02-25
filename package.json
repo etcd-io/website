@@ -21,7 +21,7 @@
     "docsy": "github:google/docsy#semver:0.11.0",
     "hugo-extended": "0.144.2",
     "mkdirp": "^3.0.1",
-    "netlify-cli": "^18.0.1",
+    "netlify-cli": "^19.0.0",
     "postcss": "^8.5.1",
     "postcss-cli": "^11.0.0"
   }
