@@ -1,5 +1,5 @@
 ---
-title: Quick start
+title: Quickstart
 weight: 900
 description: Get etcd up and running in less than 5 minutes!
 ---
