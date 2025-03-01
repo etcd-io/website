@@ -5,6 +5,7 @@ description: Processes, checklists, and notes on upgrading etcd from 3.5 to 3.6
 ---
 
 In the general case, upgrading from etcd 3.5 to 3.6 can be a zero-downtime, rolling upgrade:
+
 - one by one, stop the etcd v3.5 processes and replace them with etcd v3.6 processes
 - after running all v3.6 processes, new features in v3.6 are available to the cluster
 
