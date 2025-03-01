@@ -5,19 +5,17 @@ description: Processes, checklists, and notes on upgrading etcd from 3.5 to 3.6
 ---
 
 In the general case, upgrading from etcd 3.5 to 3.6 can be a zero-downtime, rolling upgrade:
- - one by one, stop the etcd v3.5 processes and replace them with etcd v3.6 processes
- - after running all v3.6 processes, new features in v3.6 are available to the cluster
+
+- one by one, stop the etcd v3.5 processes and replace them with etcd v3.6 processes
+- after running all v3.6 processes, new features in v3.6 are available to the cluster
 
 Before [starting an upgrade](#upgrade-procedure), read through the rest of this guide to prepare.
-
-
 
 ### Upgrade checklists
 
 **NOTE:** When [migrating from v2 with no v3 data](https://github.com/etcd-io/etcd/issues/9480), etcd server v3.2+ panics when etcd restores from existing snapshots but no v3 `ETCD_DATA_DIR/member/snap/db` file. This happens when the server had migrated from v2 with no previous v3 data. This also prevents accidental v3 data loss (e.g. `db` file might have been moved). etcd requires that post v3 migration can only happen with v3 data. Do not upgrade to newer v3 versions until v3.0 server contains v3 data.
 
 Highlighted breaking changes in 3.5.
-
 
 ### Server upgrade checklists
 
@@ -195,11 +193,11 @@ Restart the etcd server with same configuration but with the new etcd binary.
 The new v3.5 etcd will publish its information to the cluster. At this point, cluster still operates as v3.4 protocol, which is the lowest common version.
 
 > `{"level":"info","ts":"2025-03-01T04:40:36.828+0530","caller":"api/capability.go:76","msg":"enabled capabilities for version","cluster-version":"3.5"}`
-
+>
 > `{"level":"info","ts":"2025-03-01T04:40:36.889+0530","caller":"membership/cluster.go:539","msg":"updated cluster version","cluster-id":"59a05384c9b79ee","local-member-id":"bf9071f4639c75cc","from":"3.0","to":"3.5"}`
-
+>
 > `{"level":"info","ts":"2025-03-01T04:40:36.828+0530","caller":"api/capability.go:76","msg":"enabled capabilities for version","cluster-version":"3.5"}`
-
+>
 > `{"level":"info","ts":"2025-03-01T04:40:36.894+0530","caller":"etcdserver/server.go:1686","msg":"published local member to cluster through raft","local-member-id":"bf9071f4639c75cc","local-member-attributes":"{Name:node1 ClientURLs:[http://127.0.0.1:2379]}","cluster-id":"59a05384c9b79ee","publish-timeout":"7s"}`
 
 Verify that each member, and then the entire cluster, becomes healthy with the new v3.6 etcd binary:
@@ -217,7 +215,7 @@ Un-upgraded members will log warnings like the following until the entire cluste
 
 This is expected and will cease after all etcd cluster members are upgraded to v3.6:
 
-```
+```bash
 {"level":"warn","ts":"2025-03-01T04:40:37.545960+0530","caller":"etcdserver/cluster_util.go:189","msg":"leader found higher-versioned member","local-member-version":"3.5.18","remote-member-id":"bf9071f4639c75cc","remote-member-version":"3.6.0-alpha.0"}
 ```
 
@@ -234,11 +232,9 @@ Member 2:
 
 > `{"level":"info","ts":"2025-03-01T04:58:32.377+0530","caller":"membership/cluster.go:539","msg":"updated cluster version","cluster-id":"59a05384c9b79ee","local-member-id":"91bc3c398fb3c146","from":"3.5","to":"3.6"}`
 
-
 Member 3:
 
 > `{"level":"info","ts":"2025-03-01T04:58:32.377+0530","caller":"membership/cluster.go:539","msg":"updated cluster version","cluster-id":"59a05384c9b79ee","local-member-id":"fd422379fda50e48","from":"3.5","to":"3.6"}`
-
 
 ```bash
 endpoint health --endpoints=localhost:2379,localhost:22379,localhost:32379
