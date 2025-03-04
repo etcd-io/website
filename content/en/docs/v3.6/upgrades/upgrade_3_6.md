@@ -221,7 +221,7 @@ This is expected and will cease after all etcd cluster members are upgraded to v
 
 #### Step 5: repeat *step 3* and *step 4* for rest of the members
 
-When all members are upgraded, the cluster will report upgrading to 3.5 successfully:
+When all members are upgraded, the cluster will report upgrading to 3.6 successfully:
 
 Member 1:
 
