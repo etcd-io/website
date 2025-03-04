@@ -190,7 +190,7 @@ Restart the etcd server with same configuration but with the new etcd binary.
   --initial-cluster-state new
 ```
 
-The new v3.5 etcd will publish its information to the cluster. At this point, cluster still operates as v3.4 protocol, which is the lowest common version.
+The new v3.6 etcd will publish its information to the cluster. At this point, cluster still operates as v3.5 protocol, which is the lowest common version.
 
 > `{"level":"info","ts":"2025-03-01T04:40:36.828+0530","caller":"api/capability.go:76","msg":"enabled capabilities for version","cluster-version":"3.5"}`
 >
