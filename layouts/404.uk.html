@@ -1,0 +1,45 @@
+{{/* etcd-docsy full file override: we're not tracking changes to the docsy base file. */}}
+
+{{ define "title" -}}
+404 Сторінку не знайдено &ndash; {{ site.Title -}}
+{{ end }}
+
+{{ define "main" -}}
+{{ $newIssuePath := "issues/new?title=Unexpected%20page-not-found%20error&body=URL%3A%20%0AExpected%20page%3A%20" -}}
+{{ $newIssueUrl := printf "%s/%s" site.Params.github_repo $newIssuePath -}}
+
+<section class="row td-cover-block td-cover-block--height-sm js-td-cover td-overlay td-overlay--dark -bg-primary">
+  <div class="container td-overlay__inner">
+    <div class="text-center">
+      <h1 class="display-1 text-white pb-4">
+        Сторінку не знайдено
+      </h1>
+      <h2 class="text-white font-weight-medium">
+        404
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container text-center">
+    <div>
+      <p>
+        Сторінка, яку ви запросили, не існує.
+      </p>
+      <p>
+        Перевірте правильність написання URL-адреси.
+      </p>
+      <p>
+        Якщо ви вважаєте, що сторінка повинна існувати,
+        <a href="{{ $newIssueUrl }}" target="_blank" rel="noopener">створіть тікет.</a>
+      </p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="/uk/">
+          Головна
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+{{ end }}
