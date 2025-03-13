@@ -1,6 +1,6 @@
 ---
 title: Upgrade etcd from 3.5 to 3.6
-weight: 6650
+weight: 6600
 description: Processes, checklists, and notes on upgrading etcd from 3.5 to 3.6
 ---
 
@@ -15,7 +15,337 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 **NOTE:** When [migrating from v2 with no v3 data](https://github.com/etcd-io/etcd/issues/9480), etcd server v3.2+ panics when etcd restores from existing snapshots but no v3 `ETCD_DATA_DIR/member/snap/db` file. This happens when the server had migrated from v2 with no previous v3 data. This also prevents accidental v3 data loss (e.g. `db` file might have been moved). etcd requires that post v3 migration can only happen with v3 data. Do not upgrade to newer v3 versions until v3.0 server contains v3 data.
 
-Highlighted breaking changes in 3.5.
+**NOTE:** Before upgrading etcd from v2 to v3, ensure that the `v2store` does not contain any non-membership (custom) data, as such data will not be migrated to v3, potentially leading to data loss. To verify, run the command `etcdutl check v2store`. If the `--enable-v2` flag is not configured or is set to false, the `v2store` typically does not contain custom content.
+
+Highlighted breaking changes in 3.6.
+
+### Flags added
+```diff
++etcd --discovery-token ''
++etcd --discovery-endpoints ''
++etcd --discovery-dial-timeout '2s'
++etcd --discovery-request-timeout '5s'
++etcd --discovery-keepalive-time '2s'
++etcd --discovery-keepalive-timeout '6s'
++etcd --discovery-insecure-transport 'true'
++etcd --discovery-insecure-skip-tls-verify 'false'
++etcd --discovery-cert ''
++etcd --discovery-key ''
++etcd --discovery-cacert ''
++etcd --discovery-user ''
++etcd --discovery-password ''
++etcd --feature-gates
++etcd --log-format
+```
+### Deprecated flags
+**`etcd --experimental-bootstrap-defrag-threshold-megabytes` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-bootstrap-defrag-threshold-megabytes
+
++etcd --bootstrap-defrag-threshold-megabytes
+
+```
+
+**`etcd --experimental-compaction-batch-limit` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-compaction-batch-limit
+
++etcd --compaction-batch-limit
+
+```
+
+**`etcd --experimental-compact-hash-check-time` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-compact-hash-check-time
+
++etcd --compact-hash-check-time
+
+```
+
+**`etcd --experimental-compaction-sleep-interval` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-compaction-sleep-interval
+
++etcd --compaction-sleep-interval
+
+```
+
+**`etcd --experimental-corrupt-check-time` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-corrupt-check-time
+
++etcd --corrupt-check-time
+
+```
+
+**`etcd --experimental-enable-distributed-tracing` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-enable-distributed-tracing
+
++etcd --enable-distributed-tracing
+
+```
+
+**`etcd --experimental-distributed-tracing-address` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-distributed-tracing-address
+
++etcd --distributed-tracing-address
+
+```
+
+**`etcd --experimental-distributed-tracing-instance-id` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-distributed-tracing-instance-id
+
++etcd --distributed-tracing-instance-id
+
+```
+
+**`etcd --experimental-distributed-tracing-sampling-rate` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-distributed-tracing-sampling-rate
+
++etcd --distributed-tracing-sampling-rate
+
+```
+
+**`etcd --experimental-distributed-tracing-service-name` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-distributed-tracing-service-name
+
++etcd --distributed-tracing-service-name
+
+```
+
+**`etcd --experimental-downgrade-check-time` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-downgrade-check-time
+
++etcd --downgrade-check-time
+
+```
+
+**`etcd --experimental-max-learners` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-max-learners
+
++etcd --max-learners
+
+```
+
+**`etcd --experimental-memory-mlock` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-memory-mlock
+
++etcd --memory-mlock
+
+```
+
+**`etcd --experimental-peer-skip-client-san-verification` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-peer-skip-client-san-verification
+
++etcd --peer-skip-client-san-verification
+
+```
+
+**`etcd --experimental-snapshot-catchup-entries` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-snapshot-catchup-entries
+
++etcd --snapshot-catchup-entries
+
+```
+
+**`etcd --experimental-warning-apply-duration` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-warning-apply-duration
+
++etcd --warning-apply-duration
+
+```
+
+**`etcd --experimental-warning-unary-request-duration` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-warning-unary-request-duration
+
++etcd --warning-unary-request-duration
+
+```
+
+**`etcd --experimental-watch-progress-notify-interval` flag has been deprecated.**
+
+
+```diff
+
+-etcd --experimental-watch-progress-notify-interval
+
++etcd --watch-progress-notify-interval
+
+```
+
+# Equivalent flags of 3.5 feature gates
+
+**equivalent flag for feature gate `etcd --experimental-compact-hash-check-enabled=true`**
+
+
+```diff
+
+-etcd --experimental-compact-hash-check-enabled=true
+
++etcd --feature-gates=CompactHashCheck=true
+
+```
+
+**equivalent flag for feature gate `etcd --experimental-enable-initial-corrupt-check=true`**
+
+
+```diff
+
+-etcd --experimental-enable-initial-corrupt-check=true
+
++etcd --feature-gates=InitialCorruptCheck=true
+
+```
+
+**equivalent flag for feature gate `etcd --experimental-enable-lease-checkpoint=true`**
+
+
+```diff
+
+-etcd --experimental-enable-lease-checkpoint=true
+
++etcd --feature-gates=LeaseCheckpoint=true
+
+```
+
+**equivalent flag for feature gate `etcd --experimental-enable-lease-checkpoint-persist=true`**
+
+
+```diff
+
+-etcd --experimental-enable-lease-checkpoint-persist=true
+
++etcd --feature-gates=LeaseCheckpointPersist=true
+
+```
+
+**equivalent flag for feature gate `etcd --experimental-stop-grpc-service-on-defrag=true`**
+
+
+```diff
+
+-etcd --experimental-stop-grpc-service-on-defrag=true
+
++etcd --feature-gates=StopGRPCServiceOnDefrag=true
+
+```
+
+**equivalent flag for feature gate `etcd --experimental-txn-mode-write-with-shared-buffer=false`**
+
+
+```diff
+
+-etcd --experimental-txn-mode-write-with-shared-buffer=false
+
++etcd --feature-gates=TxnModeWriteWithSharedBuffer=false
+
+```
+
+# Same flag different defaults
+
+**Original default flag `etcd --snapshot-count=100000`**
+
+
+```diff
+
+-etcd --snapshot-count=100000
+
++etcd --snapshot-count=10000
+
+```
+
+**Original default flag `etcd --v2-deprecation='not-yet'`**
+
+
+```diff
+
+-etcd --v2-deprecation='not-yet'
+
++etcd --v2-deprecation='write-only'
+
+```
+
+**Original default flag `etcd --discovery-fallback='proxy'`**
+
+
+```diff
+
+-etcd --discovery-fallback='proxy'
+
++etcd --discovery-fallback='exit'
+
+```
+#### Difference in Prometheus metrics
+
+```diff
+# metrics added in 3.6
++etcd_network_known_peers
++etcd_server_feature_enabled
+```
+
 
 ### Server upgrade checklists
 
@@ -45,9 +375,9 @@ For a much larger total data size, 100MB or more , this one-time process might t
 
 #### Downgrade
 
-If all members have been upgraded to v3.6, the cluster will be upgraded to v3.6, and downgrade from this completed state is **not possible**. If any single member is still v3.5, however, the cluster and its operations remains "v3.5", and it is possible from this mixed cluster state to return to using a v3.5 etcd binary on all members.
+Before upgrading your etcd cluster, please create and [download a snapshot backup](../../op-guide/maintenance/#snapshot-backup) of your etcd cluster. If you need to downgrade the cluster to 3.5 after a complete upgrade, you can use this snapshot to restore an etcd instance to its 3.5 state.
 
-Please [download the snapshot backup](../../op-guide/maintenance/#snapshot-backup) to make downgrading the cluster possible even after it has been completely upgraded.
+If all members have been upgraded to v3.6, the cluster will be upgraded to v3.6, and downgrade from this completed state is **not possible**. If any single member is still v3.5, however, the cluster and its operations remains "v3.5", and it is possible from this mixed cluster state to return to using a v3.5 etcd binary on all members.
 
 ### Upgrade procedure
 
