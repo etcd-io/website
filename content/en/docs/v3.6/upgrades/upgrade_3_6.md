@@ -510,8 +510,8 @@ When each etcd process is stopped, expected errors will be logged by other clust
 Restart the etcd server with same configuration but with the new etcd binary.
 
 ```diff
--etcd-old --name s1 \
-+etcd-new --name s1 \
+-etcd-old --name ${name} \
++etcd-new --name ${name} \
   --data-dir /tmp/etcd/s1 \
   --listen-client-urls http://localhost:2379 \
   --advertise-client-urls http://localhost:2379 \
