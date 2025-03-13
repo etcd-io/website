@@ -20,6 +20,7 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 Highlighted breaking changes in 3.6.
 
 ### Flags added
+
 ```diff
 +etcd --discovery-token ''
 +etcd --discovery-endpoints ''
@@ -37,9 +38,10 @@ Highlighted breaking changes in 3.6.
 +etcd --feature-gates
 +etcd --log-format
 ```
-### Deprecated flags
-**`etcd --experimental-bootstrap-defrag-threshold-megabytes` flag has been deprecated.**
 
+### Deprecated flags
+
+**`etcd --experimental-bootstrap-defrag-threshold-megabytes` flag has been deprecated.**
 
 ```diff
 
@@ -51,7 +53,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-compaction-batch-limit` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-compaction-batch-limit
@@ -61,7 +62,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-compact-hash-check-time` flag has been deprecated.**
-
 
 ```diff
 
@@ -73,7 +73,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-compaction-sleep-interval` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-compaction-sleep-interval
@@ -83,7 +82,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-corrupt-check-time` flag has been deprecated.**
-
 
 ```diff
 
@@ -95,7 +93,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-enable-distributed-tracing` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-enable-distributed-tracing
@@ -105,7 +102,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-distributed-tracing-address` flag has been deprecated.**
-
 
 ```diff
 
@@ -117,7 +113,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-distributed-tracing-instance-id` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-distributed-tracing-instance-id
@@ -127,7 +122,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-distributed-tracing-sampling-rate` flag has been deprecated.**
-
 
 ```diff
 
@@ -139,7 +133,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-distributed-tracing-service-name` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-distributed-tracing-service-name
@@ -149,7 +142,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-downgrade-check-time` flag has been deprecated.**
-
 
 ```diff
 
@@ -161,7 +153,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-max-learners` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-max-learners
@@ -171,7 +162,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-memory-mlock` flag has been deprecated.**
-
 
 ```diff
 
@@ -183,7 +173,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-peer-skip-client-san-verification` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-peer-skip-client-san-verification
@@ -193,7 +182,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-snapshot-catchup-entries` flag has been deprecated.**
-
 
 ```diff
 
@@ -205,7 +193,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-warning-apply-duration` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-warning-apply-duration
@@ -215,7 +202,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **`etcd --experimental-warning-unary-request-duration` flag has been deprecated.**
-
 
 ```diff
 
@@ -227,7 +213,6 @@ Highlighted breaking changes in 3.6.
 
 **`etcd --experimental-watch-progress-notify-interval` flag has been deprecated.**
 
-
 ```diff
 
 -etcd --experimental-watch-progress-notify-interval
@@ -236,10 +221,9 @@ Highlighted breaking changes in 3.6.
 
 ```
 
-# Equivalent flags of 3.5 feature gates
+### Equivalent flags of 3.5 feature gates
 
 **equivalent flag for feature gate `etcd --experimental-compact-hash-check-enabled=true`**
-
 
 ```diff
 
@@ -251,7 +235,6 @@ Highlighted breaking changes in 3.6.
 
 **equivalent flag for feature gate `etcd --experimental-enable-initial-corrupt-check=true`**
 
-
 ```diff
 
 -etcd --experimental-enable-initial-corrupt-check=true
@@ -261,7 +244,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **equivalent flag for feature gate `etcd --experimental-enable-lease-checkpoint=true`**
-
 
 ```diff
 
@@ -273,7 +255,6 @@ Highlighted breaking changes in 3.6.
 
 **equivalent flag for feature gate `etcd --experimental-enable-lease-checkpoint-persist=true`**
 
-
 ```diff
 
 -etcd --experimental-enable-lease-checkpoint-persist=true
@@ -283,7 +264,6 @@ Highlighted breaking changes in 3.6.
 ```
 
 **equivalent flag for feature gate `etcd --experimental-stop-grpc-service-on-defrag=true`**
-
 
 ```diff
 
@@ -295,7 +275,6 @@ Highlighted breaking changes in 3.6.
 
 **equivalent flag for feature gate `etcd --experimental-txn-mode-write-with-shared-buffer=false`**
 
-
 ```diff
 
 -etcd --experimental-txn-mode-write-with-shared-buffer=false
@@ -304,10 +283,9 @@ Highlighted breaking changes in 3.6.
 
 ```
 
-# Same flag different defaults
+### Same flag different defaults
 
 **Original default flag `etcd --snapshot-count=100000`**
-
 
 ```diff
 
@@ -319,7 +297,6 @@ Highlighted breaking changes in 3.6.
 
 **Original default flag `etcd --v2-deprecation='not-yet'`**
 
-
 ```diff
 
 -etcd --v2-deprecation='not-yet'
@@ -330,7 +307,6 @@ Highlighted breaking changes in 3.6.
 
 **Original default flag `etcd --discovery-fallback='proxy'`**
 
-
 ```diff
 
 -etcd --discovery-fallback='proxy'
@@ -338,14 +314,14 @@ Highlighted breaking changes in 3.6.
 +etcd --discovery-fallback='exit'
 
 ```
-#### Difference in Prometheus metrics
+
+### Difference in Prometheus metrics
 
 ```diff
 # metrics added in 3.6
 +etcd_network_known_peers
 +etcd_server_feature_enabled
 ```
-
 
 ### Server upgrade checklists
 
@@ -369,7 +345,7 @@ While upgrading, an etcd cluster supports mixed versions of etcd members, and op
 
 If this cluster has been in use since etcd v2, there are some additional requirements.
 
-First, if you are upgrading stepwise from etcd v2 to etcd v3.6, you need to take care that the database is initialized with v3 data.  See the [v2 data upgrade issue](https://github.com/etcd-io/etcd/issues/9480) for more details.
+First, if you are upgrading stepwise from etcd v2 to etcd v3.6, you need to take care that the database is initialized with v3 data.  See the [v2 data upgrade issue](https://github.com/etcd-io/etcd/issues/9480) and [etcd v2 to v3 migration guide](https://etcd.io/docs/v3.6/tutorials/how-to-migrate/) for more details.
 
 If the cluster is serving a v2 data set larger than 50MB, each newly upgraded member may take up to two minutes to catch up with the existing cluster. Check the size of a recent snapshot to estimate the total data size. In other words, it is safest to wait for 2 minutes between upgrading each member.
 
@@ -512,7 +488,7 @@ Restart the etcd server with same configuration but with the new etcd binary.
 ```diff
 -etcd-old --name ${name} \
 +etcd-new --name ${name} \
-  --data-dir /tmp/etcd/s1 \
+  --data-dir /path/to/${name}.etcd \
   --listen-client-urls http://localhost:2379 \
   --advertise-client-urls http://localhost:2379 \
   --listen-peer-urls http://localhost:2380 \
