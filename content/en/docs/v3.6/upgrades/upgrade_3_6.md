@@ -365,9 +365,11 @@ Before beginning, [download the snapshot backup](../../op-guide/maintenance/#sna
 
 While upgrading, an etcd cluster supports mixed versions of etcd members, and operates with the protocol of the lowest common version. The cluster is only considered upgraded once all of its members are upgraded to version 3.6. Internally, etcd members negotiate with each other to determine the overall cluster version, which controls the reported version and the supported features.
 
-#### Limitations
+#### Limitations on Clusters with v2 Data
 
-Note: If the cluster only has v3 data and no v2 data, it is not subject to this limitation.
+If this cluster has been in use since etcd v2, there are some additional requirements.
+
+First, if you are upgrading stepwise from etcd v2 to etcd v3.6, you need to take care that the database is initialized with v3 data.  See the [v2 data upgrade issue](https://github.com/etcd-io/etcd/issues/9480) for more details.
 
 If the cluster is serving a v2 data set larger than 50MB, each newly upgraded member may take up to two minutes to catch up with the existing cluster. Check the size of a recent snapshot to estimate the total data size. In other words, it is safest to wait for 2 minutes between upgrading each member.
 
