@@ -34,23 +34,57 @@ Or specify `feature-gates` in YAML config file:
 feature-gates: ...,StopGRPCServiceOnDefrag=true
 ```
 
-The following tables are a summary of the feature gates that you can set on
-etcd.
+### Change in `embed.EtcdServer` struct
+
+In 3.6, field `ServerFeatureGate` is added to `embed.Config`, and should be replacing the experimental fields listed below:
+
+```diff
+package embed
+
+type Config struct {
+  // Deprecated: Use CompactHashCheck Feature Gate instead. Will be decommissioned in v3.7.
+  ExperimentalCompactHashCheckEnabled bool `json:"experimental-compact-hash-check-enabled"`
+
+  // Deprecated: Use InitialCorruptCheck Feature Gate instead. Will be decommissioned in v3.7.
+  ExperimentalInitialCorruptCheck bool `json:"experimental-initial-corrupt-check"`
+
+  // Deprecated: Use TxnModeWriteWithSharedBuffer Feature Gate instead. Will be decommissioned in v3.7.
+  ExperimentalTxnModeWriteWithSharedBuffer bool `json:"experimental-txn-mode-write-with-shared-buffer"`
+
+  // Deprecated: Use StopGRPCServiceOnDefrag Feature Gate instead. Will be decommissioned in v3.7.
+  ExperimentalStopGRPCServiceOnDefrag bool `json:"experimental-stop-grpc-service-on-defrag"`
+
+  // Deprecated: Use LeaseCheckpoint Feature Gate instead. Will be decommissioned in v3.7.
+  ExperimentalEnableLeaseCheckpoint bool `json:"experimental-enable-lease-checkpoint"`
+  
+  // Deprecated: Use LeaseCheckpointPersist Feature Gate instead. Will be decommissioned in v3.7.
+  ExperimentalEnableLeaseCheckpointPersist bool `json:"experimental-enable-lease-checkpoint-persist"`
+
++ // ServerFeatureGate is a server level feature gate
++ ServerFeatureGate featuregate.FeatureGate
+  ...
+```
 
 ### Feature gates for Alpha or Beta features
 
-| Feature                          | Default | Stage | Details                                                                              |
+The following tables are a summary of the feature gates that you can set on
+etcd.
+
+| Feature                          | Default | Stage | Details                                                                               |
 |----------------------------------|---------|-------|--------------------------------------------------------------------------------------|
-| StopGRPCServiceOnDefrag          | false   | Alpha |Enables etcd gRPC service to stop serving client requests on defragmentation.         |
-| InitialCorruptCheck              | false   | Alpha |Enables the write transaction to use a shared buffer in its readonly check operations.|
-| CompactHashCheck                 | false   | Alpha |Enables to check data corruption before serving any client/peer traffic.              |
-| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables leader to periodically check followers compaction hashes.                     |
+| CompactHashCheck                 | false   | Alpha |Enables to check data corruption before serving any client/peer traffic.                                                                              |
+| InitialCorruptCheck              | false   | Alpha |Enables the write transaction to use a shared buffer in its readonly check operations.                                                                           |
+| LeaseCheckpoint                  | false   | Alpha |Enables leader to send regular checkpoints to other members to prevent reset of remaining TTL on leader change.                                              |
+| LeaseCheckpointPersist           | false   | Alpha |Enables persisting remainingTTL to prevent indefinite auto-renewal of long lived leases.                                                                         |
+| SetMemberLocalAddr               | false   | Alpha |Enables using the first specified and non-loopback local address from initial-advertise-peer-urls as the local address when communicating with a peer.      |
+| StopGRPCServiceOnDefrag          | false   | Alpha |Enables etcd gRPC service to stop serving client requests on defragmentation.                                                                      |
+| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables leader to periodically check followers compaction hashes.                                                                               |
 
 ## Using a feature
 
 ### Feature stages
 
-A feature can be in *Alpha*, *Beta* or *GA* stage.
+A feature can be in *Alpha*, *Beta*, *GA* or *Deprecated* stage.
 An *Alpha* feature means:
 
 * Disabled by default.
