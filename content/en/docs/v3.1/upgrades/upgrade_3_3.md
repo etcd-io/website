@@ -3,8 +3,9 @@ title: Upgrade etcd from 3.2 to 3.3
 ---
 
 In the general case, upgrading from etcd 3.2 to 3.3 can be a zero-downtime, rolling upgrade:
- - one by one, stop the etcd v3.2 processes and replace them with etcd v3.3 processes
- - after running all v3.3 processes, new features in v3.3 are available to the cluster
+
+- one by one, stop the etcd v3.2 processes and replace them with etcd v3.3 processes
+- after running all v3.3 processes, new features in v3.3 are available to the cluster
 
 Before [starting an upgrade](#upgrade-procedure), read through the rest of this guide to prepare.
 
@@ -24,23 +25,23 @@ Before and after (e.g. [k8s.io/kubernetes/test/e2e_node/services/etcd.go](https:
 import "github.com/coreos/etcd/etcdserver"
 
 type EtcdServer struct {
-	*etcdserver.EtcdServer
--	config *etcdserver.ServerConfig
-+	config etcdserver.ServerConfig
+ *etcdserver.EtcdServer
+- config *etcdserver.ServerConfig
++ config etcdserver.ServerConfig
 }
 
 func NewEtcd(dataDir string) *EtcdServer {
--	config := &etcdserver.ServerConfig{
-+	config := etcdserver.ServerConfig{
-		DataDir: dataDir,
+- config := &etcdserver.ServerConfig{
++ config := etcdserver.ServerConfig{
+  DataDir: dataDir,
         ...
-	}
-	return &EtcdServer{config: config}
+ }
+ return &EtcdServer{config: config}
 }
 
 func (e *EtcdServer) Start() error {
-	var err error
-	e.EtcdServer, err = etcdserver.NewServer(e.config)
+ var err error
+ e.EtcdServer, err = etcdserver.NewServer(e.config)
     ...
 ```
 
@@ -52,15 +53,15 @@ Field `LogOutput` is added to `embed.Config`:
 package embed
 
 type Config struct {
- 	Debug bool `json:"debug"`
- 	LogPkgLevels string `json:"log-package-levels"`
-+	LogOutput string `json:"log-output"`
- 	...
+  Debug bool `json:"debug"`
+  LogPkgLevels string `json:"log-package-levels"`
++ LogOutput string `json:"log-output"`
+  ...
 ```
 
 Before gRPC server warnings were logged in etcdserver.
 
-```
+```bash
 WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: Error while dialing dial tcp: operation was canceled"; Reconnecting to {localhost:2379 <nil>}
 WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: Error while dialing dial tcp: operation was canceled"; Reconnecting to {localhost:2379 <nil>}
 ```
@@ -93,14 +94,14 @@ Before
 
 ```bash
 curl -L http://localhost:2379/v3alpha/kv/put \
-	-X POST -d '{"key": "Zm9v", "value": "YmFy"}'
+ -X POST -d '{"key": "Zm9v", "value": "YmFy"}'
 ```
 
 After
 
 ```bash
 curl -L http://localhost:2379/v3beta/kv/put \
-	-X POST -d '{"key": "Zm9v", "value": "YmFy"}'
+ -X POST -d '{"key": "Zm9v", "value": "YmFy"}'
 ```
 
 Requests to `/v3alpha` endpoints will redirect to `/v3beta`, and `/v3alpha` will be removed in 3.4 release.
@@ -253,7 +254,6 @@ Previously, `lease timetolive LEASE_ID` command on expired lease prints `-1s` fo
 
 Before
 
-
 ```bash
 lease 2d8257079fa1bc0c granted with TTL(0s), remaining(-1s)
 ```
@@ -320,7 +320,7 @@ _, err := clientv3.New(clientv3.Config{
     DialTimeout: 2 * time.Second
 })
 if err == grpc.ErrClientConnTimeout {
-	// handle errors
+ // handle errors
 }
 ```
 
@@ -332,7 +332,7 @@ _, err := clientv3.New(clientv3.Config{
     DialTimeout: 2 * time.Second
 })
 if err == context.DeadlineExceeded {
-	// handle errors
+ // handle errors
 }
 ```
 
@@ -392,7 +392,7 @@ This example shows how to upgrade a 3-member v3.2 etcd cluster running on a loca
 
 Is the cluster healthy and running v3.2.x?
 
-```
+```bash
 $ ETCDCTL_API=3 etcdctl endpoint health --endpoints=localhost:2379,localhost:22379,localhost:32379
 localhost:2379 is healthy: successfully committed proposal: took = 6.600684ms
 localhost:22379 is healthy: successfully committed proposal: took = 8.540064ms
@@ -406,7 +406,7 @@ $ curl http://localhost:2379/version
 
 When each etcd process is stopped, expected errors will be logged by other cluster members. This is normal since a cluster member connection has been (temporarily) broken:
 
-```
+```console
 14:13:31.491746 I | raft: c89feb932daef420 [term 3] received MsgTimeoutNow from 6d4f535bae3ab960 and starts an election to get leadership.
 14:13:31.491769 I | raft: c89feb932daef420 became candidate at term 4
 14:13:31.491788 I | raft: c89feb932daef420 received MsgVoteResp from c89feb932daef420 at term 4
@@ -426,21 +426,21 @@ When each etcd process is stopped, expected errors will be logged by other clust
 
 It's a good idea at this point to [backup the etcd data](../../op-guide/maintenance/#snapshot-backup) to provide a downgrade path should any problems occur:
 
-```
-$ etcdctl snapshot save backup.db
+```bash
+etcdctl snapshot save backup.db
 ```
 
 #### 3. Drop-in etcd v3.3 binary and start the new etcd process
 
 The new v3.3 etcd will publish its information to the cluster:
 
-```
+```console
 14:14:25.363225 I | etcdserver: published {Name:s1 ClientURLs:[http://localhost:2379]} to cluster a9ededbffcb1b1f1
 ```
 
 Verify that each member, and then the entire cluster, becomes healthy with the new v3.3 etcd binary:
 
-```
+```console
 $ ETCDCTL_API=3 /etcdctl endpoint health --endpoints=localhost:2379,localhost:22379,localhost:32379
 localhost:22379 is healthy: successfully committed proposal: took = 5.540129ms
 localhost:32379 is healthy: successfully committed proposal: took = 7.321771ms
@@ -449,7 +449,7 @@ localhost:2379 is healthy: successfully committed proposal: took = 10.629901ms
 
 Upgraded members will log warnings like the following until the entire cluster is upgraded. This is expected and will cease after all etcd cluster members are upgraded to v3.3:
 
-```
+```console
 14:15:17.071804 W | etcdserver: member c89feb932daef420 has a higher version 3.3.0
 14:15:21.073110 W | etcdserver: the local etcd version 3.2.7 is not up-to-date
 14:15:21.073142 W | etcdserver: member 6d4f535bae3ab960 has a higher version 3.3.0
@@ -463,12 +463,12 @@ Upgraded members will log warnings like the following until the entire cluster i
 
 When all members are upgraded, the cluster will report upgrading to 3.3 successfully:
 
-```
+```console
 14:15:54.536901 N | etcdserver/membership: updated the cluster version from 3.2 to 3.3
 14:15:54.537035 I | etcdserver/api: enabled capabilities for version 3.3
 ```
 
-```
+```console
 $ ETCDCTL_API=3 /etcdctl endpoint health --endpoints=localhost:2379,localhost:22379,localhost:32379
 localhost:2379 is healthy: successfully committed proposal: took = 2.312897ms
 localhost:22379 is healthy: successfully committed proposal: took = 2.553476ms
