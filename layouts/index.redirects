@@ -1,4 +1,4 @@
-{{ $latest := site.Params.latest_stable_version }}
+{{- $latest := site.Params.latest_stable_version -}}
 /docs/latest     /docs/{{ $latest }}/
 /docs/latest/*     /docs/{{ $latest }}/:splat
 
@@ -42,3 +42,13 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/v3.3/dl_build  /docs/v3.3/install/
 /docs/v3.2/dl_build  /docs/v3.2/install/
 /docs/v3.1/dl_build  /docs/v3.1/install/
+
+# Add redirects for each language except 'en'
+{{ range .Site.Languages }}
+{{- $lang := .Lang -}}
+{{- if ne $lang "en" -}}
+
+/{{ $lang }}/* /{{ $lang }}/404.html   404
+
+{{- end -}}
+{{- end }}
