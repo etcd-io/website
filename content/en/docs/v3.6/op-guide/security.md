@@ -287,7 +287,7 @@ etcdctl member update ca7a7d6fe0984fd9 --peer-urls=https://ip_address_etcd_node_
 
 ### 3. Enable TLS for client-to-server communication
 
-Edit the systemd unit file (`/etc/systemd/system/etcd.service`) or drop-in override config on each node to add the following flags:
+Update each node's parameters to match your etcd deployment method using the following flags:
 
 ```ini
 --cert-file=/etc/ssl/etcd/server.pem
@@ -300,7 +300,7 @@ Edit the systemd unit file (`/etc/systemd/system/etcd.service`) or drop-in overr
 --peer-trusted-ca-file=/etc/ssl/etcd/ca.pem
 ```
 
-Also, update all `--listen-peer-urls`, `--listen-client-urls` and `--initial-advertise-peer-urls` to use `https://`.
+Also, update all `--listen-peer-urls`, `--listen-client-urls`, `--advertise-client-urls`, `--initial-cluster`  and `--initial-advertise-peer-urls` to use `https://`.
 
 Then reload systemd and restart etcd:
 
