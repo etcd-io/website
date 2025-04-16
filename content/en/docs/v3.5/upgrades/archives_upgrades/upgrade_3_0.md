@@ -1,8 +1,8 @@
----
+<!-- archived ---
 title: Upgrade etcd from 2.3 to 3.0
 weight: 6900
 description: Processes, checklists, and notes on upgrading etcd from 2.3 to 3.0
----
+--- -->
 
 In the general case, upgrading from etcd 2.3 to 3.0 can be a zero-downtime, rolling upgrade:
  - one by one, stop the etcd v2.3 processes and replace them with etcd v3.0 processes
