@@ -11,7 +11,7 @@ This guide walks through installing and running a single-node etcd cluster local
 Make sure you're on a supported platform before getting started:
 
 - Operating System: Ubuntu 22.04+ or macOS 11+. Windows users can use WSL2.
-- [Supported platforms architecture][supported-platform]
+- [Supported platforms architecture](/docs/v3.5/op-guide/)
 - Tools installed:
   - `curl` and `tar`
   - Internet connection to download the latest etcd [release](https://github.com/etcd-io/etcd/releases/).
@@ -110,18 +110,9 @@ To stop etcd, press `Ctrl+C` in the terminal where it is running.
 
 Learn about more ways to configure and use etcd from the following pages:
 
-- Explore the gRPC [API][api].
-- Set up a [multi-machine cluster][clustering].
-- Learn how to [configure][configure] etcd.
-- Find language [bindings and tools][integrations].
-- Use TLS to [secure][security] an etcd cluster.
-- [Tune etcd][tuning].
-
-[api]: /docs/{{< param version >}}/learning/api
-[clustering]: /docs/{{< param version >}}/op-guide/clustering
-[configure]: /docs/{{< param version >}}/op-guide/configuration
-[integrations]: /docs/{{< param version >}}/integrations
-[security]: /docs/{{< param version >}}/op-guide/security
-[tuning]: /docs/{{< param version >}}/tuning
-[supported-platform]: /docs/{{< param version >}}/op-guide/
-[Install]: ../install/
+- Explore the gRPC [API](/docs/v3.5/learning/api).
+- Set up a [multi-machine cluster](/docs/v3.5/op-guide/clustering).
+- Learn how to [configure](/docs/v3.5/op-guide/configuration) etcd.
+- Find language [bindings and tools](/docs/v3.5/integrations).
+- Use TLS to [secure](/docs/v3.5/op-guide/security) an etcd cluster.
+- [Tune etcd](/docs/v3.5/tuning).
