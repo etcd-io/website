@@ -16,3 +16,4 @@ tmp/
 # IDEs
 .idea
 *.iml
+package.json
