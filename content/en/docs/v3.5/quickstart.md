@@ -6,7 +6,7 @@ description: Run etcd Locally Under 5 minutes!
 
 This guide walks through installing and running a single-node etcd cluster locally using pre-built binaries - no containers or cloud set up required.
 
-## Requirements
+## Prerequisites
 
 Make sure you're on a supported platform before getting started:
 
