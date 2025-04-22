@@ -9,10 +9,11 @@ minGoVers: 1.20
 
 Before installing etcd, see the following pages:
 
-- [Supported platforms][]
-- [Hardware recommendations][]
+- [Supported platforms](/docs/v3.5/op-guide/supported-platform)
+- [Hardware recommendations](/docs/v3.5/op-guide/hardware)
 
 ## Install pre-built binaries
+
 Install `etcd` from pre-built binaries using cURL.
 
    ```bash
@@ -97,29 +98,31 @@ Install `etcd` from pre-built binaries using cURL.
 ### 5. Shut down `etcd`
 
 To stop etcd, press `Ctrl+C` in the terminal where it is running.
+
 ## Build from source
 
-If you have [Go version {{< param minGoVers >}}+][go], you can build etcd from
-source by following these steps:
+With Go [installed](https://go.dev/doc/install), you can build etcd from source by following these steps:
 
- 1. [Download the etcd repo as a zip file][download] and unzip it, or clone the
+ 1. [Download the etcd repo as a zip file](https://github.com/etcd-io/etcd) and unzip it, or clone the
     repo using the following command.
 
     ```sh
-    $ git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
+    git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
     ```
+
     To build from `{{< param github_branch >}}@HEAD`, omit the `-b  {{< param
     git_version_tag >}}` flag.
 
  2. Change directory:
 
     ```sh
-    $ cd etcd
+    cd etcd
     ```
+
  3. Run the build script:
 
     ```sh
-    $ ./build.sh
+    ./build.sh
     ```
 
     The binaries are under the `bin` directory.
@@ -127,16 +130,17 @@ source by following these steps:
  4. Add the full path to the `bin` directory to your path, for example:
 
     ```sh
-    $ export PATH="$PATH:`pwd`/bin"
+    export PATH="$PATH:`pwd`/bin"
     ```
 
  5. Test that `etcd` is in your path:
 
     ```sh
-    $ etcd --version
+    etcd --version
     ```
 
 ## Installation via OS packages
+
 *Disclaimer: etcd installations through OS package managers can deliver outdated versions since they are not being automatically maintained nor officially supported by etcd project. Therefore use OS packages with caution.*
 
 There are various ways of installing etcd on different operating systems and these are just some examples how it can be done.
@@ -144,18 +148,21 @@ There are various ways of installing etcd on different operating systems and the
 ### MacOS (Homebrew)
 
 1. Update homebrew:
+
 ```sh
-$ brew update
+brew update
 ```
 
-2. Install etcd:
+2.Install etcd
+
 ```sh
-$ brew install etcd
+brew install etcd
 ```
 
-3. Verify install
+3.Verify install
+
 ```sh
-$ etcd --version
+etcd --version
 ```
 
 ## Linux
@@ -172,14 +179,14 @@ The recommended way to install etcd on Linux is either through [pre-built binari
   - Update Homebrew:
 
     ```sh
-    $ brew update
+    brew update
     ```
 
 - Procedure
   - Install using `brew`:
 
     ```sh
-    $ brew install etcd
+    brew install etcd
     ```
 
 - Result
@@ -204,13 +211,13 @@ The etcd project does not currently maintain a helm chart, however you can follo
 For a slightly more involved sanity check of your installation, see
 [Quickstart][].
 
-[download]: https://github.com/etcd-io/etcd/archive/{{< param git_version_tag >}}.zip
-[go]: https://golang.org/doc/install
+[download]: <https://github.com/etcd-io/etcd/archive/{{>< param git_version_tag >}}.zip
+[go]: <https://golang.org/doc/install>
 [Hardware recommendations]: {{< relref "op-guide/hardware" >}}
 [Quickstart]: {{< relref "quickstart" >}}
 [Running etcd as a Kubernetes StatefulSet]: {{< relref "op-guide/kubernetes" >}}
-[releases]: https://github.com/etcd-io/etcd/releases/
-[tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
+[releases]: <https://github.com/etcd-io/etcd/releases/>
+[tagged-release]: <https://github.com/etcd-io/etcd/releases/tag/{{>< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
-[Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm
+[Bitnami's etcd Helm chart]: <https://bitnami.com/stack/etcd/helm>
 [Homebrew can run on Linux]: <https://docs.brew.sh/Homebrew-on-Linux>
