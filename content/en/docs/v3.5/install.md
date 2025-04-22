@@ -13,23 +13,90 @@ Before installing etcd, see the following pages:
 - [Hardware recommendations][]
 
 ## Install pre-built binaries
+Install `etcd` from pre-built binaries using cURL.
 
-The easiest way to install etcd is from pre-built binaries:
+   ```bash
+   # Download and extract the latest release using cURL
+   curl -L https://github.com/etcd-io/etcd/releases/download/v3.5.21/etcd-v3.5.21-linux-arm64.tar.gz \
+   -o etcd.tar.gz
+   tar -xvf etcd.tar.gz
+   cd etcd-v3.5.21-linux-arm64
 
- 1. Download the compressed archive file for your platform from [Releases][],
-    choosing release [{{< param git_version_tag >}}][tagged-release] or later.
- 2. Unpack the archive file. This results in a directory containing the binaries.
- 3. Add the executable binaries to your path. For example, rename and/or move
-    the binaries to a directory in your path (like `/usr/local/bin`), or add the
-    directory created by the previous step to your path.
- 4. From a shell, test that `etcd` is in your path:
+   ```
 
-    ```sh
-    $ etcd --version
-    etcd Version: {{< psubstr git_version_tag 1 >}}
-    ...
-    ```
+   Move binaries to `/usr/local/bin`:
 
+   ```bash
+   sudo mv etcd etcdctl etcdutl /usr/local/bin
+   ```
+
+   Confirm installation:
+
+   ```bash
+   etcd --version
+   etcdctl version
+   ```
+
+   Output:
+
+   ```bash
+   etcd Version: 3.5.21
+   Git SHA: a17edfd
+   Go Version: go1.23.7
+   Go OS/Arch: linux/arm64
+
+
+   etcdctl version: 3.5.21
+   API version: 3.5
+
+   ```
+
+### 2. Start `etcd`
+
+   In a new terminal window, start etcd with the default configuration:
+
+   ```bash
+    etcd
+   ```
+
+   You should see logs indicating etcd has started and is listening on `localhost:2379`.
+
+### 3. From another terminal, use `etcdctl` to set a key
+
+   ```bash
+      etcdctl put greeting "Hello, etcd"
+   ```
+
+   where:
+
+- `put`: Puts the given key into the store
+
+   Ouput:
+
+   ```bash
+   OK
+   ```
+
+### 4. From the same terminal, retrieve the key
+
+   ```bash
+      etcdctl get greeting
+   ```
+
+   where:
+
+- `get`: gets the key or range of keys.
+
+   Output:
+
+   ```bash
+   greeting
+   Hello, etcd
+   ```
+
+### 5. Shut down `etcd`
+
+To stop etcd, press `Ctrl+C` in the terminal where it is running.
 ## Build from source
 
 If you have [Go version {{< param minGoVers >}}+][go], you can build etcd from
