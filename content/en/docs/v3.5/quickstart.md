@@ -10,12 +10,10 @@ This guide walks through installing and running a single-node etcd cluster local
 
 Make sure you're on a supported platform before getting started:
 
-- Operating System: Ubuntu 22.04+ or macOS 11+. Windows users can use WSL2.
-- [Supported platforms architecture](/docs/v3.5/op-guide/)
+- [Supported platforms architecture](/docs/v3.5/op-guide/supported-platform/)
 - Tools installed:
   - `curl` and `tar`
-  - Internet connection to download the latest etcd [release](https://github.com/etcd-io/etcd/releases/).
-  - `sudo` access to install binaries.
+  - `sudo` access to [install the binaries](/docs/v3.5/install/).
 
 ## Steps
 
