@@ -13,16 +13,12 @@ The lock service exposes client-side locking facilities as a gRPC interface.
 | Lock | LockRequest | LockResponse | Lock acquires a distributed shared lock on a given named lock. On success, it will return a unique key that exists so long as the lock is held by the caller. This key can be used in conjunction with transactions to safely ensure updates to etcd only occur while holding lock ownership. The lock is held until Unlock is called on the key or the lease associate with the owner expires. |
 | Unlock | UnlockRequest | UnlockResponse | Unlock takes a key returned by Lock and releases the hold on lock. The next Lock caller waiting for the lock will then be woken up and given ownership of the lock. |
 
-
-
 ##### message `LockRequest` (server/etcdserver/api/v3lock/v3lockpb/v3lock.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | name | name is the identifier for the distributed shared lock to be acquired. | bytes |
 | lease | lease is the ID of the lease that will be attached to ownership of the lock. If the lease expires or is revoked and currently holds the lock, the lock is automatically released. Calls to Lock with the same lease will be treated as a single acquisition; locking twice with the same lease is a no-op. | int64 |
-
-
 
 ##### message `LockResponse` (server/etcdserver/api/v3lock/v3lockpb/v3lock.proto)
 
@@ -31,23 +27,17 @@ The lock service exposes client-side locking facilities as a gRPC interface.
 | header |  | etcdserverpb.ResponseHeader |
 | key | key is a key that will exist on etcd for the duration that the Lock caller owns the lock. Users should not modify this key or the lock may exhibit undefined behavior. | bytes |
 
-
-
 ##### message `UnlockRequest` (server/etcdserver/api/v3lock/v3lockpb/v3lock.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | key | key is the lock ownership key granted by Lock. | bytes |
 
-
-
 ##### message `UnlockResponse` (server/etcdserver/api/v3lock/v3lockpb/v3lock.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | header |  | etcdserverpb.ResponseHeader |
-
-
 
 ##### service `Election` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
@@ -61,8 +51,6 @@ The election service exposes client-side election facilities as a gRPC interface
 | Observe | LeaderRequest | LeaderResponse | Observe streams election proclamations in-order as made by the election's elected leaders. |
 | Resign | ResignRequest | ResignResponse | Resign releases election leadership so other campaigners may acquire leadership on the election. |
 
-
-
 ##### message `CampaignRequest` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
 | Field | Description | Type |
@@ -71,16 +59,12 @@ The election service exposes client-side election facilities as a gRPC interface
 | lease | lease is the ID of the lease attached to leadership of the election. If the lease expires or is revoked before resigning leadership, then the leadership is transferred to the next campaigner, if any. | int64 |
 | value | value is the initial proclaimed value set when the campaigner wins the election. | bytes |
 
-
-
 ##### message `CampaignResponse` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | header |  | etcdserverpb.ResponseHeader |
 | leader | leader describes the resources used for holding leadereship of the election. | LeaderKey |
-
-
 
 ##### message `LeaderKey` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
@@ -91,15 +75,11 @@ The election service exposes client-side election facilities as a gRPC interface
 | rev | rev is the creation revision of the key. It can be used to test for ownership of an election during transactions by testing the key's creation revision matches rev. | int64 |
 | lease | lease is the lease ID of the election leader. | int64 |
 
-
-
 ##### message `LeaderRequest` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | name | name is the election identifier for the leadership information. | bytes |
-
-
 
 ##### message `LeaderResponse` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
@@ -108,8 +88,6 @@ The election service exposes client-side election facilities as a gRPC interface
 | header |  | etcdserverpb.ResponseHeader |
 | kv | kv is the key-value pair representing the latest leader update. | mvccpb.KeyValue |
 
-
-
 ##### message `ProclaimRequest` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
 | Field | Description | Type |
@@ -117,15 +95,11 @@ The election service exposes client-side election facilities as a gRPC interface
 | leader | leader is the leadership hold on the election. | LeaderKey |
 | value | value is an update meant to overwrite the leader's current value. | bytes |
 
-
-
 ##### message `ProclaimResponse` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | header |  | etcdserverpb.ResponseHeader |
-
-
 
 ##### message `ResignRequest` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
@@ -133,15 +107,11 @@ The election service exposes client-side election facilities as a gRPC interface
 | ----- | ----------- | ---- |
 | leader | leader is the leadership to relinquish by resignation. | LeaderKey |
 
-
-
 ##### message `ResignResponse` (server/etcdserver/api/v3election/v3electionpb/v3election.proto)
 
 | Field | Description | Type |
 | ----- | ----------- | ---- |
 | header |  | etcdserverpb.ResponseHeader |
-
-
 
 ##### message `Event` (api/mvccpb/kv.proto)
 
@@ -150,8 +120,6 @@ The election service exposes client-side election facilities as a gRPC interface
 | type | type is the kind of event. If type is a PUT, it indicates new data has been stored to the key. If type is a DELETE, it indicates the key was deleted. | EventType |
 | kv | kv holds the KeyValue for the event. A PUT event contains current kv pair. A PUT event with kv.Version=1 indicates the creation of a key. A DELETE/EXPIRE event contains the deleted key with its modification revision set to the revision of deletion. | KeyValue |
 | prev_kv | prev_kv holds the key-value pair before the event happens. | KeyValue |
-
-
 
 ##### message `KeyValue` (api/mvccpb/kv.proto)
 
@@ -163,6 +131,4 @@ The election service exposes client-side election facilities as a gRPC interface
 | version | version is the version of the key. A deletion resets the version to zero and any modification of the key increases its version. | int64 |
 | value | value is the value held by the key, in bytes. | bytes |
 | lease | lease is the ID of the lease that attached to key. When the attached lease expires, the key will be deleted. If lease is 0, then no lease is attached to the key. | int64 |
-
-
 
