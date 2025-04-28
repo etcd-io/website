@@ -6,6 +6,8 @@ description: "go-grpc: for resolving gRPC endpoints with an etcd backend"
 
 etcd provides a gRPC resolver to support an alternative name system that fetches endpoints from etcd for discovering gRPC services. The underlying mechanism is based on watching updates to keys prefixed with the service name.
 
+Note that this feature is experimental because it depends on the [google.golang.org/grpc/resolver][] package, which is still experimental in grpc-go.
+
 ## Using etcd discovery with go-grpc
 
 The etcd client provides a gRPC resolver for resolving gRPC endpoints with an etcd backend. The resolver is initialized with an etcd client:
@@ -28,7 +30,7 @@ r, err := etcdnaming.NewBuilder(cli)
 if err != nil {
     // ...
 }
-conn, gerr := grpc.Dial("my-service", grpc.WithResolvers(r), grpc.WithBlock(), ...)
+conn, gerr := grpc.NewClient("my-service", grpc.WithResolvers(r), ...)
 ```
 
 ## Managing service endpoints
@@ -105,3 +107,4 @@ err := em.Update(context.TODO(), []*endpoints.UpdateWithOpts{
 	endpoints.NewAddUpdateOpts("foo/bar/my-service/e1", endpoints.Endpoint{Addr: "1.2.3.14"})})
 ```
 
+[google.golang.org/grpc/resolver]: https://github.com/grpc/grpc-go/tree/4cedec40eb2ccfbe3f56bb15e894903111ada2d2/resolver
