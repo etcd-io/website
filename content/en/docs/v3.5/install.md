@@ -14,10 +14,10 @@ Before installing etcd, see the following pages:
 
 ## Install pre-built binaries
 
-Install `etcd` from pre-built binaries using cURL.
+Install `etcd` from pre-built binaries.
 
    ```bash
-   # Download and extract the latest release using cURL
+   # Download and extract the latest release using cURL. For example, download v3.5.21 as below.
    curl -L https://github.com/etcd-io/etcd/releases/download/v3.5.21/etcd-v3.5.21-linux-arm64.tar.gz \
    -o etcd.tar.gz
    tar -xvf etcd.tar.gz
