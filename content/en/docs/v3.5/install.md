@@ -9,8 +9,8 @@ minGoVers: 1.20
 
 Before installing etcd, see the following pages:
 
-- [Supported platforms](/docs/v3.5/op-guide/supported-platform)
-- [Hardware recommendations](/docs/v3.5/op-guide/hardware)
+- [Supported platforms][]
+- [Hardware recommendations][]
 
 ## Install pre-built binaries
 
@@ -211,13 +211,13 @@ The etcd project does not currently maintain a helm chart, however you can follo
 For a slightly more involved sanity check of your installation, see
 [Quickstart][].
 
-[download]: <https://github.com/etcd-io/etcd/archive/{{>< param git_version_tag >}}.zip
-[go]: <https://golang.org/doc/install>
+[download]: https://github.com/etcd-io/etcd/archive/{{< param git_version_tag >}}.zip
+[go]: https://golang.org/doc/install
 [Hardware recommendations]: {{< relref "op-guide/hardware" >}}
 [Quickstart]: {{< relref "quickstart" >}}
 [Running etcd as a Kubernetes StatefulSet]: {{< relref "op-guide/kubernetes" >}}
-[releases]: <https://github.com/etcd-io/etcd/releases/>
-[tagged-release]: <https://github.com/etcd-io/etcd/releases/tag/{{>< param git_version_tag >}}
+[releases]: https://github.com/etcd-io/etcd/releases/
+[tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
-[Bitnami's etcd Helm chart]: <https://bitnami.com/stack/etcd/helm>
+[Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm
 [Homebrew can run on Linux]: <https://docs.brew.sh/Homebrew-on-Linux>
