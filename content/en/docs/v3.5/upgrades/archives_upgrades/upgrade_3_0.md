@@ -5,8 +5,9 @@ description: Processes, checklists, and notes on upgrading etcd from 2.3 to 3.0
 ---
 
 In the general case, upgrading from etcd 2.3 to 3.0 can be a zero-downtime, rolling upgrade:
- - one by one, stop the etcd v2.3 processes and replace them with etcd v3.0 processes
- - after running all v3.0 processes, new features in v3.0 are available to the cluster
+
+- one by one, stop the etcd v2.3 processes and replace them with etcd v3.0 processes
+- after running all v3.0 processes, new features in v3.0 are available to the cluster
 
 Before [starting an upgrade](#upgrade-procedure), read through the rest of this guide to prepare.
 
@@ -46,11 +47,11 @@ Please [backup the data directory](/docs/v2.3/admin_guide#backing-up-the-datasto
 
 This example details the upgrade of a three-member v2.3 etcd cluster running on a local machine.
 
-#### 1. Check upgrade requirements.
+#### 1. Check upgrade requirements
 
 Is the cluster healthy and running v.2.3.x?
 
-```
+```bash
 $ etcdctl cluster-health
 member 6e3bd23ae5f1eae0 is healthy: got healthy result from http://localhost:22379
 member 924e2e83e93f2560 is healthy: got healthy result from http://localhost:32379
@@ -65,14 +66,14 @@ $ curl http://localhost:2379/version
 
 When each etcd process is stopped, expected errors will be logged by other cluster members. This is normal since a cluster member connection has been (temporarily) broken:
 
-```
+```bash
 2016-06-27 15:21:48.624124 E | rafthttp: failed to dial 8211f1d0f64f3269 on stream Message (dial tcp 127.0.0.1:12380: getsockopt: connection refused)
 2016-06-27 15:21:48.624175 I | rafthttp: the connection with 8211f1d0f64f3269 became inactive
 ```
 
 It’s a good idea at this point to [backup the etcd data directory](/docs/v2.3/admin_guide#backing-up-the-datastore) to provide a downgrade path should any problems occur:
 
-```
+```bash
 $ etcdctl backup \
       --data-dir /var/lib/etcd \
       --backup-dir /tmp/etcd_backup
@@ -82,13 +83,13 @@ $ etcdctl backup \
 
 The new v3.0 etcd will publish its information to the cluster:
 
-```
+```bash
 09:58:25.938673 I | etcdserver: published {Name:infra1 ClientURLs:[http://localhost:12379]} to cluster 524400597fb1d5f6
 ```
 
 Verify that each member, and then the entire cluster, becomes healthy with the new v3.0 etcd binary:
 
-```
+```bash
 $ etcdctl cluster-health
 member 6e3bd23ae5f1eae0 is healthy: got healthy result from http://localhost:22379
 member 924e2e83e93f2560 is healthy: got healthy result from http://localhost:32379
@@ -96,10 +97,9 @@ member 8211f1d0f64f3269 is healthy: got healthy result from http://localhost:123
 cluster is healthy
 ```
 
-
 Upgraded members will log warnings like the following until the entire cluster is upgraded. This is expected and will cease after all etcd cluster members are upgraded to v3.0:
 
-```
+```bash
 2016-06-27 15:22:05.679644 W | etcdserver: the local etcd version 2.3.7 is not up-to-date
 2016-06-27 15:22:05.679660 W | etcdserver: member 8211f1d0f64f3269 has a higher version 3.0.0
 ```
@@ -110,12 +110,12 @@ Upgraded members will log warnings like the following until the entire cluster i
 
 When all members are upgraded, the cluster will report upgrading to 3.0 successfully:
 
-```
+```bash
 2016-06-27 15:22:19.873751 N | membership: updated the cluster version from 2.3 to 3.0
 2016-06-27 15:22:19.914574 I | api: enabled capabilities for version 3.0.0
 ```
 
-```
+```bash
 $ ETCDCTL_API=3 etcdctl endpoint health
 127.0.0.1:12379 is healthy: successfully committed proposal: took = 18.440155ms
 127.0.0.1:32379 is healthy: successfully committed proposal: took = 13.651368ms
