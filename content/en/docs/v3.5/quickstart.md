@@ -24,13 +24,14 @@ To install etcd, please see the [installation guide](docs/v3.5/install/).
 
 Learn about more ways to configure and use etcd from the following pages:
 
-- If you are a developer:
-  - Explore the gRPC [API](/docs/v3.5/learning/api).
-  - Set up a [multi-machine cluster](/docs/v3.5/op-guide/clustering).
+If you are a developer:
+
+- Explore the gRPC [API](/docs/v3.5/learning/api).
+- Set up a [multi-machine cluster](/docs/v3.5/op-guide/clustering).
 
 If you are an operator or admin:
 
 - Learn how to [configure](/docs/v3.5/op-guide/configuration) etcd.
-  - Find language [bindings and tools](/docs/v3.5/integrations).
-  - Use TLS to [secure](/docs/v3.5/op-guide/security) an etcd cluster.
-  - [Tune etcd](/docs/v3.5/tuning).
+- Find language [bindings and tools](/docs/v3.5/integrations).
+- Use TLS to [secure](/docs/v3.5/op-guide/security) an etcd cluster.
+- [Tune etcd](/docs/v3.5/tuning).
