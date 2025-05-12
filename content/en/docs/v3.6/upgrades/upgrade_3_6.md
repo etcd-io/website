@@ -13,6 +13,12 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 ### Upgrade checklists
 
+#### Update 3.5
+
+Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.20 or later](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/). Updating will prevent the ["too many learner member" error](https://github.com/etcd-io/etcd/issues/19557) which causes upgrade to fail.
+
+#### V2 Store
+
 **NOTE:** If the `--enable-v2` flag is not configured or is set to false, no further action is required.
 
 If `--enable-v2` **is** configured, run the command `etcdutl check v2store` to verify whether the v2store contains any non-membership (custom) data. If no custom data is present, the flag can be safely removed. Otherwise, refer to the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) for more details.
