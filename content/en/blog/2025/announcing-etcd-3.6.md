@@ -36,6 +36,7 @@ draft: false
   - [New Contributors, Maintainers, and Reviewers](#new-contributors-maintainers-and-reviewers)
   - [New Release Team](#new-release-team)
   - [Introducing the etcd Operator Working Group](#introducing-the-etcd-operator-working-group)
+- **[Extended Support for v3.4](#extended-support-for-v34)**
 - **[Future Development](#future-development)**
 
 ## Introduction
@@ -363,6 +364,12 @@ To further advance etcd’s operational excellence, we have formed a new working
 The working group is dedicated to enabling the automatic and efficient operation of etcd clusters that run in
 the Kubernetes environment using an etcd-operator.
 
+## Extended Support for v3.4
+
+According to our community [support policy][], we typically maintain only the latest two minor versions, currently
+v3.5 and v3.6. However, we’ve extended support for v3.4 by one additional year to give users still on v3.4 more time
+to upgrade to v3.5 or v3.6. As a result, support for v3.4 will continue until May 15, 2026.
+
 ## Future Development
 
 The legacy v2store has been deprecated since etcd v3.4, and the flag `--enable-v2` was removed entirely in v3.6.
@@ -425,3 +432,4 @@ For more details and upcoming plans, please refer to the [etcd roadmap][].
 [wenjiaswe]: https://github.com/wenjiaswe
 [ivanvc]: https://github.com/ivanvc
 [siyuanfoundation]: https://github.com/siyuanfoundation
+[support policy]: https://etcd.io/docs/v3.6/op-guide/versioning/
