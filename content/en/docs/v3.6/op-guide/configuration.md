@@ -4,7 +4,7 @@ weight: 4050
 description: etcd configuration files, flags, and environment variables
 ---
 
-You can configure etcd through either of the following (or a combination of those):
+You can configure etcd through one of the following:
 
 - **[Command-line flags](#command-line-flags)**
 - **Environment variables**: every flag has a corresponding environment variable
