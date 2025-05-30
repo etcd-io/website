@@ -46,14 +46,14 @@ cluster of etcd:
 Learn about more ways to configure and use etcd from the following pages:
 
 - If you are a developer:
-   - Explore the gRPC [API][].
-   - Find [language bindings and tools][integrations].
+  - Explore the gRPC [API][].
+  - Find [language bindings and tools][integrations].
 
 - If you are an operator or admin:
-   - Set up a [multi-machine cluster][clustering].
-   - Learn how to [configure][] etcd.
-   - Use TLS to [secure an etcd cluster][security].
-   - [Tune etcd][tuning].
+  - Set up a [multi-machine cluster][clustering].
+  - Learn how to [configure][] etcd.
+  - Use TLS to [secure an etcd cluster][security].
+  - [Tune etcd][tuning].
 
 [api]: /docs/{{< param version >}}/learning/api
 [clustering]: /docs/{{< param version >}}/op-guide/clustering
