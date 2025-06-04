@@ -103,7 +103,7 @@ params:
   # Menu title if your navbar has a versions selector to access old versions of your site.
   # This menu appears only if you have at least one [params.versions] set.
   version_menu: Versions
-  latest_stable_version: v3.5
+  latest_stable_version: v3.6
   version:
 
     deprecation_warning: >-
