@@ -62,7 +62,7 @@ Follow these steps to add documentation for a newly released version of etcd, vX
   `content/docs/vX.Y`, where `vX.Y` is the newly released version of etcd. For example:
 
     ```bash
-    cp -r content/docs/next content/docs/v3.5
+    cp -r content/en/docs/next content/en/docs/v3.6
     ```
 
 * In the `_index.md` file at the root of the new directory, update the frontmatter
