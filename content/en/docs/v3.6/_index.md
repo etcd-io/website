@@ -1,11 +1,10 @@
 ---
-title: v3.6.0-alpha docs
+title: v3.6 docs
 cascade:
   version: v3.6
-  versName: &name v3.6-DRAFT
-  git_version_tag: v3.6.0-alpha.0
+  versName: &name v3.6
+  git_version_tag: v3.6.0
   exclude_search: true
-  page_warning: the documentation is in **DRAFT** status.
 linkTitle: *name
 simple_list: true
 weight: -360 # Weight for doc version vX.Y should be -XY0
