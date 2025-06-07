@@ -1,2 +1,6 @@
 config:
   line-length: false # Allow lines longer than 80 characters.
+  # Disable MD052 - Reference links and images should use a label that is defined.
+  # It breaks when a Hugo parameter is in the linked URL. Refer to issue
+  # https://github.com/DavidAnson/markdownlint/issues/1619
+  MD052: false

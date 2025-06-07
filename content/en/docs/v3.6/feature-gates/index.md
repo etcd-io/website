@@ -73,12 +73,12 @@ etcd.
 | Feature                          | Default | Stage | Details                                                                               |
 |----------------------------------|---------|-------|--------------------------------------------------------------------------------------|
 | CompactHashCheck                 | false   | Alpha |Enables to check data corruption before serving any client/peer traffic.                                                                              |
-| InitialCorruptCheck              | false   | Alpha |Enables the write transaction to use a shared buffer in its readonly check operations.                                                                           |
+| InitialCorruptCheck              | false   | Alpha |Enables leader to periodically check followers compaction hashes. operations.                                                                           |
 | LeaseCheckpoint                  | false   | Alpha |Enables leader to send regular checkpoints to other members to prevent reset of remaining TTL on leader change.                                              |
 | LeaseCheckpointPersist           | false   | Alpha |Enables persisting remainingTTL to prevent indefinite auto-renewal of long lived leases.                                                                         |
 | SetMemberLocalAddr               | false   | Alpha |Enables using the first specified and non-loopback local address from initial-advertise-peer-urls as the local address when communicating with a peer.      |
 | StopGRPCServiceOnDefrag          | false   | Alpha |Enables etcd gRPC service to stop serving client requests on defragmentation.                                                                      |
-| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables leader to periodically check followers compaction hashes.                                                                               |
+| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables the write transaction to use a shared buffer in its readonly check                                                                               |
 
 ## Using a feature
 
