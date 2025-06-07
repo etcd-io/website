@@ -4,7 +4,7 @@ cascade:
   version: v3.6
   versName: &name v3.6-DRAFT
   git_version_tag: v3.6.0-alpha.0
-  exclude_search: true
+  exclude_search: false
   page_warning: the documentation is in **DRAFT** status.
 linkTitle: *name
 simple_list: true
