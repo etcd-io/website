@@ -24,6 +24,7 @@ Note that third-party libraries and tools (not hosted on https://github.com/etcd
 - [etcd-druid](https://github.com/gardener/etcd-druid) - A Kubernetes operator to deploy etcd clusters and manage day-2 operations.
 - [etcdadm](https://github.com/kubernetes-sigs/etcdadm) - A command-line tool for operating an etcd cluster.
 - [etcdhelper](https://github.com/tsonglew/intellij-etcdhelper) - An intellij platform plugin for etcd.
+- [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
 
 **Go libraries**
 
