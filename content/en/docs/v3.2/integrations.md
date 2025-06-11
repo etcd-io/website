@@ -17,6 +17,7 @@ title: Libraries and tools
 - [etcd-rest](https://web.archive.org/web/20190113041300/https://github.com/mickep76/etcdrest) - Create generic REST API in Go using etcd as a backend with validation using JSON schema
 - [etcdsh](https://web.archive.org/web/20190113041250/https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
+- [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
 
 **Go libraries**
 
