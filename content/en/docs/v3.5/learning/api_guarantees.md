@@ -87,7 +87,8 @@ removes the performance penalty of linearized accesses' reliance on live consens
 Watches make guarantees about events:
 * Ordered - events are ordered by revision.
   An event will never appear on a watch if it precedes an event in time that
-  has already been posted.
+  has already been posted. The order of events in a watch corresponding to a
+  TXN operation is always the same as within the TXN request.
 * Unique - an event will never appear on a watch twice.
 * Reliable - a sequence of events will never drop any subsequence of events
   within the available history window. If there are events ordered in time as
