@@ -7,7 +7,7 @@ weight: 500
 
 ## Prerequisites
 
-* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.6/install/).
+* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.5/install/).
 * A running `etcd` cluster.
 
 ## Terminology
