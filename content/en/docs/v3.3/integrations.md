@@ -1,7 +1,10 @@
 ---
 title: Libraries and tools
-weight: 2
+weight: 1300
+description: A listing of etcd tools and client libraries
 ---
+
+Note that third-party libraries and tools (not hosted on https://github.com/etcd-io) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
 
 **Tools**
 
@@ -19,6 +22,7 @@ weight: 2
 - [etcdsh](https://web.archive.org/web/20190113041250/https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
+- [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
 
 **Go libraries**
 

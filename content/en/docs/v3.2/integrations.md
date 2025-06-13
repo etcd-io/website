@@ -1,10 +1,14 @@
 ---
 title: Libraries and tools
+weight: 1300
+description: A listing of etcd tools and client libraries
 ---
+
+Note that third-party libraries and tools (not hosted on https://github.com/etcd-io) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
 
 **Tools**
 
-- [etcdctl](https://github.com/etcd-io/etcd/tree/{{< param git_version_tag >}}/etcdctl) - A command line client for etcd
+- [etcdctl](https://github.com/etcd-io/etcd/tree/main/etcdctl) - A command line client for etcd
 - [etcd-backup](https://web.archive.org/web/20190113041300/https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
 - [etcd-dump](https://npmjs.org/package/etcd-dump) - Command line utility for dumping/restoring etcd.
 - [etcd-fs](https://github.com/xetorthio/etcd-fs) - FUSE filesystem for etcd
@@ -17,6 +21,7 @@ title: Libraries and tools
 - [etcd-rest](https://web.archive.org/web/20190113041300/https://github.com/mickep76/etcdrest) - Create generic REST API in Go using etcd as a backend with validation using JSON schema
 - [etcdsh](https://web.archive.org/web/20190113041250/https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
+- [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
 
 **Go libraries**
 
