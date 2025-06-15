@@ -4,7 +4,7 @@ weight: 1300
 description: A listing of etcd tools and client libraries
 ---
 
-Note that third-party libraries and tools (not hosted on https://github.com/etcd-io) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
+Note that third-party libraries and tools (not hosted on [etcd-io main repository](https://github.com/etcd-io)) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
 
 ## Tools
 
