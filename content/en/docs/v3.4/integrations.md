@@ -91,6 +91,7 @@ The sections below list etcd client libraries by language.
 - [shafreeck/cetcd](https://github.com/shafreeck/cetcd) - Supports v2
 
 ### C++
+
 - [edwardcapriolo/etcdcpp](https://github.com/edwardcapriolo/etcdcpp) - Supports v2
 - [suryanathan/etcdcpp](https://github.com/suryanathan/etcdcpp) - Supports v2 (with waits)
 - [nokia/etcd-cpp-api](https://github.com/nokia/etcd-cpp-api) - Supports v2
@@ -163,7 +164,7 @@ The sections below list etcd client libraries by language.
 - [cloudfoundry-community/etcd-boshrelease](https://github.com/cloudfoundry-community/etcd-boshrelease)
 - [cloudfoundry/cf-release](https://github.com/cloudfoundry/cf-release/tree/master/jobs/etcd)
 
-## Projects using etcd 
+## Projects using etcd
 
 - [etcd Raft users](https://github.com/etcd-io/etcd/tree/master/raft#notable-users) - projects using etcd's raft library implementation.
 - [apache/celix](https://github.com/apache/celix) - an implementation of the OSGi specification adapted to C and C++
