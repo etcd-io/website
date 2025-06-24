@@ -28,7 +28,7 @@ Here are definations of some key terms used in the [Example](#example) below.
 etcdctl txn --help
 ```
 
-Transactions in etcd allow you to execute multiple operations atomically, ensuring that either all operations are applied or none are. This is crucial for maintaining data consistency when performing related updates. Learn more about transaction in [etcd's Learning](https://etcd.io/docs/v3.6/learning/api/#transaction).
+Transactions in etcd allow you to execute multiple operations atomically, ensuring that either all operations are applied or none are. This is crucial for maintaining data consistency when performing related updates. Learn more about transactions in [the API documentation](https://etcd.io/docs/v3.5/learning/api#transaction).
 
 ### Example
 
