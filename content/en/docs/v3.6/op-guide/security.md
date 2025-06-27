@@ -273,17 +273,9 @@ ca7a7d6fe0984fd9, started, etcd-node-3, http://ip_address_etcd_node_3:2380, http
 
 ---
 
-### 2. Enable TLS for server-to-server communication
+### 2. Add TLS certs on each node.
 
-Update each etcd member’s peer URL to use `https://`:
-
-```sh
-etcdctl member update 10f4390f4a904a13 --peer-urls=https://ip_address_etcd_node_1:2380
-etcdctl member update 18e03f3590bf045c --peer-urls=https://ip_address_etcd_node_2:2380
-etcdctl member update ca7a7d6fe0984fd9 --peer-urls=https://ip_address_etcd_node_3:2380
-```
-
----
+Please add TLS certificates to each node using the instructions above.
 
 ### 3. Enable TLS for client-to-server communication
 
@@ -302,16 +294,31 @@ Update each node's parameters to match your etcd deployment method using the fol
 
 Also, update all `--listen-peer-urls`, `--listen-client-urls`, `--advertise-client-urls`, `--initial-cluster`  and `--initial-advertise-peer-urls` to use `https://`.
 
-Then reload systemd and restart etcd:
+### 4. Enable TLS for server-to-server communication
+
+Update each etcd member’s peer URL to use `https://` step by step with restart:
 
 ```sh
+$ On node 10f4390f4a904a13
+etcdctl member update 10f4390f4a904a13 --peer-urls=https://ip_address_etcd_node_1:2380
+systemctl daemon-reload
+systemctl restart etcd
+$ On node 18e03f3590bf045c
+etcdctl member update 18e03f3590bf045c --peer-urls=https://ip_address_etcd_node_2:2380
+systemctl daemon-reload
+systemctl restart etcd
+$ On node ca7a7d6fe0984fd9
+etcdctl member update ca7a7d6fe0984fd9 --peer-urls=https://ip_address_etcd_node_3:2380
 systemctl daemon-reload
 systemctl restart etcd
 ```
 
+Why is important?
+If we convert a cluster of 3 nodes one by one, then at the first stage we will have 1 node with TLS, 2 without TLS and the cluster will respond without TLS. In the 2nd stage, we convert the 2nd node, resulting in a cluster with TLS (2 out of 3 nodes with TLS), which will also function properly.
+
 ---
 
-### 4. Verify secure communication
+### 5. Verify secure communication
 
 Check cluster health using TLS:
 
