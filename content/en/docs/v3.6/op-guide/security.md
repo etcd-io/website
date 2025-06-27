@@ -273,7 +273,7 @@ ca7a7d6fe0984fd9, started, etcd-node-3, http://ip_address_etcd_node_3:2380, http
 
 ---
 
-### 2. Add TLS certs on each node.
+### 2. Add TLS certs on each node
 
 Please add TLS certificates to each node using the instructions above.
 
