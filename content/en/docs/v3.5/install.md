@@ -14,45 +14,115 @@ Before installing etcd, see the following pages:
 
 ## Install pre-built binaries
 
-The easiest way to install etcd is from pre-built binaries:
+Install `etcd` from pre-built binaries.
 
- 1. Download the compressed archive file for your platform from [Releases][],
-    choosing release [{{< param git_version_tag >}}][tagged-release] or later.
- 2. Unpack the archive file. This results in a directory containing the binaries.
- 3. Add the executable binaries to your path. For example, rename and/or move
-    the binaries to a directory in your path (like `/usr/local/bin`), or add the
-    directory created by the previous step to your path.
- 4. From a shell, test that `etcd` is in your path:
+   ```bash
+   # Download and extract the latest release using cURL. For example, download v3.5.21 as below.
+   curl -L https://github.com/etcd-io/etcd/releases/download/v3.5.21/etcd-v3.5.21-linux-arm64.tar.gz \
+   -o etcd.tar.gz
+   tar -xvf etcd.tar.gz
+   cd etcd-v3.5.21-linux-arm64
 
-    ```sh
-    $ etcd --version
-    etcd Version: {{< psubstr git_version_tag 1 >}}
-    ...
-    ```
+   ```
+
+   Move binaries to `/usr/local/bin`:
+
+   ```bash
+   sudo mv etcd etcdctl etcdutl /usr/local/bin
+   ```
+
+   Confirm installation:
+
+   ```bash
+   etcd --version
+   etcdctl version
+   ```
+
+   Output:
+
+   ```bash
+   etcd Version: 3.5.21
+   Git SHA: a17edfd
+   Go Version: go1.23.7
+   Go OS/Arch: linux/arm64
+
+
+   etcdctl version: 3.5.21
+   API version: 3.5
+
+   ```
+
+### 2. Start `etcd`
+
+   In a new terminal window, start etcd with the default configuration:
+
+   ```bash
+    etcd
+   ```
+
+   You should see logs indicating etcd has started and is listening on `localhost:2379`.
+
+### 3. From another terminal, use `etcdctl` to set a key
+
+   ```bash
+      etcdctl put greeting "Hello, etcd"
+   ```
+
+   where:
+
+- `put`: Puts the given key into the store
+
+   Ouput:
+
+   ```bash
+   OK
+   ```
+
+### 4. From the same terminal, retrieve the key
+
+   ```bash
+      etcdctl get greeting
+   ```
+
+   where:
+
+- `get`: gets the key or range of keys.
+
+   Output:
+
+   ```bash
+   greeting
+   Hello, etcd
+   ```
+
+### 5. Shut down `etcd`
+
+To stop etcd, press `Ctrl+C` in the terminal where it is running.
 
 ## Build from source
 
-If you have [Go version {{< param minGoVers >}}+][go], you can build etcd from
-source by following these steps:
+With Go [installed](https://go.dev/doc/install), you can build etcd from source by following these steps:
 
- 1. [Download the etcd repo as a zip file][download] and unzip it, or clone the
+ 1. [Download the etcd repo as a zip file](https://github.com/etcd-io/etcd) and unzip it, or clone the
     repo using the following command.
 
     ```sh
-    $ git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
+    git clone -b {{< param git_version_tag >}} https://github.com/etcd-io/etcd.git
     ```
+
     To build from `{{< param github_branch >}}@HEAD`, omit the `-b  {{< param
     git_version_tag >}}` flag.
 
  2. Change directory:
 
     ```sh
-    $ cd etcd
+    cd etcd
     ```
+
  3. Run the build script:
 
     ```sh
-    $ ./build.sh
+    ./build.sh
     ```
 
     The binaries are under the `bin` directory.
@@ -60,16 +130,17 @@ source by following these steps:
  4. Add the full path to the `bin` directory to your path, for example:
 
     ```sh
-    $ export PATH="$PATH:`pwd`/bin"
+    export PATH="$PATH:`pwd`/bin"
     ```
 
  5. Test that `etcd` is in your path:
 
     ```sh
-    $ etcd --version
+    etcd --version
     ```
 
 ## Installation via OS packages
+
 *Disclaimer: etcd installations through OS package managers can deliver outdated versions since they are not being automatically maintained nor officially supported by etcd project. Therefore use OS packages with caution.*
 
 There are various ways of installing etcd on different operating systems and these are just some examples how it can be done.
@@ -77,18 +148,21 @@ There are various ways of installing etcd on different operating systems and the
 ### MacOS (Homebrew)
 
 1. Update homebrew:
+
 ```sh
-$ brew update
+brew update
 ```
 
-2. Install etcd:
+2.Install etcd
+
 ```sh
-$ brew install etcd
+brew install etcd
 ```
 
-3. Verify install
+3.Verify install
+
 ```sh
-$ etcd --version
+etcd --version
 ```
 
 ## Linux
@@ -105,14 +179,14 @@ The recommended way to install etcd on Linux is either through [pre-built binari
   - Update Homebrew:
 
     ```sh
-    $ brew update
+    brew update
     ```
 
 - Procedure
   - Install using `brew`:
 
     ```sh
-    $ brew install etcd
+    brew install etcd
     ```
 
 - Result
