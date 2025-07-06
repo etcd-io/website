@@ -8,8 +8,8 @@ docs/v3.4.0/reporting-bugs    /docs/v3.4.0/reporting_bugs/
 /docs/current     /docs/next/
 /docs/current/*     /docs/next/:splat
 
-/docs/next    /docs/v3.6/
-/docs/next/*    /docs/v3.6/:splat
+/docs/next    /docs/v3.7/
+/docs/next/*    /docs/v3.7/:splat
 
 /docs/v3.5/platforms/container-linux-systemd/    /blog/2017/etcd-container-linux-with-systemd/
 /docs/v3.5/platforms/freebsd/    /blog/2014/etcd-freebsd/

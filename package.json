@@ -18,10 +18,10 @@
   "//": "TODO: Remove mkdirp once docsy > 0.11.0",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
-    "docsy": "github:google/docsy#semver:0.11.0",
-    "hugo-extended": "0.147.5",
+    "docsy": "github:google/docsy#semver:0.12.0",
+    "hugo-extended": "0.147.9",
     "mkdirp": "^3.0.1",
-    "netlify-cli": "^21.2.1",
+    "netlify-cli": "^22.1.3",
     "postcss": "^8.5.1",
     "postcss-cli": "^11.0.0"
   }
