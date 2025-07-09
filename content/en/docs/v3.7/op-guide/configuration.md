@@ -8,7 +8,7 @@ You can configure etcd through the following:
 
 - **[Command-line flags](#command-line-flags)**
 - **Environment variables**: every flag has a corresponding environment variable
-  that has the same name but is prefixed with`ETCD_` and formatted in all caps and
+  that has the same name but is prefixed with `ETCD_` and formatted in all caps and
   [snake case][]. For example, `--some-flag` would be `ETCD_SOME_FLAG`.
 - **[Configuration file](#configuration-file)**
 
@@ -212,19 +212,24 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
   Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
 ```
-### Experimental distributed tracing
+{{% alert color="info" %}}
+⚠️ **Note**: Several `--experimental-*` flags have been promoted or renamed in v3.7.
+Be sure to replace deprecated flags with their stable counterparts listed below.
+{{% /alert %}}
+
+### Distributed tracing
 
 ```nocode
---experimental-enable-distributed-tracing 'false'
-  Enable experimental distributed tracing.
---experimental-distributed-tracing-address 'localhost:4317'
+--enable-distributed-tracing 'false'
+  Enable distributed tracing.
+--distributed-tracing-address 'localhost:4317'
   Distributed tracing collector address.
---experimental-distributed-tracing-service-name 'etcd'
-  Distributed tracing service name, must be same across all etcd instances.
---experimental-distributed-tracing-instance-id ''
-  Distributed tracing instance ID, must be unique per each etcd instance.
---experimental-distributed-tracing-sampling-rate '0'
-  Number of samples to collect per million spans for OpenTelemetry Tracing (if enabled with experimental-enable-distributed-tracing flag).
+--distributed-tracing-service-name 'etcd'
+  Distributed tracing service name, must be the same across all etcd instances.
+--distributed-tracing-instance-id ''
+  Distributed tracing instance ID, must be unique for each etcd instance.
+--distributed-tracing-sampling-rate '0'
+  Number of samples to collect per million spans for distributed tracing.
 ```
 ### v2 Proxy
 
@@ -247,29 +252,31 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --proxy-read-timeout 0
   Time (in milliseconds) for a read to timeout.
 ```
-### Experimental features
+### Features
 
 ```nocode
---experimental-initial-corrupt-check 'false'
-  Enable to check data corruption before serving any client/peer traffic.
---experimental-corrupt-check-time '0s'
+--corrupt-check-time '0s'
   Duration of time between cluster corruption check passes.
---experimental-enable-v2v3 ''
-  Serve v2 requests through the v3 backend under a given prefix. Deprecated and to be decommissioned in v3.6.
---experimental-enable-lease-checkpoint 'false'
-  ExperimentalEnableLeaseCheckpoint enables primary lessor to persist lease remainingTTL to prevent indefinite auto-renewal of long lived leases.
---experimental-compaction-batch-limit 1000
-  ExperimentalCompactionBatchLimit sets the maximum revisions deleted in each compaction batch.
---experimental-peer-skip-client-san-verification 'false'
-  Skip verification of SAN field in client certificate for peer connections.
---experimental-watch-progress-notify-interval '10m'
+--compact-hash-check-time '1m'
+  Duration of time between leader checks followers compaction hashes.
+--compaction-batch-limit 1000
+  Maximum revisions deleted in each compaction batch during compaction.
+--peer-skip-client-san-verification 'false'
+  Skip verification of the SAN field in client certificate for peer connections.
+--watch-progress-notify-interval '10m'
   Duration of periodical watch progress notification.
---experimental-warning-apply-duration '100ms'
-  Warning is generated if requests take more than this duration.
---experimental-txn-mode-write-with-shared-buffer 'true'
-  Enable the write transaction to use a shared buffer in its readonly check operations.
---experimental-bootstrap-defrag-threshold-megabytes
-  Enable the defrag during etcd server bootstrap on condition that it will free at least the provided threshold of disk space. Needs to be set to non-zero value to take effect.
+--warning-unary-request-duration '300ms'
+  Set the threshold after which a unary request triggers a warning.
+--warning-apply-duration '100ms'
+  Warning is generated if request processing exceeds this duration.
+--bootstrap-defrag-threshold-megabytes
+  Enable defragmentation during server bootstrap if the freed disk space exceeds the given threshold.
+--snapshot-catchup-entries
+  Number of entries for a slow follower to catch up after raft log compaction.
+--compaction-sleep-interval
+  Sleep interval between each compaction batch.
+--downgrade-check-time
+  Duration of time between downgrade status checks.
 ```
 ### Unsafe features
 
