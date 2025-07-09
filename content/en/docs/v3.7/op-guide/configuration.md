@@ -8,7 +8,7 @@ You can configure etcd through the following:
 
 - **[Command-line flags](#command-line-flags)**
 - **Environment variables**: every flag has a corresponding environment variable
-  that has the same name but is prefixed with`ETCD_` and formatted in all caps and
+  that has the same name but is prefixed with `ETCD_` and formatted in all caps and
   [snake case][]. For example, `--some-flag` would be `ETCD_SOME_FLAG`.
 - **[Configuration file](#configuration-file)**
 
@@ -29,8 +29,8 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 {{% alert color="info" %}}
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
-
-  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
+  <!-- markdownlint-disable-next-line MD034 -->
+  [changelog]:  https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
 {{% /alert %}}
 
 ### Member
@@ -60,6 +60,8 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Maximum number of snapshot files to retain (0 is unlimited).
 --max-wals '5'
   Maximum number of wal files to retain (0 is unlimited).
+--memory-mlock
+  Enable to enforce etcd pages (in particular bbolt) to stay in RAM.
 --quota-backend-bytes '0'
   Raise alarms when backend size exceeds the given quota (0 defaults to low space quota).
 --backend-bbolt-freelist-type 'map'
@@ -83,6 +85,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --socket-reuse-address 'false'
   Enable to set socket option SO_REUSEADDR on listeners allowing binding to an address in TIME_WAIT state.
 ```
+
 ### Clustering
 
 ```nocode
@@ -127,6 +130,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
     'write-only-drop-data'   // Custom v2 state will get DELETED !
     'gone'                   // v2store is not maintained any longer. (planned default in v3.7)
 ```
+
 ### Security
 
 ```nocode
@@ -176,6 +180,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --tls-max-version ''
   Maximum TLS version supported by etcd (empty will be auto-populated by Go).
 ```
+
 ### Auth
 
 ```nocode
@@ -186,6 +191,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --auth-token-ttl 300
   Time (in seconds) of the auth-token-ttl.
 ```
+
 ### Profiling and monitoring
 
 ```nocode
@@ -196,6 +202,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --listen-metrics-urls ''
   List of URLs to listen on for the metrics and health endpoints.
 ```
+
 ### Logging
 
 ```nocode
@@ -211,27 +218,35 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Enable log rotation of a single log-outputs file target.
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
   Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
+--warning-unary-request-duration '300ms'
+  Set time duration after which a warning is logged if a unary request takes more than this duration.
 ```
-### Experimental distributed tracing
+
+{{% alert color="info" %}}
+  **Note**: Several `--experimental-*` flags have been promoted or renamed in v3.7.
+Be sure to replace deprecated flags with their stable counterparts listed below.
+{{% /alert %}}
+
+### Distributed tracing
 
 ```nocode
---experimental-enable-distributed-tracing 'false'
-  Enable experimental distributed tracing.
---experimental-distributed-tracing-address 'localhost:4317'
+--enable-distributed-tracing 'false'
+  Enable distributed tracing.
+--distributed-tracing-address 'localhost:4317'
   Distributed tracing collector address.
---experimental-distributed-tracing-service-name 'etcd'
-  Distributed tracing service name, must be same across all etcd instances.
---experimental-distributed-tracing-instance-id ''
-  Distributed tracing instance ID, must be unique per each etcd instance.
---experimental-distributed-tracing-sampling-rate '0'
-  Number of samples to collect per million spans for OpenTelemetry Tracing (if enabled with experimental-enable-distributed-tracing flag).
+--distributed-tracing-service-name 'etcd'
+  Distributed tracing service name, must be the same across all etcd instances.
+--distributed-tracing-instance-id ''
+  Distributed tracing instance ID, must be unique for each etcd instance.
+--distributed-tracing-sampling-rate '0'
+  Number of samples to collect per million spans for distributed tracing.
 ```
+
 ### v2 Proxy
 
 {{% alert color="warning" %}}
 **<i class="fas fa-exclamation-triangle mr-1"></i> Note**: flags will be deprecated in v3.6.
 {{% /alert %}}
-
 
 ```nocode
 --proxy 'off'
@@ -247,30 +262,63 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --proxy-read-timeout 0
   Time (in milliseconds) for a read to timeout.
 ```
-### Experimental features
+
+### Features
 
 ```nocode
---experimental-initial-corrupt-check 'false'
-  Enable to check data corruption before serving any client/peer traffic.
---experimental-corrupt-check-time '0s'
+--corrupt-check-time '0s'
   Duration of time between cluster corruption check passes.
---experimental-enable-v2v3 ''
-  Serve v2 requests through the v3 backend under a given prefix. Deprecated and to be decommissioned in v3.6.
---experimental-enable-lease-checkpoint 'false'
-  ExperimentalEnableLeaseCheckpoint enables primary lessor to persist lease remainingTTL to prevent indefinite auto-renewal of long lived leases.
---experimental-compaction-batch-limit 1000
-  ExperimentalCompactionBatchLimit sets the maximum revisions deleted in each compaction batch.
---experimental-peer-skip-client-san-verification 'false'
+--compact-hash-check-time '1m'
+  Duration of time between leader checks followers compaction hashes.
+--compaction-batch-limit 1000
+  CompactionBatchLimit sets the maximum revisions deleted in each compaction batch.
+--peer-skip-client-san-verification 'false'
   Skip verification of SAN field in client certificate for peer connections.
---experimental-watch-progress-notify-interval '10m'
+--watch-progress-notify-interval '10m'
   Duration of periodical watch progress notification.
---experimental-warning-apply-duration '100ms'
+--warning-apply-duration '100ms'
   Warning is generated if requests take more than this duration.
---experimental-txn-mode-write-with-shared-buffer 'true'
-  Enable the write transaction to use a shared buffer in its readonly check operations.
---experimental-bootstrap-defrag-threshold-megabytes
+--bootstrap-defrag-threshold-megabytes
   Enable the defrag during etcd server bootstrap on condition that it will free at least the provided threshold of disk space. Needs to be set to non-zero value to take effect.
+--max-learners '1'
+  Set the max number of learner members allowed in the cluster membership.
+--compaction-sleep-interval
+  Sets the sleep interval between each compaction batch.
+--downgrade-check-time
+  Duration of time between two downgrade status checks.
+--snapshot-catchup-entries
+  Number of entries for a slow follower to catch up after compacting the raft storage entries.
 ```
+
+### Feature Gates
+
+```nocode
+--feature-gates=AllAlpha=true|false
+  Enables or disables all alpha features. Default is false.
+--feature-gates=AllBeta=true|false
+  Enables or disables all beta features. Default is false.
+--feature-gates=CompactHashCheck=true
+  Enables leader to periodically check follower compaction hashes.
+  Replaces: --experimental-compact-hash-check-enabled
+--feature-gates=InitialCorruptCheck=true
+  Enables corruption check before serving client/peer traffic.
+  Replaces: --experimental-initial-corrupt-check
+--feature-gates=LeaseCheckpoint=true
+  ExperimentalEnableLeaseCheckpoint enables primary lessor to persist lease remainingTTL to prevent indefinite auto-renewal of long lived leases.
+  Replaces: --experimental-enable-lease-checkpoint
+--feature-gates=LeaseCheckpointPersist=true
+  Enable persisting remainingTTL to prevent indefinite auto-renewal of long lived leases. Always enabled in v3.6. Should be used to ensure smooth upgrade from v3.5 clusters with this feature enabled.
+  Replaces: --experimental-enable-lease-checkpoint-persist
+--feature-gates=SetMemberLocalAddr=true
+  Allows setting a member’s local address.
+--feature-gates=StopGRPCServiceOnDefrag=true
+  Enable etcd gRPC service to stop serving client requests on defragmentation.
+  Replaces: --experimental-stop-grpc-service-on-defrag
+--feature-gates=TxnModeWriteWithSharedBuffer=true
+  Enable the write transaction to use a shared buffer in its readonly check operations.
+  Replaces: --experimental-txn-mode-write-with-shared-buffer
+```
+
 ### Unsafe features
 
 {{% alert color="warning" %}}
