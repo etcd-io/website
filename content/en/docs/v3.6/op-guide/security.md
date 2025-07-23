@@ -239,6 +239,107 @@ To disable certificate chain checking, invoke curl with the `-k` flag:
 $ curl -k https://127.0.0.1:2379/v2/keys/foo -Xput -d value=bar -v
 ```
 
+## Example 5: Convert an existing non-TLS etcd cluster to TLS
+
+Previously, we described that etcd supports two types of communication: **client-to-server** and **server-to-server (peer communication)**. In this section, we will prepare configuration steps to migrate both communication types to TLS in your existing etcd cluster.
+
+> **Important**: Before starting work on converting the cluster to TLS, please make a backup of the etcd database.
+> **Important**: Before restarting any etcd members, you must first add the TLS certificates and configuration to each etcd node.
+
+---
+
+### 1. Check current cluster status
+
+```sh
+export ETCDCTL_API=3
+
+# Define etcd node IPs
+HOST_1=ip_address_etcd_node_1
+HOST_2=ip_address_etcd_node_2
+HOST_3=ip_address_etcd_node_3
+
+# Get member list
+etcdctl --endpoints=${HOST_1}:2379,${HOST_2}:2379,${HOST_3}:2379 member list
+```
+
+You will get an output similar to:
+
+```sh
+10f4390f4a904a13, started, etcd-node-1, http://ip_address_etcd_node_1:2380, http://ip_address_etcd_node_1:2379, false
+18e03f3590bf045c, started, etcd-node-2, http://ip_address_etcd_node_2:2380, http://ip_address_etcd_node_2:2379, false
+ca7a7d6fe0984fd9, started, etcd-node-3, http://ip_address_etcd_node_3:2380, http://ip_address_etcd_node_3:2379, false
+```
+
+> Save the **member IDs** and corresponding **IP addresses** — you'll need them to update peer URLs.
+
+---
+
+### 2. Add TLS certs on each node
+
+Please add TLS certificates to each node using the [cfssl] tool provides an easy interface to certificate generation, and we provide an example using the tool [instruction][tls-setup]. Alternatively, try this [guide to generating self-signed key pairs][tls-guide].
+
+### 3. Enable TLS for client-to-server communication
+
+Update each node's parameters to match your etcd deployment method using the following flags:
+
+```ini
+--cert-file=/etc/ssl/etcd/server.pem
+--key-file=/etc/ssl/etcd/server-key.pem
+--client-cert-auth=true
+--trusted-ca-file=/etc/ssl/etcd/ca.pem
+--peer-cert-file=/etc/ssl/etcd/peer.pem
+--peer-key-file=/etc/ssl/etcd/peer-key.pem
+--peer-client-cert-auth=true
+--peer-trusted-ca-file=/etc/ssl/etcd/ca.pem
+```
+
+Also, update all `--listen-peer-urls`, `--listen-client-urls`, `--advertise-client-urls`, `--initial-cluster`  and `--initial-advertise-peer-urls` to use `https://`.
+
+### 4. Enable TLS for server-to-server communication
+
+Update each etcd member’s peer URL to use `https://` step by step:
+
+```sh
+$ On node 10f4390f4a904a13
+etcdctl member update 10f4390f4a904a13 --peer-urls=https://ip_address_etcd_node_1:2380
+$ On node 18e03f3590bf045c
+etcdctl member update 18e03f3590bf045c --peer-urls=https://ip_address_etcd_node_2:2380
+$ On node ca7a7d6fe0984fd9
+etcdctl member update ca7a7d6fe0984fd9 --peer-urls=https://ip_address_etcd_node_3:2380
+```
+
+After that please restart etcd systemd service on each etcd node step by step:
+
+```sh
+systemctl daemon-reload
+systemctl restart etcd
+```
+
+Why is important?
+If we convert a cluster of 3 nodes one by one, then at the first stage we will have 1 node with TLS, 2 without TLS and the cluster will respond without TLS. In the 2nd stage, we convert the 2nd node, resulting in a cluster with TLS (2 out of 3 nodes with TLS), which will also function properly.
+
+---
+
+### 5. Verify secure communication
+
+Check cluster health using TLS:
+
+```sh
+etcdctl --endpoints=https://${HOST_1}:2379,https://${HOST_2}:2379,https://${HOST_3}:2379 \
+  --cacert=/etc/ssl/etcd/ca.pem \
+  --cert=/etc/ssl/etcd/client.pem \
+  --key=/etc/ssl/etcd/client-key.pem \
+  endpoint health
+```
+
+You should see responses like:
+
+```sh
+https://ip_address_etcd_node_1:2379 is healthy: successfully committed proposal
+```
+
+If all endpoints return healthy, your cluster is now fully secured with TLS!
+
 ## Notes for DNS SRV
 
 Since v3.1.0 (except v3.2.9), discovery SRV bootstrapping authenticates `ServerName` with a root domain name from `--discovery-srv` flag. This is to avoid man-in-the-middle cert attacks, by requiring a certificate to have matching root domain name in its Subject Alternative Name (SAN) field. For instance, `etcd --discovery-srv=etcd.local` will only authenticate peers/clients when the provided certs have root domain `etcd.local` as an entry in Subject Alternative Name (SAN) field
