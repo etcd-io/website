@@ -29,7 +29,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 {{% alert color="info" %}}
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
-
+  <!-- markdownlint-disable-next-line MD034 -->
   [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
 {{% /alert %}}
 
@@ -83,6 +83,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --socket-reuse-address 'false'
   Enable to set socket option SO_REUSEADDR on listeners allowing binding to an address in TIME_WAIT state.
 ```
+
 ### Clustering
 
 ```nocode
@@ -127,6 +128,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
     'write-only-drop-data'   // Custom v2 state will get DELETED !
     'gone'                   // v2store is not maintained any longer. (planned default in v3.7)
 ```
+
 ### Security
 
 ```nocode
@@ -176,6 +178,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --tls-max-version ''
   Maximum TLS version supported by etcd (empty will be auto-populated by Go).
 ```
+
 ### Auth
 
 ```nocode
@@ -186,6 +189,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --auth-token-ttl 300
   Time (in seconds) of the auth-token-ttl.
 ```
+
 ### Profiling and monitoring
 
 ```nocode
@@ -196,6 +200,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --listen-metrics-urls ''
   List of URLs to listen on for the metrics and health endpoints.
 ```
+
 ### Logging
 
 ```nocode
@@ -212,6 +217,11 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
   Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
 ```
+
+{{% alert color="info" %}}
+  **Note**: Several `--experimental-*` flags have been deprecated in v3.6 and are planned to be removed in v3.7. Be sure to refer to their `--feature-gates=*` replacements when upgrading.
+{{% /alert %}}
+
 ### Experimental distributed tracing
 
 ```nocode
@@ -226,12 +236,12 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --experimental-distributed-tracing-sampling-rate '0'
   Number of samples to collect per million spans for OpenTelemetry Tracing (if enabled with experimental-enable-distributed-tracing flag).
 ```
+
 ### v2 Proxy
 
 {{% alert color="warning" %}}
 **<i class="fas fa-exclamation-triangle mr-1"></i> Note**: flags will be deprecated in v3.6.
 {{% /alert %}}
-
 
 ```nocode
 --proxy 'off'
@@ -247,6 +257,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --proxy-read-timeout 0
   Time (in milliseconds) for a read to timeout.
 ```
+
 ### Experimental features
 
 ```nocode
@@ -270,7 +281,10 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Enable the write transaction to use a shared buffer in its readonly check operations.
 --experimental-bootstrap-defrag-threshold-megabytes
   Enable the defrag during etcd server bootstrap on condition that it will free at least the provided threshold of disk space. Needs to be set to non-zero value to take effect.
+--experimental-snapshot-catchup-entries
+  Number of entries for a slow follower to catch up after compacting the raft storage entries.
 ```
+
 ### Unsafe features
 
 {{% alert color="warning" %}}
