@@ -6,13 +6,12 @@ weight: 1200
 
 `migrate` to transform etcd v2 data model to v3 data format.
 
-![12_etcdctl_migrate_2016061602](https://storage.googleapis.com/etcd/demo/12_etcdctl_migrate_2016061602.gif)
 {{% alert color="warning" %}}
 ⚠️ **Deprecated functionality:**
 
 The `etcdctl migrate` command was removed in etcd v3.5.0 ([pull/12971](https://github.com/etcd-io/etcd/pull/12971)). If your etcd cluster is already running v3.5 or higher, you can no longer migrate v2 data to v3 using this method.  
 
-You **must use etcdctl v3.4 or earlier** to perform the migration ([CHANGELOG-3.5](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md#etcdctl-v3-3)). However please take appropriate precautions when using it, as it is no longer officially supported or tested in recent releases.  
+You **must use etcdctl v3.4 or earlier** to perform the migration (View note from  [CHANGELOG-3.5](https://github.com/ahrtr/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md#etcdctl-v3-3)). However please take appropriate precautions when using it, as it is no longer officially supported or tested in recent releases.  
 {{% /alert %}}
 
 ## Pre-requisites
@@ -53,7 +52,7 @@ Before running the migration, stop your etcd node to ensure data consistency.
 
 - Step 3: Run the migration tool
 
-Switch to API v3 and use etcdctl migrate to transform the v2 store.
+Switch to API v3 and use `etcdctl migrate` command to transform the v2 store. Please review the deprecation alert on top of the page, you must use etcdctl v3.4 or earlier to be able to perform this command.
 
 ```sh
 export ETCDCTL_API=3
@@ -63,6 +62,7 @@ etcdctl --endpoints=http://$ENDPOINT migrate \
 ```
 
 - Step 4: Restart etcd node after migrate
+
 Repeat steps 2–4 for each etcd node one at a time in your cluster.
 
 - Step 5: Confirm the data is accessible via v3 API
@@ -75,7 +75,24 @@ Summary full process:
 
 ```shell
 # write key in etcd version 2 store
-@@ -28,3 +91,7 @@ etcdctl --endpoints=$ENDPOINT migrate --data-dir="default.etcd" --wal-dir="defau
+export ETCDCTL_API=2
+etcdctl --endpoints=http://$ENDPOINT set foo bar
+
+# read key in etcd v2
+etcdctl --endpoints=$ENDPOINTS --output="json" get foo
+
+# stop etcd node to migrate, one by one
+
+# migrate v2 data
+export ETCDCTL_API=3
+etcdctl --endpoints=$ENDPOINT migrate --data-dir="default.etcd" --wal-dir="default.etcd/member/wal"
+
+# restart etcd node after migrate, one by one
+
 # confirm that the key got migrated
 etcdctl --endpoints=$ENDPOINTS get /foo
 ```
+
+## Visual guide for reference
+
+![12_etcdctl_migrate_2016061602](https://storage.googleapis.com/etcd/demo/12_etcdctl_migrate_2016061602.gif)
