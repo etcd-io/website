@@ -128,10 +128,6 @@ The recommended way to install etcd on Linux is either through [pre-built binari
 
 - [Running etcd as a Kubernetes StatefulSet][]
 
-## Installation on Kubernetes, using a statefulset or helm chart
-
-The etcd project does not currently maintain an official helm chart.
-
 ## Installation check
 
 For a slightly more involved sanity check of your installation, see
