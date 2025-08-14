@@ -145,5 +145,4 @@ For a slightly more involved sanity check of your installation, see
 [releases]: https://github.com/etcd-io/etcd/releases/
 [tagged-release]: https://github.com/etcd-io/etcd/releases/tag/{{< param git_version_tag >}}
 [Supported platforms]: {{< relref "op-guide/supported-platform" >}}
-[Bitnami's etcd Helm chart]: https://bitnami.com/stack/etcd/helm
 [Homebrew can run on Linux]: <https://docs.brew.sh/Homebrew-on-Linux>
