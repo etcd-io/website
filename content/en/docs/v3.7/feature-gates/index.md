@@ -78,7 +78,7 @@ etcd.
 | LeaseCheckpointPersist           | false   | Alpha |Enables persisting remainingTTL to prevent indefinite auto-renewal of long lived leases.                                                                         |
 | SetMemberLocalAddr               | false   | Alpha |Enables using the first specified and non-loopback local address from initial-advertise-peer-urls as the local address when communicating with a peer.      |
 | StopGRPCServiceOnDefrag          | false   | Alpha |Enables etcd gRPC service to stop serving client requests on defragmentation.                                                                      |
-| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables leader to periodically check followers compaction hashes.                                                                               |
+| TxnModeWriteWithSharedBuffer     | true    | Beta  |Enables the write transaction to use a shared buffer in its readonly check operations.                                                                                |
 
 ## Using a feature
 
