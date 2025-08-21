@@ -159,7 +159,7 @@ spec:
       containers:
       ## This example only has this etcd container.
       - name: etcd
-        image: quay.io/coreos/etcd:v3.5.15
+        image: quay.io/coreos/etcd:{{< param git_version_tag >}}
         imagePullPolicy: IfNotPresent
         ports:
         - name: etcd-client
