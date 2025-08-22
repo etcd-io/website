@@ -13,16 +13,16 @@ Etcd is a critical component in many production systems, most notably as the pri
 
 Our goals for this testing effort were to:
 
-1.  **Validate the robustness of etcd v3.6.**
-2.  **Improve etcd's software quality by finding and fixing bugs.**
-3.  **Enhance our existing testing framework with autonomous testing.**
+1. **Validate the robustness of etcd v3.6.**
+2. **Improve etcd's software quality by finding and fixing bugs.**
+3. **Enhance our existing testing framework with autonomous testing.**
 
 ## How We Tested
 
 We ran our existing robustness tests on an autonomous testing platform, testing a 3-node and a 1-node etcd cluster against a variety of faults, including:
 
-*   **Network faults:** latency, congestion, and partitions.
-*   **Container-level faults:** node pauses, node kills, clock jitter, and CPU throttling.
+* **Network faults:** latency, congestion, and partitions.
+* **Container-level faults:** node pauses, node kills, clock jitter, and CPU throttling.
 
 We tested older versions of etcd with known bugs to validate the testing methodology, as well as our stable releases (3.4, 3.5, 3.6) and the main development branch. In total, we ran 830 wall-clock hours of testing, which simulated 4.5 years of usage.
 
@@ -32,11 +32,11 @@ The results were impressive. The autonomous testing not only found all the known
 
 Here are some of the key findings:
 
-*   **A critical watch bug was discovered** that our existing tests had missed. This bug was present in all stable releases of etcd.
-*   **All known bugs were found**, giving us confidence in the ability of the combined testing approach to find regressions.
-*   **Our own testing was improved** by revealing a flaw in our linearization checker model.
+* **A critical watch bug was discovered** that our existing tests had missed. This bug was present in all stable releases of etcd.
+* **All known bugs were found**, giving us confidence in the ability of the combined testing approach to find regressions.
+* **Our own testing was improved** by revealing a flaw in our linearization checker model.
 
-### Issues in Main Development Branch
+### Issues in the Main Development Branch
 
 | # | Description | Affected code | Report Link | Status | Impact | Details |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
