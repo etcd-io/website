@@ -27,8 +27,6 @@ etcd support tier:
 | ARM64        | Linux            |      1       | [etcd maintainers][] |
 | AMD64        | Darwin           |      3       |                      |
 | AMD64        | Windows          |      3       |                      |
-| ARM          | Linux            |      3       |                      |
-| 386          | Linux            |      3       |                      |
 | ppc64le      | Linux            |      3       |                      |
 | s390x        | Linux            |      3       |                      |
 
