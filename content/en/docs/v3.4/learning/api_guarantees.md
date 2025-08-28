@@ -51,6 +51,11 @@ KV Service operations are atomic and occur in a total order, consistent with
 real-time order of those operations. Total order is implied through [revision].
 Read more about [strict serializability].
 
+For transactions without nested TXNs, the order of execution of operations
+is guaranteed to be the same as in its list of operations, which means stable
+GET responses within the transaction.
+For transactions with nested TXNs, the order of execution is not specified.
+
 Strict serializability implies other weaker guarantees that might be easier to understand:
 
 #### Atomicity
@@ -87,7 +92,10 @@ removes the performance penalty of linearized accesses' reliance on live consens
 Watches make guarantees about events:
 * Ordered - events are ordered by revision.
   An event will never appear on a watch if it precedes an event in time that
-  has already been posted.
+  has already been posted. For transactions without nested TXNs, the order of
+  generated events is guaranteed to be the same as in its list of operations.
+  For transactions with nested TXNs, the order of generated events is not
+  specified.
 * Unique - an event will never appear on a watch twice.
 * Reliable - a sequence of events will never drop any subsequence of events
   within the available history window. If there are events ordered in time as
