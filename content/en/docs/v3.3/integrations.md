@@ -1,9 +1,12 @@
 ---
 title: Libraries and tools
-weight: 2
+weight: 1300
+description: A listing of etcd tools and client libraries
 ---
 
-**Tools**
+Note that third-party libraries and tools (not hosted on [etcd-io main repository](https://github.com/etcd-io)) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
+
+## Tools
 
 - [etcdctl](https://github.com/etcd-io/etcd/tree/master/etcdctl) - A command line client for etcd
 - [etcd-backup](https://web.archive.org/web/20190113041300/https://github.com/fanhattan/etcd-backup) - A powerful command line utility for dumping/restoring etcd - Supports v2
@@ -19,15 +22,20 @@ weight: 2
 - [etcdsh](https://web.archive.org/web/20190113041250/https://github.com/kamilhark/etcdsh) - A command line client with support of command history and tab completion. Supports v2
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
+- [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
 
-**Go libraries**
+## Libraries
+
+The sections below list etcd client libraries by language.
+
+### Go
 
 - [etcd/client/v3](https://github.com/etcd-io/etcd/tree/main/client/v3) - the officially maintained Go client for v3
 - [etcd/client/v2](https://github.com/etcd-io/etcd/tree/release-3.3/client/) - the officially maintained Go client for v2
 - [go-etcd](https://github.com/coreos/go-etcd) - the deprecated official client. May be useful for older (<2.0.0) versions of etcd.
 - [encWrapper](https://github.com/lumjjb/etcd/tree/enc_wrapper/clientwrap/encwrapper) - encWrapper is an encryption wrapper for the etcd client Keys API/KV.
 
-**Java libraries**
+### Java
 
 - [coreos/jetcd](https://github.com/etcd-io/jetcd) - Supports v3
 - [boonproject/etcd](https://github.com/boonproject/boon/blob/master/etcd/README.md) - Supports v2, Async/Sync and waits
@@ -37,17 +45,17 @@ weight: 2
 - [AdoHe/etcd4j](http://github.com/AdoHe/etcd4j) - Supports v2 (enhance for real production cluster)
 - [cdancy/etcd-rest](https://github.com/cdancy/etcd-rest) - Uses jclouds to provide a complete implementation of v2 API.
 
-**Scala libraries**
+### Scala
 
 - [maciej/etcd-client](https://github.com/maciej/etcd-client) - Supports v2. Akka HTTP-based fully async client
 - [eiipii/etcdhttpclient](https://bitbucket.org/eiipii/etcdhttpclient) - Supports v2. Async HTTP client based on Netty and Scala Futures.
 
-**Perl libraries**
+### Perl
 
 - [hexfusion/perl-net-etcd](https://github.com/hexfusion/perl-net-etcd) - Supports v3 grpc gateway HTTP API
 - [robn/p5-etcd](https://github.com/robn/p5-etcd) - Supports v2
 
-**Python libraries**
+### Python
 
 - [kragniz/python-etcd3](https://github.com/kragniz/python-etcd3) - Client for v3
 - [jplana/python-etcd](https://github.com/jplana/python-etcd) - Supports v2
@@ -59,92 +67,95 @@ weight: 2
 - [aioetcd3](https://github.com/gaopeiliang/aioetcd3) - (Python 3.6+) etcd v3 API for asyncio
 - [Revolution1/etcd3-py](https://github.com/Revolution1/etcd3-py) - (python2.7 and python3.5+) Python client for etcd v3, using gRPC-JSON-Gateway
 
-**Node libraries**
+### Node
 
 - [stianeikeland/node-etcd](https://github.com/stianeikeland/node-etcd) - Supports v2 (w Coffeescript)
 - [lavagetto/nodejs-etcd](https://github.com/lavagetto/nodejs-etcd) - Supports v2
 - [deedubs/node-etcd-config](https://github.com/deedubs/node-etcd-config) - Supports v2
 
-**Ruby libraries**
+### Ruby
 
 - [iconara/etcd-rb](https://github.com/iconara/etcd-rb)
 - [jpfuentes2/etcd-ruby](https://github.com/jpfuentes2/etcd-ruby)
 - [ranjib/etcd-ruby](https://github.com/ranjib/etcd-ruby) - Supports v2
 - [davissp14/etcdv3-ruby](https://github.com/davissp14/etcdv3-ruby) - Supports v3
 
-**C libraries**
+### C
 
 - [apache/celix/etcdlib](https://github.com/apache/celix/tree/master/libs/etcdlib) - Supports v2
 - [jdarcy/etcd-api](https://github.com/jdarcy/etcd-api) - Supports v2
 - [shafreeck/cetcd](https://github.com/shafreeck/cetcd) - Supports v2
 
-**C++ libraries**
+### C++
+
 - [edwardcapriolo/etcdcpp](https://github.com/edwardcapriolo/etcdcpp) - Supports v2
 - [suryanathan/etcdcpp](https://github.com/suryanathan/etcdcpp) - Supports v2 (with waits)
 - [nokia/etcd-cpp-api](https://github.com/nokia/etcd-cpp-api) - Supports v2
 - [nokia/etcd-cpp-apiv3](https://github.com/nokia/etcd-cpp-apiv3) - Supports v3
 
-**Clojure libraries**
+### Clojure
 
 - [aterreno/etcd-clojure](https://github.com/aterreno/etcd-clojure)
 - [dwwoelfel/cetcd](https://github.com/dwwoelfel/cetcd) - Supports v2
 - [rthomas/clj-etcd](https://github.com/rthomas/clj-etcd) - Supports v2
 
-**Erlang libraries**
+### Erlang
 
 - [marshall-lee/etcd.erl](https://github.com/marshall-lee/etcd.erl) - Supports v2
 - [zhongwencool/eetcd](https://github.com/zhongwencool/eetcd) - Supports v3+ (GRPC only)
 
-**.Net Libraries**
+### .NET
 
 - [wangjia184/etcdnet](https://github.com/wangjia184/etcdnet) - Supports v2
 - [drusellers/etcetera](https://github.com/drusellers/etcetera)
 - [shubhamranjan/dotnet-etcd](https://github.com/shubhamranjan/dotnet-etcd) - Supports v3+ (GRPC only)
 
-**PHP Libraries**
+### PHP
 
 - [linkorb/etcd-php](https://github.com/linkorb/etcd-php)
 - [activecollab/etcd](https://github.com/activecollab/etcd)
 - [ouqiang/etcd-php](https://github.com/ouqiang/etcd-php) - Client for v3 gRPC gateway
 
-**Haskell libraries**
+### Haskell
 
 - [wereHamster/etcd-hs](https://github.com/wereHamster/etcd-hs)
 
-**R libraries**
+### R
 
 - [ropensci/etseed](https://github.com/ropensci/etseed)
 
-**Nim libraries**
+### Nim
 
 - [etcd_client](https://github.com/FedericoCeratto/nim-etcd-client)
 
-**Tcl libraries**
+### Tcl
 
 - [efrecon/etcd-tcl](https://github.com/efrecon/etcd-tcl) - Supports v2, except wait.
 
-**Rust libraries**
+### Rust
 
 - [jimmycuadra/rust-etcd](https://github.com/jimmycuadra/rust-etcd) - Supports v2
 
-**Gradle Plugins**
+### Gradle
 
 - [gradle-etcd-rest-plugin](https://github.com/cdancy/gradle-etcd-rest-plugin) - Supports v2
 
-**Chef Integration**
+## Deployment tools
+
+### Chef integrations
 
 - [coderanger/etcd-chef](https://github.com/coderanger/etcd-chef)
 
-**Chef Cookbook**
+### Chef cookbooks
 
 - [spheromak/etcd-cookbook](https://github.com/spheromak/etcd-cookbook)
 
-**BOSH Releases**
+### BOSH releases
 
 - [cloudfoundry-community/etcd-boshrelease](https://github.com/cloudfoundry-community/etcd-boshrelease)
 - [cloudfoundry/cf-release](https://github.com/cloudfoundry/cf-release/tree/master/jobs/etcd)
 
-**Projects using etcd**
+## Projects using etcd
 
 - [etcd Raft users](https://github.com/etcd-io/etcd/blob/v3.3.13/raft/README.md#notable-users) - projects using etcd's raft library implementation.
 - [apache/celix](https://github.com/apache/celix) - an implementation of the OSGi specification adapted to C and C++

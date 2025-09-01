@@ -7,7 +7,18 @@ weight: 500
 
 ## Prerequisites
 
-* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.5/install/)
+* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.5/install/).
+* A running `etcd` cluster.
+
+## Terminology
+
+Here are definations of some key terms used in the [Example](#example) below.
+
+| Terms | Defination |
+| --- | --- |
+| [etcdctl](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#etcdctl) | The command line tool for interacting with the etcd server. |
+| [`txn`](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#txn-options) command | `txn` command is an abbreviation for "transaction". It reads multiple etcd requests from standard input and applies them as a single atomic transaction. A transaction consists of list of conditions, a list of requests to apply if all the conditions are true, and a list of requests to apply if any condition is false. View [etcdctl key-value commands](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#key-value-commands) for more information.|
+| `compare` | The `compare` clause within a transaction (`txn`) serves as a conditional check that determines whether the transaction's operations should proceed. It ensures changes are only applied if the current state of the key-value store matches expected conditions, thereby maintaining data consistency and preventing conflicts in concurrent environments. To see how the command is structured, view [Perform a transaction](#2-perform-a-transaction) section below.|
 
 ## Transactions
 
@@ -17,7 +28,7 @@ weight: 500
 etcdctl txn --help
 ```
 
-Transactions in etcd allow you to execute multiple operations atomically, ensuring that either all operations are applied or none are. This is crucial for maintaining data consistency when performing related updates.
+Transactions in etcd allow you to execute multiple operations atomically, ensuring that either all operations are applied or none are. This is crucial for maintaining data consistency when performing related updates. Learn more about transactions in [the API documentation](https://etcd.io/docs/v3.5/learning/api#transaction).
 
 ### Example
 
@@ -25,14 +36,27 @@ Let's consider a scenario where you want to update a user's email and phone numb
 
 ![05_etcdctl_transaction_2024101213](https://github.com/user-attachments/assets/01320212-b824-40b0-8a33-c6d74c600248)
 
-1. **Set up initial data**: First, create a user with some initial data.
+#### 0. Variables and Flags used
+
+| Variables |
+| :--- |
+| `/users/{<user_id>/email` : etcd key representing a user's email address.|
+| `/users/<user_id>/phone` : etcd key representing a user's phone number.|
+| **Flags** |
+| [`--interactive`](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#options-3) : A flag to allow inputting transaction data manually|
+
+#### 1. Set up initial data
+
+First, create a user with some initial data.
 
    ```shell
    etcdctl put /users/12345/email "old.address@johndoe.com"
    etcdctl put /users/12345/phone "123-456-7890"
    ```
 
-2. **Perform a transaction**: Update the user's email and phone number in a single transaction.
+#### 2. Perform a transaction
+
+Update the user's email and phone number in a single transaction.
 
    ```shell
    etcdctl txn --interactive
@@ -48,9 +72,9 @@ Let's consider a scenario where you want to update a user's email and phone numb
    get /users/12345/email
    ```
 
-   * **Compare**: Check if the current email is "<old.address@johndoe.com>". This ensures the transaction only proceeds if the data is as expected.
-   * **Success**: If the comparison is true, update both the email and phone number.
-   * **Failure**: If the comparison fails, retrieve the current email to understand why the transaction didn't proceed.
+* **Compare**: Check if the current email is "<old.address@johndoe.com>". This ensures the transaction only proceeds if the data is as expected.
+* **Success**: If the comparison is true, update both the email and phone number.
+* **Failure**: If the comparison fails, retrieve the current email to understand why the transaction didn't proceed.
 
 ### Important considerations
 
