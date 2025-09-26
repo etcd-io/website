@@ -4,7 +4,7 @@ weight: 1300
 description: A listing of etcd tools and client libraries
 ---
 
-Note that third-party libraries and tools (not hosted on https://github.com/etcd-io) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
+Note that third-party libraries and tools (not hosted on [etcd-io main repository](https://github.com/etcd-io)) mentioned below are not tested or maintained by the etcd team. Before using them, users are recommended to read and investigate them.
 
 ## Tools
 
@@ -25,6 +25,7 @@ Note that third-party libraries and tools (not hosted on https://github.com/etcd
 - [etcdadm](https://github.com/kubernetes-sigs/etcdadm) - A command-line tool for operating an etcd cluster.
 - [etcd-defrag](https://github.com/ahrtr/etcd-defrag) - An easier to use and smarter etcd defragmentation tool.
 - [etcdhelper](https://github.com/tsonglew/intellij-etcdhelper) - An intellij platform plugin for etcd.
+- [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
 
 ## Libraries
 
@@ -95,7 +96,7 @@ The sections below list etcd client libraries by language.
 - [edwardcapriolo/etcdcpp](https://github.com/edwardcapriolo/etcdcpp) - Supports v2
 - [suryanathan/etcdcpp](https://github.com/suryanathan/etcdcpp) - Supports v2 (with waits)
 - [nokia/etcd-cpp-api](https://github.com/nokia/etcd-cpp-api) - Supports v2
-- [nokia/etcd-cpp-apiv3](https://github.com/nokia/etcd-cpp-apiv3) - Supports v3
+- [etcd-cpp-apiv3/etcd-cpp-apiv3](https://github.com/etcd-cpp-apiv3/etcd-cpp-apiv3) - Supports v3
 
 ### Clojure
 

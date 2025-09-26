@@ -1,7 +1,7 @@
 ---
 title: Writing to etcd
 description: Adding a KV pair to an etcd cluster
-weight: 200
+weight: 250
 ---
 
 ## Prerequisites
