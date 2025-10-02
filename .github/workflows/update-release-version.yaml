@@ -17,3 +17,7 @@ jobs:
     uses: ./.github/workflows/update-release-version-template.yaml
     with:
       release: v3.5
+  v3_6:
+    uses: ./.github/workflows/update-release-version-template.yaml
+    with:
+      release: v3.6
