@@ -1,7 +1,8 @@
 ---
 title: Autonomous Testing of etcd's Robustness
 author: "Marek Siarkowicz (Google)"
-draft: true
+date: 2025-10-03
+draft: false
 ---
 
 *This is a post from the [CNCF blog](https://www.cncf.io/blog/2025/09/25/autonomous-testing-of-etcds-robustness/) which we are sharing with our community as well.*
