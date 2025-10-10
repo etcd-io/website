@@ -31,4 +31,8 @@ etcd uses the [zap][zap] library for logging application output categorized into
   * Examples:
     * Failure to encode raft messages
 
+* FatalLevel logs a message, then calls os.Exit(1).
+  * Examples:
+    * Failure to save raft snapshot
+
 [zap]: https://github.com/uber-go/zap
