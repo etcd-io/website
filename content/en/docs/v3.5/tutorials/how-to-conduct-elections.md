@@ -9,21 +9,31 @@ weight: 900
 - Ensure [`etcd`](https://etcd.io/docs/v3.5/install/) and [`etcdctl`](https://etcd.io/docs/v3.5/install/) is installed.
 - Check for active etcd cluster.
 
-`elect` for leader election:
+## Conduct Leader election
 
-1. The `etcdctl` command is used to conduct leader elections in an etcd cluster. It makes sure that only one client become leader at a time.
-2. Ensure the `ENDPOINTS` variable is set with the addresses of each etcd cluster members.
-3. Set a unique name for the election for different clients ('*one*' in the given code below).
-4. Lastly, set different leaders name for each clients (*p1* and *p2*).
+The `etcdctl` command is used to conduct leader elections in an etcd cluster. It makes sure that only one client become leader at a time.
 
+ `etcdctl --endpoints=$ENDPOINTS elect <election-name> <leader-name>`
 
-  Command format :
-   `etcdctl --endpoints=$ENDPOINTS elect <election-name> <leader-name>`
-
-
+### Example
 
 ```shell
-etcdctl --endpoints=$ENDPOINTS elect one p1
+etcdctl --endpoints=$ENDPOINTS elect election-name p1
 
 # another client with the same election name block
-etcdctl --endpoints=$ENDPOINTS elect one p2
+etcdctl --endpoints=$ENDPOINTS elect election-name p2
+```
+
+### Options
+
+- `--endpoints : $ENDPOINTS`
+
+Address of each etcd cluster members.
+
+- `election-name` string
+
+A string identifier for the election. All participants competing for leadership must use the same election name.
+
+- `leader-name` string
+
+Leaders name for each clients `p1` and `p2`.
