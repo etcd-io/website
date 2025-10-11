@@ -15,11 +15,13 @@ A full listing of all etcd RPCs are documented in markdown in the [gRPC API list
 Every API request sent to an etcd server is a gRPC remote procedure call. RPCs in etcd are categorized based on functionality into services.
 
 Services important for dealing with etcd's key space include:
+
 * KV - Creates, updates, fetches, and deletes key-value pairs.
 * Watch - Monitors changes to keys.
 * Lease - Primitives for consuming client keep-alive messages.
 
 Services which manage the cluster itself include:
+
 * Auth - Role based authentication mechanism for authenticating users.
 * Cluster - Provides membership information and configuration facilities.
 * Maintenance - Takes recovery snapshots, defragments the store, and returns per-member status information.
@@ -48,16 +50,16 @@ message ResponseHeader {
 }
 ```
 
-* Cluster_ID - the ID of the cluster generating the response.
-* Member_ID - the ID of the member generating the response.
-* Revision - the revision of the key-value store when generating the response.
-* Raft_Term - the Raft term of the member when generating the response.
+* `cluster_id` - the ID of the cluster generating the response.
+* `member_id` - the ID of the member generating the response.
+* `revision` - the revision of the key-value store when generating the response.
+* `raft_term` - the Raft term of the member when generating the response.
 
-An application may read the `Cluster_ID` or `Member_ID` field to ensure it is communicating with the intended cluster (member).
+An application may read the `cluster_id` or `member_id` field to ensure it is communicating with the intended cluster (member).
 
-Applications can use the `Revision` field to know the latest revision of the key-value store. This is especially useful when applications specify a historical revision to make a `time travel query` and wish to know the latest revision at the time of the request.
+Applications can use the `revision` field to know the latest revision of the key-value store. This is especially useful when applications specify a historical revision to make a `time travel query` and wish to know the latest revision at the time of the request.
 
-Applications can use `Raft_Term` to detect when the cluster completes a new leader election.
+Applications can use `raft_term` to detect when the cluster completes a new leader election.
 
 ## Key-Value API
 
@@ -80,12 +82,12 @@ message KeyValue {
 }
 ```
 
-* Key - key in bytes. An empty key is not allowed.
-* Value - value in bytes.
-* Version - version is the version of the key. A deletion resets the version to zero and any modification of the key increases its version.
-* Create_Revision - revision of the last creation on the key.
-* Mod_Revision - revision of the last modification on the key.
-* Lease - the ID of the lease attached to the key. If lease is 0, then no lease is attached to the key.
+* `key` - key in bytes. An empty key is not allowed.
+* `value` - value in bytes.
+* `version` - version is the version of the key. A deletion resets the version to zero and any modification of the key increases its version.
+* `create_revision` - revision of the last creation on the key.
+* `mod_revision` - revision of the last modification on the key.
+* `lease` - the ID of the lease attached to the key. If lease is 0, then no lease is attached to the key.
 
 
 In addition to just the key and value, etcd attaches additional revision metadata as part of the key message. This revision information orders keys by time of creation and modification, which is useful for managing concurrency for distributed synchronization. The etcd client's [distributed shared locks][locks] use the creation revision to wait for lock ownership. Similarly, the modification revision is used for detecting [software transactional memory][STM] read set conflicts and waiting on [leader election][elections] updates.
@@ -100,9 +102,9 @@ Revisions become more valuable when considering etcd's [multi-version concurrenc
 
 The etcd data model indexes all keys over a flat binary key space. This differs from other key-value store systems that use a hierarchical system of organizing keys into directories. Instead of listing keys by directory, keys are listed by key intervals `[a, b)`.
 
-These intervals are often referred to as "ranges" in etcd. Operations over ranges are more powerful than operations on directories. Like a hierarchical store, intervals support single key lookups via `[a, a+1)` (e.g., ['a', 'a\x00') looks up 'a') and directory lookups by encoding keys by directory depth. In addition to those operations, intervals can also encode prefixes; for example  the interval `['a', 'b')` looks up all keys prefixed by the string 'a'.
+These intervals are often referred to as "ranges" in etcd. Operations over ranges are more powerful than operations on directories. Like a hierarchical store, intervals support single key lookups via `[a, a+1)` (e.g., `['a', 'a\x00')` looks up `'a')` and directory lookups by encoding keys by directory depth. In addition to those operations, intervals can also encode prefixes; for example  the interval `['a', 'b')` looks up all keys prefixed by the string 'a'.
 
-By convention, ranges for a request are denoted by the fields `key` and `range_end`. The `key` field is the first key of the range and should be non-empty. The `range_end` is the key following the last key of the range. If `range_end` is not given or empty, the range is defined to contain only the key argument. If `range_end` is `key` plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"), then the range represents all keys prefixed with key. If both `key` and `range_end` are '\0', then range represents all keys. If `range_end` is '\0', the range is all keys greater than or equal to the key argument.
+By convention, ranges for a request are denoted by the fields `key` and `range_end`. The `key` field is the first key of the range and should be non-empty. The `range_end` is the key following the last key of the range. If `range_end` is not given or empty, the range is defined to contain only the key argument. If `range_end` is `key` plus one (e.g., `"aa"+1 == "ab"`, `"a\xff"+1 == "b")`, then the range represents all keys prefixed with key. If both `key` and `range_end` are `'\0'`, then range represents all keys. If `range_end` is `'\0'`, the range is all keys greater than or equal to the key argument.
 
 ### Range
 
@@ -111,9 +113,9 @@ Keys are fetched from the key-value store using the `Range` API call, which take
 ```protobuf
 message RangeRequest {
   enum SortOrder {
-	NONE = 0; // default, no sorting
-	ASCEND = 1; // lowest target value first
-	DESCEND = 2; // highest target value first
+    NONE = 0; // default, no sorting
+    ASCEND = 1; // lowest target value first
+    DESCEND = 2; // highest target value first
   }
   enum SortTarget {
 	KEY = 0;
@@ -139,18 +141,18 @@ message RangeRequest {
 }
 ```
 
-* Key, Range_End - The key range to fetch.
-* Limit - the maximum number of keys returned for the request. When limit is set to 0, it is treated as no limit.
-* Revision - the point-in-time of the key-value store to use for the range. If revision is less or equal to zero, the range is over the latest key-value store. If the revision is compacted, ErrCompacted is returned as a response.
-* Sort_Order - the ordering for sorted requests.
-* Sort_Target - the key-value field to sort.
-* Serializable - sets the range request to use serializable member-local reads. By default, Range is linearizable; it reflects the current consensus of the cluster. For better performance and availability, in exchange for possible stale reads, a serializable range request is served locally without needing to reach consensus with other nodes in the cluster.
-* Keys_Only - return only the keys and not the values.
-* Count_Only - return only the count of the keys in the range.
-* Min_Mod_Revision - the lower bound for key mod revisions; filters out lesser mod revisions.
-* Max_Mod_Revision - the upper bound for key mod revisions; filters out greater mod revisions.
-* Min_Create_Revision - the lower bound for key create revisions; filters out lesser create revisions.
-* Max_Create_Revision - the upper bound for key create revisions; filters out greater create revisions.
+* `key`, `range_end` - The key range to fetch.
+* `limit`- the maximum number of keys returned for the request. When limit is set to 0, it is treated as no limit.
+* `revision` - the point-in-time of the key-value store to use for the range. If revision is less or equal to zero, the range is over the latest key-value store. If the revision is compacted, `ErrCompacted` is returned as a response.
+* `sort_order` - the ordering for sorted requests.
+* `sort_target` - the key-value field to sort.
+* `serializable` - sets the range request to use serializable member-local reads. By default, Range is linearizable; it reflects the current consensus of the cluster. For better performance and availability, in exchange for possible stale reads, a serializable range request is served locally without needing to reach consensus with other nodes in the cluster.
+* `keys_only` - return only the keys and not the values.
+* `count_only` - return only the count of the keys in the range.
+* `min_mod_revision` - the lower bound for returned key mod revisions; all keys with lesser mod revisions will be filtered away.
+* `max_mod_revision` - the upper bound for key mod revisions; all keys with greater mod revisions will be filtered away.
+* `min_create_revision` - the lower bound for returned key create revisions; all keys will lesser revisions will be filtered away.
+* `max_create_revision` - the upper bound for returned key create revisions; all keys with greater create revisions will be filtered away.
 
 The client receives a `RangeResponse` message from the `Range` call:
 
@@ -163,9 +165,9 @@ message RangeResponse {
 }
 ```
 
-* Kvs - the list of key-value pairs matched by the range request. When `Count_Only` is set, `Kvs` is empty.
-* More - indicates if there are more keys to return in the requested range if `limit` is set.
-* Count - the total number of keys satisfying the range request.
+* `kvs` - the list of key-value pairs matched by the range request. `kvs is empty when count is requested`
+* `more` - indicates if there are more keys to return in the requested range.
+* `count` - the actual number of keys within the range when requested. Unlike `kvs`, it is unaffected by limits and filters (e.g., Min/Max, Create/Modify, Revisions) and reflect the full count within the specified range.
 
 ### Put
 
@@ -182,12 +184,12 @@ message PutRequest {
 }
 ```
 
-* Key - the name of the key to put into the key-value store.
-* Value - the value, in bytes, to associate with the key in the key-value store.
-* Lease - the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.
-* Prev_Kv - when set, responds with the key-value pair data before the update from this `Put` request.
-* Ignore_Value - when set, update the key without changing its current value. Returns an error if the key does not exist.
-* Ignore_Lease - when set, update the key without changing its current lease. Returns an error if the key does not exist.
+* `key` - the name of the key to put into the key-value store.
+* `value` - the value, in bytes, to associate with the key in the key-value store.
+* `lease` - the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.
+* `prev_kv` - when set, etcd gets the previous key-value pair before changing it. The previous key-value pair will be returned in the put response.
+* `ignore_value` - when set, update the key using its current value. Returns an error if the key doesn't exist.
+* `ignore_lease` - when set, etcd updates the key using its current lease. Returns an error if the key doesn't exist.
 
 The client receives a `PutResponse` message from the `Put` call:
 
@@ -198,7 +200,7 @@ message PutResponse {
 }
 ```
 
-* Prev_Kv - the key-value pair overwritten by the `Put`, if `Prev_Kv` was set in the `PutRequest`.
+* `prev_kv` - if prev_kv is set in the request, the previous key-value pair will be returned.
 
 ### Delete Range
 
@@ -212,8 +214,8 @@ message DeleteRangeRequest {
 }
 ```
 
-* Key, Range_End - The key range to delete.
-* Prev_Kv - when set, return the contents of the deleted key-value pairs.
+* `key` - the first key to delete in the range.
+* `range_end` - the key following the last key to delete for the range `[key, range_end)`.
 
 The client receives a `DeleteRangeResponse` message from the `DeleteRange` call:
 
@@ -225,8 +227,8 @@ message DeleteRangeResponse {
 }
 ```
 
-* Deleted - number of keys deleted.
-* Prev_Kv - a list of all key-value pairs deleted by the `DeleteRange` operation.
+* `deleted` - number of keys deleted by the delete range request.
+* `prev_kv` - when set, the previous key-value pairs will be returned.
 
 ### Transaction
 
@@ -266,10 +268,10 @@ message Compare {
 }
 ```
 
-* Result - the kind of logical comparison operation (e.g., equal, less than, etc).
-* Target - the key-value field to be compared. Either the key's version, create revision, modification revision, or value.
-* Key - the key for the comparison.
-* Target_Union - the user-specified data for the comparison.
+* `result` - the kind of logical comparison operation (e.g., equal, less than, etc).
+* `target` - the key-value field to be compared. Either the key's version, create revision, modification revision, or value.
+* `key` - the key for the comparison.
+* `target_union` - the user-specified data for the comparison.
 
 After processing the comparison block, the transaction applies a block of requests. A block is a list of `RequestOp` messages:
 
@@ -284,9 +286,9 @@ message RequestOp {
 }
 ```
 
-* Request_Range - a `RangeRequest`.
-* Request_Put - a `PutRequest`. The keys must be unique. It may not share keys with any other Puts or Deletes.
-* Request_Delete_Range - a `DeleteRangeRequest`. It may not share keys with any Puts or Deletes requests.
+* `request_range` - a `RangeRequest`.
+* `request_put` - a `PutRequest`. The keys must be unique. It may not share keys with any other Puts or Deletes.
+* `request_delete_range` - a `DeleteRangeRequest`. It may not share keys with any Puts or Deletes requests.
 
 All together, a transaction is issued with a `Txn` API call, which takes a `TxnRequest`:
 
@@ -298,9 +300,9 @@ message TxnRequest {
 }
 ```
 
-* Compare - A list of predicates representing a conjunction of terms for guarding the transaction.
-* Success - A list of requests to process if all compare tests evaluate to true.
-* Failure - A list of requests to process if any compare test evaluates to false.
+* `compare` - a list of predicates representing a conjuction of terms. If the comparaison succeed, then the success requests will be processed in the order, and the response will contain their respective responses in order.
+* `success` - a list of requests to process if all compare tests evaluate to true.
+* `failure` - a list of requests which will be applied when compare evaluates to false.
 
 The client receives a `TxnResponse` message from the `Txn` call:
 
@@ -312,10 +314,8 @@ message TxnResponse {
 }
 ```
 
-* Succeeded - Whether `Compare` evaluated to true or false.
-* Responses - A list of responses corresponding to the results from applying the `Success` block if succeeded is true or the `Failure` if succeeded is false.
-
-The `Responses` list corresponds to the results from the applied `RequestOp` list, with each response encoded as a `ResponseOp`:
+* `succeeded` - true if the compare evaluated to true or false otherwise.
+* `responses` - a list of responses corresponding to the results from applying success if succeeded is true or failure is succeeded is false.
 
 ```protobuf
 message ResponseOp {
@@ -329,7 +329,6 @@ message ResponseOp {
 
 The `ResponseHeader` included in each inner response shouldn't be interpreted in any way.
 If clients need to get the latest revision, then they should always check the top level `ResponseHeader` in `TxnResponse`.
-
 
 ## Watch API
 
@@ -351,9 +350,9 @@ message Event {
 }
 ```
 
-* Type - The kind of event. A PUT type indicates new data has been stored to the key. A DELETE indicates the key was deleted.
-* KV - The KeyValue associated with the event. A PUT event contains current kv pair. A PUT event with kv.Version=1 indicates the creation of a key. A DELETE event contains the deleted key with its modification revision set to the revision of deletion.
-* Prev_KV - The key-value pair for the key from the revision immediately before the event. To save bandwidth, it is only filled out if the watch has explicitly enabled it.
+* `type` - the kind of event. A PUT type indicates new data has been stored to the key. A DELETE indicates the key was deleted.
+* `kv` - the KeyValue associated with the event. A PUT event contains current kv pair. A PUT event with kv.Version=1 indicates the creation of a key. A DELETE event contains the deleted key with its modification revision set to the revision of deletion.
+* `prev_kv` - the key-value pair for the key from the revision immediately before the event. To save bandwidth, it is only filled out if the watch has explicitly enabled it.
 
 ### Watch streams
 
@@ -379,11 +378,11 @@ message WatchCreateRequest {
 }
 ```
 
-* Key, Range_End - The key range to watch.
-* Start_Revision - An optional revision for where to inclusively begin watching. If not given, it will stream events following the revision of the watch creation response header revision. The entire available event history can be watched starting from the last compaction revision.
-* Progress_Notify - When set, the watch will periodically receive a WatchResponse with no events, if there are no recent events. It is useful when clients wish to recover a disconnected watcher starting from a recent known revision. The etcd server decides how often to send notifications based on current server load.
-* Filters - A list of event types to filter away at server side.
-* Prev_Kv - When set, the watch receives the key-value data from before the event happens. This is useful for knowing what data has been overwritten.
+* `key`, `range_end` - the key range to watch.
+* `start_revision` - an optional revision for where to inclusively begin watching. If not given, it will stream events following the revision of the watch creation response header revision. The entire available event history can be watched starting from the last compaction revision.
+* `progress_notify` - when set, the watch will periodically receive a WatchResponse with no events, if there are no recent events. It is useful when clients wish to recover a disconnected watcher starting from a recent known revision. The etcd server decides how often to send notifications based on current server load.
+* `filters` - a list of event types to filter away at server side.
+* `prev_kv` - When set, the watch receives the key-value data from before the event happens. This is useful for knowing what data has been overwritten.
 
 In response to a `WatchCreateRequest` or if there is a new event for some established watch, the client receives a `WatchResponse`:
 
@@ -399,11 +398,11 @@ message WatchResponse {
 }
 ```
 
-* Watch_ID - the ID of the watch that corresponds to the response.
-* Created - set to true if the response is for a create watch request. The client should store the ID and expect to receive events for the watch on the stream. All events sent to the created watcher will have the same watch_id.
-* Canceled - set to true if the response is for a cancel watch request. No further events will be sent to the canceled watcher.
-* Compact_Revision - set to the minimum historical revision available to etcd if a watcher tries watching at a compacted revision. This happens when creating a watcher at a compacted revision or the watcher cannot catch up with the progress of the key-value store. The watcher will be canceled; creating new watches with the same start_revision will fail.
-* Events - a list of new events in sequence corresponding to the given watch ID.
+* `watch_id` - the ID of the watch that corresponds to the response.
+* `created` - set to true if the response is for a create watch request. The client should store the ID and expect to receive events for the watch on the stream. All events sent to the created watcher will have the same watch_id.
+* `canceled` - set to true if the response is for a cancel watch request. No further events will be sent to the canceled watcher.
+* `compact_revision` - set to the minimum historical revision available to etcd if a watcher tries watching at a compacted revision. This happens when creating a watcher at a compacted revision or the watcher cannot catch up with the progress of the key-value store. The watcher will be canceled; creating new watches with the same start_revision will fail.
+* `events` - a list of new events in sequence corresponding to the given watch ID.
 
 If the client wishes to stop receiving events for a watch, it issues a `WatchCancelRequest`:
 
@@ -413,7 +412,7 @@ message WatchCancelRequest {
 }
 ```
 
-* Watch_ID - the ID of the watch to cancel so that no more events are transmitted.
+* `watch_id` - the ID of the watch to cancel so that no more events are transmitted.
 
 ## Lease API
 
@@ -432,8 +431,8 @@ message LeaseGrantRequest {
 }
 ```
 
-* TTL - the advisory time-to-live, in seconds.
-* ID - the requested ID for the lease. If ID is set to 0, etcd will choose an ID.
+* `TTL` - the advisory time-to-live, in seconds.
+* `ID` - the requested ID for the lease. If ID is set to 0, etcd will choose an ID.
 
 The client receives a `LeaseGrantResponse` from the `LeaseGrant` call:
 
@@ -445,8 +444,8 @@ message LeaseGrantResponse {
 }
 ```
 
-* ID - the lease ID for the granted lease.
-* TTL - is the server selected time-to-live, in seconds, for the lease.
+* `ID` - the lease ID for the granted lease.
+* `TTL` - is the server selected time-to-live, in seconds, for the lease.
 
 ```protobuf
 message LeaseRevokeRequest {
@@ -454,7 +453,7 @@ message LeaseRevokeRequest {
 }
 ```
 
-* ID - the lease ID to revoke. When the lease is revoked, all attached keys are deleted.
+* `ID` - the lease ID to revoke. When the lease is revoked, all attached keys are deleted.
 
 ### Keep alives
 
@@ -466,7 +465,7 @@ message LeaseKeepAliveRequest {
 }
 ```
 
-* ID - the lease ID for the lease to keep alive.
+* `ID` - the lease ID for the lease to keep alive.
 
 The keep alive stream responds with a `LeaseKeepAliveResponse`:
 
@@ -478,8 +477,8 @@ message LeaseKeepAliveResponse {
 }
 ```
 
-* ID - the lease that was refreshed with a new TTL.
-* TTL - the new time-to-live, in seconds, that the lease has remaining.
+* `ID` - the lease that was refreshed with a new TTL.
+* `TTL` - the new time-to-live, in seconds, that the lease has remaining.
 
 [watch-api-guarantees]: ../api_guarantees/#watch-apis
 [elections]: https://github.com/etcd-io/etcd/blob/main/client/v3/concurrency/election.go
