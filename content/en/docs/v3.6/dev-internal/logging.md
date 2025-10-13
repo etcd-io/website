@@ -20,7 +20,7 @@ etcd uses the [zap][zap] library for logging application output categorized into
 
 * WarnLevel logs are more important than Info, but don't need individual human review.
   * Examples:
-    * Failure to send raft message to a remote peer
+    * Failure to send Raft message to a remote peer
     * Failure to receive heartbeat message within the configured election timeout
 
 * ErrorLevel logs are high-priority. If an application is running smoothly, it shouldn't generate any error-level logs.
@@ -29,10 +29,10 @@ etcd uses the [zap][zap] library for logging application output categorized into
 
 * PanicLevel logs a message, then panics.
   * Examples:
-    * Failure to encode raft messages
+    * Failure to encode Raft messages
 
 * FatalLevel logs a message, then calls os.Exit(1).
   * Examples:
-    * Failure to save raft snapshot
+    * Failure to save Raft snapshot
 
 [zap]: https://github.com/uber-go/zap
