@@ -11,10 +11,12 @@ fi
 
 new_version="$1"
 release_minor=$(echo "${new_version}" | cut -d. -f1-2)
+new_release_patch=$(echo "${new_version}" | rev | cut -d. -f1 | rev)
 index_file=content/en/docs/"${release_minor}"/_index.md
 git_remote="${GIT_REMOTE:-origin}"
 branch="release-${release_minor}-update-latest-release-to-${new_version}"
 current_branch=$(git symbolic-ref HEAD --short)
+current_release_patch=$(grep git_version_tag "${index_file}" | rev | cut -d. -f1 | rev)
 
 if [ -z "${GITHUB_ACTIONS}" ]; then
   git_author="$(git config user.name)"
@@ -40,6 +42,10 @@ if ! grep git_version_tag "${index_file}" | grep -v -e "${new_version}\$" >/dev/
 fi
 if git ls-remote --exit-code "${git_remote}" --heads refs/heads/"${branch}" >/dev/null; then
   echo "nothing to do; branch ${branch} already exists"
+  exit 0
+fi
+if [ "${new_release_patch}" -lt "${current_release_patch}" ]; then
+  echo "nothing to do; file ${index_file} is has a newer version than ${new_version}"
   exit 0
 fi
 

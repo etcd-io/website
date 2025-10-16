@@ -7,17 +7,48 @@ on:
   schedule:
     - cron: '25 9 * * *' # runs every day at 09:25 UTC
   workflow_dispatch:
+    inputs:
+      repository_override:
+        description: "GitHub repository to fetch the released versions from"
+        type: string
 
 jobs:
-  v3_4:
-    uses: ./.github/workflows/update-release-version-template.yaml
-    with:
-      release: v3.4
-  v3_5:
-    uses: ./.github/workflows/update-release-version-template.yaml
-    with:
-      release: v3.5
-  v3_6:
-    uses: ./.github/workflows/update-release-version-template.yaml
-    with:
-      release: v3.6
+  fetch-latest-releases:
+    name: Fetch Latest Releases
+    runs-on: ubuntu-latest
+    steps:
+      - id: date
+        run: |
+          echo "two_days_ago=$(date +%Y-%m-%d'T'%T --date='2 days ago')" >> "$GITHUB_OUTPUT"
+      - id: releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY_OVERRIDE: ${{ inputs.repository_override }}
+        run: |
+          echo gh release list \
+                  --repo "${REPOSITORY_OVERRIDE:-"etcd-io/etcd"}" \
+                  --json 'tagName,publishedAt' \
+                  --jq '[map(select(.publishedAt > "'${{ steps.data.output.two_days_ago }}'")) | .[] | .tagName] | reverse'
+          echo "releases=$(\
+                gh release list \
+                  --repo "${REPOSITORY_OVERRIDE:-"etcd-io/etcd"}" \
+                  --json 'tagName,publishedAt' \
+                  --jq '[map(select(.publishedAt > "'${{ steps.data.output.two_days_ago }}'")) | .[] | .tagName] | reverse' \
+                  )" >> "$GITHUB_OUTPUT"
+
+  update-release:
+    name: Update Release
+    runs-on: ubuntu-latest
+    needs: fetch-latest-releases
+    strategy:
+      matrix:
+        release: ${{ fromJSON(needs.fetch-latest-releases.outputs.releases) }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          make update-release-version LATEST_VERSION="${{ matrix.release }}"
