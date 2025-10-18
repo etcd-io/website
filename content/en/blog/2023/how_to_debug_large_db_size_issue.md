@@ -8,7 +8,7 @@ draft: false
 # Background
 Users can configure the quota of the backend db size using flag `--quota-backend-bytes`. It's the max number of bytes
 the etcd db file may consume, namely the ${etcd-data-dir}/member/snap/db file. Its default value is 2GB, and the
-suggested max value is 8GB.
+suggested max value is 100GB.
 
 2GB is usually sufficient for most use cases. If you run out of the db quota, you will see error message `etcdserver: mvcc: database space exceeded`
 when trying to write more data, and see alarm "NOSPACE" (see example below) when checking the endpoint status or health state. It would be better to figure out whether it's expected. It's exactly the reason why I provide this guide.
@@ -248,8 +248,8 @@ to do the similar analysis(see example below). Note that you can build the binar
 If the behavior (db size exceeds the quota) is expected, then you can set a bigger value for `--quota-backend-bytes`.
 You need to make sure your cloud provider supports this, otherwise the manual update might not survive across cluster
 upgrading or VM recreating. **Note that etcd (actually boltDB) maps the db file into memory directly, so a larger value
-also means more memory usage**. Just I mentioned in the beginning of this post, the suggested max value is 8GB. Of course,
-If your VM has big memory (e.g. 64GB), it's OK to set a value > 8GB.
+also means more memory usage**. Just I mentioned in the beginning of this post, the suggested max value is 100GB. Of course,
+If your VM has big memory (e.g. 64GB), it's OK to set a value > 100GB.
 
 The other solution is to set per-resource etcd servers overrides using apiserver flag `--etcd-servers-overrides`.
 In the following example, there are two etcd clusters; one for the normal usage, and the other dedicated to events.
