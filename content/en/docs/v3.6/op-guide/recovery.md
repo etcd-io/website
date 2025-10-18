@@ -102,16 +102,19 @@ Continuing from the previous example, the following creates new etcd data direct
 ```sh
 $ etcdutl snapshot restore snapshot.db \
   --name m1 \
+  --data-dir m1_data_dir.etcd
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host1:2380
 $ etcdutl snapshot restore snapshot.db \
   --name m2 \
+  --data-dir m2_data_dir.etcd
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host2:2380
 $ etcdutl snapshot restore snapshot.db \
   --name m3 \
+  --data-dir m3_data_dir.etcd
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host3:2380
@@ -122,19 +125,24 @@ Next, start `etcd` with the new data directories:
 ```sh
 $ etcd \
   --name m1 \
+  --data-dir m1_data_dir.etcd
   --listen-client-urls http://host1:2379 \
   --advertise-client-urls http://host1:2379 \
   --listen-peer-urls http://host1:2380 &
 $ etcd \
   --name m2 \
+  --data-dir m2_data_dir.etcd
   --listen-client-urls http://host2:2379 \
   --advertise-client-urls http://host2:2379 \
   --listen-peer-urls http://host2:2380 &
 $ etcd \
   --name m3 \
+  --data-dir m3_data_dir.etcd
   --listen-client-urls http://host3:2379 \
   --advertise-client-urls http://host3:2379 \
   --listen-peer-urls http://host3:2380 &
 ```
 
 Now the restored etcd cluster should be available and serving the keyspace from the snapshot.
+
+Starting form etcd v3.6, users can only use `etcdctl` to take the data to a snapshot, but use `etcdutl` to restore data from a snapshot. If `--data-dir` is not specified, the default `--data-dir` value is `<name>.etcd` (where `<name>` is the value from `--name`). For example, if `--data-dir` was not provided and the members were named `m1`, `m2`, and `m3`, the `--data-dir` directories would be `m1.etcd`, `m2.etcd`, and `m3.etcd`.
