@@ -1,7 +1,7 @@
 ---
 title: Follow Up - Preventing Upgrade Failures from etcd v3.5 to v3.6
 author:  "[Benjamin Wang](https://github.com/ahrtr) VMware by Broadcom, [Josh Berkus](https://github.com/jberkus) Red Hat"
-date: 2025-10-20
+date: 2025-10-21
 draft: false
 ---
 
