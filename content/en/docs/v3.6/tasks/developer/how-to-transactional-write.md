@@ -12,9 +12,9 @@ weight: 500
 
 ## Terminology
 
-Here are definations of some key terms used in the [Example](#example) below.
+Here are definitions of some key terms used in the [Example](#example) below.
 
-| Terms | Defination |
+| Terms | Definition |
 | --- | --- |
 | [etcdctl](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#etcdctl) | The command line tool for interacting with the etcd server. |
 | [`txn`](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#txn-options) command | `txn` command is an abbreviation for "transaction". It reads multiple etcd requests from standard input and applies them as a single atomic transaction. A transaction consists of list of conditions, a list of requests to apply if all the conditions are true, and a list of requests to apply if any condition is false. View [etcdctl key-value commands](https://github.com/etcd-io/etcd/blob/main/etcdctl/README.md#key-value-commands) for more information.|

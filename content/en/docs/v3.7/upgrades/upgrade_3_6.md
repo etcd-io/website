@@ -250,11 +250,11 @@ If `--enable-v2` **is** configured, run the command `etcdutl check v2store` to v
 
 ```
 
-**equivalent flag for feature gate `etcd --experimental-enable-initial-corrupt-check=true`**
+**equivalent flag for feature gate `etcd --experimental-initial-corrupt-check=true`**
 
 ```diff
 
--etcd --experimental-enable-initial-corrupt-check=true
+-etcd --experimental-initial-corrupt-check=true
 
 +etcd --feature-gates=InitialCorruptCheck=true
 
