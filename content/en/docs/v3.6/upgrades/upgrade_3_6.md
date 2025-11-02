@@ -15,13 +15,31 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 #### Update 3.5
 
-Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.20 or later](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/). Updating will prevent the ["too many learner member" error](https://github.com/etcd-io/etcd/issues/19557) which causes upgrade to fail.
+{{% alert title="Important" color="warning" %}}
+Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.24 or later](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/). Updating will prevent the "too many learner member" error which causes upgrade to fail, refer to <https://github.com/etcd-io/etcd/issues/19557> and <https://github.com/etcd-io/etcd/issues/20793>. {{% /alert %}}
 
 #### V2 Store
 
 **NOTE:** If the `--enable-v2` flag is not configured or is set to false, no further action is required.
 
-If `--enable-v2` **is** configured, run the command `etcdutl check v2store` to verify whether the v2store contains any non-membership (custom) data. If no custom data is present, the flag can be safely removed. Otherwise, refer to the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) for more details.
+If `--enable-v2` or the environment variable `ETCD_ENABLE_V2="true"` **is** configured, additional steps are required to handle the v2store data:
+
+1. If there is data in the v2store that needs to be migrated to the v3store, follow the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) to migrate the data.
+
+2. Remove the `--enable-v2` flag and the `ETCD_ENABLE_V2="true"` environment variable.
+
+3. Run the command `etcdutl check v2store` to verify whether the v2store contains any non-membership (custom) data. If no custom data is present, no further action is required.
+
+4. If custom data is detected in the v2store, apply the following workaround to remove the legacy data:
+
+    - Add the flag `--snapshot-count=1` to each etcd instnace that contains custom data in the v2store.
+    - Restart the etcd instances.
+    - Remove the `--snapshot-count=1` flag from (or restore to its original value, if applicable) from all etcd instances.
+    - Restart the etcd instances again.
+
+5. Run the `etcdutl check v2store` command once more to verify that the v2store no longer contains any non-membership (custom) data. At this point, there should be no custom data remaining in the v2store.
+
+Once these steps are completed, the v2store is clean, and the upgrade process can proceed.
 
 ### Flags added
 
@@ -360,7 +378,7 @@ While upgrading, an etcd cluster supports mixed versions of etcd members, and op
 
 #### Rollback
 
-Before upgrading your etcd cluster, please create and [download a snapshot backup](../../op-guide/maintenance/#snapshot-backup) of your etcd cluster. This snapshot can be used to restore the cluster to its pre-upgrade state if needed. If users encounter issues during the upgrade, they should first identify and resolve the root cause. If the cluster is still in a mixed-version state—where at least one member remains on v3.5—they can either replace the binary or image with the old v3.5 version or restore the cluster directly using the snapshot. In this mixed state, the cluster continues to operate as a v3.5 cluster, allowing rollback without following a formal downgrade process.
+Before upgrading your etcd cluster, please create and [download a snapshot backup](../../op-guide/maintenance/#snapshot-backup) of your etcd cluster. This snapshot can be used to restore the cluster to its pre-upgrade state if needed. If users encounter issues during the upgrade, they should first identify and resolve the root cause. If the cluster is still in a mixed-version state where at least one member remains on v3.5, they can either replace the binary or image with the old v3.5 version or restore the cluster directly using the snapshot. In this mixed state, the cluster continues to operate as a v3.5 cluster, allowing rollback without following a formal downgrade process.
 
 However, once all members have been upgraded to v3.6, the cluster is considered fully upgraded and rollback using binaries is no longer possible. In that case, the only recovery option is to restore from the snapshot taken before the upgrade. If users wish to return to the original version after a full upgrade has completed, they should follow the official downgrade guide to ensure consistency and avoid data corruption.
 
