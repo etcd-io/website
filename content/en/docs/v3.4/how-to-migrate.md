@@ -56,7 +56,7 @@ Before running the migration, stop your etcd node to ensure data consistency.
 
 - Step 3: Run the migration tool to convert v2store to v3store
 
-Switch to v3 API and use `etcdctl migrate` command to transform the v2store data into v3store. Please review the deprecation alert on top of the page, you must use etcdctl v3.4 or earlier to be able to perform this command.
+Switch to API v3 and use `etcdctl migrate` command to transform the v2store data into v3store. Please review the deprecation alert on top of the page, you must use etcdctl v3.4 or earlier to be able to perform this command.
 
 ```sh
 export ETCDCTL_API=3
@@ -71,7 +71,7 @@ Repeat steps 2–4 for each etcd node one at a time in your cluster.
 
 - Step 5: Confirm the key is now stored in v3store
 
-Use the v3 API to check:
+Use the API v3 to check:
 
 ```sh
 etcdctl --endpoints=$ENDPOINTS get /foo
