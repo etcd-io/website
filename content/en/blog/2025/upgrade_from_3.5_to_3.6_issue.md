@@ -5,6 +5,13 @@ date: 2025-03-27
 draft: false
 ---
 
+{{% alert title="Update (October 21, 2025)" %}}
+We have identified and fixed an additional scenario related to this issue. Please see our
+new blog post
+[Follow Up - Preventing Upgrade Failures from etcd v3.5 to v3.6](/blog/2025/upgrade_from_3.5_to_3.6_issue_followup)
+for details.
+{{% /alert %}}
+
 There is a common issue [19557][] in the etcd v3.5 to v3.6 upgrade that may cause the upgrade
 process to fail. You can find detailed information and related discussions in the issue.
 
