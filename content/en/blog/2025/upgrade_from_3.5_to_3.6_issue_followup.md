@@ -1,6 +1,6 @@
 ---
 title: Follow Up - Preventing Upgrade Failures from etcd v3.5 to v3.6
-author:  "[Benjamin Wang](https://github.com/ahrtr) VMware by Broadcom, [Josh Berkus](https://github.com/jberkus) Red Hat"
+author:  "[Benjamin Wang](https://github.com/ahrtr) Broadcom, [Josh Berkus](https://github.com/jberkus) Red Hat"
 date: 2025-10-21
 draft: false
 ---
@@ -27,17 +27,24 @@ This additional scenario has been addressed in etcd v3.5.24 via [20797][].  All 
 should first upgrade to etcd v3.5.24 (or a higher patch version) before upgrading to etcd v3.6;
 otherwise, the upgrade may fail.
 
+However, if you are already running v3.5.20-v3.5.23 and your cluster was freshly installed (not upgraded
+from an earlier version), you may safely upgrade directly to v3.6 without first moving to v3.5.24 (or a
+higher patch version).
+
 ## Workarounds
 
-Upgrading directly to v3.5.24 or later is the most reliable and simplest way of avoiding the upgrade failure.
-However, if you cannot upgrade to v3.5.24 (or a higher patch version) for some reason, please apply
-one of the following workarounds before upgrading to v3.6:
+Upgrading directly to v3.5.24 or later is the most reliable and simplest way of avoiding the upgrade
+failure. However, if you cannot upgrade to v3.5.24 (or a higher patch version) for some reason, please
+apply one of the following workarounds before upgrading to v3.6:
 
-- If you are already running v3.5.20 - v3.5.23, restart all etcd members before upgrading to v3.6.x.
-  - A full restart triggers re-registration and corrects the incorrect membership information.
-- If you are already running v3.5.20 - v3.5.23, alternatively perform an additional upgrade to any patch version in v3.5.20 - v3.5.23.
-  - Each member will re-register its server information, automatically correcting the incorrect membership data in the additional upgrade.
-- If you are running v3.5.19 or earlier, upgrade to any version between v3.5.20 and v3.5.23, and then apply one of the two workarounds above.
+Users who were running v3.5.19 or lower and upgraded to a version between v3.5.20 and v3.5.23 can do either of these two things:
+
+- Restart all etcd members before upgrading to v3.6. A full restart triggers re-registration and corrects the incorrect membership information.
+- Perform an additional upgrade to any patch version in v3.5.20 - v3.5.23. Each member will re-register its server information, automatically correcting the incorrect membership data in the additional upgrade.
+
+Users who are still running v3.5.19 or earlier, need to first upgrade to any version between v3.5.20 and v3.5.23, and then apply one of the two workarounds above.
+
+Users on a fresh install of v3.5.20 to v3.5.23 do not need to take any additional action.
 
 ## Acknowledgements
 
