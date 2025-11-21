@@ -42,7 +42,7 @@ The following steps show how to migrate your etcd data stored from v2store to v3
 
 ### Migration Process
 
-### Step 1: Write a test key into the v2store and confirm that key exists
+#### Step 1: Write a test key into the v2store and confirm that key exists
 
 ```sh
 export ETCDCTL_API=2
