@@ -42,7 +42,7 @@ The following steps show how to migrate your etcd data stored from v2store to v3
 
 ### Migration Process
 
-- Step 1: Write a test key into the v2store and confirm that key exists
+#### Step 1: Write a test key into the v2store and confirm that key exists
 
 ```sh
 export ETCDCTL_API=2
@@ -50,11 +50,11 @@ etcdctl --endpoints=http://$ENDPOINT set foo bar
 etcdctl --endpoints=http://$ENDPOINT --output="json" get foo
 ```
 
-- Step 2: Stop each etcd node (one at a time)
+#### Step 2: Stop each etcd node (one at a time)
 
 Before running the migration, stop your etcd node to ensure data consistency.
 
-- Step 3: Run the migration tool to convert v2store to v3store
+#### Step 3: Run the migration tool to convert v2store to v3store
 
 Switch to API v3 and use `etcdctl migrate` command to transform the v2store data into v3store. Please review the deprecation alert on top of the page, you must use etcdctl v3.4 or earlier to be able to perform this command.
 
@@ -65,11 +65,11 @@ etcdctl --endpoints=http://$ENDPOINT migrate \
   --wal-dir="default.etcd/member/wal"
 ```
 
-- Step 4: Restart etcd node after migrate
+#### Step 4: Restart etcd node after migrate
 
 Repeat steps 2–4 for each etcd node one at a time in your cluster.
 
-- Step 5: Confirm the key is now stored in v3store
+#### Step 5: Confirm the key is now stored in v3store
 
 Use the API v3 to check:
 
@@ -79,7 +79,7 @@ etcdctl --endpoints=$ENDPOINTS get /foo
 
 If the migration succeeded, you should see the value previously stored in v2store.
 
-Summary full process:
+#### Summary full process:
 
 ```shell
 # Write key in etcd version 2store
@@ -100,7 +100,3 @@ etcdctl --endpoints=$ENDPOINT migrate --data-dir="default.etcd" --wal-dir="defau
 # Confirm the key was migrated into v3store
 etcdctl --endpoints=$ENDPOINTS get /foo
 ```
-
-## Visual guide for reference
-
-![12_etcdctl_migrate_2016061602](https://storage.googleapis.com/etcd/demo/12_etcdctl_migrate_2016061602.gif)
