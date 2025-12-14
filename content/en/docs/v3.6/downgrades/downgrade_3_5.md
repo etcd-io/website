@@ -15,7 +15,9 @@ Before [starting a downgrade](#downgrade-procedure), read through the rest of th
 
 content/en/docs/v3.5/op-guide/authentication/rbac.md
 
-**NOTE:** If your cluster enables auth, rolling downgrade from 3.5 isn't supported because 3.5 [changes a format of WAL entries related to auth](https://github.com/etcd-io/etcd/pull/11943). You can follow the [authentification instructions](../../op-guide/authentication/rbac/) to disable auth, and delete all users first.
+{{% alert title="Important" %}}
+If your cluster enables auth, rolling downgrade from 3.5 isn't supported because 3.5 [changes a format of WAL entries related to auth](https://github.com/etcd-io/etcd/pull/11943). You can follow the [authentification instructions](../../op-guide/authentication/rbac/) to disable auth, and delete all users first.
+{{% /alert %}}
 
 Highlighted breaking changes from 3.5 to 3.4:
 
@@ -23,7 +25,9 @@ Highlighted breaking changes from 3.5 to 3.4:
 
 If you are using any of the following flags in your 3.5 configurations, make sure to remove, rename, or change the default value when downgrading to 3.4.
 
-**NOTE** The diff is based on version 3.5.14 and v.3.4.33. The actual diff would be dependent on your patch version, check with `diff <(etcd-3.5/bin/etcd -h | grep \\-\\-) <(etcd-3.4/bin/etcd -h | grep \\-\\-)` first.
+{{% alert title="Note" color="info" %}}
+The diff is based on version 3.5.14 and v.3.4.33. The actual diff would be dependent on your patch version, check with `diff <(etcd-3.5/bin/etcd -h | grep \\-\\-) <(etcd-3.4/bin/etcd -h | grep \\-\\-)` first.
+{{% /alert %}}
 
 ```diff
 # flags not available in 3.4
@@ -90,7 +94,11 @@ The 3.4 version to downgrade to must be >= 3.4.32.
 
 Before downgrading etcd, always test the services relying on etcd in a staging environment before deploying the downgrade to the production environment.
 
-Before beginning, [download the snapshot backup](../../op-guide/maintenance/#snapshot-backup). Should something go wrong with the downgrade, it is possible to use this backup to [rollback](#rollback) back to existing etcd version. Please note that the `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](/docs/v2.3/admin_guide#backing-up-the-datastore).
+Before beginning, [download the snapshot backup](../../op-guide/maintenance/#snapshot-backup). Should something go wrong with the downgrade, it is possible to use this backup to [rollback](#rollback) back to existing etcd version.
+
+{{% alert title="Note" color="info" %}}
+The `snapshot` command only backs up the v3 data. For v2 data, see [backing up v2 datastore](/docs/v2.3/admin_guide#backing-up-the-datastore).
+{{% /alert %}}
 
 Before beginning, download the latest release of etcd 3.4, and make sure its version is >= 3.4.32.
 
@@ -100,7 +108,9 @@ While downgrading, an etcd cluster supports mixed versions of etcd members, and 
 
 #### Limitations
 
-Note: If the cluster only has v3 data and no v2 data, it is not subject to this limitation.
+{{% alert title="Note" color="info" %}}
+If the cluster only has v3 data and no v2 data, it is not subject to this limitation.
+{{% /alert %}}
 
 If the cluster is serving a v2 data set larger than 50MB, each newly downgraded member may take up to two minutes to catch up with the existing cluster. Check the size of a recent snapshot to estimate the total data size. In other words, it is safest to wait for 2 minutes between downgrading each member.
 

@@ -6,7 +6,9 @@ description: "go-grpc: for resolving gRPC endpoints with an etcd backend"
 
 etcd provides a gRPC resolver to support an alternative name system that fetches endpoints from etcd for discovering gRPC services. The underlying mechanism is based on watching updates to keys prefixed with the service name.
 
-Note that this feature is experimental because it depends on the [google.golang.org/grpc/resolver][] package, which is still experimental in grpc-go.
+{{% alert title="Note" color="info" %}}
+This feature is experimental because it depends on the [google.golang.org/grpc/resolver]() package, which is still experimental in grpc-go.
+{{% /alert %}}
 
 ## Using etcd discovery with go-grpc
 
