@@ -5,7 +5,7 @@ date: 2025-12-17
 draft: false
 ---
 
-**Summary: SIG-etcd has patched another potential issue blocking upgrades from v3.5 to v3.6.  If you are upgrading, make sure to update to 3.5.26 or later first.**
+**Summary: SIG-etcd has patched another potential issue blocking upgrades from v3.5 to v3.6.  If you are upgrading, make sure to update to [v3.5.26] or later first.**
 
 ## Issue Summary
 
@@ -19,7 +19,7 @@ We’ve added a [mechanism in etcd v3.5.26] to automatically sync v3store from v
 
 With many users upgrading etcd as part of upgrading to Kubernetes v1.35 (releasing this week), we have provided the following safe upgrade path:
 
-1. Upgrade your cluster to v3.5.26 or later.
+1. Upgrade your cluster to [v3.5.26] or later.
 2. Wait and confirm that all members are healthy post-update.
 3. Upgrade to v3.6.
 
@@ -48,7 +48,7 @@ Advanced users who want to verify the consistency between v2store and v3store ca
 
 ## Key Takeaway
 
-Always upgrade to v3.5.26 or later before moving to v3.6. This ensures your cluster is automatically repaired and avoids zombie members.
+Always upgrade to [v3.5.26] or later before moving to v3.6. This ensures your cluster is automatically repaired and avoids zombie members.
 
 ## Acknowledgements
 
@@ -57,6 +57,7 @@ We would like to thank [Christian Baumann] for reporting this long-standing upgr
 [v2store deprecation plan]: https://github.com/etcd-io/etcd/issues/12913
 [bug report]: https://github.com/etcd-io/etcd/issues/20967
 [mechanism in etcd v3.5.26]: https://github.com/etcd-io/etcd/pull/20995
+[v3.5.26]: https://github.com/etcd-io/etcd/releases/tag/v3.5.25
 [comment on etcdctl]: https://github.com/etcd-io/etcd/issues/20967#issuecomment-3618010356
 [resolved in v3.5.22]: https://github.com/etcd-io/etcd/pull/20339
 [Raft project fix]: https://github.com/etcd-io/raft/pull/300
