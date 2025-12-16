@@ -6,9 +6,9 @@ draft: false
 ---
 
 {{% alert title="Update (October 21, 2025)" %}}
-We have identified and fixed an additional scenario related to this issue. Please see our
-new blog post
-[Follow Up - Preventing Upgrade Failures from etcd v3.5 to v3.6](/blog/2025/upgrade_from_3.5_to_3.6_issue_followup)
+We have identified and fixed two additional upgrade issues. Please see our
+new blog posts
+[Follow Up - Preventing Upgrade Failures from etcd v3.5 to v3.6](/blog/2025/upgrade_from_3.5_to_3.6_issue_followup) and [Avoiding Zombie Cluster Members When Upgrading](/blog/2025/zombie_members_upgrade)
 for details.
 {{% /alert %}}
 
