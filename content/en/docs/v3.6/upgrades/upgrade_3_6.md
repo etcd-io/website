@@ -16,7 +16,8 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 #### Update 3.5
 
 {{% alert title="Important" color="warning" %}}
-Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.24 or later](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/). Updating will prevent the "too many learner member" error which causes upgrade to fail, refer to <https://github.com/etcd-io/etcd/issues/19557> and <https://github.com/etcd-io/etcd/issues/20793>. {{% /alert %}}
+Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.26 or later](https://etcd.io/blog/2025/zombie_members_upgrade). Patch releases 3.5.24 through 3.5.26 fix several potential upgrade blockers.
+{{% /alert %}}
 
 #### V2 Store
 
