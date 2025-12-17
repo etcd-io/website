@@ -9,7 +9,7 @@ draft: false
 
 ## Issue Summary
 
-Recently, the etcd community addressed an issue that may appear when users upgrade from v3.5 to v3.6.  This bug can cause the cluster to report "zombie members", which are etcd nodes that were removed from the database cluster some time ago, and are re-appearing and joining database consensus.  The etcd cluster is then inoperable until these zombie members are removed.
+Recently, the etcd community addressed an issue that may appear when users [upgrade from v3.5 to v3.6].  This bug can cause the cluster to report "zombie members", which are etcd nodes that were removed from the database cluster some time ago, and are re-appearing and joining database consensus.  The etcd cluster is then inoperable until these zombie members are removed.
 
 In etcd v3.5 and earlier, the v2store was the source of truth for membership data, even though the v3store was also present. As a part of our [v2store deprecation plan], in v3.6 the v3store is the source of truth for cluster membership. Through a [bug report] we found out that, in some older clusters, v2store and v3store could become inconsistent.  This inconsistency manifests after upgrading as seeing old, removed "zombie" cluster members re-appearing in the cluster.
 
@@ -17,7 +17,7 @@ In etcd v3.5 and earlier, the v2store was the source of truth for membership dat
 
 We’ve added a [mechanism in etcd v3.5.26] to automatically sync v3store from v2store, ensuring that affected clusters are repaired before upgrading to 3.6.x.
 
-With many users upgrading etcd as part of upgrading to Kubernetes v1.35 (releasing this week), we have provided the following safe upgrade path:
+To support the many users currently upgrading to 3.6, we have provided the following safe upgrade path:
 
 1. Upgrade your cluster to [v3.5.26] or later.
 2. Wait and confirm that all members are healthy post-update.
@@ -34,11 +34,11 @@ This issue is encountered with clusters that have been running in production on 
 etcd maintainers, working with issue reporters, have found three possible triggers for the issue based on symptoms and an analysis of etcd code and logs:
 
 1. **Bug in `etcdctl snapshot restore` (v3.4 and old versions)**: When restoring a snapshot using `etcdctl snapshot restore`, etcdctl was supposed to remove existing members before adding the new ones. In v3.4, due to a bug, old members were not removed, resulting in zombie members. Refer to the [comment on etcdctl].
-2. **--force-new-cluster in v3.5 and earlier versions**: In rare cases, forcibly creating a new single-member cluster did not fully remove old members, leaving zombies. The issue was [resolved in v3.5.22]. Please refer to the [Raft project fix] for detailed technical information.
+2. **--force-new-cluster in v3.5 and earlier versions**: In rare cases, forcibly creating a new single-member cluster did not fully remove old members, leaving zombies. The issue was [resolved in v3.5.22]. Please refer to this [PR in the Raft project] for detailed technical information.
 3. **--unsafe-no-sync enabled**: If `--unsafe-no-sync` is enabled, in rare cases etcd might persist a membership change to v3store but crash before writing it to the WAL, causing inconsistency between v2store and v3store. This is a problem for single-member clusters. For multi-member clusters, forcibly creating a new single-member cluster from the crashed node’s data may lead to zombie members.
 
 {{% alert title="Note" color="info" %}}
-Note: `--unsafe-no-sync` is generally not recommended, as it may break the guarantees given by the consensus protocol.
+`--unsafe-no-sync` is generally not recommended, as it may break the guarantees given by the consensus protocol.
 {{% /alert %}}
 
 Importantly, there may be other triggers for v2store and v3store membership data becoming inconsistent that we have not yet found.  This means that you cannot assume that you are safe just because you have not performed any of the three actions above.
@@ -54,12 +54,13 @@ Always upgrade to [v3.5.26] or later before moving to v3.6. This ensures your cl
 
 We would like to thank [Christian Baumann] for reporting this long-standing upgrade issue. His report and follow-up work helped bring the issue to our attention so that we could investigate and resolve it upstream.
 
+[upgrade from v3.5 to v3.6]: https://etcd.io/docs/v3.6/upgrades/upgrade_3_6/
 [v2store deprecation plan]: https://github.com/etcd-io/etcd/issues/12913
 [bug report]: https://github.com/etcd-io/etcd/issues/20967
 [mechanism in etcd v3.5.26]: https://github.com/etcd-io/etcd/pull/20995
 [v3.5.26]: https://github.com/etcd-io/etcd/releases/tag/v3.5.26
 [comment on etcdctl]: https://github.com/etcd-io/etcd/issues/20967#issuecomment-3618010356
 [resolved in v3.5.22]: https://github.com/etcd-io/etcd/pull/20339
-[Raft project fix]: https://github.com/etcd-io/raft/pull/300
+[PR in the Raft project]: https://github.com/etcd-io/raft/pull/300
 [Christian Baumann]: https://github.com/thechristschn
 [comment]: https://github.com/etcd-io/etcd/issues/20967#issuecomment-3590609775
