@@ -30,6 +30,21 @@ The easiest way to install etcd is from pre-built binaries:
     ...
     ```
 
+## Linux and MacOS using Mise
+
+If you are using [mise](https://github.com/jdx/mise), the polyglot tool versions manager, you can use
+a command like this to list versions available:
+
+```shell
+mise ls-remote etcd
+```
+
+And you use this command to install a specific version (you can use the alias latest to install the latest version available instead of a specific version) and make it available globally for your user:
+
+```shell
+mise use -g etcd@<version>
+```
+
 ## Build from source
 
 If you have [Go version {{< param minGoVers >}}+][go], you can build etcd from
