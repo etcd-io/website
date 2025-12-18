@@ -3,7 +3,7 @@ title: v3.6 docs
 cascade:
   version: v3.6
   versName: &name v3.6
-  git_version_tag: v3.6.0
+  git_version_tag: v3.6.7
   exclude_search: false
 linkTitle: *name
 simple_list: true
