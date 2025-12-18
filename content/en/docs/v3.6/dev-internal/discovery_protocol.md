@@ -12,9 +12,7 @@ The protocol uses a new discovery token to bootstrap one _unique_ etcd cluster. 
 
 The rest of this article will walk through the discovery process with examples that correspond to a self-hosted discovery cluster.
 
-{{% alert title="Important" %}}
-This document is only for v3 discovery. Check previous document for more details on [v2 discovery](/docs/v3.5/dev-internal/discovery_protocol/).
-{{% /alert %}}
+Note that this document is only for v3 discovery. Check previous document for more details on [v2 discovery][v2-discovery].
 
 ## Protocol workflow
 

@@ -68,9 +68,7 @@ func (e *EtcdServer) Start() error {
 
 #### Added `embed.Config.LogOutput` struct
 
-{{% alert title="Note" color="info" %}}
-This field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](/docs/{{< param version >}}/upgrades/upgrade_3_4/) for more details.
-{{% /alert %}}
+**Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](/docs/{{< param version >}}/upgrades/upgrade_3_4/) for more details.**
 
 Field `LogOutput` is added to `embed.Config`:
 

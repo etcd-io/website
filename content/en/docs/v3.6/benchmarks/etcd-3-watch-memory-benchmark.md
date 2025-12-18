@@ -4,7 +4,7 @@ weight: 5250
 description: Performance measures for etcd watchers
 ---
 
-{{% alert title="Important" %}}
+{{% alert title="Note" color="info" %}}
 The watch features are under active development, and their memory usage may change as that development progresses. We do not expect it to significantly increase beyond the figures stated below.
 {{% /alert %}}
 

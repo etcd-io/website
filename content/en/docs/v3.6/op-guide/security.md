@@ -76,9 +76,7 @@ $ curl --cacert /path/to/ca.crt https://127.0.0.1:2379/v2/keys/foo -XPUT -d valu
 
 The command should show that the handshake succeed. Since we use self-signed certificates with our own certificate authority, the CA must be passed to curl using the `--cacert` option. Another possibility would be to add the CA certificate to the system's trusted certificates directory (usually in `/etc/pki/tls/certs` or `/etc/ssl/certs`).
 
-{{% alert title="Note" color="info" %}}
 **OSX 10.9+ Users**: curl 7.30.0 on OSX 10.9+ doesn't understand certificates passed in on the command line. Instead, import the dummy ca.crt directly into the keychain or add the `-k` flag to curl to ignore errors. To test without the `-k` flag, run `open ./tests/fixtures/ca/ca.crt` and follow the prompts. Please remove this certificate after testing! If there is a workaround, let us know.
-{{% /alert %}}
 
 ## Example 2: Client-to-server authentication with HTTPS client certificates
 
@@ -278,9 +276,7 @@ You will get an output similar to:
 ca7a7d6fe0984fd9, started, etcd-node-3, http://ip_address_etcd_node_3:2380, http://ip_address_etcd_node_3:2379, false
 ```
 
-{{% alert title="Note" color="info" %}}
-Save the **member IDs** and corresponding **IP addresses** — you'll need them to update peer URLs.
-{{% /alert %}}
+> Save the **member IDs** and corresponding **IP addresses** — you'll need them to update peer URLs.
 
 ---
 
