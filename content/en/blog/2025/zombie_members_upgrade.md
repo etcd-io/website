@@ -1,6 +1,6 @@
 ---
 title: Avoiding Zombie Cluster Members When Upgrading to etcd v3.6
-author:  "[Benjamin Wang](https://github.com/ahrtr) VMware by Broadcom, [Josh Berkus](https://github.com/jberkus) Red Hat"
+author:  "[Benjamin Wang](https://github.com/ahrtr) Broadcom, [Josh Berkus](https://github.com/jberkus) Red Hat"
 date: 2025-12-17
 draft: false
 ---
