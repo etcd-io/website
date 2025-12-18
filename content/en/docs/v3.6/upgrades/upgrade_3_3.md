@@ -12,9 +12,13 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 ### Upgrade checklists
 
-**NOTE:** When [migrating from v2 with no v3 data](https://github.com/etcd-io/etcd/issues/9480), etcd server v3.2+ panics when etcd restores from existing snapshots but no v3 `ETCD_DATA_DIR/member/snap/db` file. This happens when the server had migrated from v2 with no previous v3 data. This also prevents accidental v3 data loss (e.g. `db` file might have been moved). etcd requires that post v3 migration can only happen with v3 data. Do not upgrade to newer v3 versions until v3.0 server contains v3 data.
+{{% alert title="Note" color="info" %}}
+When [migrating from v2 with no v3 data](https://github.com/etcd-io/etcd/issues/9480), etcd server v3.2+ panics when etcd restores from existing snapshots but no v3 `ETCD_DATA_DIR/member/snap/db` file. This happens when the server had migrated from v2 with no previous v3 data. This also prevents accidental v3 data loss (e.g. `db` file might have been moved). etcd requires that post v3 migration can only happen with v3 data. Do not upgrade to newer v3 versions until v3.0 server contains v3 data.
+{{% /alert %}}
 
-**NOTE:** if you enable auth and use lease(lease ttl is small), it has a high probability to encounter [issue](https://github.com/etcd-io/etcd/issues/11689) that will result in data inconsistency. It is strongly recommended upgrading to 3.2.31+ firstly to fix this problem, and then upgrade to 3.3. In addition, if the user without permission sends a `LeaseRevoke` request to the 3.3 node during the upgrade process, it may still cause data corruption, so it is best to ensure that your environment doesn't exist such abnormal calls before upgrading, see [#11691](https://github.com/etcd-io/etcd/pull/11691) for detail.
+{{% alert title="Note" color="info" %}}
+if you enable auth and use lease(lease ttl is small), it has a high probability to encounter [issue](https://github.com/etcd-io/etcd/issues/11689) that will result in data inconsistency. It is strongly recommended upgrading to 3.2.31+ firstly to fix this problem, and then upgrade to 3.3. In addition, if the user without permission sends a `LeaseRevoke` request to the 3.3 node during the upgrade process, it may still cause data corruption, so it is best to ensure that your environment doesn't exist such abnormal calls before upgrading, see [#11691](https://github.com/etcd-io/etcd/pull/11691) for detail.
+{{% /alert %}}
 
 
 Highlighted breaking changes in 3.3.
@@ -87,7 +91,9 @@ WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create clie
 
 From v3.3, gRPC server logs are disabled by default.
 
-**Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/{{< param version >}}/upgrades/upgrade_3_4/) for more details.**
+{{% alert title="Note" color="info" %}}
+`embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/{{< param version >}}/upgrades/upgrade_3_4/) for more details.**
+{{% /alert %}}
 
 ```go
 import "github.com/coreos/etcd/embed"
