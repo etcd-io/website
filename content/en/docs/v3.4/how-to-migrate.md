@@ -8,7 +8,7 @@ weight: 1200
 
 Learn more about the difference between the [etcd data storage format](https://etcd.io/docs/v3.6/learning/data_model/) and the [etcd versioning](https://etcd.io/docs/v3.6/op-guide/versioning/).
 
-etcd v2.Y releases store data in the v2store, which supports the legacy API v2. When upgrading to etcd v3.Y releases, the cluster may continues to carry this v2store data until it is explicitly migrated into the newer v3store, which is required for full API v3 support and long-term compatibility.
+etcd v2.Y releases store data in the v2store, which supports the legacy API v2. When upgrading to etcd v3.Y releases, the cluster may continue to carry this v2store data until it is explicitly migrated into the newer v3store, which is required for full API v3 support and long-term compatibility.
 
 This document focus on how to migrate existing data from the v2store to the v3store. For a detailed guideline of migrating from API v2 to API v3, please refer to [Migrate applications from using API v2 to API v3](https://etcd.io/docs/v3.4/op-guide/v2-migration/).
 
