@@ -56,7 +56,7 @@ type Config struct {
 
   // Deprecated: Use LeaseCheckpoint Feature Gate instead. Will be decommissioned in v3.7.
   ExperimentalEnableLeaseCheckpoint bool `json:"experimental-enable-lease-checkpoint"`
-  
+
   // Deprecated: Use LeaseCheckpointPersist Feature Gate instead. Will be decommissioned in v3.7.
   ExperimentalEnableLeaseCheckpointPersist bool `json:"experimental-enable-lease-checkpoint-persist"`
 
@@ -102,9 +102,10 @@ A *Beta* feature means:
 * Recommended for only non-business-critical uses because of potential for
   discovering new hard-to-spot bugs through wider adoption.
 
-**Note:**
+{{% alert title="Note" color="info" %}}
 Please do try *Beta* features and give feedback on them!
 After they exit beta, it may not be practical for us to make more changes.
+{{% /alert %}}
 
 A *General Availability* (GA) feature is also referred to as a *stable* feature. It means:
 
