@@ -81,7 +81,7 @@ etcdctl --endpoints=$ENDPOINTS get /foo
 
 If the migration succeeded, you should see the value previously stored in v2store.
 
-#### Summary full process:
+#### Summary full process
 
 ```shell
 # Write key in etcd version 2store
