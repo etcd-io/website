@@ -125,6 +125,21 @@ curl -L http://localhost:2379/v3/kv/put \
 # {"header":{"cluster_id":"14841639068965178418","member_id":"10276657743932975437","revision":"2","raft_term":"2"}}
 ```
 
+### Error responses
+
+The gRPC gateway translates gRPC status into HTTP status codes and a JSON error
+body. In etcd v3.6, the upgrade to grpc-gateway v2 changed error handling (see
+the v2 migration guide’s [error-handling note][grpc-gateway-v2-errors]), and the
+gateway behavior now aligns with `google.rpc.Status` (code, message, details) as
+described in [Google's API error model][google-api-errors]. Historically, older
+grpc-gateway versions also included a top-level `error` field, but this field is
+not supported in etcd v3.6 and higher versions.
+
+Clients should treat the HTTP status code as the primary indicator of success or
+failure. If a request fails, clients should rely on the `message` field as the
+primary source of error information and use any additional details for further
+context.
+
 ## Swagger
 
 Generated [Swagger][swagger] API definitions can be found at [rpc.swagger.json][swagger-doc].
@@ -134,6 +149,8 @@ Generated [Swagger][swagger] API definitions can be found at [rpc.swagger.json][
 [go-client]: https://github.com/etcd-io/etcd/tree/main/client/v3
 [grpc]: https://www.grpc.io/
 [grpc-gateway]: https://github.com/grpc-ecosystem/grpc-gateway
+[grpc-gateway-v2-errors]: https://github.com/grpc-ecosystem/grpc-gateway/blob/main/docs/docs/development/grpc-gateway_v2_migration_guide.md#error-handling-configuration-has-been-overhauled
 [json-mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
+[google-api-errors]: https://cloud.google.com/apis/design/errors
 [swagger]: http://swagger.io/
 [swagger-doc]: ../apispec/swagger/rpc.swagger.json
