@@ -70,7 +70,10 @@ source by following these steps:
     ```
 
 ## Installation via OS packages
-*Disclaimer: etcd installations through OS package managers can deliver outdated versions since they are not being automatically maintained nor officially supported by etcd project. Therefore use OS packages with caution.*
+
+{{% alert title="Warning" color="warning" %}}
+etcd installations through OS package managers can deliver outdated versions since they are not being automatically maintained nor officially supported by etcd project. Therefore use OS packages with caution.*
+{{% /alert %}}
 
 There are various ways of installing etcd on different operating systems and these are just some examples how it can be done.
 
@@ -93,7 +96,9 @@ $ etcd --version
 
 ## Linux
 
+{{% alert title="Warning" color="warning" %}}
 Although installing etcd through many major Linux distributions' official repositories and package managers is possible, the published versions can be significantly outdated. So, installing this way is strongly discouraged.
+{{% /alert %}}
 
 The recommended way to install etcd on Linux is either through [pre-built binaries](#install-pre-built-binaries) or by using Homebrew.
 
