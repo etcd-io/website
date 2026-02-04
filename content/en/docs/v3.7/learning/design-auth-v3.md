@@ -30,7 +30,7 @@ The metadata for auth should also be stored and managed in the storage controlle
 The authentication mechanism in the etcd v2 protocol has a tricky part because the metadata consistency should work as in the above, but does not: each permission check is processed by the etcd member that receives the client request (server/etcdserver/api/v2http/client.go), including follower members. Therefore, it's possible the check may be based on stale metadata.
 
 
-This staleness means that auth configuration cannot be reflected as soon as operators execute etcdctl. Therefore there is no way to know how long the stale metadata is active. Practically, the configuration change is reflected immediately after the command execution. However, in some cases of heavy load, the inconsistent state can be prolonged and it might result in counter-intuitive situations for users and developers. It requires a workaround like this: https://github.com/etcd-io/etcd/pull/4317#issuecomment-179037582
+This staleness means that auth configuration cannot be reflected as soon as operators execute etcdctl. Therefore there is no way to know how long the stale metadata is active. Practically, the configuration change is reflected immediately after the command execution. However, in some cases of heavy load, the inconsistent state can be prolonged and it might result in counter-intuitive situations for users and developers. It requires a workaround like [this](https://github.com/etcd-io/etcd/pull/4317#issuecomment-179037582).
 
 ### Inconsistent permissions are unsafe for linearized requests
 
@@ -75,6 +75,49 @@ The auth info in `etcdserverpb.RequestHeader` is checked in the apply phase of t
 There are two kinds of token types: simple and JWT. The simple token isn't designed for production use cases. Its tokens aren't cryptographically signed and servers must statefully track token-user correspondence; it is meant for development testing.  JWT tokens should be used for production deployments since it is cryptographically signed and verified. From the implementation perspective, JWT is stateless. Its token can include metadata including username and revision, so servers don't need to remember correspondence between tokens and the metadata.
 
 **Note :** There is a known issue [#18437](https://github.com/etcd-io/etcd/issues/18437) with simple tokens. Within etcd servers, tokens are resolved at the API layer and simple tokens are stateful. The process is not protected by a linearizable check, meaning an etcd member may not have completed processing a previous authentication request before receiving the next one. In such cases, the member might return an "invalid auth token" error to the client. This issue is usually rare on a node with good network conditions but can occur if there is significant latency. As a workaround, applications can implement a retry mechanism to handle this error.
+
+### Directly setting JWT tokens
+
+In addition to the standard `Authenticate()` RPC flow, etcd supports setting JWT tokens directly at the client level. This allows applications to manage the complete lifecycle of JWT tokens outside of etcd, including token generation, validation, and rotation.
+
+#### Use case and workflow
+
+This approach is useful when:
+
+* A separate token management system (outside of etcd) handles JWT token generation and lifecycle
+* Applications receive pre-signed JWT tokens through an external mechanism (e.g., environment variables, configuration service)
+* Token lifecycle must be managed entirely by the client application rather than by etcd's automatic token generation
+
+The typical workflow is:
+
+1. An external authority (not etcd) generates a signed JWT token that includes the username and other claims
+2. The application receives the pre-signed token and configures the etcd client with it
+3. The client submits the JWT token directly with requests (without calling `Authenticate()`)
+4. The etcd server validates the token signature using its configured public key and grants access based on the username in the token
+5. Before the token expires, the application obtains a new token from the external authority
+6. The application creates a new client with the updated token (token updates require client recreation)
+
+#### How it differs from standard authentication
+
+When using the standard `Authenticate()` flow:
+
+* The client calls `Authenticate()` with username and password
+* etcd generates and returns a token
+* The client automatically uses this token for subsequent requests
+* Token refresh requires calling `Authenticate()` again
+
+When setting JWT tokens directly:
+
+* The client is initialized with a pre-signed JWT token
+* The client **does not** call `Authenticate()`
+* The token is used directly in all requests
+* The client application is responsible for obtaining new tokens before expiration and managing client lifecycle
+
+#### AuthStatus without valid token
+
+To support applications that manage their own JWT tokens, the `AuthStatus` RPC is designed to allow clients to determine whether authentication is enabled and retrieve the current `authRevision`. This is important for recovery scenarios where a token has expired and the client needs the latest revision in order to obtain a new valid token from its external token provider.
+
+Without this capability, an expired token could prevent a client from learning the current `authRevision`, leading to a deadlock where no new token can be generated.
 
 ## Notes on the difference between KVS models and file system models
 
