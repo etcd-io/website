@@ -151,13 +151,11 @@ $ etcdctl --user root:rootpw auth disable
 
 When authentication is enabled with `etcdctl auth enable`, it protects the V3 gRPC API operations (get, put, delete, watch, etc.).
 
-{{< alert color="warning" title="Note">}}
-The `/metrics` and `/health` HTTP endpoints operate on a separate handler and are **not** protected by V3 RBAC authentication. To secure these observability endpoints:
-
-- Enable mTLS with `--cert-file`, `--key-file`, and `-client-cert-auth`
-- Or bind metrics to a private interface using `--listen-metrics-urls`
-- Or use network policies/firewall rules to restrict access
-{{< /alert >}}
+> **Note:** The `/metrics` and `/health` HTTP endpoints operate on a separate handler and are **not** protected by V3 RBAC authentication. To secure these observability endpoints:
+>
+> - Enable mTLS with `--cert-file`, `--key-file`, and `--client-cert-auth`
+> - Or bind metrics to a private interface using `--listen-metrics-urls`
+> - Or use network policies/firewall rules to restrict access
 This design allows Prometheus and load balancers to scrape metrics without requiring gRPC authentication, while still protecting the key-value data.
 
 ## Using `etcdctl` to authenticate
