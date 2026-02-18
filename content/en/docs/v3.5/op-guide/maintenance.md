@@ -108,9 +108,7 @@ $ etcdctl defrag --data-dir <path-to-etcd-data-dir>
 
 The space quota in `etcd` ensures the cluster operates in a reliable fashion. Without a space quota, `etcd` may suffer from poor performance if the keyspace grows excessively large, or it may simply run out of storage space, leading to unpredictable cluster behavior. If the keyspace's backend database for any member exceeds the space quota, `etcd` raises a cluster-wide alarm that puts the cluster into a maintenance mode which only accepts key reads and deletes. Only after freeing enough space in the keyspace and defragmenting the backend database, along with clearing the space quota alarm can the cluster resume normal operation.
 
-{{% alert title="Security Note: DoS Protection" color="warning" %}}
-Enforcing a space quota is a critical defense against Denial of Service (DoS) attacks targeting disk exhaustion. `etcd` checks this quota at the API layer (`v3rpc`), rejecting excessive write requests immediately before they consume Raft consensus resources.
-{{% /alert %}}
+> **Note:** Setting a space quota also helps mitigate Denial of Service (DoS) attacks that target disk exhaustion. `etcd` checks the quota at both the API layer (early rejection) and the Apply layer (raising a `NOSPACE` alarm), limiting the impact of excessive write requests on cluster resources. See the note at the end of this section for details on how these two checks interact.
 
 By default, `etcd` sets a conservative space quota suitable for most applications, but it may be configured on the command line, in bytes:
 
