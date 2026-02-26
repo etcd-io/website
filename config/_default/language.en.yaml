@@ -1,0 +1,97 @@
+title: etcd
+languageName: English (en)
+contentDir: content/en
+weight: 1
+params:
+  description: >-
+    A distributed, reliable key-value store for the most critical data of a
+    distributed system
+
+  copyright:
+    from_year: 2013
+    authors: |
+      etcd Authors
+
+      <div class="row text-center text-white small">
+        <div class="col-12 text-center py-2 order-sm-2">
+          <a href="https://www.linuxfoundation.org/terms" target="_blank" rel="noopener">Terms</a> |
+          <a href="https://www.linuxfoundation.org/privacy" target="_blank" rel="noopener">Privacy</a> |
+          <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener">Trademarks</a> |
+          <a href="https://github.com/etcd-io/website/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
+
+  # Versions
+
+  # Menu title if your navbar has a versions selector to access old versions of your site.
+  # This menu appears only if you have at least one [params.versions] set.
+  version_menu: Versions
+  latest_stable_version: v3.6
+
+  version:
+    deprecation_warning: >-
+      This version of etcd is no longer supported. For the latest version, please see the [latest stable version](/docs/latest/).
+  versions:
+    - version: v3.7
+      url: /docs/v3.7/
+
+    - version: v3.6
+      url: /docs/v3.6/
+
+    - version: v3.5
+      url: /docs/v3.5/
+
+    - version: v3.4
+      url: /docs/v3.4/
+
+    - version: v3.3
+      url: /docs/v3.3/
+
+    - version: v3.2
+      url: /docs/v3.2/
+
+    - version: v3.1
+      url: /docs/v3.1/
+
+    - version: v2.3
+      url: /docs/v2.3/
+
+  # User interface configuration
+  ui:
+    # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
+    # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
+    # If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
+    # add "hide_feedback: true" to the page's front matter.
+    feedback:
+      enable: true
+      # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
+      'yes': >-
+        Glad to hear it! Please <a
+        href="https://github.com/etcd-io/website/issues/new">tell us how we
+        can improve</a>.
+      'no': >-
+        Sorry to hear that. Please <a
+        href="https://github.com/etcd-io/website/issues/new">tell us how we
+        can improve</a>.
+
+  # Footer Links
+  links:
+    # End user relevant links. These will show up on left side of footer and in the community page if you have one.
+    user:
+      - name: Google Group
+        url: https://groups.google.com/g/etcd-dev
+        icon: fab fa-google
+      - name: Twitter
+        url: https://twitter.com/etcdio
+        icon: fab fa-twitter
+      - name: Github Discussions
+        url: https://github.com/etcd-io/etcd/discussions
+        icon: fab fa-github
+    # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
+    developer:
+      - name: Etcd on GitHub
+        url: https://github.com/etcd-io/etcd
+        icon: fab fa-github-square
+      - name: Etcd.io on GitHub
+        url: https://github.com/etcd-io/website
+        icon: fab fa-github

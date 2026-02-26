@@ -1,0 +1,105 @@
+---
+baseURL: https://etcd.io
+enableRobotsTxt: true
+
+module:
+  replacements: 'github.com/FortAwesome/Font-Awesome -> ., github.com/twbs/bootstrap -> .'
+  imports:
+    - path: docsy
+
+themesDir: "node_modules" # docsy is installed via npm
+
+# Will give values to .Lastmod etc.
+enableGitInfo: true
+
+# Language settings
+contentDir: content/en
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+languageCode: en-us
+googleAnalytics: G-VF9H3EHMDK
+
+# Useful when translating.
+enableMissingTranslationPlaceholders: true
+
+disableKinds: [taxonomy, term]
+
+# Highlighting config
+pygmentsCodeFences: true
+pygmentsUseClasses: false
+# Use the new Chroma Go highlighter in Hugo.
+#pygmentsOptions = "linenos=table"
+# See https://help.farbox.com/pygments.html
+pygmentsStyle: fruity # "tango"
+
+# Image processing configuration.
+imaging:
+  resampleFilter: CatmullRom
+  quality: 75
+  anchor: smart
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      typographer:
+        enDash: '--'
+  highlight:
+    # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
+    style: tango
+    # Uncomment if you want your chosen highlight style used for code blocks without a specified language
+    # guessSyntax: true
+
+# Everything below this are Site Params
+
+params:
+
+  # Enable Algolia DocSearch
+  algolia_docsearch: false
+
+  # Enable Lunr.js offline search
+  offlineSearch: true
+
+  # Enable syntax highlighting and copy buttons on code blocks with Prism
+  prism_syntax_highlighting: false
+
+  latest_stable_version: v3.5
+
+  # User interface configuration
+  ui:
+    sidebar_menu_compact: true
+    sidebar_search_disable: true
+    navbar_logo: true
+    footer_about_enable: false
+    navbar_translucent_over_cover_disable: true
+
+    # Adds a reading time to the top of each doc.
+    # If you want this feature, but occasionally need to remove the Reading time from a single page,
+    # add "hide_readingtime: true" to the page's front matter
+    readingtime:
+      enable: false
+
+  # [params.logos]
+  hero: >-
+    https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png
+
+  # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
+  github_repo: https://github.com/etcd-io/website
+  github_branch: main
+
+  # An optional link to a related project repo. For example, the sibling repository where your product code lives.
+  github_project_repo: https://github.com/etcd-io/etcd
+
+mediaTypes:
+  text/netlify: {}
+
+outputFormats:
+  REDIRECTS:
+    mediaType: text/netlify
+    baseName: _redirects
+    notAlternative: true
+
+outputs:
+  home: [HTML, REDIRECTS, RSS]
+

@@ -1,0 +1,11 @@
+# Site menu (partial -- also see pages with 'menu' in front matter)
+main:
+  - name: Документація
+    url: /docs/latest/
+    weight: -10
+  - name: Блог
+    pageref: /blog/
+  - name: Встановлення
+    url: /docs/latest/install/
+  - name: Спробувати
+    url: http://play.etcd.io/play
