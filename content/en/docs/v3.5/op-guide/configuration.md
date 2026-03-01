@@ -13,7 +13,7 @@ You can configure etcd through the following:
 - **[Configuration file](#configuration-file)**
 
 {{% alert color="warning" %}}
-<i class="fas fa-exclamation-triangle mr-1"></i> **Caution**: If you mix-and-match configuration options, then the following
+<**Caution**: If you mix-and-match configuration options, then the following
 rules apply.
 
 - Command-line flags take precedence over environment variables.
@@ -30,7 +30,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
 
-  [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
+  [changelog]: <https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG>-{{< psubstr version 1 >}}.md
 {{% /alert %}}
 
 ### Member
@@ -83,6 +83,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --socket-reuse-address 'false'
   Enable to set socket option SO_REUSEADDR on listeners allowing binding to an address in TIME_WAIT state.
 ```
+
 ### Clustering
 
 ```nocode
@@ -127,6 +128,22 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
     'write-only-drop-data'   // Custom v2 state will get DELETED !
     'gone'                   // v2store is not maintained any longer. (planned default in v3.7)
 ```
+
+### Logging flags {#logging}
+
+```nocode
+--logger 'zap'
+  Currently only supports 'zap' for structured logging.
+--log-outputs 'default'
+  Specify 'stdout' or 'stderr' to skip journald logging even when running under systemd, or list of comma separated output targets.
+--log-level 'info'
+  Configures log level. Only supports debug, info, warn, error, panic, or fatal.
+--enable-log-rotation 'false'
+  Enable log rotation of a single log-outputs file target.
+--log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
+  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
+```
+
 ### Security
 
 ```nocode
@@ -176,6 +193,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --tls-max-version ''
   Maximum TLS version supported by etcd (empty will be auto-populated by Go).
 ```
+
 ### Auth
 
 ```nocode
@@ -186,6 +204,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --auth-token-ttl 300
   Time (in seconds) of the auth-token-ttl.
 ```
+
 ### Profiling and monitoring
 
 ```nocode
@@ -196,20 +215,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --listen-metrics-urls ''
   List of URLs to listen on for the metrics and health endpoints.
 ```
-### Logging
 
-```nocode
---logger 'zap'
-  Currently only supports 'zap' for structured logging.
---log-outputs 'default'
-  Specify 'stdout' or 'stderr' to skip journald logging even when running under systemd, or list of comma separated output targets.
---log-level 'info'
-  Configures log level. Only supports debug, info, warn, error, panic, or fatal.
---enable-log-rotation 'false'
-  Enable log rotation of a single log-outputs file target.
---log-rotation-config-json '{"maxsize": 100, "maxage": 0, "maxbackups": 0, "localtime": false, "compress": false}'
-  Configures log rotation if enabled with a JSON logger config. MaxSize(MB), MaxAge(days,0=no limit), MaxBackups(0=no limit), LocalTime(use computers local time), Compress(gzip)".
-```
 ### Experimental distributed tracing
 
 ```nocode
@@ -224,12 +230,12 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --experimental-distributed-tracing-sampling-rate '0'
   Number of samples to collect per million spans for OpenTelemetry Tracing (if enabled with experimental-enable-distributed-tracing flag).
 ```
+
 ### v2 Proxy
 
 {{% alert color="warning" %}}
-**<i class="fas fa-exclamation-triangle mr-1"></i> Note**: flags will be deprecated in v3.6.
+**Note**: flags will be deprecated in v3.6.
 {{% /alert %}}
-
 
 ```nocode
 --proxy 'off'
@@ -245,6 +251,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --proxy-read-timeout 0
   Time (in milliseconds) for a read to timeout.
 ```
+
 ### Experimental features
 
 ```nocode
@@ -269,10 +276,11 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --experimental-bootstrap-defrag-threshold-megabytes
   Enable the defrag during etcd server bootstrap on condition that it will free at least the provided threshold of disk space. Needs to be set to non-zero value to take effect.
 ```
+
 ### Unsafe features
 
 {{% alert color="warning" %}}
-**<i class="fas fa-exclamation-triangle mr-1"></i> Warning**: using unsafe features may break the guarantees given by the consensus protocol!
+**Warning**: using unsafe features may break the guarantees given by the consensus protocol!
 {{% /alert %}}
 
 ```nocode
