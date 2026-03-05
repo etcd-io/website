@@ -111,7 +111,7 @@ params:
   versions:
     - version: v3.7
       url: /docs/v3.7/
-    
+
     - version: v3.6
       url: /docs/v3.6/
 
@@ -138,6 +138,7 @@ params:
     sidebar_menu_compact: true
     sidebar_search_disable: true
     navbar_logo: true
+    navbar_theme: dark
     footer_about_enable: false
     navbar_translucent_over_cover_disable: true
 
