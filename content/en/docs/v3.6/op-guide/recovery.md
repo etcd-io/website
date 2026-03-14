@@ -79,6 +79,7 @@ When restoring from a snapshot, you can directly supply the new membership into 
 ```sh
 $ etcdutl snapshot restore snapshot.db \
   --name m1 \
+  --data-dir m1.etcd \
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host1:2380
@@ -102,19 +103,19 @@ Continuing from the previous example, the following creates new etcd data direct
 ```sh
 $ etcdutl snapshot restore snapshot.db \
   --name m1 \
-  --data-dir m1_data_dir.etcd
+  --data-dir m1_data_dir.etcd \
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host1:2380
 $ etcdutl snapshot restore snapshot.db \
   --name m2 \
-  --data-dir m2_data_dir.etcd
+  --data-dir m2_data_dir.etcd \
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host2:2380
 $ etcdutl snapshot restore snapshot.db \
   --name m3 \
-  --data-dir m3_data_dir.etcd
+  --data-dir m3_data_dir.etcd \
   --initial-cluster m1=http://host1:2380,m2=http://host2:2380,m3=http://host3:2380 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-advertise-peer-urls http://host3:2380
@@ -125,19 +126,19 @@ Next, start `etcd` with the new data directories:
 ```sh
 $ etcd \
   --name m1 \
-  --data-dir m1_data_dir.etcd
+  --data-dir m1_data_dir.etcd \
   --listen-client-urls http://host1:2379 \
   --advertise-client-urls http://host1:2379 \
   --listen-peer-urls http://host1:2380 &
 $ etcd \
   --name m2 \
-  --data-dir m2_data_dir.etcd
+  --data-dir m2_data_dir.etcd \
   --listen-client-urls http://host2:2379 \
   --advertise-client-urls http://host2:2379 \
   --listen-peer-urls http://host2:2380 &
 $ etcd \
   --name m3 \
-  --data-dir m3_data_dir.etcd
+  --data-dir m3_data_dir.etcd \
   --listen-client-urls http://host3:2379 \
   --advertise-client-urls http://host3:2379 \
   --listen-peer-urls http://host3:2380 &
