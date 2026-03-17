@@ -84,7 +84,7 @@ Revision compaction retains a fixed number of revisions:
 $ etcd --auto-compaction-mode=revision --auto-compaction-retention=1000
 ```
 
-etcd compacts on `"latest revision" - 1000` every 5 minutes. For example, when the latest revision is 30000, it compacts on revision 29000.
+etcd checks every 5 minutes and compacts on `"latest revision" - 1000`. For example, when the latest revision is 30000, it compacts on revision 29000.
 
 ## Defragmentation
 

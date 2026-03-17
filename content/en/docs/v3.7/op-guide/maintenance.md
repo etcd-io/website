@@ -84,7 +84,7 @@ Revision compaction retains a fixed number of revisions:
 $ etcd --auto-compaction-mode=revision --auto-compaction-retention=1000
 ```
 
-etcd compacts on `"latest revision" - 1000` every 5 minutes. For example, when the latest revision is 30000, it compacts on revision 29000.
+etcd checks every 5 minutes and compacts on `"latest revision" - 1000`. For example, when the latest revision is 30000, it compacts on revision 29000.
 
 ## Defragmentation
 
@@ -99,13 +99,9 @@ $ etcdctl defrag
 Finished defragmenting etcd member[127.0.0.1:2379]
 ```
 
-{{% alert title="Note" color="info" %}}
-Defragmentation to a live member blocks the system from reading and writing data while rebuilding its states.
-{{% /alert %}}
+**Note that defragmentation to a live member blocks the system from reading and writing data while rebuilding its states**.
 
-{{% alert title="Note" color="info" %}}
-Defragmentation request does not get replicated over cluster. That is, the request is only applied to the local node. Specify all members in `--endpoints` flag or `--cluster` flag to automatically find all cluster members.
-{{% /alert %}}
+**Note that defragmentation request does not get replicated over cluster. That is, the request is only applied to the local node. Specify all members in `--endpoints` flag or `--cluster` flag to automatically find all cluster members.**
 
 Run defragment operations for all endpoints in the cluster associated with the default endpoint:
 
@@ -175,9 +171,7 @@ The metric `etcd_mvcc_db_total_size_in_use_in_bytes` indicates the actual databa
 
 `etcd_debugging_mvcc_db_total_size_in_bytes` is renamed to `etcd_mvcc_db_total_size_in_bytes` from v3.4.
 
-{{% alert title="Note" color="info" %}}
-It is possible to get an `ErrGRPCNoSpace` error for a Put/Txn/LeaseGrant request, and still have the write request succeed in the backend, because etcd checks space quota at the API layer and the internal Apply layer, and the Apply layer will only raise the `NOSPACE` alarm without blocking the transaction from proceeding.
-{{% /alert %}}
+**NOTE:** it is possible to get an `ErrGRPCNoSpace` error for a Put/Txn/LeaseGrant request, and still have the write request succeed in the backend, because etcd checks space quota at the API layer and the internal Apply layer, and the Apply layer will only raise the `NOSPACE` alarm without blocking the transaction from proceeding.
 
 ## Snapshot backup
 
