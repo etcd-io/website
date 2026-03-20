@@ -2,7 +2,6 @@
 title: March 20 Security Release Patches Auth Vulnerabilities
 author:  SIG-etcd Security Team
 date: 2026-03-20
-draft: true
 ---
 
 SIG-etcd [released updates [3.6.9](https://github.com/etcd-io/etcd/releases/tag/v3.6.9), [3.5.28](https://github.com/etcd-io/etcd/releases/tag/v3.5.28), and [3.4.42](https://github.com/etcd-io/etcd/releases/tag/v3.4.42) today.  These patch releases fix several vulnerabilities which allow unauthorized users to bypass authentication or authorization controls that are part of etcd Auth using the gRPC API.
