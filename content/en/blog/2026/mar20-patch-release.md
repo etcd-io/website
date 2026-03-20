@@ -15,7 +15,9 @@ Users depending on etcd Auth in this way should update their clusters immediatel
 
 More information on the vulnerabilities:
 
-* [Authorization bypasses in multiple APIs](https://github.com/etcd-io/etcd/security/advisories/GHSA-q8m4-xhhv-38mg)
-* [Nested etcd transactions bypass RBAC authorization checks](https://github.com/etcd-io/etcd/security/advisories/GHSA-rfx7-8w68-q57q)
+* CVE-2026-33413: [Authorization bypasses in multiple APIs](https://github.com/etcd-io/etcd/security/advisories/GHSA-q8m4-xhhv-38mg)
+* CVE-2026-33343: [Nested etcd transactions bypass RBAC authorization checks](https://github.com/etcd-io/etcd/security/advisories/GHSA-rfx7-8w68-q57q)
+
+Both issues have been rated Moderate.with CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N.
 
 All of these vulnerabilies were reported by members of the etcd community.  Our SIG is deeply thankful for their efforts in locating and reporting security holes.
