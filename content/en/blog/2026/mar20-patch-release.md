@@ -20,4 +20,13 @@ More information on the vulnerabilities:
 
 Both issues have been rated Moderate.with CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N.
 
-All of these vulnerabilies were reported by members of the etcd community.  Our SIG is deeply thankful to: Luke Francis, Isaac David, bugbunny.ai, Asim Viladi Oglu Manizada, Alex Schapiro & Ahmed Allam from Strix security, @OLU-DEVX, and Battulga Byambaa.
+All of these vulnerabilies were reported by members of the etcd community.  Our SIG is deeply thankful to:
+
+* Isaac David from bugbunny.ai
+* Asim Viladi Oglu Manizada
+* Alex Schapiro & Ahmed Allam from Strix security (strix.ai)
+* Luke Francis
+* @OLU-DEVX
+* Battulga Byambaa
+
+If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
