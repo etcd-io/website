@@ -1,7 +1,6 @@
 ---
 title: Metrics
-weight: 1350
-description: Metrics for real-time monitoring and debugging
+simple_list: true
 ---
 
 etcd uses [Prometheus][prometheus] for metrics reporting. The metrics can be used for real-time monitoring and debugging. etcd does not persist its metrics; if a member restarts, the metrics will be reset.
@@ -16,7 +15,7 @@ The naming of metrics follows the suggested [Prometheus best practices][promethe
 
 The metrics under the `etcd` prefix are for monitoring and alerting. They are stable high level metrics. If there is any change of these metrics, it will be included in release notes.
 
-Metrics that are etcd2 related are documented in the [v2 metrics guide][v2-http-metrics].
+Metrics that are etcd2 related are documented [v2 metrics guide][v2-http-metrics].
 
 ### Server
 
@@ -103,25 +102,20 @@ Abnormally high snapshot duration (`snapshot_save_total_duration_seconds`) indic
 
 ## Prometheus supplied metrics
 
-The Prometheus client library provides a number of metrics under the `go` and `process` namespaces. There are a few that are particularly interesting.
+The Prometheus client library provides a number of metrics under the `go` and `process` namespaces. There are a few that are particlarly interesting.
 
 | Name                              | Description                                | Type         |
 |-----------------------------------|--------------------------------------------|--------------|
 | process_open_fds                  | Number of open file descriptors.           | Gauge        |
 | process_max_fds                   | Maximum number of open file descriptors.   | Gauge        |
 
-{{% alert title="Note" color="info" %}}
-The process metrics, such as `process_open_fds` and `process_max_fds`, are not supported on Darwin (macOS) systems at this time.
-{{% /alert %}}
-
 Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file descriptor limit, `process_max_fds`) indicates a potential file descriptor exhaustion issue. If the file descriptors are exhausted, etcd may panic because it cannot create new WAL files.
 
 ## Generated list of metrics
 
-{{< metrics-list >}}
-
+[glossary-proposal]: learning/glossary#proposal
 [go-grpc-prometheus]: https://github.com/grpc-ecosystem/go-grpc-prometheus
-[prometheus]: https://prometheus.io/
-[prometheus-getting-started]: https://prometheus.io/docs/introduction/getting_started/
-[prometheus-naming]: https://prometheus.io/docs/practices/naming/
+[prometheus]: http://prometheus.io/
+[prometheus-getting-started]: http://prometheus.io/docs/introduction/getting_started/
+[prometheus-naming]: http://prometheus.io/docs/practices/naming/
 [v2-http-metrics]: /docs/v2.3/metrics/#http-requests

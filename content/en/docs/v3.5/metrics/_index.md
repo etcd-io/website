@@ -2,6 +2,7 @@
 title: Metrics
 weight: 1350
 description: Metrics for real-time monitoring and debugging
+simple_list: true
 ---
 
 etcd uses [Prometheus][prometheus] for metrics reporting. The metrics can be used for real-time monitoring and debugging. etcd does not persist its metrics; if a member restarts, the metrics will be reset.
@@ -16,7 +17,7 @@ The naming of metrics follows the suggested [Prometheus best practices][promethe
 
 The metrics under the `etcd` prefix are for monitoring and alerting. They are stable high level metrics. If there is any change of these metrics, it will be included in release notes.
 
-Metrics that are etcd2 related are documented [v2 metrics guide][v2-http-metrics].
+Metrics that are etcd2 related are documented in the [v2 metrics guide][v2-http-metrics].
 
 ### Server
 
@@ -115,8 +116,6 @@ The Prometheus client library provides a number of metrics under the `go` and `p
 Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file descriptor limit, `process_max_fds`) indicates a potential file descriptor exhaustion issue. If the file descriptors are exhausted, etcd may panic because it cannot create new WAL files.
 
 ## Generated list of metrics
-
-{{< metrics-list >}}
 
 [go-grpc-prometheus]: https://github.com/grpc-ecosystem/go-grpc-prometheus
 [prometheus]: https://prometheus.io/
