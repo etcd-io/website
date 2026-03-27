@@ -306,18 +306,7 @@ Since [v3.2.2](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.2
 
 when peer B's remote IP address is `10.138.0.2` and `invalid.domain` is a invalid host. When peer B tries to join the cluster, peer A successfully authenticates B, since Subject Alternative Name (SAN) field has a valid matching IP address. See [issue#8206](https://github.com/etcd-io/etcd/issues/8206) for more detail.
 
-Since [v3.2.5](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.2.md#v325-2017-08-04), [server supports reverse-lookup on wildcard DNS `SAN`](https://github.com/etcd-io/etcd/pull/8281). For instance, if peer cert contains only DNS names (no IP addresses) in Subject Alternative Name (SAN) field, server first reverse-lookups the remote IP address to get a list of names mapping to that address (e.g. `nslookup IPADDR`). Then accepts the connection if those names have a matching name with peer cert's DNS names (either by exact or wildcard match). If none is matched, server forward-lookups each DNS entry in peer cert (e.g. look up `example.default.svc` when the entry is `*.example.default.svc`), and accepts connection only when the host's resolved addresses have the matching IP address with the peer's remote IP address. For example, peer B's CSR (with `cfssl`) is:
-
-```json
-{
-  "CN": "etcd peer",
-  "hosts": [
-    "*.example.default.svc",
-    "*.example.default.svc.cluster.local"
-  ],
-```
-
-when peer B's remote IP address is `10.138.0.2`. When peer B tries to join the cluster, peer A reverse-lookup the IP `10.138.0.2` to get the list of host names. And either exact or wildcard match the host names with peer B's cert DNS names in Subject Alternative Name (SAN) field. If none of reverse/forward lookups worked, it returns an error `"tls: "10.138.0.2" does not match any of DNSNames ["*.example.default.svc","*.example.default.svc.cluster.local"]`. See [issue#8268](https://github.com/etcd-io/etcd/issues/8268) for more detail.
+Since [v3.2.5](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.2.md#v325-2017-08-04), [server supports reverse-lookup on wildcard DNS `SAN`](https://github.com/etcd-io/etcd/pull/8281). For instance, if peer cert contains only DNS names (no IP addresses) in Subject Alternative Name (SAN) field, server first reverse-lookups the remote IP address to get a list of host names. And either exact or wildcard match the host names with peer B's cert DNS names in Subject Alternative Name (SAN) field. If none of reverse/forward lookups worked, it returns an error `"tls: "10.138.0.2" does not match any of DNSNames ["*.example.default.svc","*.example.default.svc.cluster.local"]`. See [issue#8268](https://github.com/etcd-io/etcd/issues/8268) for more detail.
 
 [v3.3.0](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.3.md) adds [`etcd --peer-cert-allowed-cn`](https://github.com/etcd-io/etcd/pull/8616) flag to support [CN(Common Name)-based auth for inter-peer connections](https://github.com/etcd-io/etcd/issues/8262). Kubernetes TLS bootstrapping involves generating dynamic certificates for etcd members and other system components (e.g. API server, kubelet, etc.). Maintaining different CAs for each component provides tighter access control to etcd cluster but often tedious. When `--peer-cert-allowed-cn` flag is specified, node can only join with matching common name even with shared CAs. For example, each member in 3-node cluster is set up with CSRs (with `cfssl`) as below:
 
@@ -350,6 +339,35 @@ when peer B's remote IP address is `10.138.0.2`. When peer B tries to join the c
     "localhost"
   ],
 ```
+
+Then only peers with matching common names will be authenticated if `--peer-cert-allowed-cn etcd.local` is given. And nodes with different CNs in CSRs or different `--peer-cert-allowed-cn` will be rejected:
+
+```bash
+$ etcd --peer-cert-allowed-cn m1.etcd.local
+
+I | embed: rejected connection from "127.0.0.1:48044" (error "CommonName authentication failed", ServerName "m1.etcd.local")
+I | embed: rejected connection from "127.0.0.1:55702" (error "remote error: tls: bad certificate", ServerName "m3.etcd.local")
+```
+
+Additional clarification: how matching works
+-----------------------------------------
+- --peer-cert-allowed-cn performs an exact string comparison against the certificate's Subject Common Name (CN). The certificate's CN must exactly equal the value passed to `--peer-cert-allowed-cn`. There is no implicit "is a subdomain of" or suffix matching for CN (for example, a CN of `m1.etcd.local` does NOT match `etcd.local`).
+- Hostname-based flags such as `--peer-cert-allowed-hostname` and `--client-cert-allowed-hostname` use the certificate's Subject Alternative Name (SAN) entries (DNSNames and IPAddresses) for verification and follow standard TLS name-matching rules:
+  - DNS SAN entries support exact and wildcard matches per usual TLS rules (e.g., `*.example.com` can match `a.example.com`).
+  - IP SAN entries are matched by exact IP address equality.
+  - SAN is preferred for name verification; implementations use SAN entries for hostname checks rather than the CN. If an environment or client library falls back to CN when no SAN is present, that is a compatibility behavior of the client library, not the SAN-first rule.
+- In short: use `--peer-cert-allowed-cn` only when you want an exact CN equality check; use the hostname flags when you want SAN-based hostname/IP verification (and to take advantage of wildcard DNS matching where appropriate).
+
+```json
+{
+  "CN": "etcd peer",
+  "hosts": [
+    "*.example.default.svc",
+    "*.example.default.svc.cluster.local"
+  ],
+```
+
+when peer B's remote IP address is `10.138.0.2` and `invalid.domain` is a invalid host. When peer B tries to join the cluster, peer A successfully authenticates B, since Subject Alternative Name (SAN) field has a valid matching IP address. See [issue#8206](https://github.com/etcd-io/etcd/issues/8206) for more detail.
 
 Then only peers with matching common names will be authenticated if `--peer-cert-allowed-cn etcd.local` is given. And nodes with different CNs in CSRs or different `--peer-cert-allowed-cn` will be rejected:
 
