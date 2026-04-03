@@ -1,0 +1,81 @@
+{{ define "main" }}
+<div class="td-content">
+  <h1>{{ .Title }}</h1>
+
+  {{- $txtURL := printf "%s.txt" (strings.TrimSuffix "/" .RelPermalink) -}}
+  <p><a href="{{ $txtURL }}">View txt file</a></p>
+
+  {{- $content := readFile .Params.metricsFilePath -}}
+  {{- $lines := split $content "\n" -}}
+
+  {{/*
+    Parse the metrics file line by line.
+    Each metric block starts with a "# name:" comment and is followed by
+    optional "# description:" and "# type:" comments, then one or more
+    sample lines whose label set (the "{key=value,...}" part) we extract.
+
+    Variables hold the current metric's fields while iterating over file lines.
+  */}}
+  {{- $metrics := slice -}}
+  {{- $metricName := "" -}}
+  {{- $metricDesc := "" -}}
+  {{- $metricType := "" -}}
+  {{- $metricLabels := "" -}}
+
+  {{- range $lines -}}
+    {{- $t := trim . " " -}}
+
+    {{- if hasPrefix $t "# name:" -}}
+      {{/* Starting a new metric block — append the previous one (if any) first. */}}
+      {{- if ne $metricName "" -}}
+        {{- $metrics = $metrics | append (dict
+          "name" $metricName
+          "description" $metricDesc
+          "type" $metricType
+          "labels" $metricLabels
+        ) -}}
+      {{- end -}}
+      {{- $metricName = replaceRE `^# name: "(.*)"$` "$1" $t -}}
+      {{- $metricDesc = "" -}}
+      {{- $metricType = "" -}}
+      {{- $metricLabels = "" -}}
+
+    {{- else if hasPrefix $t "# description:" -}}
+      {{- $metricDesc = replaceRE `^# description: "(.*)"$` "$1" $t -}}
+
+    {{- else if hasPrefix $t "# type:" -}}
+      {{- $metricType = replaceRE `^# type: "(.*)"$` "$1" $t -}}
+
+    {{- else if and (ne $metricName "") (eq $metricLabels "") (hasPrefix $t $metricName) (in $t "{") (in $t "}") -}}
+      {{/* First sample line for this metric: extract the label set from {…}. */}}
+      {{- $metricLabels = replaceRE `^[^{]*\{([^}]*)\}.*$` "$1" $t -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{/* Append the final metric block after the loop ends. */}}
+  {{- if ne $metricName "" -}}
+    {{- $metrics = $metrics | append (dict
+      "name" $metricName
+      "description" $metricDesc
+      "type" $metricType
+      "labels" $metricLabels
+    ) -}}
+  {{- end -}}
+
+
+  {{/* Display the parsed metrics in a table. */}}
+  <table>
+    <thead><tr><th>Name</th><th>Type</th><th>Description</th><th>Labels</th></tr></thead>
+    <tbody>
+    {{- range $metrics -}}
+    <tr>
+      <td><code>{{ .name }}</code></td>
+      <td>{{ .type }}</td>
+      <td>{{ .description }}</td>
+      <td>{{ if .labels }}<code>{{ .labels }}</code>{{ else }}-{{ end }}</td>
+    </tr>
+    {{- end -}}
+    </tbody>
+  </table>
+</div>
+{{ end }}

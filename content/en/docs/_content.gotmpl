@@ -1,0 +1,19 @@
+{{- /* Generate a rendered page for every metrics txt file. */ -}}
+{{- range readDir "content/en/docs" -}}
+  {{- if and .IsDir (strings.HasPrefix .Name "v3.") -}}
+    {{- $version := .Name -}}
+    {{- $metricsDir := printf "content/en/docs/%s/metrics" $version -}}
+    {{- range readDir $metricsDir -}}
+      {{- if strings.HasSuffix .Name ".txt" -}}
+        {{- $slug := strings.TrimSuffix ".txt" .Name -}}
+        {{- $.AddPage (dict
+          "path" (printf "%s/metrics/%s" $version $slug)
+          "kind" "page"
+          "title" (replaceRE "^etcd-metrics-" "" $slug)
+          "layout" "metrics-entry"
+          "params" (dict "metricsFilePath" (printf "%s/%s" $metricsDir .Name))
+        ) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
