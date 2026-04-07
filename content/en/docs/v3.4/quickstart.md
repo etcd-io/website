@@ -10,8 +10,11 @@ cluster of etcd:
  1. Install etcd from pre-built binaries or from source. For details, see
     [Install][].
 
-    {{% alert color="warning" %}}**Important**: Ensure that you perform the last
+    {{% alert color="warning" %}}
+
+    **Important**: Ensure that you perform the last
     step of the installation instructions to verify that `etcd` is in your path.
+
     {{% /alert %}}
 
  2. Launch `etcd`:
@@ -22,9 +25,13 @@ cluster of etcd:
     ⋮
     ```
 
-    {{% alert color="info" %}}**Note**: The output produced by `etcd` are
+    {{% alert color="info" %}}
+
+    **Note**: The output produced by `etcd` are
     [logs](../op-guide/configuration/#logging-flags) &mdash; info-level logs can
-    be ignored. {{% /alert %}}
+    be ignored.
+
+    {{% /alert %}}
 
  3. From **another terminal**, use `etcdctl` to set a key:
 
