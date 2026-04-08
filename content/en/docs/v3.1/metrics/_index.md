@@ -1,11 +1,11 @@
 ---
 title: Metrics
-weight: 3
+simple_list: true
 ---
 
 etcd uses [Prometheus][prometheus] for metrics reporting. The metrics can be used for real-time monitoring and debugging. etcd does not persist its metrics; if a member restarts, the metrics will be reset.
 
-The simplest way to see the available metrics is to cURL the metrics endpoint `/metrics`. The format is described [here](http://prometheus.io/docs/instrumenting/exposition_formats/).
+The simplest way to see the available metrics is to cURL the metrics endpoint `/metrics`. The format is described [in the Prometheus docs](http://prometheus.io/docs/instrumenting/exposition_formats/).
 
 Follow the [Prometheus getting started doc][prometheus-getting-started] to spin up a Prometheus server to collect etcd metrics.
 
@@ -69,15 +69,15 @@ These metrics describe the status of the network.
 
 All these metrics are prefixed with `etcd_network_`
 
-| Name                      | Description                                                        | Type          |
-|---------------------------|--------------------------------------------------------------------|---------------|
-| peer_sent_bytes_total           | The total number of bytes sent to the peer with ID `To`.         | Counter(To)   |
-| peer_received_bytes_total       | The total number of bytes received from the peer with ID `From`. | Counter(From) |
-| peer_sent_failures_total        | The total number of send failures from the peer with ID `To`.         | Counter(To)   |
+| Name                            | Description                                                        | Type          |
+|---------------------------------|--------------------------------------------------------------------|---------------|
+| peer_sent_bytes_total           | The total number of bytes sent to the peer with ID `To`.           | Counter(To)   |
+| peer_received_bytes_total       | The total number of bytes received from the peer with ID `From`.   | Counter(From) |
+| peer_sent_failures_total        | The total number of send failures from the peer with ID `To`.      | Counter(To)   |
 | peer_received_failures_total    | The total number of receive failures from the peer with ID `From`. | Counter(From) |
-| peer_round_trip_time_seconds    | Round-Trip-Time histogram between peers.                         | Histogram(To) |
-| client_grpc_sent_bytes_total    | The total number of bytes sent to grpc clients.                  | Counter   |
-| client_grpc_received_bytes_total| The total number of bytes received to grpc clients.              | Counter   |
+| peer_round_trip_time_seconds    | Round-Trip-Time histogram between peers.                           | Histogram(To) |
+| client_grpc_sent_bytes_total    | The total number of bytes sent to grpc clients.                    | Counter       |
+| client_grpc_received_bytes_total| The total number of bytes received to grpc clients.                | Counter       |
 
 `peer_sent_bytes_total` counts the total number of bytes sent to a specific peer. Usually the leader member sends more data than other members since it is responsible for transmitting replicated data.
 
@@ -91,18 +91,17 @@ These metrics are exposed via [go-grpc-prometheus][go-grpc-prometheus].
 
 The metrics under the `etcd_debugging` prefix are for debugging. They are very implementation dependent and volatile. They might be changed or removed without any warning in new etcd releases. Some of the metrics might be moved to the `etcd` prefix when they become more stable.
 
-
 ### Snapshot
 
 | Name                                       | Description                                                | Type      |
 |--------------------------------------------|------------------------------------------------------------|-----------|
-| snapshot_save_total_duration_seconds      | The total latency distributions of save called by snapshot | Histogram |
+| snapshot_save_total_duration_seconds       | The total latency distributions of save called by snapshot | Histogram |
 
 Abnormally high snapshot duration (`snapshot_save_total_duration_seconds`) indicates disk issues and might cause the cluster to be unstable.
 
 ## Prometheus supplied metrics
 
-The Prometheus client library provides a number of metrics under the `go` and `process` namespaces. There are a few that are particularly interesting.
+The Prometheus client library provides a number of metrics under the `go` and `process` namespaces. There are a few that are particlarly interesting.
 
 | Name                              | Description                                | Type         |
 |-----------------------------------|--------------------------------------------|--------------|
@@ -113,9 +112,6 @@ Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file 
 
 ## Generated list of metrics
 
-{{< metrics-list >}}
-
-[glossary-proposal]: learning/glossary#proposal
 [go-grpc-prometheus]: https://github.com/grpc-ecosystem/go-grpc-prometheus
 [prometheus]: http://prometheus.io/
 [prometheus-getting-started]: http://prometheus.io/docs/introduction/getting_started/
