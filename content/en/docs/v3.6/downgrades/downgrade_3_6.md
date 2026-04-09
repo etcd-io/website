@@ -20,7 +20,9 @@ Highlighted breaking changes from v3.6 to v3.5:
 If you are using any of the following flags in your v3.6 configurations, make sure to remove, rename, or change the default value when downgrading to v3.5.
 
 {{% alert title="Note" color="info" %}}
+
 The diff is based on version v3.6.0 and v.3.5.18. The actual diff would be dependent on your patch version, check with `diff <(etcd-3.6/bin/etcd -h | grep \\-\\-) <(etcd-3.5/bin/etcd -h | grep \\-\\-)` first.
+
 {{% /alert %}}
 
 ```diff
@@ -223,7 +225,9 @@ COMMENT
 ```
 
 {{% alert title="Note" color="info" %}}
+
 Once downgrade is enabled, the cluster will remain operating with v3.5 protocol even if all the servers are still running the v3.6 binary, unless the downgrade is canceled with `etcdctl downgrade cancel`
+
 {{% /alert %}}
 
 #### Step 5: stop one existing etcd server
@@ -309,7 +313,9 @@ COMMENT
 ```
 
 {{% alert title="Note" color="info" %}}
+
 You will see the `DOWNGRADE ENABLED` is false for the v3.5 server, because the downgrade info is not implemented in v3.5 status endpoint, downgrade is still enabled for the cluster at this point.
+
 {{% /alert %}}
 
 #### Step 7: repeat *step 5* and *step 6* for rest of the members

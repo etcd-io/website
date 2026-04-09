@@ -16,7 +16,9 @@ Before [starting a downgrade](#downgrade-procedure), read through the rest of th
 content/en/docs/v3.5/op-guide/authentication/rbac.md
 
 {{% alert title="Note" color="info" %}}
+
 If your cluster enables auth, rolling downgrade from 3.5 isn't supported because 3.5 [changes a format of WAL entries related to auth](https://github.com/etcd-io/etcd/pull/11943). You can follow the [authentification instructions](../../op-guide/authentication/rbac/) to disable auth, and delete all users first.
+
 {{% /alert %}}
 
 Highlighted breaking changes from 3.5 to 3.4:
@@ -26,7 +28,9 @@ Highlighted breaking changes from 3.5 to 3.4:
 If you are using any of the following flags in your 3.5 configurations, make sure to remove, rename, or change the default value when downgrading to 3.4.
 
 {{% alert title="Note" color="info" %}}
+
 The diff is based on version 3.5.14 and v.3.4.33. The actual diff would be dependent on your patch version, check with `diff <(etcd-3.5/bin/etcd -h | grep \\-\\-) <(etcd-3.4/bin/etcd -h | grep \\-\\-)` first.
+
 {{% /alert %}}
 
 ```diff

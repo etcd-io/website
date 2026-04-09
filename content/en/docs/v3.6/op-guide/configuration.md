@@ -13,11 +13,13 @@ You can configure etcd through the following:
 - **[Configuration file](#configuration-file)**
 
 {{% alert color="warning" %}}
+
 <i class="fas fa-exclamation-triangle mr-1"></i> **Caution**: If you mix-and-match configuration options, then the following
 rules apply.
 
 - Command-line flags take precedence over environment variables.
 - If you provide a _configuration file_ all command-line flags and environment variables are **ignored**.
+
 {{% /alert %}}
 
 ## Command-line flags
@@ -27,10 +29,12 @@ Flags are presented below using the format `--flag-name DEFAULT_VALUE`.
 The list of flags provided below may not be up-to-date due to ongoing development changes. For the latest available flags, run `etcd --help` or refer to the [etcd help][].
 
 {{% alert color="info" %}}
+
   **Note**: For details concerning new, updated, and deprecated {{< param version >}} flags,
   see [CHANGELOG-{{< psubstr version 1 >}}.md][changelog].
   <!-- markdownlint-disable-next-line MD034 -->
   [changelog]: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-{{< psubstr version 1 >}}.md
+
 {{% /alert %}}
 
 ### Member
@@ -219,7 +223,9 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 ```
 
 {{% alert color="info" %}}
+
   **Note**: Several `--experimental-*` flags have been deprecated in v3.6 and are planned to be removed in v3.7. Be sure to refer to their `--feature-gates=*` replacements when upgrading.
+
 {{% /alert %}}
 
 ### Experimental distributed tracing
@@ -240,7 +246,9 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 ### v2 Proxy
 
 {{% alert color="warning" %}}
+
 **<i class="fas fa-exclamation-triangle mr-1"></i> Note**: flags will be deprecated in v3.6.
+
 {{% /alert %}}
 
 ```nocode
@@ -288,7 +296,9 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 ### Unsafe features
 
 {{% alert color="warning" %}}
+
 **<i class="fas fa-exclamation-triangle mr-1"></i> Warning**: using unsafe features may break the guarantees given by the consensus protocol!
+
 {{% /alert %}}
 
 ```nocode

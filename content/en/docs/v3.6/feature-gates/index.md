@@ -103,8 +103,10 @@ A *Beta* feature means:
   discovering new hard-to-spot bugs through wider adoption.
 
 {{% alert title="Note" color="info" %}}
+
 Please do try *Beta* features and give feedback on them!
 After they exit beta, it may not be practical for us to make more changes.
+
 {{% /alert %}}
 
 A *General Availability* (GA) feature is also referred to as a *stable* feature. It means:
