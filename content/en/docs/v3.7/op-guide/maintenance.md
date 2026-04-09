@@ -18,7 +18,7 @@ Higher `--snapshot-count` holds more Raft entries in memory until snapshot, thus
 
 Since v3.2, the default value of `--snapshot-count` has [changed from from 10,000 to 100,000](https://github.com/etcd-io/etcd/pull/7160).
 
-In performance-wise, `--snapshot-count` greater than 100,000 may impact the write throughput. Higher number of in-memory objects can slow down [Go GC mark phase `runtime.scanobject`](https://golang.org/src/runtime/mgc.go), and infrequent memory reclamation makes allocation slow. Performance varies depending on the workloads and system environments. However, in general, too frequent compaction affects cluster availabilities and write throughputs. Too infrequent compaction is also harmful placing too much pressure on Go garbage collector. See https://www.slideshare.net/mitakeh/understanding-performance-aspects-of-etcd-and-raft for more research results.
+In performance-wise, `--snapshot-count` greater than 100,000 may impact the write throughput. Higher number of in-memory objects can slow down [Go GC mark phase `runtime.scanobject`](https://golang.org/src/runtime/mgc.go), and infrequent memory reclamation makes allocation slow. Performance varies depending on the workloads and system environments. However, in general, too frequent compaction affects cluster availabilities and write throughputs. Too infrequent compaction is also harmful placing too much pressure on Go garbage collector. See [Understanding Performance Aspects of etcd and Raft](https://www.slideshare.net/mitakeh/understanding-performance-aspects-of-etcd-and-raft) for more research results.
 
 ## History compaction: v3 API Key-Value Database
 
@@ -42,23 +42,25 @@ Error:  rpc error: code = 11 desc = etcdserver: mvcc: required revision has been
 
 ### Auto Compaction
 
-`etcd` can be set to automatically compact the keyspace with the `--auto-compaction-*` option with a period of hours:
+`etcd` can be set to automatically compact the keyspace with the `--auto-compaction-mode` and `--auto-compaction-retention` options. There are two compaction modes: `periodic` (default) and `revision`.
+
+#### Periodic compaction
+
+Periodic compaction retains a time-based window of keyspace history:
 
 ```sh
 # keep one hour of history
-$ etcd --auto-compaction-retention=1
+$ etcd --auto-compaction-retention=1h
 ```
 
-[v3.0.0](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.0.md) and [v3.1.0](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.1.md) with `--auto-compaction-retention=10` run periodic compaction on v3 key-value store for every 10-hour. Compactor only supports periodic compaction. Compactor records latest revisions every 5-minute, until it reaches the first compaction period (e.g. 10-hour). In order to retain key-value history of last compaction period, it uses the last revision that was fetched before compaction period, from the revision records that were collected every 5-minute. When `--auto-compaction-retention=10`, compactor uses revision 100 for compact revision where revision 100 is the latest revision fetched from 10 hours ago. If compaction succeeds or requested revision has already been compacted, it resets period timer and starts over with new historical revision records (e.g. restart revision collect and compact for the next 10-hour period). If compaction fails, it retries in 5 minutes.
+The retention value specifies how much history to keep. A record will not be compacted until approximately that duration after it was created. This ensures that slow watchers can still catch up within the retention window.
 
-[v3.2.0](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.2.md) compactor runs [every hour](https://github.com/etcd-io/etcd/pull/7875). Compactor only supports periodic compaction. Compactor continues to record latest revisions every 5-minute. For every hour, it uses the last revision that was fetched before compaction period, from the revision records that were collected every 5-minute. That is, for every hour, compactor discards historical data created before compaction period. The retention window of compaction period moves to next hour. For instance, when hourly writes are 100 and `--auto-compaction-retention=10`, v3.1 compacts revision 1000, 2000, and 3000 for every 10-hour, while v3.2.x, v3.3.0, v3.3.1, and v3.3.2 compact revision 1000, 1100, and 1200 for every 1-hour. If compaction succeeds or requested revision has already been compacted, it resets period timer and removes used compacted revision from historical revision records (e.g. start next revision collect and compaction from previously collected revisions). If compaction fails, it retries in 5 minutes.
+When the retention period is greater than 1 hour, etcd compacts every hour while maintaining the full retention window. When the retention period is 1 hour or less, etcd compacts at the retention period interval.
 
-In [v3.3.0](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.3.md), [v3.3.1](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.3.md), and [v3.3.2](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.3.md), `--auto-compaction-mode=revision --auto-compaction-retention=1000` automatically `Compact` on `"latest revision" - 1000` every 5-minute (when latest revision is 30000, compact on revision 29000). For instance, `--auto-compaction-mode=periodic --auto-compaction-retention=72h` automatically `Compact` with 72-hour retention window, for every 7.2-hour. For instance, `--auto-compaction-mode=periodic --auto-compaction-retention=30m` automatically `Compact` with 30-minute retention window, for every 3-minute. Periodic compactor continues to record latest revisions for every 1/10 of given compaction period (e.g. 1-hour when `--auto-compaction-mode=periodic --auto-compaction-retention=10h`). For every 1/10 of given compaction period, compactor uses the last revision that was fetched before compaction period, to discard historical data. The retention window of compaction period moves for every 1/10 of given compaction period. For instance, when hourly writes are 100 and `--auto-compaction-retention=10`, v3.1 compacts revision 1000, 2000, and 3000 for every 10-hour, while v3.2.x, v3.3.0, v3.3.1, and v3.3.2 compact revision 1000, 1100, and 1200 for every 1-hour. Furthermore, when writes per minute are 1000, v3.3.0, v3.3.1, and v3.3.2 with `--auto-compaction-mode=periodic --auto-compaction-retention=30m` compact revision 30000, 33000, and 36000, for every 3-minute with more finer granularity.
+For example, with `--auto-compaction-retention=10h`, etcd waits 10 hours for the first compaction, then compacts every hour afterwards:
 
-When `--auto-compaction-retention=10h`, etcd first waits 10-hour for the first compaction, and then does compaction every hour (1/10 of 10-hour) afterwards like this:
-
-```
-0Hr  (rev = 1)
+```text
+0hr  (rev = 1)
 1hr  (rev = 10)
 ...
 8hr  (rev = 80)
@@ -68,9 +70,22 @@ When `--auto-compaction-retention=10h`, etcd first waits 10-hour for the first c
 ...
 ```
 
-Whether compaction succeeds or not, this process repeats for every 1/10 of given compaction period. If compaction succeeds, it just removes compacted revision from historical revision records.
+Recommended values depend on the use case:
 
-In [v3.3.3](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.3.md), `--auto-compaction-mode=revision --auto-compaction-retention=1000` automatically `Compact` on `"latest revision" - 1000` every 5-minute (when latest revision is 30000, compact on revision 29000). Previously, `--auto-compaction-mode=periodic --auto-compaction-retention=72h` automatically `Compact` with 72-hour retention window for every 7.2-hour.  **Now, `Compact` happens, for every 1-hour but still with 72-hour retention window.** Previously, `--auto-compaction-mode=periodic --auto-compaction-retention=30m` automatically `Compact` with 30-minute retention window for every 3-minute. **Now, `Compact` happens, for every 30-minute but still with 30-minute retention window.** Periodic compactor keeps recording latest revisions for every compaction period when given period is less than 1-hour, or for every 1-hour when given compaction period is greater than 1-hour (e.g. 1-hour when `--auto-compaction-mode=periodic --auto-compaction-retention=24h`). For every compaction period or 1-hour, compactor uses the last revision that was fetched before compaction period, to discard historical data. The retention window of compaction period moves for every given compaction period or hour. For instance, when hourly writes are 100 and `--auto-compaction-mode=periodic --auto-compaction-retention=24h`, `v3.2.x`, `v3.3.0`, `v3.3.1`, and `v3.3.2` compact revision 2400, 2640, and 2880 for every 2.4-hour, while `v3.3.3` *or later* compacts revision 2400, 2500, 2600 for every 1-hour. Furthermore, when `--auto-compaction-mode=periodic --auto-compaction-retention=30m` and writes per minute are about 1000, `v3.3.0`, `v3.3.1`, and `v3.3.2` compact revision 30000, 33000, and 36000, for every 3-minute, while `v3.3.3` *or later* compacts revision 30000, 60000, and 90000, for every 30-minute.
+- Frequent updates to the same keys: a short period such as `1h` or `30m`
+- Infrequent updates: a longer period such as `24h`, `48h`, or `72h`
+- General-purpose default: `10h`
+
+#### Revision compaction
+
+Revision compaction retains a fixed number of revisions:
+
+```sh
+# keep 1000 revisions
+$ etcd --auto-compaction-mode=revision --auto-compaction-retention=1000
+```
+
+etcd checks every 5 minutes and compacts on `"latest revision" - 1000`. For example, when the latest revision is 30000, it compacts on revision 29000.
 
 ## Defragmentation
 
@@ -100,8 +115,8 @@ Finished defragmenting etcd member[http://127.0.0.1:32379]
 
 To defragment an etcd data directory directly, while etcd is not running, use the command:
 
-``` sh
-$ etcdutl defrag --data-dir <path-to-etcd-data-dir>
+```sh
+etcdutl defrag --data-dir <path-to-etcd-data-dir>
 ```
 
 ## Space quota
