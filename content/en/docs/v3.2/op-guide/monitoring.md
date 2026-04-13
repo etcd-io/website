@@ -101,7 +101,9 @@ Now Prometheus will scrape etcd metrics every 10 seconds.
 
 There is a [set of default alerts for etcd v3 clusters](../etcd3_alert.rules).
 
-> Note: `job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.
+{{% alert title="Note" color="info" %}}
+`job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.
+{{% /alert %}}
 
 ## Grafana
 

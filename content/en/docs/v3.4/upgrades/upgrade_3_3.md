@@ -12,7 +12,9 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 ### Upgrade checklists
 
-**NOTE:** When [migrating from v2 with no v3 data](https://github.com/etcd-io/etcd/issues/9480), etcd server v3.2+ panics when etcd restores from existing snapshots but no v3 `ETCD_DATA_DIR/member/snap/db` file. This happens when the server had migrated from v2 with no previous v3 data. This also prevents accidental v3 data loss (e.g. `db` file might have been moved). etcd requires that post v3 migration can only happen with v3 data. Do not upgrade to newer v3 versions until v3.0 server contains v3 data.
+{{% alert title="Note" color="warning" %}}
+When [migrating from v2 with no v3 data](https://github.com/etcd-io/etcd/issues/9480), etcd server v3.2+ panics when etcd restores from existing snapshots but no v3 `ETCD_DATA_DIR/member/snap/db` file. This happens when the server had migrated from v2 with no previous v3 data. This also prevents accidental v3 data loss (e.g. `db` file might have been moved). etcd requires that post v3 migration can only happen with v3 data. Do not upgrade to newer v3 versions until v3.0 server contains v3 data.
+{{% /alert %}}
 
 Highlighted breaking changes in 3.3.
 
@@ -61,7 +63,9 @@ func (e *EtcdServer) Start() error {
 
 #### Added `embed.Config.LogOutput` struct
 
-**Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](../upgrade_3_4/) for more details.**
+{{% alert title="Note" color="warning" %}}
+Note that this field has been renamed to `embed.Config.LogOutputs` in `[]string` type in v3.4. Please see [v3.4 upgrade guide](../upgrade_3_4/) for more details.
+{{% /alert %}}
 
 Field `LogOutput` is added to `embed.Config`:
 
@@ -84,7 +88,9 @@ WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create clie
 
 From v3.3, gRPC server logs are disabled by default.
 
-**Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/v3.4/upgrades/upgrade_3_4/) for more details.**
+{{% alert title="Note" color="warning" %}}
+Note that `embed.Config.SetupLogging` method has been deprecated in v3.4. Please see [v3.4 upgrade guide](/docs/v3.4/upgrades/upgrade_3_4/) for more details.
+{{% /alert %}}
 
 ```go
 import "github.com/coreos/etcd/embed"

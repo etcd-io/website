@@ -74,7 +74,9 @@ The auth info in `etcdserverpb.RequestHeader` is checked in the apply phase of t
 
 There are two kinds of token types: simple and JWT. The simple token isn't designed for production use cases. Its tokens aren't cryptographically signed and servers must statefully track token-user correspondence; it is meant for development testing.  JWT tokens should be used for production deployments since it is cryptographically signed and verified. From the implementation perspective, JWT is stateless. Its token can include metadata including username and revision, so servers don't need to remember correspondence between tokens and the metadata.
 
-**Note :** There is a known issue [#18437](https://github.com/etcd-io/etcd/issues/18437) with simple tokens. Within etcd servers, tokens are resolved at the API layer and simple tokens are stateful. The process is not protected by a linearizable check, meaning an etcd member may not have completed processing a previous authentication request before receiving the next one. In such cases, the member might return an "invalid auth token" error to the client. This issue is usually rare on a node with good network conditions but can occur if there is significant latency. As a workaround, applications can implement a retry mechanism to handle this error.
+{{% alert title="Note" color="warning" %}}
+There is a known issue [#18437](https://github.com/etcd-io/etcd/issues/18437) with simple tokens. Within etcd servers, tokens are resolved at the API layer and simple tokens are stateful. The process is not protected by a linearizable check, meaning an etcd member may not have completed processing a previous authentication request before receiving the next one. In such cases, the member might return an "invalid auth token" error to the client. This issue is usually rare on a node with good network conditions but can occur if there is significant latency. As a workaround, applications can implement a retry mechanism to handle this error.
+{{% /alert %}}
 
 ## Notes on the difference between KVS models and file system models
 
