@@ -187,6 +187,10 @@ $ etcdctl user add myusername --no-password
 
 Such a user can only be [authenticated with TLS Common Name](#using-tls-common-name).
 
+{{% alert title="Note" %}}
+etcd does not support authentication with an empty password via `--user username:`. For example, a user created with an empty password, such as `etcdctl user add anonymous:''`, cannot authenticate through username/password requests and requests such as `etcdctl --user anonymous: get foo` fail with `user name is empty`.
+{{% /alert %}}
+
 Otherwise, all `etcdctl` commands remain the same. Users and roles can still be created and modified, but require authentication by a user with the root role.
 
 ## Using TLS Common Name
