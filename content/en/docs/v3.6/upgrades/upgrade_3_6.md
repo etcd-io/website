@@ -21,19 +21,19 @@ Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 
 
 #### V2 Store
 
-**NOTE:** If the `--enable-v2` flag is not configured or is set to false, no further action is required.
-
-If `--enable-v2` or the environment variable `ETCD_ENABLE_V2="true"` **is** configured, additional steps are required to handle the v2store data:
+{{% alert title="Important" color="warning" %}}
+Is it possible that custom data exists in v2store despite v2store not being enabled. Before upgrading to 3.6, make sure that you run the `etcdutl check v2store` utility as it prevent 3.6 running.
+{{% /alert %}}
 
 1. If there is data in the v2store that needs to be migrated to the v3store, follow the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) to migrate the data.
 
-2. Remove the `--enable-v2` flag and the `ETCD_ENABLE_V2="true"` environment variable.
+2. Remove the `--enable-v2` flag and the `ETCD_ENABLE_V2="true"` environment variable if present.
 
 3. Run the command `etcdutl check v2store` to verify whether the v2store contains any non-membership (custom) data. If no custom data is present, no further action is required.
 
 4. If custom data is detected in the v2store, apply the following workaround to remove the legacy data:
 
-    - Add the flag `--snapshot-count=1` to each etcd instnace that contains custom data in the v2store.
+    - Add the flag `--snapshot-count=1` to each etcd instance that contains custom data in the v2store.
     - Restart the etcd instances.
     - Remove the `--snapshot-count=1` flag from (or restore to its original value, if applicable) from all etcd instances.
     - Restart the etcd instances again.
