@@ -358,8 +358,9 @@ For example, to set a 10-minute watch progress notify interval in a config file:
 watch-progress-notify-interval: 600000000000
 
 # Incorrect: will produce an unmarshal error
-# watch-progress-notify-interval: '10m'
+watch-progress-notify-interval: '10m'
 ```
+
 {{% /alert %}}
 
 [etcd help]: https://github.com/etcd-io/etcd/blob/main/server/etcdmain/help.go
