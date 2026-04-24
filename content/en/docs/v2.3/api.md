@@ -340,7 +340,9 @@ curl 'http://127.0.0.1:2379/v2/keys/foo?wait=true&waitIndex=8'
 Then even if etcd is on index 9 or 800, the first event to occur to the `/foo`
 key between 8 and the current index will be returned.
 
-**Note**: etcd only keeps the responses of the most recent 1000 events across all etcd keys.
+{{% alert title="Note" color="info" %}}
+etcd only keeps the responses of the most recent 1000 events across all etcd keys.
+{{% /alert %}}
 It is recommended to send the response to another thread to process immediately
 instead of blocking the watch while processing the result.
 
