@@ -31,3 +31,21 @@ endif
 .PHONY: markdown-diff-lint
 markdown-diff-lint:
 	./scripts/markdown_diff_lint.sh
+
+METRICS_DOCS_TAG_ARG=$(if $(TAG),--tag "$(TAG)",)
+
+.PHONY: update-metrics-docs
+update-metrics-docs:
+ifndef VERSION
+	@echo "VERSION needs to be specified (e.g. VERSION=v3.6 TAG=v3.6.0)" && exit 1
+else
+	bash ./scripts/update-metrics-docs.sh --version "$(VERSION)" $(METRICS_DOCS_TAG_ARG)
+endif
+
+.PHONY: verify-metrics-docs
+verify-metrics-docs:
+ifndef VERSION
+	@echo "VERSION needs to be specified (e.g. VERSION=v3.6 TAG=v3.6.0)" && exit 1
+else
+	bash ./scripts/update-metrics-docs.sh --verify --version "$(VERSION)" $(METRICS_DOCS_TAG_ARG)
+endif
