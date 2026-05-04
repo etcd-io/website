@@ -1,7 +1,7 @@
 ---
 title: May 1 Security Release Patches RBAC Bypass in Transactions
 author: SIG-etcd Security Team
-date: 2026-05-02
+date: 2026-05-04
 ---
 
 SIG-etcd released updates [v3.6.11](https://github.com/etcd-io/etcd/releases/tag/v3.6.11), [v3.5.30](https://github.com/etcd-io/etcd/releases/tag/v3.5.30), and [v3.4.44](https://github.com/etcd-io/etcd/releases/tag/v3.4.44) today. These patch releases fix a vulnerability that allows an authenticated user to bypass RBAC authorization checks when reading data via `PrevKv` or attaching leases inside `Put` requests nested in etcd transactions.
