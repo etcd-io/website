@@ -167,6 +167,36 @@ message RangeResponse {
 * More - indicates if there are more keys to return in the requested range if `limit` is set.
 * Count - the total number of keys satisfying the range request.
 
+For large key ranges where buffering the full response is undesirable, see [RangeStream](#rangestream).
+
+### RangeStream
+
+`RangeStream` returns the same result set as `Range`, but the server splits the response into a sequence of chunks and streams them to the client. This avoids buffering large ranges entirely in memory on either side. `RangeStream` accepts the same `RangeRequest` as `Range`.
+
+The client receives a stream of `RangeStreamResponse` messages from the `RangeStream` call:
+
+```protobuf
+message RangeStreamResponse {
+  RangeResponse range_response = 1;
+}
+```
+
+Field population across chunks:
+
+* Kvs - each chunk carries a disjoint slice of the result. Concatenating the `kvs` from every chunk in the order they arrive yields the same key set as a single `Range` call.
+* Header, More, Count - populated only on the final chunk, and only when the stream completes without error. Earlier chunks leave these fields zero-valued. Applying `proto.Merge` over every chunk's `range_response` yields a `RangeResponse` equivalent to what `Range` would have returned.
+
+If the stream ends in error, no chunk carries a valid `header`, `more`, or `count`.
+
+Every chunk in the stream is served against the same revision. If the request does not set `Revision`, the server captures the latest committed revision when the stream starts and reuses it for the rest of the stream.
+
+`RangeStream` does not support custom sort orders or revision filters (`min_mod_revision`, `max_mod_revision`, `min_create_revision`, `max_create_revision`). Requests that use either return `Unimplemented`. `RangeStream` is also not supported by the etcd gRPC proxy.
+
+There are two common ways to consume a `RangeStream`:
+
+1. **Process each chunk independently.** Suitable for high-performance scenarios where the client wants to decode and act on keys as they arrive rather than collecting the whole result first. The client iterates chunks and handles `kvs` from each one, then reads `header`, `more`, or `count` from the last chunk after the stream ends cleanly.
+2. **Assemble a single response.** Suitable when the client wants a result equivalent to a unary `Range`. The client merges every chunk's `range_response` into one `RangeResponse` (e.g., via `proto.Merge`). The merged result has the full `kvs`, plus `header`, `more`, and `count` from the final chunk. The Go client provides `clientv3.GetStreamToGetResponse` as a helper for this pattern.
+
 ### Put
 
 Keys are saved into the key-value store by issuing a `Put` call, which takes a `PutRequest`:
