@@ -16,9 +16,9 @@ Users depending on etcd Auth in this way should update their clusters immediatel
 
 More information on the vulnerability:
 
-* [RBAC authorization bypass in etcd allows unauthorized data access via PrevKv or lease attachment in Put requests nested in transactions](https://github.com/etcd-io/etcd/security/advisories/GHSA-x35m-3gp4-4fh5)
+* CVE-2026-44283: [RBAC authorization bypass in etcd allows unauthorized data access via PrevKv or lease attachment in Put requests nested in transactions](https://github.com/etcd-io/etcd/security/advisories/GHSA-x35m-3gp4-4fh5)
 
-This issue has been rated `Low`, with CVSS `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N`.  We are awaiting a CVE ID for it and will update the release information when we have one.
+This issue has been rated `Low`, with CVSS `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N`.
 
 ## Workarounds
 
