@@ -110,7 +110,9 @@ The Prometheus client library provides a number of metrics under the `go` and `p
 | process_open_fds                  | Number of open file descriptors.           | Gauge        |
 | process_max_fds                   | Maximum number of open file descriptors.   | Gauge        |
 
-**Note**: The process metrics, such as `process_open_fds` and `process_max_fds`, are not supported on Darwin (macOS) systems at this time.
+{{% alert title="Note" color="info" %}}
+The process metrics, such as `process_open_fds` and `process_max_fds`, are not supported on Darwin (macOS) systems at this time.
+{{% /alert %}}
 
 Heavy file descriptor (`process_open_fds`) usage (i.e., near the process's file descriptor limit, `process_max_fds`) indicates a potential file descriptor exhaustion issue. If the file descriptors are exhausted, etcd may panic because it cannot create new WAL files.
 

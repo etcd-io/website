@@ -276,7 +276,9 @@ You will get an output similar to:
 ca7a7d6fe0984fd9, started, etcd-node-3, http://ip_address_etcd_node_3:2380, http://ip_address_etcd_node_3:2379, false
 ```
 
-> Save the **member IDs** and corresponding **IP addresses** — you'll need them to update peer URLs.
+{{% alert title="Note" color="info" %}}
+Save the **member IDs** and corresponding **IP addresses** — you'll need them to update peer URLs.
+{{% /alert %}}
 
 ---
 

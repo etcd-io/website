@@ -21,7 +21,9 @@ Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 
 
 #### V2 Store
 
-**NOTE:** If the `--enable-v2` flag is not configured or is set to false, no further action is required.
+{{% alert title="Note" color="info" %}}
+If the `--enable-v2` flag is not configured or is set to false, no further action is required.
+{{% /alert %}}
 
 If `--enable-v2` or the environment variable `ETCD_ENABLE_V2="true"` **is** configured, additional steps are required to handle the v2store data:
 

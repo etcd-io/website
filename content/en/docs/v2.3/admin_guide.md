@@ -220,7 +220,9 @@ To recover from such scenarios, etcd provides functionality to backup and restor
 
 #### Backing up the datastore
 
-**Note:** Windows users must stop etcd before running the backup command.
+{{% alert title="Note" color="warning" %}}
+Windows users must stop etcd before running the backup command.
+{{% /alert %}}
 
 The first step of the recovery is to backup the data directory and wal directory, if stored separately, on a functioning etcd node. To do this, use the `etcdctl backup` command, passing in the original data (and wal) directory used by etcd. For example:
 
@@ -268,7 +270,9 @@ Now that the node is running successfully, [change its advertised peer URLs][upd
 
 You can then add more nodes to the cluster and restore resiliency. See the [add a new member][add-a-member] guide for more details.
 
-**Note:** If you are trying to restore your cluster using old failed etcd nodes, please make sure you have stopped old etcd instances and removed their old data directories specified by the data-dir configuration parameter.
+{{% alert title="Note" color="warning" %}}
+If you are trying to restore your cluster using old failed etcd nodes, please make sure you have stopped old etcd instances and removed their old data directories specified by the data-dir configuration parameter.
+{{% /alert %}}
 
 ### Client Request Timeout
 
@@ -278,7 +282,9 @@ etcd sets different timeouts for various types of client requests. The timeout v
 
 Timeout is not set for get requests, because etcd serves the result locally in a non-blocking way.
 
-**Note**: QuorumGet request is a different type, which is mentioned in the following sections.
+{{% alert title="Note" color="info" %}}
+QuorumGet request is a different type, which is mentioned in the following sections.
+{{% /alert %}}
 
 #### Watch requests
 

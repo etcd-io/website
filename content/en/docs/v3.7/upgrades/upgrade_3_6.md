@@ -21,7 +21,9 @@ Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 
 
 #### V2 Store
 
-**NOTE:** If the `--enable-v2` flag is not configured or is set to false, no further action is required.
+{{% alert title="Note" color="info" %}}
+If the `--enable-v2` flag is not configured or is set to false, no further action is required.
+{{% /alert %}}
 
 If `--enable-v2` **is** configured, run the command `etcdutl check v2store` to verify whether the v2store contains any non-membership (custom) data. If no custom data is present, the flag can be safely removed. Otherwise, refer to the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) for more details.
 
