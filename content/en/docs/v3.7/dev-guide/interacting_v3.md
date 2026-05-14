@@ -127,6 +127,22 @@ foo1
 bar1
 ```
 
+Here is the command to range over all keys prefixed with `foo` using the [`RangeStream`](../../learning/api/#rangestream) RPC. The result is identical to a unary `Range`:
+
+```bash
+$ etcdctl get --stream --prefix foo
+foo
+bar
+foo1
+bar1
+foo2
+bar2
+foo3
+bar3
+```
+
+`--stream` does not support `--order`, `--sort-by`, or revision filters.
+
 ## Read past version of keys
 
 Applications may want to read superseded versions of a key. For example, an application may wish to roll back to an old configuration by accessing an earlier version of a key. Alternatively, an application may want a consistent view over multiple keys through multiple requests by accessing key history.
