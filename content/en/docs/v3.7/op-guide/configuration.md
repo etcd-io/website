@@ -340,6 +340,29 @@ In order to use this file, specify the file path as a value to the `--config-fil
 
 For an example, see the [etcd.conf.yml sample][].
 
+{{% alert title="Note" color="info" %}}
+Duration fields such as `--grpc-keepalive-min-time`, `--grpc-keepalive-interval`,
+`--grpc-keepalive-timeout`, `--backend-batch-interval`, `--corrupt-check-time`,
+`--compact-hash-check-time`, `--compaction-sleep-interval`,
+`--watch-progress-notify-interval`, `--warning-apply-duration`,
+`--warning-unary-request-duration`, and `--downgrade-check-time` accept
+human-readable strings (e.g. `10m`, `5s`) when passed as command-line flags, but
+in a configuration file they only accept **integer values representing
+nanoseconds**. This is a [known Go standard library limitation](https://github.com/golang/go/issues/10275)
+where `time.Duration` is unmarshaled as a plain integer.
+
+For example, to set a 10-minute watch progress notify interval in a config file:
+
+```yaml
+# Correct: 10 minutes in nanoseconds
+watch-progress-notify-interval: 600000000000
+
+# Incorrect: will produce an unmarshal error
+watch-progress-notify-interval: '10m'
+```
+
+{{% /alert %}}
+
 [etcd help]: https://github.com/etcd-io/etcd/blob/main/server/etcdmain/help.go
 [etcd.conf.yml sample]: https://github.com/etcd-io/etcd/blob/main/etcd.conf.yml.sample
 [snake case]: https://en.wikipedia.org/wiki/Snake_case
