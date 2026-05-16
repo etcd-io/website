@@ -52,6 +52,33 @@ If either a client-to-server or peer certificate is supplied the key must also b
 
 `--tls-max-version=<version>` Sets the maximum TLS version supported by etcd. If not set the maximum version supported by Go will be used.
 
+### TLS certificate keyUsage and extendedKeyUsage
+
+When generating X.509 certificates for securing etcd transport,
+certificates should include appropriate `keyUsage` and
+`extendedKeyUsage` fields depending on their role. etcd relies on Go’s
+`crypto/tls` and `crypto/x509` libraries for certificate verification,
+which enforce these usages during the TLS handshake.
+
+The following table summarizes the recommended usages for common certificate roles:
+
+| Certificate role | keyUsage | extendedKeyUsage |
+| ---------------- | -------- | ---------------- |
+| Certificate Authority (CA) | keyCertSign, cRLSign | *(none)* |
+| Server (client-to-server) | digitalSignature, keyEncipherment | serverAuth |
+| Client | digitalSignature, keyEncipherment | clientAuth |
+| Peer (inter-member) | digitalSignature, keyEncipherment | serverAuth, clientAuth |
+
+Notes:
+
+- Peer certificates are used for **mutual TLS** between etcd members and
+  therefore require both `serverAuth` and `clientAuth`.
+- Client certificates used with `--client-cert-auth` must include
+  `clientAuth`, otherwise the TLS handshake will fail.
+- Server and peer certificates should include appropriate Subject
+  Alternative Names (SANs), as Common Name (CN) based validation is no
+  longer sufficient.
+
 ## Example 1: Client-to-server transport security with HTTPS
 
 For this, have a CA certificate (`ca.crt`) and signed key pair (`server.crt`, `server.key`) ready.
