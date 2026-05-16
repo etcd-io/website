@@ -83,6 +83,51 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --socket-reuse-address 'false'
   Enable to set socket option SO_REUSEADDR on listeners allowing binding to an address in TIME_WAIT state.
 ```
+### Raft connection flags
+
+```nocode
+--max-snapshots '5'
+  Maximum number of snapshot files to retain (0 is unlimited).
+--max-wals '5'
+  Maximum number of wal files to retain (0 is unlimited).
+--snapshot-count '100000'
+  Number of committed transactions to trigger a snapshot.
+--heartbeat-interval '100'
+  Time (in milliseconds) of a heartbeat interval.
+--election-timeout '1000'
+  Time (in milliseconds) for an election to timeout.
+--initial-election-tick-advance 'true'
+  Whether to fast-forward initial election ticks on boot for faster election.
+--quota-backend-bytes '0'
+  Sets the maximum size (in bytes) that the etcd backend database may consume. Exceeding this triggers an alarm and puts etcd in read-only mode. Set to 0 to use the default 2GiB limit.
+--backend-bbolt-freelist-type 'map'
+  BackendFreelistType specifies the type of freelist that boltdb backend uses (array and map are supported types).
+--backend-batch-interval '0'
+  BackendBatchInterval is the maximum time before commit the backend transaction.
+--backend-batch-limit '0'
+  BackendBatchLimit is the maximum operations before commit the backend transaction.
+--max-txn-ops '128'
+  Maximum number of operations permitted in a transaction.
+--max-request-bytes '1572864'
+  Maximum client request size in bytes the server will accept.
+--grpc-keepalive-min-time '5s'
+  Minimum interval duration that a client should wait before pinging server.
+--grpc-keepalive-interval '2h'
+  Frequency duration of server-to-client ping to check if a connection is alive (0 to disable).
+--grpc-keepalive-timeout '20s'
+  Additional duration of wait before closing a non-responsive connection (0 to disable).
+--socket-reuse-port 'false'
+  Enable to set socket option SO_REUSEPORT on listeners allowing rebinding of a port already in use.
+--socket-reuse-address 'false'
+  Enable to set socket option SO_REUSEADDR on listeners allowing binding to an address in TIME_WAIT state.
+--max-concurrent-streams 'math.MaxUint32'
+  Maximum concurrent streams that each client can open at a time.
+--raft-read-timeout '5s'
+  Read timeout set on each rafthttp connection.
+--raft-write-timeout '5s'
+  Write timeout set on each rafthttp connection.
+  ```
+
 ### Clustering
 
 ```nocode
@@ -196,7 +241,7 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
 --listen-metrics-urls ''
   List of URLs to listen on for the metrics and health endpoints.
 ```
-### Logging
+ ### Logging flags {#logging}
 
 ```nocode
 --logger 'zap'
