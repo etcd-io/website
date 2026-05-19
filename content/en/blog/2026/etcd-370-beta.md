@@ -5,11 +5,13 @@ date: 2026-05-19
 draft: false
 ---
 
-SIG-Etcd announces the availability of the first beta release of etcd v3.7.0.  This new version of the popular distributed database and key Kubernetes component includes the long-requested RangeStream feature, as well as a refactoring and cleanup of multiple legacy components and interfaces.  v3.7 will deliver improved security, better operational reliability, and an improved experience for working with large resultsets.
+SIG-Etcd announces the availability of the [first beta release of etcd v3.7.0](https://github.com/etcd-io/etcd/releases/tag/v3.7.0-beta.0).  This new version of the popular distributed database and key Kubernetes component includes the long-requested RangeStream feature, as well as a refactoring and cleanup of multiple legacy components and interfaces.  v3.7 will deliver improved security, better operational reliability, and an improved experience for working with large resultsets.
 
 First, however, the project needs users to test the beta.  You can find v3.7.0-beta.0 here:
 
-* links to ways to get beta0
+* [Source code](https://github.com/etcd-io/etcd/archive/refs/tags/v3.7.0-beta.0.tar.gz)
+* [Binaries](https://github.com/etcd-io/etcd/releases/download/v3.7.0-beta.0/etcd-v3.7.0-beta.0-linux-arm64.tar.gz)
+* [Official container images](https://console.cloud.google.com/artifacts/docker/etcd-development/us/gcr.io/etcd/sha256:b121286da5bfd4de3596e436e449da44e5a31314a6eb19780a6fc477410c8dfa)
 
 Please try it out and report issues [in the etcd repo](https://github.com/etcd-io/etcd/issues).
 
@@ -19,7 +21,7 @@ This beta also determines the EOL of version 3.4.
 
 In etcd v3.6 and earlier, it is challenging to work with requests that return large resultsets.  The client or requesting application is forced to wait for the full result set, leading to unpredictable latency and memory usage.  [The RangeStream RPC](https://github.com/kubernetes/enhancements/tree/master/keps/sig-etcd/5966-etcd-range-stream) lets calling applications accept result sets in chunks, reducing latency and making buffering memory usage more predictable.
 
-Much of the work on RangeStream was done by a relatively new contributor to etcd, Jeffrey Ying, a software engineer at Google.  New contributors can have a substantial impact on etcd development.
+Much of the work on RangeStream was done by a relatively new contributor to etcd, [Jeffrey Ying](https://github.com/jefftree), a software engineer at Google.  New contributors can have a substantial impact on etcd development.
 
 "I've always been fascinated by database internals, and building RangeStream was a great opportunity to solve a bottleneck we were hitting in production with Kubernetes. It was the perfect opportunity to collaborate across projects and improve the ecosystem as a whole. Jumping into etcd as a new contributor had a bit of a learning curve, but the community is incredibly welcoming. The leads were very receptive to my ideas and helped me iterate quickly while maintaining the project's high bar for reliability and code quality." said Jeffrey.
 
@@ -31,19 +33,17 @@ The last vestiges of etcd v2store have been removed in v3.7, making this the fir
 
 All of these changes may create some breakage for users, particularly those who have not already updated to v3.6.11. We are interested in hearing about blockers encountered by users and dependent applications; please report anything you find that can't be remedied or needs better upgrade documentation.
 
-etcd 3.7.0 beta0 also includes [bbolt v1.5.0](https://github.com/etcd-io/bbolt/issues/1190) and [raft v3.7.0](https://github.com/etcd-io/raft/issues/409).
+etcd v3.7.0-beta.0 also includes [bbolt v1.5.0](https://github.com/etcd-io/bbolt/issues/1190) and [raft v3.7.0](https://github.com/etcd-io/raft/issues/409).
 
 ## 3.4 EOL
 
 According to our community [support policy](https://etcd.io/docs/v3.7/op-guide/versioning/), we typically maintain only the latest two minor versions, currently v3.6 and v3.5. Etcd v3.5 will be supported for 1 year after v3.7.0 final release.
 
-As mentioned in [extended support for v3.4] (https://etcd.io/blog/2025/announcing-etcd-3.6/#extended-support-for-v34) when etcd v3.6.0 being released, etcd v3.4 has been EOL since May 15, 2026. SIG-etcd may release one more security patch for that version at the end of May, if warranted by patched vulnerabilities. In any case, it will cease being updated after the end of May. Users on v3.4 should be planning [to upgrade their clusters](https://etcd.io/docs/v3.6/upgrades/upgrade_3_5/)
-
-etcd v3.5 will be supported for one year after v3.7.0 final release.
+As mentioned in [extended support for v3.4](https://etcd.io/blog/2025/announcing-etcd-3.6/#extended-support-for-v34) when etcd v3.6.0 being released, etcd v3.4 has been EOL since May 15, 2026. SIG-etcd may release one more security patch for that version at the end of May, if warranted by patched vulnerabilities. In any case, it will cease being updated after the end of May. Users on v3.4 should be planning [to upgrade their clusters](https://etcd.io/docs/v3.6/upgrades/upgrade_3_5/).
 
 ## Feedback and Future Betas
 
-Reach the etcd contributors with your feedback about 3.7.0 beta0 in any of the following places:
+Reach the etcd contributors with your feedback about v3.7.0-beta.0 in any of the following places:
 
 * [Github issues](https://github.com/etcd-io/etcd/issues)
 * [#SIG-etcd slack channel](https://kubernetes.slack.com/archives/C3HD8ARJ5) in [Kubernetes Slack](https://www.kubernetes.dev/docs/comms/slack/#joining-slack)
