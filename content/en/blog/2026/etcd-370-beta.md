@@ -50,3 +50,4 @@ Reach the etcd contributors with your feedback about v3.7.0-beta.0 in any of the
 * [etcd-dev mailing list](https://groups.google.com/g/etcd-dev)
 
 SIG-etcd may release additional betas of version v3.7.0 with additional refactoring, particularly of our use of protobuf libraries.  Release candidates and the final release will probably happen through June, possibly into early July.
+
