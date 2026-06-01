@@ -12,7 +12,7 @@ This release candidate includes the long-requested RangeStream feature, removal 
 You can find etcd v3.7.0-rc.0 here:
 
 * [Source code](https://github.com/etcd-io/etcd/archive/refs/tags/v3.7.0-rc.0.tar.gz)
-* [Binaries](https://github.com/etcd-io/etcd/releases/download/v3.7.0-beta.0/etcd-v3.7.0-rc.0-linux-arm64.tar.gz)
+* [Binaries](https://github.com/etcd-io/etcd/releases/download/v3.7.0-rc.0/etcd-v3.7.0-rc.0-linux-amd64.tar.gz)
 * [Official container images](https://gcr.io/etcd-development/etcd)
 
 Note that for v3.7, only [multi-arch container images](https://github.com/etcd-io/etcd/pull/21840) will be available.  We will no longer be releasing container images with architecture tags in their names. Please adjust your pull commands accordingly.
