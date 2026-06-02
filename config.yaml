@@ -211,5 +211,3 @@ menu:
       pageref: /blog/
     - name: Install
       url: /docs/latest/install/
-    - name: Play
-      url: http://play.etcd.io/play

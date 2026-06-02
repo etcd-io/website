@@ -2,7 +2,6 @@ DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreURLs:
-  - "^http://play.etcd.io.*"
   # Manually verified external links below this point
   - "^https://learn.hashicorp.com/tutorials/consul/add-remove-servers?in=consul/day-2-operations"
   - "^https://www.consul.io/docs/dynamic-app-config/sessions"
