@@ -13,6 +13,7 @@ This specification enumerates the API guarantees made by etcd.
 
 * KV APIs
   * [Range](../api/#range)
+  * [RangeStream](../api/#rangestream)
   * [Put](../api/#put)
   * [Delete](../api/#delete-range)
   * [Transaction](../api/#transaction)

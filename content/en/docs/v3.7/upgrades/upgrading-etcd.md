@@ -21,6 +21,7 @@ Before upgrading, note that etcd only supports the following two upgrade cases:
 * [Upgrade etcd from 3.3 to 3.4](../upgrade_3_4/)
 * [Upgrade etcd from 3.4 to 3.5](../upgrade_3_5/)
 * [Upgrade etcd from 3.5 to 3.6](../upgrade_3_6/)
+* [Upgrade etcd from 3.6 to 3.7](../upgrade_3_7/)
 
 ## Upgrading from etcd v2.3
 
