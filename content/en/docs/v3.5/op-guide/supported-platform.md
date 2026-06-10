@@ -56,12 +56,14 @@ prints a warning message and exits immediately unless the environment variable
 `ETCD_UNSUPPORTED_ARCH` is set to the target architecture.
 
 {{% alert title="32-bit systems" color="warning" %}}
+
   etcd has **known issues** on 32-bit systems due to a bug in the Go runtime.
   For more information see the [Go issue #599][go-issue] and the [atomic package
   bug note][go-atomic].
 
   [go-atomic]: https://golang.org/pkg/sync/atomic/#pkg-note-BUG
   [go-issue]: https://github.com/golang/go/issues/599
+
 {{% /alert %}}
 
 [etcd maintainers]: https://github.com/etcd-io/etcd/blob/main/OWNERS

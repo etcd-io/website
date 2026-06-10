@@ -139,7 +139,9 @@ Now Prometheus will scrape etcd metrics every 10 seconds.
 There is a set of [default alerts](https://github.com/etcd-io/etcd/tree/master/contrib/mixin) for etcd v3 clusters for Prometheus.
 
 {{% alert title="Note" color="info" %}}
+
 Note that `job` labels may need to be adjusted to fit a particular need. The rules were written to apply to a single cluster so it is recommended to choose labels unique to a cluster.
+
 {{% /alert %}}
 
 ### Grafana
@@ -164,7 +166,9 @@ Sample dashboard:
 In v3.5 etcd has added support for distributed tracing using [OpenTelemetry](https://github.com/open-telemetry).
 
 {{% alert title="Note" color="info" %}}
+
 This feature is still experimental and can change at any time.
+
 {{% /alert %}}
 
 To enable this experimental feature, pass the `--experimental-enable-distributed-tracing=true` to the etcd server, along with the `--experimental-distributed-tracing-sampling-rate=<number>` flag to choose how many samples to collect per million spans, the default sampling rate is `0`.
@@ -180,7 +184,9 @@ Configure the distributed tracing by starting etcd server with the following opt
 Before enabling the distributed tracing, make sure to have the OpenTelemetry endpoint, if that address differs to the default one, override with the `--experimental-distributed-tracing-address` flag. Due to OpenTelemetry having different ways of running, refer to the [collector documentation](https://opentelemetry.io/docs/collector/getting-started/) to learn more.
 
 {{% alert title="Note" color="info" %}}
+
 There is a resource overhead, as with any observability signal, according to our initial measurements that overhead could be between 2% - 4% CPU overhead.
+
 {{% /alert %}}
 
 [grafana]: http://grafana.org/

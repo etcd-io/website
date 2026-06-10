@@ -13,11 +13,13 @@ etcd v2.Y releases store data in the v2store, which supports the legacy API v2. 
 This document focus on how to migrate existing data from the v2store to the v3store. For a detailed guideline of migrating from API v2 to API v3, please refer to [Migrate applications from using API v2 to API v3](https://etcd.io/docs/v3.4/op-guide/v2-migration/).
 
 {{% alert color="warning" %}}
+
 ⚠️ **Deprecated functionality:**
 
 The `etcdctl migrate` command was removed in etcd v3.5.0 ([pull/12971](https://github.com/etcd-io/etcd/pull/12971)). If your etcd cluster is already running v3.5 or higher, you can no longer migrate v2store to v3store using this method.  
 
 You **must use etcdctl v3.4 or earlier** to perform the migration (View note from  [CHANGELOG-3.5](https://github.com/ahrtr/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md#etcdctl-v3-3)). However please take appropriate precautions when using it, as it is no longer officially supported or tested in recent releases.  
+
 {{% /alert %}}
 
 ## Pre-requisites
