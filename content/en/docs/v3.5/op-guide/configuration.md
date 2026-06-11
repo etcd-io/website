@@ -127,10 +127,12 @@ The list of flags provided below may not be up-to-date due to ongoing developmen
   Phase of v2store deprecation. Allows to opt-in for higher compatibility mode.
   Supported values:
     'not-yet'                // Issues a warning if v2store have meaningful content (default in v3.5)
-    'write-only'             // Custom v2 state is not allowed (planned default in v3.6)
-    'write-only-drop-data'   // Custom v2 state will get DELETED !
-    'gone'                   // v2store is not maintained any longer. (planned default in v3.7)
+    'write-only'             // Custom v2 state is not allowed (default in v3.6 and v3.7)
+    'write-only-skip-check'  // Custom v2 state is not supported and, if present, will be ignored (available in v3.5.32+, v3.6.13+, and v3.7.0+). Use this option at your own risk.
+    'write-only-drop-data'   // Custom v2 state will get DELETED ! (planned default in v3.8)
+    'gone'                   // v2store is not maintained any longer.
 ```
+
 ### Security
 
 ```nocode
