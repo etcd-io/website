@@ -24,27 +24,54 @@ Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 
 #### V2 Store
 
 {{% alert title="Note" color="info" %}}
-If the `--enable-v2` flag is not configured or is set to false, no further action is required.
+If the --enable-v2 flag and the ETCD_ENABLE_V2 environment variable have never been enabled (that is, they have always been unset or set to false) on any member since the cluster was created, it is safe to upgrade to etcd v3.6.
+
+Before upgrading, always ensure that the --enable-v2 flag and the ETCD_ENABLE_V2 environment variable are removed or unset on all etcd members, as they are no longer supported in etcd v3.6.
 {{% /alert %}}
 
-If `--enable-v2` or the environment variable `ETCD_ENABLE_V2="true"` **is** configured, additional steps are required to handle the v2store data:
+If `--enable-v2` or the environment variable `ETCD_ENABLE_V2="true"` is (or has ever been) configured on any member, the v2store must be cleaned up before the cluster can be safely upgraded to v3.6. The general workflow is:
 
-1. If there is data in the v2store that needs to be migrated to the v3store, follow the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) to migrate the data.
+1. Run `etcdutl check v2store` on each member to check whether the v2store contains any non-membership (custom) data. Ensure that you use `etcdutl` of v3.5.32 or later, which extends the check to also inspect the WAL records in addition to the v2 snapshot.
 
-2. Remove the `--enable-v2` flag and the `ETCD_ENABLE_V2="true"` environment variable.
+2. The check reports one of the following outputs. Resolve any issues identified by the check, as described in the linked sections.
 
-3. Run the command `etcdutl check v2store` to verify whether the v2store contains any non-membership (custom) data. If no custom data is present, no further action is required.
+    - `No custom content found in both v2store and WAL records` — the v2store is clean. Skip to step 4.
+    - `detected custom content in v2store` — custom v2 content exists in the v2 snapshot only. Follow the steps in [v2store has custom data](#v2store-has-custom-data).
+    - `detected custom v2 content in WAL records` — custom v2 content exists in the WAL records only. Follow the steps in [WAL has custom v2 data](#wal-has-custom-v2-data).
+    - `detected custom v2 content in both v2store and WAL records` — custom v2 content exists in both locations. Follow the steps in both [v2store has custom data](#v2store-has-custom-data) and [WAL has custom v2 data](#wal-has-custom-v2-data).
+    - Anything else — this outcome normally will not happen; if it does, the check may have produced unexpected output, so stop and investigate manually.
 
-4. If custom data is detected in the v2store, apply the following workaround to remove the legacy data:
+3. Repeat step 1 to verify the v2store is clean. If the check still reports custom content, return to step 2 and resolve the remaining issues.
 
-    - Add the flag `--snapshot-count=1` to each etcd instnace that contains custom data in the v2store.
-    - Restart the etcd instances.
-    - Remove the `--snapshot-count=1` flag from (or restore to its original value, if applicable) from all etcd instances.
-    - Restart the etcd instances again.
+4. Once `etcdutl check v2store` reports "No custom content found in both v2store and WAL records" on every member, remove the `--enable-v2` flag and the `ETCD_ENABLE_V2` environment variable from all etcd members.
 
-5. Run the `etcdutl check v2store` command once more to verify that the v2store no longer contains any non-membership (custom) data. At this point, there should be no custom data remaining in the v2store.
+    **All done! You are safe to upgrade to etcd v3.6 now!**
 
-Once these steps are completed, the v2store is clean, and the upgrade process can proceed.
+##### v2store has custom data
+
+If you care about the v2 custom data, or you need to migrate it to the v3store, follow the [v2 migration guide](../../../v3.4/op-guide/v2-migration/) to migrate the data.
+
+If you do not need the v2 custom data, you can either:
+
+- Manually remove the v2 custom data from the data directory, or
+- Start etcd with the flag `--v2-deprecation=write-only-skip-check` so that the v2store check is skipped on startup. Note that this requires `etcd` of v3.5.32 or later, and you use this option at your own risk.
+
+After resolving, re-run `etcdutl check v2store` to confirm the v2store is clean.
+
+##### WAL has custom v2 data
+
+Custom v2 content in the WAL records is removed automatically when the next v2 snapshot is created. With the default snapshot configuration, a new v2 snapshot is taken after a large number of committed transactions. The exact wait time depends on your cluster's write rate; in busy clusters the next snapshot can be created within a few hours, while in quieter clusters it can take longer.
+
+- **Wait for the next v2 snapshot.** If you can tolerate the wait, keep the cluster running; a new v2 snapshot will eventually be taken and the WAL will be cleaned up automatically.
+
+- **Force a snapshot immediately.** If you do not want to wait, apply the `--snapshot-count=1` workaround on each affected member:
+
+    1. Add the flag `--snapshot-count=1` to each etcd member that reports custom WAL data.
+    2. Restart the etcd members.
+    3. Once the next snapshot is created, remove the `--snapshot-count=1` flag (or restore it to its original value, if applicable).
+    4. Restart the etcd members again.
+
+After the new v2 snapshot is created, re-run `etcdutl check v2store` to confirm the WAL is clean.
 
 ### Flags added
 
