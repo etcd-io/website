@@ -44,9 +44,9 @@ Today, SIG etcd is releasing [etcd v3.7.0](https://github.com/etcd-io/etcd/relea
 
 You can download etcd v3.7.0 here:
 
-* [Source code](https://github.com/etcd-io/etcd/archive/refs/tags/v3.7.0.tar.gz)
-* [Binaries](https://github.com/etcd-io/etcd/releases/tag/v3.7.0)
-* [Official container images](https://gcr.io/etcd-development/etcd)
+- [Source code](https://github.com/etcd-io/etcd/archive/refs/tags/v3.7.0.tar.gz)
+- [Binaries](https://github.com/etcd-io/etcd/releases/tag/v3.7.0)
+- [Official container images](https://gcr.io/etcd-development/etcd)
 
 This release also includes new versions of the two core etcd dependencies, [bbolt v1.5.0](https://github.com/etcd-io/bbolt/releases/tag/v1.5.0) and [raft v3.7.0](https://github.com/etcd-io/raft/releases/tag/v3.7.0).
 
@@ -58,11 +58,11 @@ A heartfelt thank you to all the contributors who made this release possible!
 
 The most significant changes in v3.7.0 include:
 
-* [**RangeStream**](#rangestream) — stream large result sets in chunks instead of buffering the whole response.
-* **Keys-only range requests, faster and more reliable leases,** and several other [**performance improvements**](#performance-improvements).
-* etcd now [boots entirely from v3store](#bootstrap-from-v3store), eliminating a long-standing dependency on the legacy v2 store
-* A completed [**protobuf overhaul**](#protobuf-overhaul), replacing outdated protobuf libraries with fully supported ones.
-* etcd v3.7 ships with [bbolt v1.5.1](#bbolt-v151) and [raft v3.7.0](#raft-v370).
+- [**RangeStream**](#rangestream) — stream large result sets in chunks instead of buffering the whole response.
+- **Keys-only range requests, faster and more reliable leases,** and several other [**performance improvements**](#performance-improvements).
+- etcd now [boots entirely from v3store](#bootstrap-from-v3store), eliminating a long-standing dependency on the legacy v2 store
+- A completed [**protobuf overhaul**](#protobuf-overhaul), replacing outdated protobuf libraries with fully supported ones.
+- etcd v3.7 ships with [bbolt v1.5.1](#bbolt-v151) and [raft v3.7.0](#raft-v370).
 
 ## Features
 
@@ -88,8 +88,8 @@ This reduces unnecessary backend reads and memory use for workloads that only ne
 
 v3.7 improves lease expiration and renewal:
 
-* LeaseRevoke requests are now prioritized to ensure timely lease expiration during overload ([#20492: stability enhancement during overload conditions](https://github.com/etcd-io/etcd/pull/20492)).
-* The new FastLeaseKeepAlive feature enables faster lease renewal by skipping the wait for the applied index ([#20589: etcdserver: improve linearizable renew lease](https://github.com/etcd-io/etcd/pull/20589)).
+- LeaseRevoke requests are now prioritized to ensure timely lease expiration during overload ([#20492: stability enhancement during overload conditions](https://github.com/etcd-io/etcd/pull/20492)).
+- The new FastLeaseKeepAlive feature enables faster lease renewal by skipping the wait for the applied index ([#20589: etcdserver: improve linearizable renew lease](https://github.com/etcd-io/etcd/pull/20589)).
 
 #### Faster find() operations
 
@@ -133,10 +133,10 @@ Clients can check their AuthStatus without attempting to authenticate first, eli
 
 v3.7 adds optional watch send-loop metrics ([\#21030: Instrument watchstream send loop](https://github.com/etcd-io/etcd/pull/21030)) for better observability of the watch path:
 
-* `etcd_debugging_server_watch_send_loop_watch_stream_duration_seconds`
-* `etcd_debugging_server_watch_send_loop_watch_stream_duration_per_event_seconds`
-* `etcd_debugging_server_watch_send_loop_control_stream_duration_seconds`
-* `etcd_debugging_server_watch_send_loop_progress_duration_seconds`
+- `etcd_debugging_server_watch_send_loop_watch_stream_duration_seconds`
+- `etcd_debugging_server_watch_send_loop_watch_stream_duration_per_event_seconds`
+- `etcd_debugging_server_watch_send_loop_control_stream_duration_seconds`
+- `etcd_debugging_server_watch_send_loop_progress_duration_seconds`
 
 There is also a new etcd_server_request_duration_seconds metric ([#21038: Add metric etcd_server_request_duration_seconds](https://github.com/etcd-io/etcd/pull/21038)).
 
@@ -156,9 +156,9 @@ All deprecated experimental flags have been removed ([#19959: Cleanup the deprec
 
 To remove the dependencies on v2store, the following components have been removed:
 
-*  [v2 discovery](https://github.com/etcd-io/etcd/pull/20109) ([#20109: Remove v2discovery](https://github.com/etcd-io/etcd/pull/20109)) packages removed,
-* [v2 request](https://github.com/etcd-io/etcd/pull/21263) support ([#21263: Remove v2 Request and apply_v2.go](https://github.com/etcd-io/etcd/pull/21263))
-*  [v2 client](https://github.com/etcd-io/etcd/pull/20117) support ([#20117: Remove client/internal/v2](https://github.com/etcd-io/etcd/pull/20117)).
+- [v2 discovery](https://github.com/etcd-io/etcd/pull/20109) ([#20109: Remove v2discovery](https://github.com/etcd-io/etcd/pull/20109)) packages removed,
+- [v2 request](https://github.com/etcd-io/etcd/pull/21263) support ([#21263: Remove v2 Request and apply_v2.go](https://github.com/etcd-io/etcd/pull/21263))
+- [v2 client](https://github.com/etcd-io/etcd/pull/20117) support ([#20117: Remove client/internal/v2](https://github.com/etcd-io/etcd/pull/20117)).
 
 These changes may create some breakage for users, particularly those who have not already updated to v3.6.11 or later. Users should report any blockers encountered, or cases that need better upgrade documentation.
 
@@ -178,16 +178,16 @@ As with every etcd release, there are a number of API changes.  These are design
 
 etcd v3.7 depends on, and includes, [v1.5.1](https://github.com/etcd-io/bbolt/blob/main/CHANGELOG/CHANGELOG-1.5.md) of the bbolt storage engine.  v1.5 includes several improvements to functionality and performance, including:
 
-* [Database file size limits](https://github.com/etcd-io/bbolt/pull/929): users may set, and bbolt will enforce, file size limits.  When a bolt database exceeds these limits it will refuse to accept writes until the database is compacted or the limit is changed.
-* [Disable statistics for performance](https://github.com/etcd-io/bbolt/pull/977): users may set `NoStatistics` to limit overhead from locks taken by the database statistics viewer.
-* [More efficient hashmap processing](https://github.com/etcd-io/bbolt/pull/1179): merge spans faster and with less overhead.
+- [Database file size limits](https://github.com/etcd-io/bbolt/pull/929): users may set, and bbolt will enforce, file size limits.  When a bolt database exceeds these limits it will refuse to accept writes until the database is compacted or the limit is changed.
+- [Disable statistics for performance](https://github.com/etcd-io/bbolt/pull/977): users may set `NoStatistics` to limit overhead from locks taken by the database statistics viewer.
+- [More efficient hashmap processing](https://github.com/etcd-io/bbolt/pull/1179): merge spans faster and with less overhead.
 
 ## raft v3.7.0
 
 etcd 3.7 depends on, and includes, v3.7.0 of the raft consensus engine.  v3.7 includes several improvements, including:
 
-* [Update the bootstrap process](https://github.com/etcd-io/raft/pull/370): v3.7 now allows booting from partly initialized snapshots, supporting etcd's initializing directly from v3store.
-* [Improve the ReadIndex flow to prevent stale reads](https://github.com/etcd-io/raft/pull/397) by injecting a unique identifier into the heartbeat context for read-only operations.
+- [Update the bootstrap process](https://github.com/etcd-io/raft/pull/370): v3.7 now allows booting from partly initialized snapshots, supporting etcd's initializing directly from v3store.
+- [Improve the ReadIndex flow to prevent stale reads](https://github.com/etcd-io/raft/pull/397) by injecting a unique identifier into the heartbeat context for read-only operations.
 
 raft v3.7.0 also includes the [same protobuf library updates](https://github.com/etcd-io/etcd/issues/14533) and refactoring as etcd does.
 
