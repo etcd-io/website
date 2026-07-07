@@ -215,6 +215,6 @@ A special welcome to the contributors who made their first etcd contribution in 
 
 Feedback can be shared through:
 
-* [GitHub issues](https://github.com/etcd-io/etcd/issues)
-* [#sig-etcd slack channel](https://kubernetes.slack.com/archives/C3HD8ARJ5) in [Kubernetes Slack](https://www.kubernetes.dev/docs/comms/slack/#joining-slack)
-* [etcd-dev mailing list](https://groups.google.com/g/etcd-dev)
+- [GitHub issues](https://github.com/etcd-io/etcd/issues)
+- [#sig-etcd slack channel](https://kubernetes.slack.com/archives/C3HD8ARJ5) in [Kubernetes Slack](https://www.kubernetes.dev/docs/comms/slack/#joining-slack)
+- [etcd-dev mailing list](https://groups.google.com/g/etcd-dev)
