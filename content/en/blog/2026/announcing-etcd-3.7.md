@@ -76,7 +76,7 @@ In coordinated releases, the RangeStream feature will become available to users 
 
 ### Performance improvements
 
-v3.7 delivers multiple performance improvements, both for the Kubernetes control plane and for other use cases.  In Kubernetes scalability tests, etcd 3.7 consumes up to 50% less CPU time for operation.  The [protobuf overhaul](#protobuf-overhaul) is responsible for the majority of resource use reduction, and several other features improve performance in specific cases:
+v3.7 delivers multiple specific performance improvements, both for the Kubernetes control plane and for other use cases.  Kubernetes users should see a significant decrease in overall CPU usage by the etcd members, compared with v3.6.
 
 #### Keys-only range optimization
 
