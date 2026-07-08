@@ -2,7 +2,7 @@
 title: Announcing etcd v3.7.0
 author:  "SIG-Etcd Leads"
 date: 2026-07-08
-draft: true
+draft: false
 ---
 
 ## Table of Contents
