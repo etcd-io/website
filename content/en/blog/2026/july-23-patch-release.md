@@ -25,7 +25,7 @@ Users depending on etcd Auth in this way should update their clusters immediatel
 
 More information on the vulnerability, including workarounds, may be found in [its vulnerability report](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8)
 
-## Acknowledgements
+### Acknowledgements
 
 This vulnerability was reported by members of the etcd community. Our SIG is deeply thankful to:
 
@@ -40,7 +40,7 @@ This patch release fixes a vulnerability where a network attacker could open, bu
 
 More information on the vulnerability, including workarounds, may be found in [its vulnerability report](https://github.com/etcd-io/etcd/security/advisories/GHSA-6vch-q96h-7gc3)
 
-## Acknowledgements
+### Acknowledgements
 
 This vulnerability was found, and patched, but members of the VMware by Broadcom team.  We are grateful to this team for helping keep etcd secure.
 
