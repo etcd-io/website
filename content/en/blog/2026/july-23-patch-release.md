@@ -23,29 +23,30 @@ This vulnerability does not affect etcd as a part of the Kubernetes Control Plan
 
 Users depending on etcd Auth in this way should update their clusters immediately. Other etcd users can update at the next regularly scheduled maintenance period.
 
-More information on the vulnerability:
-
-- CVE-2026-xxx: [CVE Name](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8)
-
-This issue has been rated `TBD`, with CVSS `TBD`.
-
-## Security Fix: 
-
-## Workarounds
-
-TBD — add workaround details once the advisory is published.
+More information on the vulnerability, including workarounds, may be found in [its vulnerability report](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8)
 
 ## Acknowledgements
 
 This vulnerability was reported by members of the etcd community. Our SIG is deeply thankful to:
 
-- TBD — add reporter credit once the advisory is published.
+- [Luis Toro](https://github.com/lobuhi)
+- Anthropic and [Adam Korczynski](https://github.com/AdamKorcz)
 
 If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
 
-## Reliability fixes shared across all three releases
+## Security Fix: `tlsListener.acceptLoop` spawns unbounded handshake goroutines with no deadline
 
-Beyond the security patch, all three releases include a set of hardening fixes:
+This patch release fixes a vulnerability where a network attacker could open, but not complete, an indefinite number of TLS client connections.  This would eventually exhaust etcd server resources, causing lack of availability.  This security vulnerability affects the Kubernetes control plane.
+
+More information on the vulnerability, including workarounds, may be found in [its vulnerability report](https://github.com/etcd-io/etcd/security/advisories/GHSA-6vch-q96h-7gc3)
+
+## Acknowledgements
+
+This vulnerability was found, and patched, but members of the VMware by Broadcom team.  We are grateful to this team for helping keep etcd secure.
+
+## Security and reliability fixes shared across all three releases
+
+Beyond the two reported security fixes, all three releases include a set of fixes for both security and reliability of etcd:
 
 - **Unbounded read on peer lease handler**: the HTTP handler for peer lease requests could perform an unbounded `io.ReadAll`, allowing a malicious or misbehaving peer to cause excessive memory use.  This has been fixed by capping the read.
 - **Transaction cost accounting**: the `costTxnReq` function was not accounting for nested `RequestTxn` operations, which could cause request cost estimates to be inaccurate.
