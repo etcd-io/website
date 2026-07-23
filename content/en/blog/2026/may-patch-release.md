@@ -29,7 +29,7 @@ If upgrading is not immediately possible, reduce exposure by treating the affect
 
 ## Acknowledgements
 
-This vulnerability was reported by members of the etcd community.  Our SIG is deeply thankful to:
+This vulnerability was reported by members of the etcd community. Our SIG is deeply thankful to:
 
 * Samy Ghannad ([@SamyGhannad](https://github.com/SamyGhannad)) for reporting that read access via `PrevKv` in a `Put` request within etcd transactions bypassed RBAC authorization checks.
 * Benjamin Wang ([@ahrtr](https://github.com/ahrtr)) for further analyzing that lease attachment in a `Put` request within etcd transactions also bypassed RBAC authorization checks.
