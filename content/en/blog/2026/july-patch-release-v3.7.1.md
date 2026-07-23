@@ -24,17 +24,20 @@ This vulnerability does not affect etcd as a part of the Kubernetes Control Plan
 Users depending on etcd Auth in this way should update their clusters immediately. Other etcd users can update at the next regularly scheduled maintenance period.
 
 More information on the vulnerability:
-* CVE-2026-xxx: [CVE Name](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8).
 
-This issue has been rated `xx`, with CVSS `CVSS:xxx`.
+- CVE-2026-xxx: [CVE Name](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8)
+
+This issue has been rated `TBD`, with CVSS `TBD`.
 
 ## Workarounds
-TBU
+
+TBD — add workaround details once the advisory is published.
 
 ## Acknowledgements
 
 This vulnerability was reported by members of the etcd community. Our SIG is deeply thankful to:
-- xxx
+
+- TBD — add reporter credit once the advisory is published.
 
 If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
 
