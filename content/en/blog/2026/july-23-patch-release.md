@@ -1,11 +1,11 @@
 ---
 title: "Etcd Patch Releases: v3.7.1, v3.6.14, and v3.5.33"
 author: "SIG-Etcd Leads"
-date: 2026-08-01
+date: 2026-07-23
 draft: false
 ---
 
-SIG-etcd has released patch updates across all three supported release branches. These releases fix a security vulnerability in the watch API and address several reliability issues in the server, client library, and TLS stack. Users on v3.5, v3.6, and v3.7 should update at the next scheduled maintenance window.
+SIG-etcd has released patch updates across all three supported release branches. These releases fix two security vulnerabilities, several minor security issues, and address several reliability issues in the server, client library, and TLS stack. Users on v3.5, v3.6, and v3.7 should update at the next scheduled maintenance window.
 
 Obtain the updates here:
 
@@ -15,7 +15,7 @@ Obtain the updates here:
 
 Official container images are available from [gcr.io](https://gcr.io/etcd-development/etcd).
 
-## Security fix: watch responses leaked across RBAC key boundaries
+## Security Fix: watch responses leaked across RBAC key boundaries
 
 All three releases fix a vulnerability where a user granted read permission on a single key could receive watch event notifications for every key starting from that key, exposing data beyond their authorized scope.
 
@@ -28,6 +28,8 @@ More information on the vulnerability:
 - CVE-2026-xxx: [CVE Name](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8)
 
 This issue has been rated `TBD`, with CVSS `TBD`.
+
+## Security Fix: 
 
 ## Workarounds
 
