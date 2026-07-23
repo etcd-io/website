@@ -24,8 +24,17 @@ This vulnerability does not affect etcd as a part of the Kubernetes Control Plan
 Users depending on etcd Auth in this way should update their clusters immediately. Other etcd users can update at the next regularly scheduled maintenance period.
 
 More information on the vulnerability:
+* CVE-2026-xxx: [CVE Name](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8).
 
-- [Watch responses leak data across RBAC key boundaries](https://github.com/etcd-io/etcd/security/advisories/GHSA-xg4h-6gfc-h4m8)
+This issue has been rated `xx`, with CVSS `CVSS:xxx`.
+
+## Workarounds
+TBU
+
+## Acknowledgements
+
+This vulnerability was reported by members of the etcd community. Our SIG is deeply thankful to:
+- xxx
 
 If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
 
@@ -49,6 +58,6 @@ v3.5.33 also bumps `golang.org/x/net` to `v0.56.0` to address [GO-2026-5942](htt
 
 Full changelogs for each release:
 
-- [CHANGELOG-3.7](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.7.md#v371)
-- [CHANGELOG-3.6](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.6.md#v3614)
-- [CHANGELOG-3.5](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md#v3533)
+- [CHANGELOG-3.7.1](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.7.md#v371)
+- [CHANGELOG-3.6.14](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.6.md#v3614)
+- [CHANGELOG-3.5.33](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md#v3533)
