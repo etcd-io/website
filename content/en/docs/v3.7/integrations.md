@@ -27,6 +27,7 @@ Note that third-party libraries and tools (not hosted on https://github.com/etcd
 - [etcdadm](https://github.com/kubernetes-sigs/etcdadm) - A command-line tool for operating an etcd cluster.
 - [etcd-defrag](https://github.com/ahrtr/etcd-defrag) - An easier to use and smarter etcd defragmentation tool.
 - [etcdhelper](https://github.com/tsonglew/intellij-etcdhelper) - An intellij platform plugin for etcd.
+- [etcd-terminal](https://github.com/SimplifyNet/etcd-terminal) - A TUI based modern etcd v3+ console client.
 
 ## Libraries
 
