@@ -169,7 +169,7 @@ The sections below list etcd client libraries by language.
 ## Projects using etcd
 
 - [etcd Raft users](https://github.com/etcd-io/raft/blob/main/README.md#notable-users) - projects using etcd's raft library implementation.
-- [apache/apisix](https://github.com/apache/apisix) - A dynamic, real-time, high-performance API gateway
+- [Apache APISIX](https://github.com/apache/apisix) - An API gateway that uses etcd as its configuration store.
 - [apache/celix](https://github.com/apache/celix) - an implementation of the OSGi specification adapted to C and C++
 - [binocarlos/yoda](https://github.com/binocarlos/yoda) - etcd + ZeroMQ
 - [blox/blox](https://github.com/blox/blox) - a collection of open source projects for container management and orchestration with AWS ECS
@@ -201,7 +201,6 @@ The sections below list etcd client libraries by language.
 - [Rook](https://github.com/rook/rook) - Storage Orchestration for Kubernetes
 - [Patroni](https://github.com/zalando/patroni) - A template for PostgreSQL High Availability with ZooKeeper, etcd, or Consul
 - [Trillian](https://github.com/google/trillian) - Trillian implements a Merkle tree whose contents are served from a data storage layer, to allow scalability to extremely large trees.
-- [Apache APISIX](https://github.com/apache/apisix) - Apache APISIX is a dynamic, real-time, high-performance API gateway.
 - [purpleidea/mgmt](https://github.com/purpleidea/mgmt) - Next generation distributed, event-driven, parallel config management!
 - [Portworx/kvdb](https://docs.portworx.com/concepts/internal-kvdb/) - The internal kvdb for storing Portworx cluster configuration.
 - [Apache Pulsar](https://pulsar.apache.org/) - Apache Pulsar is an open-source, distributed messaging and streaming platform built for the cloud.
