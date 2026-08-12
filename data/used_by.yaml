@@ -19,7 +19,7 @@
     CoreDNS uses etcd as an optional backend
 - name: M3
   # date: 20yy-mm-dd
-  link: https://eng.uber.com/m3/
+  link: https://m3db.io/
   image: /img/m3-logo.png
   quote: >
     M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions
