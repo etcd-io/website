@@ -17,7 +17,7 @@ Before [starting an upgrade](#upgrade-procedure), read through the rest of this 
 
 {{% alert title="Important" color="warning" %}}
 
-Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.26 or later](https://etcd.io/blog/2025/zombie_members_upgrade). Patch releases 3.5.24 through 3.5.26 fix several potential upgrade blockers.
+Before upgrading to 3.6, make sure that [all of your 3.5 members are updated to 3.5.32 or later](https://etcd.io/blog/2026/july-patch-release/). Patch releases 3.5.24 through [3.5.32](https://etcd.io/blog/2026/july-patch-release/) fix several potential upgrade blockers including `--v2-deprecation=write-only-skip-check` and `etcdutl check v2store` to inspect WAL records as well as the v2 snapshot.
 
 {{% /alert %}}
 
