@@ -8,6 +8,8 @@ weight: 800
 
 * [etcdctl](../install.md) installed and available on your `PATH`
 * A running etcd cluster (local single-node is fine for learning)
+* Two terminals if you want to actually see the lock work: one session
+  holds `mutex1`, the other waits on the same name
 
 ## Flags and terms used in the examples
 
