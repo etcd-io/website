@@ -32,7 +32,7 @@ This vulnerability was reported by members of the etcd community. Our SIG is dee
 - [Luis Toro](https://github.com/lobuhi)
 - Anthropic and [Adam Korczynski](https://github.com/AdamKorcz)
 
-If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
+If you find a vulnerability in etcd, please report it [through the form on GitHub](https://github.com/etcd-io/etcd/security/advisories/new).
 
 ## Security Fix: `tlsListener.acceptLoop` spawns unbounded handshake goroutines with no deadline
 

@@ -28,4 +28,4 @@ All of these vulnerabilies were reported by members of the etcd community.  Our 
 * @OLU-DEVX
 * Battulga Byambaa
 
-If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
+If you find a vulnerability in etcd, please report it [through the form on GitHub](https://github.com/etcd-io/etcd/security/advisories/new).
