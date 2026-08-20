@@ -34,4 +34,4 @@ This vulnerability was reported by members of the etcd community. Our SIG is dee
 * Samy Ghannad ([@SamyGhannad](https://github.com/SamyGhannad)) for reporting that read access via `PrevKv` in a `Put` request within etcd transactions bypassed RBAC authorization checks.
 * Benjamin Wang ([@ahrtr](https://github.com/ahrtr)) for further analyzing that lease attachment in a `Put` request within etcd transactions also bypassed RBAC authorization checks.
 
-If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
+If you find a vulnerability in etcd, please report it [through the form on GitHub](https://github.com/etcd-io/etcd/security/advisories/new).

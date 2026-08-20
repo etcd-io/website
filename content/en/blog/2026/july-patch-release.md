@@ -22,7 +22,7 @@ This release updates v3.5 and v3.6 to [golang v1.25.11](https://groups.google.co
 
 It is unknown how many of these vulnerabilities are exploitable in etcd, but users should plan to apply the patch as soon as convenient regardless.
 
-If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
+If you find a vulnerability in etcd, please report it [through the form on GitHub](https://github.com/etcd-io/etcd/security/advisories/new).
 
 ## Fixing websocket authentication with bearer-prefixed tokens
 

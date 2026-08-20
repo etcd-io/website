@@ -27,6 +27,6 @@ So say goodbye to v3.4, and prepare your upgrade scripts now.
 
 This release updates v3.4, v3.5 and v3.6 to [golang v1.25.10](https://github.com/etcd-io/etcd/issues/21725), which patches [multiple security vulnerabilities in go](https://groups.google.com/g/golang-nuts/c/QEttt5ZoGrE).  CVEs for patched vulnerabilities include the following: CVE-2026-42501, CVE-2026-39825, CVE-2026-39836, CVE-2026-42499, CVE-2026-39820, CVE-2026-39819, CVE-2026-39817, CVE-2026-33814, CVE-2026-39826, CVE-2026-33811, and CVE-2026-39823.  It is unknown how many of these vulnerabilities are exploitable in etcd, but users should plan to apply the patch as soon as convenient regardless.
 
-If you find a vulnerability in etcd, please report it to [our security team](mailto:security@etcd.io).
+If you find a vulnerability in etcd, please report it [through the form on GitHub](https://github.com/etcd-io/etcd/security/advisories/new).
 
 This release also fixes several reliability issues, which can be found in the [changelog](https://github.com/etcd-io/etcd/releases/tag/v3.6.12)
