@@ -1,6 +1,6 @@
 ---
 title: Upgrade etcd from v3.6 to v3.7
-weight: 6700
+weight: 6550
 description: Processes, checklists, and notes on upgrading etcd from v3.6 to v3.7
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Downgrade etcd from 3.5 to 3.4
-weight: 6650
+weight: 6700
 description: Processes, checklists, and notes on downgrading etcd from 3.5 to 3.4
 ---
 
