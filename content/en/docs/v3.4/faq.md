@@ -146,7 +146,6 @@ If none of the above suggestions clear the warnings, please [open an issue][new_
 
 etcd sends a snapshot of its complete key-value store to refresh slow followers and for [backups][backup]. Slow snapshot transfer times increase MTTR; if the cluster is ingesting data with high throughput, slow followers may livelock by needing a new snapshot before finishing receiving a snapshot. To catch slow snapshot performance, etcd warns when sending a snapshot takes more than thirty seconds and exceeds the expected transfer time for a 1Gbps connection.
 
-
 [api-mvcc]: ../learning/api/#revisions
 [backend_commit_metrics]: ../metrics/#disk
 [backup]: /docs/v3.4/op-guide/recovery#snapshotting-the-keyspace
