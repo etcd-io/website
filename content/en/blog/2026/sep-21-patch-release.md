@@ -17,9 +17,9 @@ Official container images are available from [gcr.io](https://gcr.io/etcd-develo
 
 ## Dependency security updates
 
-v3.6.15 and v3.5.34 update `github.com/gorilla/websocket` to v1.5.3 to address [GHSA-w67g-5rqw-f597](https://github.com/advisories/GHSA-w67g-5rqw-f597).
+v3.6.15 and v3.5.34 update `github.com/gorilla/websocket` to v1.5.3 to address [CVE-xxxx-xxxxxx](https://github.com/advisories/GHSA-w67g-5rqw-f597).
 
-v3.6.15 also updates `golang.org/x/text` to v0.39.0 to address [CVE-2026-56852](https://nvd.nist.gov/vuln/detail/CVE-2026-56852).
+v3.6.15 also updates `golang.org/x/text` to v0.39.0 to address [CVE-2026-56852](https://pkg.go.dev/vuln/GO-2026-5970).
 
 All three releases compile binaries using [Go 1.26.8](https://go.dev/doc/devel/release).
 
