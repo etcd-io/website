@@ -5,7 +5,7 @@ date: 2026-09-21
 draft: true
 ---
 
-SIG-etcd is preparing patch updates for all three supported release branches. These releases update dependencies, correct `etcdctl endpoint status` output, and improve version detection in v3.7. Users on v3.5, v3.6, and v3.7 should update at the next scheduled maintenance window after the releases become available.
+SIG-etcd is preparing patch updates for all three supported release branches. These releases update dependencies, fix a file-handle leak during file cleanup, correct `etcdctl endpoint status` output, and improve version detection in v3.7. Users on v3.5, v3.6, and v3.7 should update at the next scheduled maintenance window after the releases become available.
 
 Obtain the updates here:
 
@@ -22,6 +22,10 @@ v3.6.15 and v3.5.34 update `github.com/gorilla/websocket` to v1.5.3 to address [
 v3.6.15 also updates `golang.org/x/text` to v0.39.0 to address [CVE-2026-56852](https://pkg.go.dev/vuln/GO-2026-5970).
 
 All three releases compile binaries using [Go 1.26.8](https://go.dev/doc/devel/release).
+
+## Close locked files after purge failures
+
+All three releases fix a file-handle and advisory-lock leak in [`purgeFile`](https://github.com/etcd-io/etcd/pull/22452). If removing a locked file failed, `purgeFile` previously returned without closing the file. It now closes the locked file before returning the removal error and logs any error encountered while closing it.
 
 ## Correct `etcdctl endpoint status` output
 
