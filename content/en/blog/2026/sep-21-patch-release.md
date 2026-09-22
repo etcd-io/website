@@ -5,7 +5,7 @@ date: 2026-09-21
 draft: true
 ---
 
-SIG-etcd is preparing patch updates for all three supported release branches. These releases update dependencies, fix a file-handle leak during file cleanup, correct `etcdctl endpoint status` output, and improve version detection in v3.7. Users on v3.5, v3.6, and v3.7 should update at the next scheduled maintenance window after the releases become available.
+SIG-etcd has distributed patch updates for all three supported release branches. These releases update dependencies, fix a file-handle leak during file cleanup, correct `etcdctl endpoint status` output, and improve version detection in v3.7. Users on v3.5, v3.6, and v3.7 should update at the next scheduled maintenance window after the releases become available.
 
 Obtain the updates here:
 
