@@ -8,7 +8,7 @@ LOCK acquires a distributed mutex with a given name. Once the lock is acquired, 
 
 ## Prerequisites
 
-* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.6/install/)
+* Install [`etcd` and `etcdctl`]({{% relref "../../install/" %}})
 
 ## Creating a lock
 

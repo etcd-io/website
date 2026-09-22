@@ -6,8 +6,8 @@ weight: 1100
 
 ## Pre-requisites
 
-* [Install etcdctl, etcdutl](https://etcd.io/docs/v3.6/install/)
-* [Setup a local cluster](https://etcd.io/docs/v3.6/dev-guide/local_cluster/)
+* [Install etcdctl, etcdutl]({{% relref "../../install/" %}})
+* [Setup a local cluster]({{% relref "../../dev-guide/local_cluster/" %}})
 
 ## Snapshot a database
 
