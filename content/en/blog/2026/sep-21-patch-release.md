@@ -1,7 +1,7 @@
 ---
 title: "Etcd Patch Releases: v3.7.2, v3.6.15, and v3.5.34"
 author: "SIG-Etcd Leads"
-date: 2026-09-21
+date: 2026-09-22
 draft: true
 ---
 
