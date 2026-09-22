@@ -33,7 +33,7 @@ All three releases fix a duplicate `RaftTerm` field in the output of `etcdctl en
 
 ## More accurate version detection in v3.7.2
 
-v3.7.2 updates [`MinimalEtcdVersion`](https://github.com/etcd-io/etcd/pull/22201) to read the latest snapshot entry from the write-ahead log (WAL). This makes the minimum compatible etcd version calculation use the most recent snapshot metadata available in the WAL.
+v3.7.2 updates [`MinimalEtcdVersion`](https://github.com/etcd-io/etcd/pull/22201) to read the latest snapshot entry from the write-ahead log (WAL). This prevents an error where an upgraded etcd cluster might read a v2 snapshot instead of a v3 one.
 
 Full changelogs for each release:
 
