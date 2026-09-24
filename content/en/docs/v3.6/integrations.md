@@ -28,6 +28,7 @@ Note that third-party libraries and tools (not hosted on [etcd-io main repositor
 - [etcd-defrag](https://github.com/ahrtr/etcd-defrag) - An easier to use and smarter etcd defragmentation tool.
 - [etcdhelper](https://github.com/tsonglew/intellij-etcdhelper) - An intellij platform plugin for etcd.
 - [etcd-workbench](https://github.com/tzfun/etcd-workbench) - A free and powerful ui client for etcd v3. Provides desktop application and web packages.
+- [etcd-terminal](https://github.com/SimplifyNet/etcd-terminal) - A TUI based modern etcd v3+ console client.
 
 ## Libraries
 
