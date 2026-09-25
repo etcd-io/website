@@ -4,7 +4,8 @@
 
   <div class="c-features">
     {{ range $features -}}
-      {{ $icon  := printf "img/%s" .icon | relURL -}}
+      {{ $svg  := printf "static/img/%s" .icon | readFile -}}
+      {{ $svg  = replaceRE `<svg ` (printf `<svg class="o-feature__icon" role="img" aria-label="%s feature icon" ` (.title | htmlEscape)) $svg -}}
       {{ $desc := .description | markdownify -}}
 
       <div class="col-md-4 o-features__feature">
@@ -12,7 +13,7 @@
           <h3>{{ .title }}</h3>
           <p class="lead">{{ $desc }}</p>
         </div>
-        <img class="o-feature__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
+        {{ $svg | safeHTML }}
       </div>
     {{ end }}
   </div>
