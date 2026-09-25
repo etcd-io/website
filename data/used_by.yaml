@@ -2,25 +2,29 @@
 - name: Kubernetes
   # date: 20yy-mm-dd
   link: https://kubernetes.io
-  image: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.png
+  image: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/horizontal/color/kubernetes-horizontal-color.svg
+  image_dark: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/horizontal/white-text/kubernetes-horizontal-white-text.svg
   quote: >
     etcd is the backend for service discovery and stores cluster state and configuration
 - name: Rook
   # date: 20yy-mm-dd
   link: https://rook.io
-  image: https://raw.githubusercontent.com/cncf/artwork/master/projects/rook/horizontal/color/rook-horizontal-color.png
+  image: &rook-logo https://raw.githubusercontent.com/cncf/artwork/main/projects/rook/horizontal/color/rook-horizontal-color.svg
+  image_dark: *rook-logo
   quote: >
     etcd serves as the orchestration engine for Rook
 - name: CoreDNS
   # date: 20yy-mm-dd
   link: https://coredns.io
-  image: https://raw.githubusercontent.com/cncf/artwork/master/projects/coredns/horizontal/color/coredns-horizontal-color.png
+  image: https://raw.githubusercontent.com/cncf/artwork/main/projects/coredns/horizontal/color/coredns-horizontal-color.svg
+  image_dark: https://raw.githubusercontent.com/cncf/artwork/main/projects/coredns/horizontal/grey/coredns-horizontal-grey.svg
   quote: >
     CoreDNS uses etcd as an optional backend
 - name: M3
   # date: 20yy-mm-dd
   link: https://m3db.io/
-  image: /img/m3-logo.png
+  image: https://m3db.io/images/home/logos/m3_logo.svg
+  image_dark: /img/m3-logo-white.svg
   quote: >
     M3, a large-scale metrics platform for Prometheus created by Uber, uses etcd for rule storage and other functions
 # - name: OpenStack

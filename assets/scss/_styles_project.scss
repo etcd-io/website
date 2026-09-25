@@ -1,5 +1,11 @@
 /* etcd-docsy full file override: we're not tracking changes to the docsy file of the same name. */
 
+// Import dark mode color adjustments for custom theme colors
+@import 'td/color-adjustments-dark';
+
+// Import dark mode code highlighting (requires markup.highlight.noClasses = false in config)
+@import 'td/code-dark';
+
 .td-home {
   h1 {
     // @extend .display-1;
@@ -29,6 +35,20 @@
   .cncf-logo {
     width: 20rem;
     max-width: 80%;
+  }
+
+  // In the dark theme, swap the CNCF color logo for its official white
+  // variant. Both <img>s are rendered by layouts/shortcodes/home/cncf.html;
+  // the inactive one is display:none, so only one takes part in the layout.
+  .cncf-logo--dark {
+    display: none;
+  }
+
+  // `data-bs-theme` lives on <html>, an ancestor of .td-home, so the dark
+  // rules must escape the nesting with @at-root to match.
+  @at-root [data-bs-theme="dark"] {
+    .cncf-logo--light { display: none; }
+    .cncf-logo--dark  { display: inline; }
   }
 
   .site-logo {
@@ -65,11 +85,27 @@
 
 .o-feature__icon {
   width: 100%;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   max-width: 15rem;
   max-height: 10rem;
+
+  // The feature icons are inline <svg> elements (see the
+  // layouts/shortcodes/home/features.html shortcode). Their chip/label colors
+  // follow the site theme below. `@media (prefers-color-scheme)` is not used
+  // for this on purpose: inside an <img>-embedded SVG it resolves against the
+  // OS appearance in Safari/WebKit, not against the site theme.
+  .chip      { fill: $gray-100; }
+  .chip-text { fill: $gray-800; }
+  .kv-path   { fill: $gray-800; }
+
+  @at-root [data-bs-theme="dark"] #{&} {
+    .chip      { fill: $gray-800; }
+    .chip-text { fill: $gray-100; }
+    .kv-path   { fill: $gray-100; }
+  }
 }
 
 .o-icon {
@@ -77,8 +113,29 @@
 }
 
 .used-by-logo {
-  max-height: 4rem;
+  // Set a definite height (not just max-height): some CNCF artwork SVGs
+  // (kubernetes, rook, coredns) carry a viewBox with negative min-x/min-y and
+  // no width/height attributes, so they have no definite intrinsic size and
+  // would otherwise collapse to 0x0 under max-width only. `object-fit` keeps
+  // the aspect ratio if `max-width` ever clamps on narrow screens.
+  height: 4rem;
+  width: auto;
   max-width: 100%;
+  object-fit: contain;
+}
+
+// In the dark theme, swap the color brand logos for their official white
+// ("created for dark backgrounds") variants. Each logo renders two <img>s
+// (used-by-logo--light / used-by-logo--dark, see
+// layouts/shortcodes/home/used-by.html); the inactive one is display:none, so
+// only the right variant takes part in the layout.
+.used-by-logo--dark {
+  display: none;
+}
+
+[data-bs-theme="dark"] {
+  .used-by-logo--light { display: none; }
+  .used-by-logo--dark  { display: inline; }
 }
 
 .c-used-by__users {
@@ -125,10 +182,31 @@
   margin-bottom: 0;
 }
 
+// Bootstrap 5.3 declares `color-scheme: dark` only for the dark theme (see
+// bootstrap/scss/_root.scss), so in light mode `prefers-color-scheme` inside
+// embedded SVGs (e.g. the /img/*.svg feature icons) falls back to the OS
+// setting instead of following the site theme. Declaring `color-scheme: light`
+// explicitly lets Chromium and Firefox propagate the light scheme into the
+// SVGs, so their per-theme colors flip back when switching to the light theme.
+// The dark rule is re-asserted afterwards because a bare `:root` has the same
+// specificity as `[data-bs-theme="dark"]` and would otherwise win by order.
+:root,
+[data-bs-theme="light"] {
+  color-scheme: light;
+}
+
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+}
+
 // Utilities
 
 .bg-gray-100 {
   background-color: $gray-100;
+
+  @at-root [data-bs-theme="dark"] #{&} {
+    background-color: $gray-800;
+  }
 }
 
 // Fixes https://github.com/etcd-io/website/issues/266: the docsy partial

@@ -8,7 +8,10 @@
   {{ $img := printf "img/users/%s" .image | relURL -}}
     <div class="c-used-by__user">
       <a href="{{ .link }}" target="_blank" rel="noopener">
-        <img class="used-by-logo" src="{{ .image }}" alt="{{ .name }} logo">
+        <img class="used-by-logo used-by-logo--light" src="{{ .image }}" alt="{{ .name }} logo">
+        {{- if .image_dark }}
+        <img class="used-by-logo used-by-logo--dark" src="{{ .image_dark }}" alt="{{ .name }} logo">
+        {{- end }}
       </a>
     </div>
   {{- end }}
