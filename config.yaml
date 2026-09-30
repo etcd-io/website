@@ -59,6 +59,8 @@ markup:
   highlight:
     # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
     style: tango
+    # Required for Docsy dark-mode code colors: emit Chroma classes, not inline styles.
+    noClasses: false
     # Uncomment if you want your chosen highlight style used for code blocks without a specified language
     # guessSyntax: true
 
@@ -138,8 +140,10 @@ params:
 
   # User interface configuration
   ui:
+    showLightDarkModeMenu: true
     sidebar_menu_compact: true
     sidebar_search_disable: true
+    sidebar_menu_foldable: true
     navbar_logo: true
     navbar_theme: dark
     footer_about_enable: false
@@ -190,7 +194,7 @@ params:
         icon: fab fa-github
   # [params.logos]
   hero: >-
-    https://raw.githubusercontent.com/cncf/artwork/master/projects/etcd/horizontal/white/etcd-horizontal-white.png
+    https://raw.githubusercontent.com/cncf/artwork/main/projects/etcd/horizontal/white/etcd-horizontal-white.svg
 
 mediaTypes:
   text/netlify: {}

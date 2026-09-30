@@ -22,3 +22,7 @@ $_yellow:  #ffc107;
 // $display4-weight: $_font-weight-light;
 
 $warning: $_yellow; // Use Bootstrap default
+
+// Dark mode: adjust how much lighter the primary color should be in dark mode
+// The etcd dark blue is quite dark, so we need a higher lighten amount for visibility
+$lighten-amount-for-dark-color-variant: 35% !default;
