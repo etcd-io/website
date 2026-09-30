@@ -6,7 +6,7 @@ weight: 900
 
 ## Prerequisites
 
-- Ensure [`etcd`](https://etcd.io/docs/v3.5/install/) and [`etcdctl`](https://etcd.io/docs/v3.5/install/) is installed.
+- Ensure [`etcd`]({{% relref "../../install/" %}}) and [`etcdctl`]({{% relref "../../install/" %}}) is installed.
 - Check for active etcd cluster.
 
 ## Conduct Leader election

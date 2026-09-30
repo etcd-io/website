@@ -6,8 +6,8 @@ weight: 300
 
 ## Pre-requisites
 
-* [Install etcdctl](https://etcd.io/docs/v3.6/install/)
-* [Setup a local cluster](https://etcd.io/docs/v3.6/dev-guide/local_cluster/)
+* [Install etcdctl]({{% relref "../../install" %}})
+* [Setup a local cluster]({{% relref "../../dev-guide/local_cluster/" %}})
 
 ## Get keys by prefix
 

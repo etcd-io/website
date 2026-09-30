@@ -6,7 +6,7 @@ weight: 400
 
 ## Prerequisites
 
-* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.6/install/)
+* Install [`etcd` and `etcdctl`]({{% relref "../../install/" %}})
 
 ## Add or delete keys
 
