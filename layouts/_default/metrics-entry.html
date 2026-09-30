@@ -2,31 +2,18 @@
 <div class="td-content">
   <h1>{{ .Title }}</h1>
 
-  {{- $txtURL := printf "%s.txt" (strings.TrimSuffix "/" .RelPermalink) -}}
-  <p><a href="{{ $txtURL }}">View txt file</a></p>
-
   {{- $content := readFile .Params.metricsFilePath -}}
   {{- $lines := split $content "\n" -}}
-
-  {{/*
-    Parse the metrics file line by line.
-    Each metric block starts with a "# name:" comment and is followed by
-    optional "# description:" and "# type:" comments, then one or more
-    sample lines whose label set (the "{key=value,...}" part) we extract.
-
-    Variables hold the current metric's fields while iterating over file lines.
-  */}}
   {{- $metrics := slice -}}
   {{- $metricName := "" -}}
   {{- $metricDesc := "" -}}
   {{- $metricType := "" -}}
-  {{- $metricLabels := "" -}}
+  {{- $metricLabels := slice -}}
 
   {{- range $lines -}}
-    {{- $t := trim . " " -}}
+    {{- $t := trim . " \r" -}}
 
     {{- if hasPrefix $t "# name:" -}}
-      {{/* Starting a new metric block — append the previous one (if any) first. */}}
       {{- if ne $metricName "" -}}
         {{- $metrics = $metrics | append (dict
           "name" $metricName
@@ -38,7 +25,7 @@
       {{- $metricName = replaceRE `^# name: "(.*)"$` "$1" $t -}}
       {{- $metricDesc = "" -}}
       {{- $metricType = "" -}}
-      {{- $metricLabels = "" -}}
+      {{- $metricLabels = slice -}}
 
     {{- else if hasPrefix $t "# description:" -}}
       {{- $metricDesc = replaceRE `^# description: "(.*)"$` "$1" $t -}}
@@ -46,13 +33,17 @@
     {{- else if hasPrefix $t "# type:" -}}
       {{- $metricType = replaceRE `^# type: "(.*)"$` "$1" $t -}}
 
-    {{- else if and (ne $metricName "") (eq $metricLabels "") (hasPrefix $t $metricName) (in $t "{") (in $t "}") -}}
-      {{/* First sample line for this metric: extract the label set from {…}. */}}
-      {{- $metricLabels = replaceRE `^[^{]*\{([^}]*)\}.*$` "$1" $t -}}
+    {{- else if and (ne $metricName "") (hasPrefix $t $metricName) (in $t "{") (in $t "}") -}}
+      {{- $labelSet := replaceRE `^[^{]*\{([^}]*)\}.*$` "$1" $t -}}
+      {{- range split $labelSet "," -}}
+        {{- $labelName := replaceRE `^([^=]+)=.*$` "$1" (trim . " \r") -}}
+        {{- if and (ne $labelName "") (ne $labelName "le") (ne $labelName "quantile") (not (in $metricLabels $labelName)) -}}
+          {{- $metricLabels = $metricLabels | append $labelName -}}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 
-  {{/* Append the final metric block after the loop ends. */}}
   {{- if ne $metricName "" -}}
     {{- $metrics = $metrics | append (dict
       "name" $metricName
@@ -62,20 +53,24 @@
     ) -}}
   {{- end -}}
 
-
-  {{/* Display the parsed metrics in a table. */}}
-  <table>
-    <thead><tr><th>Name</th><th>Type</th><th>Description</th><th>Labels</th></tr></thead>
-    <tbody>
-    {{- range $metrics -}}
-    <tr>
-      <td><code>{{ .name }}</code></td>
-      <td>{{ .type }}</td>
-      <td>{{ .description }}</td>
-      <td>{{ if .labels }}<code>{{ .labels }}</code>{{ else }}-{{ end }}</td>
-    </tr>
-    {{- end -}}
-    </tbody>
-  </table>
+  {{- range $i, $metric := $metrics }}
+    <section class="mb-4 p-3 {{ if modBool $i 2 }}bg-light{{ end }}">
+      <div id="{{ $metric.name | anchorize }}" class="h5 font-weight-bold text-dark text-monospace" style="font-weight: 700;">{{ $metric.name }}</div>
+      {{- with $metric.description }}
+        <p>{{ . }}</p>
+      {{- end }}
+      <ul>
+        <li><strong>Type:</strong> {{ $metric.type | title }}</li>
+        {{- if $metric.labels }}
+          <li>
+            <strong>Labels:</strong>
+            {{- range $metric.labels }}
+              <code class="d-inline-block bg-white border text-dark text-monospace px-1 mr-1">{{ . }}</code>
+            {{- end }}
+          </li>
+        {{- end }}
+      </ul>
+    </section>
+  {{- end }}
 </div>
 {{ end }}

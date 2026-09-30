@@ -12,6 +12,7 @@ fi
 new_version="$1"
 release_minor=$(echo "${new_version}" | cut -d. -f1-2)
 index_file=content/en/docs/"${release_minor}"/_index.md
+metrics_file=content/en/docs/"${release_minor}"/metrics/etcd-metrics-latest.txt
 git_remote="${GIT_REMOTE:-origin}"
 branch="release-${release_minor}-update-latest-release-to-${new_version}"
 current_branch=$(git symbolic-ref HEAD --short)
@@ -49,9 +50,10 @@ trap 'git checkout "${current_branch}"' EXIT
 
 # Update the release version in the release file.
 sed -i 's/git_version_tag:\sv\([0-9]\+\.\)\{2\}[0-9]\+/git_version_tag: '"${new_version}"'/' "${index_file}"
+make update-metrics-docs VERSION="${release_minor}" TAG="${new_version}"
 
 # Commit the changes, push and create a PR.
-git add "${index_file}"
+git add "${index_file}" "${metrics_file}"
 git -c user.name="${git_author}" -c user.email="${git_email}" commit --file=- <<EOL
 [${release_minor}] Update installation version to latest tag (${new_version})
 
