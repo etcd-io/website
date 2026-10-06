@@ -20,6 +20,7 @@ Note that third-party libraries and tools (not hosted on [etcd-io main repositor
 - [etcdloadtest](https://github.com/sinsharat/etcdloadtest) - A command line load test client for etcd version 3.0 and above.
 - [etcd-tui](https://github.com/olamilekan000/etcd-tui) - A modern terminal user interface (TUI) for interacting with your etcd database. Navigate keys, view values, filter data, and manage your etcd cluster directly from your terminal.
 - [etcdfinder](https://etcdfinder.github.io) - A lightning-fast, modern web UI for etcd with instant search. Supports both etcd v2 and v3.
+- [LibreDB Studio](https://github.com/libredb/libredb-studio) - A self-hosted, web-based database IDE with etcd v3 support. Browse keys by prefix, run a subset of etcdctl commands, and edit values. Kubernetes-aware: writes under Kubernetes key prefixes are refused.
 - [lucas](https://github.com/ringtail/lucas) - A web-based key-value viewer for kubernetes etcd3.0+ cluster.
 - [etcd-manager](https://etcdmanager.io) - A modern, efficient, multi-platform and free etcd 3.x GUI & client tool. Available for Windows, Linux and Mac.
 - [etcd-backup-restore](https://github.com/gardener/etcd-backup-restore) - Utility to periodically and incrementally backup and restore the etcd.
