@@ -492,7 +492,7 @@ etcd gateway is a simple TCP proxy that forwards network data to the etcd cluste
 
 When the `--proxy` flag is set, etcd runs in [proxy mode][proxy]. This proxy mode only supports the etcd v2 API; there are no plans to support the v3 API. Instead, for v3 API support, there will be a new proxy with enhanced features following the etcd 3.0 release.
 
-To setup an etcd cluster with proxies of v2 API, please read the the [clustering doc in etcd 2.3 release][clustering_etcd2].
+To setup an etcd cluster with proxies of v2 API, please read the [clustering doc in etcd 2.3 release][clustering_etcd2].
 
 [clustering_etcd2]: https://github.com/etcd-io/etcd/blob/release-2.3/Documentation/clustering.md
 [conf-adv-client]: ../configuration/#clustering
