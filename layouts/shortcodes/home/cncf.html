@@ -1,5 +1,6 @@
-{{ $src := "https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png" -}}
+{{ $src := "https://raw.githubusercontent.com/cncf/artwork/main/other/cncf/horizontal/color/cncf-color.svg" -}}
 <section class="home--top-section">
   <h4>{{ .Site.Title }} is a <a href="https://cncf.io">CNCF</a> project</h4>
-  <img class="cncf-logo" src="{{ $src }}" alt="Cloud Native Computing Foundation logo">
+  <img class="cncf-logo cncf-logo--light" src="{{ $src }}" alt="Cloud Native Computing Foundation logo">
+  <img class="cncf-logo cncf-logo--dark" src="https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/other/cncf/horizontal/color-whitetext/cncf-color-whitetext.svg" alt="Cloud Native Computing Foundation logo">
 </section>
