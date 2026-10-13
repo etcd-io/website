@@ -7,7 +7,7 @@ weight: 600
 
 ## Prerequisites
 
-* Install [`etcd` and `etcdctl`](https://etcd.io/docs/v3.5/install/)
+* Install [`etcd` and `etcdctl`]({{% relref "../install" %}})
 
 ## Watching keys
 `watch` to get notified of future changes:

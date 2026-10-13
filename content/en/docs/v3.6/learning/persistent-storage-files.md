@@ -11,7 +11,7 @@ This document explains the etcd persistent storage format: naming, content and t
 
 The following articles provide helpful background information for this document:
 
-* etcd data model overview: https://etcd.io/docs/v3.6/learning/data_model
+* etcd data model overview: [data model]({{% relref "data_model" %}})
 * Raft overview: https://raft.github.io/raft.pdf (especially "5.3 Log replication" section).
 
 
