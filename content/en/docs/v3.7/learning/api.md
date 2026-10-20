@@ -185,8 +185,8 @@ message RangeStreamResponse {
 
 Field population across chunks:
 
-* Kvs - each chunk carries a disjoint slice of the result. Concatenating the `kvs` from every chunk in the order they arrive yields the same key set as a single `Range` call.
-* Header, More, Count - populated only on the final chunk, and only when the stream completes without error. Earlier chunks leave these fields zero-valued. Applying `proto.Merge` over every chunk's `range_response` yields a `RangeResponse` equivalent to what `Range` would have returned.
+* `kvs` - each chunk carries a disjoint slice of the result. Concatenating the `kvs` from every chunk in the order they arrive yields the same key set as a single `Range` call.
+* `header`, `more`, `count` - populated only on the final chunk, and only when the stream completes without error. Earlier chunks leave these fields zero-valued. Applying `proto.Merge` over every chunk's `range_response` yields a `RangeResponse` equivalent to what `Range` would have returned.
 
 If the stream ends in error, no chunk carries a valid `header`, `more`, or `count`.
 
