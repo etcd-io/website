@@ -9,9 +9,9 @@ SIG-etcd has published patch releases for all three supported versions of etcd. 
 
 Updates may be found here:
 
-- [v3.7.2](https://github.com/etcd-io/etcd/releases/tag/v3.7.3)
-- [v3.6.15](https://github.com/etcd-io/etcd/releases/tag/v3.6.16)
-- [v3.5.34](https://github.com/etcd-io/etcd/releases/tag/v3.5.35)
+- [v3.7.3](https://github.com/etcd-io/etcd/releases/tag/v3.7.3)
+- [v3.6.16](https://github.com/etcd-io/etcd/releases/tag/v3.6.16)
+- [v3.5.35](https://github.com/etcd-io/etcd/releases/tag/v3.5.35)
 
 Official container images are available from [gcr.io](https://gcr.io/etcd-development/etcd).
 
