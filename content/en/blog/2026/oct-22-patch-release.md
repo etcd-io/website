@@ -15,7 +15,7 @@ Updates may be found here:
 
 Official container images are available from [gcr.io](https://gcr.io/etcd-development/etcd).
 
-SIG etcd has received additional high priority issue reports recently that are not patched in this release.  However, this update fixes known, public security vulnerabilities as well as serious perfomance problems currently affecting users.  As such, we decided to release an update now with the understanding that additional patch releases will be required soon.
+SIG etcd has received additional issue reports recently that are not patched in this release.  However, this update fixes known, public security vulnerabilities as well as serious perfomance problems currently affecting users.  As such, we decided to release an update now with the understanding that additional patch releases will be required soon.
 
 ## Security Updates
 
@@ -32,7 +32,7 @@ That last security vulnerability was reported by contributor [lwescheq](https://
 
 ## Bug Fixes
 
-This release fixes two regressions in v3.7, [sending MsgApp messages in reverse order](https://github.com/etcd-io/etcd/issues/22483) and a [data race in keys-only RangeStream](https://github.com/etcd-io/etcd/pull/22601). 
+This release fixes two regressions in v3.7, [sending MsgApp messages in reverse order](https://github.com/etcd-io/etcd/issues/22483) and a [data race in keys-only RangeStream](https://github.com/etcd-io/etcd/pull/22601).
 
 As his first etcd contribution, Shubham Agrawal at UC Berkeley fixed another [potential data race in all versions](https://github.com/etcd-io/etcd/pull/22609).  This release also [prevents a panic in v3.6](https://github.com/etcd-io/etcd/pull/22542) from mistyping Lease ID. We've also marked the obsolete [`logutil.NewJournalWriter` as deprecated](https://github.com/etcd-io/etcd/pull/22530) in our code, so that it can be removed in v3.8.
 
