@@ -1,9 +1,9 @@
-# server version: etcd_server_version{server_version="3.5.0-pre"}
+# server version: etcd_server_version{server_version="3.6.0"}
 
 # name: "etcd_cluster_version"
 # description: "Which version is running. 1 for 'cluster_version' label with current cluster version"
 # type: "gauge"
-etcd_cluster_version{cluster_version="3.5"}
+etcd_cluster_version{cluster_version="3.6"}
 
 # name: "etcd_debugging_auth_revision"
 # description: "The current revision of auth store."
@@ -180,16 +180,6 @@ etcd_debugging_mvcc_db_compaction_total_duration_milliseconds_bucket{le="+Inf"}
 etcd_debugging_mvcc_db_compaction_total_duration_milliseconds_sum
 etcd_debugging_mvcc_db_compaction_total_duration_milliseconds_count
 
-# name: "etcd_debugging_mvcc_db_total_size_in_bytes"
-# description: "Total size of the underlying database physically allocated in bytes."
-# type: "gauge"
-etcd_debugging_mvcc_db_total_size_in_bytes
-
-# name: "etcd_debugging_mvcc_delete_total"
-# description: "Total number of deletes seen by this member."
-# type: "counter"
-etcd_debugging_mvcc_delete_total
-
 # name: "etcd_debugging_mvcc_events_total"
 # description: "Total number of events sent by this member."
 # type: "counter"
@@ -226,16 +216,6 @@ etcd_debugging_mvcc_keys_total
 # type: "gauge"
 etcd_debugging_mvcc_pending_events_total
 
-# name: "etcd_debugging_mvcc_put_total"
-# description: "Total number of puts seen by this member."
-# type: "counter"
-etcd_debugging_mvcc_put_total
-
-# name: "etcd_debugging_mvcc_range_total"
-# description: "Total number of ranges seen by this member."
-# type: "counter"
-etcd_debugging_mvcc_range_total
-
 # name: "etcd_debugging_mvcc_slow_watcher_total"
 # description: "Total number of unsynced slow watchers."
 # type: "gauge"
@@ -245,11 +225,6 @@ etcd_debugging_mvcc_slow_watcher_total
 # description: "The total size of put kv pairs seen by this member."
 # type: "gauge"
 etcd_debugging_mvcc_total_put_size_in_bytes
-
-# name: "etcd_debugging_mvcc_txn_total"
-# description: "Total number of txns seen by this member."
-# type: "counter"
-etcd_debugging_mvcc_txn_total
 
 # name: "etcd_debugging_mvcc_watch_stream_total"
 # description: "Total number of watch streams."
@@ -399,6 +374,11 @@ etcd_disk_backend_snapshot_duration_seconds_bucket{le="+Inf"}
 etcd_disk_backend_snapshot_duration_seconds_sum
 etcd_disk_backend_snapshot_duration_seconds_count
 
+# name: "etcd_disk_defrag_inflight"
+# description: "Whether or not defrag is active on the member. 1 means active, 0 means not."
+# type: "gauge"
+etcd_disk_defrag_inflight
+
 # name: "etcd_disk_wal_fsync_duration_seconds"
 # description: "The latency distributions of fsync called by WAL."
 # type: "histogram"
@@ -424,6 +404,52 @@ etcd_disk_wal_fsync_duration_seconds_count
 # description: "Total number of bytes written in WAL."
 # type: "gauge"
 etcd_disk_wal_write_bytes_total
+
+# name: "etcd_disk_wal_write_duration_seconds"
+# description: "The latency distributions of write called by WAL."
+# type: "histogram"
+etcd_disk_wal_write_duration_seconds_bucket{le="0.001"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.002"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.004"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.008"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.016"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.032"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.064"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.128"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.256"}
+etcd_disk_wal_write_duration_seconds_bucket{le="0.512"}
+etcd_disk_wal_write_duration_seconds_bucket{le="1.024"}
+etcd_disk_wal_write_duration_seconds_bucket{le="2.048"}
+etcd_disk_wal_write_duration_seconds_bucket{le="4.096"}
+etcd_disk_wal_write_duration_seconds_bucket{le="8.192"}
+etcd_disk_wal_write_duration_seconds_bucket{le="+Inf"}
+etcd_disk_wal_write_duration_seconds_sum
+etcd_disk_wal_write_duration_seconds_count
+
+# name: "etcd_grpc_proxy_cache_hits_total"
+# description: "Total number of cache hits"
+# type: "gauge"
+etcd_grpc_proxy_cache_hits_total
+
+# name: "etcd_grpc_proxy_cache_keys_total"
+# description: "Total number of keys/ranges cached"
+# type: "gauge"
+etcd_grpc_proxy_cache_keys_total
+
+# name: "etcd_grpc_proxy_cache_misses_total"
+# description: "Total number of cache misses"
+# type: "gauge"
+etcd_grpc_proxy_cache_misses_total
+
+# name: "etcd_grpc_proxy_events_coalescing_total"
+# description: "Total number of events coalescing"
+# type: "counter"
+etcd_grpc_proxy_events_coalescing_total
+
+# name: "etcd_grpc_proxy_watchers_coalescing_total"
+# description: "Total number of current watchers coalescing"
+# type: "gauge"
+etcd_grpc_proxy_watchers_coalescing_total
 
 # name: "etcd_mvcc_db_open_read_transactions"
 # description: "The number of currently open read transactions"
@@ -519,6 +545,12 @@ etcd_network_client_grpc_received_bytes_total
 # type: "counter"
 etcd_network_client_grpc_sent_bytes_total
 
+# name: "etcd_network_known_peers"
+# description: "The current number of known peers."
+# type: "gauge"
+etcd_network_known_peers{Local="7339c4e5e833c029",Remote="729934363faa4a24"}
+etcd_network_known_peers{Local="7339c4e5e833c029",Remote="7339c4e5e833c029"}
+
 # name: "etcd_network_peer_received_bytes_total"
 # description: "The total number of bytes received from peers."
 # type: "counter"
@@ -552,16 +584,125 @@ etcd_network_peer_round_trip_time_seconds_sum{To="REMOTE_PEER_NODE_ID"}
 # type: "counter"
 etcd_network_peer_sent_bytes_total{To="REMOTE_PEER_NODE_ID"}
 
+# name: "etcd_server_apply_duration_seconds"
+# description: "The latency distributions of v2 apply called by backend."
+# type: "histogram"
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0001"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0002"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0004"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0008"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0016"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0032"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0064"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0128"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0256"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.0512"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.1024"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.2048"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.4096"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="0.8192"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="1.6384"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="3.2768"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="6.5536"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="13.1072"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="26.2144"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="52.4288"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterMemberAttrSet",success="true",version="v3",le="+Inf"}
+etcd_server_apply_duration_seconds_sum{op="ClusterMemberAttrSet",success="true",version="v3"}
+etcd_server_apply_duration_seconds_count{op="ClusterMemberAttrSet",success="true",version="v3"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0001"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0002"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0004"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0008"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0016"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0032"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0064"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0128"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0256"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.0512"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.1024"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.2048"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.4096"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="0.8192"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="1.6384"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="3.2768"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="6.5536"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="13.1072"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="26.2144"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="52.4288"}
+etcd_server_apply_duration_seconds_bucket{op="ClusterVersionSet",success="true",version="v3",le="+Inf"}
+etcd_server_apply_duration_seconds_sum{op="ClusterVersionSet",success="true",version="v3"}
+etcd_server_apply_duration_seconds_count{op="ClusterVersionSet",success="true",version="v3"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0001"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0002"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0004"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0008"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0016"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0032"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0064"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0128"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0256"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.0512"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.1024"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.2048"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.4096"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="0.8192"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="1.6384"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="3.2768"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="6.5536"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="13.1072"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="26.2144"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="52.4288"}
+etcd_server_apply_duration_seconds_bucket{op="DeleteRange",success="true",version="v3",le="+Inf"}
+etcd_server_apply_duration_seconds_sum{op="DeleteRange",success="true",version="v3"}
+etcd_server_apply_duration_seconds_count{op="DeleteRange",success="true",version="v3"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0001"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0002"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0004"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0008"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0016"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0032"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0064"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0128"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0256"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.0512"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.1024"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.2048"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.4096"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="0.8192"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="1.6384"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="3.2768"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="6.5536"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="13.1072"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="26.2144"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="52.4288"}
+etcd_server_apply_duration_seconds_bucket{op="Put",success="true",version="v3",le="+Inf"}
+etcd_server_apply_duration_seconds_sum{op="Put",success="true",version="v3"}
+etcd_server_apply_duration_seconds_count{op="Put",success="true",version="v3"}
+
 # name: "etcd_server_client_requests_total"
 # description: "The total number of client requests per client version."
 # type: "counter"
-etcd_server_client_requests_total{client_api_version="3.5",type="stream"}
-etcd_server_client_requests_total{client_api_version="3.5",type="unary"}
+etcd_server_client_requests_total{client_api_version="3.6",type="stream"}
+etcd_server_client_requests_total{client_api_version="3.6",type="unary"}
+
+# name: "etcd_server_feature_enabled"
+# description: "Whether or not a feature is enabled. 1 is enabled, 0 is not."
+# type: "gauge"
+etcd_server_feature_enabled{name="AllAlpha",stage="ALPHA"}
+etcd_server_feature_enabled{name="AllBeta",stage="BETA"}
+etcd_server_feature_enabled{name="CompactHashCheck",stage="ALPHA"}
+etcd_server_feature_enabled{name="InitialCorruptCheck",stage="ALPHA"}
+etcd_server_feature_enabled{name="LeaseCheckpoint",stage="ALPHA"}
+etcd_server_feature_enabled{name="LeaseCheckpointPersist",stage="ALPHA"}
+etcd_server_feature_enabled{name="SetMemberLocalAddr",stage="ALPHA"}
+etcd_server_feature_enabled{name="StopGRPCServiceOnDefrag",stage="ALPHA"}
+etcd_server_feature_enabled{name="TxnModeWriteWithSharedBuffer",stage="BETA"}
 
 # name: "etcd_server_go_version"
 # description: "Which Go version server is running with. 1 for 'server_go_version' label with current version."
 # type: "gauge"
-etcd_server_go_version{server_go_version="go1.14.3"}
+etcd_server_go_version{server_go_version="go1.23.9"}
 
 # name: "etcd_server_has_leader"
 # description: "Whether or not a leader exists. 1 is existence, 0 is not."
@@ -586,8 +727,7 @@ etcd_server_heartbeat_send_failures_total
 # name: "etcd_server_id"
 # description: "Server or member ID in hexadecimal format. 1 for 'server_id' label with current ID."
 # type: "gauge"
-etcd_server_id{server_id="451af08594378132"}
-etcd_server_id{server_id="61791325a7fedcf8"}
+etcd_server_id{server_id="7339c4e5e833c029"}
 
 # name: "etcd_server_is_leader"
 # description: "Whether or not this member is a leader. 1 if is, 0 otherwise."
@@ -634,6 +774,33 @@ etcd_server_proposals_pending
 # type: "gauge"
 etcd_server_quota_backend_bytes
 
+# name: "etcd_server_range_duration_seconds"
+# description: "The latency distributions of txn.Range"
+# type: "histogram"
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0001"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0002"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0004"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0008"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0016"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0032"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0064"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0128"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0256"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.0512"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.1024"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.2048"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.4096"}
+etcd_server_range_duration_seconds_bucket{success="true",le="0.8192"}
+etcd_server_range_duration_seconds_bucket{success="true",le="1.6384"}
+etcd_server_range_duration_seconds_bucket{success="true",le="3.2768"}
+etcd_server_range_duration_seconds_bucket{success="true",le="6.5536"}
+etcd_server_range_duration_seconds_bucket{success="true",le="13.1072"}
+etcd_server_range_duration_seconds_bucket{success="true",le="26.2144"}
+etcd_server_range_duration_seconds_bucket{success="true",le="52.4288"}
+etcd_server_range_duration_seconds_bucket{success="true",le="+Inf"}
+etcd_server_range_duration_seconds_sum{success="true"}
+etcd_server_range_duration_seconds_count{success="true"}
+
 # name: "etcd_server_read_indexes_failed_total"
 # description: "The total number of failed read indexes seen."
 # type: "counter"
@@ -657,7 +824,7 @@ etcd_server_snapshot_apply_in_progress_total
 # name: "etcd_server_version"
 # description: "Which version is running. 1 for 'server_version' label with current version."
 # type: "gauge"
-etcd_server_version{server_version="3.5.0-pre"}
+etcd_server_version{server_version="3.6.0"}
 
 # name: "etcd_snap_db_fsync_duration_seconds"
 # description: "The latency distributions of fsyncing .snap.db file"
@@ -719,7 +886,7 @@ etcd_snap_fsync_duration_seconds_sum
 etcd_snap_fsync_duration_seconds_count
 
 # name: "go_gc_duration_seconds"
-# description: "A summary of the GC invocation durations."
+# description: "A summary of the wall-time pause (stop-the-world) duration in garbage collection cycles."
 # type: "summary"
 go_gc_duration_seconds{quantile="0"}
 go_gc_duration_seconds{quantile="0.25"}
@@ -729,6 +896,16 @@ go_gc_duration_seconds{quantile="1"}
 go_gc_duration_seconds_sum
 go_gc_duration_seconds_count
 
+# name: "go_gc_gogc_percent"
+# description: "Heap size target percentage configured by the user, otherwise 100. This value is set by the GOGC environment variable, and the runtime/debug.SetGCPercent function. Sourced from /gc/gogc:percent"
+# type: "gauge"
+go_gc_gogc_percent
+
+# name: "go_gc_gomemlimit_bytes"
+# description: "Go runtime memory limit configured by the user, otherwise math.MaxInt64. This value is set by the GOMEMLIMIT environment variable, and the runtime/debug.SetMemoryLimit function. Sourced from /gc/gomemlimit:bytes"
+# type: "gauge"
+go_gc_gomemlimit_bytes
+
 # name: "go_goroutines"
 # description: "Number of goroutines that currently exist."
 # type: "gauge"
@@ -737,65 +914,60 @@ go_goroutines
 # name: "go_info"
 # description: "Information about the Go environment."
 # type: "gauge"
-go_info{version="go1.14.3"}
+go_info{version="go1.23.9"}
 
 # name: "go_memstats_alloc_bytes"
-# description: "Number of bytes allocated and still in use."
+# description: "Number of bytes allocated in heap and currently in use. Equals to /memory/classes/heap/objects:bytes."
 # type: "gauge"
 go_memstats_alloc_bytes
 
 # name: "go_memstats_alloc_bytes_total"
-# description: "Total number of bytes allocated, even if freed."
+# description: "Total number of bytes allocated in heap until now, even if released already. Equals to /gc/heap/allocs:bytes."
 # type: "counter"
 go_memstats_alloc_bytes_total
 
 # name: "go_memstats_buck_hash_sys_bytes"
-# description: "Number of bytes used by the profiling bucket hash table."
+# description: "Number of bytes used by the profiling bucket hash table. Equals to /memory/classes/profiling/buckets:bytes."
 # type: "gauge"
 go_memstats_buck_hash_sys_bytes
 
 # name: "go_memstats_frees_total"
-# description: "Total number of frees."
+# description: "Total number of heap objects frees. Equals to /gc/heap/frees:objects + /gc/heap/tiny/allocs:objects."
 # type: "counter"
 go_memstats_frees_total
 
-# name: "go_memstats_gc_cpu_fraction"
-# description: "The fraction of this program's available CPU time used by the GC since the program started."
-# type: "gauge"
-go_memstats_gc_cpu_fraction
-
 # name: "go_memstats_gc_sys_bytes"
-# description: "Number of bytes used for garbage collection system metadata."
+# description: "Number of bytes used for garbage collection system metadata. Equals to /memory/classes/metadata/other:bytes."
 # type: "gauge"
 go_memstats_gc_sys_bytes
 
 # name: "go_memstats_heap_alloc_bytes"
-# description: "Number of heap bytes allocated and still in use."
+# description: "Number of heap bytes allocated and currently in use, same as go_memstats_alloc_bytes. Equals to /memory/classes/heap/objects:bytes."
 # type: "gauge"
 go_memstats_heap_alloc_bytes
 
 # name: "go_memstats_heap_idle_bytes"
-# description: "Number of heap bytes waiting to be used."
+# description: "Number of heap bytes waiting to be used. Equals to /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes."
 # type: "gauge"
 go_memstats_heap_idle_bytes
 
 # name: "go_memstats_heap_inuse_bytes"
-# description: "Number of heap bytes that are in use."
+# description: "Number of heap bytes that are in use. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes"
 # type: "gauge"
 go_memstats_heap_inuse_bytes
 
 # name: "go_memstats_heap_objects"
-# description: "Number of allocated objects."
+# description: "Number of currently allocated objects. Equals to /gc/heap/objects:objects."
 # type: "gauge"
 go_memstats_heap_objects
 
 # name: "go_memstats_heap_released_bytes"
-# description: "Number of heap bytes released to OS."
+# description: "Number of heap bytes released to OS. Equals to /memory/classes/heap/released:bytes."
 # type: "gauge"
 go_memstats_heap_released_bytes
 
 # name: "go_memstats_heap_sys_bytes"
-# description: "Number of heap bytes obtained from system."
+# description: "Number of heap bytes obtained from system. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes + /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes."
 # type: "gauge"
 go_memstats_heap_sys_bytes
 
@@ -804,60 +976,60 @@ go_memstats_heap_sys_bytes
 # type: "gauge"
 go_memstats_last_gc_time_seconds
 
-# name: "go_memstats_lookups_total"
-# description: "Total number of pointer lookups."
-# type: "counter"
-go_memstats_lookups_total
-
 # name: "go_memstats_mallocs_total"
-# description: "Total number of mallocs."
+# description: "Total number of heap objects allocated, both live and gc-ed. Semantically a counter version for go_memstats_heap_objects gauge. Equals to /gc/heap/allocs:objects + /gc/heap/tiny/allocs:objects."
 # type: "counter"
 go_memstats_mallocs_total
 
 # name: "go_memstats_mcache_inuse_bytes"
-# description: "Number of bytes in use by mcache structures."
+# description: "Number of bytes in use by mcache structures. Equals to /memory/classes/metadata/mcache/inuse:bytes."
 # type: "gauge"
 go_memstats_mcache_inuse_bytes
 
 # name: "go_memstats_mcache_sys_bytes"
-# description: "Number of bytes used for mcache structures obtained from system."
+# description: "Number of bytes used for mcache structures obtained from system. Equals to /memory/classes/metadata/mcache/inuse:bytes + /memory/classes/metadata/mcache/free:bytes."
 # type: "gauge"
 go_memstats_mcache_sys_bytes
 
 # name: "go_memstats_mspan_inuse_bytes"
-# description: "Number of bytes in use by mspan structures."
+# description: "Number of bytes in use by mspan structures. Equals to /memory/classes/metadata/mspan/inuse:bytes."
 # type: "gauge"
 go_memstats_mspan_inuse_bytes
 
 # name: "go_memstats_mspan_sys_bytes"
-# description: "Number of bytes used for mspan structures obtained from system."
+# description: "Number of bytes used for mspan structures obtained from system. Equals to /memory/classes/metadata/mspan/inuse:bytes + /memory/classes/metadata/mspan/free:bytes."
 # type: "gauge"
 go_memstats_mspan_sys_bytes
 
 # name: "go_memstats_next_gc_bytes"
-# description: "Number of heap bytes when next garbage collection will take place."
+# description: "Number of heap bytes when next garbage collection will take place. Equals to /gc/heap/goal:bytes."
 # type: "gauge"
 go_memstats_next_gc_bytes
 
 # name: "go_memstats_other_sys_bytes"
-# description: "Number of bytes used for other system allocations."
+# description: "Number of bytes used for other system allocations. Equals to /memory/classes/other:bytes."
 # type: "gauge"
 go_memstats_other_sys_bytes
 
 # name: "go_memstats_stack_inuse_bytes"
-# description: "Number of bytes in use by the stack allocator."
+# description: "Number of bytes obtained from system for stack allocator in non-CGO environments. Equals to /memory/classes/heap/stacks:bytes."
 # type: "gauge"
 go_memstats_stack_inuse_bytes
 
 # name: "go_memstats_stack_sys_bytes"
-# description: "Number of bytes obtained from system for stack allocator."
+# description: "Number of bytes obtained from system for stack allocator. Equals to /memory/classes/heap/stacks:bytes + /memory/classes/os-stacks:bytes."
 # type: "gauge"
 go_memstats_stack_sys_bytes
 
 # name: "go_memstats_sys_bytes"
-# description: "Number of bytes obtained from system."
+# description: "Number of bytes obtained from system. Equals to /memory/classes/total:byte."
 # type: "gauge"
 go_memstats_sys_bytes
+
+# name: "go_sched_gomaxprocs_threads"
+# description: "The current runtime.GOMAXPROCS setting, or the number of operating system threads that can execute user-level Go code simultaneously. Sourced from /sched/gomaxprocs:threads"
+# type: "gauge"
+go_sched_gomaxprocs_threads
 
 # name: "go_threads"
 # description: "Number of OS threads created."
@@ -1089,6 +1261,16 @@ process_cpu_seconds_total
 # description: "Maximum number of open file descriptors."
 # type: "gauge"
 process_max_fds
+
+# name: "process_network_receive_bytes_total"
+# description: "Number of bytes received by the process over the network."
+# type: "counter"
+process_network_receive_bytes_total
+
+# name: "process_network_transmit_bytes_total"
+# description: "Number of bytes sent by the process over the network."
+# type: "counter"
+process_network_transmit_bytes_total
 
 # name: "process_open_fds"
 # description: "Number of open file descriptors."
