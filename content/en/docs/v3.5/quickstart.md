@@ -4,6 +4,15 @@ weight: 900
 description: Get etcd up and running in less than 5 minutes!
 ---
 
+{{% alert color="info" %}}
+
+**Note**: To try etcd in the browser without installing it, see this
+[hands-on etcd tutorial](https://prepare.sh/tutorial/etcd-tutorial-config-watches-leases-transactions-3-node-cluster)
+from Prepare.sh, a third-party site (needs a free account). It covers watches,
+leases, transactions and a 3-member cluster.
+
+{{% /alert %}}
+
 Follow these instructions to locally install, run, and test a single-member
 cluster of etcd:
 
