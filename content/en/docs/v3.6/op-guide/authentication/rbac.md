@@ -195,7 +195,51 @@ $ etcdctl --user user --password password get foo
 Otherwise, all `etcdctl` commands remain the same. Users and roles can still be created and modified, but require authentication by a user with the root role.
 
 ## Using TLS Common Name
-As of version v3.2 if an etcd server is launched with the option `--client-cert-auth=true`, the field of Common Name (CN) in the client's TLS cert will be used as an etcd user. In this case, the common name authenticates the user and the client does not need a password. Note that if both of 1. `--client-cert-auth=true` is passed and CN is provided by the client, and 2. username and password are provided by the client, the username and password based authentication is prioritized. Note that this feature cannot be used with gRPC-proxy and gRPC-gateway. This is because gRPC-proxy terminates TLS from its client so all the clients share a cert of the proxy. gRPC-gateway uses a TLS connection internally for transforming HTTP request to gRPC request so it shares the same limitation. Therefore the clients cannot provide their CN to the server correctly. gRPC-proxy will cause an error and stop if a given cert has non empty CN. gRPC-proxy returns an error which indicates that the client has an non empty CN in its cert.
+
+As of etcd v3.2, when the server is started with `--client-cert-auth=true`, clients can authenticate **as an etcd user without a password** by putting that username in the certificate **Common Name (CN)**.
+
+### How it works
+
+1. Create an etcd user whose name matches the certificate CN (for example user `alice`).
+2. Grant that user the roles it needs (`etcdctl user grant-role ...`).
+3. Issue a client certificate whose **Subject CN** is exactly that username.
+4. Start etcd with client certificate authentication enabled (and a trusted CA):
+
+```bash
+etcd --client-cert-auth --trusted-ca-file=ca.crt \
+  --cert-file=server.crt --key-file=server.key \
+  # ... other flags
+```
+
+5. Call etcd with the client cert (no `--user` / password required):
+
+```bash
+etcdctl --endpoints=https://127.0.0.1:2379 \
+  --cacert=ca.crt --cert=alice.crt --key=alice.key \
+  get /foo
+```
+
+etcd maps the cert CN to the etcd user and applies that user's RBAC permissions.
+
+### Password vs CN: which wins?
+
+If the client sends **both**:
+
+1. a client certificate with a CN (and `--client-cert-auth=true` on the server), **and**
+2. username/password credentials,
+
+**username/password authentication is preferred.** The CN is ignored for that request.
+
+### Limitations (gRPC-proxy and gRPC-gateway)
+
+TLS Common Name authentication **does not work** through:
+
+| Component | Why |
+|-----------|-----|
+| **gRPC-proxy** | The proxy terminates client TLS and re-connects with its own cert. Every downstream client would look like the proxy identity. If a client cert presents a non-empty CN, gRPC-proxy errors and stops. |
+| **gRPC-gateway** | HTTP is translated to gRPC over an internal TLS connection that does not forward the original client CN. |
+
+Use password users (or terminate auth at another layer) for traffic that must go through the proxy or gateway.
 
 ## Notes on password strength
 The `etcdctl` and etcd API do not enforce a specific password length during user creation or user password update operations. It is the responsibility of the administrator to enforce these requirements. For avoiding security risks related to password strength, [TLS Common Name based authentication](#using-tls-common-name) and users created with `--no-password` option can be utilized.
