@@ -69,6 +69,7 @@ Follow these steps to add documentation for a newly released version of etcd, vX
 * In the `_index.md` file at the root of the new directory, update the front matter
   to reflect the new version. For example, for a draft version (see
   [content/en/docs/v3.8/_index.md](content/en/docs/v3.8/_index.md)):
+
   ```yaml
   ---
   title: vX.Y docs
@@ -83,6 +84,7 @@ Follow these steps to add documentation for a newly released version of etcd, vX
   weight: -XY0 # Weight for doc version vX.Y should be -XY0
   ---
   ```
+
   When the version is released, set `versName` to `vX.Y`, set
   `git_version_tag` to the release tag (for example `vX.Y.0`), set
   `exclude_search` to `false`, and remove `page_warning`. See
@@ -90,11 +92,13 @@ Follow these steps to add documentation for a newly released version of etcd, vX
 * Add the version to the `params.versions` list in the
   [config.yaml](config.yaml) configuration file, as a new `version`/`url`
   entry at the top of the list:
+
   ```yaml
   versions:
     - version: vX.Y
       url: /docs/vX.Y/
   ```
+
 * If the version is meant to be the latest stable version of etcd, change the
   `params.latest_stable_version` parameter in `config.yaml` to the new version.
 * Submit a pull request with the changes.
