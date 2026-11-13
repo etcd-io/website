@@ -1,0 +1,50 @@
+{{/*
+  Layout for the etcd.io homepage. Content comes from content/en/_index.md:
+  front matter drives the cover and features; the Markdown body is the
+  "What is etcd?" lead section.
+*/ -}}
+{{ define "main" -}}
+{{ $cover := .Params.cover -}}
+{{ $version := site.Params.latest_stable_version -}}
+
+<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-min
+    {{- if not site.Params.ui.navbar_translucent_over_cover_disable }} js-td-cover{{ end }} td-overlay td-overlay--dark -bg-primary">
+  <div class="col-12">
+    <div class="container td-overlay__inner">
+      <div class="text-center">
+        <div class="pt-3 lead">
+          <img src="{{ $cover.logo }}" class="site-logo" alt="{{ site.Title }} logo" />
+          <h2 class="mt-4">
+            {{ $cover.tagline }}
+          </h2>
+          <div class="mt-5 mx-auto">
+            {{ range $cover.buttons -}}
+            <a class="btn btn-lg btn-{{ .style }} mr-3 mb-4" href="/docs/{{ $version }}/{{ .docs_path }}">
+              {{ .text }}{{ with .icon }}<i class="{{ . }} ms-2"></i>{{ end }}
+            </a>
+            {{ end -}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div><a id="td-block-1" class="td-anchor-no-extra-offset"></a></div>
+<section class="row td-box td-box--white home-lead position-relative td-box--height-auto">
+  <div class="col-12">
+    <div class="container text-center td-arrow-down">
+      <div class="h4 mb-0">
+        {{ with .Params.lead_title }}<h1>{{ . }}</h1>{{ end }}
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  {{ partial "home/features.html" . }}
+  {{ partial "home/used-by.html" . }}
+  {{ partial "home/cncf.html" . }}
+</div>
+{{ end }}
