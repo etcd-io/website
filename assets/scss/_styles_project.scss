@@ -6,6 +6,19 @@
 // Import dark mode code highlighting (requires markup.highlight.noClasses = false in config)
 @import 'td/code-dark';
 
+// The homepage lead text (content/en/_index.md) is plain Markdown, so the arrow
+// icon after its "Learn more" link is added here (Font Awesome
+// `arrow-alt-circle-right`) rather than with inline HTML.
+.home-lead a[href^='/docs/']::after {
+  content: '\f35a';
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1;
+}
+
 .td-home {
   h1 {
     // @extend .display-1;
@@ -38,7 +51,7 @@
   }
 
   // In the dark theme, swap the CNCF color logo for its official white
-  // variant. Both <img>s are rendered by layouts/shortcodes/home/cncf.html;
+  // variant. Both <img>s are rendered by layouts/partials/home/cncf.html;
   // the inactive one is display:none, so only one takes part in the layout.
   .cncf-logo--dark {
     display: none;
@@ -93,7 +106,7 @@
   max-height: 10rem;
 
   // The feature icons are inline <svg> elements (see the
-  // layouts/shortcodes/home/features.html shortcode). Their chip/label colors
+  // layouts/partials/home/features.html partial). Their chip/label colors
   // follow the site theme below. `@media (prefers-color-scheme)` is not used
   // for this on purpose: inside an <img>-embedded SVG it resolves against the
   // OS appearance in Safari/WebKit, not against the site theme.
@@ -127,7 +140,7 @@
 // In the dark theme, swap the color brand logos for their official white
 // ("created for dark backgrounds") variants. Each logo renders two <img>s
 // (used-by-logo--light / used-by-logo--dark, see
-// layouts/shortcodes/home/used-by.html); the inactive one is display:none, so
+// layouts/partials/home/used-by.html); the inactive one is display:none, so
 // only the right variant takes part in the layout.
 .used-by-logo--dark {
   display: none;
