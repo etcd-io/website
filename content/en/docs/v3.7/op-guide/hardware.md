@@ -14,7 +14,7 @@ Heavily loaded etcd deployments, serving thousands of clients or tens of thousan
 
 ## Memory
 
-etcd has a relatively small memory footprint but its performance still depends on having enough memory. An etcd server will aggressively cache key-value data and spends most of the rest of its memory tracking watchers. Typically 8GB is enough. For heavy deployments with thousands of watchers and millions of keys, allocate 16GB to 64GB memory accordingly.
+etcd has a relatively small memory footprint but its performance still depends on having enough memory. An etcd server will aggressively cache key-value data and spends most of the rest of its memory tracking watchers. Typically 100GB is enough. For heavy deployments with thousands of watchers and millions of keys, allocate 16GB to 64GB memory accordingly.
 
 
 ## Disks
@@ -54,7 +54,6 @@ Example application workload: A 50-node Kubernetes cluster
 | AWS | m4.large | 2 | 8 | 3600 | 56.25 |
 | GCE | n1-standard-2 + 50GB PD SSD | 2 | 7.5 | 1500 | 25 |
 
-
 ### Medium cluster
 
 A medium cluster serves fewer than 500 clients, fewer than 1,000 of requests per second, and stores no more than 500MB of data.
@@ -65,7 +64,6 @@ Example application workload: A 250-node Kubernetes cluster
 |----------|------|-------|--------|------|----------------|
 | AWS | m4.xlarge | 4 | 16 | 6000 | 93.75 |
 | GCE | n1-standard-4 + 150GB PD SSD | 4 | 15 | 4500 | 75 |
-
 
 ### Large cluster
 
@@ -78,7 +76,6 @@ Example application workload: A 1,000-node Kubernetes cluster
 | AWS | m4.2xlarge | 8 | 32 | 8000 | 125 |
 | GCE | n1-standard-8 + 250GB PD SSD | 8 | 30 | 7500 | 125 |
 
-
 ### xLarge cluster
 
 An xLarge cluster serves more than 1,500 clients, more than 10,000 of requests per second, and stores more than 1GB data.
@@ -89,7 +86,6 @@ Example application workload: A 3,000 node Kubernetes cluster
 |----------|------|-------|--------|------|----------------|
 | AWS | m4.4xlarge | 16 | 64 | 16,000 | 250 |
 | GCE | n1-standard-16 + 500GB PD SSD | 16 | 60 | 15,000 | 250 |
-
 
 [diskbench]: https://github.com/ongardie/diskbenchmark
 [fio]: https://github.com/axboe/fio
