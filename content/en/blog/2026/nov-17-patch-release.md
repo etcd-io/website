@@ -31,6 +31,8 @@ v3.5.36 fixes an issue where a leader that removed itself from the cluster could
 
 All three releases compile binaries using [Go 1.26.11](https://go.dev/doc/devel/release).  We update the base image for our official container images to Debian 13.7, which [distrusts eMudhra certificates](https://emudhra.we-have-a-problem.com/).
 
+All three releases also update `golang.org/x/net` from v0.61.0 to v0.62.0 to address [CVE-2026-78661](https://github.com/advisories/GHSA-75pg-wvh3-34jr) and [CVE-2026-97045](https://github.com/advisories/GHSA-vwcj-r8v9-p53f).
+
 v3.6.17 also updates `github.com/klauspost/compress` to v1.20.2 to address [CVE-2026-116591](https://pkg.go.dev/vuln/GO-2026-6865).
 
 For the full list of changes, see the changelogs:
