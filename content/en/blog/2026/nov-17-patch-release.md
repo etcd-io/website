@@ -2,7 +2,7 @@
 title: "etcd Patch Releases: v3.7.4, v3.6.17, v3.5.36"
 author: "SIG-Etcd Leads"
 date: 2026-11-17
-draft: true
+draft: false
 ---
 
 SIG-etcd has published patch releases for all three supported versions of etcd v3.7.4, v3.6.17 and v3.5.36. These updates improve recovery behavior and concurrency safety, and include additional version-specific fixes. Users should update at the next scheduled maintenance window after the releases become available.
