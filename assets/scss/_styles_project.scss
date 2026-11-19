@@ -6,6 +6,28 @@
 // Import dark mode code highlighting (requires markup.highlight.noClasses = false in config)
 @import 'td/code-dark';
 
+// etcd dark-mode code palette. Docsy's dark theme uses Chroma's `native`
+// style, which renders comments in gray (barely distinct from plain text) and
+// builtins like `export` in a dim teal. These overrides must come after the
+// Docsy import above (same specificity, later rule wins). All colors have a
+// contrast ratio of at least 4.5:1 against the dark code background.
+[data-bs-theme='dark'] .chroma {
+  // Comments: muted green, italic, clearly different from plain text
+  .c, .ch, .cm, .c1 { color: #7f9f6f; }
+  // Keywords and builtins (e.g. `export`)
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .ow, .nb, .bp { color: #ff7b72; }
+  // Flags / tags
+  .nt, .na { color: #7ee787; }
+  // Strings
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sr, .s1, .ss, .sx { color: #a5d6ff; }
+  // Variables and constants (e.g. `${ENDPOINTS}`)
+  .nv, .vc, .vg, .vi, .vm, .no { color: #d2a8ff; }
+  // Numbers
+  .m, .mb, .mf, .mh, .mi, .il, .mo { color: #79c0ff; }
+  // Functions and classes
+  .nf, .fm, .nc, .nn { color: #ffa657; }
+}
+
 .td-home {
   h1 {
     // @extend .display-1;
