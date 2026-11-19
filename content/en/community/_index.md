@@ -1,6 +1,6 @@
 ---
 title: Community
-description: Welcome to the etcd user and developer community page
+description: Join the etcd community and collaborate with us
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
@@ -153,7 +153,7 @@ For etcd contribution guidelines, see [How to contribute][].
 [Triage Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.xjc2zly8zbof#heading=h.eu3cetgrd3ii
 [Documentation Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.gksuxl4c139h
 [Robustness Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.v6ew634mcun0#heading=h.eu3cetgrd3ii
-[online]: https://zoom.us/j/99252206415 
+[online]: https://zoom.us/j/92863020769 
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
 [GD]: https://github.com/etcd-io/etcd/discussions
 [Kubernetes Slack]: https://slack.k8s.io
