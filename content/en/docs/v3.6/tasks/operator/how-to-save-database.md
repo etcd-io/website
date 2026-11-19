@@ -22,7 +22,7 @@ etcdctl --endpoints=$ENDPOINT snapshot save DB_NAME
 #### etcdctl
 
 ```bash
---endpoints=[127.0.0.1:2379], gRPC endpoints
+--endpoints="127.0.0.1:2379": gRPC endpoints
 ```
 
 Snapshot can only be requested from one etcd node, so `--endpoints` flag should contain only one endpoint.

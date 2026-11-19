@@ -18,13 +18,13 @@ $ etcdctl --endpoints=$ENDPOINTS get PREFIX --prefix
 ### Global Options
 
 ```bash
---endpoints=[127.0.0.1:2379], gRPC endpoints
+--endpoints="127.0.0.1:2379": gRPC endpoints
 ```
 
 ### Options
 
 ```bash
---prefix, get a range of keys with matching prefix
+--prefix[=false]: get a range of keys with matching prefix
 ```
 
 ### Example
