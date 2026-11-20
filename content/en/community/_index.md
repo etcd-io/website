@@ -1,6 +1,6 @@
 ---
 title: Community
-description: Welcome to the etcd user and developer community page
+description: Join the etcd community and collaborate with us
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
@@ -87,8 +87,8 @@ If you're new to etcd, this meeting is probably the place to start!  It's also w
 * *Notes*: [Triage Meeting Notes][]
 * *Zoom*: [SIG-etcd Zoom][online]
 
-Issue triage meetings alternate weeks with the Community Meeting.  They are aimed at getting 
-through our backlog of PRs and Issues. Triage meetings are open to any contributor; you 
+Issue triage meetings alternate weeks with the Community Meeting.  They are aimed at getting
+through our backlog of PRs and Issues. Triage meetings are open to any contributor; you
 don't have to be a reviewer or approver to help out! They can also be a good way to get
 started contributing.
 
@@ -143,19 +143,15 @@ For etcd contribution guidelines, see [How to contribute][].
 
 </div>
 
-[@etcdio]: https://twitter.com/etcdio
 [etcd-dev]: https://groups.google.com/g/etcd-dev
-[etcd-youtube]: https://www.youtube.com/channel/UC7tUWR24I5AR9NMsG-NYBlg
-[robustness-tests-meeting-recordings]: https://www.youtube.com/playlist?list=PLRGL688DpO9oF-YEEfVXMzaOUzFYK74-I
 [How to contribute]: https://github.com/etcd-io/etcd/blob/main/CONTRIBUTING.md
 [community-meeting-doc]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM
 [Community Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.0#heading=h.txs5bihsv4q0
 [Triage Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.xjc2zly8zbof#heading=h.eu3cetgrd3ii
 [Documentation Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.gksuxl4c139h
 [Robustness Meeting Notes]: https://docs.google.com/document/d/16XEGyPBisZvmmoIHSZzv__LoyOeluC5a4x353CX0SIM/edit?tab=t.v6ew634mcun0#heading=h.eu3cetgrd3ii
-[online]: https://zoom.us/j/99252206415 
+[online]: https://zoom.us/j/92863020769
 [Pacific Time]: https://www.timeanddate.com/time/zones/pt
-[GD]: https://github.com/etcd-io/etcd/discussions
 [Kubernetes Slack]: https://slack.k8s.io
 [operator-wg-doc]: https://docs.google.com/document/d/1ey4zTTRvtCVJJP2vjF95VjG-sAKlNTcqB2HdmC18Lfc/edit?usp=sharing
 [operator-zoom]: https://zoom.us/j/93758419981
