@@ -58,27 +58,49 @@ the production site [etcd.io][].
 
 Follow these steps to add documentation for a newly released version of etcd, vX.Y:
 
-* Recursively copy [content/docs/next](content/docs/next) into
-  `content/docs/vX.Y`, where `vX.Y` is the newly released version of etcd. For example:
+* Recursively copy the most recent existing version directory under
+  [content/en/docs](content/en/docs) into `content/en/docs/vX.Y`, where `vX.Y`
+  is the new version of etcd. For example, to create `v3.9` from `v3.8`:
 
     ```bash
-    cp -r content/en/docs/next content/en/docs/v3.6
+    cp -r content/en/docs/v3.8 content/en/docs/v3.9
     ```
 
-* In the `_index.md` file at the root of the new directory, update the frontmatter
-  to reflect the new version:
-  ```
+* In the `_index.md` file at the root of the new directory, update the front matter
+  to reflect the new version. For example, for a draft version (see
+  [content/en/docs/v3.8/_index.md](content/en/docs/v3.8/_index.md)):
+
+  ```yaml
   ---
-  title: etcd version X.Y
-  weight: 1000
+  title: vX.Y docs
   cascade:
     version: vX.Y
+    versName: &name vX.Y-DRAFT
+    git_version_tag: main
+    exclude_search: true
+    page_warning: the documentation is in **DRAFT** status.
+  linkTitle: *name
+  simple_list: true
+  weight: -XY0 # Weight for doc version vX.Y should be -XY0
   ---
   ```
-* Add the version to the `params.versions.all` array in the
-  [config.toml](config.toml) configuration file.
-* If the version is meant to be the latest version of etcd, change the
-  `params.latest_stable_version` parameter to the desired new version.
+
+  When the version is released, set `versName` to `vX.Y`, set
+  `git_version_tag` to the release tag (for example `vX.Y.0`), set
+  `exclude_search` to `false`, and remove `page_warning`. See
+  [content/en/docs/v3.7/_index.md](content/en/docs/v3.7/_index.md) for a released version.
+* Add the version to the `params.versions` list in the
+  [config.yaml](config.yaml) configuration file, as a new `version`/`url`
+  entry at the top of the list:
+
+  ```yaml
+  versions:
+    - version: vX.Y
+      url: /docs/vX.Y/
+  ```
+
+* If the version is meant to be the latest stable version of etcd, change the
+  `params.latest_stable_version` parameter in `config.yaml` to the new version.
 * Submit a pull request with the changes.
 
 [#406]: https://github.com/etcd-io/website/issues/406
